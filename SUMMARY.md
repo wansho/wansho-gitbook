@@ -26,7 +26,10 @@
 
 ## Note-for-Other-Konwledge
 
-* [Authentic-Expression](note-for-other-konwledge/authentic-expression.md)
+* Tools
+  * [GitBook 介绍](note-for-other-knowledge/Tools/gitbook.md)
+
+* [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
 
 ## Algorithms
 
