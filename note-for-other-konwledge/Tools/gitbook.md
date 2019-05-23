@@ -2,14 +2,14 @@
 
 首先抛结论，GitBook 目前满足了我对记笔记的所有幻想，它没有 Hexo 那么多花里胡哨的功能，它就像一把锋利的小刀，简单克制，完美解决了我使用 Hexo 中的一些痛点，满足了笔记创作者和读者最原始的需求，让创作者专注于创作，让读者专注于阅读。
 
-
+![优雅克制的 GitBook](assets/1558618759867.png)
 
 先总结一下 GitBook 的优点：
 
 * 实时同步 Github 仓库中的笔记
-* GitBook 支持自定义域名
+* 支持自定义域名
 * GitBook + Typora + GitHub 完美解决图床问题，采用 github 仓库作为图床
-* GitBook 界面优雅克制，让内容创作者专注于内容创作，让读者专注于阅读
+* 界面优雅克制，让内容创作者专注于内容创作，让读者专注于阅读
 
 注意，我这里写的 GitBook 是指 GitBook 提供的新版在线服务：https://www.gitbook.com/，而不是自己根据开源代码搭建的服务，也不是 GitBook 的老版服务：https://legacy.gitbook.com/ (已停止新用户注册)。下面详细介绍以下新版 GitBook 服务的优点。
 
@@ -47,10 +47,13 @@
 
    如此 GitBook 就可以完美利用 GitHub 仓库作为图床，完美的解决图床问题。
 
+## Tips for GitBook
 
+* 不要在 GitBook 上进行在线编辑，因为在线编辑的内容会同步到 GitHub 上，如果本地也进行了相同文件的编辑，则可能会产生冲突，导致 GitBook 因为冲突而不能同步 GitHub 上的最新笔记。
 
 ## GitBook 服务的不足
 
 * 小白上手比较难：[DOC](<https://docs.gitbook.com/>) 没有汉化，Github 有学习成本
 * 没有免费的评论系统
-* 
+
+  
