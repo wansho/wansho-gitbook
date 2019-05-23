@@ -29,7 +29,7 @@
 ## Note-for-Other-Konwledge
 
 * Tools
-  * [GitBook 介绍](note-for-other-knowledge/Tools/gitbook.md)
+  * [优雅锋利的 GitBook](note-for-other-knowledge/Tools/gitbook.md)
 
 * [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
 
