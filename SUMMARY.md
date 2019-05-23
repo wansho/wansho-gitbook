@@ -4,6 +4,8 @@
 
 ## Fluent-Python
 
+* [README](fluent-python/README.md)
+
 * [Chapters](fluent-python/chapters/README.md)
   * [Chapter1. The Python Data Model](fluent-python/chapters/chapter1.-the-python-data-model.md)
   * [Chapter2. An Array of Sequences](fluent-python/chapters/chapter2.-an-array-of-sequences.md)
