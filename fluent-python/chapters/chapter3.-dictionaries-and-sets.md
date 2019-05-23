@@ -1,10 +1,10 @@
 # Chapter3. Dictionaries and Sets
 
-[TOC]
+\[TOC\]
 
 ## Mapping Types 的特征
 
-所有的 mapping types 的底层，都是 `dict`，他们的 key 必须是可以  hashable 的。
+所有的 mapping types 的底层，都是 `dict`，他们的 key 必须是可以 hashable 的。
 
 ```python
 ss = "hello"
@@ -17,7 +17,7 @@ hash(ss)
 
 可以 hash 的内置类型有：
 
-* atomic immutable types: (str, bytes, numeric types)
+* atomic immutable types: \(str, bytes, numeric types\)
 * tuple only if all its items are hashable
 * user-defined types
 
@@ -63,21 +63,21 @@ my_dict.pop(key) # 删除一对数据并返回
 my_dict.popitem() # 随机删除一对元素并返回
 ```
 
-### update() 方法详解
+### update\(\) 方法详解
 
 update 方法是鸭子模型的典型体现。
 
-其可以接收拥有 mapping 或 iterating 的对象。首先判断接收的对象是否有 `keys()` 方法，如果有，则把它当成一只鸭子(mapping)，否则再尝试 iterate 该对象，如果可以 iterate，那么就假定该对象中的元素为 元组对(key, value)。
+其可以接收拥有 mapping 或 iterating 的对象。首先判断接收的对象是否有 `keys()` 方法，如果有，则把它当成一只鸭子\(mapping\)，否则再尝试 iterate 该对象，如果可以 iterate，那么就假定该对象中的元素为 元组对\(key, value\)。
 
-update() 接受的对象，可以是如下几种：
+update\(\) 接受的对象，可以是如下几种：
 
 1. mapping types
-2. iterated types with (key, value) tuple items
+2. iterated types with \(key, value\) tuple items
 3. keyword arguments
 
 注意，无特殊情况，还是以 第二种
 
-### handle missing keys with setdefault() / defaultdict
+### handle missing keys with setdefault\(\) / defaultdict
 
 Python 有四种通过 key 获取值的方式：
 
@@ -156,7 +156,6 @@ my_set = {1, 2, 3} # 初始化一个有初始值的 set
 
 # 注意，构建空的 set 只能用 set()，如果是如下的构造，实际上是生成了一个字典
 my_dict = {}
-
 ```
 
 ### Set 的特性
@@ -177,7 +176,7 @@ for n in needless:
         found += 1
 ```
 
-以上的两个块代码，在效果上等价，但是前者运用了算数运算符，其速度远大于 for 循环。 
+以上的两个块代码，在效果上等价，但是前者运用了算数运算符，其速度远大于 for 循环。
 
 ### Inplaced mathematical set operations
 
@@ -193,7 +192,7 @@ set1 = set1 | set2 # produce a new set
 
 ### Set comparison operators
 
-set 比较运算符，返回的结果是一个 bool 值，` in, <=, <, >=, >`
+set 比较运算符，返回的结果是一个 bool 值，`in, <=, <, >=, >`
 
 ```python
 set1 = {1,2}
@@ -212,7 +211,7 @@ set 和 dict 的底层都是 hashtable，set 的 hashtable 的每个桶中，只
 
 ### 利
 
-Set，Dict 适合 O(1) 复杂度的高效查找，dict / set / list 查找效率比较：set > dict > list
+Set，Dict 适合 O\(1\) 复杂度的高效查找，dict / set / list 查找效率比较：set &gt; dict &gt; list
 
 ### 弊端
 

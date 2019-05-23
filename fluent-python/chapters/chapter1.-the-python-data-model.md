@@ -1,6 +1,6 @@
 # Chapter1. The Python Data Model
 
-[TOC]
+\[TOC\]
 
 ## special / magic / dunder methods
 
@@ -8,27 +8,27 @@ Python 最大的特性，在于其语言的一致性。其定义了大量的与�
 
 魔法方法分为两类：
 
-* magic method 
+* magic method
 
   | magic method | built-in method |
-  | ------------ | --------------- |
-  | `__str__`    | `str()`         |
-  | `__len__`    | `len()`         |
-  | `__int__`    | `int()`         |
+  | :--- | :--- |
+  | `__str__` | `str()` |
+  | `__len__` | `len()` |
+  | `__int__` | `int()` |
 
 * magic method for operators
 
   | magic method for operators | built-in operator |
-  | -------------------------- | ----------------- |
-  | `__and__`                  | `and`             |
-  | `__or__`                   | `or`              |
-  | `__add__`                  | `+`               |
+  | :--- | :--- |
+  | `__and__` | `and` |
+  | `__or__` | `or` |
+  | `__add__` | `+` |
 
 **魔法方法的优点**：
 
 * 魔法方法统一了常见的语法规则
 
-  用户不需要再去记忆，对于获取一个对象的长度，究竟是用 .length() 还是 .size()
+  用户不需要再去记忆，对于获取一个对象的长度，究竟是用 .length\(\) 还是 .size\(\)
 
 * 实现了魔法方法的类可以方便的调用 Python 的标准库（不需要自己重复造轮子）
 
@@ -77,7 +77,7 @@ class Vector():
         :return:
         """
         return "hehe"
-    
+
 vector = Vector(3, 4)
 print(abs(vector))
 print(str(vector))
@@ -90,11 +90,9 @@ hehe
 True
 ```
 
-
-
 ## Duck Typing
 
-> **Duck typing** in computer programming is an application of the [duck test](https://en.wikipedia.org/wiki/Duck_test)—"If it walks like a duck and it quacks like a duck, then it must be a duck"—to determine if an [object](https://en.wikipedia.org/wiki/Object_(computer_science)) can be used for a particular purpose. With normal typing, suitability is determined by an object's type. In duck typing, an object's suitability is determined by the presence of certain [methods](https://en.wikipedia.org/wiki/Method_(computer_programming)) and properties, rather than the type of the object itself.[[1\]](https://en.wikipedia.org/wiki/Duck_typing#cite_note-1)
+> **Duck typing** in computer programming is an application of the [duck test](https://en.wikipedia.org/wiki/Duck_test)—"If it walks like a duck and it quacks like a duck, then it must be a duck"—to determine if an \[object\]\([https://en.wikipedia.org/wiki/Object\_\(computer\_science](https://en.wikipedia.org/wiki/Object_%28computer_science)\)\) can be used for a particular purpose. With normal typing, suitability is determined by an object's type. In duck typing, an object's suitability is determined by the presence of certain \[methods\]\([https://en.wikipedia.org/wiki/Method\_\(computer\_programming](https://en.wikipedia.org/wiki/Method_%28computer_programming)\)\) and properties, rather than the type of the object itself.[\[1\]](https://en.wikipedia.org/wiki/Duck_typing#cite_note-1)
 >
 > 如果它走起来像一只鸭子，叫声也想一只鸭子，那么它就是一个鸭子。
 
@@ -103,10 +101,9 @@ True
 大多数面向对象的编程语言，其多态的实现是因为某一类的对象都继承自一个 father，某一个类的特征也取决于该类的继承、接口及其自身的特征。而 Python 这一类语言不同，其多态的实现，可能是因为其类中实现了某一个特定的方法，使得该类拥有某一类特性。例如：
 
 * 通过实现 `__len__` 和 `__getitem__` 这两个魔法方法，我们自定义的类，就可以拥有 list 的全部特性
-
 * 字典的 `update()` 方法，其接受任何有 mapping 或 iterating 特性的对象
 
-  首先判断接收的对象是否有 `keys()` 方法，如果有，则把它当成一只鸭子(mapping)，否则再尝试 iterate 该对象，如果可以 iterate，那么就假定该对象中的元素为 元组对(key, value)。
+  首先判断接收的对象是否有 `keys()` 方法，如果有，则把它当成一只鸭子\(mapping\)，否则再尝试 iterate 该对象，如果可以 iterate，那么就假定该对象中的元素为 元组对\(key, value\)。
 
 * `lst.extend()` 方法可以接受任何 iterating 的对象
 

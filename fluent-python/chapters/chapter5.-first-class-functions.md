@@ -2,11 +2,11 @@
 
 从第五章开始，一直到第七章，都是在研究函数。
 
-[TOC]
+\[TOC\]
 
 ## What is First-Class Functions
 
-Functions are treated like any other variable. Treating functions as objects. 
+Functions are treated like any other variable. Treating functions as objects.
 
 函数也被作为一个对象，其和对象一样，是 Python语言中的第一公民。
 
@@ -22,7 +22,6 @@ fact = factorial # function 作为变量传递给另外一个变量
 list(map(fact, range(10))) 
 # 等价于
 list(map(factorial, range(10)))
-
 ```
 
 ## 函数的 attributes
@@ -41,17 +40,13 @@ None
 """
 ```
 
-| attribute | 解释           |
-| --------- | -------------- |
+| attribute | 解释 |
+| :--- | :--- |
 | `__doc__` | 函数的注释声明 |
-|           |                |
-|           |                |
-
-
+|  |  |
+|  |  |
 
 ## 函数的 functions
-
-
 
 ## Higer-Order Functions
 
@@ -61,7 +56,7 @@ A function that takes a function as argument or returns a function as the result
 
 Higer-Order Functions: **sort, map, filter, reduce**
 
-### Demo: sort()
+### Demo: sort\(\)
 
 ```python
 de reverse(word):
@@ -94,15 +89,15 @@ all(iterable)
 any(iterable)
 ```
 
-![map/filter](assets/1558485596538.png)
+![map/filter](https://github.com/wansho/gitbook/tree/45cadb94ff7e686ee52c7862531f957c312007d7/Fluent-Python/assets/1558485596538.png)
 
 **reduce**
 
-The common idea of **reduce**  is to apply some operation to successive items in a sequence, accumulating previous result, thus reducing a sequence of values to a single value.
+The common idea of **reduce** is to apply some operation to successive items in a sequence, accumulating previous result, thus reducing a sequence of values to a single value.
 
 reduce 用于对一个 sequence 进行 successive compute，从而得到一个 single value。
 
-![Reduce](assets/1558443265331.png)
+![Reduce](https://github.com/wansho/gitbook/tree/45cadb94ff7e686ee52c7862531f957c312007d7/Fluent-Python/assets/1558443265331.png)
 
 ```python
 from functools import reduce
@@ -121,12 +116,12 @@ any(iterable) # return true if one value is true
 all(["1", [1], (1), {1:2}]) # true
 all(["1", [1], (1), {}]) # false
 
-any(["1", [1], (1), {}]) # true 
+any(["1", [1], (1), {}]) # true
 ```
 
 注意：
 
-* 在 Python3 中， **map** 和 **filter** 会返回一个 generator (iterable)对象，并不是一个 sequence
+* 在 Python3 中， **map** 和 **filter** 会返回一个 generator \(iterable\)对象，并不是一个 sequence
 
 ### Anonymous Functions
 
@@ -142,7 +137,7 @@ Demo:
 fruits = ["straberry", "fig", "cherry", "apple", "banana"]
 sorted(fruits, key=lambda fruit: fruit[::-1])
 # 其等价于
-sorted(fruits, key=reverse) 
+sorted(fruits, key=reverse)
 ```
 
 值得注意的是，lambda expression 除了应用在 High-Order-Function 中，其他地方使用得不多。
@@ -160,5 +155,5 @@ sorted(fruits, key=reverse)
 
 ### Definition
 
-A *callable object* is an object that can accept some arguments (also called parameters) and possibly return an object (often a tuple containing multiple objects). A function is the simplest callable object in Python, but there are others, such as [classes](https://en.wikibooks.org/wiki/Python_Programming/Classes) or certain class instances. [From wikibooks](<https://en.wikibooks.org/wiki/Python_Programming/Functions>)
+A _callable object_ is an object that can accept some arguments \(also called parameters\) and possibly return an object \(often a tuple containing multiple objects\). A function is the simplest callable object in Python, but there are others, such as [classes](https://en.wikibooks.org/wiki/Python_Programming/Classes) or certain class instances. [From wikibooks](https://en.wikibooks.org/wiki/Python_Programming/Functions>)
 

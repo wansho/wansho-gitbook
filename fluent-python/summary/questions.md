@@ -33,25 +33,15 @@
 ## Chapter3. Dictionaries and Sets
 
 * 可以 hashable 的类型
-
 * dict 的特点和使用情境
-
 * dict 的常见构造方法 / 弹出数据 / 随机弹出数据的方法
-
 * dict 的 `update()` 方法的原理
-
 * dict 查找时，处理 missing key 的 几种方式，哪两种方式更高效？原理是什么
-
 * dict 的变体：OrderDict / Counter 的特性
-
 * Set 有哪些特性
-
 * Set 的比较运算符/算数运算符/ inplace operator
-
 * Set 和 Dict 的区别在哪里，速度上有差距吗，差在哪里
-
 * dict in JSON Style 的弊端
-
 
 ## Chapter4. Text versus Bytes
 

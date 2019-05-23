@@ -1,6 +1,6 @@
 # Python-Code-Optimization
 
-[TOC]
+\[TOC\]
 
 ## 为什么要看 Fluent-Python
 
@@ -28,23 +28,23 @@ ss = ss + "world"
 print(id(ss)) # 1746961939120
 ```
 
-那么就会重新开辟一块空间。这是一个小得不能再小的细节，很多人并不会很在意，毕竟一个小小的字符串并不会占用很大的内存空间。但是，如果我们在工作中，遇到了很长的 ss 呢（假设1KB）？而且需要频繁对 ss 进行扩展呢(一万次)？如果按照我们平时的第二种写法，那么我们每一次扩展，都是对原字符串的一次深拷贝，那么第一次拷贝内存成本都会上升，即使每次添加的字符并不多，那么拷贝一万次后，内存里至少会产生 10MB 的垃圾。如果这个脚本每隔 10 分钟就要跑一次，那么每隔 10 分钟就会产生 10MB 的垃圾（这里不考虑垃圾回收机制）。长此以往，计算机的内存就会被吃空。
+那么就会重新开辟一块空间。这是一个小得不能再小的细节，很多人并不会很在意，毕竟一个小小的字符串并不会占用很大的内存空间。但是，如果我们在工作中，遇到了很长的 ss 呢（假设1KB）？而且需要频繁对 ss 进行扩展呢\(一万次\)？如果按照我们平时的第二种写法，那么我们每一次扩展，都是对原字符串的一次深拷贝，那么第一次拷贝内存成本都会上升，即使每次添加的字符并不多，那么拷贝一万次后，内存里至少会产生 10MB 的垃圾。如果这个脚本每隔 10 分钟就要跑一次，那么每隔 10 分钟就会产生 10MB 的垃圾（这里不考虑垃圾回收机制）。长此以往，计算机的内存就会被吃空。
 
 ## 内存优化
 
-### Python 内存优化工具 memory_profiler
+### Python 内存优化工具 memory\_profiler
 
-[pypi](<https://pypi.org/project/memory-profiler/>)
+[pypi](https://pypi.org/project/memory-profiler/>)
 
 **安装**
 
-```
+```text
 pip install memory_profiler
 ```
 
 **使用**
 
-[pypi](<https://pypi.org/project/memory-profiler/>) 上有详细介绍，这里记录一下最常用的方法: 在程序内导入该包，然后加 `@profile` 的 flag
+[pypi](https://pypi.org/project/memory-profiler/>) 上有详细介绍，这里记录一下最常用的方法: 在程序内导入该包，然后加 `@profile` 的 flag
 
 ```python
 from memory_profiler import profile
@@ -92,7 +92,7 @@ list1 = list1 + list2
 list1 = list1 * 2
 ```
 
-注意：`+=`， `*=` 的优化，其只对于 mutable(可更改) 的 sequence 生效，对于 tuple 这样的 immutable sequence，`+=` 和 `+` 的效果是一样的。但是 `str` 是一个例外，由于 str 使用频率太高，所以 Python 专门针对 str 进行了优化。Fluent-Python的原文是：
+注意：`+=`， `*=` 的优化，其只对于 mutable\(可更改\) 的 sequence 生效，对于 tuple 这样的 immutable sequence，`+=` 和 `+` 的效果是一样的。但是 `str` 是一个例外，由于 str 使用频率太高，所以 Python 专门针对 str 进行了优化。Fluent-Python的原文是：
 
 > str instance are allocated in memory with room to spare, so that concatenation does not require copying the whole string every time.
 
@@ -100,7 +100,7 @@ list1 = list1 * 2
 
 `+=`， `*=` 两个运算符在 Python 中被定义为 magic operator，其会被 Python 解释器解释成 `__iadd__()` 和 `__imul__()` （其中 i 是 in-place 的意思，也就是 `就地` 的意思）两个魔法方法，而普通的 `+` 和 `*` 两个运算符，则是被 Python 解释器解释成了 `__add__()` 和 `__mul__()`，所以本质上，两个被解释成了不同的魔法方法，然后执行。
 
-### 用生成器(genexps)替换列表推导式(listcomp)
+### 用生成器\(genexps\)替换列表推导式\(listcomp\)
 
 Demo: 生成一个 7000 万长度的 array。
 
@@ -134,7 +134,7 @@ if to_check_str in ["a", "b", "c"]:
 
 注意：set 并不是 sequence，实际上，这是利用空间来优化时间复杂度的一个算法。
 
-### dict 查找为空的优化 setdefault() / defaultdict
+### dict 查找为空的优化 setdefault\(\) / defaultdict
 
 Python 有三种通过 key 获取值的方式：
 
@@ -188,7 +188,7 @@ for n in needless:
         found += 1
 ```
 
-以上的两个块代码，在效果上等价，但是前者运用了算数运算符，其速度远大于 for 循环。 
+以上的两个块代码，在效果上等价，但是前者运用了算数运算符，其速度远大于 for 循环。
 
 ## 语法优化
 
@@ -206,8 +206,6 @@ with 相对于传统的 IO 语法，其**优势**在于：
 with open("file.txt", encoding="utf-8") as fr:
     content = fr.read()
 ```
-
-
 
 ## API Convention
 
@@ -229,7 +227,7 @@ list1.shuffle()
 
 对于数学运算符，例如:
 
-```
+```text
 +, -, *, &, |
 ```
 
@@ -250,21 +248,21 @@ set1 &= set2
 
 ## 性能优化工具
 
-### [Python 内存优化工具 memory_profiler](#Python 内存优化工具 memory_profiler)
+### [Python 内存优化工具 memory\_profiler](python-code-optimization.md#Python%20内存优化工具%20memory_profiler)
 
 ### Python Bytecode disassember
 
 **What is Bytecode**
 
-> Python source code is compiled into bytecode. The bytecode is also cached in `.pyc` files so that executing the same file is faster the second time (recompilation from source to bytecode can be avoided). This “intermediate language” is said to run on a [virtual machine](https://docs.python.org/3/glossary.html#term-virtual-machine) that executes the machine code corresponding to each bytecode. Do note that bytecodes are not expected to work between different Python virtual machines, nor to be stable between Python releases.
+> Python source code is compiled into bytecode. The bytecode is also cached in `.pyc` files so that executing the same file is faster the second time \(recompilation from source to bytecode can be avoided\). This “intermediate language” is said to run on a [virtual machine](https://docs.python.org/3/glossary.html#term-virtual-machine) that executes the machine code corresponding to each bytecode. Do note that bytecodes are not expected to work between different Python virtual machines, nor to be stable between Python releases.
 
 Python 源码被编译成 bytecode，并缓存在 `.pyc` 文件中。我们在执行 Python 源码时，第二次执行往往比第一次执行要快，原因在于第二次执行的时候，不需要对源码重新编译了。Bytecode 是一个中间状态，其需要 Python 的虚拟机去翻译 Bytecode 为机器码。
 
-需要注意的是，bytecode 并不是跨 python 虚拟机平台 和 跨 Python 版本的，也就是说，bytecode(.pyc) 一旦生成，就只能在当前环境下执行。换了一个 python 虚拟机，换了一个 python 版本，那么 bytecode 就会失效。
+需要注意的是，bytecode 并不是跨 python 虚拟机平台 和 跨 Python 版本的，也就是说，bytecode\(.pyc\) 一旦生成，就只能在当前环境下执行。换了一个 python 虚拟机，换了一个 python 版本，那么 bytecode 就会失效。
 
 **Analysis bytecode: disassember**
 
-disassmber(dis) 用来翻译 bytecode，了解一个 Python 解释器的执行过程。
+disassmber\(dis\) 用来翻译 bytecode，了解一个 Python 解释器的执行过程。
 
 Demo1:
 

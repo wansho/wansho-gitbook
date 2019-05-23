@@ -2,13 +2,13 @@
 
 从第二章开始，一直到第四章，都是在研究 Python 的数据结构。
 
-[TOC]
+\[TOC\]
 
 ## Built-in Sequences
 
-Python 中的 Sequences 按照不同 traits(特征)，可以分成很多类
+Python 中的 Sequences 按照不同 traits\(特征\)，可以分成很多类
 
-**分类依据**:  是否为混合类型 mix-type
+**分类依据**: 是否为混合类型 mix-type
 
 * Contrainer Sequences
 
@@ -40,19 +40,19 @@ Python 中的 Sequences 按照不同 traits(特征)，可以分成很多类
 
 ## Sequences 常用方法
 
-| 方法                     | 解释                                                         |
-| ------------------------ | ------------------------------------------------------------ |
-| `clear()`                | clear all items                                              |
-| `__contains__()`         | in                                                           |
-| `copy`                   | shallow copy                                                 |
-| `count`                  | count occurences of an element                               |
-| `extend`                 | `list1.extend(list2)`                                        |
-| `index`                  | `list1.index("wansho") ` find position of first occurence of e |
-| insert(p, e)             | insert item e before the position p                          |
-| `*`                      | `[0] * 5`  `"abc" * 5` create a new object                   |
-| `pop`                    | remove the last item or pop optional item in position p: `pop([p])` |
-| `remove(e)`              | remove first occurence of element e by value                 |
-| `reverse()`              | reverse the order of items in place.(原地逆置)               |
+| 方法 | 解释 |
+| :--- | :--- |
+| `clear()` | clear all items |
+| `__contains__()` | in |
+| `copy` | shallow copy |
+| `count` | count occurences of an element |
+| `extend` | `list1.extend(list2)` |
+| `index` | `list1.index("wansho")` find position of first occurence of e |
+| insert\(p, e\) | insert item e before the position p |
+| `*` | `[0] * 5`  `"abc" * 5` create a new object |
+| `pop` | remove the last item or pop optional item in position p: `pop([p])` |
+| `remove(e)` | remove first occurence of element e by value |
+| `reverse()` | reverse the order of items in place.\(原地逆置\) |
 | `sort([key], [reverse])` | sort items in place with optional keyword arguments key and reverse |
 
 注意，以上方法并不适用于全部的 sequence，但是都适用于 list
@@ -140,13 +140,13 @@ print(my_list) = ["b", "a", "a"]
 
 ### `+=` `*=`
 
-`+=` `*=` 可以实现对于 mutable sequence 的 in-place 操作，具体可以看 [Python-Code-Optimization.](Python-Code-Optimization.md)
+`+=` `*=` 可以实现对于 mutable sequence 的 in-place 操作，具体可以看 [Python-Code-Optimization.](../summary/python-code-optimization.md)
 
 ## List Comprehensions and Generator Experssion
 
 **列表推导式 listcomps 和 生成器表达式 genexps**
 
-### List Comperhension(listcomp)
+### List Comperhension\(listcomp\)
 
 列表推导式的作用：to build a new list
 
@@ -187,10 +187,10 @@ colors = ["red", "blue"]
 sizes = ["M", "S"]
 
 tshirts = [(size, color) for size in sizes
-          				 for color in colors]
+                           for color in colors]
 ```
 
-###Generator Experssion (genexp)
+### Generator Experssion \(genexp\)
 
 生成器表达式的语法和列表推导式的语法几近相同，唯一的区别在于列表推导式使用 `[] {}`，而生成表达式使用 `()`
 
@@ -201,7 +201,7 @@ colors = ["red", "blue"]
 sizes = ["M", "S"]
 
 for tshirt in ("{color} {size}".format(color=color, size=size) for color in colors
-															   for size in sizes)
+                                                               for size in sizes)
 ```
 
 相比 listcomp，genexp不会一次性把 colors 和 sizes 全部读入内存，而是一个接着一个地读取。
@@ -225,7 +225,7 @@ my_tuple = (1, 2, 3, 4)
 ### Tuple 的两个应用场景
 
 * 不可更改的 immutable list
-* record：(经度, 纬度) (用户名, 密码)（从数据库中读取出来的数据）
+* record：\(经度, 纬度\) \(用户名, 密码\)（从数据库中读取出来的数据）
 
 ### Tuple unpacking 元组拆包
 
@@ -263,7 +263,7 @@ a, b = b, a
 ```python
 tuple1 = 1,2,3,4,5
 a, *b, c = tuple1
-print(a, c) # 
+print(a, c) #
 ```
 
 ### Named Tuple
@@ -282,7 +282,7 @@ print(tokyo.country) # JP
 print(tokyo[0]) # Tokyo，这个特性更像是 tuple
 ```
 
-**`namedtuple` 的使用场景**：用来快速创建一个只包含字段的类，可以用于存储从数据库中读取的数据。
+`namedtuple` **的使用场景**：用来快速创建一个只包含字段的类，可以用于存储从数据库中读取的数据。
 
 `namedtuple`的几个属性和方法：
 
@@ -291,10 +291,9 @@ tokyo._fields # 返回字段列表
 
 tokyo_data = ("Tokyo", "JP", 36.3, (35.789772, 139,691667)
 tokyo = City._make(tokyo_data) # generate a element
-
 ```
 
- ### dummy variable 虚拟变量
+### dummy variable 虚拟变量
 
 ```python
 import os
@@ -323,27 +322,27 @@ print(filename) # test.h
        for num in params:
            sum +=num
        print(sum)
-       
+
    add_list(*(1,2,3))
    # 等价于
    add_list(1, 2, 3)
    ```
 
-3. use * to grap excess items
+3. use \* to grap excess items
 
    ```python
    a, b, *rest = range(5) # 0, 1, [2, 3, 4]
-   
+
    a, b, *rest = range(2) # 0, 1, []
-   
+
    a, *body, b, c = range(5) # 0, [1, 2], 3, 4
-   
+
    *head, a, b, c = range(5) # [0, 1], 2, 3, 4
    ```
 
-### enumerate() built in function
+### enumerate\(\) built in function
 
-enumerate() 接收一个 Iterative Sequence，生成一个包含 index 的生成器，生成器生成的元素是 `tuple (index, sequence[index])`，其常见的 Demo 为：
+enumerate\(\) 接收一个 Iterative Sequence，生成一个包含 index 的生成器，生成器生成的元素是 `tuple (index, sequence[index])`，其常见的 Demo 为：
 
 ```python
 for index, value in enumerate(["a", "b", "c"]):
@@ -356,9 +355,9 @@ for index, value in enumerate(["a", "b", "c"]):
 
 `list.sort` 是一个 in-place function，返回一个 None，表示其并不会创建一个新的 list.
 
-sorted(list1) 则会创建一个新的 list 并返回；并且 sorted 可以对所有可迭代的对象进行排序操作，而 list1.sort() 只能对 list 进行排序。
+sorted\(list1\) 则会创建一个新的 list 并返回；并且 sorted 可以对所有可迭代的对象进行排序操作，而 list1.sort\(\) 只能对 list 进行排序。
 
-list.sort 和 sorted(list) 都有两个共同的关键词参数: `reverse=True/False` `key=function`
+list.sort 和 sorted\(list\) 都有两个共同的关键词参数: `reverse=True/False` `key=function`
 
 Demos:
 
@@ -381,13 +380,13 @@ bisect.bisect(sorted_list, 1) # 返回 1，表示 1 应该插入到 sorted_list[
 bisect.insort(sorted_list, 4) # 往 sorted_list 插入一个数字，并保持有序，注意是 insort
 ```
 
-注意：bisect 只对按照正序排序的列表生效，也就是所 sorted_list 必须是正序的。
+注意：bisect 只对按照正序排序的列表生效，也就是所 sorted\_list 必须是正序的。
 
 涉及到排序的问题，都可以使用内置标准模块： bisect
 
 ## array.array
 
-[Tutorial](<https://docs.python.org/2/library/array.html>)
+[Tutorial](https://docs.python.org/2/library/array.html>)
 
 array 是设计用来专门处理数字的 sequence，其在处理数值型数据的效率，要远远高于 list，其兼容 mutable sequence 的一切特性，还支持快速加载和存储，但并不是混合型类型（mixed-type）的 sequence。array 之所以效率高，是因为其**底层就是 C 的数组**。
 
@@ -440,7 +439,7 @@ a = array.array(a.typecode, sorted(a))
 
 ## Numpy and SciPy
 
-Numpy == Numerical  Python 读作 num + py (nangpai)
+Numpy == Numerical Python 读作 num + py \(nangpai\)
 
 当我们需要对数字类型的 sequence 进行复杂的操作时，例如向量的分解，向量的乘除法时，就需要用到 Numpy。Numpy 是 SciPy 和 Pandas 的基础。
 
@@ -490,10 +489,4 @@ dq.popleft() # 左端弹出数据
 ```
 
 `collections.deque` 实现了 list 的大多数方法，并且对双端的插入和删除进行了优化，但是需要注意的是，删除 deque 的中部的数据，会是比较耗时的操作。另外，deque 不支持 `pop(index)` 的操作，因为 index 对于 deque 并没有意义，其双端的 index 都是不固定的。
-
-
-
-
-
-
 

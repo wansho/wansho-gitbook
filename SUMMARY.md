@@ -1,50 +1,49 @@
-# Summary
+# Table of contents
 
-
+* [Introduction](README.md)
 
 ## Fluent-Python
 
-* Chapters
-  * [Chapter1. The Python Data Model](./Fluent-Python/Chapter1. The Python Data Model.md)
-  * [Chapter2. An Array of Sequences](./Fluent-Python/Chapter2. An Array of Sequences.md)
-  * [Chapter3. Dictionaries and Sets](./Fluent-Python/Chapter3. Dictionaries and Sets.md)
-  * [Chapter4. Text versus Bytes](./Fluent-Python/Chapter4. Text versus Bytes.md)
-  * [Chapter5. First-Class Functions](./Fluent-Python/Chapter5. First-Class Functions.md)
-
-* Summary
-  * [Python-Code-Optimization](./Fluent-Python/Python-Code-Optimization.md)
-  * [Questions](./Fluent-Python/Questions.md)
-  * [Python-30-Seconds](./Fluent-Python/Python-30-Seconds.md)
-
-
+* [Chapters](fluent-python/chapters/README.md)
+  * [Chapter1. The Python Data Model](fluent-python/chapters/chapter1.-the-python-data-model.md)
+  * [Chapter2. An Array of Sequences](fluent-python/chapters/chapter2.-an-array-of-sequences.md)
+  * [Chapter3. Dictionaries and Sets](fluent-python/chapters/chapter3.-dictionaries-and-sets.md)
+  * [Chapter4. Text versus Bytes](fluent-python/chapters/chapter4.-text-versus-bytes.md)
+  * [Chapter5. First-Class Functions](fluent-python/chapters/chapter5.-first-class-functions.md)
+* [Summary](fluent-python/summary/README.md)
+  * [Python-Code-Optimization](fluent-python/summary/python-code-optimization.md)
+  * [Questions](fluent-python/summary/questions.md)
+  * [Python-30-Seconds](fluent-python/summary/python-30-seconds.md)
 
 ## Github-Projects
 
-* [bilibili-helper-chrome-extension](Github-Projects/bilibili-helper-chrome-extension.md)
-* [senti-weibo](Github-Projects/senti-weibo.md)
+* [bilibili-helper-chrome-extension](github-projects/bilibili-helper-chrome-extension.md)
+* [senti-weibo](github-projects/senti-weibo.md)
 
 ## Note-for-Python
 
-* [Pandas](Note-for-Python/note-for-pandas.md)
+* [Pandas](note-for-python/note-for-pandas.md)
 
 ## Note-for-Other-Konwledge
 
-* [Authentic-Expression](Note-for-Other-Knowledge/authentic-expression.md)
+* [Authentic-Expression](note-for-other-konwledge/authentic-expression.md)
+* [生产力工具](note-for-other-konwledge/sheng-chan-li-gong-ju.md)
 
 ## Algorithms
 
-* Summary
-  * [ArrayList-vs-LinkList](Algorithms/Summary/arraylist-vs-linklist.md)
+* [Summary](algorithms/summary/README.md)
+  * [ArrayList-vs-LinkList](algorithms/summary/arraylist-vs-linklist.md)
 
 ## Database
 
-* [Mysql 入门](Database/mysql-tutorial.md)
+* [Mysql 入门](database/mysql-tutorial.md)
 
 ## Life-and-Thinking
 
-* Reading
-  * [唐诗宋词](Life-and-Thinking/Reading/poetry.md)
+* [Reading](life-and-thinking/reading/README.md)
+  * [唐诗宋词](life-and-thinking/reading/poetry.md)
 
 ## About
 
-* [About](About/about.md)
+* [About](about/about.md)
+

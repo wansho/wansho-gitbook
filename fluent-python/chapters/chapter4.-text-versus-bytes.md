@@ -1,6 +1,6 @@
 # Chapter4. Text versus Bytes
 
-[TOC]
+\[TOC\]
 
 ## Text and Bytes
 
@@ -25,7 +25,7 @@ ss = bytes(u"你好", encoding="utf-8")
 
 ### 区别
 
-```Python
+```python
 # in python3 
 ss = "1" # unicode
 s = b"1" # byte
@@ -34,16 +34,14 @@ ss == s
 # false
 ```
 
-
-
-|         | unicode sequence 定义 | byte sequence定义                 |
-| ------- | --------------------- | --------------------------------- |
-| Python2 | `u("你好")`           | ```"nihao" ```                    |
-| Python3 | `"你好"`              | `bytes("你好", encoding="utf-8")` |
+|  | unicode sequence 定义 | byte sequence定义 |
+| :--- | :--- | :--- |
+| Python2 | `u("你好")` | `"nihao"` |
+| Python3 | `"你好"` | `bytes("你好", encoding="utf-8")` |
 
 **Tips**:
 
-* Python2 的字符串**默认为 Byte 类型**，如果输入非 ASCII 字符，则自动编码为 byte 
+* Python2 的字符串**默认为 Byte 类型**，如果输入非 ASCII 字符，则自动编码为 byte
 
   ```python
   ss = "你好"
@@ -72,7 +70,7 @@ encode 可以将内存中的数据进行压缩，提高存储和传输效率。
 
 Python 中集成了 100+ 个 codec，实现 text 到 byte 的互相转换。常见的 codec 有：`utf-8, utf-16, gb2312`
 
-每一个 codec 都有一个名字，通常还有一些别名，例如：`utf_8` 对应的别名有 `utf8, utf-8, U8`。 
+每一个 codec 都有一个名字，通常还有一些别名，例如：`utf_8` 对应的别名有 `utf8, utf-8, U8`。
 
 **decode 出现乱码的问题**
 
@@ -80,10 +78,10 @@ decode 出现乱码，大概率是因为 decode 和 encode 的 codec 不匹配�
 
 ### Python 源码默认的 Encoder
 
-|         | Encoder |
-| ------- | ------- |
-| Python2 | ASCII   |
-| Python3 | UTF-8   |
+|  | Encoder |
+| :--- | :--- |
+| Python2 | ASCII |
+| Python3 | UTF-8 |
 
 这也是为什么，Python2 的源码，在文件开头需要加入 `# -*- coding: utf-8 -*-` 指定编码器。
 
@@ -93,7 +91,7 @@ Python3 允许 non-ASCII identifiers in source code，任何 Unicode 字符，�
 
 结论：无法判断。
 
-许多通信协议和文本的格式，例如 HTTP 和 XML，会在 headers 中明确指出其内容是如何 encode。大多数时候，我们能否判断 byte sequence 并不是 ASCII，因为其中有很多符号的 value > 127，但是我们可以通过经验，察觉到这些 byte sequence 是怎么编码得来的。
+许多通信协议和文本的格式，例如 HTTP 和 XML，会在 headers 中明确指出其内容是如何 encode。大多数时候，我们能否判断 byte sequence 并不是 ASCII，因为其中有很多符号的 value &gt; 127，但是我们可以通过经验，察觉到这些 byte sequence 是怎么编码得来的。
 
 例如，如果 `\x00` 很常见，那么其很可能是 16bit 或 32bit 编码得来的，而不是 ASCII，因为 `\x00` 在 ASCII 中是一个 bug，当 byte sequence 中有较多的 b`\x20\x00` 时，那么这个符号很可能是编码规则 `utf-16le` 编码得到的空格。
 
@@ -107,7 +105,7 @@ Python3 允许 non-ASCII identifiers in source code，任何 Unicode 字符，�
 
 如果是先存储有效位，则是小端，如果先存储无效位，则是大端。
 
-拿 C  语言的数据类型 int 类型举例，一个 int 类型在内存中占 4 个字节，例如 `int num = 1;`，其在内存中，应该存储为：`0x00 00 00 01`那么这 4 个字节，是 `00` 在前，还是 `01` 在前？如果 `01` 在前，即其在内存中的存储顺序为：`01000000`，则为小端（大多数 x86 机器都是小端），如果 1 在内存中的存储顺序为 `00000001`，则为大端。
+拿 C 语言的数据类型 int 类型举例，一个 int 类型在内存中占 4 个字节，例如 `int num = 1;`，其在内存中，应该存储为：`0x00 00 00 01`那么这 4 个字节，是 `00` 在前，还是 `01` 在前？如果 `01` 在前，即其在内存中的存储顺序为：`01000000`，则为小端（大多数 x86 机器都是小端），如果 1 在内存中的存储顺序为 `00000001`，则为大端。
 
 **如何判断一个机器是大端还是小端**
 
@@ -138,17 +136,17 @@ void main(){
 }
 ```
 
-#### BOM (Byte Order Mark) / UTF-8 BOM 的由来
+#### BOM \(Byte Order Mark\) / UTF-8 BOM 的由来
 
 从大端和小端我们可以知道，内存存储顺序，对于不同的机器是不一样的。Python 在对 Unicode 字符进行 encode 进而转换成 byte 时，不同的机器，其产生的 byte 顺序是不一样的。这就导致了数据在存储和传输的时候，出现即使是相同的编码规则，也解析出乱码的问题。
 
-为了解决机器带来的大端小端的问题，很多编码器会预先获取机器大小端顺序，然后在进行编码的时候，将顺序规则写入编码得到的 byte，这就是 BOM 的**由来**。由于只有在 encoder 为双字节编码的时候才会有顺序之分，所以照说 `utf-8` 生成的字节不需要加 BOM，但是很多 Windows 的应用(Notepad，Excel)会在编码的时候，将 BOM 加入 utf-8 编码的文件中，尤其是 Excel，其依赖于 BOM 来识别 utf-8 文件。由于 Windows 系统会在 utf-8 编码时，往文件中写入 BOM，所以 utf-8 编码才会衍生出：`utf-8 和 utf-8 BOM` 两种编码。
+为了解决机器带来的大端小端的问题，很多编码器会预先获取机器大小端顺序，然后在进行编码的时候，将顺序规则写入编码得到的 byte，这就是 BOM 的**由来**。由于只有在 encoder 为双字节编码的时候才会有顺序之分，所以照说 `utf-8` 生成的字节不需要加 BOM，但是很多 Windows 的应用\(Notepad，Excel\)会在编码的时候，将 BOM 加入 utf-8 编码的文件中，尤其是 Excel，其依赖于 BOM 来识别 utf-8 文件。由于 Windows 系统会在 utf-8 编码时，往文件中写入 BOM，所以 utf-8 编码才会衍生出：`utf-8 和 utf-8 BOM` 两种编码。
 
 ## Unicode Sandwich
 
 Python 采用 Unicode 模型来进行文本的处理。实际上，该模型的思想适用于大都数的系统。在系统输入时，将 byte decode 为 Unicode，在系统输出时，再将 Unicode encode 进行存储或传输。
 
-![Unicode Sandwich](assets/1558260080911.png)
+![Unicode Sandwich](../../.gitbook/assets/1558260080911.png)
 
 注意：
 
@@ -190,10 +188,11 @@ re.compile(rb"\d") # b 代表进行 byte匹配
 
 ## 本章学习感悟
 
-本章学习的知识，让我把 
+本章学习的知识，让我把
 
-* C 语言的 char* 指针
+* C 语言的 char\* 指针
 * 计组的字节/大端小端
 * Python 的字符和字节 / BOM 和无 BOM
 
 等知识串在了一起。
+

@@ -1,18 +1,18 @@
 # Python-30-Seconds
 
-[TOC]
+\[TOC\]
 
 ## Introduction
 
 Note for python knowledges that you may not know, or you may not really know.
 
-Inspired by [30-seconds-of-code](<https://github.com/30-seconds/30-seconds-of-code>)
+Inspired by [30-seconds-of-code](https://github.com/30-seconds/30-seconds-of-code>)
 
 ## You May not Know
 
 ### built-in methods
 
-#### ord()
+#### ord\(\)
 
 get the unicode code point of given char. [DOC](https://docs.python.org/3/library/functions.html?highlight=ord#ord)
 
@@ -21,7 +21,7 @@ print(ord("a")) # 97
 print(ord('€')) # 8364
 ```
 
-#### divmod()
+#### divmod\(\)
 
 除法，返回倍数和余数。
 
@@ -30,15 +30,15 @@ divmod(20, 8) # return (2, 4)
 divmod(21.2, 8) # return (2.0, 5.199999999999999)
 ```
 
-#### enumerate()
+#### enumerate\(\)
 
-enumerate() 用于给 sequence 生成 index
+enumerate\(\) 用于给 sequence 生成 index
 
 ```python
 # enumerate 方法会对 sequence 进行封装，并返回一个可迭代的对象，其中的每一个 item 都是 tuple (index, sequence[index])
 for index, value in enumerate(["a", "b", "c"]):
     print(index, value)
-    
+
 """
 0 a
 1 b
@@ -46,13 +46,13 @@ for index, value in enumerate(["a", "b", "c"]):
 """
 ```
 
-#### functools.reduce(), all(), any()
+#### functools.reduce\(\), all\(\), any\(\)
 
-The common idea of **reduce**  is to apply some operation to successive items in a sequence, accumulating previous result, thus reducing a sequence of values to a single value.
+The common idea of **reduce** is to apply some operation to successive items in a sequence, accumulating previous result, thus reducing a sequence of values to a single value.
 
 reduce 用于对一个 sequence 进行 successive compute，从而得到一个 single value。
 
-![reduce](assets/1558443265331.png)
+![reduce](https://github.com/wansho/gitbook/tree/45cadb94ff7e686ee52c7862531f957c312007d7/Fluent-Python/assets/1558443265331.png)
 
 ```python
 from functools import reduce
@@ -71,14 +71,12 @@ any(iterable) # return true if one value is true
 all(["1", [1], (1), {1:2}]) # true
 all(["1", [1], (1), {}]) # false
 
-any(["1", [1], (1), {}]) # true 
+any(["1", [1], (1), {}]) # true
 ```
-
-
 
 ### built-in operators
 
-#### 指数^: **
+#### 指数^: \*\*
 
 ```python
 print(10 ** 2) # 10^2 = 100
@@ -171,13 +169,13 @@ deque([40, 30, 20, 10, 4, 5, 6, 7, 8, 9], maxlen=10)
 
 #### operator
 
-operator 通常用于 reduce, 详见 [functools.reduce()](#functools.reduce())
+operator 通常用于 reduce, 详见 \[functools.reduce\(\)\]\(\#functools.reduce\(\)\)
 
 #### json
 
-json module 用于处理 json 字符串和 json 文件。下面解释一下 json 包几个常见的方法：load()/dump()/loads()/dumps()
+json module 用于处理 json 字符串和 json 文件。下面解释一下 json 包几个常见的方法：load\(\)/dump\(\)/loads\(\)/dumps\(\)
 
-dumps(): 将 dict 转成 json 字符串, dumps2string
+dumps\(\): 将 dict 转成 json 字符串, dumps2string
 
 ```python
 import json
@@ -191,13 +189,13 @@ json_str = json.dumps(data)
 # '{"price": 542.23, "name": "ACME", "shares": 100}'
 ```
 
-loads(): 将 json 字符串转成 dict, loads2dict
+loads\(\): 将 json 字符串转成 dict, loads2dict
 
-```
+```text
 # 将 json 编码的字符串转换成一个 python 的数据结构，往往是 dict
 ```
 
-dump(), load():  用于 读取 和 写入 json 文件。
+dump\(\), load\(\): 用于 读取 和 写入 json 文件。
 
 ```python
 # 如果你要处理的是文件而不是字符串，你可以使用 json.dump() 和 json.load() 来编码和解码JSON数据。
@@ -214,9 +212,9 @@ with open('data.json', 'r') as f:
 
 ### built-in methods
 
-#### strip()
+#### strip\(\)
 
-strip() 方法并不是整个字符串进行前缀后缀的匹配，其更像是正则匹配的 [abcd] 规则。[DOC](<https://docs.python.org/3/library/stdtypes.html?highlight=strip#str.strip>)
+strip\(\) 方法并不是整个字符串进行前缀后缀的匹配，其更像是正则匹配的 \[abcd\] 规则。[DOC](https://docs.python.org/3/library/stdtypes.html?highlight=strip#str.strip>)
 
 ```python
 print('www.example.com'.strip('cmowz.'))
