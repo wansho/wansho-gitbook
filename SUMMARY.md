@@ -27,7 +27,6 @@
 ## Note-for-Other-Konwledge
 
 * [Authentic-Expression](note-for-other-konwledge/authentic-expression.md)
-* [生产力工具](note-for-other-konwledge/sheng-chan-li-gong-ju.md)
 
 ## Algorithms
 
