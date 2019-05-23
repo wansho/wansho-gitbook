@@ -5,19 +5,12 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/>)
 ## Content
 
 * **Note for Fluent-Python-Book**
-
 * **My GitHub Projects**
-
 * **Note for Python**
-
 * **Algorithms**
-
 * **Database**
-
 * **Note-for-Other-Knowledge**
-
 * **Life-and-Thinking**
-
 * **About**
 
 ## TOC
