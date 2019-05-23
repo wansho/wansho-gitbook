@@ -55,6 +55,9 @@
 ## GitBook 服务的不足
 
 * 小白上手比较难：[DOC](<https://docs.gitbook.com/>) 没有汉化，Github 有学习成本
+
 * 没有免费的评论系统
+
+* GitHub 同步偶尔会有小毛病
 
   
