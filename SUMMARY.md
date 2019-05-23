@@ -27,7 +27,6 @@
 
 ## Note-for-Other-Knowledge
 
-
 * [Tools](note-for-other-knowledge/tools/README.md)
   * [优雅锋利的 GitBook](note-for-other-knowledge/tools/gitbook.md)
 * [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
