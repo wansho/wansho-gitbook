@@ -4,7 +4,7 @@
 
 ## Fluent-Python
 
-* [README](fluent-python/readme.md)
+* [README](fluent-python/about.md)
 * [Chapters](fluent-python/chapters/README.md)
   * [Chapter1. The Python Data Model](fluent-python/chapters/chapter1.-the-python-data-model.md)
   * [Chapter2. An Array of Sequences](fluent-python/chapters/chapter2.-an-array-of-sequences.md)
@@ -25,7 +25,7 @@
 
 * [Pandas](note-for-python/note-for-pandas.md)
 
-## Note-for-Other-Konwledge
+## Note-for-Other-Knowledge
 
 
 * Tools
