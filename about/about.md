@@ -13,7 +13,7 @@
 
 [![github badge](https://img.shields.io/github/followers/wansho.svg?label=wansho&style=social)](https://github.com/wansho)
 
-[![github chart](https://ghchart.rshah.org/wansho)](https://github.com/wansho>)
+[![github chart](https://ghchart.rshah.org/wansho)](https://github.com/wansho)
 
 ## Contact
 
