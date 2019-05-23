@@ -4,8 +4,7 @@
 
 ## Fluent-Python
 
-* [README](fluent-python/README.md)
-
+* [README](fluent-python/readme.md)
 * [Chapters](fluent-python/chapters/README.md)
   * [Chapter1. The Python Data Model](fluent-python/chapters/chapter1.-the-python-data-model.md)
   * [Chapter2. An Array of Sequences](fluent-python/chapters/chapter2.-an-array-of-sequences.md)
@@ -28,10 +27,9 @@
 
 ## Note-for-Other-Konwledge
 
-* Tools
-  * [GitBook 介绍](note-for-other-knowledge/Tools/gitbook.md)
-
-* [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
+* [Tools](note-for-other-konwledge/tools/README.md)
+  * [GitBook 介绍](note-for-other-konwledge/tools/gitbook.md)
+* [Authentic-Expression](note-for-other-konwledge/authentic-expression.md)
 
 ## Algorithms
 

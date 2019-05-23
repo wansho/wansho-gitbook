@@ -1,8 +1,8 @@
-# 优雅锋利的 GitBook
+# GitBook 介绍
 
 首先抛结论，GitBook 目前满足了我对记笔记的所有幻想，它没有 Hexo 那么多花里胡哨的功能，它就像一把锋利的小刀，简单克制，完美解决了我使用 Hexo 中的一些痛点，满足了笔记创作者和读者最原始的需求，让创作者专注于创作，让读者专注于阅读。
 
-![优雅克制的 GitBook](assets/1558619487053.png)
+![&#x4F18;&#x96C5;&#x514B;&#x5236;&#x7684; GitBook](../../.gitbook/assets/1558619487053.png)
 
 先总结一下 GitBook 的优点：
 
@@ -11,7 +11,7 @@
 * GitBook + Typora + GitHub 完美解决图床问题，采用 github 仓库作为图床
 * 界面优雅克制，让内容创作者专注于内容创作，让读者专注于阅读
 
-注意，我这里写的 GitBook 是指 GitBook 提供的新版在线服务：https://www.gitbook.com/，而不是自己根据开源代码搭建的服务，也不是 GitBook 的老版服务：https://legacy.gitbook.com/ (已停止新用户注册)。下面详细介绍以下新版 GitBook 服务的优点。
+注意，我这里写的 GitBook 是指 GitBook 提供的新版在线服务：[https://www.gitbook.com/，而不是自己根据开源代码搭建的服务，也不是](https://www.gitbook.com/，而不是自己根据开源代码搭建的服务，也不是) GitBook 的老版服务：[https://legacy.gitbook.com/](https://legacy.gitbook.com/) \(已停止新用户注册\)。下面详细介绍以下新版 GitBook 服务的优点。
 
 ## GitBook 界面优雅克制
 
@@ -21,23 +21,23 @@
 
 **解决的痛点**：只需要在本地编辑完笔记并 push 到 GitHub，web 端立刻同步，不需要任何花里胡哨的操作，一步到位。还有一个优点，采用 Github 作为笔记仓库，可以实现笔记的版本控制。
 
-在将 GitBook 中的 space 和 GitHub 中的仓库(指定的笔记仓库) 绑定([how to bind](<https://docs.gitbook.com/integrations/github>))后，GitBook 会自动地同步仓库中存储的笔记。当我们本地对笔记进行编辑后并 push 到 Github 仓库后，GitBook 会立即与 GitHub 仓库进行同步。
+在将 GitBook 中的 space 和 GitHub 中的仓库\(指定的笔记仓库\) 绑定\([how to bind](https://docs.gitbook.com/integrations/github>)\)后，GitBook 会自动地同步仓库中存储的笔记。当我们本地对笔记进行编辑后并 push 到 Github 仓库后，GitBook 会立即与 GitHub 仓库进行同步。
 
 ## GitBook 支持自定义域名
 
-[How to](<https://docs.gitbook.com/hosting/custom-domains>)
+[How to](https://docs.gitbook.com/hosting/custom-domains>)
 
-只需要配置一个二级域名，然后配置 CNAME 指向 GitBook，即可通过我们自己的域名访问笔记。我在阿里云上配置了一个二级域名  https://gitbook.wansho.cn/，并配置 CNAME 指向 GitBook。
+只需要配置一个二级域名，然后配置 CNAME 指向 GitBook，即可通过我们自己的域名访问笔记。我在阿里云上配置了一个二级域名 [https://gitbook.wansho.cn/，并配置](https://gitbook.wansho.cn/，并配置) CNAME 指向 GitBook。
 
 ## GitBook 采用 Github 仓库作为图床
 
 **解决的痛点**：采用 GitHub 作为图床，本地 markdown 编辑完毕后，把 文本 + 图片 一同 push 到 GitHub 仓库，GitBook 能够完美解析 markdown 中嵌入的图片，不需要寻找其他不靠谱的图床。
 
-使用 Hexo 搭建过博客的同学应该都有过找图床的经历。通常需要将图片上传到云上，然后拿到图片链接再嵌入到 markdown 笔记中，过程十分繁琐，令人倒胃口。但是使用 Typora(markdown 编辑器 [Download](<https://typora.io/#windows>)) + GitHub + GitBook 就可以完美的解决这个痛点！步骤如下：
+使用 Hexo 搭建过博客的同学应该都有过找图床的经历。通常需要将图片上传到云上，然后拿到图片链接再嵌入到 markdown 笔记中，过程十分繁琐，令人倒胃口。但是使用 Typora\(markdown 编辑器 [Download](https://typora.io/#windows>)\) + GitHub + GitBook 就可以完美的解决这个痛点！步骤如下：
 
 1. 利用 Typora 编辑器，在本地仓库建立图床，markdown 中插入的图片，链接到本仓库图床
 
-   配置 Typora 中图片插入的模式为：`复制图片到 .assets 文件夹`(即为图床)，然后我们可以直接复制想要插入的图片到编辑器中，插入的图片会被复制到新建的 `.assets` 文件夹中，并且图片的链接为相对链接，链接到 `.assets` 的图片。
+   配置 Typora 中图片插入的模式为：`复制图片到 .assets 文件夹`\(即为图床\)，然后我们可以直接复制想要插入的图片到编辑器中，插入的图片会被复制到新建的 `.assets` 文件夹中，并且图片的链接为相对链接，链接到 `.assets` 的图片。
 
 2. 将 markdown文本 + 本地仓库图床 push 到 GitHub
 
@@ -54,10 +54,7 @@
 
 ## GitBook 服务的不足
 
-* 小白上手比较难：[DOC](<https://docs.gitbook.com/>) 没有汉化，Github 有学习成本
-
+* 小白上手比较难：[DOC](https://docs.gitbook.com/>) 没有汉化，Github 有学习成本
 * 没有免费的评论系统
-
 * GitHub 同步偶尔会有小毛病
 
-  
