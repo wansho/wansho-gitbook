@@ -11,7 +11,7 @@
 * GitBook + Typora + GitHub 完美解决图床问题，采用 github 仓库作为图床
 * 界面优雅克制，让内容创作者专注于内容创作，让读者专注于阅读
 
-注意，我这里写的 GitBook 是指 GitBook 提供的新版在线服务：[https://www.gitbook.com/，而不是自己根据开源代码搭建的服务，也不是](https://www.gitbook.com/，而不是自己根据开源代码搭建的服务，也不是) GitBook 的老版服务：[https://legacy.gitbook.com/](https://legacy.gitbook.com/) \(已停止新用户注册\)。下面详细介绍以下新版 GitBook 服务的优点。
+注意，我这里写的 GitBook 是指 GitBook 提供的新版在线服务：[https://www.gitbook.com/](https://www.gitbook.com/，而不是自己根据开源代码搭建的服务，也不是) 而不是自己根据开源代码搭建的服务，也不是 GitBook 的老版服务：[https://legacy.gitbook.com/](https://legacy.gitbook.com/) \(已停止新用户注册\)。下面详细介绍以下新版 GitBook 服务的优点。
 
 ## GitBook 界面优雅克制
 
@@ -59,4 +59,5 @@
 * 小白上手比较难：[DOC](https://docs.gitbook.com/>) 没有汉化，Github 有学习成本
 * 没有免费的评论系统
 * GitHub 同步偶尔会有小毛病
+* 频繁修改线上笔记，需要多次 commit
 
