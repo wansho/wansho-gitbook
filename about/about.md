@@ -11,9 +11,13 @@
 3. [senti-weibo](https://github.com/wansho/senti-weibo): 微博情感分析系统
 4. [awesome-nuaa-cs-kaoyan](https://github.com/wansho/awesome-nuaa-cs-kaoyan): 个人维护的南航计算机考研仓库
 
+
+
 [![github badge](https://img.shields.io/github/followers/wansho.svg?label=wansho&style=social)](https://github.com/wansho)
 
-[![github chart](https://ghchart.rshah.org/wansho)](https://github.com/wansho)
+![github activity](https://ghchart.rshah.org/wansho)
+
+
 
 ## Contact
 

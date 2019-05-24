@@ -20,6 +20,7 @@
 
 * [bilibili-helper-chrome-extension](github-projects/bilibili-helper-chrome-extension.md)
 * [senti-weibo](github-projects/senti-weibo.md)
+* [南航计算机考研](github-projects/awesome-nuaa-cs-kaoyan.md)
 
 ## Note-for-Python
 
@@ -29,6 +30,7 @@
 
 * [Tools](note-for-other-knowledge/tools/README.md)
   * [优雅锋利的 GitBook](note-for-other-knowledge/tools/gitbook.md)
+  * [Git Pro](note-for-other-knowledge/tools/git.md)
 * [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
 
 ## Algorithms
