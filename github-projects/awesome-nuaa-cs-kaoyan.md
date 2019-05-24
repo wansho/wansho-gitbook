@@ -3,23 +3,7 @@ Awesome-NUAA-CS-Kaoyan
 
 [![王道](<https://img.shields.io/badge/%E7%8E%8B%E9%81%93-%E7%86%8A%E4%BA%8C-brightgreen.svg>)](<http://www.cskaoyan.com/thread-642848-1-1.html>) [![QQ](<https://img.shields.io/badge/QQ%E7%BE%A4-737219830-green.svg>)](https://jq.qq.com/?_wv=1027&k=50SRO9J) [![github](https://img.shields.io/github/stars/nuaa-cs-kaoyan/awesome-nuaa-cs-kaoyan.svg)](https://github.com/nuaa-cs-kaoyan/awesome-nuaa-cs-kaoyan)  [![拼多多](<https://img.shields.io/badge/%E6%8B%BC%E5%A4%9A%E5%A4%9A-20%E8%80%83%E7%A0%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%B5%84%E6%96%99-yellowgreen.svg>)](https://mobile.yangkeduo.com/goods2.html?goods_id=6128127926) [![微店](<https://img.shields.io/badge/%E5%BE%AE%E5%BA%97-20%E5%8D%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94-orange.svg>)](https://k.weidian.com/a0lQclaM )
 
-   * [<strong>Awesome-NUAA-CS-Postgraduate-Exam</strong>](#awesome-nuaa-cs-postgraduate-exam)
-      * [Inspiration](#inspiration)
-      * [About me](#about-me)
-      * [专业课真题和考纲](#专业课真题和考纲)
-      * [专业课资料](#专业课资料)
-         * [目录](#目录)
-         * [资料样本](#资料样本)
-         * [资料适用对象](#资料适用对象)
-         * [资料质量证明](#资料质量证明)
-      * [信息汇总](#信息汇总)
-      * [经验贴](#经验贴)
-      * [复试相关资料共享](#复试相关资料共享)
-      * [LICENSE](#license)
-      * [Organization](#Organization)
-      * [赞赏](#赞赏)
-
-
+https://github.com/nuaa-cs-kaoyan/awesome-nuaa-cs-kaoyan
 
 南航计算机考研 **专业课资料** 和 **信息汇总**.
 
@@ -157,21 +141,6 @@ Awesome-NUAA-CS-Kaoyan
 
 [GPL v3.0](https://github.com/wansho/awesome-nuaa-cs-postgraduate-exam/blob/master/LICENSE)
 
-## Organization
-
-<div align="left">
-    <a href="https://github.com/nuaa-cs-kaoyan">
-    	<img src="/assets/nuaa-cs-kaoyan.jpg" width=20% height=20% />
-    </a>
-</div>
-
-## 赞赏
-
-如果你觉得该资料对你帮助很大，可以赞助我一杯 coffee, thanks.
-
-<div align="left">
-    <img src="/assets/赞赏.jpg" width=20% height=20% />
-</div>
 
 
 ## 
