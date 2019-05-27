@@ -14,6 +14,7 @@
 | diverge | 分叉 | git 分叉 |
 | case study | 复盘 |  |
 | propagate | 传播 |  |
+| cascade | 级联 | `pd_data.drop_duplicates().rename()[["name", "age"]]` |
 
 ## Authentic Chinese
 

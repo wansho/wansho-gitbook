@@ -1,6 +1,6 @@
 # Python-Code-Optimization
 
-\[TOC\]
+[TOC]
 
 ## 为什么要看 Fluent-Python
 
@@ -113,6 +113,19 @@ floats = array("d", (random() for i in range(10**7))) # 此处用生成器的好
 dict 的底层是 hashtable，其稀疏的存储会浪费大量的内存，如果我们只是暂存 record，对于查询效率没有特殊需求的话，就不能使用 dict，不仅是因为 hashtable 占用大量的内存，JSON Style 重复的 key 存储也会耗费很多不必要的空间，这种内存的消耗，在从数据库中读取数据存储成 dict in json style 时尤为明显。
 
 事实上，当我们在使用 dict 的时候，就应该下意识地考虑内存问题，是不是应该用 tuple 来替代，而不是不假思索的使用 dict。在使用 mapping types 的时候，应该始终考虑内存的效率问题。Dict 是设计被用来高效查找的，其并不适合存储，在存储的时候，考虑用 tuple 来代替！
+
+###慎用浅拷贝
+
+Python 中有很多深拷贝的 built-in classes: 
+
+**deep copy built-in classes：** 
+
+```python
+list()
+dict()
+```
+
+这些 callable object 实际上都是在调用构造方法进行对象的创建，其肯定为 深拷贝。如果使用不当，则会导致内存的消耗。
 
 ## 计算优化
 

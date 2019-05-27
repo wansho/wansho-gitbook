@@ -2,7 +2,7 @@
 
 从第五章开始，一直到第七章，都是在研究函数。
 
-\[TOC\]
+[TOC]
 
 ## What is First-Class Functions
 
@@ -24,7 +24,7 @@ list(map(fact, range(10)))
 list(map(factorial, range(10)))
 ```
 
-## 函数的 attributes
+### 函数的 attributes
 
 Demo:
 
@@ -38,15 +38,31 @@ factorial(n)
     return n!
 None
 """
+
+dir(factorial) # 查看 factorial 的属性
+"""
+['__annotations__', '__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__get__', '__getattribute__', '__globals__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__kwdefaults__', '__le__', '__lt__', '__module__', '__name__', '__ne__', '__new__', '__qualname__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+"""
 ```
 
-| attribute | 解释 |
-| :--- | :--- |
-| `__doc__` | 函数的注释声明 |
-|  |  |
-|  |  |
+**赋予 function attribute**
 
-## 函数的 functions
+```Python
+factorial.short_desc = "斐波那契数列"
+```
+
+**查看 function 所有的 attribute**
+
+```python
+print(factorial.__dict__)
+# {'short_desc': '斐波那契数列'}
+```
+
+
+
+### 函数的 methods
+
+
 
 ## Higer-Order Functions
 
@@ -89,15 +105,15 @@ all(iterable)
 any(iterable)
 ```
 
-![map/filter](https://github.com/wansho/gitbook/tree/45cadb94ff7e686ee52c7862531f957c312007d7/Fluent-Python/assets/1558485596538.png)
+![map/filter](assets/1558485596538.png)
 
 **reduce**
 
 The common idea of **reduce** is to apply some operation to successive items in a sequence, accumulating previous result, thus reducing a sequence of values to a single value.
 
-reduce 用于对一个 sequence 进行 successive compute，从而得到一个 single value。
+reduce 用于对一个 sequence 进行 successive compute，从而得到一个 single value。降维。
 
-![Reduce](https://github.com/wansho/gitbook/tree/45cadb94ff7e686ee52c7862531f957c312007d7/Fluent-Python/assets/1558443265331.png)
+![Reduce](assets/1558443265331.png)
 
 ```python
 from functools import reduce
@@ -156,4 +172,113 @@ sorted(fruits, key=reverse)
 ### Definition
 
 A _callable object_ is an object that can accept some arguments \(also called parameters\) and possibly return an object \(often a tuple containing multiple objects\). A function is the simplest callable object in Python, but there are others, such as [classes](https://en.wikibooks.org/wiki/Python_Programming/Classes) or certain class instances. [From wikibooks](https://en.wikibooks.org/wiki/Python_Programming/Functions>)
+
+如何判断一个 object 是否是 callable object:
+
+```python
+[callable(obj) for obj in (abs, str, 13)]
+# print [True, True, False]
+```
+
+### What are the methods, functions, built-in？
+
+Class 中定义的方法叫 method
+
+非 Class 中定义的方法叫 function
+
+|              | methods                      | functions                                 |
+| ------------ | ---------------------------- | ----------------------------------------- |
+| built-in     | Python 自带类中定义的 method | Python 自带的 function，例如 `len`, `str` |
+| user-defined | 用户定义类中定义的 method    | 用户定义的 function                       |
+
+### Seven Callable Objects
+
+#### User-defined Functions
+
+Created with `def` statements or `lambda` expressions.
+
+```Python
+import pandas as pd
+
+def get_columns(pd_data):
+    return pd_data.columns.tolist()
+```
+
+#### Built-in Functions
+
+A function implemented in C (for CPython), like `len()` or `time.strftime`
+
+#### Built-in methods
+
+Methods implemented in C, like `dict.get`
+
+#### Methods
+
+Functions defined in the body of a class.
+
+#### Classes
+
+For example, pd_data = pd.DataFrame([(1,2,3),(4,5,6)], columns=["a"， "b", "c"])
+
+#### Class instances
+
+If a class defined a `__call__` method, then its instances may be invoked as functions. 
+
+也就是说，如果一个 class 实现了 `__call__()` 方法，那么其对象就可以像方法一样被调用，参考 [User-Defined Callable Types](#User-Defined Callable Types)
+
+#### Generator functions
+
+Functions or methods that use the `yield` keyword. When called, generator functions return a generator object.
+
+### User-Defined Callable Types
+
+一个类只要实现了 `__call__` 方法，那么其对象就是一个 callable object
+
+```python
+class BingoCage:
+	def __init__(self, items):
+        self._items = list(items) # deep copy
+        random.shuffle(self._items)
+        
+    def pick(self):
+        try:
+            return self._items.pop()
+        except IndexError:
+            raise LookupError("pick from empty BingoCage")
+            
+    def __call__(self):
+        """ 实现了该方法后，该类的对象，就可以被当成函数一样调用该方法 """
+        return self.pick()
+```
+
+```Python
+bingo = BingoCage(range(3))
+print(bingo.pick()) # 1
+print(bingo()) # 0，注意这里，一个对象，也可以是 callable object, shortcut to bingo.pick: bingo()
+print(callable(bingo)) # True
+```
+
+## Function Introsepction (Function 深挖)
+
+### Get Function All Attributes
+
+如何查看一个对象的属性，包括一个函数对象的属性？
+
+```python
+dir(factorial)
+"""
+['__annotations__', '__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__get__', '__getattribute__', '__globals__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__kwdefaults__', '__le__', '__lt__', '__module__', '__name__', '__ne__', '__new__', '__qualname__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+"""
+```
+
+上述大多数的属性，都是 Python 对象通用的属性，我们主要分析和 Function 作为 object 相关的属性：`__dict__`。
+
+### attribute: `__dict__`
+
+Function 作为一个 object，其肯定和其他对象一样，也有 attribute 和 method。`__dict__` 就是用于查看 function object 的 attribute，`__dict__` 用于存储 function 的 attribute 和对应的值。
+
+```Python
+print(factorial.__dict__)
+# {'short_desc': '斐波那契数列'}
+```
 

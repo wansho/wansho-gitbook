@@ -1,6 +1,6 @@
 # Chapter1. The Python Data Model
 
-\[TOC\]
+[TOC]
 
 ## special / magic / dunder methods
 

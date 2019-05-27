@@ -1,6 +1,6 @@
 # Python-30-Seconds
 
-\[TOC\]
+[TOC]
 
 ## Introduction
 
@@ -10,7 +10,70 @@ Inspired by [30-seconds-of-code](https://github.com/30-seconds/30-seconds-of-cod
 
 ## You May not Know
 
-### built-in methods
+### deep / shallow copy
+
+**What is shallow copy:**
+
+```python
+lst1 = [1, 2, 3]
+
+def func(lst):
+    lst[0] += 1
+
+print(id(lst1)) # 1499657981640
+func(lst1)
+print(id(lst1)) # 1499657981640
+print(lst1) # [2, 2, 3]
+
+"""
+由于只传入了 lst1 的引用，所以 func 内 lst 就是 lst1，并没有创建一个新的对象（内存）
+"""
+```
+
+**What is deep copy:**
+
+```python
+lst1 = [1, 2, 3]
+lst2 = list(lst1)
+
+print(id(lst1)) # 1499658012360
+print(id(lst2)) # 1499658044872
+
+"""
+list() 开辟了一个新的内存，创建了一个新的对象，此为深拷贝，类似的构造方法为 深拷贝的 built-in class 还有很多
+"""
+```
+
+**deep copy built-in classes：** 
+
+```python
+list()
+dict()
+# 这些 callable object 实际上都是在调用构造方法进行对象的创建，其肯定为 深拷贝
+```
+
+
+
+### method vs function
+
+What is method: Class 中定义的函数叫做 method
+
+```Python
+class MyClass():
+	def first_method():
+        return "first_method"
+```
+
+What is function: 最外层定义的函数叫做 function
+
+```Python
+import pandas as pd
+
+def get_columns(pd_data):
+    return pd_data.columns.tolist()
+```
+
+### built-in functions
 
 #### ord\(\)
 
@@ -50,9 +113,9 @@ for index, value in enumerate(["a", "b", "c"]):
 
 The common idea of **reduce** is to apply some operation to successive items in a sequence, accumulating previous result, thus reducing a sequence of values to a single value.
 
-reduce 用于对一个 sequence 进行 successive compute，从而得到一个 single value。
+reduce 用于对一个 sequence 进行 successive compute，从而得到一个 single value。也就是通常所说的：降维（从 二维 到 一维）。
 
-![reduce](https://github.com/wansho/gitbook/tree/45cadb94ff7e686ee52c7862531f957c312007d7/Fluent-Python/assets/1558443265331.png)
+![reduce](../chapters/assets/1558443265331.png)
 
 ```python
 from functools import reduce
@@ -73,6 +136,26 @@ all(["1", [1], (1), {}]) # false
 
 any(["1", [1], (1), {}]) # true
 ```
+
+#### callable()
+
+How to determine whether an object is callable?
+
+```Python
+[callable(obj) for obj in (abs, str, 13)]
+# print [True, True, False]
+```
+
+#### dir()
+
+Without arguments, return the list of names in the current local scope. With an argument, attempt to return a list of valid attributes for that object.
+
+```PYthon
+dir([1,2,3])
+# ['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+```
+
+`dir()` 通常用于窥探一个对象的的属性。
 
 ### built-in operators
 
@@ -210,7 +293,7 @@ with open('data.json', 'r') as f:
 
 ## You May not Really Konw
 
-### built-in methods
+### built-in functions
 
 #### strip\(\)
 

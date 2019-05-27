@@ -24,7 +24,7 @@
 
 ## Note-for-Python
 
-* [Pandas](note-for-python/note-for-pandas.md)
+* [Learning-Pandas](note-for-python/note-for-pandas.md)
 
 ## Note-for-Other-Knowledge
 
@@ -46,6 +46,9 @@
 
 * [Reading](life-and-thinking/reading/README.md)
   * [唐诗宋词](life-and-thinking/reading/poetry.md)
+  * [少有人走的路](life-and-thinking/reading/the-road-less-traveled.md)
+  * [Time-as-a-Friend](life-and-thinking/reading/time-as-a-friend.md)
+  * [Reborn](life-and-thinking/reading/reborn.md)
 
 ## About
 

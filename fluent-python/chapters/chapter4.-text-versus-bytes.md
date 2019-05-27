@@ -1,6 +1,6 @@
 # Chapter4. Text versus Bytes
 
-\[TOC\]
+[TOC]
 
 ## Text and Bytes
 
@@ -146,7 +146,7 @@ void main(){
 
 Python 采用 Unicode 模型来进行文本的处理。实际上，该模型的思想适用于大都数的系统。在系统输入时，将 byte decode 为 Unicode，在系统输出时，再将 Unicode encode 进行存储或传输。
 
-![Unicode Sandwich](../../.gitbook/assets/1558260080911.png)
+![Unicode Sandwich](assets/1558260080911.png)
 
 注意：
 

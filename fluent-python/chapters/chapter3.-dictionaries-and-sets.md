@@ -1,6 +1,6 @@
 # Chapter3. Dictionaries and Sets
 
-\[TOC\]
+[TOC]
 
 ## Mapping Types 的特征
 
