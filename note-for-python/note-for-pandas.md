@@ -1,20 +1,6 @@
-# pandas
+# Pandas
 
 [TOC]
-
-## TMP
-
-isin() not isin()
-
-<https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html>
-
-SettingWithCopyWarning
-
-head() head -5
-
-pandas 报错：Only integers accepted as `n` values
-
-pandas 做算数/函数运算，其都是按照 index 来对接的
 
 ## Learning Pandas
 
@@ -600,15 +586,15 @@ df1.iloc[:, lambda df: [0, 1]] # 选取第一列和第二列
 df1[lambda df: df.columns[0]] # 选取第一列
 df1.A.loc[lambda s: s > 0] # 选取第一列中大于0的元素
 
+# 两列进行比较
+pd_candidate[pd_candidate.label != pd_candidate.predicted_label]
 ```
 
-### sample
-
-随机采样。
+### sample() / head()
 
 ```Python
 df_sample = df1.sample(n=5) # 随机采样 5 个元素
-
+df.head(n=10) # 选取头几个元素
 ```
 
 ### at / iat 快速 index
@@ -648,7 +634,7 @@ df2[criterion]
 """
 df2[criterion & (df2['b'] == 'x')] # 多个条件
 """
- 	a  b         c
+ 	a  	  b       c
 3  three  x  0.361719
 """
 df2.loc[criterion & (df2['b'] == 'x'), 'b':'c'] # 多多个条件

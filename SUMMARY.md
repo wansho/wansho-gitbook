@@ -32,6 +32,7 @@
   * [优雅锋利的 GitBook](note-for-other-knowledge/tools/gitbook.md)
   * [Git Pro](note-for-other-knowledge/tools/git.md)
 * [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
+* [关于考试](note-for-other-knowledge/summary-for-examination-oriented-education.md)
 
 ## Algorithms
 

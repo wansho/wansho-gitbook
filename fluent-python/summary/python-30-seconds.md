@@ -10,6 +10,16 @@ Inspired by [30-seconds-of-code](https://github.com/30-seconds/30-seconds-of-cod
 
 ## You May not Know
 
+### 中文做变量
+
+Python3 允许 non-ASCII identifiers in source code，任何 Unicode 字符，都可以作为变量，也就是说，**中文也可以作为变量**！
+
+```python
+姓名 = "wansho"
+年龄 = 25
+print(姓名)
+```
+
 ### deep / shallow copy
 
 **What is shallow copy:**

@@ -26,3 +26,5 @@ Github: [reborn from xiaolai](<https://github.com/xiaolai/reborn>)
 
 ## Chapter2. 最根本的学习方式：践行
 
+* **时间是不可管理**的，我们能做的，就是提高自己的工作效率和生活质量
+* **我这哪里是对自己狠啊？这根本就是对自己的爱惜啊！**

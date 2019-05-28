@@ -282,3 +282,17 @@ print(factorial.__dict__)
 # {'short_desc': '斐波那契数列'}
 ```
 
+### Positional Parameters vs Keyword-Only Parameters
+
+从位置参数到关键字参数。Python 3 中引入 Keyword-Only Parameters.
+
+使用关键字参数的好处：
+
+* 
+
+Demo:
+
+```
+
+```
+
