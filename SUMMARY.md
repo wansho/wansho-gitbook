@@ -33,6 +33,7 @@
   * [Git Pro](note-for-other-knowledge/tools/git.md)
 * [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
 * [关于考试](note-for-other-knowledge/summary-for-examination-oriented-education.md)
+* [技术栈积累](note-for-other-knowledge/tech-stack.md)
 
 ## Algorithms
 
