@@ -110,5 +110,5 @@
 
 ## 参考文献
 
-1. [鲁迅的文字有多一针见血](<https://www.zhihu.com/question/54231137/answer/575502749>)
-2. [人生为什么要努力](<https://www.zhihu.com/question/22913650/answer/57037751>)
+1. [鲁迅的文字有多一针见血](https://www.zhihu.com/question/54231137/answer/575502749)
+2. [人生为什么要努力](https://www.zhihu.com/question/22913650/answer/57037751)
