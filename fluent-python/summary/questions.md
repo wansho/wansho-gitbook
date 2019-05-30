@@ -61,6 +61,19 @@
 * 解释 First-Class Functions
 * 解释 High-Order Functions，有哪些常用的 High-Order Function
 * reduce 的思想，常见的 reduce 类型的方法
-* Function Object 有哪些 attribute 和 method
+* Function Object 有哪些重要的 attribute 和 method
 * map/filter 的思想，是否可以被替换
+* 如何在给定函数接口的情况下，了解函数的所有参数和默认值
+* Lambda 表达式本质上是什么，其优点有哪些
+* 什么是 callable object，最简单的 callable object 是什么，如何判断一个对象是否是 callable object
+* Python 中有哪几种 callable object
+* 如何实现一个对象的 callable，要在该类中实现哪个方法
+* Python 中 method 和 function 分别指代的是什么
+* Python 中 built-in method/function 指的是什么，举个例子
+* 如何获取一个函数对象的所有属性
+* Python 的 函数能否赋予自定义的属性，该属性存储在哪里
+* 关键字参数和位置参数
+* 如何在只有函数接口的情况下，了解函数的所有参数和默认值情况，传统的方法是什么，最快速的方法是什么
+* 如何预判断传入的参数，是否符合函数的要求？
+* `functools` 和 `operator`两个 package 的作用和使用场景
 
