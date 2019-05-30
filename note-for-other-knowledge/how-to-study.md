@@ -4,7 +4,7 @@ Inspired by [hacker-laws](<https://github.com/dwmkerr/hacker-laws>)，summed up 
 
 ## 学习的过程
 
-![如何学习](assets/1559225734215.png)
+![如何学习](assets/1559225913350.png)
 
 ![学习曲线](assets/1559224390536.png)
 
