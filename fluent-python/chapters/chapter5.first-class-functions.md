@@ -418,7 +418,7 @@ Traceback (most recent call last):
 TypeError: 'name' parameter lacking default value
 ```
 
-很多 Framework 和 IDE 会利用 inspect.Signature.bind() 方法来判断用户输入的参数是否合理，从而给出错误提示。
+很多 Framework 和 IDE 会利用 `inspect.Signature.bind()` 方法来判断用户输入的参数是否合理，从而给出错误提示。
 
 ### Function Annotation: 函数注解
 

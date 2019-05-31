@@ -47,13 +47,12 @@
 
 * byte，unicode 的定义，Unicode sequence 和 byte sequence 的区别是什么
 * byte 和 Unicode 如何互相转换
-* python 如何对文件进行字节读
 * Python2/Python3 默认的字符 sequence 类型
 * Python3 如何定义 Byte sequence
 * Python 默认的编码器
 * Python 如何判断文本的编码格式，如何对文本进行 byte 字节流的读写
 * Python 为何要 Encode
-* 解释 大端和小端，DOM，utf-8 和 utf-8 BOM，Unicode Sandwich
+* 解释 大端和小端，BOM，utf-8 和 utf-8 BOM，Unicode Sandwich
 * 正则表达式对 byte 进行匹配
 
 ## Chapter5. First-Class Functions
@@ -63,7 +62,6 @@
 * reduce 的思想，常见的 reduce 类型的方法
 * Function Object 有哪些重要的 attribute 和 method
 * map/filter 的思想，是否可以被替换
-* 如何在给定函数接口的情况下，了解函数的所有参数和默认值
 * Lambda 表达式本质上是什么，其优点有哪些
 * 什么是 callable object，最简单的 callable object 是什么，如何判断一个对象是否是 callable object
 * Python 中有哪几种 callable object

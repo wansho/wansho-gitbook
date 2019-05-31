@@ -52,6 +52,8 @@
   * [少有人走的路](life-and-thinking/reading/the-road-less-traveled.md)
   * [Time-as-a-Friend](life-and-thinking/reading/time-as-a-friend.md)
   * [Reborn](life-and-thinking/reading/reborn.md)
+* [Self-Examination](life-and-thinking/self-examination/README.md)
+  * [追求完美？](life-and-thinking/self-examination/why-perfect.md)
 
 ## About
 
