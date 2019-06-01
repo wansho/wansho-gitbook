@@ -54,6 +54,7 @@
   * [Reborn](life-and-thinking/reading/reborn.md)
 * [Self-Examination](life-and-thinking/self-examination/README.md)
   * [追求完美？](life-and-thinking/self-examination/why-perfect.md)
+  * [About-Love](life-and-thinking/self-examination/about-love.md)
 
 ## About
 
