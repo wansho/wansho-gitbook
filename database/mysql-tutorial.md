@@ -1,6 +1,6 @@
 # Mysql 入门
 
-\[TOC\]
+[TOC]
 
 ## 经验总结
 
@@ -126,7 +126,7 @@ INSERT INTO 新表(字段1,字段2,.......) SELECT 字段1,字段2,...... FROM �
 
 ### 查询数据
 
-```text
+```Mysql
 * distinct
 distinct 只能放在开头
 通常的用法是 distinct(name)，加 括号
@@ -214,7 +214,7 @@ where
 
 ### 插入数据
 
-```text
+```Mysql
 全插入
 insert into userInfo values(1,'aaa','1212');
 指定列插入（推荐这种方式）
@@ -247,7 +247,7 @@ update run_case_statistics set cycle = 'month', module = "module1" where id >= 5
 
 ### 建表
 
-```text
+```reStructuredText
 # 测试代码
 create table test_table(
     id int(11) primary key,

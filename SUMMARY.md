@@ -28,6 +28,9 @@
 
 ## Note-for-Other-Knowledge
 
+* [专栏学习](note-for-other-knowledge/column-learning/README.md)
+  * [架构课-许式伟](note-for-other-knowledge/column-learning/xu-shi-wei-architecture.md)
+  * [架构课-Questions](note-for-other-knowledge/column-learning/questions.md)
 * [Tools](note-for-other-knowledge/tools/README.md)
   * [优雅锋利的 GitBook](note-for-other-knowledge/tools/gitbook.md)
   * [Git Pro](note-for-other-knowledge/tools/git.md)
