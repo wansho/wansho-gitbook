@@ -648,6 +648,9 @@ pandas_selected = pandas_data[(pandas_data.status == 'fail') \
                                | (pandas_data.reason == 'known_online') \
                                | (pandas_data.reason == 'deploy')
                               )]
+
+# 否定的使用
+pandas_selected = pandas_data[~(pandas_data.status == 'fail')]
 ```
 
 ### select with isin()
@@ -673,6 +676,9 @@ s[s.index.isin([2, 4, 6])] # 判断 index isin
 
 # df
 pd_vote_for_test = pd_training_data[pd_training_data.hash_id.isin(test_hash_id)]
+
+# not in 
+pd_vote_for_test = pd_training_data[~(pd_training_data.hash_id.isin(test_hash_id))]
 ```
 
 ### `where()` method for select
@@ -834,6 +840,8 @@ foo large  2.000000  10    9.5   9
 
 ## pandas 字符串处理函数
 
+[Index with Str](<https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html#indexing-with-str>)
+
 ```python
 # 过滤出 name 列包含有 pandas 的数据
 pd_frame = pd_frame[pd_frame.name.str.contains("pandas")] # 类似的进行判断的字符串方法还有 endswith, startswith
@@ -851,6 +859,9 @@ pd_series = pd_series.str.join("-")
 
 # 判断 name 列的所有名字，某个字符串的出现次数
 pd_series = pd_frame.name.str.count("love")
+
+# 对某列的长度进行筛选
+df = df[df.A.str.len() > 2]
 
 # 其他函数
 lower(), upper()
