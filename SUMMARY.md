@@ -2,19 +2,23 @@
 
 * [Introduction](README.md)
 
-## Fluent-Python
+## Reading
 
-* [README](fluent-python/About.md)
-* [Chapters](fluent-python/chapters/README.md)
-  * [Chapter1. The Python Data Model](fluent-python/chapters/chapter1.the-python-data-model.md)
-  * [Chapter2. An Array of Sequences](fluent-python/chapters/chapter2.an-array-of-sequences.md)
-  * [Chapter3. Dictionaries and Sets](fluent-python/chapters/chapter3.dictionaries-and-sets.md)
-  * [Chapter4. Text versus Bytes](fluent-python/chapters/chapter4.text-versus-bytes.md)
-  * [Chapter5. First-Class Functions](fluent-python/chapters/chapter5.first-class-functions.md)
-* [Summary](fluent-python/summary/README.md)
-  * [Python-Code-Optimization](fluent-python/summary/python-code-optimization.md)
-  * [Questions](fluent-python/summary/questions.md)
-  * [Python-30-Seconds](fluent-python/summary/python-30-seconds.md)
+* [Modern-Operation-System](reading/modern-os/README.md)
+  * [Chapter2-Processes-and-Threads](reading/modern-os/chapter2-processes-and-threads.md)
+  * [Questions](reading/modern-os/questions.md)
+
+* [Fluent-Python](reading/fluent-python/README.md)
+  * [Chapters](reading/fluent-python/chapters/README.md)
+    * [Chapter1. The Python Data Model](reading/fluent-python/chapters/chapter1.the-python-data-model.md)
+    * [Chapter2. An Array of Sequences](reading/fluent-python/chapters/chapter2.an-array-of-sequences.md)
+    * [Chapter3. Dictionaries and Sets](reading/fluent-python/chapters/chapter3.dictionaries-and-sets.md)
+    * [Chapter4. Text versus Bytes](reading/fluent-python/chapters/chapter4.text-versus-bytes.md)
+    * [Chapter5. First-Class Functions](reading/fluent-python/chapters/chapter5.first-class-functions.md)
+  * [Summary](reading/fluent-python/summary/README.md)
+    * [Python-Code-Optimization](reading/fluent-python/summary/python-code-optimization.md)
+    * [Questions](reading/fluent-python/summary/questions.md)
+    * [Python-30-Seconds](reading/fluent-python/summary/python-30-seconds.md)
 
 ## Github-Projects
 
@@ -34,9 +38,6 @@
 * [Tools](note-for-other-knowledge/tools/README.md)
   * [优雅锋利的 GitBook](note-for-other-knowledge/tools/gitbook.md)
   * [Git Pro](note-for-other-knowledge/tools/git.md)
-* [Reading-Modern-OS](note-for-other-knowledge/reading-modern-os/README.md)
-  * [Chapter2-Processes-and-Threads](note-for-other-knowledge/reading-modern-os/chapter2-processes-and-threads.md)
-  * [Questions](note-for-other-knowledge/reading-modern-os/questions.md)
 * [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
 * [How-to-Study](note-for-other-knowledge/how-to-study.md)
 * [关于考试](note-for-other-knowledge/summary-for-examination-oriented-education.md)
