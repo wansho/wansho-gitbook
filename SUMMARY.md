@@ -52,6 +52,10 @@
 
 * [Mysql 入门](database/mysql-tutorial.md)
 
+## Linux
+
+* [Linux-Note](linux/note-for-linux.md)
+
 ## Life-and-Thinking
 
 * [Reading](life-and-thinking/reading/README.md)

@@ -60,3 +60,39 @@ Program 是静态的，而 process 是动态的。进程是运行着的程序。
 
 注意：子进程一旦创建，其地址空间（address space）相对于父进程就独立了，没有任何一块可写空间是共享的。**Again, no writable memory is shared**.  这也解释了，Linux 中 子 shell 对 父 shell 变量只读的机制。
 
+### 进程的终止：Process Termination 
+
+#### 进程终止的两种情况
+
+1. **自然终止**：正常终止，异常终止 exit
+2. **非自然终止**：致命错误导致的终止，被其他程序终止 kill
+
+#### 进程终止的 system call
+
+|         | 自然终止的 system call | 被其他程序终止的 system call |
+| ------- | ---------------------- | ---------------------------- |
+| Unix    | exit                   | kill                         |
+| Windows | ExitProcess            | TerminateProcess             |
+
+### 进程的层次结构：Process Hierarchies 
+
+#### Linux 进程层级
+
+Linux 的进程都是单继承(Fork from 父进程)
+
+![Linux 进程层次结构](assets/1559723002837.png)
+
+Windows 没有进程层次的说法，所有的进程都是平等的。
+
+### 进程的状态：Process States
+
+进程的三大状态：**Running/Ready/Blocked**
+
+![进程状态的切换](assets/1559725180702.png)
+
+### 进程的实现：Implementation of Processes 
+
+#### Process Control Block (PCB)
+
+进程控制块，其数据结构为 array。
+
