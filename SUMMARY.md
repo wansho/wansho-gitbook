@@ -42,6 +42,7 @@
 * [How-to-Study](note-for-other-knowledge/how-to-study.md)
 * [关于考试](note-for-other-knowledge/summary-for-examination-oriented-education.md)
 * [技术栈积累](note-for-other-knowledge/tech-stack.md)
+* [万*鑫](note-for-other-knowledge/to-my-brother.md)
 
 ## Algorithms
 
