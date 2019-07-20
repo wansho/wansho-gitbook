@@ -4,7 +4,13 @@
 
 学生，南航计算机学院研二在读，2018-06 — 2019-01 于百度搜索质量部实习。
 
-## Github
+打算成为一名终身学习者:
+$$
+\int_{birth}^{death}(study\ + others)\ dt = Life
+$$
+
+
+## GitHub
 
 1. [bilibili-helper-chrome-extension](https://github.com/wansho/bilibili-helper-chrome-extension>): B 站弹幕热度与高能定位插件
 2. [fluent-python-reading](https://github.com/wansho/fluent-python-reading>): [Fluent-Python](https://book.douban.com/subject/26278021/>) 读书笔记
