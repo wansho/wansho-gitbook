@@ -1,31 +1,29 @@
 # About
 
-## About me
+M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics. 
 
-学生，南航计算机学院研二在读，2018-06 — 2019-01 于百度搜索质量部实习。
+**Email**: [wanshojs@gmail.com](mailto:wanshojs@gmail.com)
 
-打算成为一名终身学习者:
+**GitHub**: [wansho](<https://github.com/wansho>)
+
+## Education and Experience
+
+* Jun. 2018 - Jan. 2019. Internship in the Baidu Search Department, Baidu, Beijing, China.
+* Sep. 2017 - present. M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, Nanjing, China. Supervisor: Prof. [Bohan Li](<http://gsmis.nuaa.edu.cn/gmis/xkjsb/yjsdsfc.aspx?id=16005>)
+* Sep. 2013 - Jul. 2017. B.S., in School of Information Engineering, East China JiaoTong University, Nanchang, China.
+* Sep. 2010 - Jul. 2013. GanYu senior middle school in jiangsu province, Lianyungang, Jiangsu, China
+
 $$
 \int_{birth}^{death}(study\ + others)\ dt = Life
 $$
 
 
-## GitHub
+## GitHub-Projects
 
-1. [bilibili-helper-chrome-extension](https://github.com/wansho/bilibili-helper-chrome-extension>): B 站弹幕热度与高能定位插件
-2. [fluent-python-reading](https://github.com/wansho/fluent-python-reading>): [Fluent-Python](https://book.douban.com/subject/26278021/>) 读书笔记
-3. [senti-weibo](https://github.com/wansho/senti-weibo): 微博情感分析系统
-4. [awesome-nuaa-cs-kaoyan](https://github.com/wansho/awesome-nuaa-cs-kaoyan): 个人维护的南航计算机考研仓库
-
-
-
-[![github badge](https://img.shields.io/github/followers/wansho.svg?label=wansho&style=social)](https://github.com/wansho)
-
-![github activity](https://ghchart.rshah.org/wansho)
+1. [bilibili-helper-chrome-extension](https://github.com/wansho/bilibili-helper-chrome-extension>): Danmu trend visualization for Bilibili.
+2. [fluent-python-reading](https://github.com/wansho/fluent-python-reading>): [Fluent-Python](https://book.douban.com/subject/26278021/>) Python Notebook
+3. [senti-weibo](https://github.com/wansho/senti-weibo): A real-time sentiment analysis platform for sina-weibo
+4. [awesome-nuaa-cs-kaoyan](https://github.com/wansho/awesome-nuaa-cs-kaoyan): Learning materials for postgraduate entrance examination
 
 
-
-## Contact
-
-Email: [wanshojs@gmail.com](mailto:wanshojs@hotmail.com)
 
