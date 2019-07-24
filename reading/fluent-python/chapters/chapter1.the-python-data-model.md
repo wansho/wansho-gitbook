@@ -98,6 +98,8 @@ True
 
 **Duck Typing** is used to to determine if an object can be used for a particular purpose. 鸭子模型通常用于实现动态语言的多态。
 
+**Python 如何实现多态**
+
 大多数面向对象的编程语言，其多态的实现是因为某一类的对象都继承自一个 father，某一个类的特征也取决于该类的继承、接口及其自身的特征。而 Python 这一类语言不同，其多态的实现，可能是因为其类中实现了某一个特定的方法，使得该类拥有某一类特性。例如：
 
 * 通过实现 `__len__` 和 `__getitem__` 这两个魔法方法，我们自定义的类，就可以拥有 list 的全部特性

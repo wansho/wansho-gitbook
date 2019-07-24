@@ -38,11 +38,11 @@
 * [Tools](note-for-other-knowledge/tools/README.md)
   * [优雅锋利的 GitBook](note-for-other-knowledge/tools/gitbook.md)
   * [Git Pro](note-for-other-knowledge/tools/git.md)
+* [To-Others](note-for-other-knowledge/to-others/README.md)
+  * [致万 * 鑫](note-for-other-knowledge/to-others/to-my-brother.md)
+  * [关于考试](note-for-other-knowledge/to-others/summary-for-examination-oriented-education.md)
 * [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
 * [How-to-Study](note-for-other-knowledge/how-to-study.md)
-* [关于考试](note-for-other-knowledge/summary-for-examination-oriented-education.md)
-* [技术栈积累](note-for-other-knowledge/tech-stack.md)
-* [万*鑫](note-for-other-knowledge/to-my-brother.md)
 
 ## Algorithms
 

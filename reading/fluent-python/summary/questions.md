@@ -10,6 +10,7 @@
 * 魔法方法 `bool()` 和 `__bool__()`,  `__len__()` 的关系
 * `__repr__()` 和 `__str__()` 的区别
 * 解释 Duck Typing（鸭子模型）
+* Python 实现多态的方法
 
 ## Chapter2. An Array of Sequences
 
@@ -19,9 +20,9 @@
 * Slice Object 及其作用（Slice 对象）
 * Sequence 的 Slice 赋值及其妙用
 * `+ *` 和 `+=, *=` 的区别
-* 生成器表达式和列表推导式的区别
+* 生成器表达式 和 列表推导式 的区别
 * 元组的两个作用
-* 元组的拆包（unpacking）和常见的应用场景
+* 元组的拆包（unpacking）和 常见的应用场景
 * namedtuple 和 tuple 的区别，namedtuple 的使用场景
 * `enumerate()` 的作用
 * `lst.sort()` 和 `sorted()` 的区别
