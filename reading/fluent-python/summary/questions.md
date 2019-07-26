@@ -5,12 +5,12 @@
 ## Chapter1. The Python Data Model
 
 * Python 语言最大的特性
-* 魔法方法的优点
+* 魔法方法的优点 — 3个
 * 魔法方法 `in` 和 `__contains__()` 的关系
 * 魔法方法 `bool()` 和 `__bool__()`,  `__len__()` 的关系
 * `__repr__()` 和 `__str__()` 的区别
-* 解释 Duck Typing（鸭子模型）
-* Python 实现多态的方法
+* 解释 Duck Typing（鸭子模型），鸭子类型与多态的关系
+* Python 实现多态的两种方法
 
 ## Chapter2. An Array of Sequences
 

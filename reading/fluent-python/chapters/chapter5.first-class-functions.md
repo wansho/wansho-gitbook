@@ -8,7 +8,7 @@
 
 Functions are treated like any other variable. Treating functions as objects.
 
-函数也被作为一个对象，其和对象一样，是 Python语言中的第一公民。
+函数也被作为一个对象，其和对象一样，是 Python 语言中的第一公民。
 
 Demo:
 
@@ -83,11 +83,11 @@ Higer-Order Functions: **sort, map, filter, reduce**
 ### Demo: sort\(\)
 
 ```python
-de reverse(word):
+def reverse(word):
     """逆置word"""
     return word[::-1]
 fruits = ["straberry", "fig", "cherry", "apple", "banana"]
-sorted(fruits, key=reverse) # key 为一个 function
+sorted(fruits, key=reverse) # key 为一个 function，返回排序后的 sorted object，是一个新的 object, sorted 并不是 inplcae 方法，lst.sort() 是 inplace 方法
 # 结果为：["banana","apple", "fig", "straberry", "cherry"]
 # 上述代码执行的步骤：
 # 1. 根据传入的 key 函数，对 fruits 进行变换，得到变换后的 list
@@ -117,7 +117,7 @@ any(iterable)
 
 **reduce**
 
-The common idea of **reduce** is to apply some operation to successive items in a sequence, accumulating previous result, thus reducing a sequence of values to a single value.
+The common idea of **reduce** is to apply some operation to successive items in a sequence, **accumulating** previous result, thus reducing a sequence of values to a single value.
 
 reduce 用于对一个 sequence 进行 successive compute，从而得到一个 single value。降维。
 
@@ -145,7 +145,7 @@ any(["1", [1], (1), {}]) # true
 
 注意：
 
-* 在 Python3 中， **map** 和 **filter** 会返回一个 generator \(iterable\)对象，并不是一个 sequence
+* 在 Python3 中， **map** 和 **filter** 会返回一个 **generator** \(iterable\)对象，并不是一个 sequence
 
 ### Anonymous Functions
 
@@ -459,8 +459,6 @@ def fact(n):
     return reduce(mul, range(1, n+1))
 	# 如果我们不适用 operator，则需要创建一个 lambda expression，(匿名函数)
     # return reduce(lambda x,y: x*y, range(1, n+1))
-
-
 ```
 
 
