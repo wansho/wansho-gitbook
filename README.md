@@ -9,8 +9,10 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/>)
 * **Note for Python**
 * **Algorithms**
 * **Database**
+* **Linux**
 * **Note-for-Other-Knowledge**
 * **Life-and-Thinking**
+* **Reading**
 * **About**
 
 ## TOC

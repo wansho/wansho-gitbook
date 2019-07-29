@@ -16,8 +16,9 @@
 | propagate | 传播 |  |
 | cascade | 级联 | `pd_data.drop_duplicates().rename()[["name", "age"]]` |
 | foo/bar | 无 | 常用于定义一个临时的无意义的函数 |
-| cheat sheet | 备忘录 |  |
+| cheatsheet | 备忘录 |  |
 | daemon | 守护进程 |  |
+| introspection | 自省 | self-examination |
 
 ## Authentic Chinese
 

@@ -8,7 +8,7 @@
 
 Functions are treated like any other variable. Treating functions as objects.
 
-函数也被作为一个对象，其和对象一样，是 Python 语言中的第一公民。
+函数也被作为一个对象，其和对象一样，是 Python 语言中的第一公民。一个对象，其可以拥有属性，也可以定义其对应的方法，也可以将其赋值为其他变量。
 
 Demo:
 
@@ -76,7 +76,7 @@ print(factorial.__dict__)
 
 A function that takes a function as argument or returns a function as the result is a higher-order function.
 
-传入或者返回一个函数的函数叫做 higer-order-function。
+传入或者**返回**一个函数的函数叫做 higer-order-function。
 
 Higer-Order Functions: **sort, map, filter, reduce**
 
@@ -99,7 +99,7 @@ sorted(fruits, key=len)
 
 ### Modern Replacements for map/filter/reduce
 
-Chapter2 中已经指出，任何用到 map 和 filter 的地方，都可以用 列表推导式 和 生成器表达式来替换。Demo:
+Chapter2 中已经指出，任何用到 map 和 filter 的地方，都可以用 列表推导式 和 生成器表达式来替换。而 reduce 可以被 `sum, all, any` 等 Python 自带的built-ins 取代。Demo:
 
 ```python
 list(map(factoria, filter(lambda n: n % 2, range(6)))) # list of factorial of odd numbers up to 5!, using both map and filter
@@ -149,7 +149,7 @@ any(["1", [1], (1), {}]) # true
 
 ### Anonymous Functions
 
-keyword lambda 用于创建一个匿名函数，其本质上是一个语法糖（syntactic sugar）。
+keyword lambda 用于创建一个匿名函数，其本质上是一个**语法糖**（syntactic sugar）。
 
 **lambda expression 的优点和应用场景：**简洁，适合处理 sequence，通常用于 Higher-Order-Function 的函数参数
 
@@ -190,9 +190,9 @@ sorted(fruits, key=reverse)
 
 ### What are the methods, functions, built-in？
 
-Class 中定义的方法叫 method
+**Class 中定义的方法叫 method**
 
-非 Class 中定义的方法叫 function
+**非 Class 中定义的方法叫 function**
 
 |              | methods                                                      | functions                                 |
 | ------------ | ------------------------------------------------------------ | ----------------------------------------- |
@@ -230,7 +230,7 @@ For example, pd_data = pd.DataFrame([(1,2,3),(4,5,6)], columns=["a"， "b", "c"]
 
 #### Class instances
 
-If a class defined a `__call__` method, then its instances may be invoked as functions. 
+If a class defined a **`__call__`* method, then its instances may be invoked as functions. 
 
 也就是说，如果一个 class 实现了 `__call__()` 方法，那么其对象就可以像方法一样被调用，参考 [User-Defined Callable Types](#User-Defined Callable Types)
 
@@ -439,16 +439,22 @@ foo.__annotations__
 {'html': <class 'str'>, 'num': 'int > 0', 'return': <class 'str'>}
 ```
 
-注意，Python 对于这些函数注解，只是将其放在了 `__annotations__` 中，其他就没有进行任何的操作，更不会进行代码的check。事实上，函数的注解 Annotation 更多的被 IDE 和装饰器使用，其对于 Python 的解释器来说，没有任何作用。
+注意，Python 对于这些函数注解，只是将其放在了 `__annotations__` 中，其他就没有进行任何的操作，更不会进行代码的check。事实上，函数的注解 Annotation 更多的被 IDE 和 **装饰器** 使用，其对于 Python 的解释器来说，没有任何作用。
 
 ### Packages for Functional Programming
 
-Python 语言的创立者 Guido 并没有想要 Python 成为一个函数式编程语言，但是通过两个标注库的帮助，我们可以实现 Python 的函数式编程：`operator, functools`。在函数式编程中，函数常常被当作参数进行传递，而 `operator` 中恰恰就提供了一些基础的函数操作，`operator` 中提供的操作符，实际上就是函数。
+Python 语言的创立者 Guido 并没有想要 Python 成为一个函数式编程语言，但是通过两个标注库的帮助，我们可以实现 Python 的函数式编程：`operator, functools`。在函数式编程中，函数常常被当作参数进行传递，而 `operator` 中恰恰就提供了一些基础的函数操作，`operator` 中提供的**操作符，实际上就是函数**。
+
+![函数式编程相关包](assets/1564369906979.png)
+
+#### operator
 
 `operator` 提供了很多操作符，这些操作符实际上就是匿名函数。其中有两类操作符：
 
 * 算数操作符：`add, mul, sub`
-* 用来从 sequence 选取元素、从对象中读取属性的操作符：`itemgetter, attrgetter`
+* 用来从 sequence 选取元素、从对象中读取属性的操作符：`itemgetter, attrgetter`，返回元素为 tuple 的 sequence。（itemgetter 使用了 [] operator，只要是实现了 `__getitem__()` 这个魔法方法的类型，都可以将 itemgetter 应用到其中）
+
+注意，itemgetter 和 attrgetter 这两个操作符，实际上都是函数，其返回的对象也是函数。
 
 **算数操作符举例**：
 
@@ -461,5 +467,106 @@ def fact(n):
     # return reduce(lambda x,y: x*y, range(1, n+1))
 ```
 
+**选取元素操作符举例**：
 
+```python
+from operator import itemgetter
+
+students = [
+    ("wansho", 23, "lianyungang", (99, 100)),
+    ("wangkai", 25, "qingdao", (99, 100)),
+    ("zhanganman", 24, "xuzhou", (99, 100))
+]
+
+sorted_students_in_ages = sorted(students, key=itemgetter(1)) # 根据学生的年龄排序
+print(sorted_students_in_ages)
+
+print(list(map(itemgetter(0,1), students))) # 取 0，1列，此处的 itemgetter 定义了一个抓取数据的规则
+
+```
+
+**获取属性操作符**
+
+```python
+from operator import attrgetter
+from collections import namedtuple
+
+Student = namedtuple("Student", "name age home scores")
+Score = namedtuple("Score", "math, english")
+students_namedtuple = [Student(name, age, home, Score(math, english))
+    for (name, age, home, (math, english)) in students]
+print(students_namedtuple)
+
+attrgetter_name_score = attrgetter("name", "scores.math") # 定义了一个函数
+for item in students_namedtuple:
+    print(attrgetter_name_score(item)) # 将 item(namedtuple) 作为参数传入预先定义好的规则
+```
+
+**获取所有的操作符**
+
+```python
+import operator
+print([item for item in dir(operator) if not item.startswith("_")])
+
+"""
+['abs', 'add', 'and_', 'attrgetter', 'concat', 'contains', 'countOf', 'delitem', 'eq', 'floordiv', 'ge', 'getitem', 'gt', 'iadd', 'iand', 'iconcat', 'ifloordiv', 'ilshift', 'imatmul', 'imod', 'imul', 'index', 'indexOf', 'inv', 'invert', 'ior', 'ipow', 'irshift', 'is_', 'is_not', 'isub', 'itemgetter', 'itruediv', 'ixor', 'le', 'length_hint', 'lshift', 'lt', 'matmul', 'methodcaller', 'mod', 'mul', 'ne', 'neg', 'not_', 'or_', 'pos', 'pow', 'rshift', 'setitem', 'sub', 'truediv', 'truth', 'xor']
+
+其中，以字母 i 为前缀的操作符，其都是 inplace 函数
+
+"""
+
+from operator import iadd
+num1 = 10
+num2 = 2
+num1 = iadd(num1, num2) # 等价于 num1 += num2
+```
+
+**methodcaller**
+
+methodcaller 可以对函数进行二次封装，然后返回封装后的函数，通常用于 freezing arguments。
+
+```python
+from operator import methodcaller
+
+my_replace = methodcaller("replace", " ", "-") # 注意：封装的函数名必须是 stringed method
+print(my_replace("nihao hello world")) # nihao-hello-world
+
+```
+
+#### functools
+
+functools 中有很多 high-order functions，也就是说，可以传入函数参数或者返回函数的函数。
+
+functools 中最常用的两个函数：reduce, partial, partialmethod
+
+partial 和 partialmethod 通常用于对 function 和 classmethod 进行二次封装，其中 partialmethod 可以用于方法的重载。
+
+```python
+from functools import partial, partialmethod
+from operator import mul
+
+my_mul = partial(mul, 3) # mul 是一个 function，freeze 好一个参数，剩下另一个参数
+lst = [my_mul(num) for num in range(10)] 
+print(lst)
+
+>>> class Cell(object):
+...     def __init__(self):
+...         self._alive = False
+...     @property
+...     def alive(self):
+...         return self._alive
+...     def set_state(self, state):
+...         self._alive = bool(state)
+...     set_alive = partialmethod(set_state, True)
+...     set_dead = partialmethod(set_state, False)
+...
+>>> c = Cell()
+>>> c.alive
+False
+>>> c.set_alive()
+>>> c.alive
+True
+
+# 注意, functools.partial 的 operator.methodcaller 的不同之处在于，methodcaller 封装的函数名必须是 string method，而 functools.partial 封装的函数名必须是 function，functools.partialmethod 封装的函数名必须是 method
+```
 

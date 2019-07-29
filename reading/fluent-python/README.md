@@ -4,3 +4,9 @@
 
 笔记想要传达出的思想和书的宗旨一样，致力于写出地道的 / 高效的 Python 代码（即 Fluent），仅此而已。  
 
+## Python 学习资源
+
+* [Python Cheatsheet](<https://github.com/gto76/python-cheatsheet>)
+
+
+

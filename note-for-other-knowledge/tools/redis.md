@@ -49,7 +49,7 @@ ttl user-lock # time-to-live 查看该变量距离失效还有几秒，如果返
 
 ### 高级数据结构
 
-### list
+#### list
 
 ```shell
 # list
@@ -66,7 +66,7 @@ lrange names 0 1 # get subset of list, 第 0，1 个元素，注意，redis 的 
 lrange names 0 -1 # 获取从第 0 个到最后一个元素
 ```
 
-### set / sorted set / hset
+#### set / sorted set / hset
 
 ```shell
 # set
@@ -84,8 +84,6 @@ sunion fruit1 fruit2 # 两个 set 求并集
 
 # hset 存储的值为键值对
 ```
-
-
 
 ## Questions
 

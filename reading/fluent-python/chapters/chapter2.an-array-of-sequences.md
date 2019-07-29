@@ -266,20 +266,20 @@ a, *b, c = tuple1
 print(a, c) #
 ```
 
-### Named Tuple
+### NamedTuple
 
 `collections.namedtuple` 可以帮助我们创建一个带有字段名的 tuple。
 
 ```python
 from collections import namedtuple
 City = namedtuple("City", "name country population coordinates") # 创建了一个 City 类
-# namedtuple 需要传入两个参数，第一个参数是 classname, 第二个参数是 a list of field names, 也可以传入带空格的字符串
+# namedtuple 需要传入两个参数，第一个参数是 classname, 第二个参数是 a list of field names, 也可以传入带空格的字符串, 注意：通常类命要大写
 tokyo = City("Tokyo", "JP", 36.3, (35.789772, 139,691667))
 # 通过 字段名 或者 position 获取字段值  
 print(tokyo) # City(name="Tokyo", country="JP", population=...)
 print(tokyo.name) # Tokyo
 print(tokyo.country) # JP
-print(tokyo[0]) # Tokyo，这个特性更像是 tuple
+print(tokyo[0]) # Tokyo，这个特性更像是 tuplej
 ```
 
 `namedtuple` **的使用场景**：用来快速创建一个只包含字段的类，可以用于存储从数据库中读取的数据。

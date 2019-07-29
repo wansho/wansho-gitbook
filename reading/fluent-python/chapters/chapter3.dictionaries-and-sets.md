@@ -11,7 +11,7 @@ ss = "hello"
 hash(ss)
 ```
 
-在使用 mapping types 的时候，应该始终考虑内存的效率问题。Dict 是设计被用来高效查找的，其并不适合存储，在存储的时候，考虑用 tuple 来代替！
+在使用 mapping types 的时候，应该始终考虑内存的效率问题。Dict 是设计被用来高效查找的，其并不适合存储，在存储的时候，考虑用 namedtuple 来代替！
 
 ## hashable built-in types
 
