@@ -22,6 +22,9 @@
   * [Chapters](reading/data-structures-and-algorithm-analysis-in-c/chapters/README.md)
     * [Chapter1. Introduction](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-1-introduction.md)
     * [Chapter2. Algorithm Analysis](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-2-algorithm-analysis.md)
+  * [Summary](reading/data-structures-and-algorithm-analysis-in-c/summary/README.md)
+    * [Questions](reading/data-structures-and-algorithm-analysis-in-c/summary/questions.md)
+    * [经典问题](reading/data-structures-and-algorithm-analysis-in-c/summary/classic-problems.md)
 
 ## Github-Projects
 
@@ -69,6 +72,7 @@
   * [少有人走的路](life-and-thinking/reading/the-road-less-traveled.md)
   * [Time-as-a-Friend](life-and-thinking/reading/time-as-a-friend.md)
   * [Reborn](life-and-thinking/reading/reborn.md)
+  * [碎片时间学习](life-and-thinking/reading/fragmented-time.md)
 * [Self-Examination](life-and-thinking/self-examination/README.md)
   * [追求完美？](life-and-thinking/self-examination/why-perfect.md)
   * [About-Love](life-and-thinking/self-examination/about-love.md)
