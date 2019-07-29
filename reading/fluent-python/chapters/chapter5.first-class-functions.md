@@ -99,6 +99,8 @@ sorted(fruits, key=len)
 
 ### Modern Replacements for map/filter/reduce
 
+lambda / map / filter / reduce 的特性源于 Lisp.
+
 Chapter2 中已经指出，任何用到 map 和 filter 的地方，都可以用 列表推导式 和 生成器表达式来替换。而 reduce 可以被 `sum, all, any` 等 Python 自带的built-ins 取代。Demo:
 
 ```python
@@ -569,4 +571,14 @@ True
 
 # 注意, functools.partial 的 operator.methodcaller 的不同之处在于，methodcaller 封装的函数名必须是 string method，而 functools.partial 封装的函数名必须是 function，functools.partialmethod 封装的函数名必须是 method
 ```
+
+## Further Reading
+
+* [Python: why is functools.partial necessary](<https://stackoverflow.com/questions/3252228/python-why-is-functools-partial-necessary>)
+
+* [Great introduction to functional programming in python](<https://docs.python.org/3/howto/functional.html>)
+
+* Everything that is good in Python was stolen from other languages. ——Guido
+
+  
 

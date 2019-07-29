@@ -19,6 +19,7 @@
 | cheatsheet | 备忘录 |  |
 | daemon | 守护进程 |  |
 | introspection | 自省 | self-examination |
+| Imperative programming | 命令式编程 | command line interface CLI |
 
 ## Authentic Chinese
 

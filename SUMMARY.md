@@ -7,7 +7,6 @@
 * [Modern-Operation-System](reading/modern-os/README.md)
   * [Chapter2-Processes-and-Threads](reading/modern-os/chapter2-processes-and-threads.md)
   * [Questions](reading/modern-os/questions.md)
-
 * [Fluent-Python](reading/fluent-python/README.md)
   * [Chapters](reading/fluent-python/chapters/README.md)
     * [Chapter1. The Python Data Model](reading/fluent-python/chapters/chapter1.the-python-data-model.md)
@@ -19,6 +18,10 @@
     * [Python-Code-Optimization](reading/fluent-python/summary/python-code-optimization.md)
     * [Questions](reading/fluent-python/summary/questions.md)
     * [Python-30-Seconds](reading/fluent-python/summary/python-30-seconds.md)
+* [Data-Structure-and-Algorithm](reading/data-structures-and-algorithm-analysis-in-c/README.md)
+  * [Chapters](reading/data-structures-and-algorithm-analysis-in-c/chapters/README.md)
+    * [Chapter1. Introduction](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-1-introduction.md)
+    * [Chapter2. Algorithm Analysis](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-2-algorithm-analysis.md)
 
 ## Github-Projects
 

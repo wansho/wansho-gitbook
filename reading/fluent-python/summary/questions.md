@@ -2,6 +2,8 @@
 
 创建 Questions 的目的：用来快速回顾 Python 的重点。
 
+[TOC]
+
 ## Chapter1. The Python Data Model
 
 * Python 语言最大的特性
@@ -60,8 +62,8 @@
 
 * 解释 First-Class Functions
 * 解释 High-Order Functions，有哪些常用的 High-Order Function
-* reduce 的思想，reduce 可以被哪些 built-in functions 替换
-* Function Object 有哪些重要的 attribute ，如何查看 Function 中的所有属性，还有自定义的属性
+* reduce 的思想，常见的 reduce 类型的方法
+* Function Object 有哪些重要的 attribute 和 method
 * map/filter 的思想，其返回的类型是什么，是否可以被替换
 * Lambda 表达式本质上是什么，其优点有哪些
 * 什么是 callable object，最简单的 callable object 是什么，如何判断一个对象是否是 callable object
@@ -76,6 +78,4 @@
 * 如何预判断传入的参数，是否符合函数的要求？
 * `functools` 和 `operator`两个 package 的作用和使用场景
 * 如何用 sorted function 对 list 进行不同要求的排序，例如按照长度/首字母/元组的第 n 个元素
-* `operator` 中有哪些方法，可以分成几类，分类的原则是什么
-* `functools` 中有哪些方法，methodcaller 和 partial / partialmethod 的区别是什么
 

@@ -10,6 +10,14 @@ Inspired by [30-seconds-of-code](https://github.com/30-seconds/30-seconds-of-cod
 
 ## You May not Know
 
+### PEP
+
+Python Enhancement Proposals. Python 增强提案。
+
+Demo: 
+
+PEP20: [The Zen of Python](<https://www.python.org/dev/peps/pep-0020/>)
+
 ### 中文做变量
 
 Python3 允许 non-ASCII identifiers in source code，任何 Unicode 字符，都可以作为变量，也就是说，**中文也可以作为变量**！
