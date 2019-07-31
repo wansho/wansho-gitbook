@@ -43,6 +43,12 @@ Docker Toolbox 包含以下组件：
 
 如果 WIndows 开启了 Hyper-V，则需要关闭 Hyper-V。
 
+### Docker and Kubernetes
+
+Kubernetes can automate the whole container deployment process. 
+
+Kubernetes 可以实现 Docker 管理，相当于 Dockers 的中控平台。
+
 ## CLI
 
 ### docker ps 查看当前正在运行的容器

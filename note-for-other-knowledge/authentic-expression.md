@@ -27,6 +27,7 @@
 | Macro | 宏 | 宏类似于批处理，MacroCommand == Batch Command |
 | Soapbox | 即兴发挥 |  |
 | boilerplate code | 模板代码 |  |
+| Agile | 敏捷 | 敏捷开发 |
 
 ## Authentic Chinese
 

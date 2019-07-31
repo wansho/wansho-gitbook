@@ -55,6 +55,7 @@
 * [To-Others](note-for-other-knowledge/to-others/README.md)
   * [致万 * 鑫](note-for-other-knowledge/to-others/to-my-brother.md)
   * [关于考试](note-for-other-knowledge/to-others/summary-for-examination-oriented-education.md)
+* [Keep-Learning](note-for-other-knowledge/keep-learning.md)
 * [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
 * [How-to-Study](note-for-other-knowledge/how-to-study.md)
 
