@@ -78,4 +78,15 @@
 * 如何预判断传入的参数，是否符合函数的要求？
 * `functools` 和 `operator`两个 package 的作用和使用场景
 * 如何用 sorted function 对 list 进行不同要求的排序，例如按照长度/首字母/元组的第 n 个元素
+* instance，internal state 在 Python 中指代什么
 
+## Chapter6. Design-Patterns with Functions
+
+* 设计模式一书中一共定义了多少种设计模式，有多少种设计模式在动态语言中可能被重构
+* 解释 Strategy Pattern，策略模式的经典例子是什么
+* 策略模式在 Python 中可以怎么重构，其核心思想是什么
+* Python 中创建抽象基类的步骤
+* Python 中判断类中是否包含某属性的方法
+* Python 中对象和 None 怎么比较
+* Python 中小于 1 的小数，可以怎么写
+* Python 类中如何获取类中的符号表，包括属性和方法

@@ -282,7 +282,7 @@ print(tokyo.country) # JP
 print(tokyo[0]) # Tokyo，这个特性更像是 tuplej
 ```
 
-`namedtuple` **的使用场景**：用来快速创建一个只包含字段的类，可以用于存储从数据库中读取的数据。
+`namedtuple` **的使用场景**：**用来快速创建一个只包含属性（不包含方法）的类**，可以用于存储从数据库中读取的数据。
 
 `namedtuple`的几个属性和方法：
 

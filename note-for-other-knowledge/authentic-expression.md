@@ -20,6 +20,13 @@
 | daemon | 守护进程 |  |
 | introspection | 自省 | self-examination |
 | Imperative programming | 命令式编程 | command line interface CLI |
+| refactor | 重构 |  |
+| flyweight | 轻量级 |  |
+| thornier | 棘手的 |  |
+| instance | 实例 |  |
+| Macro | 宏 | 宏类似于批处理，MacroCommand == Batch Command |
+| Soapbox | 即兴发挥 |  |
+| boilerplate code | 模板代码 |  |
 
 ## Authentic Chinese
 

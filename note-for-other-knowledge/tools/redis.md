@@ -49,6 +49,8 @@ ttl user-lock # time-to-live 查看该变量距离失效还有几秒，如果返
 
 ### 高级数据结构
 
+注意：高级数据结构，其只是 value 为高级数据结构，key 依然还是之前的 key
+
 #### list
 
 ```shell

@@ -32,5 +32,8 @@ If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!
 ```
 
+## Next Reading
 
+* 对书中记录的大佬和经典书籍/参考文献进行详细深入的了解
+* 
 

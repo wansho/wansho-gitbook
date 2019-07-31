@@ -9,11 +9,12 @@
   * [Questions](reading/modern-os/questions.md)
 * [Fluent-Python](reading/fluent-python/README.md)
   * [Chapters](reading/fluent-python/chapters/README.md)
-    * [Chapter1. The Python Data Model](reading/fluent-python/chapters/chapter1.the-python-data-model.md)
-    * [Chapter2. An Array of Sequences](reading/fluent-python/chapters/chapter2.an-array-of-sequences.md)
-    * [Chapter3. Dictionaries and Sets](reading/fluent-python/chapters/chapter3.dictionaries-and-sets.md)
-    * [Chapter4. Text versus Bytes](reading/fluent-python/chapters/chapter4.text-versus-bytes.md)
-    * [Chapter5. First-Class Functions](reading/fluent-python/chapters/chapter5.first-class-functions.md)
+    * [Chapter1-The-Python-Data-Model](reading/fluent-python/chapters/chapter1.the-python-data-model.md)
+    * [Chapter2-An-Array-of-Sequences](reading/fluent-python/chapters/chapter2.an-array-of-sequences.md)
+    * [Chapter3-Dictionaries-and-Sets](reading/fluent-python/chapters/chapter3.dictionaries-and-sets.md)
+    * [Chapter4-Text-versus-Bytes](reading/fluent-python/chapters/chapter4.text-versus-bytes.md)
+    * [Chapter5-First-Class-Functions](reading/fluent-python/chapters/chapter5.first-class-functions.md)
+    * [Chapter6-Design-Patterns-with-Functions](reading/fluent-python/chapters/chapter-6-design-patterns-with-first-class-functions.md)
   * [Summary](reading/fluent-python/summary/README.md)
     * [Python-Code-Optimization](reading/fluent-python/summary/python-code-optimization.md)
     * [Questions](reading/fluent-python/summary/questions.md)
@@ -25,6 +26,9 @@
   * [Summary](reading/data-structures-and-algorithm-analysis-in-c/summary/README.md)
     * [Questions](reading/data-structures-and-algorithm-analysis-in-c/summary/questions.md)
     * [经典问题](reading/data-structures-and-algorithm-analysis-in-c/summary/classic-problems.md)
+* [People](reading/people/README.md)
+  * [Pioneers-in-Computer-Science](reading/people/pioneer.md)
+  * [others](reading/people/others.md)
 
 ## Github-Projects
 
