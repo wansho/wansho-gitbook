@@ -85,6 +85,8 @@ Objective Key Result
 
 ### 什么时候考虑用大数据技术来解决问题
 
+需要 Scaling 的时候，才考虑使用大数据技术来解决问题。
+
 当平台性能掣肘之时，或者我们需要针对某一个模块进行优化的时候，就可以考虑从 scaling up 和 scaling out 两个方向来引入大数据的技术来解决问题。例如对实时性要求高，就可以考虑用缓存或者 Kafka 来暂存数据；数据量太大，可以考虑用 HDFS 来进行分布式存储。
 
 ### Batch Processing vs Streaming Processing

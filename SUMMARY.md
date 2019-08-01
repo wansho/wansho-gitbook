@@ -51,7 +51,7 @@
   * [Docker](note-for-other-knowledge/tools/docker.md)
   * [Redis](note-for-other-knowledge/tools/redis.md)
 * [Knowledge-from-Others](note-for-other-knowledge/knowledge-from-others/README.md)
-  * 
+  * [Peter-Novig](note-for-other-knowledge/knowledge-from-others/peter-norvig.md)
 * [To-Others](note-for-other-knowledge/to-others/README.md)
   * [致万 * 鑫](note-for-other-knowledge/to-others/to-my-brother.md)
   * [关于考试](note-for-other-knowledge/to-others/summary-for-examination-oriented-education.md)

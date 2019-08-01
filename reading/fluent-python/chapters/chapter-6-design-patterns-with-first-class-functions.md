@@ -27,7 +27,13 @@
 
 
 
-当一个事情有多种方案时，例如超市的折扣针对不同的 Context，有不同的打折方案，那么就可以联想到 Strategy Pattern。Strategy Pattern 的本质是**具体问题具体分析**。
+当一个事情根据不同的情况，有多种方案时，例如：
+
+1. 超市的折扣针对不同的 Context，有不同的打折方案
+2. 携程曾经针对不同的用户，有不同的付款策略，对于老顾客杀熟
+3. 饿了吗定外卖的时候，有多种不同的支付方式
+
+那么就可以联想到 Strategy Pattern。Strategy Pattern 的本质：**具体问题具体分析**。
 
 ### Classic Implement
 
@@ -72,7 +78,7 @@ class Order: # the Context
             discount = 0
         else:
             discount = self.promotion.discount(self) # 将当前类的对象传入
-        return self.__total - discount
+        return self.total() - discount
 
     def __repr__(self): # print(order)
         return "<Order tota:{:.2f} due:{:.2f}>".format(self.total(), self.due())
