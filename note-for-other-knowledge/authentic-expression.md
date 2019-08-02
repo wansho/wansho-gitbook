@@ -28,6 +28,8 @@
 | Soapbox | 即兴发挥 |  |
 | boilerplate code | 模板代码 |  |
 | Agile | 敏捷 | 敏捷开发 |
+| Recursive | 递归 |  |
+| Pre / Post | 前/后 | 链表前驱/后驱节点 |
 
 ## Authentic Chinese
 

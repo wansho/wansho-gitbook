@@ -23,6 +23,7 @@
   * [Chapters](reading/data-structures-and-algorithm-analysis-in-c/chapters/README.md)
     * [Chapter1. Introduction](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-1-introduction.md)
     * [Chapter2. Algorithm Analysis](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-2-algorithm-analysis.md)
+    * [Chapter3. List-Stack-Queue](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-3-list-stack-queue.md)
   * [Summary](reading/data-structures-and-algorithm-analysis-in-c/summary/README.md)
     * [Questions](reading/data-structures-and-algorithm-analysis-in-c/summary/questions.md)
     * [经典问题](reading/data-structures-and-algorithm-analysis-in-c/summary/classic-problems.md)

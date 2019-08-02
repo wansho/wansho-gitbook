@@ -22,7 +22,7 @@ MongoDB 和 MySQL 最大的不同：stores data in JSON-like document other than
 
 ### docx 和 xlsx 文档
 
-docx 和 xlsx 文档实际上是一个压缩包，可以用解压软件打开，压缩包内有大量的 xml 文件，实际上 docx 格式的文档是一种**标记语言文档**，其和 markdown 没有本质的区别。
+docx 和 xlsx 文档实际上是一个压缩包，可以用解压软件打开，压缩包内有大量的 xml 文件，实际上 docx 格式的文档是一种**标记语言文档**，其和 markdown / HTML 没有本质的区别。
 
 注意：doc 和 xlsx 文档并不是一种标记语言文档，其压缩包内的文件并不是纯文本。
 
