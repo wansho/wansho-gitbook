@@ -99,7 +99,7 @@ class FidelityPromotion(Promotion): # concrete strategy
         return 0 if order.customer.fidelity < 1000 else order.total() * .05
 
 
-class BulkItemPromotion(Promotion): # concrate strategy
+class BulkItemPromotion(Promotion): # concrete strategy
     """10% discount for each LineItem with 20 or more units"""
 
     def discount(self, order):
@@ -110,7 +110,7 @@ class BulkItemPromotion(Promotion): # concrate strategy
         return discount
 
 
-class LargeOrderPromotion(Promotion): # concrate strategy
+class LargeOrderPromotion(Promotion): # concrete strategy
     """7% discount for orders with 10 or more distinct items"""
 
     def discount(self, order):
@@ -233,7 +233,7 @@ if __name__ == "__main__":
     ]
 
     existed_promotions = [globals()[name] for name in globals()
-                  if name.endswith("_promotion") and not name.endswith("best_promotion")] # 获取所有策略
+                  if name.endswith("_promotion") and not name.endswith("best_promotion")] # 遍历获取所有策略，进而兼容新加入的策略
     order1 = Order(ann, cart)
     order1.promotion = get_best_promotion(order1, existed_promotions)
     print(order1.total())

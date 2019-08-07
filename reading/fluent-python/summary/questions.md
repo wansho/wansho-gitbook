@@ -38,7 +38,8 @@
 * 可以 hashable 的类型
 * dict 的特点和使用情境
 * dict 的常见构造方法 / 弹出数据 / 随机弹出数据的方法
-* dict 的 `update()` 方法的原理
+* dict 的 `update()` 方法具体步骤
+* dict 如何对 key-value 同时遍历
 * dict 查找时，处理 missing key 的 几种方式，哪两种方式更高效？原理是什么
 * dict 的变体：OrderDict / Counter 的特性
 * Set 有哪些特性
@@ -62,7 +63,7 @@
 
 * 解释 First-Class Functions
 * 解释 High-Order Functions，有哪些常用的 High-Order Function
-* reduce 的思想，常见的 reduce 类型的方法
+* reduce 的思想，Python 中有哪些可以取代 reduce 的 built-in function ？
 * Function Object 有哪些重要的 attribute 和 method
 * map/filter 的思想，其返回的类型是什么，是否可以被替换
 * Lambda 表达式本质上是什么，其优点有哪些

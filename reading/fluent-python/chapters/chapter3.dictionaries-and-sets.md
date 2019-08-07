@@ -75,8 +75,6 @@ update\(\) 接受的对象，可以是如下几种：
 2. iterated types with \(key, value\) tuple items
 3. keyword arguments
 
-注意，无特殊情况，还是以 第二种
-
 ### handle missing keys with setdefault\(\) / defaultdict
 
 Python 有四种通过 key 获取值的方式：
