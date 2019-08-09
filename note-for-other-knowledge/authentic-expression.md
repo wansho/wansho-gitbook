@@ -30,11 +30,14 @@
 | Agile | 敏捷 | 敏捷开发 |
 | Recursive | 递归 |  |
 | Pre / Post | 前/后 | 链表前驱/后驱节点 |
+| nested | 嵌套的 | function inside function |
+| nonglobal | 非全局 | nonglobal variable |
 
 ## Authentic Chinese
 
 | Word | 释义 |
 | :--- | :--- |
 | 复盘 | 事后经验总结和学习 |
-|  |  |
+| 同比 | 历史**同**一时期比较 |
+| 环比 | 相邻时期比较 |
 

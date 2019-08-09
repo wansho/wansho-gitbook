@@ -349,6 +349,26 @@ for index, value in enumerate(["a", "b", "c"]):
     print(index, value)
 ```
 
+## str 字符串
+
+字符串本质上也是 sequence，其可以通过 for 循环进行遍历
+
+### 字符串遍历
+
+```python
+for ch in "test":
+    print(ch)
+```
+
+### 字符串拆成字符数组
+
+```Python
+char_list = list("test")
+# ['t', 'e', 's', 't']
+```
+
+
+
 ## list.sort 和 sorted
 
 > `list.sort` sort a list in place — that is, without making a copy.

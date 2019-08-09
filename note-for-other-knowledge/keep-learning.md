@@ -34,6 +34,12 @@ docx 和 xlsx 文档实际上是一个压缩包，可以用解压软件打开，
 | 1 微秒 | $1s = 10^6μs$ | microseconds |
 | 1 纳秒 | $1s = 10^9ns$ | nanosecond   |
 
+### 101 
+
+Demo: [Streaming 101](<https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-101>)，[火箭少女 101](<https://baike.baidu.com/item/%E7%81%AB%E7%AE%AD%E5%B0%91%E5%A5%B3101/22681022?fr=aladdin>)
+
+101 代表一个领域的 Introduction。
+
 ## 业务名词
 
 ### 分发

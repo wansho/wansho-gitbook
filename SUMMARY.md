@@ -36,7 +36,7 @@
 
 * [bilibili-helper-chrome-extension](github-projects/bilibili-helper-chrome-extension.md)
 * [senti-weibo](github-projects/senti-weibo.md)
-* [南航计算机考研](github-projects/awesome-nuaa-cs-kaoyan.md)
+* [NUAA-CS-Kaoyan](github-projects/awesome-nuaa-cs-kaoyan.md)
 
 ## Note-for-Python
 
@@ -44,7 +44,7 @@
 
 ## Note-for-Other-Knowledge
 
-* [专栏学习](note-for-other-knowledge/column-learning/README.md)
+* [Column-Learning](note-for-other-knowledge/column-learning/README.md)
   * [架构课-许式伟](note-for-other-knowledge/column-learning/xu-shi-wei-architecture.md)
   * [架构课-Questions](note-for-other-knowledge/column-learning/questions.md)
 * [Tools](note-for-other-knowledge/tools/README.md)
@@ -68,7 +68,7 @@
 
 ## Database
 
-* [Mysql 入门](database/mysql-tutorial.md)
+* [Mysql 101](database/mysql-tutorial.md)
 
 ## Linux
 
