@@ -281,6 +281,36 @@ Python 和 Javascript 都不要求对变量的类型进行声明，但是不同�
 
 ## Closures(闭包)
 
+### 闭包的介绍
+
+A closure is a [record](https://en.wikipedia.org/wiki/Record_(computer_science)) storing a [function](https://en.wikipedia.org/wiki/Function_(computer_science))[[a\]](https://en.wikipedia.org/wiki/Closure_(computer_programming)#cite_note-1) together with an environment.
+
+闭包是一个绑定了 free variable 的 function，其可以看成是对 (function + environment/contex) 的封装/绑定。闭包实现了 function 对定义在 function 外的 nonglobal variable 的访问，其拓展了 function 的范围，将 function 外的 free variable 绑定。闭包返回的是封装后的 function。	
+
+### 闭包 Demo
+
+```python
+
+def get_average():
+    nums = [] # environment / binded to avg
+    
+    def avg(num): # function
+        nums.append(num)
+        return sum(nums) / len(nums)
+    return avg
+
+# avg + nums 就是一个闭包
+
+avg = get_average()
+print(avg(10)) # 10
+print(avg(8)) # 9
+print(avg(6)) # 8
+
+# 被绑定到 avg 上的 free variable: nums 可以通过 __closure__ 查看
+print(avg.__closure__) # (<cell at 0x0000029DB8F007F8: list object at 0x0000029DB8DA6248>,)
+print(avg.__closure__[0].cell_contents) # [10, 8, 6]
+```
+
 ### 闭包的作用
 
 * **装饰器返回新的 function**

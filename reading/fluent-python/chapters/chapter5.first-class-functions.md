@@ -63,6 +63,7 @@ print(factorial.__dict__)
 | `__dict__`             | 获取 function 的所有自定义的 attribute                |
 | `__name__`             | 获取函数名                                            |
 | `__doc__`              | 获取函数的注释                                        |
+| `__closure__`          | 获取闭包绑定的 free 变量 (list)                       |
 | `__defaults__`         | tuple(位置参数和关键字参数的默认值)                   |
 | `__code__.co_varnames` | tuple(存储了函数参数的name还有函数中定义的name)       |
 | `__code__.co_argcount` | value: 参数的个数，不包括以 `*` 和 `**` 打头的参数    |
