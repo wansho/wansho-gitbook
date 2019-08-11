@@ -18,5 +18,4 @@
 ### 搬运的视频
 
 * [Fireside Chat with Christopher Manning](<https://www.youtube.com/watch?v=bZMKhQSERA4>)
-* 
 

@@ -5,6 +5,7 @@
 ## Reading
 
 * [Modern-Operation-System](reading/modern-os/README.md)
+  * [Chapter1-Introduction](reading/modern-os/chapter1-introduction.md)
   * [Chapter2-Processes-and-Threads](reading/modern-os/chapter2-processes-and-threads.md)
   * [Questions](reading/modern-os/questions.md)
 * [Fluent-Python](reading/fluent-python/README.md)
