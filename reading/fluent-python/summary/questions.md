@@ -10,9 +10,8 @@
 * 魔法方法的优点 — 3个
 * 魔法方法 `in` 和 `__contains__()` 的关系
 * 魔法方法 `bool()` 和 `__bool__()`,  `__len__()` 的关系
-* `__repr__()` 和 `__str__()` 的区别
+* `__repr__()` 和 `__str__()` 的区别，`__repr__()` 和 `%r` 的关系
 * 解释 Duck Typing（鸭子模型），鸭子类型与多态的关系
-* Python 实现多态的两种方法
 
 ## Chapter2. An Array of Sequences
 
@@ -91,3 +90,23 @@
 * Python 中对象和 None 怎么比较
 * Python 中小于 1 的小数，可以怎么写
 * Python 类中如何获取类中的符号表，包括属性和方法
+
+## Chapter7. Function Decorators and Closures
+
+* number 是 immutable 类型还是 mutable 类型
+* Python 输出小数的方式，print 中 %r 被解释成哪一个函数
+* 解释 abc module 
+* 不需要函数名的函数，可以取什么样的函数名
+* 解释一下装饰器，装饰器和 first-class function / 闭包的关系，装饰器可以分成哪两类
+* 如何用装饰器对策略设计模式进行优化
+* 介绍装饰器的几个特征
+* 装饰器在实际工程中，通常如何应用
+* Python function 内变量的作用域，function 如何界定局部变量，如何对 function 外的变量进行赋值引用
+* Python local variable 和 Javascript 的区别
+* 解释一下闭包，闭包的作用
+* 如何查看闭包函数绑定的 free variable
+* 闭包如何对绑定的变量进行重新赋值
+* 解释 Python 自带的三个装饰器 functools.wraps, functools.lru_cache, functools.singledispatch
+* Python 如何实现 function 的重载，其和 Java 重载，if/else 的区别
+* 解释 stack decorator
+* 解释装饰器工厂

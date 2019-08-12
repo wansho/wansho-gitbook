@@ -24,7 +24,7 @@
 | flyweight | 轻量级 |  |
 | thornier | 棘手的 |  |
 | instance | 实例 |  |
-| Macro | 宏 | 宏类似于批处理，MacroCommand == Batch Command |
+| Macro | 宏 | 宏类似于批处理，MacroCommand == Batch Command，MacroKernal 宏内核 |
 | Soapbox | 即兴发挥 |  |
 | boilerplate code | 模板代码 |  |
 | Agile | 敏捷 | 敏捷开发 |
@@ -32,6 +32,10 @@
 | Pre / Post | 前/后 | 链表前驱/后驱节点 |
 | nested | 嵌套的 | function inside function |
 | nonglobal | 非全局 | nonglobal variable |
+| elapsed | 耗时 |  |
+| generic | 泛型 | |
+| dispatch | 调度 | |
+| overload | 重载 | |
 
 ## Authentic Chinese
 
