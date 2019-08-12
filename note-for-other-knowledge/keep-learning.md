@@ -61,6 +61,12 @@ Demo: [Streaming 101](<https://www.oreilly.com/ideas/the-world-beyond-batch-stre
 
 云计算 / 物联网 / 5G 这些变革，早晚会催生出一款大一统的操作系统，华为抓住了这一机遇，所以说鸿蒙是非常具有战略意义的。如果说，VSCode 是 IDE 的未来，那么我觉得鸿蒙可能是操作系统的未来，或者说，面向云计算 / 物联网 / 5G 的操作系统，是操作系统的未来。
 
+### Restful API
+
+**Representational State Transfer** ([**REST**](<https://en.wikipedia.org/wiki/Representational_state_transfer>)) is a [software architectural](https://en.wikipedia.org/wiki/Software_architecture) style that defines a set of constraints to be used for creating [Web services](https://en.wikipedia.org/wiki/Web_service).
+
+REST 是一套用于构建 Web Service 的规范。
+
 ## 业务名词
 
 ### 分发

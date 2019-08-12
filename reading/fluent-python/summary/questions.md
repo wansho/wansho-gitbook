@@ -110,3 +110,8 @@
 * Python 如何实现 function 的重载，其和 Java 重载，if/else 的区别
 * 解释 stack decorator
 * 解释装饰器工厂
+
+## Other Questions
+
+* == 和 is 的区别
+* all() 的复杂逻辑实现方法，with 是否可以用于 for / while

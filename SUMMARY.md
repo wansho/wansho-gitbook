@@ -47,7 +47,8 @@
 ## Note-for-Other-Knowledge
 
 * [NLP](note-for-other-knowledge/nlp/README.md)
-  * [Learning](note-for-other-knowledge/nlp/learning.md)
+  * [NLP-Learning](note-for-other-knowledge/nlp/nlp-learning.md)
+  * [Machine-Learning](note-for-other-knowledge/nlp/machine-learning.md)
 
 * [Column-Learning](note-for-other-knowledge/column-learning/README.md)
   * [架构课-许式伟](note-for-other-knowledge/column-learning/xu-shi-wei-architecture.md)
@@ -63,14 +64,20 @@
 * [To-Others](note-for-other-knowledge/to-others/README.md)
   * [致万 * 鑫](note-for-other-knowledge/to-others/to-my-brother.md)
   * [关于考试](note-for-other-knowledge/to-others/summary-for-examination-oriented-education.md)
+  * [How-to-Study](note-for-other-knowledge/to-others/how-to-study.md)
 * [Keep-Learning](note-for-other-knowledge/keep-learning.md)
 * [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
-* [How-to-Study](note-for-other-knowledge/how-to-study.md)
+* 
 
 ## Algorithms
 
 * [Summary](algorithms/summary/README.md)
   * [ArrayList-vs-LinkList](algorithms/summary/arraylist-vs-linklist.md)
+
+## Network
+
+* [HTTP-Protocol](computer-network/http-protocol.md)
+* [HTML-CSS-DOM](computer-network/html-css-dom.md)
 
 ## Database
 

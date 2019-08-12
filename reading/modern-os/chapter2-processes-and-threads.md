@@ -148,6 +148,12 @@ new a thread for 自动格式化用户刚输入的文本
 
 客户端每发起一个新的请求，就 new 一个 thread
 
+## 进程间通信：InterProcess Communication (IPC)
+
+IPC 方式：信号、管道、消息队列、共享内存
+
+
+
 
 
 

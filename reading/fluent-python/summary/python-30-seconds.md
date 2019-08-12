@@ -311,9 +311,7 @@ with open('data.json', 'r') as f:
 
 ## You May not Really Konw
 
-### built-in functions
-
-#### strip\(\)
+### strip\(\)
 
 strip\(\) 方法并不是整个字符串进行前缀后缀的匹配，其更像是正则匹配的 \[abcd\] 规则。[DOC](https://docs.python.org/3/library/stdtypes.html?highlight=strip#str.strip>)
 
@@ -327,7 +325,46 @@ Section 3.2.1 Issue #32
 """
 ```
 
-### built-in modules
+### else with for and while
 
-### built-in operators
+如果 for 没有 break(sequence 遍历完毕)，则执行 else，功能类似于 `all()`，是 `all()` 方法的复杂逻辑实现。
+
+```Python
+sentence = ["nihao", "woshi", "cxk"]
+
+for word in sentence:
+    if word == "quit":
+        print("Time to quit")
+        break
+    else:
+        print("no quit")
+else:
+    print("There was no 'quit' in the sentence")
+
+"""
+no quit
+no quit
+no quit
+There was no 'quit' in the sentence
+"""
+
+###################################################
+
+for i in range(10):
+	pass
+else:
+    print("over")
+# over
+
+##################################################
+
+for i in range(10):
+    if i == 3:
+        break
+else:
+    print("over")
+# 无 over
+```
+
+
 
