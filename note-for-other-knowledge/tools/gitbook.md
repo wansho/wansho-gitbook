@@ -47,6 +47,8 @@
 
    如此 GitBook 就可以完美利用 GitHub 仓库作为图床，完美的解决图床问题。
 
+**注意**：GitBook 笔记中引用的图片，必须是和 md 文件同目录下的 assets 中的图片，例如：`assets/123.png`，不支持的引用方式：`../assets/123.png`
+
 ## Tips for GitBook
 
 * 不要在 GitBook 上进行在线编辑，因为在线编辑的内容会同步到 GitHub 上，如果本地也进行了相同文件的编辑，则可能会产生冲突，导致 GitBook 因为冲突而不能同步 GitHub 上的最新笔记。

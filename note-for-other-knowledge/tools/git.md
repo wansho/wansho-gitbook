@@ -16,6 +16,22 @@
 
 学习 Git，用上述两个官方资源，足矣。
 
+## Questions
+
+几个经常忘记的命令，基本上都和 checkout，reset 有关
+
+- 取消某个文件的修改
+
+  `git checkout -- file`
+
+- 取消加入暂存区，只需要让这个文件回滚到之前的一个版本即可
+
+  `git reset HEAD file`
+
+- 回滚到某个版本
+
+  `git reset --hard 459f`
+
 ## VCS Introduction
 
 Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later. 
@@ -412,6 +428,8 @@ git push origin master # origin 代表远程库，master 代表本地的 branch
 git push origin dev # dev 是另外一个 local branch
 
 git push -u origin master # 将本地的 master 分支推送到 origin，并且指定 origin 为默认主机，后面就可以不加任何参数，使用 git push 了
+
+git push origin HEAD --force # 强制提交到远程仓库 
 ```
 
 ### git tag, git show
