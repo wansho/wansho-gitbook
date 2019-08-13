@@ -25,6 +25,10 @@ hash(ss)
 
 用户自定义的类型，都是可以 hash 的，因为其每个对象都是独一无二的，其 hash 值就是其 id，
 
+### why list unhashable
+
+list 的内容会变动，而 hash 要求 key 不变。
+
 ## build a dict
 
 ### 常见构造方法

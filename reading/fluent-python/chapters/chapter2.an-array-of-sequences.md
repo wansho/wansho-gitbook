@@ -222,6 +222,17 @@ my_tuple = (1, 2, 3, 4)
 
 * 在 tuple 中加入 mutable 的元素，是不建议的，容易触发异常
 
+### 元组加法
+
+与 list 的 += 不同，元组相加会产生一个新的 tuple，因为 tuple is immutable
+
+```Python
+t1 = (1, 2, 3)
+print(id(t1)) # 2318927351672
+t1 += (4, 5)
+print(id(t1)) # 2318925585576
+```
+
 ### Tuple 的两个应用场景
 
 * 不可更改的 immutable list
@@ -264,6 +275,22 @@ a, b = b, a
 tuple1 = 1,2,3,4,5
 a, *b, c = tuple1
 print(a, c) #
+```
+
+###Relative Immutability of Tuples
+
+Tuple 并不是完全 immutable 的，我们可以看一下这个例子：
+
+```Python
+t1 = (1, 2, [1, 2])
+t1[2].append(3)
+t1
+(1, 2, [1, 2, 3])
+
+hash(t1) # 不可 hash
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: unhashable type: 'list'
 ```
 
 ### NamedTuple
@@ -366,8 +393,6 @@ for ch in "test":
 char_list = list("test")
 # ['t', 'e', 's', 't']
 ```
-
-
 
 ## list.sort 和 sorted
 

@@ -22,8 +22,10 @@
 * Sequence 的 Slice 赋值及其妙用
 * `+ *` 和 `+=, *=` 的区别
 * 生成器表达式 和 列表推导式 的区别
-* 元组的两个作用
-* 元组的拆包（unpacking）和 常见的应用场景
+* tuple 的两个作用
+* tuple 的两种定义方式，有一种特殊的定义方式
+* tuple 是否完全是 immutable，是否任意 tuple 都可以 hash
+* tuple 的拆包（unpacking）和 常见的应用场景
 * namedtuple 和 tuple 的区别，namedtuple 的使用场景
 * `enumerate()` 的作用
 * `lst.sort()` 和 `sorted()` 的区别
@@ -35,6 +37,7 @@
 ## Chapter3. Dictionaries and Sets
 
 * 可以 hashable 的类型
+* 为什么 list 不能 hash
 * dict 的特点和使用情境
 * dict 的常见构造方法 / 弹出数据 / 随机弹出数据的方法
 * dict 的 `update()` 方法具体步骤
@@ -110,6 +113,17 @@
 * Python 如何实现 function 的重载，其和 Java 重载，if/else 的区别
 * 解释 stack decorator
 * 解释装饰器工厂
+
+## Chapter8. Object Reference, Multability, and Recycling
+
+* 解释 dir() 方法
+* list 浅拷贝的三种方式
+* 任意 object 如何进行深拷贝和浅拷贝
+* 解释 Python 浅拷贝和深拷贝
+* 为什么要避免将 mutable objects 作为函数参数的默认值
+* 当类的构造函数参数需要传入 mutable sequence 时，如何使得该类有良好的封装性，进而减小对传入参数的影响
+* 解释 del 的作用和 垃圾回收机制
+* 解释一个 Python 字符串和数值驻留现象，驻留现象带来了什么启发
 
 ## Other Questions
 

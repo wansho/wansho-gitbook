@@ -106,5 +106,3 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/>)
 
 - [About](about/about.md)
 
-https://github.com/wansho/wansho-gitbook/tree/2a20c3dceabc6927d5cc725c8f8ff203c0058bc2/SUMMARY.md)
-
