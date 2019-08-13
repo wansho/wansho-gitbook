@@ -67,7 +67,6 @@
   * [How-to-Study](note-for-other-knowledge/to-others/how-to-study.md)
 * [Keep-Learning](note-for-other-knowledge/keep-learning.md)
 * [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
-* 
 
 ## Algorithms
 

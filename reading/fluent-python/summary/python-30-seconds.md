@@ -311,7 +311,7 @@ with open('data.json', 'r') as f:
 
 ## You May not Really Konw
 
-### strip\(\)
+### strip()
 
 strip\(\) 方法并不是整个字符串进行前缀后缀的匹配，其更像是正则匹配的 \[abcd\] 规则。[DOC](https://docs.python.org/3/library/stdtypes.html?highlight=strip#str.strip>)
 
