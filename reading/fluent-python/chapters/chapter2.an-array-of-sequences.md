@@ -109,6 +109,10 @@ my_list[2: 5] = []
 # 注意：右边的赋值对象，必须是 iterable 的
 ```
 
+### 负数 index
+
+![负数 index](assets/1565832923247.png)
+
 ## `*` 导致的指针混淆问题
 
 ### 两次相乘导致所有元素指针指向同一个内存地址
@@ -332,13 +336,15 @@ print(filename) # test.h
 
 ### `*` 号的作用
 
-1. 将 tuple 解包用于位置参数
+1. unpacking tuple or str for positional arguments: 将 tuple 解包用于位置参数
 
    ```python
    t = (20, 8)
    divmod(*t) # 注意 divmod 必须传入两个参数，如果我们不加 t，那么只会传入一整个 tuple，这样就会报错
    # 等价于
    divmod(20, 8)
+   
+   '{2}, {1}, {0}'.format(*'abc') # 'c, b, a'
    ```
 
 2. 用于定义一个可以接受任意多个位置参数的函数
@@ -349,7 +355,7 @@ print(filename) # test.h
        for num in params:
            sum +=num
        print(sum)
-
+   
    add_list(*(1,2,3))
    # 等价于
    add_list(1, 2, 3)
@@ -359,11 +365,11 @@ print(filename) # test.h
 
    ```python
    a, b, *rest = range(5) # 0, 1, [2, 3, 4]
-
+   
    a, b, *rest = range(2) # 0, 1, []
-
+   
    a, *body, b, c = range(5) # 0, [1, 2], 3, 4
-
+   
    *head, a, b, c = range(5) # [0, 1], 2, 3, 4
    ```
 
@@ -393,6 +399,52 @@ for ch in "test":
 char_list = list("test")
 # ['t', 'e', 's', 't']
 ```
+
+### 字符串格式化
+
+官方教程：[Format String Syntax](<https://docs.python.org/3.4/library/string.html#format-string-syntax>)
+
+三种特殊的格式化标记：
+
+| 转换标记   | 解释成    |
+| ---------- | --------- |
+| `%s`, `!s` | `str()`   |
+| `%r`, `!r` | `repr()`  |
+| `%a`, `!a` | `ascii()` |
+
+**%**
+
+```Python
+name = "wansho"
+age = 25
+
+"age: %d" % age
+
+"name: %s" % name # # %s 会被 Python 解释器解释成 str(name)
+"name: %a" % name # %r 会被 Python 解释器解释成 ascii(name)
+"name: %r" % name # %r 会被 Python 解释器解释成 repr(name)
+
+```
+
+**format**
+
+```Python
+name = "wansho"
+age = 25
+
+"age: {}".format(age)
+"age: {age}".format(age = age)
+
+'{2}, {1}, {0}'.format('a', 'b', 'c') # 'c, b, a'
+'{2}, {1}, {0}'.format(*'abc') # 'c, b, a', * 用于将 字符串 解包
+'{0}{1}{0}'.format('aa', 'bb') # aabbaa
+
+"name: {!r}".format(name)
+"name: {!s}".format(name)
+"name: {!a}".format(name)
+```
+
+
 
 ## list.sort 和 sorted
 

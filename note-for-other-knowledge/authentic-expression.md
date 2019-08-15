@@ -40,6 +40,8 @@
 | undergraduate / bachelor degree | 本科生 / 学士学历 | |
 | postgraduate / master degree | 研究生 / 硕士学历 | |
 | doctor | 博士 | |
+| Explicit | 清晰的，明显的 | |
+| CVE | 公共漏洞与报录    | Common Vulnerabilities and Expousures(漏洞库 ) |
 
 ## Authentic Chinese
 

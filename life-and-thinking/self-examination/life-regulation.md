@@ -8,4 +8,6 @@
 * 一旦破戒，前功尽弃
 * 少食多餐
 * 乐而不淫，哀而不伤，不以物喜，不以己悲，调整好自己的情绪
+* Follow Excellence，Success will follow you.
+* 事来而心始现，事去则心随空
 

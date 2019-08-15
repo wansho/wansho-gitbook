@@ -13,6 +13,14 @@ hash(ss)
 
 在使用 mapping types 的时候，应该始终考虑内存的效率问题。Dict 是设计被用来高效查找的，其并不适合存储，在存储的时候，考虑用 namedtuple 来代替！
 
+## hash table 的原理
+
+hash table 本质上是一个稀疏的顺序表，每一个表中的单元叫做**桶**，每一个桶中包含有两个引用：reference to the key and reference to the value, 我们通过哈希函数 hash(key) 将 key 和 value 映射到桶里。
+
+![hash table原理](assets/1565876595770.png)
+
+Python 会保证顺序表中，至少有 1/3 的空桶，如果 hash table 变得拥挤，那么 Python 会将开启一块更大的空间，然后将原来的 hash table copy 过去。
+
 ## hashable built-in types
 
 可以 hash 的内置类型有：

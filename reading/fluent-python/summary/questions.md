@@ -27,7 +27,10 @@
 * tuple 是否完全是 immutable，是否任意 tuple 都可以 hash
 * tuple 的拆包（unpacking）和 常见的应用场景
 * namedtuple 和 tuple 的区别，namedtuple 的使用场景
-* `enumerate()` 的作用
+* `*` 的作用
+* 字符串格式化的两种方式，解释 `%r` 和 `{!r}`
+* 解释字符串格式化的三种特殊的格式化标记: `%r`,`%s`,`%a`
+* 解释 `enumerate()` 及其作用
 * `lst.sort()` 和 `sorted()` 的区别
 * inplace 方法的优点和缺点
 * `bisect` 模块的使用场景
@@ -37,6 +40,7 @@
 ## Chapter3. Dictionaries and Sets
 
 * 可以 hashable 的类型
+* hash 表的原理
 * 为什么 list 不能 hash
 * dict 的特点和使用情境
 * dict 的常见构造方法 / 弹出数据 / 随机弹出数据的方法
@@ -129,3 +133,4 @@
 
 * == 和 is 的区别
 * all() 的复杂逻辑实现方法，with 是否可以用于 for / while
+* 如何编写地道的带有 index 的遍历（enumerate）

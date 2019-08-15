@@ -16,11 +16,13 @@ print(ord("a")) # 97
 print(ord('€')) # 8364
 ```
 
-### Byte Sequence
+### Byte Sequence: bytes()
+
+bytes 用于将对象转换成字节表示，其输出只能是 ascii 字符。
 
 ```python
 ss = b"nihao, i'm wansho" # 仅支持 ASCII 字符
-ss = bytes(u"你好", encoding="utf-8")
+ss = bytes(u"你好", encoding="utf-8") # 将 unicode 字符转成字节
 ```
 
 ### 区别

@@ -97,7 +97,7 @@
 * [Self-Examination](life-and-thinking/self-examination/README.md)
   * [追求完美？](life-and-thinking/self-examination/why-perfect.md)
   * [About-Love](life-and-thinking/self-examination/about-love.md)
-  * [生活小贴士](life-and-thinking/self-examination/life-regulation.md)
+  * [生活总结与感悟](life-and-thinking/self-examination/life-regulation.md)
 
 ## About
 

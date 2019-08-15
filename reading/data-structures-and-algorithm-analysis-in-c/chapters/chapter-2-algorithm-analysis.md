@@ -70,3 +70,15 @@ int euclideanAlgorithm(int a, int b){
 }
 ```
 
+## 排列组合
+
+排列：
+$$
+A_{n}^{m} = n * (n-1)*\cdots  * (n-m+1) \\
+A_{6}^{2} =  6 * 5
+$$
+组合：
+$$
+C_{n}^{m} = \frac{n * (n-1)*\cdots  * (n-m+1)}{m!} \\
+C_{6}^{2} = \frac{6 * 5}{2!}
+$$
