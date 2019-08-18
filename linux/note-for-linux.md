@@ -407,8 +407,16 @@ which -a ls # 查找所有的 ls 命令所在地址，可能 ls 不止一个
 
 **find**
 
-```
+```shell
 find -name ./ 文件名 # 在当前目录下查找某个文件
+
+find -type f ./  # 查找当前文件夹下的 一般文件
+
+# 注意 \; 用来告诉 find 命令查询已结束，The \; part is basically telling find "okay, I'm done with the command I wanted to execute".
+# 注意: -exec 并不是管道命令，其是 find 自带的参数，xargs 是管道命令，应该和管道一起使用 
+find ./ -type f -name "*.txt" -exec cp {} /test \;
+find ./ -type f -name "*.txt" -exec ls -l {}  \; # 查看当前文件夹下的 txt 文件的详细信息
+find ./ -type f -name "*.txt" -print | xargs ls -l # 不需要加 \; 因为是管道命令
 ```
 
 **whereis 和 locate**

@@ -22,6 +22,7 @@
 * Sequence 的 Slice 赋值及其妙用
 * `+ *` 和 `+=, *=` 的区别
 * 生成器表达式 和 列表推导式 的区别
+* 生成器表达式的语法
 * tuple 的两个作用
 * tuple 的两种定义方式，有一种特殊的定义方式
 * tuple 是否完全是 immutable，是否任意 tuple 都可以 hash
