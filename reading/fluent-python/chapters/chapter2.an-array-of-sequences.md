@@ -249,6 +249,8 @@ print(id(t1)) # 2318925585576
 ```python
 # 第一种
 city, year, pop, chg, area = ("Tokyo", 2003, 32450, 0.66, 8014)
+# list 也可以 unpacking
+a, b, c = [1, 2, 3]
 
 # 第二种
 traveler_ids = [("USA", "123456"), ("CHINA", "1222")]

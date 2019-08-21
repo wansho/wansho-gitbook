@@ -10,6 +10,19 @@ Inspired by [30-seconds-of-code](https://github.com/30-seconds/30-seconds-of-cod
 
 ## You May not Know
 
+### Python sys
+
+`stdin` is used for all interactive input
+
+```Python
+import sys
+
+for line in sys.stdin:
+	print(line)
+```
+
+
+
 ### PEP
 
 Python Enhancement Proposals. Python 增强提案。
