@@ -122,6 +122,7 @@
 ## Chapter8. Object Reference, Multability, and Recycling
 
 * 解释 dir() 方法
+* 解释 `==` 符号，其被解释成什么方法，其与 is 的区别是什么，两者速度谁更快
 * list 浅拷贝的三种方式
 * 任意 object 如何进行深拷贝和浅拷贝
 * 解释 Python 浅拷贝和深拷贝
@@ -130,8 +131,9 @@
 * 解释 del 的作用和 垃圾回收机制
 * 解释一个 Python 字符串和数值驻留现象，驻留现象带来了什么启发
 
+## Chapter9. 
+
 ## Other Questions
 
-* == 和 is 的区别
 * all() 的复杂逻辑实现方法，with 是否可以用于 for / while
 * 如何编写地道的带有 index 的遍历（enumerate）

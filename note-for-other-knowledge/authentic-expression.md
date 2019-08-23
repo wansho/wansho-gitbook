@@ -29,7 +29,7 @@
 | boilerplate code | 模板代码 |  |
 | Agile | 敏捷 | 敏捷开发 |
 | Recursive | 递归 |  |
-| Pre / Post | 前/后 | 链表前驱/后驱节点 |
+| Prev / Post | 前/后 | 链表前驱/后驱节点 |
 | nested | 嵌套的 | function inside function |
 | nonglobal | 非全局 | nonglobal variable |
 | elapsed | 耗时 |  |
@@ -42,6 +42,9 @@
 | doctor | 博士 | |
 | Explicit | 清晰的，明显的 | |
 | CVE | 公共漏洞与报录    | Common Vulnerabilities and Expousures(漏洞库 ) |
+| Hex | 16 进制 |  |
+| Mandarin | 普通话 | |
+| Freelancing | 自由职业者 | |
 
 ## Authentic Chinese
 

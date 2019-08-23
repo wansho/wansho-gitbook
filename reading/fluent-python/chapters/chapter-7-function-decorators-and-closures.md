@@ -464,7 +464,7 @@ def _(seq):
 
 **Python 用 singledispatch 重载和 Java 重载， if/else 的区别**：
 
-Java 的重载或者 if/else 是由缺陷的，其将更多的注意力放在了一个代码单元中，class 或者是 function，singledispatch 的优点是，其可以支持模块化的扩展，每一个 module 都可以注册一个专门的 function，其屏蔽了实现细节（不管用类还是用if/else），将更多的注意力放在了重载本身。实际上，Python 对于很多语言特性的实现，都进行了更高层次的逻辑抽取，更关注于特性本身特点的实现。
+Java 的重载或者 if/else 是由缺陷的，其将更多的注意力放在了一个**代码单元**中，class 或者是 function，singledispatch 的优点是，其可以**支持模块化的扩展**，每一个 module 都可以注册一个专门的 function，其屏蔽了实现细节（不管用类还是用if/else），将更多的注意力放在了重载本身。实际上，Python 对于很多语言特性的实现，都进行了更高层次的逻辑抽取，更关注于特性本身特点的实现。
 
 ## Stacked Decorators
 

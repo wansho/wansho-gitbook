@@ -154,7 +154,7 @@ origin 是对 remote-repos 的 shortname
 >
 > This is a pointer to the local branch you’re currently on. 
 
-HEAD 是一个指向分支指针的指针
+HEAD 是一个指向当前工作分支的指针
 
 ### master
 

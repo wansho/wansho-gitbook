@@ -45,6 +45,7 @@
 ## Note-for-Python
 
 * [Learning-Pandas](note-for-python/note-for-pandas.md)
+* [Python-Cheetsheet](note-for-python/python-cheetsheet.md)
 
 ## Note-for-Other-Knowledge
 
@@ -78,8 +79,10 @@
 
 ## Network
 
+* [Web-Service](computer-network/web-service.md)
 * [HTTP-Protocol](computer-network/http-protocol.md)
 * [HTML-CSS-DOM](computer-network/html-css-dom.md)
+* [Questions](computer-network/questions.md)
 
 ## Database
 
