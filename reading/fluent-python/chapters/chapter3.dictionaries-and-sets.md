@@ -19,7 +19,7 @@ hash table 本质上是一个稀疏的顺序表，每一个表中的单元叫做
 
 ![hash table原理](assets/1565876595770.png)
 
-Python 会保证顺序表中，至少有 1/3 的空桶，如果 hash table 变得拥挤，那么 Python 会将开启一块更大的空间，然后将原来的 hash table copy 过去。
+Python 会保证顺序表中，**至少有 1/3 的空桶**，如果 hash table 变得拥挤，那么 Python 会将开启一块更大的空间，然后将原来的 hash table copy 过去。
 
 ## hashable built-in types
 
@@ -28,6 +28,33 @@ Python 会保证顺序表中，至少有 1/3 的空桶，如果 hash table 变�
 * atomic immutable types: \(str, bytes, numeric types\)
 * tuple only if all its items are hashable
 * user-defined types
+* 如果一个对象实现了 `__eq__()` 方法，那么只有类的内部属性都是私有的，才能 hashable
+
+Demo:
+
+```Python
+class Demo:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __eq__(self, other):
+        return self.names == other
+
+
+demo = Demo("wansho", 25)
+print(hash(demo))
+
+"""
+Traceback (most recent call last):
+  File "D:/Github-Code/test/hashable.py", line 13, in <module>
+    print(hash(demo))
+TypeError: unhashable type: 'Demo'
+"""
+```
+
+
 
 注意，并不是所有的 immutable types 都是 hashable 的，如果一个 tuple 中有 mutable 的对象，那么这个 tuple 就是不可 hash 的。
 

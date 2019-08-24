@@ -131,7 +131,18 @@
 * 解释 del 的作用和 垃圾回收机制
 * 解释一个 Python 字符串和数值驻留现象，驻留现象带来了什么启发
 
-## Chapter9. 
+## Chapter9. A Pythonic Object
+
+* 如何实现一个 Pythonic 风格的对象
+* Python 如何实现一个对象内部的迭代
+* Python 如何定义类的静态方法，staticmethod 和 classmethod 有什么区别
+* Python 自定义类型如何实现 hashable
+* Python 如何实现成员变量的私有，其原理是什么，能否实现真正的私有，能否进行写操作
+* Python 成员变量私有化是否能实现真正的私有化
+* 如何查看 Python 类的成员变量
+* Python 如何实现成员变量的 protect，这种方法是否是官方规定的
+* 单下划线在 Python  中一个官方规定的作用是什么
+* Python 是如何存储成员变量的，有何缺陷
 
 ## Other Questions
 

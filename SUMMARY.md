@@ -18,6 +18,7 @@
     * [Chapter6-Design-Patterns-with-Functions](reading/fluent-python/chapters/chapter-6-design-patterns-with-first-class-functions.md)
     * [Chapter7-Function-Decorators-and-Closures](reading/fluent-python/chapters/chapter-7-function-decorators-and-closures.md)
     * [Chapter8-Object-Reference-Mutability-and-Recycling](reading/fluent-python/chapters/chapter-8-object-reference-mutability-recycling.md)
+    * [Chapter9-A-Pythonic-Object](reading/fluent-python/chapters/chapter-9-a-pythonic-object.md)
   * [Summary](reading/fluent-python/summary/README.md)
     * [Questions](reading/fluent-python/summary/questions.md)
     * [Python-Code-Optimization](reading/fluent-python/summary/python-code-optimization.md)
