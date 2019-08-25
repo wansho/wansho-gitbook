@@ -6,7 +6,7 @@
 
 ## Abstract
 
-* WebService == HTTP 协议 + XML
+* WebService == HTTP 协议（负责传输数据） + XML （数据）
 
   Rest == HTTP 协议 + json
 

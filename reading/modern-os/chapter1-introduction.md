@@ -1,5 +1,11 @@
 # Introduction
 
+## 如何学习操作系统
+
+* 结合生活，结合实践
+* 结合 Linux / Windows 系统
+* 学操作系统，可以沿着操作系统提供的系统调用这条线来学习
+
 ## 1.7 Operating System Structure
 
 ### MicroKernels
