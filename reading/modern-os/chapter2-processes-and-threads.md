@@ -157,7 +157,7 @@ new a thread for 自动格式化用户刚输入的文本
 
 ## 进程间通信：InterProcess Communication (IPC)
 
-IPC 方式：信号、管道、消息队列、共享存储
+IPC 方式：信号量、管道、消息队列、共享存储
 
 **进程间通信包括进程间的同步和互斥**：
 

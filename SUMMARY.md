@@ -19,6 +19,8 @@
     * [Chapter7-Function-Decorators-and-Closures](reading/fluent-python/chapters/chapter-7-function-decorators-and-closures.md)
     * [Chapter8-Object-Reference-Mutability-and-Recycling](reading/fluent-python/chapters/chapter-8-object-reference-mutability-recycling.md)
     * [Chapter9-A-Pythonic-Object](reading/fluent-python/chapters/chapter-9-a-pythonic-object.md)
+    * [Chapter10-Sequencec-Hacking-Hashing-and-Slicing](reading/fluent-python/chapters/chapter-10-sequence-hacking-hashing-slicing.md)
+    * [Chapter11-Interfaces-from-Protocols-to-abcs](reading/fluent-python/chapters/chapter-11-interfaces-from-protocols-to-abcs.md)
   * [Summary](reading/fluent-python/summary/README.md)
     * [Questions](reading/fluent-python/summary/questions.md)
     * [Python-Code-Optimization](reading/fluent-python/summary/python-code-optimization.md)

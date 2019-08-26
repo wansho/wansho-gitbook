@@ -45,6 +45,7 @@
 | Hex | 16 进制 |  |
 | Mandarin | 普通话 | |
 | Freelancing | 自由职业者 | |
+| stride | 步频 | step 常用于 Python 的 slice [start: end: stride] |
 
 ## Authentic Chinese
 
