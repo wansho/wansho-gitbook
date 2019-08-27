@@ -2,8 +2,6 @@
 
 My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/>)
 
-- [Introduction](README.md)
-
 # Table of contents
 
 - [Introduction](README.md)
@@ -94,7 +92,9 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/>)
 
 ## Database
 
-- [Mysql 101](database/mysql-tutorial.md)
+- [Mysql 101](database/mysql-101.md)
+- [Mysql 102](database/mysql-102.md)
+- [Questions](database/questions.md)
 
 ## Linux
 

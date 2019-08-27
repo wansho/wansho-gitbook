@@ -108,7 +108,7 @@ drop table table_name;
 
 **Demo**
 
-```text
+```mysql
 # 把旧表的所有数据复制到新表
 insert into table1 select * from table2
 # 复制旧表的部分数据到新表
@@ -120,6 +120,32 @@ CREATE TABLE 新表 LIKE 旧表 ;
 CREATE TABLE 新表 SELECT * FROM 旧表
 # 复制旧表的数据到新表(假设两个表结构不一样)
 INSERT INTO 新表(字段1,字段2,.......) SELECT 字段1,字段2,...... FROM 旧表
+```
+
+### 导出 MySQL 查询到的数据
+
+```shell
+mysql -uroot -pws6226067 -e "select weibo_content from spider_db.spider_realtime_weibo" > /home/admin/test/weibo_content.txt
+```
+
+### 表添加/删除/修改字段
+
+```mysql
+-- 增加字段
+alter table senti_weibo_realtime_weibo add seged_words varchar(4096) COLLATE utf8mb4_unicode_ci DEFAULT "";
+alter table senti_weibo_keyword add sentiment varchar(32) DEFAULT "";
+
+-- 修改字段
+alter table senti_weibo_realtime_weibo modify last_modify_time timestamp not null default current_timestamp on update current_timestamp;
+
+-- 删除字段
+ALTER TABLE mytable DROP 字段名;
+```
+
+### 修改表的编码
+
+```mysql
+alter table spider_realtime_weibo character set utf8 COLLATE utf8_general_ci;
 ```
 
 ## 数据库-表数据-增删改查
@@ -172,6 +198,10 @@ select mailbox_id from co_user where mailbox_id not in (select mailbox_id from c
 * 按字段进行排序
 select icafe_id from feedbackorigindata where product_id = 1 and subproduct_id = 'all' and space = 'http://cp01-sys-rpm66.cp01.baidu.com:8235/getFeedback.php' order by icafe_id desc ;
 默认 对 结果 升序排序，加了 **desc** 后，则改成降序排序。
+
+* rand() 函数随机选择条数
+需求：从数据库中读取 1000 条数据，要求这 1000 条数据是随机选择的，
+SELECT * FROM tablename ORDER BY RAND() LIMIT num；
 
 * limit 关键字
 Limit子句可以被用于强制 SELECT 语句返回指定的记录数。Limit接受一个或两个数字参数。参数必须是一个整数常量。如果给定两个参数，第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目。
@@ -435,6 +465,24 @@ select name from student_table where sex = '女' and age > 18;
 # 适用于将多表查询的结果整合
 ```
 
+## show 命令
+
+```mysql
+-- 显示 MySQL 的当前状态
+show status;
+
+-- 显示某张表的所有字段
+show columns from table;
+
+-- 显示授予某个用户的权限
+show grants user_name;
+show grants; -- 所有用户
+
+-- 查看错误和警报
+show errors;
+show warnings;
+```
+
 ## 连接 join
 
 连接 涉及到了 多表操作，也可以是 pandas 的多个 DataFrame 的操作。 连接 是从两个关系的 **笛卡尔积** 中选取 **属性间满足一定条件** 的元组。
@@ -454,7 +502,7 @@ select name from student_table where sex = '女' and age > 18;
 
 ### Introduction
 
-视图 View 对于用户来说，和正常的表没有区别，视图的数据本质上是对数据库中表数据的 select。
+视图 View 对于用户来说，**和正常的表没有区别**，视图的数据本质上是对数据库中表数据的 select。
 
 新建一个视图，对于用户来说，其等价于新建了一张表，用户可以对这张表进行增删改查，其增删改查的操作最后都会映射到其关联的表中。这张视图表的生命周期和其他正常的表一样，即使重启数据库，视图仍然存在。
 
@@ -470,7 +518,7 @@ select name from student_table where sex = '女' and age > 18;
 
 ### 视图增删改查
 
-```text
+```mysql
 create view view_test as
 select * from -- 标准的 sql 查询语言
 
