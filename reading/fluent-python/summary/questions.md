@@ -144,6 +144,17 @@
 * 单下划线在 Python  中一个官方规定的作用是什么
 * Python 是如何存储成员变量的，有何缺陷
 
+## Chapter11. Interfaces: From Protocols to ABCs
+
+* Python 有哪两种接口（协议）
+* 解释一下魔法方法定义的协议
+* 为什么 isinstance 和 issubclass 两个方法比较鸡肋，是什么原因导致的
+* Monkey-Patching 是什么，有什么作用
+* 自定义的 sequence 想要 shuffle，需要实现哪一个魔法方法
+* Python 内置的 ABCs 大多位于哪两个 module
+* 如何定义自己的 ABCs
+* Python 是强类型语言还是弱类型语言
+
 ## Other Questions
 
 * all() 的复杂逻辑实现方法，with 是否可以用于 for / while
