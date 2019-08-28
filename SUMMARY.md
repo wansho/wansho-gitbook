@@ -5,8 +5,9 @@
 ## Reading
 
 * [Modern-Operation-System](reading/modern-os/README.md)
-  * [Chapter1-Introduction](reading/modern-os/chapter1-introduction.md)
-  * [Chapter2-Processes-and-Threads](reading/modern-os/chapter2-processes-and-threads.md)
+  * [Chapter1-Introduction](reading/modern-os/chapter-1-introduction.md)
+  * [Chapter2-Processes-and-Threads](reading/modern-os/chapter-2-processes-and-threads.md)
+  * [Chapter7-Virtualization-and-Cloud](reading/modern-os/chapter-7-virtualization-and-cloud.md)
   * [Questions](reading/modern-os/questions.md)
 * [Fluent-Python](reading/fluent-python/README.md)
   * [Chapters](reading/fluent-python/chapters/README.md)
@@ -30,6 +31,7 @@
     * [Chapter1. Introduction](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-1-introduction.md)
     * [Chapter2. Algorithm Analysis](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-2-algorithm-analysis.md)
     * [Chapter3. List-Stack-Queue](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-3-list-stack-queue.md)
+    * [Chapter4. Tree](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-4-tree.md)
     * [Chapter6. Heap](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-6-heap.md)
     * [Chapter7. Sorting](reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-7-sorting.md)
   * [Summary](reading/data-structures-and-algorithm-analysis-in-c/summary/README.md)
