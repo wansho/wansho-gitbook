@@ -103,7 +103,32 @@ Objective Key Result
 
 我的理解：OKR = O + KPI，OKR 给 KPI 加了一个更高层次的使命感和意义。
 
+## 云计算 / 虚拟化
 
+### IaaS，PaaS，SaaS
+
+|      | 全称                        | Demo                                  |
+| ---- | --------------------------- | ------------------------------------- |
+| IaaS | Infrastructure as a Service | 阿里云申请的虚拟机（实体）            |
+| PaaS | Platform as a Service       | Google提供的 App 运行环境，Aws Lambda |
+| SaaS | Software as a Service       | 手机 App                              |
+
+从上到下，用户需要关注的自主权越来越小，需要关注的细节越来越少。
+
+### 云计算的分类
+
+公有云，私有云，混合云
+
+### 学习资料
+
+* [Modern Operation System Chapter7: Virtualization and Cloud]()
+* [Docker]()
+
+先搞定上面两个知识
+
+### OpenStack
+
+OpenStack 是用来创建公有云和私有云的开源云操作系统。OpenStack is a cloud operating system that controls large pools of compute, storage, and networking resources throughout a datacenter
 
 ## Data Engineering Cookbook
 
