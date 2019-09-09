@@ -43,3 +43,22 @@ Python 很难进行打包部署
 | <<     | 左移（地位补0）              | `3 << 2 == 12` |
 | `>>`   | 右移                         | `15 >> 2 == 3` |
 
+## Python 与 C 的语法差异
+
+### 数值型 + 1
+
+Python 不能通过 `++a` 实现自增。
+
+```python
+# C
+int a = 1;
+queue[++a] # == queue[2]
+prinf("%d", a) # a == 2
+
+
+# Python
+a = 1
+queue[++a] # == queue[2]
+print(a) # 1
+```
+

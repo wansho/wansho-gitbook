@@ -51,6 +51,7 @@
 
 * [Learning-Pandas](note-for-python/note-for-pandas.md)
 * [Python-Cheetsheet](note-for-python/python-cheetsheet.md)
+* [Algorithm-Data-Structure-with-Python](note-for-python/python-algorithm-data-structure.md)
 
 ## Note-for-Other-Knowledge
 
@@ -91,8 +92,9 @@
 
 ## Database
 
-* [Mysql 101](database/mysql-101.md)
-* [Mysql 102](database/mysql-102.md)
+* [MySQL-101](database/mysql-101.md)
+* [MySQL-102](database/mysql-102.md)
+* [Mysql-Leetcode](database/mysql-leetcode.md)
 * [Questions](database/questions.md)
 
 ## Linux

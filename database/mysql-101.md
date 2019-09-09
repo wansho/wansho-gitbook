@@ -203,11 +203,12 @@ select icafe_id from feedbackorigindata where product_id = 1 and subproduct_id =
 需求：从数据库中读取 1000 条数据，要求这 1000 条数据是随机选择的，
 SELECT * FROM tablename ORDER BY RAND() LIMIT num；
 
-* limit 关键字
+* limit offset 关键字
 Limit子句可以被用于强制 SELECT 语句返回指定的记录数。Limit接受一个或两个数字参数。参数必须是一个整数常量。如果给定两个参数，第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目。
 
 SELECT * FROM table LIMIT 5; //检索前 5 个记录行
 SELECT * FROM table LIMIT 5,10; //检索记录行6-15 从第六行开始检索
+SELECT * FROM table LIMIT 10 offset 5; //检索记录行6-15 从第六行开始检索，跳过前5 行
 
 * group by， having
 group by 将结果按照指定的列进行分组，该属性列值相等的元组为一个组。通常会在每组中运行聚集函数进行计算。
@@ -491,12 +492,42 @@ show warnings;
 
 * 笛卡尔积
 * 各种连接 等值连接 和 自然连接
-* 外连接不同于等值连接，等值连接去去除产生 NAN 的元组，外连接会保留
-* 没有内连接
+* 外连接不同于等值连接，等值连接去除产生 NAN 的元组，外连接会保留
 * 外连接一共有三种：
   1. 外连接
   2. 左外连接
   3. 右外连接
+
+语法：
+
+```sql
+where table_A left join table_B on table_A.column = table_B.column 
+```
+
+### join (inner join)
+
+join 等价于 inner join
+
+![内连接](D:\Code\wansho-gitbook\database\assets\1567998218103.png)
+
+### left / right join
+
+left / right join 通常会产生 NULL 值
+
+![左外链接](D:\Code\wansho-gitbook\database\assets\1567998297852.png)
+
+![右外连接](D:\Code\wansho-gitbook\database\assets\1567998320178.png)
+
+```sql
+select 
+    P.FirstName, P.LastName, A.City, A.State
+from 
+    Person as P left join 
+    Address as A
+on
+    P.PersonID = A.PersonID
+;
+```
 
 ## 视图 View
 
