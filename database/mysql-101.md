@@ -508,15 +508,15 @@ where table_A left join table_B on table_A.column = table_B.column
 
 join 等价于 inner join
 
-![内连接](D:\Code\wansho-gitbook\database\assets\1567998218103.png)
+![内连接](assets\1567998218103.png)
 
 ### left / right join
 
 left / right join 通常会产生 NULL 值
 
-![左外链接](D:\Code\wansho-gitbook\database\assets\1567998297852.png)
+![左外链接](assets\1567998297852.png)
 
-![右外连接](D:\Code\wansho-gitbook\database\assets\1567998320178.png)
+![右外连接](assets\1567998320178.png)
 
 ```sql
 select 

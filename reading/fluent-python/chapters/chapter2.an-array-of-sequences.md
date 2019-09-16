@@ -16,7 +16,7 @@ Python 中的 Sequences 按照不同 traits\(特征\)，可以分成很多类
 
 * Flat Sequences
 
-  Demo: `str, bytes, bytearray, memoryview, array,array`
+  Demo: `str, bytes, bytearray, memoryview, array.array`
 
   优点：节约内存，速度快，便于使用
 
@@ -63,7 +63,7 @@ Python 中的 Sequences 按照不同 traits\(特征\)，可以分成很多类
 
 ### Why slices and range exclude the last item
 
-主要原因是，sequence 都是从 0 开始索引的，所以不包含最后一个 item，有几个好处：
+主要原因是(排除历史原因)，sequence 都是从 0 开始索引的，所以不包含最后一个 item，有几个好处：
 
 * 能方便地知道 range 生成的 list 和 slice 截取的**长度**
 
@@ -487,9 +487,9 @@ bisect.insort(sorted_list, 4) # 往 sorted_list 插入一个数字，并保持�
 
 [Tutorial](https://docs.python.org/2/library/array.html>)
 
-array 是设计用来专门处理数字的 sequence，其在处理数值型数据的效率，要远远高于 list，其兼容 mutable sequence 的一切特性，还支持快速加载和存储，但并不是混合型类型（mixed-type）的 sequence。array 之所以效率高，是因为其**底层就是 C 的数组**。
+array 是设计用来专门处理**数值类型**的的 sequence，其在处理数值型数据的效率，要远远高于 list，其兼容 mutable sequence 的一切特性，还支持快速加载和存储，但并不是混合型类型（mixed-type）的 sequence。array 之所以效率高，是因为其**底层就是 C 的数组**。
 
-所以，当我们需要进行数值运算的是否，我们应该使用 array.array。Demo:
+所以，当我们需要进行数值运算的时候，我们应该使用 array.array。Demo:
 
 ```python
 from array import array
