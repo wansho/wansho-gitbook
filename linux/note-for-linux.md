@@ -727,7 +727,7 @@ lsof -i:port # 查看指定端口被哪个进程占用
 
 ### wget, curl
 
-```
+```shell
 curl 域名 # 在终端中打印 HTML 源码，注意这里只是域名，不是完整的URL链接
 curl -O http://man.linuxde.net/text.iso # O 大写，下载文件
 curl -o tmp.iso http://man.linuxde.net/text.iso # 下载文件并重命名
@@ -744,6 +744,11 @@ wget -r url
 wget url
 curl -o rename url
 ```
+
+wget 和 curl 的区别：
+
+- `wget` is a tool to download files from servers。wget 用来从服务器下载文件
+- `curl` is a tool that let's you exchange requests/responses with a server。curl 用来和服务器进行交互，其更像是一个类似浏览器的客户端。curl 支持多种应用层协议。
 
 ## 运维相关
 
