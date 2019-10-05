@@ -46,10 +46,11 @@
 * 为什么 list 不能 hash
 * dict 的特点和使用情境
 * dict 的常见构造方法 / 弹出数据 / 随机弹出数据的方法
+* 如何创建带有默认 value 的 dict 
 * dict 的 `update()` 方法具体步骤
 * dict 如何对 key-value 同时遍历
 * dict 查找时，处理 missing key 的 几种方式，哪两种方式更高效？原理是什么
-* dict 的变体：OrderDict / Counter 的特性
+* dict 的变体：OrderDict / Counter 的特性，如何对字符串中的字符进行统计
 * Set 有哪些特性
 * Set 的比较运算符/算数运算符/ inplace operator
 * Set 和 Dict 的区别在哪里，速度上有差距吗，差在哪里
@@ -59,7 +60,7 @@
 
 * byte，unicode 的定义，Unicode sequence 和 byte sequence 的区别是什么
 * byte 和 Unicode 如何互相转换
-* Python2/Python3 默认的字符 sequence 类型
+* Python2/Python3 默认的字符串类型，Python 2如何定义 Unicode 字符串
 * Python3 如何定义 Byte sequence
 * Python 默认的编码器
 * Python 如何判断文本的编码格式，如何对文本进行 byte 字节流的读写

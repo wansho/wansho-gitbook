@@ -235,7 +235,7 @@ For example, pd_data = pd.DataFrame([(1,2,3),(4,5,6)], columns=["a"， "b", "c"]
 
 #### Class instances
 
-If a class defined a **`__call__`* method, then its instances may be invoked as functions. 
+If a class defined a *`__call__`* method, then its instances may be invoked as functions. 
 
 也就是说，如果一个 class 实现了 `__call__()` 方法，那么其对象就可以像方法一样被调用，参考 [User-Defined Callable Types](#User-Defined Callable Types)
 

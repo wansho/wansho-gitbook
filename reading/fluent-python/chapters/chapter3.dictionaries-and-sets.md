@@ -15,7 +15,7 @@ hash(ss)
 
 ## hash table 的原理
 
-hash table 本质上是一个稀疏的顺序表，每一个表中的单元叫做**桶**，每一个桶中包含有两个引用：reference to the key and reference to the value, 我们通过哈希函数 hash(key) 将 key 和 value 映射到桶里。
+hash table 本质上是一个**稀疏的顺序表**，每一个表中的单元叫做**桶**，每一个桶中包含有两个引用：reference to the key and reference to the value, 我们通过哈希函数 hash(key) 将 key 和 value 映射到桶里。
 
 ![hash table原理](assets/1565876595770.png)
 
@@ -78,7 +78,7 @@ my_dict = dict([("name", "wansho"), ("age", 25)])
 my_dict = dict({"name": "wansho", "age": 25})
 
 # values 不确定的情况下，根据 keys 值创建一个 dict
-dt = dict.fromkeys([1,2,3], defalut_value)
+dt = dict.fromkeys([1,2,3], defalut_value) # default_value 就是一个值
 # {1: defalut_value, 2: defalut_vlue, 3: defalut_value}
 ```
 
