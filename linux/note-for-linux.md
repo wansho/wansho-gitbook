@@ -89,11 +89,14 @@ rm /home/work/odp/log/* # 删除 log 目录下所有文件
 ls -lF lin[a-z]x # 查看所有 lin[]x 文件的详情 
 ```
 
-### cat 
+### cat / tac
 
-```
+```shell
 cat -n file # 打印出行号 -n number
 cat -b file # 只给有文本的行加上行号, -b: --number-nonblank
+
+tac # 从后往前看日志
+tac log.txt | more
 ```
 
 ### more
@@ -184,8 +187,13 @@ global search regular expression(RE) and print out the line
 -o, --only-matching       show only the part of a line matching PATTERN
 -v, --invert-match        select non-matching lines
 
+
+
 Demos:
 grep match_pattern file # 输出 file 中匹配到 pattern 的行
+
+# grep 命令从后往前查找
+tac log.txt | grep "regx"
 ```
 
 ### awk 命令

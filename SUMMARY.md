@@ -116,6 +116,7 @@
   * [追求完美？](life-and-thinking/self-examination/why-perfect.md)
   * [About-Love](life-and-thinking/self-examination/about-love.md)
   * [生活总结与感悟](life-and-thinking/self-examination/life-regulation.md)
+  * [关于找工作](life-and-thinking/self-examination/for-a-job.md)
 
 ## About
 
