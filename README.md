@@ -1,6 +1,6 @@
 # Introduction
 
-My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/>)
+My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
 
 ## Table of contents
 

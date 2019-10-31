@@ -467,9 +467,10 @@ ln -s file file_link # 创建符号链接，生成一个链接类型的文件，
 -m --create-home             create the user's home directory
 -c --comment COMMENT         GECOS field of the new account
 -g --gid GROUP               name or ID of the primary group of the new account
+-s --shell 				login shell of the new account
 
 Demos:
-useradd -m -c "test user" -u 8088 -p xxx wansho
+useradd -m -c "for work" -u 8888 -p ws6226067 -s /bin/bash work
 
 # 注意：
 # 1. 默认情况下，useradd 不会创建用户目录 
