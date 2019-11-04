@@ -36,7 +36,7 @@
 | generic | 泛型 | |
 | dispatch | 调度 | |
 | overload | 重载 | |
-| master |  | |
+| master | 研究生 | |
 | undergraduate / bachelor degree | 本科生 / 学士学历 | |
 | postgraduate / master degree | 研究生 / 硕士学历 | |
 | doctor | 博士 | |

@@ -693,6 +693,10 @@ git config --global http.proxy http://127.0.0.1:2136
 git config --global https.proxy https://127.0.0.1:2136
 注意：此模式只适用于 http 协议，不适用于 SSH 协议
 
+# 取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
 # windows git 下的 vim 无法粘贴
 快捷键：shift + insert
 ```
