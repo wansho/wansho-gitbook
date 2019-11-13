@@ -669,34 +669,49 @@ git push origin --delete serverfix
 
 ## Fixed Problems
 
+### 中文乱码
+
 ```shell
 # 中文乱码
 git config --global core.quotepath false
 git status -s
+```
 
-# hexo deploy 时报 ` "ssh: connect to host github.com port 22: Connection timed out"错误 `的错误
-# [解决方法](https://blog.csdn.net/vosang/article/details/50499300)
+### 生成公钥的命令
 
+```shell
 # 生成公钥的命令
 ssh-keygen
 # 生成的文件地址：/c/Users/wanshuo/.ssh/id_rsa 
+```
 
+### Git 不追踪空文件夹
+
+```shell
 # git 不追踪空的文件夹
 在空文件夹下加入 .gitignore 文件，内容为
 *
 !.gitignore
+```
 
+### 设置代理
+
+```shell
 # git clone 速度慢到几 KB
 1. 打开 lantern，使用代理服务器，把端口调整到 lantern 的监听端口
 2. 设置 Git 的代理：
-git config --global http.proxy http://127.0.0.1:2136
+git config --global http.proxy http://127.0.0.1:2136 # 2136 就是翻墙软件代理的端口号
 git config --global https.proxy https://127.0.0.1:2136
 注意：此模式只适用于 http 协议，不适用于 SSH 协议
 
 # 取消代理
 git config --global --unset http.proxy
 git config --global --unset https.proxy
+```
 
+### Windows git 的 vim 无法粘贴
+
+```shell
 # windows git 下的 vim 无法粘贴
 快捷键：shift + insert
 ```
