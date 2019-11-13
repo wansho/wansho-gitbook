@@ -46,82 +46,69 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
   - [others](reading/people/others.md)
 - [Books](reading/books/README.md)
   - [Bookshelf](reading/books/bookshelf.md)
+  - [少有人走的路](reading/books/the-road-less-traveled.md)
+  - [Time-as-a-Friend](reading/books/time-as-a-friend.md)
+  - [Reborn](reading/books/reborn.md)
+- [Others](reading/others/README.md)
+  - [古诗词](reading/others/poetry.md)
+  - [电影](reading/others/movies.md)
 
-## Github-Projects
+## Computer Science Notebook
 
-- [bilibili-helper-chrome-extension](github-projects/bilibili-helper-chrome-extension.md)
-- [senti-weibo](github-projects/senti-weibo.md)
-- [NUAA-CS-Kaoyan](github-projects/awesome-nuaa-cs-kaoyan.md)
+- [Data-Structure-and-Algorithm](computer-science-notebook/algorithms/README.md)
+  - [ArrayList-vs-LinkList](computer-science-notebook/algorithms/arraylist-vs-linklist.md)
+  - [Summary](computer-science-notebook/algorithms/summary.md)
+- [Database](computer-science-notebook/database/README.md)
+  - [MySQL-101](computer-science-notebook/database/mysql-101.md)
+  - [MySQL-102](computer-science-notebook/database/mysql-102.md)
+  - [MySQL-103](computer-science-notebook/database/mysql-103.md)
+  - [Mysql-Leetcode](computer-science-notebook/database/mysql-leetcode.md)
+  - [Questions](computer-science-notebook/database/questions.md)
+- [Network & Web](computer-science-notebook/computer-network/README.md)
+  - [Layer-Protocol](computer-science-notebook/computer-network/layer-protocol.md)
+  - [Web-Service](computer-science-notebook/computer-network/web-service.md)
+  - [HTTP-Protocol](computer-science-notebook/computer-network/http-protocol.md)
+  - [HTML-CSS-DOM](computer-science-notebook/computer-network/html-css-dom.md)
+  - [Questions](computer-science-notebook/computer-network/questions.md)
+- [Note-for-Python](computer-science-notebook/note-for-python/README.md)
+  - [Learning-Pandas](computer-science-notebook/note-for-python/note-for-pandas.md)
+  - [Python-Cheetsheet](computer-science-notebook/note-for-python/python-cheetsheet.md)
+  - [Algorithm-Data-Structure-with-Python](computer-science-notebook/note-for-python/python-algorithm-data-structure.md)
+- [NLP](computer-science-notebook/nlp/README.md)
+  - [NLP-Learning](computer-science-notebook/nlp/nlp-learning.md)
+  - [Machine-Learning](computer-science-notebook/nlp/machine-learning.md)
+- [Linux](computer-science-notebook/linux/README.md)
+  - [Linux-Note](computer-science-notebook/linux/note-for-linux.md)
 
-## Note-for-Python
+## Other-Knowledge-Notebook
 
-- [Learning-Pandas](note-for-python/note-for-pandas.md)
-- [Python-Cheetsheet](note-for-python/python-cheetsheet.md)
-- [Algorithm-Data-Structure-with-Python](note-for-python/python-algorithm-data-structure.md)
-
-## Note-for-Other-Knowledge
-
-- [NLP](note-for-other-knowledge/nlp/README.md)
-  - [NLP-Learning](note-for-other-knowledge/nlp/nlp-learning.md)
-  - [Machine-Learning](note-for-other-knowledge/nlp/machine-learning.md)
-- [Column-Learning](note-for-other-knowledge/column-learning/README.md)
-  - [架构课-许式伟](note-for-other-knowledge/column-learning/xu-shi-wei-architecture.md)
-  - [架构课-Questions](note-for-other-knowledge/column-learning/questions.md)
-- [Tools](note-for-other-knowledge/tools/README.md)
-  - [优雅锋利的 GitBook](note-for-other-knowledge/tools/gitbook.md)
-  - [Git Pro](note-for-other-knowledge/tools/git.md)
-  - [Docker](note-for-other-knowledge/tools/docker.md)
-  - [Redis](note-for-other-knowledge/tools/redis.md)
-- [Knowledge-from-Others](note-for-other-knowledge/knowledge-from-others/README.md)
-  - [Peter-Novig](note-for-other-knowledge/knowledge-from-others/peter-norvig.md)
-  - [Videos-and-Youtube](note-for-other-knowledge/knowledge-from-others/videos-and-youtube.md)
-  - [Knowledge-from-Videos](note-for-other-knowledge/knowledge-from-others/knowledge-from-videos.md)
-- [To-Others](note-for-other-knowledge/to-others/README.md)
-  - [致万 * 鑫](note-for-other-knowledge/to-others/to-my-brother.md)
-  - [关于考试](note-for-other-knowledge/to-others/summary-for-examination-oriented-education.md)
-  - [How-to-Study](note-for-other-knowledge/to-others/how-to-study.md)
-- [Keep-Learning](note-for-other-knowledge/keep-learning.md)
-- [Authentic-Expression](note-for-other-knowledge/authentic-expression.md)
-
-## Algorithms
-
-- [Summary](algorithms/summary/README.md)
-  - [ArrayList-vs-LinkList](algorithms/summary/arraylist-vs-linklist.md)
-
-## Network
-
-- [Layer-Protocol](computer-network/layer-protocol.md)
-- [Web-Service](computer-network/web-service.md)
-- [HTTP-Protocol](computer-network/http-protocol.md)
-- [HTML-CSS-DOM](computer-network/html-css-dom.md)
-- [Questions](computer-network/questions.md)
-
-## Database
-
-- [MySQL-101](database/mysql-101.md)
-- [MySQL-102](database/mysql-102.md)
-- [MySQL-103](database/mysql-103.md)
-- [Mysql-Leetcode](database/mysql-leetcode.md)
-- [Questions](database/questions.md)
-
-## Linux
-
-- [Linux-Note](linux/note-for-linux.md)
+- [Column-Learning](other-knowledge-notebook/column-learning/README.md)
+  - [架构课-许式伟](other-knowledge-notebook/column-learning/xu-shi-wei-architecture.md)
+  - [架构课-Questions](other-knowledge-notebook/column-learning/questions.md)
+- [Tools](other-knowledge-notebook/tools/README.md)
+  - [优雅锋利的 GitBook](other-knowledge-notebook/tools/gitbook.md)
+  - [Git Pro](other-knowledge-notebook/tools/git.md)
+  - [Docker](other-knowledge-notebook/tools/docker.md)
+  - [Redis](other-knowledge-notebook/tools/redis.md)
+- [Knowledge-from-Others](other-knowledge-notebook/knowledge-from-others/README.md)
+  - [Videos-and-Youtube](other-knowledge-notebook/knowledge-from-others/videos-and-youtube.md)
+  - [Knowledge-from-Videos](other-knowledge-notebook/knowledge-from-others/knowledge-from-videos.md)
+  - [Knowledge-from-Zhihu](other-knowledge-notebook/knowledge-from-others/knowledge-from-zhihu.md)
+- [Keep-Learning](other-knowledge-notebook/keep-learning/README.md)
+  - [Authentic-Expression](other-knowledge-notebook/keep-learning/authentic-expression.md)
+  - [Authentic-Expression](other-knowledge-notebook/keep-learning/keep-learning.md)
 
 ## Life-and-Thinking
 
-- [Reading](life-and-thinking/reading/README.md)
-  - [唐诗宋词](life-and-thinking/reading/poetry.md)
-  - [少有人走的路](life-and-thinking/reading/the-road-less-traveled.md)
-  - [Time-as-a-Friend](life-and-thinking/reading/time-as-a-friend.md)
-  - [Reborn](life-and-thinking/reading/reborn.md)
-  - [Movies](life-and-thinking/reading/movies.md)
-  - [碎片时间学习](life-and-thinking/reading/fragmented-time.md)
 - [Self-Examination](life-and-thinking/self-examination/README.md)
   - [追求完美？](life-and-thinking/self-examination/why-perfect.md)
   - [About-Love](life-and-thinking/self-examination/about-love.md)
   - [生活总结与感悟](life-and-thinking/self-examination/life-regulation.md)
   - [关于找工作](life-and-thinking/self-examination/for-a-job.md)
+- [To-Others](life-and-thinking/to-others/README.md)
+  - [致万 * 鑫](life-and-thinking/to-others/to-my-brother.md)
+  - [关于考试](life-and-thinking/to-others/summary-for-examination-oriented-education.md)
+  - [How-to-Study](life-and-thinking/to-others/how-to-study.md)
 
 ## About
 

@@ -1,2 +1,0 @@
-# senti-weibo
-

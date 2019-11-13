@@ -1,2 +1,0 @@
-# bilibili-helper-chrome-extension
-
