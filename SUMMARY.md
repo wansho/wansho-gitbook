@@ -92,7 +92,8 @@
   * [Knowledge-from-Zhihu](other-knowledge-notebook/knowledge-from-others/knowledge-from-zhihu.md)
 * [Keep-Learning](other-knowledge-notebook/keep-learning/README.md)
   * [Authentic-Expression](other-knowledge-notebook/keep-learning/authentic-expression.md)
-  * [Authentic-Expression](other-knowledge-notebook/keep-learning/keep-learning.md)
+  * [Keep-Learning](other-knowledge-notebook/keep-learning/keep-learning.md)
+  * [小白如何快速制作一个视频](other-knowledge-notebook/keep-learning/make-video.md)
 
 ## Life-and-Thinking
 
