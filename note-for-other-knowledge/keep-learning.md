@@ -73,6 +73,20 @@ Demo: [Streaming 101](<https://www.oreilly.com/ideas/the-world-beyond-batch-stre
 
 REST 是一套用于构建 Web Service 的规范。
 
+###开源许可证
+
+![img](http://www.ruanyifeng.com/blogimg/asset/201105/bg2011050101.png)
+
+常用的开源许可证有两个：
+
+1. 允许做任何事情，包括闭源：MIT
+
+   The [MIT License](https://choosealicense.com/licenses/mit/) is short and to the point. It lets people do almost anything they want with your project, including to make and distribute closed source versions. 
+
+2. 要求使用后开源：GUN GPLv3
+
+   The [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/) also lets people do almost anything they want with your project, *except* to distribute closed source versions. 
+
 ## 业务名词
 
 ### 去 IOE

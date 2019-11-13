@@ -2,7 +2,7 @@
 
 My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
 
-## Table of contents
+# Table of contents
 
 - [Introduction](README.md)
 
@@ -44,6 +44,8 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
 - [People](reading/people/README.md)
   - [Pioneers-in-Computer-Science](reading/people/pioneer.md)
   - [others](reading/people/others.md)
+- [Books](reading/books/README.md)
+  - [Bookshelf](reading/books/bookshelf.md)
 
 ## Github-Projects
 
@@ -119,6 +121,7 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
   - [追求完美？](life-and-thinking/self-examination/why-perfect.md)
   - [About-Love](life-and-thinking/self-examination/about-love.md)
   - [生活总结与感悟](life-and-thinking/self-examination/life-regulation.md)
+  - [关于找工作](life-and-thinking/self-examination/for-a-job.md)
 
 ## About
 

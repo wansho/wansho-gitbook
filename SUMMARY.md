@@ -40,6 +40,8 @@
 * [People](reading/people/README.md)
   * [Pioneers-in-Computer-Science](reading/people/pioneer.md)
   * [others](reading/people/others.md)
+* [Books](reading/books/README.md)
+  * [Bookshelf](reading/books/bookshelf.md)
 
 ## Github-Projects
 
