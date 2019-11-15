@@ -87,6 +87,28 @@ REST 是一套用于构建 Web Service 的规范。
 
    The [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/) also lets people do almost anything they want with your project, *except* to distribute closed source versions. 
 
+### 持续集成 / 持续交付 / 持续部署 / 上线流程
+
+[持续集成是什么](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html)
+
+[利用 Webhooks 实现代码的自动拉取](https://blog.csdn.net/mrzhouxiaofei/article/details/84191517)
+
+* **持续集成(Continuous Integration CI)**：持续频繁的将代码集成到主干（集成到主干之前，必须经过自动化测试）
+  * 目的：快速高质量的迭代产品
+  * 优点：快速发现问题，防止分支大幅度偏离主干
+  * 面向团队：研发
+* **持续交付**：持续集成的下一步，交付给质量团队评审
+  * 面向团队：测试
+  * 主要工作：自动化测试
+* **持续部署**：持续交付的下一个阶段，交给运维团队部署上线
+  * 面向团队：运维
+
+**一次上线的标准流程**：
+
+研发将最新的代码提交到 Github 上，commit 配置了 hook，触发了服务端的 Jenkins，Jenkins 从 Github 同步代码进行自动化测试。
+
+
+
 ## 业务名词
 
 ### 去 IOE

@@ -12,11 +12,11 @@
 
 ### 云计算分类：IaaS，PaaS，SaaS
 
-|      | 全称                        | Demo                                  |
-| ---- | --------------------------- | ------------------------------------- |
-| IaaS | Infrastructure as a Service | 阿里云申请的虚拟机（实体）            |
-| PaaS | Platform as a Service       | Google提供的 App 运行环境，Aws Lambda |
-| SaaS | Software as a Service       | 手机 App                              |
+|      | 全称                        | Demo                                                         |
+| ---- | --------------------------- | ------------------------------------------------------------ |
+| IaaS | Infrastructure as a Service | 阿里云申请的虚拟机（实体）                                   |
+| PaaS | Platform as a Service       | Google App Engine(GAE)，Aws Lambda，Azure Pipelines，Sina App Engine |
+| SaaS | Software as a Service       | 手机 App                                                     |
 
 从上到下，用户需要关注的自主权越来越小，需要关注的细节越来越少。
 
