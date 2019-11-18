@@ -6,6 +6,8 @@ M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronaut
 
 **GitHub**: [wansho](<https://github.com/wansho>)
 
+Bilibili: [大大卷点点心](https://space.bilibili.com/72195837)
+
 ## Education and Experience
 
 * Jun. 2018 - Jan. 2019. Internship in the Baidu Search Department, Baidu, Beijing, China.
