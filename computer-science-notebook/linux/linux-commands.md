@@ -99,6 +99,16 @@ tac # 从后往前看日志
 tac log.txt | more
 ```
 
+### echo
+
+```shell
+man echo # echo 手册
+# echo 换行
+echo -e [global]\\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple > pip.conf # -e 表示对反斜线进行转义， \\ 表示反斜线，\\n 就等价于 \n 换行，结果就是：
+# [global]
+# index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
 ### more
 
 ```
@@ -387,8 +397,10 @@ file 文件 # 查看文件是什么文件
 
 ### mkdir
 
-```
+```shell
 mkdir -p /home/work/odp/app/bq # 递归建立文件夹
+# 创建文件夹后并进入该文件夹
+cd $_ # $_ 记录了上一个命令最后一个参数
 ```
 
 ### tar
@@ -884,6 +896,7 @@ shutdown -r +5 5分钟后关机
 visudo
     在文件最后一样加入：
     work ALL=(ALL) ALL # 其中 work 是赋予 sudo 权限的普通用户，后面模式固定
+    work ALL=(ALL:ALL) NOPASSWD:ALL # 该命令是赋予 work 用户 root 的权利，不需要密码
 ```
 
 ### su 命令

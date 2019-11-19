@@ -78,7 +78,8 @@
   - [NLP-Learning](computer-science-notebook/nlp/nlp-learning.md)
   - [Machine-Learning](computer-science-notebook/nlp/machine-learning.md)
 * [Linux](computer-science-notebook/linux/README.md)
-  * [Linux-Note](computer-science-notebook/linux/note-for-linux.md)
+  * [Linux-Commands](computer-science-notebook/linux/linux-commands.md)
+  * [Linux 使用心得](computer-science-notebook/linux/linux-tutorial.md)
 
 ## Other-Knowledge-Notebook
 

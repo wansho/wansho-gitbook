@@ -26,7 +26,15 @@ DockerHub 类似于 GitHub，我们可以在上面分享自己的 Docker 镜像�
 
 Docker 镜像的配置 manifest 文件，包括：网络接口和存储设备的映射，要加入镜像的依赖/文件等配置。
 
+### Docker and Kubernetes
+
+Kubernetes can automate the whole container deployment process. 
+
+Kubernetes 可以实现 Docker 管理，相当于 Dockers 的中控平台。
+
 ## Installation
+
+### Windows
 
 Docker Desktop for Windows 只支持 Windows 10 Professional or Enterprise 64-bit，不符合的 Windows 版本，例如 Win10 教育版/家庭版或者Win7 的版本，需要安装 [Docker Toolbox](<https://github.com/docker/toolbox/releases>) 来进行 Docker 的兼容。
 
@@ -43,11 +51,40 @@ Docker Toolbox 包含以下组件：
 
 如果 WIndows 开启了 Hyper-V，则需要关闭 Hyper-V。
 
-### Docker and Kubernetes
+## Docker Doc
 
-Kubernetes can automate the whole container deployment process. 
+[Docker Doc](https://docs.docker.com/) 文档学习。
 
-Kubernetes 可以实现 Docker 管理，相当于 Dockers 的中控平台。
+![Docker Architecture Diagram](https://docs.docker.com/engine/images/architecture.svg)
+
+### Get started
+
+Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.
+
+### Installation
+
+[Installation for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+
+
+
+```shell
+sudo docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+```
+
+
 
 ## CLI
 
