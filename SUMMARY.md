@@ -71,7 +71,8 @@
   * [HTML-CSS-DOM](computer-science-notebook/computer-network/html-css-dom.md)
   * [Questions](computer-science-notebook/computer-network/questions.md)
 * [Note-for-Python](computer-science-notebook/note-for-python/README.md)
-  - [Learning-Pandas](computer-science-notebook/note-for-python/note-for-pandas.md)
+  - [Note-for-Pandas](computer-science-notebook/note-for-python/note-for-pandas.md)
+  - [Note-for-Django](computer-science-notebook/note-for-python/note-for-django.md)
   - [Python-Cheetsheet](computer-science-notebook/note-for-python/python-cheetsheet.md)
   - [Algorithm-Data-Structure-with-Python](computer-science-notebook/note-for-python/python-algorithm-data-structure.md)
 * [NLP](computer-science-notebook/nlp/README.md)
@@ -79,7 +80,7 @@
   - [Machine-Learning](computer-science-notebook/nlp/machine-learning.md)
 * [Linux](computer-science-notebook/linux/README.md)
   * [Linux-Commands](computer-science-notebook/linux/linux-commands.md)
-  * [Linux 使用心得](computer-science-notebook/linux/linux-tutorial.md)
+  * [Linux 使用心得](computer-science-notebook/linux/linux-mythink.md)
 
 ## Other-Knowledge-Notebook
 

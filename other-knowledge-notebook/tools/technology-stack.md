@@ -4,6 +4,8 @@
 
 记录我用过的和积累的一些技术。
 
+[阮一峰推荐的免费工具](https://github.com/ruanyf/weekly/blob/master/docs/free-software.md)
+
 ## 前端
 
 ### 可视化

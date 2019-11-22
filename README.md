@@ -6,6 +6,10 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
 
 - [Introduction](README.md)
 
+## About
+
+- [About](about/about.md)
+
 ## Reading
 
 - [Modern-Operation-System](reading/modern-os/README.md)
@@ -71,14 +75,16 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
   - [HTML-CSS-DOM](computer-science-notebook/computer-network/html-css-dom.md)
   - [Questions](computer-science-notebook/computer-network/questions.md)
 - [Note-for-Python](computer-science-notebook/note-for-python/README.md)
-  - [Learning-Pandas](computer-science-notebook/note-for-python/note-for-pandas.md)
+  - [Note-for-Pandas](computer-science-notebook/note-for-python/note-for-pandas.md)
+  - [Note-for-Django](computer-science-notebook/note-for-python/note-for-django.md)
   - [Python-Cheetsheet](computer-science-notebook/note-for-python/python-cheetsheet.md)
   - [Algorithm-Data-Structure-with-Python](computer-science-notebook/note-for-python/python-algorithm-data-structure.md)
 - [NLP](computer-science-notebook/nlp/README.md)
   - [NLP-Learning](computer-science-notebook/nlp/nlp-learning.md)
   - [Machine-Learning](computer-science-notebook/nlp/machine-learning.md)
 - [Linux](computer-science-notebook/linux/README.md)
-  - [Linux-Note](computer-science-notebook/linux/note-for-linux.md)
+  - [Linux-Commands](computer-science-notebook/linux/linux-commands.md)
+  - [Linux 使用心得](computer-science-notebook/linux/linux-mythink.md)
 
 ## Other-Knowledge-Notebook
 
@@ -86,17 +92,22 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
   - [架构课-许式伟](other-knowledge-notebook/column-learning/xu-shi-wei-architecture.md)
   - [架构课-Questions](other-knowledge-notebook/column-learning/questions.md)
 - [Tools](other-knowledge-notebook/tools/README.md)
+  - [技术栈](other-knowledge-notebook/tools/technology-stack.md)
+  - [开发指南](other-knowledge-notebook/tools/development-guide.md)
   - [优雅锋利的 GitBook](other-knowledge-notebook/tools/gitbook.md)
   - [Git Pro](other-knowledge-notebook/tools/git.md)
   - [Docker](other-knowledge-notebook/tools/docker.md)
   - [Redis](other-knowledge-notebook/tools/redis.md)
 - [Knowledge-from-Others](other-knowledge-notebook/knowledge-from-others/README.md)
+  - [Collections](other-knowledge-notebook/knowledge-from-others/web-collections.md)
   - [Videos-and-Youtube](other-knowledge-notebook/knowledge-from-others/videos-and-youtube.md)
   - [Knowledge-from-Videos](other-knowledge-notebook/knowledge-from-others/knowledge-from-videos.md)
   - [Knowledge-from-Zhihu](other-knowledge-notebook/knowledge-from-others/knowledge-from-zhihu.md)
 - [Keep-Learning](other-knowledge-notebook/keep-learning/README.md)
   - [Authentic-Expression](other-knowledge-notebook/keep-learning/authentic-expression.md)
-  - [Authentic-Expression](other-knowledge-notebook/keep-learning/keep-learning.md)
+  - [Keep-Learning](other-knowledge-notebook/keep-learning/keep-learning.md)
+  - [阮一峰周刊](other-knowledge-notebook/keep-learning/ruanyifeng-weekly.md)
+  - [小白如何快速制作一个视频](other-knowledge-notebook/keep-learning/make-video.md)
 
 ## Life-and-Thinking
 
@@ -109,8 +120,4 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
   - [致万 * 鑫](life-and-thinking/to-others/to-my-brother.md)
   - [关于考试](life-and-thinking/to-others/summary-for-examination-oriented-education.md)
   - [How-to-Study](life-and-thinking/to-others/how-to-study.md)
-
-## About
-
-- [About](about/about.md)
 

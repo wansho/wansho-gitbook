@@ -1,6 +1,8 @@
 # Redis
 
-In-memory key-value database.
+[TOC]
+
+**In-memory key-value database.**
 
 ## Introduction
 
@@ -13,7 +15,16 @@ In-memory key-value database.
 
 Redis 通常被描述为一个存储键值对的内存数据库。内存数据库的特性决定了其存取效率应该是非常高的。
 
-Redis 的应用场景：用 Redis 替换频繁读取数据库稳定数据的逻辑，在 Web 服务与数据库之间充当缓存的功能。
+Redis 的应用场景：
+
+* 用 Redis 替换频繁读取数据库稳定数据的逻辑，在 Web 服务与数据库之间充当缓存的功能。
+* 计数器
+
+## Quickstart
+
+[Redis quickstart](https://redis.io/topics/quickstart)
+
+
 
 ## Redis Commands
 
@@ -90,3 +101,6 @@ sunion fruit1 fruit2 # 两个 set 求并集
 ## Questions
 
 1. Redis 是内存数据库，掉电后数据是否会被保存下来？
+
+   Redis 有将内存数据写入磁盘的功能，对于一个计数器，我们可以将计数的数据定时同步到磁盘中。
+
