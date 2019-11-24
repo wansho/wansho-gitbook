@@ -94,6 +94,7 @@
   * [Git Pro](other-knowledge-notebook/tools/git.md)
   * [Docker](other-knowledge-notebook/tools/docker.md)
   * [Redis](other-knowledge-notebook/tools/redis.md)
+  * [Selenium](other-knowledge-notebook/tools/selenium.md)
 * [Knowledge-from-Others](other-knowledge-notebook/knowledge-from-others/README.md)
   * [Collections](other-knowledge-notebook/knowledge-from-others/web-collections.md)
   * [Videos-and-Youtube](other-knowledge-notebook/knowledge-from-others/videos-and-youtube.md)

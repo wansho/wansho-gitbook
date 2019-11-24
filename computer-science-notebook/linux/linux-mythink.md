@@ -178,6 +178,18 @@ source venv/bin/activate
 deactivate
 ```
 
+## Linux 提高工作效率的工具
+
+### Xshell / Xftp
+
+* 多窗口多任务模式
+
+  ![多窗口工作](assets/1574584401783.png)
+
+* 利用 Xftp 实现大文件的快速上传(云服务器往往下行带宽很小，上行带宽很大)。
+
+* 利用 Xftp 实现云端文本本地编辑 [设置Notepad++为默认文本编辑器](https://blog.csdn.net/xuezhisdc/article/details/49621231)
+
 ## 常见问题
 
 ### 虚拟机 buff/cache 占用内存太大

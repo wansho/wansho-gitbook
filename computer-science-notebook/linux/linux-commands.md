@@ -367,18 +367,19 @@ ls -i # 显示文件的 id (inode 编号，第一个属性)
 
 ### mv
 
-```
+```bash
 -i: --interactive
 
-Demos:
-mv oldname newname # 更改名字
+mv oldname newname # 更改文件名字
+mv olddir/ newdir # 更改文件夹名称
+
 mv file directory # 将文件移动到 directory 中
 mv file_oldname dir/file_newname # 将文件移动到 dir 中并改名字
 mv -i oldname newname # 加 -i 会在 newname 文件已经存在的情况下得到提示 
 mv dir new_path # 不加参数的移动整个文件夹
 
-Note:
-移动过后的文件夹，其文件的属性不会有任何改变，时间戳和 inode 编号也不会有改变。
+# Note:
+# 移动过后的文件夹，其文件的属性不会有任何改变，时间戳和 inode 编号也不会有改变。
 ```
 
 ### cp
@@ -403,15 +404,19 @@ mkdir -p /home/work/odp/app/bq # 递归建立文件夹
 cd $_ # $_ 记录了上一个命令最后一个参数
 ```
 
-### tar
+### tar / zip
 
-```
+```bash
 # 打包压缩
 tar -czvf haha.tar.gz file1 file2
 
 # 拆包解压缩
 tar -xzvf haha.tar.gz
 tar -xzvf haha.tar.gz -C path # 解压到指定文件夹
+
+# zip
+zip
+unzip
 ```
 
 ### which, find, locate, whereis
@@ -454,15 +459,18 @@ updatedb # 更新db,比较耗时
 
 ### ln
 
-```
-make links between files.
+```bash
+# make links between files. 默认创建 硬链接
 
-参数：
--s: --symbolic, make symbolic links instead of hard links
+# 参数：
+# -s: --symbolic, make symbolic links instead of hard links
 
-Demos:
-ln file link_file # 创建硬链接，本质上是同一个文件，共享 inode 编号，而且文件显示并非链接文件，而实正常的文件
-ln -s file file_link # 创建符号链接，生成一个链接类型的文件，文件大小很小，文件类型为 l
+# Demos:
+# 创建硬链接，本质上是同一个文件，共享 inode 编号，而且文件显示并非链接文件，而实正常的文件，如果把源文件删除，硬链接仍然有效！注意，硬链接可执行文件复制到 PATH 变量包含的目录后，可以直接通过命令运行。
+ln file link_file
+ln file dir/
+# 创建符号 (symbolic) 链接，生成一个链接类型的文件，文件大小很小，文件类型为 l
+ln -s file file_link 
 ```
 
 ## 文件权限

@@ -28,6 +28,7 @@
 * 进程监控：Supervisor
 * 数据缓存：Redis
 * 依赖管理：Docker
+* 软件测试：Selenium
 
 ## 数据分析
 
