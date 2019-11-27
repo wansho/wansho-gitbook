@@ -1,6 +1,6 @@
 # About
 
-[[GitHub-Projecst]](#github-projects) / [[Education and Experience]](#education and experience) 
+[[GitHub-Projecst]](#github-projects) / [[Education-Experience]](#education-experience) 
 
 M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics. 
 
@@ -18,7 +18,7 @@ M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronaut
 3. [senti-weibo](https://github.com/wansho/senti-weibo): A real-time sentiment analysis platform for sina-weibo. [[Website]](http://sentiweibo.top/)
 4. [awesome-nuaa-cs-kaoyan](https://github.com/wansho/awesome-nuaa-cs-kaoyan): Learning materials for postgraduate entrance examination.
 
-## Education and Experience
+## Education-Experience
 
 - Jun. 2018 - Jan. 2019. Internship in the Baidu Search Department, Baidu, Beijing, China.
 - Sep. 2017 - present. M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, Nanjing, China. Supervisor: Prof. [Bohan Li](<http://gsmis.nuaa.edu.cn/gmis/xkjsb/yjsdsfc.aspx?id=16005>)
