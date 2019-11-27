@@ -1,6 +1,6 @@
 # About
 
-[[GitHub-Projecst]](#GitHub-Projects) / [[Education and Experience]](#Education and Experience) / [[Videos]](#Videos)
+[[GitHub-Projecst]](#github-projects) / [[Education and Experience]](#education and experience) 
 
 M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics. 
 
@@ -13,10 +13,10 @@ M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronaut
 
 ## GitHub-Projects
 
-1. [bilibili-helper-chrome-extension](https://github.com/wansho/bilibili-helper-chrome-extension>): Danmu trend visualization for Bilibili
-2. [fluent-python-reading](https://github.com/wansho/fluent-python-reading>): [Fluent-Python](https://book.douban.com/subject/26278021/>) Python Notebook
-3. [senti-weibo](https://github.com/wansho/senti-weibo): A real-time sentiment analysis platform for sina-weibo [[Website]](http://sentiweibo.top/)
-4. [awesome-nuaa-cs-kaoyan](https://github.com/wansho/awesome-nuaa-cs-kaoyan): Learning materials for postgraduate entrance examination
+1. [bilibili-helper-chrome-extension](https://github.com/wansho/bilibili-helper-chrome-extension): Danmu trend visualization for Bilibili. [[Video Introduction]](https://www.bilibili.com/video/av52592361)
+2. [fluent-python-reading](https://github.com/wansho/fluent-python-reading>): [Fluent-Python](https://book.douban.com/subject/26278021/>) Python Notebook.
+3. [senti-weibo](https://github.com/wansho/senti-weibo): A real-time sentiment analysis platform for sina-weibo. [[Website]](http://sentiweibo.top/)
+4. [awesome-nuaa-cs-kaoyan](https://github.com/wansho/awesome-nuaa-cs-kaoyan): Learning materials for postgraduate entrance examination.
 
 ## Education and Experience
 
@@ -28,12 +28,6 @@ M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronaut
 $$
 \int_{birth}^{death}(study\ + others)\ dt = Life
 $$
-
-## Videos
-
-* [Bilibili-Helper](https://github.com/wansho/bilibili-helper-chrome-extension>)
-
-  <iframe height="600" width="400" src="//player.bilibili.com/player.html?aid=52592361&cid=92036134&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 
