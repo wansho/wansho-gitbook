@@ -20,6 +20,7 @@
 
 * Bootstrap（HTML，CSS，JQuery，Javascript）
 * VUE
+* 学术主页搭建：[hugo-academic](https://github.com/gcushen/hugo-academic)
 
 ## 后端
 

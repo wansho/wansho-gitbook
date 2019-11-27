@@ -1,31 +1,40 @@
 # About
 
+[[GitHub-Projecst]](#GitHub-Projects) / [[Education and Experience]](#Education and Experience) / [[Videos]](#Videos)
+
 M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics. 
 
-**Email**: [wanshojs@gmail.com](mailto:wanshojs@gmail.com)
+* **Email**: [wanshojs@gmail.com](mailto:wanshojs@gmail.com)
 
-**GitHub**: [wansho](<https://github.com/wansho>)
+* **GitHub**: [wansho](<https://github.com/wansho>)
 
-Bilibili: [大大卷点点心](https://space.bilibili.com/72195837)
+* **Bilibili**: [大大卷点点心](https://space.bilibili.com/72195837) 
+
+
+## GitHub-Projects
+
+1. [bilibili-helper-chrome-extension](https://github.com/wansho/bilibili-helper-chrome-extension>): Danmu trend visualization for Bilibili
+2. [fluent-python-reading](https://github.com/wansho/fluent-python-reading>): [Fluent-Python](https://book.douban.com/subject/26278021/>) Python Notebook
+3. [senti-weibo](https://github.com/wansho/senti-weibo): A real-time sentiment analysis platform for sina-weibo [[Website]](http://sentiweibo.top/)
+4. [awesome-nuaa-cs-kaoyan](https://github.com/wansho/awesome-nuaa-cs-kaoyan): Learning materials for postgraduate entrance examination
 
 ## Education and Experience
 
-* Jun. 2018 - Jan. 2019. Internship in the Baidu Search Department, Baidu, Beijing, China.
-* Sep. 2017 - present. M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, Nanjing, China. Supervisor: Prof. [Bohan Li](<http://gsmis.nuaa.edu.cn/gmis/xkjsb/yjsdsfc.aspx?id=16005>)
-* Sep. 2013 - Jul. 2017. B.S., in School of Information Engineering, East China JiaoTong University, Nanchang, China.
-* Sep. 2010 - Jul. 2013. GanYu senior middle school in jiangsu province, Lianyungang, Jiangsu, China
+- Jun. 2018 - Jan. 2019. Internship in the Baidu Search Department, Baidu, Beijing, China.
+- Sep. 2017 - present. M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, Nanjing, China. Supervisor: Prof. [Bohan Li](<http://gsmis.nuaa.edu.cn/gmis/xkjsb/yjsdsfc.aspx?id=16005>)
+- Sep. 2013 - Jul. 2017. B.S., in School of Information Engineering, East China JiaoTong University, Nanchang, China.
+- Sep. 2010 - Jul. 2013. GanYu senior middle school in jiangsu province, Lianyungang, Jiangsu, China
 
 $$
 \int_{birth}^{death}(study\ + others)\ dt = Life
 $$
 
+## Videos
 
-## GitHub-Projects
+* [Bilibili-Helper](https://github.com/wansho/bilibili-helper-chrome-extension>)
 
-1. [bilibili-helper-chrome-extension](https://github.com/wansho/bilibili-helper-chrome-extension>): Danmu trend visualization for Bilibili.
-2. [fluent-python-reading](https://github.com/wansho/fluent-python-reading>): [Fluent-Python](https://book.douban.com/subject/26278021/>) Python Notebook
-3. [senti-weibo](https://github.com/wansho/senti-weibo): A real-time sentiment analysis platform for sina-weibo
-4. [awesome-nuaa-cs-kaoyan](https://github.com/wansho/awesome-nuaa-cs-kaoyan): Learning materials for postgraduate entrance examination
+  <iframe height="600" width="400" src="//player.bilibili.com/player.html?aid=52592361&cid=92036134&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 
 
 
