@@ -109,8 +109,10 @@
 ## Life-and-Thinking
 
 * [Self-Examination](life-and-thinking/self-examination/README.md)
+  * [生活随想](life-and-thinking/self-examination/life-thinking.md)
+  * [网络精神鸦片](life-and-thinking/self-examination/cyber-spirit-opium.md)
   * [追求完美？](life-and-thinking/self-examination/why-perfect.md)
-  * [About-Love](life-and-thinking/self-examination/about-love.md)
+  * [恋爱观](life-and-thinking/self-examination/about-love.md)
   * [生活总结与感悟](life-and-thinking/self-examination/life-regulation.md)
   * [关于找工作](life-and-thinking/self-examination/for-a-job.md)
 * [To-Others](life-and-thinking/to-others/README.md)
