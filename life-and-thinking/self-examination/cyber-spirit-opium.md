@@ -26,7 +26,8 @@
 
   拿 Youtube 和 Bilibili 来比较，B 站的网页设计眼花缭乱，给人的感觉，就像巴不得用户进站后就住在站里，而 Youtube 则相对冷静克制。
 
-  ![Bilibili Vs Youtube](assets/1575525966004.png)
+
+![Bilibili Vs Youtube](assets/1575525966004.png)
 
 这些高明的向用户倾销精神鸦片的行为，其背后的目的很明确：**压榨掉用户的碎片化时间，培养用户习惯和粘性，最后变现。**
 
@@ -53,11 +54,12 @@
 
 * 日常使用手机时，将手机屏幕颜色调整成灰色调
 
-  ![彩色的 B 站和灰色的 B 站](assets/1575535284618.png)
+![彩色的 B 站和灰色的 B 站](assets/1575535284618.png)
 
 * 用浏览器插件将任何网页的主题调整成黑色的背景，这里推荐 Chrome 浏览器的 [Black Theme for Chrome](https://chrome.google.com/webstore/detail/dark-theme-for-chrome/geooakdjiamlhpechokegobmhdmlgidk?utm_source=chrome-ntp-icon) 插件
 
-  ![彩色的 B 站和灰色的 B 站](assets/1575535575023.png)
+
+![彩色的 B 站和灰色的 B 站](assets/1575535575023.png)
 
 ## 我的计划
 
