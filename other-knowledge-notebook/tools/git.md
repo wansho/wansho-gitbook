@@ -669,6 +669,8 @@ git push origin --delete serverfix
 
 ## Fixed Problems
 
+###Git 不区分文件名大小写
+
 ### 中文乱码
 
 ```shell
