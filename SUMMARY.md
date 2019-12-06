@@ -59,6 +59,7 @@
   * [ArrayList-vs-LinkList](computer-science-notebook/algorithms/arraylist-vs-linklist.md)
   * [Summary](computer-science-notebook/algorithms/summary.md)
 * [Database](computer-science-notebook/database/README.md)
+  * [Zen-of-DB](computer-science-notebook/database/zen-of-db.md)
   * [MySQL-101](computer-science-notebook/database/mysql-101.md)
   * [MySQL-102](computer-science-notebook/database/mysql-102.md)
   * [MySQL-103](computer-science-notebook/database/mysql-103.md)

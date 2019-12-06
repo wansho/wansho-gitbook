@@ -5,7 +5,7 @@
 ## 进阶 MySQL 的目的
 
 * DBA
-* Mysql 的执行效率非常高，在实际应用中，我们应该尽量将复杂的计算迁移到 MySQL 上，则就需要有将复杂的应用场景编写成 MySQL 语句的能力
+* Mysql 的执行效率非常高，而且提供了非常多丰富的功能，例如各种字符串函数，触发器，字段的约束等功能。在实际应用中，我们可以将统一的计算迁移到 MySQL 上，这样就避免了在切换不同的框架时写重复的代码。这篇文章的思想 [Simplify: move code into database functions](https://sivers.org/pg) 和我的思想不谋而合。这也是为什么要深入学习 Mysql 的一个原因。
 * 个人能力的提升
 
 ## Fixed problems
@@ -39,7 +39,93 @@ mysqldump -uroot -p123456  --databases checkRandomDiff dashboard dashboard_debug
 
 ## DBA 相关
 
-### 打开，关闭，重启，查看运行状态
+### 权限控制
+
+**官方文档**
+
+https://dev.mysql.com/doc/refman/5.7/en/grant.html
+
+**权限相关查询**
+
+```mysql
+-- 查询可以使用 root 用户访问数据库的 host
+use mysql;
+SELECT host FROM user WHERE user = 'root';
+```
+
+#### Grant 授权语法
+
+```mysql
+-- Demo
+GRANT 
+	SELECT -- 权限
+ON 
+	spider_db.* -- 数据库.表 这里表示数据库的所有表
+TO 
+	'wanshuo'@'%' -- '用户名'@'host', % 表示并没有指定任何 host，用户可以从任何 host 上访问
+IDENTIFIED BY 
+	"ws6226067"; 
+flush privileges;
+/*
+详解
+1. 如果 'wanshuo'@'%' 这个用户配置在 mysql.user 中已经存在，那么 IDENTIFIED BY 就不需要加入，如果加入了，那么配置的密码就会覆盖原始的密码，grant 就是单纯的为 'wanshuo'@'%'赋予权限。
+2. 如果 'wanshuo'@'%' 这个用户配置在 mysql.user 中不存在，那么 grant 的作用是创建用户，并赋予权限。IDENTIFIED BY 起到配置密码的作用
+
+identified by 参考：https://stackoverflow.com/questions/31111847/identified-by-password-in-mysql
+*/
+```
+
+#### Grant demo
+
+```mysql
+-- 把查询 student 表的权限授权给 u1
+grant select on table student to u1; 
+
+-- 把对 student 表和 course 表的所有权限赋给 u1,u2
+grant all privileges on table student, course to u1, u2; 
+
+-- 把对 student 表的查询权限赋给所有用户
+grant select on table student to public; 
+
+-- 把查询 student 表 和 修改学号的权限赋给 u1
+grant select, update(sno) on student to u1;
+
+-- 把对 student 表的插入权限赋给 u1，并允许 u1 再将此权限授予其他用户
+grant insert on student to u1 with grant option;
+```
+
+#### Revoke 收回授权
+
+```
+revoke 
+	insert 
+on
+	spider_db.*
+from
+	user;
+```
+
+#### 创建用户，授予权限，删除用户的 Demo
+
+```mysql
+CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL ON db1.* TO 'jeffrey'@'localhost';
+GRANT SELECT ON db2.invoice TO 'jeffrey'@'localhost';
+ALTER USER 'jeffrey'@'localhost' WITH MAX_QUERIES_PER_HOUR 90;
+
+DROP USER 'jeffrey'@'localhost';
+```
+
+#### 远程访问
+
+```mysql
+grant all privileges on *.* to 'root'@'%' identified by '密码' with grant option;
+flush privileges;  
+```
+
+### 其他
+
+#### 打开/关闭/重启 Mysql，查看运行状态
 
 ```shell
 sudo /etc/init.d/mysql start # open
@@ -48,14 +134,14 @@ sudo /etc/init.d/mysql restart
 sudo /etc/init.d/mysql status
 ```
 
-### mysqladmin 命令
+#### mysqladmin 命令
 
 ```mysql
 -- 设置用户, mysqladmin
 mysqladmin -u xxx password xxx
 ```
 
-### 重置密码
+#### 重置密码
 
 ```mysql
 1. 在配置文件中 [mysqld] 下添加 skip-grant-tables，保存退出
@@ -68,14 +154,14 @@ mysqladmin -u xxx password xxx
 3. 停止 mysql 服务， 在配置文件中 [mysqld] 下删除 skip-grant-tables，保存退出
 ```
 
-### 时区
+#### 时区
 
 ```mysql
 SELECT TIMEDIFF(NOW(), UTC_TIMESTAMP);
 -- 如果输出 08:00:00，则说明是中国时区
 ```
 
-### Engine
+#### Engine
 
 **查看 mysql 支持的引擎**
 
@@ -87,7 +173,7 @@ show engines;
 
 MySQL 5.7 的存储引擎默认是 InnoDB，值得一提的是，mysql 支持内存数据库。
 
-### 查看 MySQL 版本
+#### 查看 MySQL 版本
 
 ```
 -- 在 bash 中
@@ -334,7 +420,7 @@ UNLOCK TABLES;
 
 已经实践确认，进入安全模式后，确实不能进行增删改操作，但是能在 innodb_force_recovery <= 3 时进行新建表，和删除表的操作。如果进行 insert 操作，会报： ERROR 1030 (HY000): Got error -1 from storage engine 的错误。
 
-## 知识点
+## 其他知识点
 
 ### Mysql 自带的四个数据库
 
@@ -396,92 +482,6 @@ select table_rows  from tables where table_schema = "diff" and table_name = "get
 
 * primary key 是 not null, 而 **unique key 可以是 null**
 * primary key 只能有一个，而 unique 可以定义多个
-
-
-
-## 权限控制
-
-**官方文档**
-
-https://dev.mysql.com/doc/refman/5.7/en/grant.html
-
-**权限相关查询**
-
-```mysql
--- 查询可以使用 root 用户访问数据库的 host
-use mysql;
-SELECT host FROM user WHERE user = 'root';
-```
-
-### Grant 授权语法
-
-```mysql
--- Demo
-GRANT 
-	SELECT -- 权限
-ON 
-	spider_db.* -- 数据库.表 这里表示数据库的所有表
-TO 
-	'wanshuo'@'%' -- '用户名'@'host', % 表示并没有指定任何 host，用户可以从任何 host 上访问
-IDENTIFIED BY 
-	"ws6226067"; 
-flush privileges;
-/*
-详解
-1. 如果 'wanshuo'@'%' 这个用户配置在 mysql.user 中已经存在，那么 IDENTIFIED BY 就不需要加入，如果加入了，那么配置的密码就会覆盖原始的密码，grant 就是单纯的为 'wanshuo'@'%'赋予权限。
-2. 如果 'wanshuo'@'%' 这个用户配置在 mysql.user 中不存在，那么 grant 的作用是创建用户，并赋予权限。IDENTIFIED BY 起到配置密码的作用
-
-identified by 参考：https://stackoverflow.com/questions/31111847/identified-by-password-in-mysql
-*/
-```
-
-### Grant demo
-
-```mysql
--- 把查询 student 表的权限授权给 u1
-grant select on table student to u1; 
-
--- 把对 student 表和 course 表的所有权限赋给 u1,u2
-grant all privileges on table student, course to u1, u2; 
-
--- 把对 student 表的查询权限赋给所有用户
-grant select on table student to public; 
-
--- 把查询 student 表 和 修改学号的权限赋给 u1
-grant select, update(sno) on student to u1;
-
--- 把对 student 表的插入权限赋给 u1，并允许 u1 再将此权限授予其他用户
-grant insert on student to u1 with grant option;
-```
-
-### Revoke 收回授权
-
-```
-revoke 
-	insert 
-on
-	spider_db.*
-from
-	user;
-```
-
-### 创建用户，授予权限，删除用户的 Demo
-
-```mysql
-CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL ON db1.* TO 'jeffrey'@'localhost';
-GRANT SELECT ON db2.invoice TO 'jeffrey'@'localhost';
-ALTER USER 'jeffrey'@'localhost' WITH MAX_QUERIES_PER_HOUR 90;
-
-DROP USER 'jeffrey'@'localhost';
-```
-
-### 远程访问
-
-```mysql
-grant all privileges on *.* to 'root'@'%' identified by '密码' with grant option;
-flush privileges;  
-```
 
 ## 索引
 
