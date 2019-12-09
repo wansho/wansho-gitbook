@@ -106,6 +106,7 @@
   * [Keep-Learning](other-knowledge-notebook/keep-learning/keep-learning.md)
   * [阮一峰周刊](other-knowledge-notebook/keep-learning/ruanyifeng-weekly.md)
   * [小白如何快速制作一个视频](other-knowledge-notebook/keep-learning/make-video.md)
+  * [如何拍照](other-knowledge-notebook/keep-learning/how-to-take-photos.md)
 
 ## Life-and-Thinking
 

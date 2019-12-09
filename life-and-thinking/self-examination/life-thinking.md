@@ -49,5 +49,15 @@
 
 我经常总是心事重重的，患得患失，匆匆忙忙，慌慌张张，吃饭五分钟，走路匆匆忙。希望自己能够活得从容一点，自信一点。走路时候脚步放慢一点，抬头挺胸，收放自如。
 
+## 上海财大女生被教授性骚扰
+
+2019-12-08 [独家 | 曝光！上海财大会计学院已婚知名教授钱F胜在校园里公然将女学生锁进车内性骚扰](https://mp.weixin.qq.com/s?__biz=MzIwMDcwNzI4OQ==&mid=2247484628&idx=1&sn=fdce3a1ee4eb7e7aa609b8f1e4ed40b1&chksm=96f85962a18fd074bc5e83257bb0f046e135970577bc9aa7e8d4ba33cac84482d5ed6ed899ea&mpshare=1&scene=1&srcid=12064z4v7H4EuSInfidQ6M5q&sharer_sharetime=1575633008880&sharer_shareid=1fb51834f36ac5ce3c1cb06304cd2be1&key=4ad845bd38d7da89ffefffeb64eada8fc86d3064c9b5cfe21e61dee58cb1a2ff1630dcfbca28fc1210c3810096b4c94e5f1630d4c2b36d160071b542965051ec7571ddbbb56d4044f97e57b4bb0afa74&ascene=1&uin=Mjk2NzkxMzU2MA%3D%3D&devicetype=Windows+10&version=62070158&lang=zh_CN&exportkey=AbdcXIPPXD5HZrCMoOXIpkE%3D&pass_ticket=hxYgvR2Y6TPd3VK8x35Fxu%2B3VmNEjVmOZ8rjTOsYYw4%2BKszZYwYCwIlaTqe4urFt)
+
+最近被李老师催论文搞得有点烦，今天吃完晚饭，又看到了这一条新闻，想想现在国内的高校环境真的是恶臭。
+
+战战兢兢，如临深渊，如履薄冰！
+
+
+
 
 
