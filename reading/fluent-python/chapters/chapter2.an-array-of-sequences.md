@@ -440,6 +440,7 @@ age = 25
 '{2}, {1}, {0}'.format('a', 'b', 'c') # 'c, b, a'
 '{2}, {1}, {0}'.format(*'abc') # 'c, b, a', * 用于将 字符串 解包
 '{0}{1}{0}'.format('aa', 'bb') # aabbaa
+"{:,}".format(6000000) # 6,000,000 https://www.cnblogs.com/lovejh/p/9201219.html
 
 "name: {!r}".format(name)
 "name: {!s}".format(name)
