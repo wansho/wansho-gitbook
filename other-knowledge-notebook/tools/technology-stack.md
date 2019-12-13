@@ -4,7 +4,8 @@
 
 记录我用过的和积累的一些技术。
 
-[阮一峰推荐的免费工具](https://github.com/ruanyf/weekly/blob/master/docs/free-software.md)
+* [阮一峰推荐的免费工具](https://github.com/ruanyf/weekly/blob/master/docs/free-software.md)
+* [Web Development in 2020: What Coding Tools You Should Learn](https://www.freecodecamp.org/news/web-development-2020/)
 
 ## 前端
 
@@ -35,6 +36,13 @@
 * 数据缓存：Redis
 * 依赖管理：Docker
 * 软件测试：Selenium
+* 一键部署工具：LAMP(Apache Mysql PHP)
+
+## 数据库
+
+* Mysql
+* PostgreSQL：最大的开源关系型数据库
+* Redis：数据缓存，内存数据库
 
 ## 数据分析
 
