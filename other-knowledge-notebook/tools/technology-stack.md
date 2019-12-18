@@ -13,7 +13,7 @@
 
 * Browser: ECharts, D3, vis.js(timeline, network)
 * 可视化云平台: Baidu Sugar
-* Python 可视化: matplotlib
+* Python 可视化: matplotlib，seaborn(基于 matplotlib 的高层次接口)，wordcloud，reportlab(生成 pdf 报告)，Demo: [YouTube-Report](https://github.com/A3M4/YouTube-Report)
 * 流程图：processon, ASCII flowchart: Graph Easy
 * 历史数据排名可视化：[Historical-ranking-data-visualization-based-on-d3.js](https://github.com/Jannchie/Historical-ranking-data-visualization-based-on-d3.js)
 
