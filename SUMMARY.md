@@ -111,6 +111,7 @@
 ## Life-and-Thinking
 
 * [Self-Examination](life-and-thinking/self-examination/README.md)
+  * [健康](life-and-thinking/self-examination/health.md)
   * [生活随想](life-and-thinking/self-examination/life-thinking.md)
   * [网络精神鸦片](life-and-thinking/self-examination/cyber-spirit-opium.md)
   * [追求完美？](life-and-thinking/self-examination/why-perfect.md)
