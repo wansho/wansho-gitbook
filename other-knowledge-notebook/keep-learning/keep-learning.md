@@ -10,6 +10,23 @@
 
 ## 技术名词
 
+### UML Sequence Diagram
+
+* **什么是 UML 时序图？**
+
+![UML 时序图 Demo by ProcessOn](assets/image-20191219212729263.png)
+
+* **UML 时序图绘制教程**
+  * [UML Sequence Diagram Tutorial](https://www.lucidchart.com/pages/uml-sequence-diagram#top)
+  * [What is Sequence Diagram?](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-sequence-diagram/)
+  * [Unified Modeling Language (UML) | Sequence Diagrams](https://www.geeksforgeeks.org/unified-modeling-language-uml-sequence-diagrams/)
+
+* **绘制 UML 时序图的工具**
+  * ProcessOn
+  * draw.io (更好)
+* **绘图注意事项**
+  * 一个 Activation box 就是一个任务，box 越长，代表任务越长，发起的请求应该指向 box 的头部，create 除外
+
 ### VPN
 
 VPN 就是在国外的一台机器上搭建了一个服务端，然后用国内的客户端进行连接，建立特殊的通道（VPN），将上网的所有流量，通过国外的机器打出去。

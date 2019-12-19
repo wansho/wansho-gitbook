@@ -26,7 +26,6 @@
 ### Chrome 插件
 
 * [SingleFileZ](https://chrome.google.com/webstore/detail/singlefilez/offkdfbbigofcgdokjemgjpdockaafjg) 创建网页快照，对网页进行备份，我用它备份了我的网站：[senti-weibo](http://sentiweibo.top/)
-* 
 
 ## 后端
 
@@ -48,6 +47,11 @@
 
 * Pandas
 * **modin**(enhanced Pandas, fast!)
+
+## 工作流处理
+
+* IFTTT
+* 微信自动化工具
 
 ## 写作
 
