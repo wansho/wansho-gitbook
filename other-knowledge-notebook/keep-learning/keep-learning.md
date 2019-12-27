@@ -20,10 +20,13 @@
   * [UML Sequence Diagram Tutorial](https://www.lucidchart.com/pages/uml-sequence-diagram#top)
   * [What is Sequence Diagram?](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-sequence-diagram/)
   * [Unified Modeling Language (UML) | Sequence Diagrams](https://www.geeksforgeeks.org/unified-modeling-language-uml-sequence-diagrams/)
-
 * **绘制 UML 时序图的工具**
-  * ProcessOn
-  * draw.io (更好)
+  * 所见即所得
+    * ProcessOn
+    * draw.io (更好)
+  * 代码生成
+    * [plantuml](http://plantuml.com/zh/) 
+    * [zenuml](https://app.zenuml.com/) 
 * **绘图注意事项**
   * 一个 Activation box 就是一个任务，box 越长，代表任务越长，发起的请求应该指向 box 的头部，create 除外
 
