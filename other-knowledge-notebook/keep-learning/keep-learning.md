@@ -10,6 +10,16 @@
 
 ## 技术名词
 
+### Shadowsocks
+
+[Shadowsocks 笔记](https://github.com/JadaGates/ShadowsocksBio)
+
+SS 最先发布在 V2EX 社区，作者是 clowwindy。
+
+Shadowsocks 不同于 VPN，SS 的一大特点是网络分流技术（部分代理），配置文件中的网站走代理通道，配置文件之外的地址全部走直连通道。
+
+Shadowsocks 原理和 VPN 类似，其同样受限于服务器。
+
 ### UML Sequence Diagram
 
 * **什么是 UML 时序图？**
