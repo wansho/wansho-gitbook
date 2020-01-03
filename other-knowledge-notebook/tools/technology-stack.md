@@ -49,6 +49,11 @@
 * Pandas
 * **modin**(enhanced Pandas, fast!)
 
+## 机器学习
+
+* sklearn 传统的机器学习方法
+* pyToarch 深度学习
+
 ## 工作流处理
 
 * IFTTT

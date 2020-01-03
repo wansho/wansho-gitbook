@@ -2,7 +2,7 @@
 
 [TOC]
 
-第九章衔接第一章，介绍如何实现一个 Python 味道的对象。本章会重点介绍 Python 的魔法方法。
+第九章衔接第一章，介绍如何实现一个 Python 风格的对象。本章会重点介绍 Python 的魔法方法。
 
 ##How to Implement a Pythonic Object
 

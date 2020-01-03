@@ -11,8 +11,9 @@
 ### 编程类
 
 * [Modern C](https://modernc.gforge.inria.fr/)
+* [Python 最佳实践](https://docs.python-guide.org/)
 
-##其他
+## 其他
 
 * [把时间当作朋友](https://book.douban.com/subject/3609132/)
 
