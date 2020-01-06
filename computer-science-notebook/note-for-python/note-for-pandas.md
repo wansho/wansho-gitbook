@@ -177,7 +177,7 @@ pd_deployed = pd.concat(pd_deployed).fillna("") # 连接并且填充空值为 ""
 pd.concat([pd1, pd2], axis=1)
 ```
 
-###drop_duplicates() 去重
+### drop_duplicates() 去重
 
 **参数**
 
@@ -419,6 +419,16 @@ obj.values # 返回 numpy.ndarray 类型的可迭代的对象
 rename
 drop_duplicates
 ```
+
+注意：inplace = True 后，返回的 pandas 就是 None，代码就应该改成：
+
+```python
+df_one_column = df_one_column.drop_duplicates("weibo")
+# 改成
+df_one_column.drop_duplicates("weibo", inplace=True) # 返回 None
+```
+
+
 
 ## Pandas Index and Select
 
