@@ -49,6 +49,8 @@
   * [少有人走的路](reading/books/the-road-less-traveled.md)
   * [Time-as-a-Friend](reading/books/time-as-a-friend.md)
   * [Reborn](reading/books/reborn.md)
+  * [射雕英雄传](reading/books/shediao-yingxiongzhuan.md)
+  * [亮剑](reading/books/liangjian.md)
 * [Others](reading/others/README.md)
   * [古诗词](reading/others/poetry.md)
   * [电影](reading/others/movies.md)
