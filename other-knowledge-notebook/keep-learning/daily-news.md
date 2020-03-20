@@ -1,6 +1,6 @@
 # 每日新闻
 
-记录我了解到的每日新闻。
+记录我了解到的每日新闻。Do not stop thinking！
 
 ## 2019-12-16
 
@@ -117,7 +117,44 @@
 
 * 赵忠祥去世
 
+## 新冠疫情
 
+从 2020-03-10 开始记录
 
+* 2020-03-10
 
+  * 连云港所有新冠疫情患者全部治愈 [[链接]](https://mp.weixin.qq.com/s?__biz=MzA5NzA5Mjk3MQ==&mid=2652715139&idx=1&sn=5a23a576680ffe96e49e3f548337b3fe&chksm=8b4f8c87bc380591459d9f7b2e5c30b3abcb985b77ac44a6697a5d78ffa7dca0d43ed0d88836&scene=126&sessionid=1583810978&key=d027e99787fbe02f9c1c3c9d09eb250e7219ddabfbb70b41a9fe36f43b29de485f86e2ced0628dcc577ab7d92f0b33f8aa35a2c76ff76b4fe4ddfd219153b3e91827c9956fb1d6d82a561af233780a5d&ascene=1&uin=Mjg5NjgyNDcyNA%3D%3D&devicetype=Windows+10&version=62080079&lang=zh_CN&exportkey=AbmpS9ejGlzAQE%2B%2Fs94FDC0%3D&pass_ticket=YF2%2B%2FBMGnAMuRvaxvTaHZ3AXC23nnQ9zzsO%2B0Zj8UvPZSCy9Sfvci%2FUxpEuIH1%2B8)，江苏目前还剩 9 个未治愈患者。意大利，韩国，伊朗，法国，日本成重灾区。
+  * 昨天教育部发布开学条件，官方既有通知，那么开学应该快了
+  * 看到网上有一个人分析得很到位，中小学不开学，大学是绝对不会开的。想要知道南京的高校什么时候开学，等南京的中小学通知吧
+  * 南京市委书记张敬华到南京大排档下馆子（单人消费），传递出南京餐饮行业复工的信号
+* 2020-03-17
+  * 国外疫情越来越恶劣，留学生和华人华侨开始回国避难
 
+## 2020-03-09
+
+* 美股下跌超 7%，触发一级熔断机制，暂停交易 15 分钟，上一次熔断发生在 1997 年，导火索是沙特增加石油供给，导致石油价格下跌
+
+## 2020-03-10
+
+* 阮一峰 weekly
+
+  * Volkswagen（大众汽车）不再赞助内燃机赛车赛事，只支持电动赛车。汽车巨头的转型。[[链接]](https://www.thedrive.com/news/31162/volkswagen-axes-all-non-electric-racing-programs-worldwide)
+
+* 美军与塔利班签署协议，停战，并将从阿富汗撤军，后又重新开战，阿富汗目前生产全球 80% 的鸦片，帝国坟场
+
+## 2020-03-12
+
+* 美国股市又一次发生熔断，跌幅超过 7%
+
+## 2020-03-15
+
+* 王选院士创办的方正集团，要倒闭了，违约 250 亿
+* 初中要摇号录取了
+
+## 2020-03-16
+
+* 美股再次熔断，短时间内三次熔断，病态的美国经济开始衰退了
+
+## 2020-03-19
+
+* 美股在此熔断，短时间内第四次熔断

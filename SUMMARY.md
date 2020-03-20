@@ -107,11 +107,12 @@
 * [Keep-Learning](other-knowledge-notebook/keep-learning/README.md)
   * [Authentic-Expression](other-knowledge-notebook/keep-learning/authentic-expression.md)
   * [Daily-News](other-knowledge-notebook/keep-learning/daily-news.md)
+  * [Daily-Think](other-knowledge-notebook/keep-learning/daily-think.md)
   * [Keep-Learning](other-knowledge-notebook/keep-learning/keep-learning.md)
   * [RSS](other-knowledge-notebook/keep-learning/keep-learning.md)
-  * [阮一峰周刊](other-knowledge-notebook/keep-learning/ruanyifeng-weekly.md)
   * [小白如何快速制作一个视频](other-knowledge-notebook/keep-learning/make-video.md)
   * [如何拍照](other-knowledge-notebook/keep-learning/how-to-take-photos.md)
+  * [Office 三件套](other-knowledge-notebook/keep-learning/office-tricks.md)
 
 ## Life-and-Thinking
 
