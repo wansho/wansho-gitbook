@@ -109,6 +109,7 @@
   * [Daily-News](other-knowledge-notebook/keep-learning/daily-news.md)
   * [Daily-Think](other-knowledge-notebook/keep-learning/daily-think.md)
   * [Keep-Learning](other-knowledge-notebook/keep-learning/keep-learning.md)
+  * [经济学原理](other-knowledge-notebook/keep-learning/principle-of-economics.md)
   * [RSS](other-knowledge-notebook/keep-learning/keep-learning.md)
   * [小白如何快速制作一个视频](other-knowledge-notebook/keep-learning/make-video.md)
   * [如何拍照](other-knowledge-notebook/keep-learning/how-to-take-photos.md)
