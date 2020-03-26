@@ -114,6 +114,7 @@
   * [小白如何快速制作一个视频](other-knowledge-notebook/keep-learning/make-video.md)
   * [如何拍照](other-knowledge-notebook/keep-learning/how-to-take-photos.md)
   * [Office 三件套](other-knowledge-notebook/keep-learning/office-tricks.md)
+  * [细数在拼多多开店遇到的坑](other-knowledge-notebook/keep-learning/pin-duo-duo.md)
 
 ## Life-and-Thinking
 
