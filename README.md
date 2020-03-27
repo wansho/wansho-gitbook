@@ -118,7 +118,6 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
   - [小白如何快速制作一个视频](other-knowledge-notebook/keep-learning/make-video.md)
   - [如何拍照](other-knowledge-notebook/keep-learning/how-to-take-photos.md)
   - [Office 三件套](other-knowledge-notebook/keep-learning/office-tricks.md)
-  - [细数在拼多多开店遇到的坑](other-knowledge-notebook/keep-learning/pin-duo-duo.md)
 
 ## Life-and-Thinking
 
@@ -130,6 +129,8 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
   - [恋爱观](life-and-thinking/self-examination/about-love.md)
   - [生活总结与感悟](life-and-thinking/self-examination/life-regulation.md)
   - [关于找工作](life-and-thinking/self-examination/for-a-job.md)
+  - [细数在拼多多开店遇到的坑](life-and-thinking/self-examination/pin-duo-duo.md)
+  - [营销经验](life-and-thinking/self-examination/summary-of-marketing.md)
 - [To-Others](life-and-thinking/to-others/README.md)
   - [致万 * 鑫](life-and-thinking/to-others/to-my-brother.md)
   - [关于考试](life-and-thinking/to-others/summary-for-examination-oriented-education.md)
