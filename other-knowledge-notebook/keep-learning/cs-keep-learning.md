@@ -8,6 +8,17 @@
 * 能不能发现项目中的问题，提交一些 bug
 * 能不能
 
+## 学习教程
+
+* Github Action: [Serverless Ebook using Gitbook CLI, Github Pages, Github Actions CI/CD, and Calibre](https://devops.novalagung.com/en/cicd-serverless-ebook-gitbook-github-pages-actions-calibre.html)
+* 最经典的线性代数入门课程：[麻省理工](https://ocw.mit.edu/resources/res-18-010-a-2020-vision-of-linear-algebra-spring-2020/index.htm)
+* [阮一峰-学习C语言的教材](http://www.ruanyifeng.com/blog/2011/09/c_programming_language_textbooks.html)
+* 
+
+## 笔记本触摸板手势操作
+
+* **三指操作**：左右移动切换应用，上下切换回到桌面或回到应用
+
 ## 技术名词
 
 ### Shadowsocks

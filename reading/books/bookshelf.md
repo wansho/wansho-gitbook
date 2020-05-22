@@ -11,6 +11,7 @@
 ### 编程类
 
 * [Modern C](https://modernc.gforge.inria.fr/)
+* [阮一峰-学习C语言的教材](http://www.ruanyifeng.com/blog/2011/09/c_programming_language_textbooks.html)
 * [Python 最佳实践](https://docs.python-guide.org/)
 * [go-101](https://github.com/go101/go101) 
 

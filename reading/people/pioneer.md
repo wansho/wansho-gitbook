@@ -37,3 +37,9 @@ ACL 主席，微软亚洲研究院副院长
 
 * [Fireside Chat with Christopher Manning](<https://www.youtube.com/watch?v=bZMKhQSERA4>)
 
+## 孙正义
+
+祖籍：福建莆田，祖先出海飘到韩国，曾祖父漂到日本
+
+收购 arm
+
