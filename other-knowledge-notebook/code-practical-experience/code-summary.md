@@ -2,6 +2,14 @@
 
 [TOC]
 
+## 代码调试
+
+不调试代码，不按 F10 或F11，水平永远也无法提上来，所以，要想学好一门编程语言，最好的办法就是多调试。  
+
+## 工欲善其事必先利其器
+
+* [GitHub codespace](https://help.github.com/en/github/developing-online-with-codespaces/about-codespaces) 在线编程 
+
 ## 经验总结
 
 **学习技术，最重要的一点是打破自己心理上的障碍，走出对于新技术的恐惧，走出自己的舒适区。**
