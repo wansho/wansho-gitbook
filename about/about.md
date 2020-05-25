@@ -10,6 +10,7 @@ M.S. in Dept. of Computer Science and Technology, Nanjing University of Aeronaut
 
 * **Bilibili**: [大大卷点点心](https://space.bilibili.com/72195837) 
 
+流水不争先，争的是滔滔不绝。
 
 ## GitHub-Projects
 
