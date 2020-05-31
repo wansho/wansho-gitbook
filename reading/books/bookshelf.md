@@ -15,7 +15,7 @@
 * [Python 最佳实践](https://docs.python-guide.org/)
 * [go-101](https://github.com/go101/go101) 
 
-## 机器学习
+### 机器学习
 
 * [Probabilistic-Programming-and-Bayesian-Methods-for-Hackers](https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers) 
 
@@ -25,7 +25,7 @@
 
 * 半佛老师推荐的五本书
 
-  1、君主论 2、潜规则 3、血酬定律 4、爱的博弈 5、洞穴奇案 
+  **1、君主论 2、潜规则 3、血酬定律 4、爱的博弈 5、洞穴奇案** 
 
-* 
+* 新媒体研究书籍：**弱传播**
 
