@@ -70,5 +70,10 @@
 * Git
 * Trello / Github Projects
 
+## 其他工具
+
+* 音频加工，获取声音波形：[AudioMass](https://audiomass.co/)
+* 
+
 
 
