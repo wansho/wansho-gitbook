@@ -100,6 +100,7 @@
   * [vim](computer-science-notebook/linux/vim.md)
   * [bash](computer-science-notebook/linux/bash.md)
   * [script-demos](computer-science-notebook/linux/script-demos.md)
+  * [Linux-Distribution-and-History](computer-science-notebook/linux/linux-distribution-history.md)
 
 ## Other-Knowledge-Notebook
 
