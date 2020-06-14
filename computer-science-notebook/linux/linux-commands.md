@@ -889,6 +889,7 @@ shutdown -r +5 5分钟后关机
 ```
 进入完全命令模式 init 3
 进入图形化界面   init 5
+重启           init 6
 
 0 停机（千万不能把initdefault 设置为0）
 1 单用户模式

@@ -11,9 +11,16 @@
 ## 学习教程
 
 * Github Action: [Serverless Ebook using Gitbook CLI, Github Pages, Github Actions CI/CD, and Calibre](https://devops.novalagung.com/en/cicd-serverless-ebook-gitbook-github-pages-actions-calibre.html)
+
 * 最经典的线性代数入门课程：[麻省理工](https://ocw.mit.edu/resources/res-18-010-a-2020-vision-of-linear-algebra-spring-2020/index.htm)
+
 * [阮一峰-学习C语言的教材](http://www.ruanyifeng.com/blog/2011/09/c_programming_language_textbooks.html)
+
 * [如何构建二进制 Deb 软件包](https://www.internalpointers.com/post/build-binary-deb-package-practical-guide)
+
+* [JavaScript 的前20年](https://zenodo.org/record/3707008)
+
+  
 
 ## 笔记本触摸板手势操作
 
