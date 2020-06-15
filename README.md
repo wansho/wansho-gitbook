@@ -12,6 +12,9 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
 
 ## Reading
 
+* [毛选](reading/mao-xuan/README.md)
+  * [毛选 第一卷](reading/mao-xuan/volume-1md)
+
 * [Modern-Operation-System](reading/modern-os/README.md)
   * [Chapter1-Introduction](reading/modern-os/chapter-1-introduction.md)
   * [Chapter2-Processes-and-Threads](reading/modern-os/chapter-2-processes-and-threads.md)
@@ -129,6 +132,7 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
   * [How-to-Keep-Learning](other-knowledge-notebook/keep-learning/how-to-keep-learning.md)
   * [Authentic-Expression](other-knowledge-notebook/keep-learning/authentic-expression.md)
   * [Knowledge-from-Web](other-knowledge-notebook/keep-learning/knowledge-from-web.md)
+  * [Story](other-knowledge-notebook/keep-learning/story.md)
   * [Daily-News](other-knowledge-notebook/keep-learning/daily-news.md)
   * [Daily-Think](other-knowledge-notebook/keep-learning/daily-think.md)
   * [CS-Keep-Learning](other-knowledge-notebook/keep-learning/cs-keep-learning.md)
