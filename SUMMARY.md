@@ -129,7 +129,6 @@
   * [Authentic-Expression](other-knowledge-notebook/keep-learning/authentic-expression.md)
   * [Knowledge-from-Web](other-knowledge-notebook/keep-learning/knowledge-from-web.md)
   * [Story](other-knowledge-notebook/keep-learning/story.md)
-  * [Daily-News](other-knowledge-notebook/keep-learning/daily-news.md)
   * [Daily-Think](other-knowledge-notebook/keep-learning/daily-think.md)
   * [CS-Keep-Learning](other-knowledge-notebook/keep-learning/cs-keep-learning.md)
   * [经济学原理](other-knowledge-notebook/keep-learning/principle-of-economics.md)
