@@ -1,6 +1,8 @@
 # Linux 初始化
 1991 年， Linux 诞生。
 
+[TOC]
+
 ## 1. 系统安装
 
 先到 中科大镜像网站下载 Ubuntu 17.10 版本的ISO镜像文件，然后解压到U盘里面
@@ -18,11 +20,11 @@ https://jingyan.baidu.com/article/e3c78d6460e6893c4c85f5b1.html
 
 ## 2. 切换Ubuntu的源地址
 
-** 安装好linux后，第一件事，就是先切换源。 **
+**安装好linux后，第一件事，就是先切换源。**
 
-** 安装好linux后，第一件事，就是先切换源。 **
+**安装好linux后，第一件事，就是先切换源。**
 
-** 安装好linux后，第一件事，就是先切换源。 **
+**安装好linux后，第一件事，就是先切换源。**
 
 在软件更新（update）中，直接切换成中科大的镜像源就好
 http://mirrors.ustc.edu.cn/help/ubuntu.html 
@@ -116,6 +118,10 @@ apt advance package tools
 ### 将系统升级到最新版本
 
 `sudo apt-get dist-upgrade`
+
+## Linux 磁盘分区
+
+
 
 ## 修改主题
 
