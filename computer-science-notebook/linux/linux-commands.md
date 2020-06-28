@@ -785,6 +785,12 @@ wget 和 curl 的区别：
 
 ## 运维相关
 
+## 硬件相关
+
+```shell
+ethtool -p 网口名字 秒数 # 让某个网口亮多少秒，服务器上的网口是可以亮的，因为服务器上通常有很多网口，不好分辨
+```
+
 ### crontab 
 
 crontab 命令用于定义循环执行的工作。
@@ -880,8 +886,12 @@ sz 好像默认不能下载文件夹，先在 服务端把文件夹打包，然�
 
 ### reboot, halt, shutdown
 
-```
-shutdown -r +5 5分钟后关机
+```shell
+shutdown -r +5 # 5分钟后关机
+
+reboot # 重启
+
+halt # 关机
 ```
 
 ### init
