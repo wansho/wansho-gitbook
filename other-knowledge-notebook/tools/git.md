@@ -286,7 +286,7 @@ git commit --amend -m "message"
 # The obvious value to amending commits is to make minor improvements to your last commit, without cluttering your repository history with commit messages of the form, “Oops, forgot to add a file” or “Darn, fixing a typo in last commit”.
 ```
 
-###git rm
+### git rm
 
 ```shell
 # untrack a file, rm it from the disk
