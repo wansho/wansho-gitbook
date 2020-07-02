@@ -14,7 +14,7 @@ Red Hat 是一家美国的跨国公司，专门向企业提供定制版的 Linux
 
 Red Hat 擅长向企业提供企业级的红帽操作系统：[Red Hat Enterprise Linux(Rhel)](https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux)
 
-Red Hat 衍生出了：
+Red Hat 衍生出了（Redhat 是 Cent-OS 的爸爸）：
 
 * Red Hat
   * Red Hat Enterprise Linux
