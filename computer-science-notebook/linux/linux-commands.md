@@ -1236,8 +1236,6 @@ nice -n 0 python demo.py # 指定优先级 0 来运行脚本 demo.py
 renice -n 10 -p pid 
 ```
 
-
-
 ## 软件程序安装
 
 ### 包管理器安装
@@ -1298,3 +1296,29 @@ yum remove pakcage_name
 yum erase package_name # 卸载软件，删除文件
 ```
 
+## Linux 运维
+
+### 磁盘挂载 mount / mkfs / blkid / fstab
+
+将新盘或者多余的盘，挂在到某一个目录下，并实现开机的自动化挂载
+
+```shell
+fdisk -l # 查看分区的符号
+mkfs.xfs /dev/sdb # 格式化新盘
+mount /dev/sdb /mysqldata # 将某块盘挂载到某一个目录下
+
+# 实现开机自动化挂载
+blkid # 查看分区的 UUID 并复制
+# 编辑 /etc/fstab，增加一行：
+UUID=上面查看的字符串 /mysqldata  xfs  defaults 0  0
+```
+
+### Raid
+
+Raid 分为软 Raid 和硬 Raid。
+
+raid0 可以提高读写速度，但并不能提供数据冗余；
+
+raid1 可以实现数据冗余，但是空间利用率是 50%；
+
+raid5 兼顾存储性能和存储成本，是 raid0 和 raid1 的折中方案；

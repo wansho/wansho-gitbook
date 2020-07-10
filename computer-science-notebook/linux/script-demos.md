@@ -45,3 +45,57 @@ else
 fi
 ```
 
+## 磁盘分区 Demo
+
+```shell
+# 有问题的脚本
+#!/bin/bash
+
+# 输入 raid 盘的名字，以 sd 开头
+read -p "please input raid name:" raid_name
+
+# 对输入的 raid 盘名进行校验
+# todo
+
+# 判断 raid 是否已自动挂载，如果已挂载，则取消对 raid 盘的挂载，否则无法进行分区操纵
+# todo
+
+# 对 raid 盘进行分区
+# 注意，分区的时候设置的文件系统类型关系不大，后面要对其进行格式化的
+# 可选的文件系统类型为：ext2fat16, fat32 hfs, hfs+, hfsx linux-swap NTFS reiserfs ufs btrfs
+parted -s "/dev/"${raid_name} \
+    mklabel gpt \
+    mkpart part-efi fat32 0GB 1GB \
+    mkpart part-boot xfs 1GB 2GB \
+    mkpart part-biosboot xfs 2GB 3GB \
+    mkpart part-swap linuxswap 3GB 19GB \
+    mkpart part-other xfs 19GB 100%
+
+# 对 U 盘进行测试分区
+#parted -s "/dev/"${raid_name} \
+#    mklabel gpt \
+#    mkpart part-efi xfs 0GB 1GB \
+#    mkpart part-boot xfs 1GB 2GB \
+#    mkpart part-other xfs 2GB 100%
+
+# 对分区进行格式化
+mkfs.fat "/dev/"${raid_name}"1"
+mkfs.xfs "/dev/"${raid_name}"2"
+mkfs.xfs "/dev/"${raid_name}"3"
+mkfs.xfs "/dev/"${raid_name}"4"
+mkfs.xfs "/dev/"${raid_name}"5"
+
+# 挂载
+mkdir  /boot/efi
+mount "/dev/"${raid_name}"1" /boot/efi
+mount "/dev/"${raid_name}"2" /boot
+mount "/dev/"${raid_name}"3" /biosboot
+# swap 分区挂载并激活
+mkswap "/dev/"${raid_name}"4"
+swapon "/dev/"${raid_name}"4"
+mount "/dev/"${raid_name}"5" /
+
+echo "over"
+
+```
+
