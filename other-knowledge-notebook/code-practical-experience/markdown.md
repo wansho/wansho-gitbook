@@ -95,10 +95,6 @@ https://console.cloud.tencent.com/cos5/bucket/setting?type=filelist&bucketName=b
 
 阿里云有专属的客户端：[ossbrowser](http://gosspublic.alicdn.com/oss-browser/1.9.1/oss-browser-win32-x64.zip?spm=a2c4g.11186623.2.10.42741144jhrm9W&file=oss-browser-win32-x64.zip)
 
-AccessKey ID: LTAIcfZaMzcHeDFT
-
-Access Key Secret:  felytv8IhfQSbjovmNteE99CrjDSWq	
-
 ## 项目徽章
 
 Demos：
