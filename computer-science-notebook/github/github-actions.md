@@ -101,7 +101,11 @@ Secrets are not passed to workflows that are triggered by a pull request from a 
 * awesome-kaoyan 
 
   * 自动生成最新的文件树
-  * 为每一个 markdown 文件自动生成 TOC
-  * 做一个脚本，获取每天早上的信息一览
+  * 为每一个 markdown 文件自动生成 TOC：已找到 TOC 的 action
+  * 做一个脚本，获取每天早上的信息一览：已做了一个发天气的 action
 
   
+
+## Reference
+
+* [编写自己的 GitHub Action，体验自动化部署 - 张凯强的文章 - 知乎 ](https://zhuanlan.zhihu.com/p/103552188)
