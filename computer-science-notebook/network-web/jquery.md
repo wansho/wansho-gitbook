@@ -42,6 +42,11 @@ function detectPlaybackStatus() {
 
 ## jQuery 选择器
 
+选择器条件组合：
+
+* https://www.cnblogs.com/fanbi/p/7705235.html
+* https://www.cnblogs.com/nmxs/p/4888049.html
+
 | 选择器                                                       | 实例                       | 选取                                       |
 | :----------------------------------------------------------- | :------------------------- | :----------------------------------------- |
 | [*](https://www.w3school.com.cn/jquery/selector_all.asp)     | $("*")                     | 所有元素                                   |
