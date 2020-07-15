@@ -39,6 +39,19 @@ https://github.com/zalando/zalando-howto-open-source/blob/master/READMEtemplate.
 [![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
 ```
 
+[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
+
+Github Readme Stats 的原理也是这样的：
+
+```
+[![Wansho's github stats](https://github-readme-stats.vercel.app/api?username=wansho)](https://github.com/wansho)
+```
+
+[![wansho's github stats](https://github-readme-stats.vercel.app/api?username=wansho)](https://github.com/wansho)
+
+
+## 常见的二级标题
+
 ## 注释
 
 ```
@@ -57,20 +70,6 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 ```
-
-
-[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
-
-Github Readme Stats 的原理也是这样的：
-
-```
-[![Wansho's github stats](https://github-readme-stats.vercel.app/api?username=wansho)](https://github.com/wansho)
-```
-
-[![wansho's github stats](https://github-readme-stats.vercel.app/api?username=wansho)](https://github.com/wansho)
-
-
-## 常见的二级标题
 
 ```
 Project Name/Intro
