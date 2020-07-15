@@ -29,7 +29,7 @@ https://github.com/zalando/zalando-howto-open-source/blob/master/READMEtemplate.
 
 [gif软件 Screen to Gif ](<https://www.screentogif.com/>)
 
-## 超链接功能
+## 超链接功能-图片超链接
 
 正常的超链接语法为: `[desc](url)`
 
@@ -38,6 +38,27 @@ https://github.com/zalando/zalando-howto-open-source/blob/master/READMEtemplate.
 ```
 [![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
 ```
+
+## 注释
+
+```
+<!--
+**wansho/wansho** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+
+Here are some ideas to get you started:
+
+- 🔭 I’m currently working on ...
+- 🌱 I’m currently learning ...
+- 👯 I’m looking to collaborate on ...
+- 🤔 I’m looking for help with ...
+- 💬 Ask me about ...
+- 📫 How to reach me: ...
+- 😄 Pronouns: ...
+- ⚡ Fun fact: ...
+-->
+```
+
+
 
 ## 常见的二级标题
 
@@ -70,6 +91,8 @@ License
 </p>
 
 ```
+
+也可以通过图片超链接的方式插入
 
 ## 生成 TOC
 
