@@ -33,7 +33,7 @@ https://github.com/zalando/zalando-howto-open-source/blob/master/READMEtemplate.
 
 正常的超链接语法为: `[desc](url)`
 
-需要注意的是 desc 并不只限于文本，也可以插入一个图片，GitHub badge 的原理就是这样的。
+需要注意的是 **desc 并不只限于文本**，也可以插入一个图片，GitHub badge 的原理就是这样的。
 
 ```
 [![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
@@ -58,6 +58,16 @@ Here are some ideas to get you started:
 -->
 ```
 
+
+[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
+
+Github Readme Stats 的原理也是这样的：
+
+```
+[![Wansho's github stats](https://github-readme-stats.vercel.app/api?username=wansho)](https://github.com/wansho)
+```
+
+[![wansho's github stats](https://github-readme-stats.vercel.app/api?username=wansho)](https://github.com/wansho)
 
 
 ## 常见的二级标题
@@ -137,3 +147,7 @@ https://img.shields.io/badge/link-996.icu-red.svg
 
 https://shields.io/
 
+## Awesome Demos
+
+* [anuraghazra](https://github.com/anuraghazra/anuraghazra)
+* [Awesome-Profile-README-templates](https://github.com/kautukkundan/Awesome-Profile-README-templates)
