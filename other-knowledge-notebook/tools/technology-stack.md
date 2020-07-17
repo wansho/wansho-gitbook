@@ -75,6 +75,7 @@
 * 音频加工，获取声音波形：[AudioMass](https://audiomass.co/)
 * Win 10 文件恢复：应用商店 - Windows File Recovery
 * 视频转码压缩软件：VidCoder
+* 提醒我去休息的工具：[stretchly](https://hovancik.net/stretchly/downloads/)
 
 
 
