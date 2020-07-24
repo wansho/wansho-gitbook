@@ -64,6 +64,7 @@
 * 论文：overleaf
 * 笔记：GitBook
 * 开发文档：Read the Docs
+* 自己搭建 Wiki 的首选：[wiki.js](https://wiki.js.org/)
 
 ## 项目管理
 
