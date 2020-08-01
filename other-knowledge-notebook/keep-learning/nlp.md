@@ -8,5 +8,7 @@
 
 该接口是，`Text in，Text out` 类型的接口，我已申请使用该接口。等有空玩一玩。
 
-相关的项目：[gpt3-sandbox](https://github.com/shreyashankar/gpt3-sandbox)，[gpt-3-experiments](https://github.com/minimaxir/gpt-3-experiments)
+相关的项目：[awesome-gpt3](https://github.com/elyase/awesome-gpt3)，[gpt3-sandbox](https://github.com/shreyashankar/gpt3-sandbox)，[gpt-3-experiments](https://github.com/minimaxir/gpt-3-experiments) [品玩 gpt-3](https://www.pingwest.com/a/214772)
+
+
 
