@@ -13,3 +13,7 @@ PPT 可以设置通过设置版式来提高制作效率。如果多张幻灯片�
 ### 演讲者模式
 
 快捷键：Alt + F5
+
+## Windows PowerToys
+
+* Fancy Zones 按 Shift 键拖动窗口实现快速分屏
