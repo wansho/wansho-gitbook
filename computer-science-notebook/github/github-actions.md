@@ -17,6 +17,7 @@ Automate, customize, and execute your software development workflows right in yo
 * Github Action 可以作为主动获取信息的一种工具，当作爬虫，当作定时脚本，薅 Github 的羊毛
 * Github Action 的运行环境在国外，着意味着，我们可以在国内写脚本，在国外的服务器上运行，这样就可以访问全球的服务
 * Github Action 的 Crontab 时间，是国际标准时间
+* GitHub Action 可以跑 Python 脚本：[glados-checkin](https://github.com/xiaomustudent/glados-checkin)，我觉得其理论上可以跑任何语言，成为一个云服务平台
 
 ## 官方文档
 
