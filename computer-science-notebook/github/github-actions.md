@@ -13,6 +13,7 @@ Automate, customize, and execute your software development workflows right in yo
 ## 我的笔记
 
 * Action 有 crontab 机制，可以定时执行
+* 从 [Github RoadMap](https://github.com/github/roadmap) 中可以了解到，Github Actions 是 Code-to-Cloud 的一种方式
 * Github Action 可以作为主动获取信息的一种工具，当作爬虫，当作定时脚本，薅 Github 的羊毛
 * Github Action 的运行环境在国外，着意味着，我们可以在国内写脚本，在国外的服务器上运行，这样就可以访问全球的服务
 * Github Action 的 Crontab 时间，是国际标准时间
