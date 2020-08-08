@@ -16,9 +16,15 @@
 
 学习 Git，用上述两个官方资源，足矣。
 
-## 其他学习资源
 
-* [Git 工作流](https://www.freecodecamp.org/news/go-automate-your-github-profile-readme/)
+## 名词解释
+
+| 名词   | 解释                              |
+| ------ | --------------------------------- |
+| master | 仓库的默认分支                    |
+| HEAD   | HEAD 指针，指向当前工作分支的指针 |
+| origin | 指代远程库                        |
+
 
 ## Questions
 
@@ -35,6 +41,14 @@
 - 回滚到某个版本
 
   `git reset --hard 459f`
+
+## 使用 Git 做开发
+
+[5 Git workflows you can use to deliver better code and improve your development process](https://zepel.io/blog/5-git-workflows-to-improve-development/)
+
+| Git Feature Branch Workflow                                  | Git Feature Workflow with Develop Branch                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![image-20200807205239022](assets/image-20200807205239022.png) | ![image-20200807205247838](assets/image-20200807205247838.png) |
 
 ## VCS Introduction
 
@@ -546,7 +560,7 @@ git checkout -b serverfix origin/serverfix
 # 查看 commit 的 history
 git log --oneline --decorate --graph --all
 ```
-###git merge
+### git merge
 
 没有分叉(**diverged**)的 merge，叫做 **fast-forward** ，其合并后并不会产生一个 commit 记录。
 
