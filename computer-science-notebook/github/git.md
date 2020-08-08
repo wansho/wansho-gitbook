@@ -16,6 +16,10 @@
 
 学习 Git，用上述两个官方资源，足矣。
 
+## 其他学习资源
+
+* [Git 工作流](https://www.freecodecamp.org/news/go-automate-your-github-profile-readme/)
+
 ## Questions
 
 几个经常忘记的命令，基本上都和 checkout，reset 有关
