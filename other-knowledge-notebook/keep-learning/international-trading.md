@@ -32,12 +32,26 @@ FIDIC，国际组织，总部位于瑞士日内瓦，致力于国际施工合同
 
 简明合同格式（ 绿皮书）  
 
-## 单词
+## 专业名词
 
-| 专业词汇   | 翻译   |
-| ---------- | ------ |
-| Contractor | 承包商 |
-| Employer   | 甲方   |
-| Tender     | 投标   |
-|            |        |
-
+| 专业词汇                                 | 翻译             |
+| ---------------------------------------- | ---------------- |
+| Contractor                               | 承包商           |
+| Employer                                 | 甲方             |
+| Tender                                   | 投标             |
+| Nominated Subcontractors                 | 子承包商         |
+| Staff and Labour                         | 员工，劳工       |
+| Plant, Materials and Workmanship         | 设备，材料，工艺 |
+| Commencement, Delays and Suspension      | 开工，延误，暂停 |
+| Tests on Completion                      | 竣工实验         |
+| Employer’s Taking Over                   | 甲方接管         |
+| Defects Liability                        | 缺陷责任         |
+| Measurement and Evaluation               | 测量评估         |
+| Variations and Adjustments               | 变更和调整       |
+| Contract Price and Payment               | 合同价格和付款   |
+| Termination by Employer                  | 由甲方终止       |
+| Suspension and Termination by Contractor | 承包商暂停和终止 |
+| Risk and Responsibility                  | 风险和责任       |
+| Insurance                                | 保险             |
+| Force Majeure                            | 不可抗力         |
+| Claim, Disputes and Arbitration          | 索赔，争端，仲裁 |
