@@ -139,6 +139,7 @@
   * [小白如何快速制作一个视频](other-knowledge-notebook/keep-learning/make-video.md)
   * [如何拍照](other-knowledge-notebook/keep-learning/how-to-take-photos.md)
   * [Office 三件套](other-knowledge-notebook/keep-learning/office-tricks.md)
+  * [国际贸易](other-knowledge-notebook/keep-learning/international-trading.md)
 
 ## Life-and-Thinking
 
