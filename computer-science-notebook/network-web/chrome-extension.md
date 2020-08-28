@@ -214,3 +214,7 @@ chrome.storage.local.set({color: '#3aa757'}, function() {
 $(document).ready(function() { $('body').bootstrapMaterialDesign(); });
 ```
 
+## Chrome 插件收藏
+
+* [NSFW](https://github.com/nsfw-filter/nsfw-filter) 过滤 Not Safe for Work 的图片
+

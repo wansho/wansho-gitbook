@@ -75,3 +75,9 @@ Pointer variable vs Reference variable
 ## Matplotlib 绘制矢量图
 
 最通用的矢量图格式是 pdf 格式，不建议生成 svg 和 eps 格式的矢量图。
+
+## Python GUI
+
+* Turn python cmd into GUI application: [Gooey](https://github.com/chriskiehl/Gooey)
+
+  <img align="left" src="assets/image-20200828091512198.png" alt="image-20200828091512198" style="zoom:67%;" />

@@ -49,6 +49,12 @@ Webhooks allow external services to be notified when certain events happen. When
 
 当仓库发生某些动作的时候，就发起外部请求。
 
+## 仓库收藏
+
+* 尝试对加密过的文本，进行解密：[Ciphey](https://github.com/Ciphey/Ciphey) 
+* 开源项目讲解：[Article](https://github.com/HelloGitHub-Team/Article)
+* 
+
 ## To do
 
 * Web Hook
