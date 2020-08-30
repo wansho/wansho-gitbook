@@ -19,6 +19,11 @@ Automate, customize, and execute your software development workflows right in yo
 * Github Action 的 Crontab 时间，是国际标准时间
 * GitHub Action 可以跑 Python 脚本：[glados-checkin](https://github.com/xiaomustudent/glados-checkin)，我觉得其理论上可以跑任何语言，成为一个云服务平台
 
+## 我的总结
+
+* 可以在 .github/workflows 中创建多个 workflow，GitHub 容器默认会执行所有的 workflow
+* 
+
 ## 官方文档
 
 ### 基本信息
@@ -104,8 +109,11 @@ Secrets are not passed to workflows that are triggered by a pull request from a 
 
   * 自动生成最新的文件树
   * 为每一个 markdown 文件自动生成 TOC：已找到 TOC 的 action
-  * 做一个脚本，获取每天早上的信息一览：已做了一个发天气的 action
-* 检测继保官网的新闻
+  * 用 Actions 定制自己的信息源（语言：Python）
+    * 做一个脚本，获取每天早上的信息一览：已做了一个发天气的 action
+    * 每天早上-中午-晚上的微博热搜
+    * 每天早晚两次推送
+* 监测继保官网的新闻
   
   
 
