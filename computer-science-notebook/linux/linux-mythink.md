@@ -180,6 +180,8 @@ deactivate
 
 ## Linux 提高工作效率的工具
 
+Xshell，Xftp，Samba，MobaXterm
+
 ### Xshell / Xftp
 
 * 多窗口多任务模式
@@ -189,6 +191,13 @@ deactivate
 * 利用 Xftp 实现大文件的快速上传(云服务器往往下行带宽很小，上行带宽很大)。
 
 * 利用 Xftp 实现云端文本本地编辑 [设置Notepad++为默认文本编辑器](https://blog.csdn.net/xuezhisdc/article/details/49621231)
+
+### MoboXterm
+
+终端神器
+
+链接：https://pan.baidu.com/s/1UGv8kn3fdsjiuM1NXZ7oBQ 
+提取码：yivm
 
 ## 常见问题
 
