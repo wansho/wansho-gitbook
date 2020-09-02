@@ -53,7 +53,7 @@ Webhooks allow external services to be notified when certain events happen. When
 
 * 尝试对加密过的文本，进行解密：[Ciphey](https://github.com/Ciphey/Ciphey) 
 * 开源项目讲解：[Article](https://github.com/HelloGitHub-Team/Article)
-* 
+* 软件测试：[how they test](https://github.com/abhivaikar/howtheytest)
 
 ## To do
 
