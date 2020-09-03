@@ -180,7 +180,7 @@ deactivate
 
 ## Linux 提高工作效率的工具
 
-Xshell，Xftp，Samba，MobaXterm
+Xshell，Xftp，Samba，MobaXterm，VSCode Remote-SSH
 
 ### Xshell / Xftp
 
@@ -198,6 +198,22 @@ Xshell，Xftp，Samba，MobaXterm
 
 链接：https://pan.baidu.com/s/1UGv8kn3fdsjiuM1NXZ7oBQ 
 提取码：yivm
+
+### VSCode Remote-SSH
+
+[Remote-SSH](https://www.cnblogs.com/liyufeia/p/11405779.html) 
+
+远程连接服务器，编写代码的工具，类似于 Samba。
+
+**Secure Shell** (**SSH**) is a [cryptographic](https://en.wikipedia.org/wiki/Cryptography) [network protocol](https://en.wikipedia.org/wiki/Network_protocol) for operating network services securely over an unsecured network.[[1\]](https://en.wikipedia.org/wiki/Secure_Shell#cite_note-rfc4251-1) Typical applications include remote [command-line](https://en.wikipedia.org/wiki/Command-line_interface), [login](https://en.wikipedia.org/wiki/Login), and remote command execution, but any [network service](https://en.wikipedia.org/wiki/Network_service) can be **secured** with SSH.
+
+SSH provides a [secure channel](https://en.wikipedia.org/wiki/Secure_channel) over an unsecured network by using a **[client–server](https://en.wikipedia.org/wiki/Client–server_model)** architecture, connecting an [SSH client](https://en.wikipedia.org/wiki/SSH_client) application with an [SSH server](https://en.wikipedia.org/wiki/SSH_server).
+
+## Linux 软件开发
+
+* **cmake**, **qmake**, **make** 命令的区别
+
+  cmake 和 qmake 都是用于生成 makefile，make 工具调用 makefile 中的命令，对大型工程进行编译
 
 ## 常见问题
 
