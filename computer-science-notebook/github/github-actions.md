@@ -114,7 +114,11 @@ Secrets are not passed to workflows that are triggered by a pull request from a 
     * 每天早晚两次推送
 * 监测继保官网的新闻
   
-  
+
+## Github Action 配合食用
+
+* [Server 酱](http://sc.ftqq.com/3.version) 「程序员」和「服务器」之间的通信软件
+* 
 
 ## Reference
 
