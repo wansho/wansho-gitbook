@@ -88,7 +88,6 @@
 * [Note-for-Python](computer-science-notebook/note-for-python/README.md)
   - [Note-for-Pandas](computer-science-notebook/note-for-python/note-for-pandas.md)
   - [Note-for-Django](computer-science-notebook/note-for-python/note-for-django.md)
-  - [Note-for-Matplotlib](computer-science-notebook/note-for-python/matplotlib.md)
   - [Python 环境依赖](computer-science-notebook/note-for-python/packages.md)
   - [Python-Cheetsheet](computer-science-notebook/note-for-python/python-cheetsheet.md)
   - [Algorithm-Data-Structure-with-Python](computer-science-notebook/note-for-python/python-algorithm-data-structure.md)
@@ -126,7 +125,8 @@
   * [软件测试](computer-science-notebook/development-tools/software-testing.md)
 * [Technology-Lecture](computer-science-notebook/technology-lecture/README.md)
   * [CS-Keep-Learning](computer-science-notebook/technology-lecture/cs-keep-learning.md)
-  * [许式伟架构课](computer-science-notebook/technology-lecture/xu-shi-wei-architecture.md)
+  * [吴翰清-计算的未来](computer-science-notebook/technology-lecture/future-of-computation.md)
+  * [许式伟-架构课](computer-science-notebook/technology-lecture/xu-shi-wei-architecture.md)
   * [Questions](computer-science-notebook/technology-lecture/questions.md)
 
 ## Other-Knowledge-Notebook
