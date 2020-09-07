@@ -12,7 +12,7 @@
 * Git
 * Github
 
-##开发文档
+## 开发文档
 
 * GitBook
 * Read the Docs
