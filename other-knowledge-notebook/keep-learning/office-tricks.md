@@ -19,6 +19,7 @@ PPT 可以设置通过设置版式来提高制作效率。如果多张幻灯片�
 * Fancy Zones 按 Shift 键拖动窗口实现快速分屏
 * 长按 Windows 键，弹出快捷键指导
 
-## Windows 快捷键
+## Windows
 
 * Windows + - 方法或缩小屏幕
+* Windows10 可以在声音中控制每一个 App 的声音

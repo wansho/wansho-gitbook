@@ -43,3 +43,8 @@ ACL 主席，微软亚洲研究院副院长
 
 收购 arm
 
+## 吴翰清
+
+阿里云
+
+https://www.bilibili.com/video/BV1sh411R7JR
