@@ -48,6 +48,7 @@
 | stride | 步频 | step 常用于 Python 的 slice [start: end: stride] |
 | complex | 复数 |  |
 | wizard | 向导 | installation wizard 软件安装向导 |
+| The Forbidden City | 紫禁城 |  |
 
 ## Authentic Chinese
 

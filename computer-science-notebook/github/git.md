@@ -44,11 +44,19 @@
 
 ## 使用 Git 做开发
 
+### Git 开发分支
+
 [5 Git workflows you can use to deliver better code and improve your development process](https://zepel.io/blog/5-git-workflows-to-improve-development/)
 
 | Git Feature Branch Workflow                                  | Git Feature Workflow with Develop Branch                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![image-20200807205239022](assets/image-20200807205239022.png) | ![image-20200807205247838](assets/image-20200807205247838.png) |
+
+### Git 辅助软件
+
+* [SourceTree: A free Git client for Windows and Mac](https://www.sourcetreeapp.com/)
+
+  Git 装饰软件，提供了一系列可视化的功能
 
 ## VCS Introduction
 
@@ -78,7 +86,7 @@ It allows you to revert selected files back to a previous state, revert the enti
 
 ### Environments to use VCS
 
-只要涉及到文本的编辑，无论是写 Blog，还是写代码，都可以用 Git 进行版本控制，上传到 Github 进行分布式的管理。
+只要涉及到文本文件，无论是写 Blog，还是写代码，都可以用 Git 进行版本控制，上传到 Github 进行分布式的管理。
 
 ### Difference between Git and other VCS(for example: SVN)
 

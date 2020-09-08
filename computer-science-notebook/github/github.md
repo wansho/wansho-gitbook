@@ -49,6 +49,16 @@ Webhooks allow external services to be notified when certain events happen. When
 
 当仓库发生某些动作的时候，就发起外部请求。
 
+## GitHub 周边软件
+
+* [Gitpod](https://github.com/gitpod-io/gitpod)
+
+  Gitpod is an open-source Kubernetes application providing fully-baked, collaborative development environments in your browser - powered by VS Code. Tightly integrated with GitLab, GitHub, and Bitbucket, Gitpod automatically and continuously prebuilds dev environments for all your branches. 
+
+  一个在线的 VSCode，与 Github 紧密集成在一起。缺点：加载很慢，不太好用。
+
+
+
 ## 仓库收藏
 
 * 尝试对加密过的文本，进行解密：[Ciphey](https://github.com/Ciphey/Ciphey) 
