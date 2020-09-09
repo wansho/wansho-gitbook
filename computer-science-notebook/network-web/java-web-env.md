@@ -39,6 +39,8 @@ Maven 是免安装的，没有安装包，下载下来解压就能用
 
 ### Back-End
 
+#### Abstract
+
 [[Wiki Microservices]](https://en.wikipedia.org/wiki/Microservices) 微服务是一个软件架构形式。在这个架构中，复杂的应用程序是由多个小而独立的进程组成，每一个 进程通过独立于语言的接口进行相互交流。这些服务较小、高度解耦且专注于完成一个小任务，使得 用模块化方法建设系统更加容易。
 
 容器化，将不同的服务相互隔离，采用统一的网关进行流量管理（类似百度的 BFE）：
@@ -57,6 +59,16 @@ Maven 是免安装的，没有安装包，下载下来解压就能用
 * 注册中心，配置中心：nacos，eureka
 * Web 服务器：tomcat
 * 认证：Spring Security Oauth2
+
+#### Nacos
+
+[Nacos](https://nacos.io/en-us/docs/what-is-nacos.html) is committed to help you **discover**, **configure**, and **manage** your **microservices**. It provides a set of simple and useful features enabling you to realize dynamic service discovery, service configuration, service metadata and traffic management.
+
+### Microservices
+
+[[什么是微服务架构？- 老刘的回答]](https://www.zhihu.com/question/65502802/answer/802678798)
+
+[[什么是微服务架构？]](https://www.zhihu.com/question/65502802)
 
 
 
