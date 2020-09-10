@@ -12,6 +12,10 @@
 * 所有以 QT 开头的组件
 * Tools 下的 Qt Creater 和 MinGW
 
+
+
+注意：QT 也支持 **Python** 作为开发语言，**PyQt**
+
 ## 入门资源
 
 [[Qt Developer]](https://www.qt.io/developers)
