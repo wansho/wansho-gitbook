@@ -121,6 +121,7 @@
   * [QT](computer-science-notebook/development-tools/qt.md)
   * [开发指南](computer-science-notebook/development-tools/development-guide.md)
   * [VSCode](computer-science-notebook/development-tools/tools/vscode.md)
+  * [Kafka](computer-science-notebook/development-tools/kafka.md)
   * [Docker](computer-science-notebook/development-tools/docker.md)
   * [Redis](computer-science-notebook/development-tools/redis.md)
   * [Selenium](computer-science-notebook/development-tools/selenium.md)

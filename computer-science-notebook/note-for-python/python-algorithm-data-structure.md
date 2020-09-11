@@ -16,6 +16,10 @@ Python 标准库提供了很多高级数据结构的实现，大多数写 Python
 
 为了更好的利用标准库写出 Pythonic 的代码，我将对 Python 标准库应用于数据结构和算法的情景进行总结。
 
+## 学习资料
+
+[[解决算法和数据结构问题（Python 版）]](https://www.cs.auckland.ac.nz/compsci105s1c/resources/ProblemSolvingwithAlgorithmsandDataStructures.pdf)
+
 ## deque
 
 deque 是双向队列，可以用于

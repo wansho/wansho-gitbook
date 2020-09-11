@@ -4,6 +4,10 @@
 
 [TOC]
 
+## Python 总结
+
+Python 是一种动态强类型的语言，采用鸭子类型来实现多态。
+
 ## Chapter1. The Python Data Model
 
 * Python 语言最大的特性
