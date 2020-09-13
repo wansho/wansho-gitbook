@@ -1259,7 +1259,14 @@ dpkg   apt-get
 rpm	   yum
 ```
 
-**dpkg 和 apt-get**
+**dpkg / apt-get / apt**
+
+apt-get is a **command line** **interface** for retrieval of packagesand information about them from authenticated sources and
+for installation, upgrade and removal of packages together with their dependencies.
+
+apt is a **commandline package manager** and provides commands forsearching and managing as well as querying information about packages. It provides the same functionality as the specialized APT tools, like apt-get and apt-cache, but enables options more suitable for interactive use by default.
+
+apt-get 是一个接口，apt 是一个包管理器。
 
 ```shell
 # dpkg 是 PMS 的核心，其前端实现中最常用的命令是 apt-get 命令

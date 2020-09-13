@@ -14,4 +14,15 @@
 
   SSH provides a [secure channel](https://en.wikipedia.org/wiki/Secure_channel) over an unsecured network by using a **[client–server](https://en.wikipedia.org/wiki/Client–server_model)** architecture, connecting an [SSH client](https://en.wikipedia.org/wiki/SSH_client) application with an [SSH server](https://en.wikipedia.org/wiki/SSH_server).
   
-  
+* [Remote-WSL]()
+
+  Open any folder in the Windows Subsystem for Linux (WSL) and take advantage of Visual Studio Code's full feature set.
+
+## 快捷键
+
+| cmd                   | desc             |
+| --------------------- | ---------------- |
+| F1 / ctrl + shift + p | 打开 vscode 命令 |
+|                       |                  |
+|                       |                  |
+
