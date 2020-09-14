@@ -371,6 +371,9 @@ git log --no-merges #
 
 #  if you want to see which commits modifying test files in the Git source code history were committed by Junio Hamano in the month of October 2008 and are not merge commits
 git log --pretty="%h - %s" --author='Junio C Hamano' --since="2008-10-01"  --before="2008-11-01" --no-merges -- t/
+
+# 查看 branch 树形结构
+git log --graph --decorate --oneline --simplify-by-decoration --all
 ```
 
 | Option            | Description                                                  |
@@ -567,6 +570,9 @@ git checkout -b serverfix origin/serverfix
 
 # 查看 commit 的 history
 git log --oneline --decorate --graph --all
+
+# 查看 branch 树形结构
+git log --graph --decorate --oneline --simplify-by-decoration --all
 ```
 ### git merge
 
