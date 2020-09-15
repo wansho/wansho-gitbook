@@ -6,6 +6,8 @@
 
 Python Enhancement Proposal.
 
+PEP 提供了大量的语法糖。
+
 PEP stands for Python Enhancement Proposal. A PEP is a design document providing information to the Python community, or describing a new feature for Python or its processes or environment. 
 
 ## Python 的几个短板

@@ -70,7 +70,11 @@ Maven 是免安装的，没有安装包，下载下来解压就能用
 
 [[什么是微服务架构？]](https://www.zhihu.com/question/65502802)
 
+### ORM
 
+ORM（Object Relational Mapping）, ORM 举例：Django ORM，Java Mybatis puls
+
+优点：替换 SQL 语句，提供获取数据的标准化，避免因为 SQL 查询导致的各种问题，例如 SQL 注入等问题
 
 ## 其他软件
 
