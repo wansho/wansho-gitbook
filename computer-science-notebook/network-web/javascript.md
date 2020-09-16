@@ -139,7 +139,12 @@ null, which is a value that indicates a deliberate non-value. null 是一个值
 
 undefined, which is a value of type `undefined` that indicates an uninitialized variable — that is, a value hasn't even been assigned yet. undefined 是类型
 
-如果我们在定义变量的时候没有声明变量的值，那么这个变量的类型就是 undefined.
+如果我们在定义变量的时候没有声明变量的值，那么这个变量的类型就是 undefined. 
+
+```js
+var tmp;
+typeof(tmp); // undefined
+```
 
 **true** or **false**（这两个值是 JavaScript 中的两个关键字）
 
@@ -152,11 +157,174 @@ Boolean(234); // true
 
 Boolean(false) // false
 Boolean('false') // true
+
+typeof(true) // boolean
 ```
 
 true 和 false 两个值同样支持 Boolean 运算符：`&& || !`
 
 ### Variables
+
+变量声明的关键字：`let`,  `const`, `var`
+
+关键字声明的变量的生效范围：`let` < `var`
+
+如果我们在声明变量的时候，没有对其赋值，那么该变量的类型就是 `undefined`
+
+#### let
+
+ES6 引入
+
+let 关键字声明的变量仅局限于代码块：
+
+The following is an example of scope with a variable declared with `**let**`:
+
+```js
+// myLetVariable is *not* visible out here
+
+for (let myLetVariable = 0; myLetVariable < 5; myLetVariable++) {
+  // myLetVariable is only visible in here
+}
+
+// myLetVariable is *not* visible out here
+```
+
+#### const
+
+ES6 引入
+
+const 用于声明常量（常量声明后，不能再进行赋值，否则抛出异常）：
+
+```js
+const Pi = 3.14; // variable Pi is set 
+Pi = 1; // will throw an error because you cannot change a constant variable.
+```
+
+#### var
+
+var 是 JavaScript 中最常见的变量声明关键字。
+
+An example of scope with a variable declared with **`var`:**
+
+```js
+// myVarVariable *is* visible out here
+
+for (var myVarVariable = 0; myVarVariable < 5; myVarVariable++) { 
+  // myVarVariable is visible to the whole function 
+} 
+
+// myVarVariable *is* visible out here 
+```
+
+上面这种现象的解释：
+
+> An important difference between JavaScript and other languages like Java is that in JavaScript, blocks do not have scope; only functions have a scope. So if a variable is defined using `var` in a compound statement (for example inside an `if` control structure), it will be visible to the entire function. However, starting with ECMAScript 2015, `let` and `const` declarations allow you to create block-scoped variables.
+
+正确的做法：
+
+```js
+for (let myVarVariable = 0; myVarVariable < 5; myVarVariable++) { 
+  // myVarVariable is restricted to this block 
+} 
+```
+
+### Operators
+
+#### 数值运算符
+
+```js
+var x = 5;
+x += 5;
+x = x + 5; 
+x ++;
+x --;
+'hello' + ' world'; // "hello world"
+```
+
+number 类型和 string 类型相加，number 类型会转成 string 类型
+
+```js
+'3' + 4 + 5;  // "345"
+3 + 4 + '5'; // "75"
+
+3.14 + 's'; // 3.14s
+```
+
+#### 布尔运算符
+
+比较运算符：`>, <, >=, <=, ==, ===, !=, !==`
+
+**强制类型转换的坑**：
+
+```js
+123 == '123'; // true
+1 == true; // true
+
+123 != '123' // false
+1 != true // false
+```
+
+为了避免强制类型转换导致的意外，改用 `===` 进行比较：
+
+```js
+123 === '123'; // false
+1 === true;    // false
+
+123 !== '123'; // true
+1 !== true;    // true
+```
+
+#### 位运算符
+
+ [[bitwise operations]](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators)
+
+### Control structures
+
+#### if, for, while, of, in, switch case
+
+JavaScript 兼容 C 语言的 if, while, for 等语法结构，同时还有自己独特的语法结构：
+
+```js
+for (let value of array) {
+  // do something with value
+}
+
+for (let property in object) {
+  // do something with object property
+}
+```
+
+#### || &&
+
+JavaScript 中的 || 和 && 是惰性求值，其会先检查操作符的前一部分，如果不符合要求，那么后一部分就不会执行运算检查。
+
+The `&&` and `||` operators use short-circuit logic, which means whether they will execute their second operand is dependent on the first. This is useful for **checking for null objects** before accessing their attributes:
+
+```js
+var name = o && o.getName();
+```
+
+Or for caching values (when falsy values are invalid):
+
+```js
+var name = cachedName || (cachedName = getName()); // 妙啊
+```
+
+#### 三目运算符
+
+```js
+var allowed = (age > 18) ? 'yes' : 'no';
+```
+
+### Objects
+
+1. JavaScript 中的任何元素都是对象！
+
+2. JavaScript 中的对象都是键值对集合
+
+3. JavaScript 的执行效率非常快！
+
+   1, 2 —> 3
 
 
 
