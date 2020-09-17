@@ -111,7 +111,8 @@ list(map(factoria, filter(lambda n: n % 2, range(6)))) # list of factorial of od
 
 from functools import reduce
 from operator import add
-reduce(add, range(100)) # 两者等价
+# 两者等价
+reduce(add, range(100)) 
 sum(range(100))
 
 all(iterable)
@@ -158,6 +159,12 @@ keyword lambda 用于创建一个匿名函数，其本质上是一个**语法糖
 
 **lambda expression 的优点和应用场景：**简洁，适合处理 sequence，通常用于 Higher-Order-Function 的函数参数
 
+**匿名函数的应用场景：**当一个函数创建出来只需要在一个地方调用的时候，为了减少代码复杂性，其与 Java 和 Javascript 的 inner function，有同样的作用。下面是 JavaScript 对于 inner func 的优点的论述：
+
+This provides a great deal of utility in writing more maintainable code. If a called function relies on one or two other functions that are not useful to any other part of your code, you can nest those utility functions inside it. This keeps the number of functions that are in the global scope down, which is always a good thing.
+
+This is also a great counter to the lure of global variables. When writing complex code it is often tempting to use global variables to share values between multiple functions — which leads to code that is hard to maintain. Nested functions can share variables in their parent, so you can use that mechanism to couple functions together when it makes sense without polluting your global namespace — "local globals" if you like. This technique should be used with caution, but it's a useful ability to have.
+
 **lambda expression 的缺点：**不能处理复杂的逻辑，比较晦涩，unreadable
 
 Demo:
@@ -195,9 +202,9 @@ sorted(fruits, key=reverse)
 
 ### What are the methods, functions, built-in？
 
-**Class 中定义的方法叫 method**
+**Class 中定义的函数叫 method**
 
-**非 Class 中定义的方法叫 function**
+**非 Class 中定义的函数叫 function**
 
 |              | methods                                                      | functions                                 |
 | ------------ | ------------------------------------------------------------ | ----------------------------------------- |
@@ -300,8 +307,6 @@ print(factorial.__dict__)
 
 从位置参数到关键字参数。Python 3 中引入 Keyword-Only Parameters.
 
-**关键字参数的优点**：
-
 * 可以利用 `*param` 传入更多的位置参数，可以利用 `**attrs` 传入更多的键值参数
 * `cls=None` 的规则可以用于设置 default 参数，例如： `cls=default_value`
 
@@ -315,7 +320,7 @@ print(factorial.__dict__)
 **Demo1**:
 
 ```Python
-def tag(name, *content, cls=None, **attrs):
+def tag(name, *content, cls=None, **attrs): # name 和 cls 之间的参数，全部打包给 content(tuple类型)
     """Generate one or more HTML tags"""
     if cls is not None:
         attrs['class'] = cls
@@ -357,7 +362,7 @@ def run(a, b):
     print a + b
     
 dictionary = {'a': 1, 'b': 2}
-run(**dictionary)
+run(**dictionary) # ** 的作用，类似于 *(1,2,3) 的 unpack
 ```
 
 ### Retriving Information About Parameters: inspect
@@ -444,11 +449,11 @@ foo.__annotations__
 {'html': <class 'str'>, 'num': 'int > 0', 'return': <class 'str'>}
 ```
 
-注意，Python 对于这些函数注解，只是将其放在了 `__annotations__` 中，其他就没有进行任何的操作，更不会进行代码的check。事实上，函数的注解 Annotation 更多的被 IDE 和 **装饰器** 使用，其对于 Python 的解释器来说，没有任何作用。
+注意，Python 对于这些函数注解，只是将其放在了 `__annotations__` 中，其他就没有进行任何的操作，更不会进行代码的check。事实上，函数的注解 Annotation 更多的被 IDE 和 **装饰器** 使用，其对于 **Python 的解释器来说，没有任何作用**。
 
 ### Packages for Functional Programming
 
-Python 语言的创立者 Guido 并没有想要 Python 成为一个函数式编程语言，但是通过两个标注库的帮助，我们可以实现 Python 的函数式编程：`operator, functools`。在函数式编程中，函数常常被当作参数进行传递，而 `operator` 中恰恰就提供了一些基础的函数操作，`operator` 中提供的**操作符，实际上就是函数**。
+Python 语言的创立者 Guido 并没有想要 Python 成为一个函数式编程语言，但是通过两个标注库的帮助，我们可以实现 Python 的函数式编程：`operator, functools`。**在函数式编程中，函数常常被当作参数进行传递**，而 `operator` 中恰恰就提供了一些基础的函数操作，`operator` 中提供的**操作符，实际上就是函数**。
 
 ![函数式编程相关包](assets/1564369906979.png)
 
@@ -472,7 +477,7 @@ def fact(n):
     # return reduce(lambda x,y: x*y, range(1, n+1))
 ```
 
-**选取元素操作符举例**：
+**选取元素操作符举例**：(针对 sequence 数据结构，返回 sequence)
 
 ```python
 from operator import itemgetter
@@ -483,14 +488,14 @@ students = [
     ("zhanganman", 24, "xuzhou", (99, 100))
 ]
 
-sorted_students_in_ages = sorted(students, key=itemgetter(1)) # 根据学生的年龄排序
+sorted_students_in_ages = sorted(students, key=itemgetter(1)) # 根据学生的年龄排序, sorted_by
 print(sorted_students_in_ages)
 
 print(list(map(itemgetter(0,1), students))) # 取 0，1列，此处的 itemgetter 定义了一个抓取数据的规则
 
 ```
 
-**获取属性操作符**
+**获取属性操作符**：(针对键值对数据结构，返回属性对应的值)
 
 ```python
 from operator import attrgetter
@@ -505,6 +510,11 @@ print(students_namedtuple)
 attrgetter_name_score = attrgetter("name", "scores.math") # 定义了一个函数
 for item in students_namedtuple:
     print(attrgetter_name_score(item)) # 将 item(namedtuple) 作为参数传入预先定义好的规则
+""" print
+('wansho', 99)
+('wangkai', 99)
+('zhanganman', 99)
+"""
 ```
 
 **获取所有的操作符**
@@ -528,14 +538,15 @@ num1 = iadd(num1, num2) # 等价于 num1 += num2
 
 **methodcaller**
 
-methodcaller 可以对函数进行二次封装，然后返回封装后的函数，通常用于 freezing arguments。
+methodcaller 可以对 method（classmethod）进行二次封装，然后返回封装后的函数，通常用于 freezing arguments。
+
+应用场景：将参数冻结，然后复用这个函数
 
 ```python
 from operator import methodcaller
 
 my_replace = methodcaller("replace", " ", "-") # 注意：封装的函数名必须是 stringed method
 print(my_replace("nihao hello world")) # nihao-hello-world
-
 ```
 
 #### functools
@@ -544,7 +555,7 @@ functools 中有很多 high-order functions，也就是说，可以传入函数�
 
 functools 中最常用的两个函数：reduce, partial, partialmethod
 
-partial 和 partialmethod 通常用于对 function 和 classmethod 进行二次封装，其中 partialmethod 可以用于方法的重载。
+partial 和 partialmethod 通常用于对 function 和 classmethod 进行二次封装，其中 partialmethod 经常用于 classmethod 的重载。
 
 ```python
 from functools import partial, partialmethod
@@ -581,7 +592,7 @@ True
 
 * [Great introduction to functional programming in python](<https://docs.python.org/3/howto/functional.html>)
 
-* Everything that is good in Python was stolen from other languages. ——Guido
+* **Everything that is good in Python was stolen from other languages.** ——Guido
 
   
 
