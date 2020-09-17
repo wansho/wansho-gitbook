@@ -158,11 +158,11 @@ my_dict["students"].append("wansho")
 
 ## dict 的变体
 
-注意，这些 dict 的变体，都拥有 dict 的基础特性，也就是说，可以使用 dict 的 built-in 方法。
+注意，这些 dict 的变体，都拥有 dict 的基础特性，也就是说，可以使用 dict 的 built-in 方法（**鸭子类型**）。
 
 ### collections.OrderedDict
 
-有序字典，使得在遍历 Dict 时，输出顺序为元素的插入顺序。
+**有序字典**，使得在遍历 Dict 时，输出顺序为元素的插入顺序。
 
 ```python
 import collections
@@ -172,7 +172,7 @@ print(ordered_dict) # OrderedDict([('name', 'wansho'), ('age', 25)])
 
 ### collections.Counter
 
-Counter 通常用来对字符串中的字符进行计数，Demo:
+Counter 通常用来**对字符串中的字符进行计数**，Demo:
 
 ```python
 import collections

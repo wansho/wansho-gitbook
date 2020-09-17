@@ -14,13 +14,13 @@
 
 1995 created, Brendan Eich（布兰登-艾奇）, Netscape
 
-远景公司将 JavaScript 托管给 ECMA(European standards organization)，ECMA 负责 JavaScript 的维护，所以 Javascript 又叫做 ECMAScript，最新的 JavaScript 版本是 ECMAScript edition 6 2015 (**ES2015**, **ES6**)。
+远景公司将 JavaScript 托管给 ECMA(European standards organization)，ECMA 负责 JavaScript 的维护，所以 Javascript 又叫做 ECMAScript，最新的 JavaScript 标准是 ECMAScript edition 6 2015 (**ES2015**, **ES6**)。
 
 JavaScript 没有输入输出的概念，其与外界通信取决于它运行在什么样的环境中：browser, Adobe Acrobat, Adobe Photoshop, SVG images, server-side environments such as [Node.js](http://nodejs.org/), embedded computers, GNOME，JavaScript 在这些环境下（**前端后端**）都可以运行，可以说是一门非常“万能”的语言了。
 
-JavaScript 是一门**多范式**的**动态语言**，其语法基于 Java 和 C，支持**面向对象**编程范式，支持**函数式编程**。
+JavaScript 是一门**多范式**的**动态语言**，其语法基于 Java 和 C，支持**面向对象**编程范式，支持**函数式编程**。在 JavaScript 中，函数是第一公民。JavaScript 采用 object prototypes（**对象原型**）来实现面向对象的机制，而不是 class。
 
-JavaScript 采用 object prototypes（**对象原型**）来实现面向对象的机制，而不是 class。
+JavaScript is a [prototype-based](https://developer.mozilla.org/en-US/docs/Glossary/Prototype-based_programming), multi-paradigm, single-threaded, dynamic language, supporting object-oriented, imperative（命令式编程）, and declarative (e.g. functional programming) styles.
 
 **数据类型**：
 
@@ -564,11 +564,17 @@ The name provided to a function expression as above is only available to the fun
 
 ### JavaScript 面向对象的实现机制
 
-JavaScript 的类就是函数！
+JavaScript 通过函数来定义类，类就是函数！
 
 JavaScript 采用 object prototypes（**对象原型**）来实现面向对象的机制，而不是 class。
 
 JavaScript uses functions as classes.
+
+#### Prototype-based programming
+
+**Prototype-based programming** is a style of [object-oriented programming](https://developer.mozilla.org/en-US/docs/Glossary/OOP) in which [classes](https://developer.mozilla.org/en-US/docs/Glossary/Class) are not explicitly defined, but rather derived by adding properties and methods to an instance of another class or, less frequently, adding them to an empty object.
+
+In simple words: **this type of style allows the creation of an [object](https://developer.mozilla.org/en-US/docs/Glossary/Object) without first defining its [class](https://developer.mozilla.org/en-US/docs/Glossary/Class).**
 
 #### ugly design
 
@@ -749,6 +755,8 @@ add20(7); // 27
 A **closure** is the combination of a function and the scope object in which it was created. Closures let you save state — as such, they can often be used in place of objects. You can find [several excellent introductions to closures](http://stackoverflow.com/questions/111102/how-do-javascript-closures-work).
 
 ## Further Reading
+
+[[Mozilla JavaScript Doc]](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 [[Introduction to Object-Oriented JavaScript]](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
 
