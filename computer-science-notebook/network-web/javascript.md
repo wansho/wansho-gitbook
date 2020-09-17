@@ -12,7 +12,7 @@
 
 ### Overview
 
-1995 created, Brendan Eich, Netscape
+1995 created, Brendan Eich（布兰登-艾奇）, Netscape
 
 远景公司将 JavaScript 托管给 ECMA(European standards organization)，ECMA 负责 JavaScript 的维护，所以 Javascript 又叫做 ECMAScript，最新的 JavaScript 版本是 ECMAScript edition 6 2015 (**ES2015**, **ES6**)。
 
@@ -214,6 +214,12 @@ for (var myVarVariable = 0; myVarVariable < 5; myVarVariable++) {
 } 
 
 // myVarVariable *is* visible out here 
+
+function fn(){
+    var a = 1;
+    console.log(a); // 1
+}
+console.log(a); // Uncaught ReferenceError: a is not defined
 ```
 
 上面这种现象的解释：
@@ -224,7 +230,7 @@ for (var myVarVariable = 0; myVarVariable < 5; myVarVariable++) {
 
 ```js
 for (let myVarVariable = 0; myVarVariable < 5; myVarVariable++) { 
-  // myVarVariable is restricted to this block 
+  // myVarVariable is local to this block 
 } 
 ```
 
@@ -310,6 +316,14 @@ Or for caching values (when falsy values are invalid):
 var name = cachedName || (cachedName = getName()); // 妙啊
 ```
 
+python 和 JavaScript 比较：
+
+不同点：JavaScript 的 || 对应 Python 的 or
+
+相同点：| 和 &  都是位运算
+
+
+
 #### 三目运算符
 
 ```js
@@ -326,9 +340,423 @@ var allowed = (age > 18) ? 'yes' : 'no';
 
    1, 2 —> 3
 
+#### 创建空对象的两种方式
 
+```js
+var obj = new Object();
+```
+
+And:
+
+```js
+var obj = {};
+```
+
+#### 获取对象属性的两种方式
+
+```js
+var obj = {
+  name: 'Carrot',
+  for: 'Max', // 'for' is a reserved word, use '_for' instead.
+  details: {
+    color: 'orange',
+    size: 12
+  }
+};
+
+// chained together
+obj.details.color;
+obj['details']['size']
+```
+
+#### 用函数的方法创建类
+
+```js
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+// Define an object
+var you = new Person('You', 24); 
+// We are creating a new person named "You" aged 24.
+
+you.name;
+you['name'];
+
+// can use a variable to define a key
+var love = prompt('what is your key?');
+you[love] = prompt('what is its value?')
+
+you.for = 'Simon'; // Syntax error, because 'for' is a reserved word
+you['for'] = 'Simon'; // works fine
+```
+
+### Arrays
+
+Array 是一个特殊的 Object。
+
+```js
+var a = new Array();
+a[0] = 'dog';
+a[1] = 'cat';
+a[2] = 'hen';
+a.length; // 3
+
+// 等价于
+var a = ['dog', 'cat', 'hen'];
+a.length; // 3
+```
+
+#### array.length
+
+注意，array.length 获取到的并不是 array 里面元素的个数，而是 array 的长度：
+
+```js
+var a = ['dog', 'cat', 'hen'];
+a[100] = 'fox';
+a.length; // 101 the length of the array is one more than the highest index.
+```
+
+#### for, forEach, for of
+
+遍历 array：
+
+```js
+for (var i = 0; i < a.length; i++) {
+  // Do something with a[i]
+}
+
+// ES6 引入
+for (const currentValue of a) {
+  // Do something with currentValue
+}
+
+// ES5 引入
+['dog', 'cat', 'hen'].forEach(function(currentValue, index, array) {
+  // Do something with currentValue or array[index]
+});
+```
+
+#### 增删改查
+
+Arrays come with a number of methods. See also the [full documentation for array methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array).
+
+| Method name                                          | Description                                                  |
+| :--------------------------------------------------- | :----------------------------------------------------------- |
+| `a.toString()`                                       | Returns a string with the `toString()` of each element separated by commas. |
+| `a.toLocaleString()`                                 | Returns a string with the `toLocaleString()` of each element separated by commas. |
+| `a.concat(item1[, item2[, ...[, itemN]]])`           | Returns a new array with the items added on to it.           |
+| `a.join(sep)`                                        | Converts the array to a string — with values delimited by the `sep` param |
+| `a.pop()`                                            | Removes and returns the last item.                           |
+| `a.push(item1, ..., itemN)`                          | Appends items to the end of the array.                       |
+| `a.shift()`                                          | Removes and returns the first item.                          |
+| `a.unshift(item1[, item2[, ...[, itemN]]])`          | Prepends items to the start of the array.                    |
+| `a.slice(start[, end])`                              | Returns a sub-array.                                         |
+| `a.sort([cmpfn])`                                    | Takes an optional comparison function.                       |
+| `a.splice(start, delcount[, item1[, ...[, itemN]]])` | Lets you modify an array by deleting a section and replacing it with more items. |
+| `a.reverse()`                                        | Reverses the array.                                          |
+
+
+
+### Functions
+
+JavaScript 中的函数也是对象！
+
+JavaScript 的函数就是 class
+
+如果函数没有返回值，JavaScript 默认返回 `undefined`。
+
+#### 传参
+
+JavaScript 允许传入 0 参数，或者传入超过定义数量的参数：
+
+```js
+function add(x, y) {
+  var total = x + y;
+  return total;
+}
+
+add(); // NaN
+// You can't perform addition on undefined
+
+add(2, 3, 4); // 5
+// added the first two; 4 was ignored
+```
+
+#### arguments / ...args
+
+JavaScript 的函数中，有一个array-like 的 `arguments` 变量，可以直接访问，里面存储了传入函数的所有参数
+
+```js
+function add() {
+  var sum = 0;
+  for (var i = 0, j = arguments.length; i < j; i++) {
+    sum += arguments[i];
+  }
+  return sum;
+}
+
+add(2, 3, 4, 5); // 14
+```
+
+利用 `...args` 的 mini 版本：
+
+```js
+function avg(...args) {
+  var sum = 0;
+  for (let value of args) {
+    sum += value;
+  }
+  return sum / args.length;
+}
+
+avg(2, 3, 4, 5); // 3.5
+// 等价于
+avg.apply(null, [2, 3, 4, 5]); // 3.5  avg 对象化 function 是第一公民？
+```
+
+JavaScript 的 `...args` 与 Python 的 `*args` 机制相同，都可以将存储剩下来的参数。
+
+#### anonymous functions
+
+创建匿名函数并赋值给一个变量：
+
+```js
+var avg = function() {
+  var sum = 0;
+  for (var i = 0, j = arguments.length; i < j; i++) {
+    sum += arguments[i];
+  }
+  return sum / arguments.length;
+};
+```
+
+匿名函数立即执行：
+
+```js
+var a = 1;
+var b = 2;
+
+(function() {
+  var b = 3;
+  a += b;
+})();
+
+a; // 4
+b; // 2
+```
+
+```js
+var charsInBody = (function counter(elm) {
+  if (elm.nodeType == 3) { // TEXT_NODE
+    return elm.nodeValue.length;
+  }
+  var count = 0;
+  for (var i = 0, child; child = elm.childNodes[i]; i++) {
+    count += counter(child);
+  }
+  return count;
+})(document.body); // 最后的 (document.body) 是指创建完匿名函数后，立刻执行该匿名函数，传入的参数是 docu…
+```
+
+The name provided to a function expression as above is only available to the function's own scope. This allows more optimizations to be done by the engine and results in more readable code. The name also shows up in the debugger and some stack traces, which can save you time when debugging.
+
+### JavaScript 面向对象的实现机制
+
+JavaScript 的类就是函数！
+
+JavaScript 采用 object prototypes（**对象原型**）来实现面向对象的机制，而不是 class。
+
+JavaScript uses functions as classes.
+
+#### ugly design
+
+```js
+function makePerson(first, last) {
+  return {
+    first: first,
+    last: last
+  };
+}
+function personFullName(person) {
+  return person.first + ' ' + person.last;
+}
+function personFullNameReversed(person) {
+  return person.last + ', ' + person.first;
+}
+
+var s = makePerson('Simon', 'Willison');
+personFullName(s); // "Simon Willison"
+personFullNameReversed(s); // "Willison, Simon"
+```
+
+#### good design
+
+```js
+function makePerson(first, last) {
+  return {
+    first: first,
+    last: last,
+    fullName: function() {
+      return this.first + ' ' + this.last;
+    },
+    fullNameReversed: function() {
+      return this.last + ', ' + this.first;
+    }
+  };
+}
+
+var s = makePerson('Simon', 'Willison');
+s.fullName(); // "Simon Willison"
+s.fullNameReversed(); // "Willison, Simon"
+```
+
+Note on the `this` keyword. Used inside a function, `this` refers to the current object. 
+
+#### this, new
+
+```js
+function Person(first, last) {
+  this.first = first;
+  this.last = last;
+  this.fullName = function() {
+    return this.first + ' ' + this.last;
+  };
+  this.fullNameReversed = function() {
+    return this.last + ', ' + this.first;
+  };
+}
+var s = new Person('Simon', 'Willison');
+```
+
+#### better design
+
+Our person objects are getting better, but there are still some ugly edges to them. Every time we create a person object we are creating two brand new function objects within it — wouldn't it be better if this code was shared?
+
+```js
+function personFullName() {
+  return this.first + ' ' + this.last;
+}
+function personFullNameReversed() {
+  return this.last + ', ' + this.first;
+}
+function Person(first, last) {
+  this.first = first;
+  this.last = last;
+  this.fullName = personFullName;
+  this.fullNameReversed = personFullNameReversed;
+}
+```
+
+#### better better design: prototype 
+
+That's better: we are creating the method functions only once, and assigning references to them inside the constructor. Can we do any better than that? The answer is yes:
+
+```js
+function Person(first, last) {
+  this.first = first;
+  this.last = last;
+}
+Person.prototype.fullName = function() {
+  return this.first + ' ' + this.last;
+};
+Person.prototype.fullNameReversed = function() {
+  return this.last + ', ' + this.first;
+};
+```
+
+This is an incredibly powerful tool. JavaScript lets you **modify something's prototype at any time in your program**, which means you can add extra methods to existing objects at runtime:
+
+```js
+var s = new Person('Simon', 'Willison');
+s.firstNameCaps(); // TypeError on line 1: s.firstNameCaps is not a function
+
+Person.prototype.firstNameCaps = function() {
+  return this.first.toUpperCase();
+};
+s.firstNameCaps(); // "SIMON"
+```
+
+Interestingly, you can also **add things to the prototype of built-in JavaScript objects**. Let's add a method to `String` that returns that string in reverse:
+
+```js
+var s = 'Simon';
+s.reversed(); // TypeError on line 1: s.reversed is not a function
+
+String.prototype.reversed = function() {
+  var r = '';
+  for (var i = this.length - 1; i >= 0; i--) {
+    r += this[i];
+  }
+  return r;
+};
+
+s.reversed(); // nomiS
+```
+
+重写 `toString()` 方法：
+
+```js
+var s = new Person('Simon', 'Willison');
+s.toString(); // [object Object]
+
+Person.prototype.toString = function() {
+  return '<Person: ' + this.fullName() + '>';
+}
+
+s.toString(); // "<Person: Simon Willison>"
+```
+
+### Inner functions
+
+#### 内部函数变量作用域
+
+函数的函数，内部函数可以访问父函数的作用域内的变量。
+
+```js
+function parentFunc() {
+  var a = 1;
+
+  function nestedFunc() {
+    var b = 4; // parentFunc can't use this
+    return a + b; 
+  }
+  return nestedFunc(); // 5
+}
+```
+
+#### 内部函数的使用场景
+
+This provides a great deal of utility in writing more maintainable code. If a called function relies on one or two other functions that are not useful to any other part of your code, you can nest those utility functions inside it. This keeps the number of functions that are in the global scope down, which is always a good thing.
+
+This is also a great counter to the lure of global variables. When writing complex code it is often tempting to use global variables to share values between multiple functions — which leads to code that is hard to maintain. Nested functions can share variables in their parent, so you can use that mechanism to couple functions together when it makes sense without polluting your global namespace — "local globals" if you like. This technique should be used with caution, but it's a useful ability to have.
+
+#### 闭包
+
+```js
+function makeAdder(a) {
+  return function(b) {
+    return a + b;
+  };
+}
+var add5 = makeAdder(5);
+var add20 = makeAdder(20);
+add5(6); // 11
+add20(7); // 27
+```
+
+A **closure** is the combination of a function and the scope object in which it was created. Closures let you save state — as such, they can often be used in place of objects. You can find [several excellent introductions to closures](http://stackoverflow.com/questions/111102/how-do-javascript-closures-work).
+
+## Further Reading
+
+[[Introduction to Object-Oriented JavaScript]](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
+
+[[Several excellent introductions to closures]](http://stackoverflow.com/questions/111102/how-do-javascript-closures-work)
 
 ## JS History
 
-[[JS-Third-Age]](https://www.swyx.io/writing/js-third-age/)
+* [[JS-Third-Age]](https://www.swyx.io/writing/js-third-age/)
+* [[JavaScript: The First 20 Years]](https://dl.acm.org/doi/10.1145/3386327) 2020-06 出版，作者：Allen Wirfs-Brock (editor of ES6)，Brendan Eich
 
+![image-20200917150355760](assets/image-20200917150355760.png)
