@@ -2,6 +2,41 @@
 
 [TOC]
 
+## Python 中的一些特殊变量
+
+### `__name__`
+
+[[Desc of `__name__` in FreeCodeCamp]](https://www.freecodecamp.org/news/whats-in-a-python-s-name-506262fe61e8/)
+
+`__name__` 是 Python 的一个变量，如果脚本是主动执行的，那么 `__name__` 的值就是 `__main__`，如果脚本是被 import 导入然后执行的，那么 `__name__` 的值就是脚本的名称。
+
+```python
+# script1
+import script2
+print(__name__)
+print(script2.__name__)
+
+# script2
+print(__name__)
+
+
+"""
+执行 script2，得到结果：
+script2
+__main__
+script2
+"""
+```
+
+
+
+```python
+if __name__ == "__main__":
+    pass
+```
+
+这就解释了，为什么脚本在被导入的时候，上面的代码不会执行的原因。有了 `__name__`，就可以在脚本中进行代码测试而不污染 import。
+
 ## PEP
 
 Python Enhancement Proposal.
@@ -83,6 +118,14 @@ Pointer variable vs Reference variable
 ## Matplotlib 绘制矢量图
 
 最通用的矢量图格式是 pdf 格式，不建议生成 svg 和 eps 格式的矢量图。
+
+## Python Depolyment
+
+[[BeeWare]](https://beeware.org/)
+
+**Write once. Deploy everywhere.**
+
+Write your apps in Python and release them on iOS, Android, Windows, MacOS, Linux, Web, and tvOS using rich, native user interfaces. Multiple apps, one codebase, with a fully native user experience on every platform.
 
 ## Python GUI
 

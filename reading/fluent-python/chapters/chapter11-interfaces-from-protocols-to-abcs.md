@@ -109,14 +109,12 @@ class Promotion(ABC): # The Strategy: an abstract base class，抽象基类
 
 class FidelityPromotion(Promotion): # concrete strategy
     """5% discount for customers with 1000 or more fidelity points"""
-
     def discount(self, order):
         return 0 if order.customer.fidelity < 1000 else order.total() * .05
 
 
 class BulkItemPromotion(Promotion): # concrete strategy
     """10% discount for each LineItem with 20 or more units"""
-
     def discount(self, order):
         discount = 0
         for item in order.cart:
