@@ -282,7 +282,7 @@ print(callable(bingo)) # True
 
 ### Get Function All Attributes
 
-如何查看一个对象的属性，包括一个函数对象的属性？
+如何查看一个对象的属性，包括一个函数对象的属性？`dir()`
 
 ```python
 dir(factorial)

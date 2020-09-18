@@ -10,7 +10,7 @@ Python 有两种协议（协议），一种是**隐式**的：魔法方法协议
 
 ## 隐式：魔法方法协议
 
-只要某一个类型走起路来像一直鸭子，叫声也像一只鸭子，那么这个类型就是鸭子的字类，即使这个类型并没有显式的继承自鸭子类。例如：
+只要某一个类型走起路来像一直鸭子，叫声也像一只鸭子，那么这个类型就是鸭子的子类，即使这个类型并没有显式的继承自鸭子类。例如：
 
 ```python
 class Struggle:
@@ -71,7 +71,7 @@ Python 内置的 ABCs 主要分布在两个 module 中：
   * Integral
   * ……
 
-####collections.abc
+#### collections.abc
 
 ```python
 from collections.abc import Sequence

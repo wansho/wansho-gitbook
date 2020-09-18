@@ -192,6 +192,11 @@ sizes = ["M", "S"]
 
 tshirts = [(size, color) for size in sizes
                            for color in colors]
+
+# 集合采用 {}
+numbers = [1,2,3,3,4,5,5,6,6,7,7]
+distinct_numbers = {number for number in numbers} 
+distinct_numbers
 ```
 
 ### Generator Experssion \(genexp\)

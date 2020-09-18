@@ -4,6 +4,8 @@
 
 ## Introduction
 
+装饰器和 function 是紧密结合在一起的。
+
 装饰器是装饰设计模式的 Python 实现。
 
 装饰器本质上是一个 High-Order Function，其输入是被装饰的 function（**First-Class Object 思想**），输出也是一个 function。装饰器根据返回的 function 可以分成如下两类装饰器：
@@ -19,7 +21,6 @@
 
 ```Python
 # -*- coding: utf-8 -*-
-
 
 def decorator_without_inner(func):
     print("print without inner")
@@ -37,24 +38,26 @@ def target1():
     print("target1")
 
 
-@decorator_with_inner
+@decorator_with_inner # 等价于 decorator_with_inner(target2)
 def target2():
     print("target2")
 
 
 if __name__ == "__main__":
-    print(target1)
-    target1()
-    print(target2)
+    target1() 
+    """
+    print without inner # 先执行装饰器 有点 super 的味道
+    target1  # 再执行本函数内的语句 
+    """
+    print(target1) # <function target1 at 0x000001E01B8F9A60>
+    
     target2()
+    """
+    print without inner
+    print inner  # 装饰器返回新的函数 inner(), inner() 取代了 target2()
+    """
+    print(target2) # <function decorator_with_inner.<locals>.inner at 0x000001E01B8F9F28>
 
-   
-"""
-<function target1 at 0x000001E01B8F9A60>
-target1
-<function decorator_with_inner.<locals>.inner at 0x000001E01B8F9F28>
-print inner
-"""
 ```
 
 ### 返回的 function 为输入的 function
@@ -181,7 +184,7 @@ if __name__ == "__main__":
 
 * 可以替换被装饰的 function
 
-* 在 module 被 import 的时候，就被执行，这一特性可以用于模块加载时候的初始化（类似于 Java 的静态代码块，随着类的加载而加载）
+* **在 module 被 import 的时候，就被执行，这一特性可以用于模块加载时候的初始化**（类似于 Java 的静态代码块，随着类的加载而加载）
 
   ```python
   import decorator_demo
@@ -249,7 +252,7 @@ def test():
 """
 ```
 
-Python 解释器在编译上面的代码时，其看到变量 b 在 test 中进行了**赋值**，则判断 b 为 test function 中的 local variable，Python 会将在 function 进行赋值的变量判定为 局部变量。并且这个局部变量，和全局变量虽然名字相似，但却是两个完全不相关的变量，只有当 function 中没有定义局部变量 a 时，function 才会去全局变量中找匹配的变量。
+Python 解释器在编译上面的代码时，其看到变量 b 在 test 中进行了**赋值**，则判断 b 为 test function 中的 local variable，**Python 会将在 function 进行赋值的变量判定为 局部变量。并且这个局部变量，和全局变量虽然名字相似，但却是两个完全不相关的变量，只有当 function 中没有定义局部变量 a 时，function 才会去全局变量中找匹配的变量。**
 
 如何解决上面的报错：在 function 中使用 **global** 来引用全局变量
 
@@ -277,7 +280,7 @@ print(b) # 8
 
 ### function local variable in Python and Javascript
 
-Python 和 Javascript 都不要求对变量的类型进行声明，但是不同的是，Python 会把 function 中赋值或定义的变量自动判定为局部变量，而 JavaScript 的 function 中如果声明了一个变量，则默认为 global variable，需要加上 `var` 才能表示为 function 内的局部变量。
+Python 和 Javascript 都不要求对变量的类型进行声明，但是不同的是，**Python 会把 function 中赋值或定义的变量自动判定为局部变量，而 JavaScript 的 function 中如果声明了一个变量，则默认为 global variable，需要加上 `var` 才能表示为 function 内的局部变量**。
 
 ## Closures(闭包)
 
@@ -311,7 +314,7 @@ print(avg.__closure__) # (<cell at 0x0000029DB8F007F8: list object at 0x0000029D
 print(avg.__closure__[0].cell_contents) # [10, 8, 6]
 ```
 
-### 闭包的作用
+### 闭包的应用场景
 
 * **装饰器返回新的 function**
 
@@ -321,9 +324,11 @@ print(avg.__closure__[0].cell_contents) # [10, 8, 6]
 
 * **函数式编程**
 
+我的一点小观察：闭包将 function 和 变量一起打包，这不就是一个类吗？？？有属性，有方法
+
 ### The nonlocal Declaration
 
-由函数作用域，我们得知，变量一旦在函数中被赋值，就会被标记成局部变量，如此就会丧失闭包的特性，失去对free variable 的绑定。在 function 中，我们通过 **global** 关键字来绑定全局变量，在闭包中，我们使用 **nonlocal** 关键字对在闭包函数中进行赋值的 function 进行绑定。
+由函数作用域，我们得知，**变量一旦在函数中被赋值，就会被标记成局部变量，如此就会丧失闭包的特性**，失去对free variable 的绑定。在 function 中，我们通过 **global** 关键字来绑定全局变量，在闭包中，我们使用 **nonlocal** 关键字对在闭包函数中进行赋值的 function 进行绑定。
 
 Demo:
 
@@ -345,7 +350,7 @@ def make_average():
 
 > it replaces the decorated function with a new function that accepts the same arguments and (usually) returns whatever the decorated function was supposed to return, while also doing some extra processing. 
 
-用新的函数覆盖旧函数后，旧函数的引用就会指向新的函数，导致旧函数的属性被隐藏，例如函数名 `__name__` 和注释 `__doc__` 都会变成新的函数。Python 提供了 `functools.wraps` 装饰器来将被装饰的 function 的属性 copy 到新的 function 上。
+**用新的函数覆盖旧函数后，旧函数的引用就会指向新的函数，导致旧函数的属性被隐藏**，例如函数名 `__name__` 和注释 `__doc__` 都会变成新的函数。Python 提供了 `functools.wraps` 装饰器来将被装饰的 function 的属性 copy 到新的 function 上。
 
 下面我们实现一个标准的装饰器，装饰器的目的是打印函数的执行时间：
 
@@ -356,7 +361,7 @@ from functools import wraps
 
 def clock(func):
     @wraps(func) # 解决被装饰函数属性被屏蔽的问题
-    def clocked(*args): # 用 *args 来覆盖位置参数
+    def clocked(*args): # 不确定位置参数有几个，用 *args 来覆盖位置参数
         start = time.perf_counter()
         result = func(*args)
         elapsed = time.perf_counter() - start
@@ -384,7 +389,8 @@ fibonacci(10) # 比较耗时的计算，违反了递归的重复计算准则
 [0.00363930s] fibonacci(10) ——> 55
 """
 
-print(fibonacci.__name__) # test，因为装饰器 wraps 将被装饰函数的属性 copy 到了新的函数上，所以 test 函数的引用仍然指向 clocked，但是 clocked 的属性变成了 test 的属性，所以我们从表面上来看，还是指向了 test
+print(fibonacci.__name__) # fibonacci
+# 因为装饰器 wraps 将被装饰函数的属性 copy 到了新的函数上，所以 fibonacci 函数的引用仍然指向 clocked，但是 clocked 的属性变成了 fibonacci 的属性，所以我们从表面上来看，还是指向了 fibonacci
 ```
 
 ## built-in Decorators
@@ -399,7 +405,7 @@ print(fibonacci.__name__) # test，因为装饰器 wraps 将被装饰函数的�
 
 存储 function 的计算结果，减少重复计算，可用于 Fibonacci 的优化。
 
-lru_cache 是一个装饰器工厂，其可以接收参数，然后返回定制后的装饰器。lru_cache 可以传入两个参数：
+lru_cache 是一个**装饰器工厂**，其可以接收参数，然后返回定制后的装饰器。lru_cache 可以传入两个参数：
 
 * maxsize: 表示 cache 的 size，能存储的结果数
 * typed: if true, 那么 cache 会区分不同的输入类型，例如区分 1 和 1.0，默认为 false
@@ -433,7 +439,9 @@ fibonacci(10)
 
 ### functools.singledispatch
 
-Python 用 singledispatch 实现重载:
+**Python 用 装饰器 实现重载**:
+
+**为什么能够用装饰器实现重载？装饰器的本质，就是传入一个函数，然后返回一个函数，而重载，就是对函数的重载，所以两者天然是可以结合的**
 
 ```Python
 from functools import singledispatch
@@ -464,7 +472,7 @@ def _(seq):
 
 **Python 用 singledispatch 重载和 Java 重载， if/else 的区别**：
 
-Java 的重载或者 if/else 是由缺陷的，其将更多的注意力放在了一个**代码单元**中，class 或者是 function，singledispatch 的优点是，其可以**支持模块化的扩展**，每一个 module 都可以注册一个专门的 function，其屏蔽了实现细节（不管用类还是用if/else），将更多的注意力放在了重载本身。实际上，Python 对于很多语言特性的实现，都进行了更高层次的逻辑抽取，更关注于特性本身特点的实现。
+Java 的重载或者 if/else 是由缺陷的，其将更多的注意力放在了一个**代码单元**中，class 或者是 function，singledispatch 的优点是，其可以**支持模块化的扩展**，每一个 module 都可以注册一个专门的 function，其屏蔽了实现细节（不管用类还是用if/else），将更多的注意力放在了重载本身。实际上，Python 对于很多语言特性的实现，都进行了更高层次的逻辑抽取，屏蔽了大量的语法细节，使得开发者能够更专注于业务和问题的解决。
 
 ## Stacked Decorators
 
@@ -478,6 +486,8 @@ def func():
 ```
 
 ## Decorator Factory
+
+带参数 `()` 的装饰器，都是装饰器工厂
 
 装饰器工厂，是传入装饰器参数，输入定制的装饰器，Demo:
 
@@ -504,7 +514,7 @@ if __name__ == '__main__':
     def snooze(seconds):
         time.sleep(seconds)
         for i in range(3):
-        snooze(.123)
+        	snooze(.123)
 ```
 
 

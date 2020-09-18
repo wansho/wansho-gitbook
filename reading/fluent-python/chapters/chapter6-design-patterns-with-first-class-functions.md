@@ -15,7 +15,7 @@
 
 ## Design Patterns
 
-
+**函数作为第一公民后，其在某种程度上，就可以替代 class，函数和 class 同样重要**
 
 
 
@@ -94,14 +94,12 @@ class Promotion(ABC): # The Strategy: an abstract base class，抽象基类
 
 class FidelityPromotion(Promotion): # concrete strategy
     """5% discount for customers with 1000 or more fidelity points"""
-
     def discount(self, order):
         return 0 if order.customer.fidelity < 1000 else order.total() * .05
 
 
 class BulkItemPromotion(Promotion): # concrete strategy
     """10% discount for each LineItem with 20 or more units"""
-
     def discount(self, order):
         discount = 0
         for item in order.cart:
@@ -112,7 +110,6 @@ class BulkItemPromotion(Promotion): # concrete strategy
 
 class LargeOrderPromotion(Promotion): # concrete strategy
     """7% discount for orders with 10 or more distinct items"""
-
     def discount(self, order):
         discount = 0
         distinct_items = {item.product for item in order.cart}
@@ -137,9 +134,13 @@ if __name__ == "__main__":
 
 ### Function-Oriented Strategy
 
+现在分析一下上面的面向对象的代码，对于每一种策略，我们都要用一个类将其封装，这个步骤是不是很多余？是不是没有突出重点？我们只是想要创建一个轻量的策略哎
+
+为什么不能直接传入一个策略呢？Python 的函数和 class 一样，都是一等公民啊
+
 **重构原理**
 
-因为 first-class object 的特性，function 可以和对象一样进行赋值。在很多时候，我们为了调用某个方法，需要实例化包装该方法的类，这是不必要的，有了 first-class function 后，我们不需要将功能性的方法包装在类中再调用，而是可以直接将 function 作为参数传入，A function is more light-weight than an instance of user-defined class。当我们需要实现某个接口的唯一方法时，我们可以用 function 来取代该 Class。
+因为 first-class object 的特性，function 可以和对象一样进行赋值。在很多时候，我们为了调用某个方法，需要实例化包装该方法的类，这是不必要的，有了 first-class function 后，我们不需要将功能性的方法包装在类中再调用，而是可以直接将 function 作为参数传入，**A function is more light-weight than an instance of user-defined class**。当我们需要实现某个接口的唯一方法时，我们可以用 function 来取代该 Class。
 
 实际上，应用 Frist-class function 这一特性，function 可以重构很多设计模式在 Python 中的实现。Peter Norvig 说过，23 个设计模式中，有 16 个设计模式可以在动态语言中被重构，甚至已经被设计到了编程语言中。
 
