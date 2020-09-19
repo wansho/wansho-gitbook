@@ -10,7 +10,9 @@ Python 并不是通过继承来实现某一个对象的特征，而是通过实�
 
 简单来说，**我们想要我们自定义的类拥有什么样的特征，那么直接去实现去对应的魔法方法即可**。
 
-## Object Representation
+## Object Representation 表示对象
+
+print(object) 会打印出啥？
 
 ### `__repr__()`
 
@@ -20,12 +22,81 @@ Python 并不是通过继承来实现某一个对象的特征，而是通过实�
 
 `str()` 方法会被 Python 解释器解释成 `__str__()`，`__str__()` 是**面向用户**的，如果 `__str__()` 没有被实现，那么就会调用 `__repr__()` 方法
 
+### `__bytes__()`
+
+bytes() 会调用该魔法方法，返回 byte sequence
+
+### `__format__()`
+
+built-in function: `format()`
+
+str method: `str.format()`
+
+## 创建一个 vector2d 类
+
+### 实现 Iterable
+
+```python
+def __iter__(self):
+    """make a Vector2d iterable, make unpacking work
+        vector = Vector2d(3, 4)
+        x, y = vector
+        iterable 是 tuple(this) 和 *self 的基础
+        返回一个 生成器表达式
+        """
+    return (i for i in (self.x, self.y))
+```
+
+### 实现 Representation
+
+实现 `__repr__()` 方法的准则：
+
+Note that in our `__repr__` implementation we used `!r` to obtain the standard repre‐sentation of the attributes to be displayed. This is good practice, as it shows the crucialdifference between Vector(1, 2) and Vector('1', '2') — the latter would not work in the context of this example, because the constructors arguments must be numbers, not str. 
+
+The string returned by `__repr__` should be unambiguous and, if possible, match the source code necessary to recreate the object being represented. That is why our chosen representation looks like calling the constructor of the class, e.g. Vector(3, 4).  
+
+```python
+def __repr__(self):
+    """实现 print(vector) 的自定义"""
+    class_name = type(self).__name__
+    # __repr__ builds a string by interpolating the components with {!r} to get their
+    # repr; because Vector2d is iterable, *self feeds the x and y components to
+    # format
+    return "{}({!r}, {!r})".format(class_name, *self)
+```
+
+判断 `__repr__()` 方法实现的效果：
+
+```python
+v1 = Vector2d(3, 4)
+v1_clone = eval(repr(v1))
+v1 == v1_clone
+```
+
+### 实现 print
+
+```python
+def __str__(self):
+    """因为 Vector2d 是 iterable 的，所以其可以作为参数传入 tuple"""
+    return str(tuple(self))
+```
+
+### 实现比较功能
+
+```python
+def __eq__(self, other):
+    """实现两个 vector 的可比性"""
+    return tuple(self) == tuple(other)
+```
+
+
+
 ## 特征 ——> 魔法方法
 
 | 语法                      | 魔法方法                                        |
 | ------------------------- | ----------------------------------------------- |
 | ==                        | `__eq__()`                                      |
-| print()                   | `__repr__（）`                                  |
+| repr()                    | `__repr__()`                                    |
 | str()                     | `__str__()`                                     |
 | bool()                    | `__bool__()`                                    |
 | format(), str.format()    | `__format__()`                                  |
@@ -47,7 +118,7 @@ def count(nums):
     return len(nums)
 
 @classmethod
-def frombytes(cls, octets):
+def frombytes(cls, octets): # 刚方法属于该类，而不是属于对象
     typecode = chr(octets[0])
     memv = memoryview(octets[1:]).cast(typecode)
     return cls(*memv)

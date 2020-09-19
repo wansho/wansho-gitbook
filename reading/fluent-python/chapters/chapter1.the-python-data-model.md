@@ -119,10 +119,12 @@ True
 
 ### `__repr__` 和 `__str__` 的区别
 
-* `__repr__` 是对 object 的字符串描述，`__str__` 是 `str()`的魔法方法，并且 `print(object)`会默认被解释成 `print(__repr__(object))`
-* 如果没有实现 `__str__`，那么 Python 解释器会默认调用 `__repr__` 方法，所以 `__repr__` 方法更通用
+* `repr()` 会被解释成 `__repr__()`，repr 是 representation 的缩写，`str()` 会被解释成 `__str__()`
+* `print()` 会隐式调用 `__str__()`
+
+* `__repr__` 是对 object 的字符串描述，`__str__` 是 `str()`的魔法方法，并且 `print(object)`会默认被解释成 `print(__str__(object))`
+* 优先实现 `__repr__()` 方法。如果没有实现 `__str__`，那么 Python 解释器会默认调用 `__repr__` 方法，所以 `__repr__` 方法更通用
 * `__repr__` 在 debugging 和 logging 时会调用，是面向开发者的，`__str__` 通常用于终端用户的字符描述，是面向终端用户的
-* `__str__` 更多的与 `str()` 有关，而 `__repr__` 更多的与 `print()` 有关
 
 ### `__bool__` 方法与 `__len__` 的关系
 

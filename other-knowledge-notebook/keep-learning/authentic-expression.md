@@ -49,6 +49,9 @@
 | complex | 复数 |  |
 | wizard | 向导 | installation wizard 软件安装向导 |
 | The Forbidden City | 紫禁城 |  |
+| truncate | 截短 | 将长字符串，变成 xxx... |
+| placeholder | 占位符 |  |
+| redux | 以新的方式重现 | |
 
 ## Authentic Chinese
 
