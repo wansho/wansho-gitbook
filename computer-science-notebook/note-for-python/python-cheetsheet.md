@@ -2,6 +2,12 @@
 
 [TOC]
 
+## Python 大佬
+
+* Guido van Rossum
+* Luciano Ramalho [[Fluent-Python]](https://github.com/fluentpython)
+* Julien Danjou  [[Blog]](https://julien.danjou.info/)，[[代表作：The Hacker's Guide To Python]](http://www.vimlinux.com/lipeng/tmpfile/the-hacker-guide-to-python.pdf)
+
 ## Python 中的一些特殊变量
 
 ### `__name__`

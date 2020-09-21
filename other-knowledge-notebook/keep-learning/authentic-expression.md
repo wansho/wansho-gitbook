@@ -52,6 +52,7 @@
 | truncate | 截短 | 将长字符串，变成 xxx... |
 | placeholder | 占位符 |  |
 | redux | 以新的方式重现 | |
+| compelling | 漂亮的 | |
 
 ## Authentic Chinese
 

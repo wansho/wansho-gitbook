@@ -94,6 +94,7 @@
   - [Python-Packages](computer-science-notebook/note-for-python/python-packages.md)
   - [Python-Exception](computer-science-notebook/note-for-python/python-exception.md)
   - [Python-Cheetsheet](computer-science-notebook/note-for-python/python-cheetsheet.md)
+  - [Python-method-classmethod-staticmethod](computer-science-notebook/note-for-python/method-classmethod-staticmethod.md)
   - [Python-Enhanced-Proposal](computer-science-notebook/note-for-python/pep.md)
   - [Algorithm-Data-Structure-with-Python](computer-science-notebook/note-for-python/python-algorithm-data-structure.md)
   - [Multiprocessing-and-Threading](computer-science-notebook/note-for-python/multiprocessing-and-threading.md)

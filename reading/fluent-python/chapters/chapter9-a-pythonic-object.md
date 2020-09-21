@@ -24,7 +24,7 @@ print(object) 会打印出啥？
 
 ### `__bytes__()`
 
-bytes() 会调用该魔法方法，返回 byte sequence
+bytes() 会调用该魔法方法，返回 byte sequence，将对象字节化
 
 ### `__format__()`
 
@@ -108,9 +108,15 @@ def __eq__(self, other):
 
 ## staticmethod and classmethod
 
+classmethod is good for and staticmethod is not veryuseful.
+
+**staticmethod**: Sometimes, you'll write code that belongs to a class, but that doesn't use the object itself at all.
+
+**classmethod**: Class methods are methods that are not bound to an object, but to… a class!
+
 Python 用两个内置的装饰器来实现静态方法。静态方法随着类的加载而加载，可以通过类名直接调用。
 
-上面两个静态方法，不同点在于，classmethod 的第一个参数是类。Demos:
+上面两个静态方法，不同点在于，classmethod 的第一个参数会传入类。Demos:
 
 ```Python
 @staticmethod
@@ -118,13 +124,19 @@ def count(nums):
     return len(nums)
 
 @classmethod
-def frombytes(cls, octets): # 刚方法属于该类，而不是属于对象
+def frombytes(cls, octets): # 该方法属于该类，而不是属于对象
     typecode = chr(octets[0])
     memv = memoryview(octets[1:]).cast(typecode)
     return cls(*memv)
 ```
 
-当我们在静态方法中，需要用到类时，就可以用 `@classmethod` 来修饰
+当我们在静态方法中，需要用到类时，就可以用 `@classmethod` 来修饰，例如上面的第二个例子中的 `cls(*memv)`
+
+The classmethod decorator is clearly useful, but I’ve never seen a compelling use case for staticmethod. If you want do define a function that does not interact with the class, just define it in the module. Maybe the function is closely related even if it never touches the class, so you want to them nearby in the code. Even so, defining the function right before or after the class in the same module is close enough for all practical purposes.
+
+其他人对于 staticmethod 和 classmethod 的观点：
+
+[[The definitive guide on how to use static, class or abstract methods in Python]](https://julien.danjou.info/guide-python-static-class-abstract-methods/)
 
 ## Hashable
 
