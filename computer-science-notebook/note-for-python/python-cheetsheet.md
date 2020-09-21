@@ -2,11 +2,14 @@
 
 [TOC]
 
-## Python 大佬
+## Python 大佬 和 Python 学习资源
 
-* Guido van Rossum
-* Luciano Ramalho [[Fluent-Python]](https://github.com/fluentpython)
-* Julien Danjou  [[Blog]](https://julien.danjou.info/)，[[代表作：The Hacker's Guide To Python]](http://www.vimlinux.com/lipeng/tmpfile/the-hacker-guide-to-python.pdf)
+* 大佬
+  * Guido van Rossum
+  * Luciano Ramalho [[Fluent-Python]](https://github.com/fluentpython)
+  * Julien Danjou  [[Blog]](https://julien.danjou.info/)，[[代表作：The Hacker's Guide To Python]](http://www.vimlinux.com/lipeng/tmpfile/the-hacker-guide-to-python.pdf)
+* 资源
+  * [[Github: Python工匠]](https://github.com/piglei/one-python-craftsman)
 
 ## Python 中的一些特殊变量
 
