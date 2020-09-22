@@ -94,6 +94,7 @@
   - [Python-Packages](computer-science-notebook/note-for-python/python-packages.md)
   - [Python-Exception](computer-science-notebook/note-for-python/python-exception.md)
   - [Python-Cheetsheet](computer-science-notebook/note-for-python/python-cheetsheet.md)
+  - [Python-Craftsman](computer-science-notebook/note-for-python/python-craftsman.md)
   - [Note-for-Jupyter](computer-science-notebook/note-for-python/jupyter-notebook.md)
   - [Different-methods-in-class](computer-science-notebook/note-for-python/different-methods-in-class.md)
   - [Python-Enhanced-Proposal](computer-science-notebook/note-for-python/pep.md)
