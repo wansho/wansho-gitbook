@@ -103,6 +103,8 @@ m.__self__.get_size() # 获取实例后调用该实例绑定的方法
 ## Static methods
 
 
+
+
 ```python
 
 ```
