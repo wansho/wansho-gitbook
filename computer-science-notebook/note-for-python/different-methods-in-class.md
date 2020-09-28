@@ -102,11 +102,196 @@ m.__self__.get_size() # 获取实例后调用该实例绑定的方法
 
 ## Static methods
 
-
+You'll write code that belongs to a class, but that doesn't use the object itself at all. 这样我们就不需要先实例化一个对象，再去调用该方法。
 
 
 ```python
+class Pizza(object):
+    @staticmethod # 用装饰器 staticmethod 修饰
+    def mix_ingredients(x, y):
+        return x + y
 
+    def cook(self):
+        return self.mix_ingredients(self.cheese, self.vegetables)
+```
+
+
+```python
+Pizza().cook is Pizza().cook
+```
+
+
+    False
+
+实例化两个不同的对象，其绑定的 instancemethod 对象(instancemethod 也是对象，first-class function)也不同。
+
+
+```python
+Pizza().mix_ingredients is Pizza.mix_ingredients
+```
+
+
+    True
+
+
+```python
+Pizza().mix_ingredients is Pizza().mix_ingredients
+```
+
+
+    True
+
+staticmethod 并不依赖于对象而存在，在 Java 中，其随着类的加载而加载，其在类的整个声明周期中只有一个实例。
+但是 instancemethod 不同，其绑定在每一个不同的 object 上，所以每一个 instancemethod object 都不相同
+
+## Class methods
+
+Class methods are methods that are not bound to an object, but to… a class!
+
+
+```python
+class Pizza(object):
+    radius = 42
+    @classmethod
+    def get_radius(cls):
+        return cls.radius
+```
+
+
+```python
+Pizza.get_radius
+```
+
+
+    <bound method Pizza.get_radius of <class '__main__.Pizza'>>
+
+
+```python
+Pizza().get_radius
+```
+
+
+    <bound method Pizza.get_radius of <class '__main__.Pizza'>>
+
+
+```python
+Pizza.get_radius == Pizza().get_radius
+```
+
+
+    True
+
+从上面可以看出，classmethod 是和 class 绑定在一块的，其和 staticmethod 类似，在 class 的生命周期内只有一个实例。唯一不同的是，classmethod 要显式的传入一个 class 对象。
+
+**classmethod 的使用场景**
+
+
+一个原则：在 method 内如果碰到使用 cls 而又想避免硬编码类名，则使用 classmethod。
+例如：工厂设计模式
+在 classmethod 内调用传入的对象进行 class 类的实例化，直接使用 cls() 而不需要对类名进行硬编码 Pizza()：
+
+
+```python
+class Pizza(object):
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
+
+    @classmethod
+    def from_fridge(cls, fridge):
+        return cls(fridge.get_cheese() + fridge.get_vegetables())
+```
+
+## Abstract methods
+
+Python 中的 Abstract methods 就是 Java 中的接口。
+
+Python 中最简单的 Abstract method 实现：
+
+
+```python
+class Pizza(object):
+    def get_radius(self):
+        raise NotImplementedError
+```
+
+任何从继承自 Pizza 的类，都要重写或者实现 `get_radius` 方法，否则就会抛出异常。但是问题是，如果我们在继承类中忘记实现该方法，那么当我们调用该方法的时候，就会抛出异常。
+
+我们可以使用 `abc` module 使得异常抛出得更早一些，在类创建的时候，就报错，而不是等待使用该方法时才报错。
+
+
+```python
+import abc
+
+class BasePizza(object):
+    __metaclass__  = abc.ABCMeta
+
+    @abc.abstractmethod
+    def get_radius(self):
+         """Method that should do something."""
+```
+
+有了 `abstractmethod` 的装饰器，一旦我们想要对 baseclass 或者继承自 baseclass 但是没有实现 abstractmethod 的类进行实例化时，就会报错
+
+## Mixing static, class and abstract methods
+
+抽象方法可以被包含不同参数的方法所实现：
+
+
+```python
+import abc
+
+class BasePizza(object):
+    __metaclass__  = abc.ABCMeta
+
+    @abc.abstractmethod
+    def get_ingredients(self): # 不要把参数定死了
+         """Returns the ingredient list."""
+
+class Calzone(BasePizza):
+    def get_ingredients(self, with_egg=False):
+        egg = Egg() if with_egg else None
+        return self.ingredients + egg
+```
+
+可以用静态方法实现抽象方法：
+
+
+```python
+import abc
+
+class BasePizza(object):
+    __metaclass__  = abc.ABCMeta
+
+    @abc.abstractmethod
+    def get_ingredients(self):
+         """Returns the ingredient list."""
+
+class DietPizza(BasePizza):
+    @staticmethod
+    def get_ingredients():
+        return None
+```
+
+`classmethod` 和 `staticmethod` 都可以装饰抽象方法。In Python, contrary to methods in Java interfaces, you can have code in your abstract methods and call it via super():
+
+
+```python
+import abc
+
+class BasePizza(object):
+    __metaclass__  = abc.ABCMeta
+
+    default_ingredients = ['cheese']
+
+    @classmethod
+    @abc.abstractmethod
+    def get_ingredients(cls):
+         """Returns the ingredient list."""
+         return cls.default_ingredients
+
+class DietPizza(BasePizza):
+    def get_ingredients(self):
+        return ['egg'] + super(DietPizza, self).get_ingredients()
 ```
 
 ## Instance methods
