@@ -1100,6 +1100,8 @@ unset my_para
 
 # 修改 PATH，加入新的路径
 PATH=$PATH:new_way # PATH 中的路径都用 : 隔开，通过这种方式修改的环境变量，其效果只能维持到退出或重启系统，不能永久保持环境变量
+
+# 想要修改后的 path 变量每次开机都生效，就得将 path 的改动写入 $HOME/.profile or /etc/profile (for a system-wide installation)
 ```
 
 ### 系统环境变量所在地址、固化环境变量、开机启动项
@@ -1160,13 +1162,23 @@ $HOME/.profile
 
 ### source，dot，sh
 
+**区别：**
+
+* `source`, `. `： Execute commands from a file in the current shell. 注意：是 **current shell**
+
+* sh 是 new 一个子 shell，然后在子 shell 中执行脚本，不会污染当前 shell
+
+**详细解释**：
+
 `source script`命令只是简单的运行了脚本中的命令，并且是在当前的 shell 进程中运行，并不会 new 一个 子shell 来运行。运行完后，所有的变量都会保留在当前的 shell 进程中。
 
 例如，当我们修改完环境变量时，我们可以用 source 命令运行这个脚本，使新配置的环境变量在当前的 shell 中生效。
 
 `. script等价于 `source`，是 `source` 的 alias，但是 ubuntu 的 crontab 不支持 `source` 命令，所以以后用到 `source` 的地方，都用 `.` 代替。
 
-`sh script` 是 new 了一个子 shell，然后在这个子shell中执行脚本，执行结果不会影响父shell
+`sh script` 是 new 了一个子 shell，然后在这个子shell中执行脚本，执行结果不会影响父shell。
+
+
 
 ## 脚本控制
 

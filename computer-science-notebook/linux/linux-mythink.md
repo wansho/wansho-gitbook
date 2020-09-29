@@ -241,6 +241,8 @@ SSH provides a [secure channel](https://en.wikipedia.org/wiki/Secure_channel) ov
 
 * 连接 WSL，不需要打开 WSL App，只需要在用 VSCode 的 Remote-WSL 插件连接就行了，WSL 应该有一个后台服务一直在跑
 
+**以后开发，尽量都在 ubuntu 子系统中进行开发。**
+
 ## 常见问题
 
 ### 虚拟机 buff/cache 占用内存太大

@@ -12,7 +12,7 @@ Created: 13-May-2005
 
 ### Abstract
 
- with 用于异常发生时，及时释放异常涉及的资源。
+ **with 用于异常发生时，及时释放异常涉及的资源**。
 
 **`with`** statement in Python is used in exception handling to make the code cleaner and much more readable. It simplifies the management of common resources like file streams. 
 
