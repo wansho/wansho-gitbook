@@ -41,7 +41,7 @@ def __iter__(self):
     """make a Vector2d iterable, make unpacking work
         vector = Vector2d(3, 4)
         x, y = vector
-        iterable 是 tuple(this) 和 *self 的基础
+        iterable 是 tuple(this) 和 unpack 的基础
         返回一个 生成器表达式
         """
     return (i for i in (self.x, self.y))
@@ -137,6 +137,88 @@ The classmethod decorator is clearly useful, but I’ve never seen a compelling 
 其他人对于 staticmethod 和 classmethod 的观点：
 
 [[The definitive guide on how to use static, class or abstract methods in Python]](https://julien.danjou.info/guide-python-static-class-abstract-methods/)
+
+## 格式化 format
+
+官方教程：[Format String Syntax](<https://docs.python.org/3.4/library/string.html#format-string-syntax>)
+
+三种特殊的格式化标记：
+
+| 转换标记   | 解释成    |
+| ---------- | --------- |
+| `%s`, `!s` | `str()`   |
+| `%r`, `!r` | `repr()`  |
+| `%a`, `!a` | `ascii()` |
+
+**format 的两种用法**
+
+fotmat 不仅可以对字符串进行格式化，还可以对很多对象进行格式化，时间对象，数值对象等
+
+```python
+format(0.4115226337448559, '0.4f')
+'1 BRL = {rate:0.2f} USD'.format(rate=brl)
+```
+
+**%**
+
+```Python
+name = "wansho"
+age = 25
+
+"age: %d" % age
+
+"name: %s" % name # # %s 会被 Python 解释器解释成 str(name)
+"name: %a" % name # %r 会被 Python 解释器解释成 ascii(name)
+"name: %r" % name # %r 会被 Python 解释器解释成 repr(name)
+
+```
+
+**format**
+
+```Python
+name = "wansho"
+age = 25
+
+"age: {}".format(age)
+"age: {age}".format(age = age)
+
+'{2}, {1}, {0}'.format('a', 'b', 'c') # 'c, b, a'
+'{2}, {1}, {0}'.format(*'abc') # 'c, b, a', * 用于将 字符串 解包
+'{0}{1}{0}'.format('aa', 'bb') # aabbaa
+"{:,}".format(6000000) # 6,000,000 https://www.cnblogs.com/lovejh/p/9201219.html
+
+"name: {!r}".format(name)
+"name: {!s}".format(name)
+"name: {!a}".format(name)
+```
+
+**数字格式化**
+
+下表展示了 str.format() 格式化数字的多种方法：
+
+```python
+print("{:.2f}".format(3.1415926));
+# 3.14
+```
+
+| 数字       | 格式                                                         | 输出                   | 描述                         |
+| :--------- | :----------------------------------------------------------- | :--------------------- | :--------------------------- |
+| 3.1415926  | {:.2f}                                                       | 3.14                   | 保留小数点后两位             |
+| 3.1415926  | {:+.2f}                                                      | +3.14                  | 带符号保留小数点后两位       |
+| -1         | {:+.2f}                                                      | -1.00                  | 带符号保留小数点后两位       |
+| 2.71828    | {:.0f}                                                       | 3                      | 不带小数                     |
+| 5          | {:0>2d}                                                      | 05                     | 数字补零 (填充左边, 宽度为2) |
+| 5          | {:x<4d}                                                      | 5xxx                   | 数字补x (填充右边, 宽度为4)  |
+| 10         | {:x<4d}                                                      | 10xx                   | 数字补x (填充右边, 宽度为4)  |
+| 1000000    | {:,}                                                         | 1,000,000              | 以逗号分隔的数字格式         |
+| 0.25       | {:.2%}                                                       | 25.00%                 | 百分比格式                   |
+| 1000000000 | {:.2e}                                                       | 1.00e+09               | 指数记法                     |
+| 13         | {:>10d}                                                      | 13                     | 右对齐 (默认, 宽度为10)      |
+| 13         | {:<10d}                                                      | 13                     | 左对齐 (宽度为10)            |
+| 13         | {:^10d}                                                      | 13                     | 中间对齐 (宽度为10)          |
+| 11         | `'{:b}'.format(11) '{:d}'.format(11) '{:o}'.format(11) '{:x}'.format(11) '{:#x}'.format(11) '{:#X}'.format(11)` | `1011 11 13 b 0xb 0XB` | 进制                         |
+
+
 
 ## Hashable
 
