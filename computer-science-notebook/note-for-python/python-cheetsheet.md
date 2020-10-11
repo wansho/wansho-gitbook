@@ -8,6 +8,7 @@
   * Guido van Rossum
   * Luciano Ramalho [[Fluent-Python]](https://github.com/fluentpython)
   * Julien Danjou  [[Blog]](https://julien.danjou.info/)，[[代表作：The Hacker's Guide To Python]](http://www.vimlinux.com/lipeng/tmpfile/the-hacker-guide-to-python.pdf)
+  * Doug Hellmann  [[Python 3 Module of the Week]](https://pymotw.com/3/), [[Book: The Python Standard Library by Example]]() 
 * 资源
   * [[Github: Python工匠]](https://github.com/piglei/one-python-craftsman)
 

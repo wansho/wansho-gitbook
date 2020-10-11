@@ -2,6 +2,136 @@
 
 [TOC]
 
+## PEP-8 Coding style 
+
+[[PEP8]](https://www.python.org/dev/peps/pep-0008)
+
+**PEP8 标准已经被封装成一个工具**
+
+```shell
+pip install pep8
+```
+
+```shell
+pep8 hello.py
+```
+
+```
+pycodestyle ...
+
+  warnings.warn(
+method.py:8:1: E302 expected 2 blank lines, found 1
+method.py:11:5: E301 expected 1 blank line, found 0
+```
+
+其他 Python 静态代码检测工具：pyflakes, pylint  
+
+**代码长度**
+
+一行代码长度：79 chars
+
+**操作符**
+
+```python
+# Wrong:
+# operators sit far away from their operands
+income = (gross_wages +
+          taxable_interest +
+          (dividends - qualified_dividends) -
+          ira_deduction -
+          student_loan_interest)
+
+# Correct:
+# easy to match operators with operands
+income = (gross_wages
+          + taxable_interest
+          + (dividends - qualified_dividends)
+          - ira_deduction
+          - student_loan_interest)
+```
+
+**import**
+
+Imports should be grouped in the following order:
+
+1. Standard library imports.
+2. Related third party imports.
+3. Local application/library specific imports.
+
+You should put a blank line between each group of imports.
+
+**模块级 dunder names**
+
+Module level "dunders" (i.e. names with two leading and two trailing underscores) such as `__all__`, `__author__`, `__version__`, etc. should be placed after the module docstring but before any import statements *except* `from __future__` imports. Python mandates that future-imports must appear in the module before any other code except docstrings:
+
+```python
+"""This is the example module.
+
+This module does stuff.
+"""
+
+from __future__ import barry_as_FLUFL
+
+__all__ = ['a', 'b', 'c']
+__version__ = '0.1'
+__author__ = 'Cardinal Biggles'
+
+import os
+import sys
+```
+
+**whitespace 的使用惯例**
+
+```python
+# Correct:
+foo = (0,)
+
+# Wrong:
+bar = (0, )
+```
+
+```python
+# Correct:
+i = i + 1
+submitted += 1
+x = x*2 - 1
+hypot2 = x*x + y*y
+c = (a+b) * (a-b)
+
+# Wrong:
+i=i+1
+submitted +=1
+x = x * 2 - 1
+hypot2 = x * x + y * y
+c = (a + b) * (a - b)
+```
+
+```python
+# Correct:
+def complex(real, imag=0.0):
+    return magic(r=real, i=imag)
+
+# Wrong:
+def complex(real, imag = 0.0):
+    return magic(r = real, i = imag)
+```
+
+**逗号的使用**
+
+```python
+# Correct:
+FILES = [
+    'setup.cfg',
+    'tox.ini', # 可能在后期进行扩展
+    ]
+initialize(FILES,
+           error=True,
+           )
+# Wrong:
+FILES = ['setup.cfg', 'tox.ini',]
+initialize(FILES, error=True,)
+```
+
 ## PEP-343 The "with" Statement  
 
 [[with statement in Python]](https://www.geeksforgeeks.org/with-statement-in-python/)

@@ -4,9 +4,13 @@
 
 [TOC]
 
-## Protocols
+11，12，13 章都在讨论 Python 的接口和继承，比较晦涩，就算看懂了，到了用的时候也忘了，所以这几章暂时不学了，等用到的时候再看。
 
-Python 有两种协议（协议），一种是**隐式**的：魔法方法协议，一种是**显式**的：ABCs。
+## Protocols / Interface
+
+Python 有两种接口（协议），一种是**隐式**的：魔法方法协议（鸭子类型），一种是**显式**的：ABCs。
+
+Python 可以和 Java 一样，实现多继承（Java 实现多个接口）。
 
 ## 隐式：魔法方法协议
 
@@ -51,11 +55,23 @@ TypeError: 'FrenchDeck' object does not support item assignment
 >>> deck[:5]
  ```
 
+## Interfaces and protocols in Python culture 
 
+**protected and private attributes**
+
+By definition, protected and private attributes are not part of an interface, even if “protected” is merely a naming convention (the single leading underscore) and private attributes are easily accessed.
+
+**Python 对 Interface 的理解**
+
+Python 的接口，其侧重点在：像不像（鸭子类型），而 Java 的接口，则遵循严格的协议。
+
+A useful complementary definition of interface is: the subset of an object’s public methods that enable it to play a specific role in the system. That’s what is implied when the Python documentation mentions “a file-like object” or “an iterable”, without specifying a class. An interface seen as a set of methods to fulfill a role is what Smalltalkers called a procotol, and the term spread to other dynamic language communities. Protocols are independent of inheritance. A class may implement several protocols, enabling its instances to fulfill several roles. 
+
+Protocols are interfaces, but because they are informal — defined only by documentation and conventions — protocols cannot be enforced like formal interfaces can (we’ll see how ABCs enforce interface conformance later in this chapter). A protocol may be partially implemented in a particular class, and that’s OK.  I point this out to emphasize that “X-like object”, “X protocol” and “X interface” are synonyms in the minds of Pythonistas.  
 
 ## 显式：ABCs
 
- 当 ABCs(Abstract Base Classes) 被引入 Python 的时候，Python 已经 15 岁了。
+ 当 ABCs(Abstract Base Classes) 被引入 Python（Python2.6） 的时候，Python 已经 15 岁了。
 
 ### Python 内置的 ABCs 及使用
 

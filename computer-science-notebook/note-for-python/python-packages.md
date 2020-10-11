@@ -88,6 +88,40 @@ Note that when using `from package import item`, the item can be either a submod
 
 Contrarily, when using syntax like `import item.subitem.subsubitem`, each item except for the last must be a package; the last item can be a module or a package but can’t be a class or function or variable defined in the previous item.
 
+### `__all__`
+
+**all 用来限定我  `from <module> import *`  时，对外暴露哪些模块和变量，起到隐私保护的作用。**
+
+It is a list of strings defining what symbols in a module will be exported when `from <module> import *` is used on the module.
+
+For example, the following code in a `foo.py` explicitly exports the symbols `bar` and `baz`:
+
+```py
+__all__ = ['bar', 'baz']
+
+waz = 5
+bar = 10
+def baz(): return 'baz'
+```
+
+These symbols can then be imported like so:
+
+```py
+from foo import *
+
+print(bar)
+print(baz)
+
+# The following will trigger an exception, as "waz" is not exported by the module
+print(waz)
+```
+
+If the `__all__` above is commented out, this code will then execute to completion, as the default behaviour of `import *` is to import all symbols that do not begin with an underscore, from the given namespace.
+
+Reference: https://docs.python.org/tutorial/modules.html#importing-from-a-package
+
+**NOTE:** `__all__` affects the `from <module> import *` behavior only. Members that are not mentioned in `__all__` are still accessible from outside the module and can be imported with `from <module> import <member>`.
+
 ### import * from a package
 
 最终结论：不要使用 `import * `
@@ -124,7 +158,7 @@ Note that relative imports are based on the name of the current module.
 
 
 
-## Packaging-Projects
+## Python 打包发布
 
 [官方教程](https://packaging.python.org/tutorials/packaging-projects/)
 
