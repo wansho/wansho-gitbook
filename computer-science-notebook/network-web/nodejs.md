@@ -9,8 +9,16 @@
 
 ## 代理
 
+配置代理
+
 ```shell
 npm config set proxy http://127.0.0.1:7890
 npm config set https-proxy=https://127.0.0.1:7890
 ```
 
+取消代理
+
+```shell
+npm config delete proxy
+npm config delete https-proxy
+```

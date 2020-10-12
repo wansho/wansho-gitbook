@@ -736,11 +736,13 @@ ssh-keygen
 2. 设置 Git 的代理：
 git config --global http.proxy http://127.0.0.1:7890 # 2136 就是翻墙软件代理的端口号
 git config --global https.proxy https://127.0.0.1:7890
-注意：此模式只适用于 http 协议，不适用于 SSH 协议
+# 注意：此模式只适用于 http 协议，不适用于 SSH 协议
+# 同样适用于 WSL
 
 # 取消代理
 git config --global --unset http.proxy
 git config --global --unset https.proxy
+
 ```
 
 ### Windows git 的 vim 无法粘贴
