@@ -734,8 +734,8 @@ ssh-keygen
 # git clone 速度慢到几 KB
 1. 打开 lantern，使用代理服务器，把端口调整到 lantern 的监听端口
 2. 设置 Git 的代理：
-git config --global http.proxy http://127.0.0.1:2136 # 2136 就是翻墙软件代理的端口号
-git config --global https.proxy https://127.0.0.1:2136
+git config --global http.proxy http://127.0.0.1:7890 # 2136 就是翻墙软件代理的端口号
+git config --global https.proxy https://127.0.0.1:7890
 注意：此模式只适用于 http 协议，不适用于 SSH 协议
 
 # 取消代理

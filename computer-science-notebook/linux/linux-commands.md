@@ -1139,7 +1139,11 @@ fi
 
 # 如果升级了 Linux，那么 /etc/profile 文件也可能 update,那么我们之前在该文件中加入的环境变量和启动项都会被覆盖掉
 # 综上，配置全局持久化变量的做法为：
-在 /etc/profile.d/ 文件夹中建立一个 sh脚本，然后进行环境变量和开机启动的配置；
+# 在 /etc/profile.d/ 文件夹中建立一个 sh脚本，然后进行环境变量和开机启动的配置
+# 我在 profile.d 文件夹下创建了一个 sophic_start.sh 脚本，其内容为
+cd /users/ems
+./linux_sophic.sh
+# 然后授予该脚本执行权限：chmod +x sophic_start.sh
 ```
 
 **$HOME下的用户级文件**
