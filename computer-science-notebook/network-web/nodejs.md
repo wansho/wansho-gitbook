@@ -22,3 +22,10 @@ npm config set https-proxy=https://127.0.0.1:7890
 npm config delete proxy
 npm config delete https-proxy
 ```
+
+## npm install
+
+`npm install` 默认将 `package.json` 的配置的环境依赖下载到当前目录下的 `node_modules` 中，如果想要复用这些环境依赖，可以直接加参数：`-g --global`。
+
+`npm install -g`
+

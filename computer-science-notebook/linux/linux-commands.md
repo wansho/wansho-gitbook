@@ -147,7 +147,7 @@ head -n 20 file # 200 显示头 200 行, 可以简写成 head -20 file
 ### tail   
 
 ```
-# 实现 log 文件的事实监控
+# 实现 log 文件的实时监控
 tail -f file # -f: follow
 
 # 查看后 20 行的内容
