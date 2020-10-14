@@ -7,6 +7,14 @@
 `npm config set registry http://registry.npm.taobao.org/`
 `npm config set ELECTRON_MIRROR "https://npm.taobao.org/mirrors/electron/"`
 
+换回官方镜像：
+
+`npm config set registry https://registry.npmjs.org/`
+
+`npm config get ELECTRON_MIRROR`
+
+`npm config delete ELECTRON_MIRROR`
+
 ## 代理
 
 配置代理

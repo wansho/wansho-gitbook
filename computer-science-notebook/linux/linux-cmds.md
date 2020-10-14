@@ -783,6 +783,68 @@ wget 和 curl 的区别：
 - `wget` is a tool to download files from servers。wget 用来从服务器下载文件
 - `curl` is a tool that let's you exchange requests/responses with a server。curl 用来和服务器进行交互，其更像是一个类似浏览器的客户端。curl 支持多种应用层协议。
 
+### ssh
+
+ssh(secured shell) 用来远程登录访问。
+
+ssh (SSH client) is a program for logging into a remote machine and for executing commands on a remote machine.  It is intended to provide secure en‐crypted communications between two untrusted hosts over an insecure network.  X11 connections, arbitrary TCP ports and UNIX-domain sockets can also be forwarded over the secure channel.
+
+ssh connects and logs into the specified destination, which may be specified as either [user@]hostname or a URI of the form ssh://[user@]hostname[:port]. The user must prove his/her identity to the remote machine using one of several methods (see below).
+
+[[ssh 实例讲解]](https://www.jianshu.com/p/b10c2b163100)
+
+命令格式：`ssh [-p port] user@remote`，Demo：`ssh -p 22 deepin2@192.168.56.132` 
+
+### route
+
+多网络间路由配置
+
+Demo:
+
+```
+Linux1:
+	10.0.0.128
+	
+Linux2:
+	10.0.0.129
+	192.168.1.129
+	
+Linux3:
+	192.168.1.130
+	192.168.2.130
+
+其中 Linux2 作为路由器
+
+添加静态路由常用参数：
+
+add 增加路由
+del 删除路由
+-net 设置到某个网段的路由
+-host 设置到某台主机的路由
+gw     出口网关 IP地址
+dev 出口网关 物理设备名
+
+设置到某个网段的路由:
+	route add -net 目标网段 gw 网关(路由器)
+	例如：
+	从 1 到 3，经过路由 2：route add –net 192.168.1.0/24 gw 10.0.0.129
+	从 3 到 1，经过路由 2：route add -net 10.0.0.0/24 gw 10.0.0.129
+```
+
+### telnet
+
+一个与其他主机进行通信的工具集。
+
+The telnet command is used for interactive communication with another host using the TELNET protocol. It begins in command mode, where it prints a telnet prompt ("telnet> "). If telnet is invoked with a host argument, it performs an open command implicitly; see the description below.
+
+**测试远程主机的端口是否打开**
+
+```
+telnet ip port
+```
+
+
+
 ## 运维相关
 
 ## 硬件相关
@@ -984,7 +1046,7 @@ ps --forest
 # 后台模式的进程就是一个 daemon，守护进程
 
 # 开启后台模式
-cmd&
+cmd& # 可以理解成，从前台进程转为后台守护进程
 # 运行结果：[num] pid，其中 num 为 jobs 号，pid 后台作业的 进程id。
 
 # 查看当前运行在后台模式中的所有作业
@@ -1340,8 +1402,8 @@ UUID=上面查看的字符串 /mysqldata  xfs  defaults 0  0
 
 Raid 分为软 Raid 和硬 Raid。
 
-raid0 可以提高读写速度，但并不能提供数据冗余；
+raid0 可以提高读写速度，但并不能提供数据冗余（单纯的把数据分散到多个磁盘中，并行读取）；
 
-raid1 可以实现数据冗余，但是空间利用率是 50%；
+raid1 可以实现数据冗余，但是空间利用率是 50%（raid 1 在 raid 0 的基础上，加上了数据冗余）；
 
 raid5 兼顾存储性能和存储成本，是 raid0 和 raid1 的折中方案；

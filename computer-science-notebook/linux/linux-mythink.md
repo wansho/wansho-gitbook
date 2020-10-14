@@ -225,7 +225,7 @@ SSH provides a [secure channel](https://en.wikipedia.org/wiki/Secure_channel) ov
 
 令我感到惊奇的是，两个系统的互通性极强，体现在：
 
-* 都可以互相 Ping 通，子系统的 IP 地址就是 `127.0.0.1`，也就是在 Windows 上，可以通过 `127.0.0.1` 访问 Linux 子系统
+* WSL 共享 Windows 的网络（在 wsl 中 `ifconfig` 显示的信息与 Windows `ipconfig` 显示的信息一致），都可以互相 Ping 通，子系统的 IP 地址就是 `127.0.0.1`，也就是在 Windows 上，可以通过 `127.0.0.1` 访问 Linux 子系统
 
   <img align='left' src="assets/image-20200913111750152.png" alt="image-20200913111750152" style="zoom:67%;" />
 
