@@ -1,17 +1,25 @@
 # nodeJS
 
+[TOC]
+
 ## 配置国内镜像
 
 [教程](https://blog.csdn.net/qq_27022241/article/details/107251657)
 
-`npm config set registry http://registry.npm.taobao.org/`
-`npm config set ELECTRON_MIRROR "https://npm.taobao.org/mirrors/electron/"`
+```
+npm config set registry "http://registry.npm.taobao.org/"
+npm config set ELECTRON_MIRROR "https://npm.taobao.org/mirrors/electron/"
+```
 
 换回官方镜像：
 
-`npm config set registry https://registry.npmjs.org/`
+```
+npm config set registry "https://registry.npmjs.org/"
 
-`npm config get ELECTRON_MIRROR`
+# 检查是否配置成功
+npm config get ELECTRON_MIRROR
+npm config get registry
+```
 
 `npm config delete ELECTRON_MIRROR`
 
@@ -37,3 +45,27 @@ npm config delete https-proxy
 
 `npm install -g`
 
+## npm pack
+
+```
+npm run pack
+# 或者
+npm run dist
+```
+
+## electron 项目打包
+
+[[electron-builder 打包失败]](https://zhuanlan.zhihu.com/p/266005043)
+
+**`npm run dist` 打包失败 - 网络问题**
+
+网络问题，不能把 GitHub 上面的资源拉下来，需要手动切换淘宝镜像：
+
+```shell
+npm config set electron_mirror=https://npm.taobao.org/mirrors/electron/
+npm config set electron-builder-binaries_mirror=https://npm.taobao.org/mirrors/electron-builder-binaries/
+```
+
+**`npm run dist` 打包失败 - cannot move downloaded into final location (another process downloaded faster?)**
+
+关闭火绒！！！

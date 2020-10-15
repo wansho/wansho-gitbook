@@ -142,7 +142,7 @@ Created: 13-May-2005
 
 ### Abstract
 
- with 用于异常发生时，及时释放异常涉及的资源。
+ **with 用于异常发生时，及时释放异常涉及的资源**。
 
 **`with`** statement in Python is used in exception handling to make the code cleaner and much more readable. It simplifies the management of common resources like file streams. 
 
@@ -186,3 +186,16 @@ In Python 2.6, the new syntax will always be recognized; 'with' and 'as' are alw
 ### Supporting the “with” statement in user defined objects
 
 [[with statement in Python]](https://www.geeksforgeeks.org/with-statement-in-python/)
+
+## PEP-440 Software Version
+
+PEP 440 introduces a version format that every Python package, and ideally everyapplication, should follow.   	
+
+### 一些官方定义
+
+| 名词          | 解释                                                         |
+| ------------- | ------------------------------------------------------------ |
+| Projects      | "Projects" are software components that are made available for integration. Projects include Python libraries, frameworks, scripts, plugins, applications, collections of data or other resources, and various combinations thereof. Public Python projects are typically registered on the [Python Package Index](https://pypi.python.org/). |
+| Releases      | "Releases" are uniquely identified snapshots of a project.   |
+| Distributions | "Distributions" are the packaged files which are used to publish and distribute a release. |
+
