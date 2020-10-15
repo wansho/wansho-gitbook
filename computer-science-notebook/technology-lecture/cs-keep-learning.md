@@ -121,7 +121,7 @@ Demo: [Streaming 101](<https://www.oreilly.com/ideas/the-world-beyond-batch-stre
 
 REST 是一套用于构建 Web Service 的规范。
 
-###开源许可证
+### 许可证
 
 ![img](http://www.ruanyifeng.com/blogimg/asset/201105/bg2011050101.png)
 

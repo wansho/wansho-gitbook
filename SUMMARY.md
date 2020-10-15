@@ -137,6 +137,7 @@
   * [Redis](computer-science-notebook/development-tools/redis.md)
   * [Selenium](computer-science-notebook/development-tools/selenium.md)
   * [软件测试](computer-science-notebook/development-tools/software-testing.md)
+  * [软件版本](computer-science-notebook/development-tools/software-version.md)
 * [Technology-Lecture](computer-science-notebook/technology-lecture/README.md)
   * [CS-Keep-Learning](computer-science-notebook/technology-lecture/cs-keep-learning.md)
   * [吴翰清-计算的未来](computer-science-notebook/technology-lecture/future-of-computation.md)
