@@ -103,6 +103,7 @@
   - [Python-Enhanced-Proposal](computer-science-notebook/note-for-python/pep.md)
   - [Algorithm-Data-Structure-with-Python](computer-science-notebook/note-for-python/python-algorithm-data-structure.md)
   - [Multiprocessing-and-Threading](computer-science-notebook/note-for-python/multiprocessing-and-threading.md)
+* [Note-for-Java](computer-science-notebook/note-for-python/README.md)
 * [NLP](computer-science-notebook/nlp/README.md)
   - [NLP-Learning](computer-science-notebook/nlp/nlp-learning.md)
   - [Machine-Learning](computer-science-notebook/nlp/machine-learning.md)

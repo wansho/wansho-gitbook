@@ -1004,6 +1004,20 @@ su root 也可以切换到root用户，但是没有管理员权限
 3. 有的系统，其系统内核的 shell 和默认的交互式 shell 是不一样的，例如 ubuntu 的的默认系统 shell 为 /bin/dash
 ```
 
+**zsh**
+
+目前 geek 使用最多的 shell，是 Z Shell(zsh)，zsh 已经成为了 Mac OS 的默认 shell，[[install]](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) [[change shell]](https://www.cyberciti.biz/faq/how-to-change-shell-to-bash/)
+
+```shell
+# 查看当前 shell
+echo $SHELL
+
+# 查看系统支持的 shell
+echo /etc/shells
+```
+
+
+
 ### 父 shell 和 子 shell、后台模式、jobs、coproc
 
 **概念**

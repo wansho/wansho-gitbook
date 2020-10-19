@@ -209,6 +209,12 @@ Xshell，Xftp，Samba，MobaXterm，VSCode Remote-SSH
 
 SSH provides a [secure channel](https://en.wikipedia.org/wiki/Secure_channel) over an unsecured network by using a **[client–server](https://en.wikipedia.org/wiki/Client–server_model)** architecture, connecting an [SSH client](https://en.wikipedia.org/wiki/SSH_client) application with an [SSH server](https://en.wikipedia.org/wiki/SSH_server).
 
+### zsh
+
+一款最流行的 shell.
+
+https://ohmyz.sh/
+
 ## Linux 开发
 
 * **cmake**, **qmake**, **make** 命令的区别
