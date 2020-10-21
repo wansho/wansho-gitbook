@@ -1349,6 +1349,10 @@ dpkg 和 rpm 都是 PMS 的核心。
 核心    前端接口
 dpkg   apt-get
 rpm	   yum
+
+# 方便记忆
+debian dpkg apt-get
+redhat rpm  yum
 ```
 
 **dpkg / apt-get / apt**

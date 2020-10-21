@@ -76,6 +76,28 @@ ORM（Object Relational Mapping）, ORM 举例：Django ORM，Java Mybatis puls
 
 优点：替换 SQL 语句，提供获取数据的标准化，避免因为 SQL 查询导致的各种问题，例如 SQL 注入等问题
 
+### 负载均衡
+
+**haproxy**
+
+[[haproxy]](http://www.haproxy.org/) The Reliable, High Performance TCP/HTTP **Load Balancer**. 
+
+haproxy 的主要功能就是负载均衡。
+
+HAProxy is a free, very fast and reliable solution offering [high availability](http://en.wikipedia.org/wiki/High_availability), [load balancing](http://en.wikipedia.org/wiki/Load_balancer), and proxying for TCP and HTTP-based applications. It is particularly suited for very high traffic web sites and powers quite a number of the world's most visited ones. Over the years it has become the de-facto standard opensource load balancer, is now shipped with most mainstream Linux distributions, and is often deployed by default in cloud platforms.
+
+**nginx**
+
+nginx 的主要功能是 web 服务器。兼职负载均衡和反向代理。
+
+**keepalived**
+
+[[keepalived]](https://www.keepalived.org/) 是一款路由软件。
+
+反向代理
+
+
+
 ## 其他软件
 
 * [SourceTree](https://www.sourcetreeapp.com/) Git 的一个装饰器，提供了很多可视化工具

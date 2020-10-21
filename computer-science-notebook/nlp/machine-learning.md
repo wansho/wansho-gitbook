@@ -8,9 +8,15 @@
 
 ## 算法
 
-### latent Dirichlet allocation
+### Latent Dirichlet Allocation
 
 [隐含狄利克雷分布](<https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation>)，是一种非监督的文档主题生成模型，其本质上是一个三层的贝叶斯概率图模型。
+
+## DeepFake
+
+* [[慈禧的痛生成软件]](https://github.com/anandpawara/Real_Time_Image_Animation)
+* [[deepfake中文站]](https://www.deepfaker.xyz/)
+* [[DeepfaceLab]](https://github.com/iperov/DeepFaceLab)
 
 ## Keep Learning
 
