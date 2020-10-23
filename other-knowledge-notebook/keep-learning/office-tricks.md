@@ -1,4 +1,4 @@
-# Office 三件套
+# 办公 tricks
 
 [TOC]
 
@@ -23,3 +23,7 @@ PPT 可以设置通过设置版式来提高制作效率。如果多张幻灯片�
 
 * Windows + - 方法或缩小屏幕
 * Windows10 可以在声音中控制每一个 App 的声音
+
+## 写邮件
+
+[codedmails](https://github.com/hunzaboy/codedmails)：邮件的 html 模板

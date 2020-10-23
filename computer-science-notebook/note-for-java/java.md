@@ -14,9 +14,41 @@
 * 类的成员变量、局部变量、成员方法：`firstDay`，`getName()`
 * 常量：`MAX_VALUE`
 
+### for 循环
+
+**增强 for 循环**
+
+```java
+for( String name : names ) {
+	System.out.print( name );
+	System.out.print(",");
+}
+```
+
+### 位运算
+
+**>> 和 >>>**
+
+`>>` ，正数高位补零，负数高位补一。`>>>` 正负数都强制高位补 0
+
 ## 数组
 
-### 内存
+### 数组的初始化
+
+```java
+double[] myList;  // 定义一个数组的引用
+```
+
+```java
+int[] integers = new int[10]; // 在堆内存中 new 一个数组，堆内存中创建的对象都有默认值
+for(int integer : integers){ // 增强 for 循环
+    System.out.println(integer);
+}
+```
+
+
+
+### 内存分配
 
 **栈内存**
 

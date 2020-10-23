@@ -352,7 +352,7 @@ cd .. # 转到上一级文件夹
 
  ### ls
 
-```
+```shell
 ls -h # human  人类易读的方式，文件大小会转成人易读的方式，加上单位
 ls -t # 将文件按照最新修改的时间进行排序
 
@@ -366,6 +366,7 @@ ls -l # long 详细信息
 ls -a # all, 包含隐藏的文件
 ls -F # --classify，使输出文件的文件类型可分辨。（文件夹带上/, 可执行文件加上*）
 ls -i # 显示文件的 id (inode 编号，第一个属性)
+ls --group-directories-first # 优先显示文件夹
 ```
 
 ### mv
@@ -422,9 +423,9 @@ zip
 unzip
 ```
 
-### which, find, locate, whereis
+### 查找命令 which, find, locate, whereis
 
-**which**
+**which** 在 path 变量中查找
 
 ```shell
 # which 用来在所有的 PATH 路径中查找 某个命令 所在地址，例如查找 ls, cat 命令所在地址，注意每一个用户的 PATH 命令可能是不一样的，不同用户使用 which 查找某个命令的结果可能有所区别，有的用户可能找不到某个命令的地址

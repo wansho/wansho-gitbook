@@ -121,6 +121,11 @@ Secrets are not passed to workflows that are triggered by a pull request from a 
 
 * [Server 酱](http://sc.ftqq.com/3.version) 「程序员」和「服务器」之间的通信软件
 
+## 好玩的 Github Action
+
+* [hub-mirror-action](https://github.com/Yikun/hub-mirror-action) 代码托管平台同步脚本
+* [BILIBILI-HELPER](https://github.com/JunzhouLiu/BILIBILI-HELPER) 哔哩哔哩 签到脚本
+
 ## Reference
 
 * [编写自己的 GitHub Action，体验自动化部署 - 张凯强的文章 - 知乎 ](https://zhuanlan.zhihu.com/p/103552188)
