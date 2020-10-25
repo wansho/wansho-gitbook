@@ -151,6 +151,7 @@
   * [How-to-Keep-Learning](other-knowledge-notebook/keep-learning/how-to-keep-learning.md)
   * [Authentic-Expression](other-knowledge-notebook/keep-learning/authentic-expression.md)
   * [Knowledge-from-Web](other-knowledge-notebook/keep-learning/knowledge-from-web.md)
+  * [Knowledge-Summary](other-knowledge-notebook/keep-learning/knowledge-summary.md)
   * [知乎](other-knowledge-notebook/keep-learning/zhihu.md)
   * [NLP](other-knowledge-notebook/keep-learning/nlp.md)
   * [Story](other-knowledge-notebook/keep-learning/story.md)
