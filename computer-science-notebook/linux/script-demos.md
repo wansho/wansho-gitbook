@@ -2,6 +2,12 @@
 
 [TOC]
 
+## 学习资源
+
+* [[一篇教会你写90%的shell脚本]](https://zhuanlan.zhihu.com/p/264346586?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+
+
+
 ## `#!` 的作用
 
 `#` 用于注释，`!` 用于指定用哪个 shell 来运行脚本。

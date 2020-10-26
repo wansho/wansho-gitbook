@@ -754,8 +754,9 @@ git config --global https.proxy https://127.0.0.1:7890
 # 取消代理
 git config --global --unset http.proxy
 git config --global --unset https.proxy
-
 ```
+
+测试了一下，github 在中国、日本、韩国都没有服务器，将节点切换到这三个国家速度都很慢，切换到美国速度就非常快。
 
 ### Windows git 的 vim 无法粘贴
 

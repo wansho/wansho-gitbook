@@ -324,7 +324,7 @@ print(avg.__closure__[0].cell_contents) # [10, 8, 6]
 
 * **函数式编程**
 
-我的一点小观察：闭包将 function 和 变量一起打包，这不就是一个类吗？？？有属性，有方法
+我的一点小观察：闭包将 function 和 变量一起打包，这不就是一个内部类吗？？？有属性，有方法
 
 ### The nonlocal Declaration
 
