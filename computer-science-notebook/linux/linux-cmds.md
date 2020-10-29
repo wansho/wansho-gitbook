@@ -741,6 +741,14 @@ pkill -x mysql #
 
 ## 网络相关
 
+### ifconfig
+
+```shell
+ifconfig # 查看网卡信息，注意是查看已经配置好的网卡信息
+
+ifconfig -a # 查看所有的网卡信息，没有配置的也是
+```
+
 ### netstat
 
 **介绍**
@@ -798,7 +806,13 @@ ssh connects and logs into the specified destination, which may be specified as 
 
 ### route
 
-多网络间路由配置
+多网络间路由配置（配置静态路由）
+
+route:
+
+<img align="left" src="assets/image-20201029085228873.png" alt="image-20201029085228873" style="zoom:80%;" />
+
+<img align="left" src="assets/image-20201029085638645.png" alt="image-20201029085638645" style="zoom:80%;" />
 
 Demo:
 
@@ -831,6 +845,8 @@ dev 出口网关 物理设备名
 	从 1 到 3，经过路由 2：route add –net 192.168.1.0/24 gw 10.0.0.129
 	从 3 到 1，经过路由 2：route add -net 10.0.0.0/24 gw 10.0.0.129
 ```
+
+注意，直接在 shell 中通过 route 增加静态路由，是临时的，系统重启后，则失效，如果想开启生效的话，需要在开机脚本中进行配置。
 
 ### telnet
 
