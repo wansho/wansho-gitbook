@@ -958,3 +958,282 @@ class BigTime
 
 ### 自定义异常
 
+**一个需求**
+
+对于角标是整数不存在，可以用角标越界表示，对于负数为角标的情况，准备用负数角标异常来表示。
+负数角标这种异常在java中并没有定义过。那就按照java异常的创建思想，面向对象，将负数角标进行自定义描述。并封装成对象。
+
+如果让一个类称为异常类，必须要继承异常体系，因为只有称为异常体系的子类才有资格具备可抛性。  
+
+**异常的分类**
+
+1. 编译时被检测的异常
+2. 编译时不被检测的异常（运行时异常，必须要让程序停下来，修改之）
+
+**throws 和 throw**
+
+1. throws 使用在函数上，throw 使用在函数内
+2. throws 抛出的是异常类，可以抛出多个，用逗号隔开。throw 抛出的是异常对象
+
+Demo：
+
+```java
+class FuShuIndexException extends Exception
+{
+    FuShuIndexException()
+    {}
+    FuShuIndexException(String msg)
+    {
+        super(msg);
+    }
+}
+
+class Demo
+{
+    public int method(int[] arr,int index) throws NullPointerException, FuShuIndexException
+    {
+        if(arr==null)
+            throw new NullPointerException("数组的引用不能为空！ ");
+        if(index>=arr.length)
+        {
+            throw new ArrayIndexOutOfBoundsException("数组的角标越界啦，哥们，你是不是疯了？： "+index);
+        }
+        if(index<0)
+        {
+            throw new FuShuIndexException("角标变成负数啦！！ ");
+        }
+        return arr[index];
+    }
+}
+
+class ExceptionDemo3
+{
+    public static void main(String[] args) //throws FuShuIndexException
+    {
+        int[] arr = new int[3];
+        Demo d = new Demo();
+        int num = d.method(null,-30);
+        System.out.println("num="+num);
+        System.out.println("over");
+    }
+}
+```
+
+### 异常的捕捉
+
+Demo：
+
+```java
+try
+{
+    //需要被检测异常的代码。
+}
+catch(异常类 变量)//该变量用于接收发生的异常对象
+{
+    //处理异常的代码。
+}
+finally
+{
+    //一定会被执行的代码。
+}
+```
+
+**异常处理的原则**
+
+异常处理的原则：
+
+1. 函数内容如果抛出需要检测的异常，那么函数上必须要声明。否则必须在函数内用trycatch捕捉，否则编译失败。
+2. 如果调用到了声明异常的函数，要么trycatch要么throws，否则编译失败。
+3. 什么时候catch，什么时候throws 呢？功能内容可以解决，用catch。解决不了，用throws告诉调用者，由调用者解决 。
+4. 一个功能如果抛出了多个异常，那么调用时，必须有对应多个catch进行针对性的处理。内部有几个需要检测的异常，就抛几个异常，抛出几个，就catch几个  
+
+Demo：
+
+```java
+class FuShuIndexException extends Exception
+{
+    FuShuIndexException(String msg)
+    {
+        super(msg);
+    }
+}
+
+class Demo
+{
+    public int method(int[] arr,int index)//throws NullPointerException,FuShuIndexException
+    {
+        if(arr==null)
+            throw new NullPointerException("没有任何数组实体"); // throw 后，下面的代码就不执行了
+        if(index<0)
+            throw new FuShuIndexException();
+        return arr[index];
+    }
+}
+
+class ExceptionDemo4
+{
+    public static void main(String[] args)
+    {
+        int[] arr = new int[3];
+        Demo d = new Demo();
+        try
+        {
+            int num = d.method(null,-1);
+            System.out.println("num="+num);
+        }
+        catch(NullPointerException e)
+        {
+            System.out.println(e.toString());
+        }
+        catch(FuShuIndexException e)
+        {
+            System.out.println("message:"+e.getMessage());
+            System.out.println("string:"+e.toString());
+            e.printStackTrace(); //jvm默认的异常处理机制就是调用异常对象的这个方法。
+            System.out.println("负数角标异常!!!!");
+        }
+        /*
+        catch(Exception e)//多catch父类的catch放在最下面。
+        { }
+        */
+        System.out.println("over");
+    }
+}
+```
+
+**try catch finally**
+
+try catch finally 代码块组合特点：
+
+1. try catch finally
+2. try catch(多个)当没有必要资源需要释放时，可以不用定义finally
+3. try finally 异常无法直接 catch 处理，但是资源需要关闭
+
+**异常注意事项**
+
+1. 子类在覆盖父类方法时，父类的方法如果抛出了异常，那么子类的方法只能抛出父类的异常或者该异常的子类
+2. 如果父类抛出多个异常，那么子类只能抛出父类异常的子集  
+
+简单说：子类覆盖父类只能抛出父类的异常或者子类或者子集。
+注意：如果父类的方法没有抛出异常，那么子类覆盖时绝对不能抛，就只能try  
+
+### 异常 Demo
+
+场景
+
+```
+毕老师用电脑上课。
+问题领域中涉及两个对象。
+毕老师，电脑。
+分析其中的问题。
+比如电脑蓝屏啦。冒烟啦。
+```
+
+```java
+class LanPingException extends Exception
+{
+    LanPingException(String msg)
+    {
+        super(msg);
+    }
+}
+
+class MaoYanException extends Exception
+{
+    MaoYanException(String msg)
+    {
+        super(msg);
+    }
+}
+
+class NoPlanException extends Exception 
+{
+    NoPlanException(String msg)
+    {
+        super(msg);
+    }
+}
+
+
+class Computer
+{
+    private int state = 2;
+    public void run()throws LanPingException,MaoYanException
+    {
+        if(state==1)
+            throw new LanPingException("电脑蓝屏啦！！ ");
+        if(state==2)
+            throw new MaoYanException("电脑冒烟啦！！ ");
+        System.out.println("电脑运行");
+    }
+    public void reset()
+    {
+        state = 0;
+        System.out.println("电脑重启");
+    }
+}
+
+class Teacher
+{
+    private String name;
+    private Computer comp;
+    Teacher(String name)
+    {
+        this.name = name;
+        comp = new Computer();
+    }
+    public void prelect()throws NoPlanException // 没有 catch 的异常则抛出
+    {
+        try
+        {
+            comp.run();
+            System.out.println(name+"讲课");
+        }
+        catch (LanPingException e) // 异常处理
+        {
+            System.out.println(e.toString());
+            comp.reset();
+            prelect();
+        }
+        catch (MaoYanException e)
+        {
+            System.out.println(e.toString());
+            test();
+            //可以对电脑进行维修。
+            // throw e;
+            throw new NoPlanException("课时进度无法完成，原因： "+e.getMessage()); // 能解决的异常自己解决，不能解决的，抛出异常，让调用者来解决
+        }
+    }
+    public void test()
+    {
+        System.out.println("大家练习");
+    }
+}
+
+class ExceptionTest
+{
+    public static void main(String[] args)
+    {
+        Teacher t = new Teacher("毕老师");
+        try
+        {
+            t.prelect();
+        }
+        catch (NoPlanException e)
+        {
+            System.out.println(e.toString()+"......");
+            System.out.println("换人");
+        }
+    }
+}
+
+/*
+com.wansho.hellojava.MaoYanException: 电脑冒烟啦！！ 
+大家练习
+com.wansho.hellojava.NoPlanException: 课时进度无法完成，原因： 电脑冒烟啦！！ ......
+换人
+*/
+```
+
+## 包名类名
+
