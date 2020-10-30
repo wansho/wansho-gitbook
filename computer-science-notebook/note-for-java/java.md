@@ -237,12 +237,12 @@ Java 中的 `this` 对应 Python 中的 `self` 关键字。
 
 1. 静态变量随着类的加载而存在，随着类的消失而消失
 2. 静态成员（函数和变量）既可以被对象调用（这种方式在 Java 高版本中不提倡），还可以被类名调用
-3. 静态变量称为类变量  
+3. 静态变量称为**类变量**  
 4. 静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据
 
 **静态使用的注意事项**
 
-1. 静态方法只能访问静态成员。 (非静态既可以访问静态，又可以访问非静态)  
+1. 静态方法只能访问静态成员。 (**非静态既可以访问静态，又可以访问非静态**)  
 2. 静态方法中不可以使用this或者super关键字  
 3. 主函数是静态的  
 
@@ -1502,6 +1502,57 @@ over....main
 
 多线程的随机性，谁抢到 CPU，谁执行。
 
+### 创建线程-实现 Runnable
+
+步骤：
+
+1. 定义类实现Runnable接口
+
+2. 覆盖接口中的run方法，将线程的任务代码封装到run方法中
+
+3. 通过Thread类创建线程对象，并将Runnable接口的子类对象作为Thread类的构造函数的参数进行传递。
+
+   为什么？因为线程的任务都封装在Runnable接口子类对象的run方法中。所以要在线程对象创建时就必须明确要运行的任务。
+
+4. 调用线程对象的start方法开启线程
+
+实现Runnable接口的好处：
+
+1. 将线程的任务从线程的子类中分离出来，进行了单独的封装
+   按照面向对象的思想将任务的封装成对象
+
+2. 避免了java单继承的局限性
+   所以，创建线程的第二种方式较为常用
+
+```java
+class Demo implements Runnable{//extends Fu //准备扩展Demo类的功能，让其中的内容可以作为线程的任务执行。
+    //通过接口的形式完成。
+    public void run()
+    {
+        show();
+    }
+    public void show()
+    {
+        for(int x=0; x<20; x++)
+        {
+            System.out.println(Thread.currentThread().getName()+"....."+x);
+        }
+    }
+}
+
+class ThreadDemo
+{
+    public static void main(String[] args)
+    {
+        Demo d = new Demo();
+        Thread t1 = new Thread(d);
+        Thread t2 = new Thread(d);
+        t1.start();
+        t2.start();
+    }
+}
+```
+
 
 
 ### 同步和互斥
@@ -1529,7 +1580,68 @@ synchronized，翻译过来，就是同步的意思，其是 Java 的关键字�
 
 3. 修饰静态方法
 
-   我们知道静态方法是属于类的而不属于对象的。同样的，synchronized修饰的静态方法锁定的是这个类的所有对象
+   我们知道静态方法是属于类的而不属于对象的。同样的，synchronized修饰的静态方法锁定的是这个类的所有对象。
+
+**卖票问题**
+
+线程安全问题产生的原因：
+
+1. 多个线程在操作共享的数据
+2. 操作共享数据的线程代码有多条
+   当一个线程在执行操作共享数据的多条代码过程中，其他线程参与了运算。就会导致线程安全问题的产生。
+
+解决思路:
+
+就是将临界区封装起来，当有线程在执行这些代码的时候，其他线程时不可以参与运算的。必须要当前线程把这些代码都执行完毕后，其他线程才可以参与运算。在java中，用同步代码块就可以解决这个问题。同步代码块的格式：
+
+```java
+synchronized(对象)
+{
+	需要被同步的代码 ；
+}
+```
+
+同步的好处：解决了线程的安全问题。
+同步的弊端：相对降低了效率，因为同步外的线程的都会判断同步锁。
+同步的前提：同步中必须有多个线程并使用同一个锁。
+
+```java
+class Ticket implements Runnable//extends Thread
+{
+    private int num = 100;
+    Object obj = new Object();
+    public void run()
+    {
+        while(true)
+        {
+            synchronized(obj)
+            {
+                if(num>0)
+                {
+                    try{Thread.sleep(10);}catch (InterruptedException e){}
+                    System.out.println(Thread.currentThread().getName()+".....sale...."+num--);
+                }
+            }
+        }
+    }
+}
+
+class TicketDemo
+{
+    public static void main(String[] args)
+    {
+        Ticket t = new Ticket();//创建一个线程任务对象。
+        Thread t1 = new Thread(t);
+        Thread t2 = new Thread(t);
+        Thread t3 = new Thread(t);
+        Thread t4 = new Thread(t);
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
+    }
+}
+```
 
 **银行存钱案例**
 
@@ -1681,5 +1793,532 @@ class DeadLockDemo
 }
 ```
 
+**静态同步函数的锁**
+
+静态的同步函数使用的锁是该函数所属字节码文件对象，可以用 getClass 方法获取，也可以用当前类名.class 表示。  
+
+```java
+class Ticket implements Runnable
+{
+    private static int num = 100;
+    // Object obj = new Object();
+    boolean flag = true;
+    public void run()
+    {
+        // System.out.println("this:"+this.getClass());
+        if(flag)
+            while(true)
+            {
+                synchronized(Ticket.class)//(this.getClass()) 此处因为对静态变量进行访问，所以取得得锁是类
+                {
+                    if(num>0)
+                    {
+                        try{Thread.sleep(10);}catch (InterruptedException e){}
+                        System.out.println(Thread.currentThread().getName()+".....obj...."+num--); // 此处非静态方法可以访问静态变量
+                    }
+                }
+            }
+        else
+            while(true)
+                this.show();
+    }
+    public static synchronized void show()
+    {
+        if(num>0)
+        {
+            try{Thread.sleep(10);}catch (InterruptedException e){}
+            System.out.println(Thread.currentThread().getName()+".....function...."+num--);
+        }
+    }
+}
+class StaticSynFunctionLockDemo
+{
+    public static void main(String[] args)
+    {
+        Ticket t = new Ticket();
+        // Class clazz = t.getClass();
+        //
+        // Class clazz = Ticket.class;
+        // System.out.println("t:"+t.getClass());
+        Thread t1 = new Thread(t);
+        Thread t2 = new Thread(t);
+        t1.start();
+        try{Thread.sleep(10);}catch(InterruptedException e){}
+        t.flag = false;
+        t2.start();
+    }
+}
+```
+
+**同步函数 vs 同步代码块**
+
+同步函数和同步代码块的区别：
+
+1. 同步函数的锁是固定的this
+2. 同步代码块的锁是任意的对象
+3. 建议使用同步代码块  
+
+```java
+class Ticket implements Runnable
+{
+    private int num = 100;
+    // Object obj = new Object();
+    boolean flag = true;
+    public void run()
+    {
+        // System.out.println("this:"+this);
+        if(flag)
+            while(true)
+            {
+                synchronized(this) // 此处因为对类变量进行访问，所以取得的锁是对象
+                {
+                    if(num>0)
+                    {
+                        try{Thread.sleep(10);}catch (InterruptedException e){}
+                        System.out.println(Thread.currentThread().getName()+".....obj...."+num--);
+                    }
+                }
+            }
+        else
+            while(true)
+                this.show();
+    }
+    public synchronized void show()
+    {
+        if(num>0)
+        {
+            try{Thread.sleep(10);}catch (InterruptedException e){}
+            System.out.println(Thread.currentThread().getName()+".....function...."+num--);
+        }
+    }
+}
+
+class SynFunctionLockDemo
+{
+    public static void main(String[] args)
+    {
+        Ticket t = new Ticket();
+        // System.out.println("t:"+t);
+        Thread t1 = new Thread(t);
+        Thread t2 = new Thread(t);
+        t1.start();
+        try{Thread.sleep(10);}catch(InterruptedException e){}
+        t.flag = false;
+        t2.start();
+    }
+}
+```
+
+**总结**
+
+1. 无论synchronized关键字加在方法上还是对象上，如果它作用的对象是非静态的，则它取得的锁是对象；如果synchronized作用的对象是一个静态变量或方法，则它取得的锁是对类，该类所有的对象同一把锁
+2. 每个对象只有一个锁（lock）与之相关联，谁拿到这个锁谁就可以运行它所控制的那段代码 
+3. 实现同步是要很大的系统开销作为代价的，甚至可能造成死锁，所以尽量避免无谓的同步控制
+
+### join()
+
+Java 官方解释：Waits for this thread to die.
+
+当调用了 Thread.Join()方法后,当前线程会立即被执行,其他所有的线程会被暂停执行。当这个线程执行完后,其他线程才会继续执行。
+
+```java
+class Demo implements Runnable
+{
+    public void run()
+    {
+        for(int x=0; x<50; x++)
+        {
+            System.out.println(Thread.currentThread().toString()+"....."+x);
+            Thread.yield(); // 线程进入就绪状态，让出 CPU 使用权
+        }
+    }
+}
+
+class JoinDemo
+{
+    public static void main(String[] args) throws Exception
+    {
+        Demo d = new Demo();
+        Thread t1 = new Thread(d);
+        Thread t2 = new Thread(d);
+        t1.start();
+        t2.start();
+        t2.setPriority(Thread.MAX_PRIORITY); // 设置线程运行级别
+        t1.join(); // t1 先执行完再说
+        for(int x=0; x<50; x++)
+        {
+            System.out.println(Thread.currentThread()+"....."+x);
+        }
+    }
+}
+```
+
+### 线程间通信
+
+线程间通讯：多个线程在处理同一资源，但是任务却不同。
+
+生产者和消费者，就是一种典型的线程间通信。
+
+```java
+//资源
+class Resource
+{
+    String name;
+    String sex;
+}
+
+//输入
+class Input implements Runnable
+{
+    Resource r ;
+    // Object obj = new Object();
+    Input(Resource r)
+    {
+        this.r = r;
+    }
+    public void run()
+    {
+        int x = 0;
+        while(true)
+        {
+            synchronized(r)
+            {
+                if(x==0)
+                {
+                    r.name = "mike";
+                    r.sex = "nan";
+                }
+                else
+                {
+                    r.name = "丽丽";
+                    r.sex = "女女女女女女";
+                }
+            }
+            x = (x+1)%2;
+        }
+    }
+}
+//输出
+class Output implements Runnable
+{
+    Resource r;
+    // Object obj = new Object();
+    Output(Resource r)
+    {
+        this.r = r;
+    }
+    public void run()
+    {
+        while(true)
+        {
+            synchronized(r)
+            {
+                System.out.println(r.name+"....."+r.sex);
+            }
+        }
+    }
+}
+class ResourceDemo
+{
+    public static void main(String[] args)
+    {
+        //创建资源。
+        Resource r = new Resource();
+        //创建任务。
+        Input in = new Input(r);
+        Output out = new Output(r);
+        //创建线程，执行路径。
+        Thread t1 = new Thread(in);
+        Thread t2 = new Thread(out);
+        //开启线程
+        t1.start();
+        t2.start();
+    }
+}
+```
+
+上面的代码只是一个演示代码，没有进行线程间的同步，只是一种理想化的生产消费。下面加入 wait 和 notify 进行进程之间的协作。
+
+### wait / notify
+
+等待/唤醒机制。
+涉及的方法：
+
+1. wait(): 让线程处于冻结状态，被wait的线程会被存储到线程池中
+2. notify(): Wakes up a single thread that is waiting on this object's monitor.
+3. notifyAll(): Wakes up all threads that are waiting on this object's monitor.
+
+这些方法都必须定义在同步中。因为这些方法是用于操作线程状态的方法。必须要明确到底操作的是哪个锁上的线程。
+
+以上三个方法，都是定义在 Object 基类中的类方法。因为这些方法是监视器的方法。监视器其实就是锁。锁可以是任意的对象，任意的对象调用的方式一定定义在Object类中。  
+
+**一个生产者和一个消费者**
+
+```java
+//资源
+class Resource
+{
+    String name;
+    String sex;
+    boolean flag = false;
+}
+
+//输入
+class Input implements Runnable
+{
+    Resource r ;
+    // Object obj = new Object();
+    Input(Resource r)
+    {
+        this.r = r;
+    }
+    public void run()
+    {
+        int x = 0;
+        while(true) // 这个线程一直跑
+        {
+            synchronized(r) // r 当成一把 lock
+            {
+                if(r.flag) // 有资源了，就阻塞
+                    try{r.wait();}catch(InterruptedException e){}
+                if(x==0) // 生产者交替生产两个产品：mike 和 丽丽
+                {
+                    r.name = "mike";
+                    r.sex = "man";
+                }
+                else
+                {
+                    r.name = "丽丽";
+                    r.sex = "女女女女女女";
+                }
+                r.flag = true; // 标记有资源，然后环境消费者来消费
+                r.notify();
+            }
+            x = (x+1)%2; 
+        }
+    }
+}
+//输出
+class Output implements Runnable
+{
+    Resource r;
+    // Object obj = new Object();
+    Output(Resource r)
+    {
+        this.r = r;
+    }
+    public void run()
+    {
+        while(true)
+        {
+            synchronized(r)
+            {
+                if(!r.flag) // 没资源，就阻塞，等有资源再消费
+                    try{r.wait();}catch(InterruptedException e){}
+                System.out.println("消费：" + r.name+"....."+r.sex); // 有资源，消费 r
+                r.flag = false; // 消费完后，置空，然后唤醒沉睡的生产者进程
+                r.notify();
+            }
+        }
+    }
+}
+
+class ResourceDemo2
+{
+    public static void main(String[] args)
+    {
+        //创建资源。
+        Resource r = new Resource();
+        //创建任务。
+        Input in = new Input(r);
+        Output out = new Output(r);
+        //创建线程，执行路径。
+        Thread t1 = new Thread(in);
+        Thread t2 = new Thread(out);
+        //开启线程
+        t1.start();
+        t2.start();
+    }
+}
+```
+
+**另一种实现**
+
+```java
+class Resource
+{
+    private String name;
+    private String sex;
+    private boolean flag = false;
+    public synchronized void set(String name,String sex)
+    {
+        if(flag)
+            try{this.wait();}catch(InterruptedException e){}
+        this.name = name;
+        this.sex = sex;
+        flag = true;
+        this.notify();
+    }
+    public synchronized void out()
+    {
+        if(!flag)
+            try{this.wait();}catch(InterruptedException e){}
+        System.out.println(name+"...+...."+sex);
+        flag = false;
+        notify();
+    }
+}
+//输入
+class Input implements Runnable
+{
+    Resource r ;
+    // Object obj = new Object();
+    Input(Resource r)
+    {
+        this.r = r;
+    }
+    public void run()
+    {
+        int x = 0;
+        while(true)
+        {
+            if(x==0)
+            {
+                r.set("mike","nan");
+            }
+            else
+            {
+                r.set("丽丽","女女女女女女");
+            }
+            x = (x+1)%2;
+        }
+    }
+}
+
+//输出
+class Output implements Runnable
+{
+    Resource r;
+    // Object obj = new Object();
+    Output(Resource r)
+    {
+        this.r = r;
+    }
+    public void run()
+    {
+        while(true)
+        {
+            r.out();
+        }
+    }
+}
+
+class ResourceDemo3
+{
+    public static void main(String[] args)
+    {
+        //创建资源。
+        Resource r = new Resource();
+        //创建任务。
+        Input in = new Input(r);
+        Output out = new Output(r);
+        //创建线程，执行路径。
+        Thread t1 = new Thread(in);
+        Thread t2 = new Thread(out);
+        //开启线程
+        t1.start();
+        t2.start();
+    }
+}
+```
+
+实际上，第一个例子才是最恰当的，生产和消费的行为被封装在了生产者和消费者上，而第二个例子，生产和消费的行为被绑定到了商品上，不符合常识。
 
 
+
+### 多生产者与消费者
+
+多生产者，多消费者的问题。
+if 判断标记，只有一次，会导致不该运行的线程运行了。出现了数据错误的情况。
+while 判断标记，解决了线程获取执行权后，是否要运行！
+`notify`: 只能唤醒一个线程，如果本方唤醒了本方，没有意义。而且while判断标记+notify会导致死锁。
+`notifyAll`: 解决了本方线程一定会唤醒对方线程的问题。  
+
+```java
+class Resource
+{
+    private String name;
+    private int count = 1;
+    private boolean flag = false;
+    public synchronized void set(String name) // 生产
+    {
+        while(flag)
+            try{this.wait();}catch(InterruptedException e){} // 有鸭子，就进入阻塞状态
+        this.name = name + count;// 没鸭，生产 烤鸭1 烤鸭2 烤鸭3
+        count++; //2 3 4
+        System.out.println(Thread.currentThread().getName()+"... 生产者..."+this.name); // 生产烤鸭1 生产烤鸭2 生产烤鸭3
+        flag = true; // 表示有鸭子
+        notifyAll(); // 唤醒所有阻塞线程，生产者被唤醒则 wait，消费者被唤醒，则消费
+    }
+    public synchronized void out()// 消费
+    {
+        while(!flag)
+            try{this.wait();}catch(InterruptedException e){} // 没鸭子，进入阻塞状态
+        System.out.println(Thread.currentThread().getName()+"... 消费者........"+this.name);//消费烤鸭1
+        flag = false;
+        notifyAll(); // 唤醒了对方的所有线程
+    }
+}
+
+class Producer implements Runnable
+{
+    private Resource r;
+    Producer(Resource r)
+    {
+        this.r = r;
+    }
+    public void run()
+    {
+        while(true)
+        {
+            r.set("烤鸭");
+        }
+    }
+}
+
+class Consumer implements Runnable
+{
+    private Resource r;
+    Consumer(Resource r)
+    {
+        this.r = r;
+    }
+    public void run()
+    {
+        while(true)
+        {
+            r.out();
+        }
+    }
+}
+
+class ProducerConsumerDemo
+{
+    public static void main(String[] args)
+    {
+        Resource r = new Resource();
+        Producer pro = new Producer(r);
+        Consumer con = new Consumer(r);
+        Thread t0 = new Thread(pro);
+        Thread t1 = new Thread(pro);
+        Thread t2 = new Thread(con);
+        Thread t3 = new Thread(con);
+        t0.start();
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+}
+```
+
+上面这个例子，仍然还是一个简单的生产一个，消费一个的例子，只是加入了多个生产者和消费者。
