@@ -17,6 +17,7 @@
 * 流程图：processon, ASCII flowchart: Graph Easy
 * 历史数据排名可视化：[Historical-ranking-data-visualization-based-on-d3.js](https://github.com/Jannchie/Historical-ranking-data-visualization-based-on-d3.js)
 * 代码可视化、代码修饰工具：[Carbon](https://carbon.now.sh/)
+* [Mapbox](https://www.mapbox.com/)  地图展示
 
 ### 框架
 
@@ -27,6 +28,14 @@
 ### Chrome 插件
 
 * [SingleFileZ](https://chrome.google.com/webstore/detail/singlefilez/offkdfbbigofcgdokjemgjpdockaafjg) 创建网页快照，对网页进行备份，我用它备份了我的网站：[senti-weibo](http://sentiweibo.top/)
+
+### React 技术栈
+
+[[React 时间轴 Chrono]](https://github.com/prabhuignoto/react-chrono) 好漂亮，我一定要学好 React！
+
+### 静态网页生成
+
+* Gatsby
 
 ## 后端
 

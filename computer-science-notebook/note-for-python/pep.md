@@ -2,6 +2,14 @@
 
 [TOC]
 
+## PEP
+
+Python Enhancement Proposal.
+
+PEP 提供了大量的语法糖。
+
+PEP stands for Python Enhancement Proposal. A PEP is a design document providing information to the Python community, or describing a new feature for Python or its processes or environment. 
+
 ## PEP-8 Coding style 
 
 [[PEP8]](https://www.python.org/dev/peps/pep-0008)

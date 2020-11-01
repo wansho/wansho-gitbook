@@ -2044,7 +2044,7 @@ class ResourceDemo
 等待/唤醒机制。
 涉及的方法：
 
-1. wait(): 让线程处于冻结状态，被wait的线程会被存储到线程池中
+1. wait(): 让线程处于冻结（阻塞）状态，被wait的线程会被存储到线程池中
 2. notify(): Wakes up a single thread that is waiting on this object's monitor.
 3. notifyAll(): Wakes up all threads that are waiting on this object's monitor.
 
@@ -2128,7 +2128,7 @@ class ResourceDemo2
     public static void main(String[] args)
     {
         //创建资源。
-        Resource r = new Resource();
+        Resource r = new Resource(); 
         //创建任务。
         Input in = new Input(r);
         Output out = new Output(r);
@@ -2234,6 +2234,16 @@ class ResourceDemo3
 
 实际上，第一个例子才是最恰当的，生产和消费的行为被封装在了生产者和消费者上，而第二个例子，生产和消费的行为被绑定到了商品上，不符合常识。
 
+**wait 和 sleep 的区别**
+
+区别：
+
+1. wait可以指定时间也可以不指定。sleep必须指定时间
+2. 在同步中时，对cpu的执行权和锁的处理不同
+   wait：释放执行权，释放锁。
+   sleep:释放执行权，不释放锁。 （也就是不释放临界区，其他线程干等着，不符合让权等待）
+3. 
+
 
 
 ### 多生产者与消费者
@@ -2322,3 +2332,157 @@ class ProducerConsumerDemo
 ```
 
 上面这个例子，仍然还是一个简单的生产一个，消费一个的例子，只是加入了多个生产者和消费者。
+
+### 停止线程
+
+停止线程：
+
+1. `interrupt` 方法
+2. run 方法结束
+
+怎么控制线程的任务结束呢?
+
+任务中都会有循环结构，只要控制住循环就可以结束任务。控制循环通常就用定义标记来完成。
+但是如果线程处于了阻塞状态，无法读取标记。如何结束呢？可以使用 `interrupt()` 方法将线程从冻结状态强制恢复到运行状态中来，让线程具备cpu的执行资格。强制动作会发生 InterruptedException，要处理。
+
+```java
+class StopThread implements Runnable
+{
+    private boolean flag = true;
+    public synchronized void run()
+    {
+        while(flag)
+        {
+            try
+            {
+                wait(); //t0 t1
+            }
+            catch (InterruptedException e)
+            {
+                System.out.println(Thread.currentThread().getName()+"....."+e);
+                flag = false;
+            }
+            System.out.println(Thread.currentThread().getName()+ "......++++"); // 被唤醒后，这句话还会执行
+        }
+    }
+    public void setFlag()
+    {
+        flag = false;
+    }
+}
+
+class StopThreadDemo
+{
+    public static void main(String[] args)
+    {
+       	 StopThread st = new StopThread();
+         Thread t1 = new Thread(st);
+         Thread t2 = new Thread(st);
+         t1.start();
+         t2.setDaemon(true); // t2 设置为守护进程，主线程 main 和 用户线程 t1 执行完后，自动结束
+         t2.start();
+         int num = 1;
+         for(;;)
+         {
+             if(++num==50)
+             {
+                 // st.setFlag();
+                 t1.interrupt();
+                 // t2.interrupt();
+                 break;
+             }
+             System.out.println("main...."+num);
+         }
+         System.out.println("over");
+    }
+}
+```
+
+ **守护线程和用户线程**
+
+`setDaemon(true)`
+
+Marks this thread as either a [daemon](https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#isDaemon--) thread or a user thread. The Java Virtual Machine exits when the only threads running are all daemon threads.
+
+守护线程类似于守护进程，优先级低于用户线程和用户进程。
+
+### 多线程总结
+
+```
+多线程总结：
+1，进程和线程的概念。
+|--进程：
+|--线程：
+2， jvm中的多线程体现。
+|--主线程，垃圾回收线程，自定义线程。以及他们运行的代码的位置。
+3，什么时候使用多线程，多线程的好处是什么？创建线程的目的？
+|--当需要多部分代码同时执行的时候，可以使用。
+4，创建线程的两种方式。★★★★★
+|--继承 Thread
+|--步骤
+|--实现 Runnable
+|--步骤
+|--两种方式的区别？
+5，线程的5种状态。
+对于执行资格和执行权在状态中的具体特点。
+|--被创建：
+|--运行：
+|--冻结：
+|--临时阻塞：
+|--消亡：
+6，线程的安全问题。★★★★★
+|--安全问题的原因：
+|--解决的思想：
+|--解决的体现： synchronized
+|--同步的前提：但是加上同步还出现安全问题，就需要用前提来思考。
+|--同步的两种表现方法和区别：
+|--同步的好处和弊端：
+|--单例的懒汉式。
+|--死锁。
+7，线程间的通信。等待/唤醒机制。
+|--概念：多个线程，不同任务，处理同一资源。
+|--等待唤醒机制。使用了锁上的 wait notify notifyAll. ★★★★★
+|--生产者/消费者的问题。并多生产和多消费的问题。 while判断标记。用notifyAll唤醒对方。 ★
+★★★★
+|--JDK1.5以后出现了更好的方案，★★★
+Lock接口替代了synchronized
+Condition接口替代了Object中的监视方法，并将监视器方法封装成了Condition
+和以前不同的是，以前一个锁上只能有一组监视器方法。现在，一个Lock锁上可以多组监视器方法对
+象。
+可以实现一组负责生产者，一组负责消费者。
+|--wait和sleep的区别。★★★★★
+8，停止线程的方式。
+|--原理：
+|--表现： --中断。
+9，线程常见的一些方法。
+|--setDaemon()
+|--join();
+|--优先级
+|--yield();
+|--在开发时，可以使用匿名内部类来完成局部的路径开辟。
+```
+
+## 常用类 API
+
+### String
+
+### StringBuffer
+
+### StringBuilder
+
+### wrapper
+
+## 集合
+
+### 迭代器
+
+### ArrayList
+
+### Vector  
+
+### LinkedList  
+
+### 泛型
+
+### Arrays
+

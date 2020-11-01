@@ -57,7 +57,15 @@ Webhooks allow external services to be notified when certain events happen. When
 
   一个在线的 VSCode，与 Github 紧密集成在一起。缺点：加载很慢，不太好用。
 
+* [running_page](https://github.com/yihong0618/running_page)
 
+  国产的跑步数据管理软件，可以备份 Nike、Runtastic（Adidas Run）、佳明的 gpx 跑步数据，生成个人的跑步主页。
+
+  这个老哥，两年学成，而且很有想法，真的佩服，感觉很惭愧
+
+* [react-chrono](https://github.com/prabhuignoto/react-chrono)
+
+  React 的时间轴组件。
 
 ## 仓库收藏
 

@@ -2,13 +2,13 @@
 
 [TOC]
 
-## 多数据库 Multi-DB
+## Django 学习资源
 
-[Multi-DB](https://docs.djangoproject.com/en/2.2/topics/db/multi-db/#manually-selecting-a-database)
+[[HelloDjango - django REST framework 教程]](https://www.zmrenwu.com/courses/django-rest-framework-tutorial/)
 
 ## Django Philosophy
 
-* Django 的 app 是即插即用的，我们可以将 app 打包，用在多个 project 中，并不只和一个 project 捆绑在一起。
+* Django 的 app 是即插即用的，我们可以将 app 打包，用在多个 project 中，并不只和一个 project 捆绑在一起
 
 ## Django Tutorial
 
@@ -383,6 +383,10 @@ https://code.ziqiangxuetang.com/django/django-ajax.html
 
 
 ## Model 增删改查
+
+### 多数据库 Multi-DB
+
+[Multi-DB](https://docs.djangoproject.com/en/2.2/topics/db/multi-db/#manually-selecting-a-database)
 
 ### Query Demos
 
