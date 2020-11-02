@@ -27,6 +27,14 @@ for( String name : names ) {
 }
 ```
 
+**for 的 while 实现**
+
+```java
+for(;;){
+    
+}
+```
+
 ### 位运算
 
 **>> 和 >>>**
@@ -2466,23 +2474,828 @@ Condition接口替代了Object中的监视方法，并将监视器方法封装�
 
 ### String
 
-### StringBuffer
+**构造函数**
 
-### StringBuilder
+```java
+public class StringConstructorDemo {
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        /*
+         * 将字节数组或者字符数组转成字符串可以通过String类的构造函数完成。
+         */
+        stringConstructorDemo2();
+        stringConstructorDemo();
+    }
+    private static void stringConstructorDemo2() {
+        char[] arr = {'w','a','p','q','x'};
+        String s = new String(arr,1,3); // apq
+        System.out.println("s="+s);
+    }
+    public static void stringConstructorDemo() {
+        String s = new String(); // 等价于 String s = ""; 不等效String s = null;
+        byte[] arr = {97,66,67,68}; // aBCD
+        String s1 = new String(arr);
+        System.out.println("s1="+s1);
+    }
+}
+```
 
-### wrapper
+**字符串对象一旦被初始化就不会被改变**
+
+字符串在内存中会存储到两个地方：
+
+1. 常量池
+
+   ```java
+   String s = "abc"; // "abc"存储在字符串常量池中。
+   String s1 = "abc";
+   System.out.println(s==s1); // true
+   ```
+
+2. 堆内存
+
+   ```java
+   String s = "abc"; // 创建一个字符串对象在常量池中。
+   String s1 = new String("abc"); // 创建两个对象一个new一个字符串对象在堆内存中。
+   System.out.println(s==s1); // false
+   System.out.println(s.equals(s1));
+   ```
+
+**String 类方法及使用**
+
+```java
+public class StringMethodDemo {
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        /*
+         * 按照面向对象的思想对字符串进行功能分类。
+         * "abcd"
+         *
+         * 1,获取：
+         * 1.1 获取字符串中字符的个数(长度).
+         * int length();
+         * 1.2 根据位置获取字符。
+         * char charAt(int index);
+         * 1.3 根据字符获取在字符串中的第一次出现的位置.
+         * int indexOf(int ch)
+         * int indexOf(int ch,int fromIndex):从指定位置进行ch的查找第一次出现位置
+         * int indexOf(String str);
+         * int indexOf(String str,int fromIndex);
+         * 根据字符串获取在字符串中的第一次出现的位置.
+         * int lastIndexOf(int ch)
+         * int lastIndexOf(int ch,int fromIndex):从指定位置进行ch的查找第一次出现位置
+         * int lastIndexOf(String str);
+         * int lastIndexOf(String str,int fromIndex);
+         * 1.4 获取字符串中一部分字符串。也叫子串.
+         * String substring(int beginIndex, int endIndex)//包含begin 不包含end 。
+         * String substring(int beginIndex);
+         *
+         *
+         * 2，转换。
+         * 2.1 将字符串变成字符串数组(字符串的切割)
+         * String[] split(String regex):涉及到正则表达式.
+         * 2.2 将字符串变成字符数组。
+         * char[] toCharArray();
+         * 2.3 将字符串变成字节数组。
+         * byte[] getBytes();
+         * 2.4 将字符串中的字母转成大小写。
+         * String toUpperCase():大写
+         * String toLowerCase():小写
+         * 2.5 将字符串中的内容进行替换
+         * String replace(char oldch,char newch);
+         * String replace(String s1,String s2);
+         * 2.6 将字符串两端的空格去除。
+         * String trim();
+         * 2.7 将字符串进行连接 。
+         * String concat(string);
+         *
+         * 3，判断
+         * 3.1 两个字符串内容是否相同啊？
+         * boolean equals(Object obj);
+         * boolean equalsIgnoreCase(string str);忽略大写比较字符串内容。
+         * 3.2 字符串中是否包含指定字符串？
+         * boolean contains(string str);
+         * 3.3 字符串是否以指定字符串开头。是否以指定字符串结尾。
+         * boolean startsWith(string);
+         * boolean endsWith(string);
+         *
+         * 4，比较。
+         *
+         */
+        stringMethodDemo_4();
+        // System.out.println("abc".concat("kk"));
+        // System.out.println("abc"+"kk");
+        // System.out.println(String.valueOf(4)+1);
+        // System.out.println(""+4+1);
+    }
+    private static void stringMethodDemo_4() {
+        System.out.println("abc".compareTo("aqz")); // -15
+        /*
+        * int num = 'b' - 'q';
+        * System.out.println(String.valueOf(num));
+        * */
+    }
+    private static void stringMethodDemo_3() {
+        String s = "abc";
+        System.out.println(s.equals("ABC".toLowerCase()));
+        System.out.println(s.equalsIgnoreCase("ABC"));
+        System.out.println(s.contains("cc"));
+        String str = "ArrayDemo.java";
+        System.out.println(str.startsWith("Array"));
+        System.out.println(str.endsWith(".java"));
+        System.out.println(str.contains("Demo"));
+    }
+    private static void stringMethodDemo_2() {
+        String s = "张三,李四,王五";
+        String[] arr = s.split(",");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+        char[] chs = s.toCharArray();
+        for (int i = 0; i < chs.length; i++) {
+            System.out.println(chs[i]);
+        }
+        s = "ab你";
+        byte[] bytes = s.getBytes();
+        for (int i = 0; i < bytes.length; i++) {
+            System.out.println(bytes[i]);
+        }
+        System.out.println("Abc".toUpperCase());
+        String s1 = "java";
+        String s2 = s1.replace('q', 'z');
+        System.out.println(s1==s2);//true
+        System.out.println("-"+" ab c ".trim()+"-");
+    }
+    private static void stringMethodDemo_1() {
+        String s = "abcdae";
+        System.out.println("length:"+s.length());//6
+        System.out.println("char:"+s.charAt(2));//c//StringIndexOutOfBoundsException
+        System.out.println("index:"+s.indexOf('k'));//0//-1 我们可以根据-1，来判断该字符或者字符串是否存在。
+        System.out.println("lastIndex:"+s.lastIndexOf('a'));//4
+        System.out.println("substring:"+s.substring(2,4));
+    }
+}
+
+```
+
+**字符串比较**
+
+```java
+/*
+* 1，给定一个字符串数组。按照字典顺序进行从小到大的排序。
+* {"nba","abc","cba","zz","qq","haha"}
+*
+* 思路：
+* 1,对数组排序。可以用选择，冒泡都行。
+* 2,for嵌套和比较以及换位。
+* 3,问题：以前排的是整数，比较用的比较运算符，可是现在是字符串对象。
+* 字符串对象怎么比较呢？爽了，对象中提供了用于字符串对象比较的功能。
+*/
+public class StringTest_1 {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        String[] arr = { "nba", "abc", "cba", "zz", "qq", "haha" };
+        printArray(arr);
+        sortString(arr);
+        printArray(arr);
+    }
+    public static void sortString(String[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if(arr[i].compareTo(arr[j])>0) // 字符串比较用compareTo方法
+                    swap(arr,i,j);
+            }
+                                                 }
+    }
+    private static void swap(String[] arr, int i, int j) {
+        String temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    public static void printArray(String[] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            if (i != arr.length - 1)
+                System.out.print(arr[i] + ", ");
+            else
+                System.out.println(arr[i] + "]");
+        }
+    }
+}
+```
+
+
+
+### StringBuffer / StringBuilder
+
+StringBuffer 可以传入 bool 值 和 数值，统一转成字符串再存入 StringBuffer.
+
+```java
+public class StringBufferDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        /*
+        * StringBuffer:就是字符串缓冲区。
+        * 用于存储数据的容器。
+        * 特点：
+        * 1，长度的可变的。
+        * 2，可以存储不同类型数据。
+        * 3，最终要转成字符串进行使用。
+        * 4，可以对字符串进行修改。
+        *
+        * 既然是一个容器对象。应该具备什么功能呢？
+        * 1，添加：
+        * StringBuffer append(data);
+        * StringBuffer insert(index,data);
+        * 2，删除：
+        * StringBuffer delete(start,end):包含头，不包含尾。
+        * StringBuffer deleteCharAt(int index):删除指定位置的元素
+        * 3，查找：
+        * char charAt(index);
+        * int indexOf(string);
+        * int lastIndexOf(string);
+        * 4， 修改：
+        * StringBuffer replace(start,end,string);
+        * void setCharAt(index,char);
+        *
+        * 增删改查 C(create)U(update)R(read)D(delete)
+        */
+        bufferMethodDemo();
+    }
+    private static void bufferMethodDemo_2() {
+        StringBuffer sb = new StringBuffer("abce");
+        // sb.delete(1, 3);//ae
+        //清空缓冲区。
+        // sb.delete(0,sb.length());
+        // sb = new StringBuffer();
+        // sb.replace(1, 3, "nba");
+        // sb.setCharAt(2, 'q');
+        // sb.setLength(10);
+        // System.out.println("sb:"+sb);
+        // System.out.println("len:"+sb.length());
+        System.out.println(sb.reverse());
+    }
+    private static void bufferMethodDemo_1() {
+        StringBuffer sb = new StringBuffer("abce");
+        // sb.append("xixi");
+        sb.insert(2, "qq");
+        System.out.println(sb.toString());
+    }
+    public static void bufferMethodDemo(){
+        //创建缓冲区对象。
+        StringBuffer sb = new StringBuffer();
+        sb.append(4).append(false); //.append("haha");
+        sb.insert(1, "haha");
+        // sb.append(true);
+        System.out.println(sb);
+    }
+}
+```
+
+```java
+/*
+* jdk1.5以后出现了功能和StringBuffer一模一样的对象。就是StringBuilder
+*
+* 不同的是：
+* StringBuffer 是线程同步的。通常用于多线程。
+* StringBuilder是线程不同步的。通常用于单线程。 它的出现提高效率。
+*
+* jdk升级：
+* 1，简化书写。
+* 2，提高效率。
+* 3，增加安全性。
+*/
+```
+
+### 包装类
+
+```java
+package com.wansho.hellojava;
+
+public class WrapperDemo {
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        /*
+         * 基本数据类型对象包装类。
+         * 为了方便操作基本数据类型值，将其封装成了对象，在对象中定义了属性和行为丰富了该数据的操
+         * 作。
+         * 用于描述该对象的类就称为基本数据类型对象包装类。
+         *
+         * byte Byte
+         * short Short
+         * int Integer
+         * long Long
+         * float Float
+         * double Double
+         * char Character
+         * booleanBoolean
+         *
+         * 该包装对象主要用基本类型和字符串之间的转换。
+         *
+         * 基本类型--->字符串
+         * 1,基本类型数值 + ""
+         * 2,用 String 类中的静态方法 valueOf(基本类型数值);
+         * 3,用 Integer 的静态方法 valueOf(基本类型数值);
+         *
+         * 字符串--->基本类型
+         * 1,使用包装类中的静态方法 xxx parseXxx("xxx类型的字符串");*****
+         * int parseInt("intstring");
+         * long parseLong("longstring");
+         * boolean parseBoolean("booleanstring");
+         * 只有Character没有parse方法
+         * 2,如果字符串被Integer进行对象的封装。
+         * 可使用另一个非静态的方法， intValue();
+         * 将一个Integer对象转成基本数据类型值。
+         */
+         System.out.println(Integer.MAX_VALUE);
+         System.out.println(Integer.toBinaryString(-6));
+         int num = 4;
+         Integer i = new Integer(5);
+         int x = Integer.parseInt("123");
+         System.out.println(Integer.parseInt("123")+1);
+         i = new Integer("123");
+         System.out.println(i.intValue());
+        /*
+         * 整数具备不同的进制体现。
+         *
+         * 十进制-->其他进制。
+         * toBinaryString
+         * toOctalString
+         * toHexString
+         *
+         * 其他进制-->十进制。
+         * parseInt("string",radix)
+         *
+         */
+        // 十进制-->其他进制。
+        System.out.println(Integer.toBinaryString(60));
+        System.out.println(Integer.toOctalString(60));
+        System.out.println(Integer.toHexString(60));
+        // System.out.println(Integer.toString(60,16));
+        // 其他进制-->十进制。
+        // System.out.println(Integer.parseInt("3c",16));
+        Integer a = new Integer("89");
+        Integer b = new Integer(300);
+        System.out.println(a==b);
+        System.out.println(a.equals(b));
+        // System.out.println(3>3);
+        System.out.println(a.compareTo(b));
+
+    }
+}
+```
+
+**自动装箱拆箱**
+
+```java
+public class WrapperDemo2 {
+    public static void main(String[] args) {
+        int num = 4;
+        num = num + 5;
+        Integer i = 4; // i = new Integer(4); 自动装箱 简化书写。
+        i = i + 6; // i = new Integer(i.intValue() + 6); // i.intValue() 自动拆箱
+        // show(55);//
+        Integer a = new Integer(128);
+        Integer b = new Integer(128);
+        System.out.println(a==b); // false 两个对象
+        System.out.println(a.equals(b)); // true 值是相同的
+        Integer x = 129; // jdk1.5以后，自动装箱，如果装箱的是一个字节，那么该数据会被共享不会重新开辟空间。
+        Integer y = 129;
+        System.out.println(x==y); // false
+        System.out.println(x.equals(y)); //true
+    }
+}
+```
+
+```java
+import java.util.Arrays;
+/*
+* 对一个字符串中的数值进行从小到大的排序。
+*
+* "20 78 9 -7 88 36 29"
+*
+* 思路：
+* 1，排序， 我很熟。可是我只熟int。
+* 2，如何获取到这个字符串中的这些需要排序的数值？
+* 发现这个字符串中其实都是空格来对数值进行分隔的。
+* 所以就想到用字符串对象的切割方法将大串变成多个小串。
+* 3，数值最终变成小字符串，怎么变成一个int数呢？135
+* 字符串-->基本类型 可以使用包装类。
+*
+*
+*/
+public class WrapperTest {
+    private static final String SPACE_SEPARATOR = " ";
+    /**
+* @param args
+*/
+    public static void main(String[] args) {
+        String numStr = "20 78 9 -7 88 36 29";
+        System.out.println(numStr);
+        numStr = sortStringNumber(numStr);
+        System.out.println(numStr);
+    }
+    /**
+*
+* @param numStr
+* @return
+*/
+    public static String sortStringNumber(String numStr) {
+        //1,将字符串变成字符串数组。
+        String[] str_arr = stringToArray(numStr);
+        //2,将字符串数组变成int数组。
+        int[] num_arr = toIntArray(str_arr);
+        //3,对int数组排序。
+        mySortArray(num_arr);
+        //4,将排序后的int数组变成字符串。
+        String temp = arrayToString(num_arr);
+        return temp;
+    }
+    public static String arrayToString(int[] num_arr) {
+        StringBuilder sb = new StringBuilder();136
+            for(int x = 0; x<num_arr.length; x++){
+                if(x!=num_arr.length-1)
+                    sb.append(num_arr[x]+SPACE_SEPARATOR);
+                else
+                    sb.append(num_arr[x]);
+            }
+        return sb.toString();
+    }
+    public static void mySortArray(int[] num_arr) {
+        Arrays.sort(num_arr);
+    }
+    public static int[] toIntArray(String[] str_arr) {
+        int[] arr = new int[str_arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = Integer.parseInt(str_arr[i]);
+        }
+        return arr;
+    }
+    /**
+* @param numStr
+*/
+    public static String[] stringToArray(String numStr) {
+        String[] str_arr = numStr.split(SPACE_SEPARATOR);
+        return str_arr;
+    }
+}
+```
+
+
 
 ## 集合
 
-### 迭代器
+### 通用的方法
 
-### ArrayList
+```java
+package com.wansho.hellojava;
 
-### Vector  
+import java.util.ArrayList;
+import java.util.Collection;
+public class CollectionDemo {
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        Collection coll = new ArrayList();
+        // show(coll);
+        Collection c1 = new ArrayList();
+        Collection c2 = new ArrayList();
+        show(c1,c2);
+    }
+    public static void show(Collection c1,Collection c2){
+        //给c1添加元素。
+        c1.add("abc1");
+        c1.add("abc2");
+        c1.add("abc3");
+        c1.add("abc4");
+        //给c2添加元素。
+        c2.add("abc1");
+        c2.add("abc2");
+        c2.add("abc3");
+        c2.add("abc4");
+        c2.add("abc5");
+        System.out.println("c1:"+c1); // c1:[abc1, abc2, abc3, abc4]
+        System.out.println("c2:"+c2);
+        //演示addAll
+        c1.addAll(c2);//将c2中的元素添加到c1中。
+        //演示removeAll
+        // boolean b = c1.removeAll(c2); // 将两个集合中的相同元素从调用removeAll的集合中删除。
+        // System.out.println("removeAll:"+b);
+        //演示containsAll
+        boolean b = c1.containsAll(c2);
+        System.out.println("containsAll:"+b);
+        //演示retainAll
+        // b = c1.retainAll(c2); // 取交集，保留和指定的集合相同的元素，而删除不同的元素。
+        //和removeAll功能相反 。
+        // System.out.println("retainAll:"+b);
+        System.out.println("c1:"+c1);
+    }
+    public static void show(Collection coll){
+        //1,添加元素。 add.
+        coll.add("abc1");
+        coll.add("abc2");
+        coll.add("abc3");
+        System.out.println(coll);
+        //2，删除元素。 remove
+        // coll.remove("abc2");//会改变集合的长度
+        //清空集合.
+        // coll.clear();
+        System.out.println(coll.contains("abc3"));
+        System.out.println(coll);
+    }
+}
+```
 
-### LinkedList  
+
+
+### Iterator  迭代器
+
+```java
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+public class IteratorDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        Collection coll = new ArrayList();
+        coll.add("abc1");
+        coll.add("abc2");
+        coll.add("abc3");
+        coll.add("abc4");
+        // System.out.println(coll);
+        //使用了Collection中的iterator()方法。 调用集合中的迭代器方法，是为了获取集合中的迭代器对象。
+        // Iterator it = coll.iterator();
+        // while(it.hasNext()){
+        // System.out.println(it.next());
+        // }
+        for(Iterator it = coll.iterator(); it.hasNext(); ){
+            System.out.println(it.next());
+        }
+        // System.out.println(it.next());
+        // System.out.println(it.next());
+        // System.out.println(it.next()); // java.util.NoSuchElementException
+    }
+}
+```
+
+
+
+### List
+
+**ArrayList**
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+public class ListDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        List list = new ArrayList();
+        show(list);
+    }
+    public static void show(List list) {
+        //添加元素
+        list.add("abc1");
+        list.add("abc2");
+        list.add("abc3");
+        System.out.println(list);
+        //插入元素。
+        // list.add(1,"abc9");
+        //删除元素。
+        // System.out.println("remove:"+list.remove(2));
+        //修改元素。
+        // System.out.println("set:"+list.set(1, "abc8"));
+        //获取元素。
+        // System.out.println("get:"+list.get(0));
+        //获取子列表。
+        // System.out.println("sublist:"+list.subList(1, 2));
+        System.out.println(list);
+    }
+}
+```
+
+```java
+package com.wansho.hellojava;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+public class ListDemo2 {
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        List list = new ArrayList();
+        // show(list);
+        list.add("abc1");
+        list.add("abc2");
+        list.add("abc3");
+        System.out.println("list:"+list);
+        ListIterator it = list.listIterator();//获取列表迭代器对象
+        //它可以实现在迭代过程中完成对元素的增删改查。
+        //注意：只有list集合具备该迭代功能.
+        while(it.hasNext()){
+            Object obj = it.next();
+            if(obj.equals("abc2")){
+                it.set("abc9"); // 改
+            }
+        }
+        System.out.println("hasNext:"+it.hasNext());
+        System.out.println("hasPrevious:"+it.hasPrevious());
+        while(it.hasPrevious()){
+            System.out.println("previous:"+it.previous());
+        }
+        System.out.println("list:"+list);
+        show(list);
+        Iterator itt = list.iterator();
+        while(itt.hasNext()) {
+            Object obj = it.next();//java.util.ConcurrentModificationException
+            //在迭代器过程中，不要使用集合操作元素，容易出现异常。
+            //可以使用Iterator接口的子接口ListIterator来完成在迭代中对元素进行更
+            //多的操作。
+            if (obj.equals("abc2")) {
+                list.add("abc9");
+            } else {
+                System.out.println("next:" + obj);
+            }
+            System.out.println(list);
+        }
+    }
+    public static void show(List list) {
+        list.add("abc1");
+        list.add("abc2");
+        list.add("abc3");
+        list.add("abc4");
+        Iterator it = list.iterator();
+        while(it.hasNext()){
+            System.out.println("next:"+it.next());
+        }
+        //list特有的取出元素的方式之一。
+        for(int x=0; x<list.size(); x++){
+            System.out.println("get:"+list.get(x));
+        }
+    }
+}
+```
+
+**Vector** 
+
+```java
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Vector;
+
+public class VectorDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        Vector v = new Vector();
+        v.addElement("abc1");
+        v.addElement("abc2");
+        v.addElement("abc3");
+        v.addElement("abc4");
+        Enumeration en = v.elements();
+        while(en.hasMoreElements()){
+            System.out.println("nextelment:"+en.nextElement());
+        }
+        Iterator it = v.iterator();
+        while(it.hasNext()){
+            System.out.println("next:"+it.next());
+        }
+    }
+}
+```
+
+**LinkedList**  
+
+```java
+import java.util.Iterator;
+import java.util.LinkedList;
+public class LinkedListDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        LinkedList link = new LinkedList();
+        link.addFirst("abc1");
+        link.addFirst("abc2");
+        link.addFirst("abc3");
+        link.addFirst("abc4");
+        // System.out.println(link);
+        // System.out.println(link.getFirst());//获取第一个但不删除。
+        // System.out.println(link.getFirst());
+        // System.out.println(link.removeFirst());//获取元素但是会删除。
+        // System.out.println(link.removeFirst());
+        while(!link.isEmpty()){
+            System.out.println(link.removeLast());
+        }
+        System.out.println(link);
+        // Iterator it = link.iterator();
+        // while(it.hasNext()){
+        // System.out.println(it.next());
+        // }
+    }
+}
+```
+
+### Set
+
+**HashSet**
+
+HashSet 首先是一个 Set。
+
+```java
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class HashSetDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        HashSet hs = new HashSet();
+        hs.add("hehe");
+        // hs.add("heihei");
+        hs.add("hahah");
+        hs.add("xixii");
+        hs.add("hehe");
+        Iterator it = hs.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+    }
+}
+```
+
+```java
+import java.util.HashSet;
+import java.util.Iterator;
+import cn.itcast.p.bean.Person;
+/*
+* 往hashSet集合中存储Person对象。如果姓名和年龄相同，视为同一个人。视为相同元素。
+*/
+public class HashSetTest {
+    public static void main(String[] args) {
+        HashSet hs = new HashSet();
+        /*
+        * HashSet集合数据结构是哈希表，所以存储元素的时候，
+        * 使用的元素的 hashCode 方法来确定位置，如果位置相同，在通过元素的equals来确定是否相同。
+        *
+        */
+        hs.add(new Person("lisi4",24));
+        hs.add(new Person("lisi7",27));
+        hs.add(new Person("lisi1",21));
+        hs.add(new Person("lisi9",29));
+        hs.add(new Person("lisi7",27));
+            Iterator it = hs.iterator();
+        while(it.hasNext()){
+            Person p = (Person)it.next();
+            System.out.println(p);
+            // System.out.println(p.getName()+"...."+p.getAge());
+        }
+    }
+}
+```
+
+
 
 ### 泛型
 
 ### Arrays
+
+### 总结
+
+```
+Collection
+	List
+		ArrayList
+		LinkedList
+		Stack
+		Vector
+	Set
+		HashSet
+		TreeSet
+		LinkedHashSet		
+	Queue
+	Deque
+	SortedSet
+	
+```
 
