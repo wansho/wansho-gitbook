@@ -3245,34 +3245,184 @@ public class HashSetDemo {
 ```
 
 ```java
+package com.wansho.hellojava;
+
 import java.util.HashSet;
 import java.util.Iterator;
-import cn.itcast.p.bean.Person;
+
+class Person{
+    private String name;
+    private int age;
+    Person(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public int getAge(){
+        return this.age;
+    }
+
+
+    @Override
+    public int hashCode() {
+        return name.hashCode() + age * 37; // hash 加盐，防止冲突
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj){ // 先判断一次内存地址，防止一个对象传入两次
+            return true;
+        }
+        if(!(obj instanceof Person)){ // 健壮性判断
+            throw new ClassCastException("类型不对");
+        }
+        Person p = (Person)obj;
+        if((p.name.equals(this.name)) && (p.age==this.age)){ // 此处存疑， name 和 age 都是封装的，为什么可以直接调用？
+            return true;
+        }
+        return false;
+    }
+}
+
+
 /*
-* 往hashSet集合中存储Person对象。如果姓名和年龄相同，视为同一个人。视为相同元素。
-*/
+ * 往hashSet集合中存储Person对象。如果姓名和年龄相同，视为同一个人。视为相同元素。
+ */
 public class HashSetTest {
     public static void main(String[] args) {
         HashSet hs = new HashSet();
         /*
-        * HashSet集合数据结构是哈希表，所以存储元素的时候，
-        * 使用的元素的 hashCode 方法来确定位置，如果位置相同，在通过元素的equals来确定是否相同。
-        *
-        */
+         * HashSet集合数据结构是哈希表，所以存储元素的时候，
+         * 使用的元素的 hashCode 方法来确定位置，如果位置相同，在通过元素的equals来确定是否相同。
+         *
+         */
         hs.add(new Person("lisi4",24));
         hs.add(new Person("lisi7",27));
         hs.add(new Person("lisi1",21));
         hs.add(new Person("lisi9",29));
         hs.add(new Person("lisi7",27));
-            Iterator it = hs.iterator();
+        Iterator it = hs.iterator();
         while(it.hasNext()){
             Person p = (Person)it.next();
             System.out.println(p);
-            // System.out.println(p.getName()+"...."+p.getAge());
+            System.out.println(p.getName()+"...."+p.getAge());
         }
     }
 }
 ```
+
+// 此处存疑， name 和 age 都是封装的，为什么可以直接调用？
+
+**LinkedHashSet**
+
+LinkedHashSet 是 hashset 的子类，其能保证对象的插入顺序
+
+```java
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetDemo {
+    public static void main(String[] args) {
+        HashSet hs = new LinkedHashSet();
+        hs.add("hahah");
+        hs.add("hehe");
+        hs.add("heihei");
+        hs.add("xixii");
+        // hs.add("hehe");
+        Iterator it = hs.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+    }
+    /*
+     *
+     * hahah
+     * hehe
+     * heihei
+     * xixii 顺序不变
+     * */
+}
+```
+
+**TreeSet Comparator**
+
+基于 TreeMap 的 NavigableSet 实现。使用元素的自然顺序对元素进行排序，或者根据创建 set 时提供的 Comparator进行排序，具体取决于使用的构造方法。
+
+```java
+package com.wansho.hellojava;
+
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.TreeSet;
+
+/**
+ * 创建了一个根据Person类的name进行排序的比较器。
+ */
+class ComparatorByName implements Comparator {
+    @Override
+    public int compare(Object o1, Object o2) {
+        Person p1 = (Person)o1;
+        Person p2 = (Person)o2;
+        int temp = p1.getName().compareTo(p2.getName());
+        return temp==0?p1.getAge()-p2.getAge(): temp;
+        // return 1;//有序。
+    }
+}
+public class TreeSetDemo {
+    public static void main(String[] args) {
+        TreeSet ts = new TreeSet(new ComparatorByName());
+        /*
+         * 以Person对象年龄进行从小到大的排序。
+         *
+         */
+        ts.add(new Person("zhangsan",28));
+        ts.add(new Person("lisi",21));
+        ts.add(new Person("zhouqi",29));
+        ts.add(new Person("zhouqi",25));
+        ts.add(new Person("wangu",24));
+        Iterator it = ts.iterator();
+        while(it.hasNext()){
+            Person p = (Person)it.next();
+            System.out.println(p.getName()+":"+p.getAge());
+        }
+        System.out.println("------------------");
+        demo1();
+    }
+    public static void demo1() {
+        TreeSet ts = new TreeSet();
+        ts.add("abc");
+        ts.add("zaa");
+        ts.add("aa");
+        ts.add("nba");
+        ts.add("cba");
+        Iterator it = ts.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+    }
+}
+
+/*
+lisi:21
+wangu:24
+zhangsan:28
+zhouqi:25
+zhouqi:29
+------------------
+aa
+abc
+cba
+nba
+zaa
+*/
+```
+
+
 
 
 
@@ -3291,8 +3441,8 @@ Collection
 		Vector
 	Set
 		HashSet
+			LinkedHashSet
 		TreeSet
-		LinkedHashSet		
 	Queue
 	Deque
 	SortedSet

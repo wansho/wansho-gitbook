@@ -2,6 +2,8 @@
 
 [TOC]
 
+People Die, but Long Live GitHub.
+
 ## 基本信息
 
 github-pages 必须公开仓库，才能生效。
@@ -57,6 +59,19 @@ Webhooks allow external services to be notified when certain events happen. When
 
   一个在线的 VSCode，与 Github 紧密集成在一起。缺点：加载很慢，不太好用。
 
+* 
+
+
+## 仓库收藏
+
+* 尝试对加密过的文本，进行解密：[Ciphey](https://github.com/Ciphey/Ciphey) 
+
+* 开源项目讲解：[Article](https://github.com/HelloGitHub-Team/Article)
+
+* 软件测试：[how they test](https://github.com/abhivaikar/howtheytest)
+
+* 黑客帝国终端模拟器特效：[edex-ui](https://github.com/GitSquared/edex-ui)
+
 * [running_page](https://github.com/yihong0618/running_page)
 
   国产的跑步数据管理软件，可以备份 Nike、Runtastic（Adidas Run）、佳明的 gpx 跑步数据，生成个人的跑步主页。
@@ -65,13 +80,13 @@ Webhooks allow external services to be notified when certain events happen. When
 
 * [react-chrono](https://github.com/prabhuignoto/react-chrono)
 
-  React 的时间轴组件。
+  React 的时间轴组件
+  
+* [socialify](https://github.com/wei/socialify)
 
-## 仓库收藏
+  generating a beautiful project image
 
-* 尝试对加密过的文本，进行解密：[Ciphey](https://github.com/Ciphey/Ciphey) 
-* 开源项目讲解：[Article](https://github.com/HelloGitHub-Team/Article)
-* 软件测试：[how they test](https://github.com/abhivaikar/howtheytest)
+
 
 ## To do
 
