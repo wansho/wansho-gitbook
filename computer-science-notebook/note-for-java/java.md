@@ -536,6 +536,14 @@ class WW implements QQ{
 
 一个对象有多种特征。一个对象，走起路来像鸭子，叫声也像鸭子，那么这个对象就具有鸭子的特征；同时这个对象还是胎生的，那么其就有哺乳动物的特征。一个对象，多种状态。
 
+多态的一个实际案例：
+
+```
+现实中，关于多态的例子不胜枚举。比方说按下 F1 键这个动作，如果当前在 Flash 界面下弹出的就是 AS 3 的帮助文档；如果当前在 Word 下弹出的就是 Word 帮助；在 Windows 下弹出的就是 Windows 帮助和支持。同一个事件发生在不同的对象上会产生不同的结果。
+```
+
+
+
 ```java
 class 动物
 {}
@@ -544,7 +552,7 @@ class 猫 extends 动物
 class 狗 extends 动物
 {}
 猫 x = new 猫();
-动物 x = new 猫(); //一个对象，两种形态。
+动物 x = new 猫(); //一个对象，多种形态。
 ```
 
 猫这类事物即具备者猫的形态，又具备着动物的形态。这就是对象的多态性。
@@ -2955,6 +2963,8 @@ public class WrapperTest {
 
 ## 集合
 
+
+
 ### 通用的方法
 
 ```java
@@ -3361,7 +3371,7 @@ import java.util.Iterator;
 import java.util.TreeSet;
 
 /**
- * 创建了一个根据Person类的name进行排序的比较器。
+ * 创建了一个根据Person类的 name 进行排序的比较器。
  */
 class ComparatorByName implements Comparator {
     @Override
@@ -3377,7 +3387,7 @@ public class TreeSetDemo {
     public static void main(String[] args) {
         TreeSet ts = new TreeSet(new ComparatorByName());
         /*
-         * 以Person对象年龄进行从小到大的排序。
+         * 以 Person 对象年龄进行从小到大的排序。
          *
          */
         ts.add(new Person("zhangsan",28));
@@ -3422,11 +3432,298 @@ zaa
 */
 ```
 
+```java
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.TreeSet;
 
+/*
+定义一个按长度作比较的比较器
+*/
+class ComparatorByLength implements Comparator {
+    @Override
+    public int compare(Object o1, Object o2) {
+        String s1 = (String)o1;
+        String s2 = (String)o2;
+        int temp = s1.length()-s2.length();
+        return temp==0? s1.compareTo(s2): temp; // 三木运算符，
+    }
+}
+/*
+ * 对字符串进行长度排序。
+ *
+ * "20 18 -1 89 2 67"
+ */
+public class TreeSetTest {
+    public static void main(String[] args) {
+        TreeSet ts = new TreeSet(new ComparatorByLength());
+        ts.add("aaaaa");
+        ts.add("zz");
+        ts.add("nbaq");
+        ts.add("cba");
+        ts.add("abc");
+        Iterator it = ts.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+    }
+}
+```
 
+**另一种实现 Comparable 的方法：让对象实现 Comparable**
 
+```java
+public class Person /*extends Object*/ implements Comparable {
+    private String name;
+    private int age;
+    public Person() {
+        super();
+    }
+    public Person(String name, int age) {
+        super();
+        this.name = name;
+        this.age = age;
+    }
+    @Override
+    public int hashCode() {
+        return name.hashCode()+age*27;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj)
+            return true;
+        if(!(obj instanceof Person))
+            throw new ClassCastException("类型错误");
+        Person p = (Person)obj;
+        return this.name.equals(p.name) && this.age == p.age;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    public String toString(){
+        return name+":"+age;
+    }
+    @Override
+    public int compareTo(Object o) {
+        Person p = (Person)o;
+        int temp = this.age-p.age;
+        return temp==0?this.name.compareTo(p.name):temp;
+    }
+}
+```
+
+### List Set 总结
+
+* 集合类的使用场景：
+
+  对象用于封装特有数据，对象多了需要存储，如果对象的个数不确定。就使用集合容器进行存储。
+
+* 集合特点
+
+  * 用于存储对象的容器
+  * 集合的长度是可变的
+  * 集合中不可以存储基本数据类型值（但是能存储包装类）
+
+* 集合容器因为内部的数据结构不同，有多种具体容器。不断的向上抽取，就形成了集合框架。
+
+  * 框架的顶层Collection接口
+
+    ```java
+    /*
+    Collection的常见方法：
+    1，添加。
+        boolean add(Object obj):
+        boolean addAll(Collection coll):
+    2，删除。
+        boolean remove(object obj):
+        boolean removeAll(Collection coll);
+        void clear();
+    3，判断：
+        boolean contains(object obj):
+        boolean containsAll(Colllection coll);
+        boolean isEmpty():判断集合中是否有元素。
+    4，获取：
+        int size():
+        Iterator iterator() 取出元素的方式：迭代器。
+        该对象必须依赖于具体容器，因为每一个容器的数据结构都不同。
+        所以该迭代器对象是在容器中进行内部实现的。
+        对于使用容器者而言，具体的实现不重要，只要通过容器获取到该实现的迭代器的对象即可，
+        也就是iterator方法。
+        Iterator接口就是对所有的Collection容器进行元素取出的公共接口。
+        其实就是抓娃娃游戏机中的夹子！
+    5，其他：
+        boolean retainAll(Collection coll); 取交集。
+        Object[] toArray(); 将集合转成数组。
+    */
+    
+    ```
+
+  * Collection
+    |--List：有序(存入和取出的顺序一致),元素都有索引(角标)，元素可以重复。
+    |--Set：元素不能重复,无序。  
+
+  * List
+
+    ```java
+    /*
+    List:特有的常见方法：有一个共性特点就是都可以操作角标。
+    1，添加
+        void add(index, element);
+        void add(index, collection);
+    2，删除；
+    	Object remove(index):
+    3，修改：
+    	Object set(index,element);
+    4，获取：
+        Object get(index);
+        int indexOf(object);
+        int lastIndexOf(object);
+        List subList(from,to);
+        
+    list集合是可以完成对元素的增删改查。
+    List:
+    |--Vector:内部是数组数据结构，是同步的。增删，查询都很慢！
+    |--ArrayList:内部是数组数据结构，是不同步的。替代了Vector。查询的速度快。
+    |--LinkedList:内部是链表数据结构，是不同步的。增删元素的速度很快。
+    
+    LinkedList:
+        addFirst();
+        addLast():
+        jdk1.6
+        offerFirst();
+        offetLast();
+        getFirst();.//获取但不移除，如果链表为空，抛出NoSuchElementException.
+        getLast();
+        jdk1.6
+        peekFirst();//获取但不移除，如果链表为空，返回null.
+        peekLast():
+        removeFirst();//获取并移除，如果链表为空，抛出NoSuchElementException.
+        removeLast();
+        jdk1.6
+        pollFirst();//获取并移除，如果链表为空， 返回null.
+        pollLast(); 
+    
+    */
+    ```
+
+  * Set
+
+    ```java
+    /*
+    Set接口中的方法和Collection一致。
+    |--HashSet: 内部数据结构是哈希表 ，是不同步的。
+        如何保证该集合的元素唯一性呢？
+        是通过对象的hashCode和equals方法来完成对象唯一性的。
+        如果对象的hashCode值不同，那么不用判断equals方法，就直接存储到哈希表中。
+        如果对象的hashCode值相同，那么要再次判断对象的equals方法是否为true。
+        如果为true，视为相同元素，不存。如果为false，那么视为不同元素，就进行存储。
+        
+        记住：如果元素要存储到HashSet集合中，必须覆盖 hashCode 方法和 equals 方法。
+        一般情况下，如果定义的类会产生很多对象，比如人，学生，书，通常都需要覆盖equals， hashCode
+        方法。
+    
+    |--TreeSet:可以对Set集合中的元素进行排序。是不同步的。
+        判断元素唯一性的方式：就是根据比较方法的返回结果是否是0，是0，就是相同元素，不存。
+        TreeSet对元素进行排序的方式一：(方法一更直观，更符合直觉)
+        	让元素自身具备比较功能，元就需要实现Comparable接口。覆盖compareTo方法。
+        	如果不要按照对象中具备的自然顺序进行排序。如果对象中不具备自然顺序。怎么办？
+        可以使用TreeSet集合第二种排序方式二：
+        	让集合自身具备比较功能，定义一个类实现Comparator接口，覆盖compare方法。
+        	将该类对象作为参数传递给TreeSet集合的构造函数。
+        
+    if(this.hashCode()== obj.hashCode() && this.equals(obj))
+    哈希表确定元素是否相同
+    1，判断的是两个元素的哈希值是否相同。
+    如果相同，在判断两个对象的内容是否相同。
+    2，判断哈希值相同，其实判断的是对象的hashCode的方法。判断内容相同，用的是equals方法。
+    注意：如果哈希值不同，是不需要判断equals。
+    */
+    ```
+
+    
 
 ### 泛型
+
+在jdk1.5后，使用泛型来接收类中要操作的引用数据类型。
+
+**泛型的作用**
+
+[Oracle 泛型：工作原理及其重要性](https://www.oracle.com/cn/technical-resources/articles/java/juneau-generics.html)
+
+在学习容器依赖，我一直忽视了两个很重要的点：
+
+1. 容器可以同时存储不同类型的数据，例如 String 类型，Integer 类型，如果一个容器存储了不同类型的对象，不久乱套了
+
+   ```java
+   ArrayList list = new ArrayList();
+   list.add("abc");
+   list.add(new Integer(19));
+   Iterator it = list.iterator();
+   while(it.hasNext()){
+       System.out.println(it.next() + "");
+   }
+   /*
+   abc
+   19
+   */
+   ```
+
+2. 在定义容器变量的时候，并没有定义该容器存储的对象类型，这不对劲
+
+   在 C 语言中，我们定义结构体数组的时候，都会指定数组存储的对象类型，Java 的容器虽然不同于数组，但是其在定义容器的时候，不定义容器存储的数据类型，就感觉不对劲。
+
+   泛型相当于是定义了容器的存储类型
+
+
+
+```java
+public class Tool<QQ>{ // 泛型类，类中操作的引用数据类型不确定的时候，就使用泛型来表示。 
+    private QQ q;
+    public QQ getObject() {
+        return q;
+    }
+    public void setObject(QQ object) {
+        this.q = object;
+    }
+    /**
+    * 将泛型定义在方法上。
+    * @param str
+    */
+    public <W> void show(W str){
+        System.out.println("show : "+str.toString());
+    }
+    public void print(QQ str){
+        System.out.println("print : "+str);
+    }
+    /**
+    * 当方法静态时，不能访问类上定义的泛型。如果静态方法使用泛型，
+    * 只能将泛型定义在方法上。
+    * @param obj
+    */
+    public static <Y> void method(Y obj){
+        System.out.println("method:"+obj);
+    }
+}
+```
+
+
+
+ 
+
+
+
+### Map
+
+
 
 ### Arrays
 

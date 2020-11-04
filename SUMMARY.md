@@ -79,6 +79,7 @@
   * [JavaScript](computer-science-notebook/network-web/javascript.md)
   * [nodeJS](computer-science-notebook/network-web/nodejs.md)
   * [React](computer-science-notebook/network-web/react.md)
+  * [OAuth](computer-science-notebook/network-web/oauth.md)
   * [Layer-Protocol](computer-science-notebook/network-web/layer-protocol.md)
   * [Web-Service](computer-science-notebook/network-web/web-service.md)
   * [HTTP-Protocol](computer-science-notebook/network-web/http-protocol.md)
