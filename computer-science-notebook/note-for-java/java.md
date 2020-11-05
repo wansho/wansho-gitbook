@@ -41,6 +41,23 @@ for(;;){
 
 `>>` ，正数高位补零，负数高位补一。`>>>` 正负数都强制高位补 0
 
+### 基本数据类型
+
+```
+java.lang.Number
+	Integer
+	Short
+	Long
+	Float
+	Double
+	Byte
+	BigInteger
+	BigDecimal
+	
+```
+
+
+
 ## 数组
 
 数组是**相同类型**数据的集合。
@@ -3361,7 +3378,13 @@ public class LinkedHashSetDemo {
 
 **TreeSet Comparator**
 
+TreeSet 是有顺序的 Set。
+
 基于 TreeMap 的 NavigableSet 实现。使用元素的自然顺序对元素进行排序，或者根据创建 set 时提供的 Comparator进行排序，具体取决于使用的构造方法。
+
+Comparator 接口：
+
+a negative integer, zero, or a positive integer as the first argument is less than, equal to, or greater than the second.
 
 ```java
 package com.wansho.hellojava;
@@ -3683,7 +3706,7 @@ public class Person /*extends Object*/ implements Comparable {
 
    泛型相当于是定义了容器的存储类型
 
-
+Generics 的具体介绍，参考 [Detailed-Generics](detailed-generics.md)
 
 ```java
 public class Tool<QQ>{ // 泛型类，类中操作的引用数据类型不确定的时候，就使用泛型来表示。 
@@ -3715,17 +3738,1092 @@ public class Tool<QQ>{ // 泛型类，类中操作的引用数据类型不确定
 }
 ```
 
+**<? super E> <? extend E>**
+
+```java
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import cn.itcast.p2.bean.Person;
+import cn.itcast.p2.bean.Student;
+import cn.itcast.p2.bean.Worker;
+public class GenericAdvanceDemo2 {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        ArrayList<Person> al = new ArrayList<Person>();
+        al.add(new Person("abc",30));
+        al.add(new Person("abc4",34));
+        ArrayList<Student> al2 = new ArrayList<Student>();
+        al2.add(new Student("stu1",11));
+        al2.add(new Student("stu2",22));
+        ArrayList<String> al3 = new ArrayList<String>();
+        al3.add("stu3331");
+        al3.add("stu33332");
+        printCollection(al2);
+        printCollection(al);
+    }
+    /**
+    * 迭代并打印集合中元素。
+    *
+    * 可以对类型进行限定：
+    * ? extends E:接收E类型或者E的子类型对象。上限！
+    *
+    * ? super E ：接收E类型或者E的父类型。下限！
+    * @param al
+    */
+        /*public static void printCollection(Collection<? extends Person> al)
+    {//Collection<Dog> al = new ArrayList<Dog>()
+    Iterator<? extends Person> it = al.iterator();
+    while(it.hasNext()){
+    // T str = it.next();
+    // System.out.println(str);
+    // System.out.println(it.next().toString());
+    Person p = it.next();
+    System.out.println(p.getName()+":"+p.getAge());
+    }
+    }*/
+    public static void printCollection(Collection<? super Student> al){
+        Iterator<? super Student> it = al.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+    }
+}
 
 
- 
+
+/*
+* class TreeSet<Worker>
+* {
+* Tree(Comparator<? super Worker> comp);
+* }
+*
+* 什么时候用下限呢？通常对集合中的元素进行取出操作时，可以是用下限。
+*
+*/
+class CompByName implements Comparator<Person>{
+    @Override
+    public int compare(Person o1, Person o2) {
+        int temp = o1.getName().compareTo(o2.getName());
+        return temp==0? o1.getAge()-o2.getAge():temp;
+    }
+}
+class CompByStuName implements Comparator<Student>{
+    @Override
+    public int compare(Student o1, Student o2) {
+        int temp = o1.getName().compareTo(o2.getName());163
+            return temp==0? o1.getAge()-o2.getAge():temp;
+    }
+}
+class CompByWorkerName implements Comparator<Worker>{
+    @Override
+    public int compare(Worker o1, Worker o2) {
+        int temp = o1.getName().compareTo(o2.getName());
+        return temp==0? o1.getAge()-o2.getAge():temp;
+    }
+}
+```
+
+存储用上限：
+
+```java
+package cn.itcast.p5.generic.advance.demo;
+import java.util.ArrayList;
+import cn.itcast.p2.bean.Person;
+import cn.itcast.p2.bean.Student;
+import cn.itcast.p2.bean.Worker;
+public class GenericAdvanceDemo3 {
+    public static void main(String[] args) {
+        ArrayList<Person> al1 = new ArrayList<Person>();
+        al1.add(new Person("abc", 30));
+        al1.add(new Person("abc4", 34));
+        ArrayList<Student> al2 = new ArrayList<Student>();
+        al2.add(new Student("stu1", 11));
+        al2.add(new Student("stu2", 22));
+        ArrayList<Worker> al3 = new ArrayList<Worker>();
+        al3.add(new Worker("stu1", 11));
+        al3.add(new Worker("stu2", 22));
+        ArrayList<String> al4 = new ArrayList<String>();
+        al4.add("abcdeef");
+        // al1.addAll(al4);//错误，类型不匹配。
+        al1.addAll(al2);
+        al1.addAll(al3);
+        System.out.println(al1.size());
+    }
+}
+
+/*
+* 一般在存储元素的时候都是用上限，因为这样取出都是按照上限类型来运算的，不会出现类型安全隐患。
+*/
+class MyCollection<E> {
+    public void add(E e) {
+    }
+    public void addAll(MyCollection<? extends E> e) {
+    }
+}
+```
+
+取出用下限：
+
+```java
+package cn.itcast.p5.generic.advance.demo;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.TreeSet;
+import cn.itcast.p2.bean.Person;
+import cn.itcast.p2.bean.Student;
+import cn.itcast.p2.bean.Worker;
+public class GenericAdvanceDemo4 {
+    public static void main(String[] args) {
+        TreeSet<Person> al1 = new TreeSet<Person>(new CompByName());
+        al1.add(new Person("abc4",34));
+        al1.add(new Person("abc1",30));
+        al1.add(new Person("abc2",38));
+        TreeSet<Student> al2 = new TreeSet<Student>(new CompByName());
+        al2.add(new Student("stu1",11));
+        al2.add(new Student("stu7",20));
+        al2.add(new Student("stu2",22));
+        TreeSet<Worker> al3 = new TreeSet<Worker>();
+        al3.add(new Worker("stu1",11));
+        al3.add(new Worker("stu2",22));
+        TreeSet<String> al4 = new TreeSet<String>();
+        al4.add("abcdeef");
+        // al1.addAll(al4);//错误，类型不匹配。
+        // al1.addAll(al2);
+        // al1.addAll(al3);
+        // System.out.println(al1.size());
+        Iterator<Student> it = al2.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+    }
+}
+```
 
 
 
 ### Map
 
+**Map vs Collection**
+
+1. Map中一次存储是键值对。Collection中一次存储是单个元素。
+2. Map的存储使用的put方法。Collection存储使用的是add方法。
+3. Map的取出，是讲Map转成Set，在使用迭代器取出。
+   Collection取出，使用就是迭代器。
+4. 如果对象很多，必须使用容器存储。
+   如果元素存在着映射关系，可以优先考虑使用Map存储或者用数组，如果没有映射关系，可以使用Collection存储。  
+
+**Map Demo**
+
+```java
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+public class MapDemo {
+    public static void main(String[] args) {
+        Map<Integer, String> map = new HashMap<Integer, String>();
+        method_2(map);
+    }
+    public static void method_2(Map<Integer,String> map){
+        map.put(8,"zhaoliu");
+        map.put(2,"zhaoliu");
+        map.put(2,"zhaoliu");
+        map.put(6,"wangcai");
+        Collection<String> values = map.values();
+        Iterator<String> it2 = values.iterator();
+        while(it2.hasNext()){
+            System.out.println(it2.next());
+        }
+        /*
+        * 通过 Map 转成 set 就可以迭代。
+        * 找到了另一个方法。 entrySet。
+        * 该方法将键和值的映射关系作为对象存储到了Set集合中，而这个映射关系的类型就是 Map.Entry(内部类)
+        * 类型(结婚证)
+        */
+        Set<Map.Entry<Integer, String>> entrySet = map.entrySet();
+        Iterator<Map.Entry<Integer, String>> it = entrySet.iterator();
+        while(it.hasNext()){
+            Map.Entry<Integer, String> me = it.next();
+            Integer key = me.getKey();
+            String value = me.getValue();
+            System.out.println(key+"::::"+value);
+        }
+        //取出 map 中的所有元素。
+        //原理，通过 keySet方法获取map中所有的键所在的Set集合，在通过Set的迭代器获取到每一个键，
+        //在对每一个键通过map集合的get方法获取其对应的值即可。
+        Set<Integer> keySet = map.keySet();
+        Iterator<Integer> it = keySet.iterator();
+        while(it.hasNext()){
+            Integer key = it.next();
+            String value = map.get(key);
+            System.out.println(key+":"+value);
+        }    
+    }
+    
+    public static void method(Map<Integer,String> map){//学号和姓名
+        // 添加元素。
+        System.out.println(map.put(100, "wangcai")); //null
+        System.out.println(map.put(100, "xiaoqiang")); //wangcai 存相同键，值会覆盖。
+        map.put(2,"zhangsan");
+        map.put(7,"zhaoliu");
+        //删除。
+        // System.out.println("remove:"+map.remove(2));
+        //判断。
+        // System.out.println("containskey:"+map.containsKey(7));
+        //获取。
+        System.out.println("get:"+map.get(6));
+        System.out.println(map);
+        Outer.Inner.show();
+    }
+}
+
+interface MyMap{
+    public static interface MyEntry{//内部接口
+        void get();
+    }
+}
+class MyDemo implements MyMap.MyEntry{
+    public void get(){}
+}
+class Outer{
+    static class Inner{
+        static void show(){}
+    }
+}
+```
+
+**HashMap**
+
+```java
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import cn.itcast.p2.bean.Student;
+
+public class HashMapDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        /*
+        * 将学生对象和学生的归属地通过键与值存储到map集合中。
+        */
+        HashMap<Student,String> hm = new HashMap<Student,String>();
+        hm.put(new Student("lisi",38), "北京");
+        hm.put(new Student("zhaoliu",24), "上海");
+        hm.put(new Student("xiaoqiang",31), "沈阳");
+        hm.put(new Student("wangcai",28), "大连");
+        hm.put(new Student("zhaoliu",24), "铁岭");
+        // Set<Student> keySet = hm.keySet();
+        // Iterator<Student> it = keySet.iterator();
+        Iterator<Student> it = hm.keySet().iterator();
+        while(it.hasNext()){
+            Student key = it.next();
+            String value = hm.get(key);
+            System.out.println(key.getName()+":"+key.getAge()+"---"+value);
+        }
+    }
+}
+```
+
+**TreeMap**
+
+```java
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
+import cn.itcast.p2.bean.Student;
+import cn.itcast.p3.comparator.ComparatorByName;
+public class TreeMapDemo {
+    /**
+* @param args
+*/
+    public static void main(String[] args) {
+        TreeMap<Student,String> tm = new TreeMap<Student,String>(new ComparatorByName());
+        tm.put(new Student("lisi",38),"北京");
+        tm.put(new Student("zhaoliu",24),"上海");
+        tm.put(new Student("xiaoqiang",31),"沈阳");
+        tm.put(new Student("wangcai",28),"大连");
+        tm.put(new Student("zhaoliu",24),"铁岭");
+        Iterator<Map.Entry<Student, String>> it = tm.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry<Student,String> me = it.next();
+            Student key = me.getKey();
+            String value = me.getValue();
+            System.out.println(key.getName()+":"+key.getAge()+"---"+value);
+        }
+    }
+}
+```
+
+**LinkedHashMap**
+
+按照顺序存储。
+
+```java
+import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class LinkedHashMapDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        File f= null;
+        HashMap<Integer,String> hm = new LinkedHashMap<Integer,String>();
+        hm.put(7, "zhouqi");
+        hm.put(3, "zhangsan");
+        hm.put(1, "qianyi");
+        hm.put(5, "wangwu");
+        Iterator<Map.Entry<Integer,String>> it = hm.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry<Integer,String> me = it.next();
+            Integer key = me.getKey();
+            String value = me.getValue();
+            System.out.println(key+":"+value);
+        }
+    }
+}
+```
+
+**Map 练习**
+
+```java
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
+/*
+* 练习:
+* "fdgavcbsacdfs" 获取该字符串中，每一个字母出现的次数。
+* 要求打印结果是： a(2)b(1)...;
+* 思路：
+* 对于结果的分析发现，字母和次数之间存在着映射的关系。而且这种关系很多。
+* 很多就需要存储，能存储映射关系的容器有数组和Map集合。
+* 关系一方式有序编号吗？没有！
+* 那就是使用Map集合。 又发现可以保证唯一性的一方具备着顺序如 a b c ...
+* 所以可以使用TreeMap集合。
+*
+* 这个集合最终应该存储的是字母和次数的对应关系。
+*
+* 1，因为操作的是字符串中的字母，所以先将字符串变成字符数组。
+* 2，遍历字符数组，用每一个字母作为键去查Map集合这个表。
+* 如果该字母键不存在，就将该字母作为键 1作为值存储到map集合中。
+* 如果该字母键存在，就将该字母键对应值取出并+1，在将该字母和+1后的值存储到map集合中，
+* 键相同值会覆盖。这样就记录住了该字母的次数.
+* 3，遍历结束， map集合就记录所有字母的出现的次数。 
+*/
+public class MapTest {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        String str = "fdg+avAdc bs5dDa9c-dfs";
+        String s = getCharCount(str);
+        System.out.println(s);
+    }
+    public static String getCharCount(String str) {
+        //将字符串变成字符数组
+        char[] chs = str.toCharArray();
+        //定义map集合表。
+        Map<Character,Integer> map = new TreeMap<Character,Integer>();
+        for (int i = 0; i < chs.length; i++) {
+            if(!(chs[i]>='a' && chs[i]<='z' || chs[i]>='A' && chs[i]<='Z'))
+                // if(!(Character.toLowerCase(chs[i])>='a' &&  Character.toLowerCase(chs[i])<='z'))
+                continue;
+            //将数组中的字母作为键去查map表。
+            Integer value = map.get(chs[i]);
+            int count = 1;
+            //判断值是否为null.
+            if(value!=null){
+                count = value+1;
+            }
+            // count++;
+            map.put(chs[i], count);
+            /*
+            if(value==null){
+                map.put(chs[i], 1);
+                }else{
+                map.put(chs[i], value+1);
+            }
+            */
+        }
+        return mapToString(map);
+    }
+    private static String mapToString(Map<Character, Integer> map) {
+        StringBuilder sb = new StringBuilder();
+        Iterator<Character> it = map.keySet().iterator();
+        while(it.hasNext()){
+            Character key = it.next();
+            Integer value = map.get(key);
+            sb.append(key+"("+value+")");
+        }
+        return sb.toString();
+    }
+}
+```
+
+### Collections
+
+Collections：是集合框架的工具类。（集合工具类）
+
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.TreeSet;
+
+public class CollectionsDemo {
+    public static void main(String[] args) {
+        /*
+        * Collections：是集合框架的工具类。
+        * 里面的方法都是静态的。
+        */
+        demo_4();
+    }
+    
+    // List
+    public static void demo_4() { 
+        List<String> list = new ArrayList<String>();
+        list.add("abcde");
+        list.add("cba");
+        list.add("zhangsan");
+        list.add("zhaoliu");
+        list.add("xiaoqiang");
+        System.out.println(list);
+        Collections.replaceAll(list, "cba", "nba"); // set(indexOf("cba"),"nba");
+        Collections.shuffle(list); 
+        Collections.fill(list, "cc"); // eplaces all of the elements of the specified list with the specified element.
+        System.out.println(list);
+    }
+    
+    // Set
+    public static void demo_3() {
+        /*
+        TreeSet<String> ts = new TreeSet<String>(new Comparator<String>(){
+        @Override
+        public int compare(String o1, String o2) {
+        int temp = o2.compareTo(o1);
+        return temp;
+        }
+        });
+        */
+        TreeSet<String> ts = new TreeSet<String>(Collections.reverseOrder(new ComparatorByLength())); // Returns a comparator that imposes the reverse of the natural ordering on a collection of objects that implement the Comparable interface. 
+        ts.add("abc");
+        ts.add("hahaha");
+        ts.add("zzz");
+        ts.add("aa");
+        ts.add("cba");
+        System.out.println(ts);
+    }
+    
+    // List
+    public static void demo_2(){
+        List<String> list = new ArrayList<String>();
+        list.add("abcde");
+        list.add("cba");
+        list.add("aa");
+        list.add("zzz");
+        list.add("cba");
+        list.add("nbaa");
+        Collections.sort(list); // Sorts the specified list into ascending order, according to the natural ordering of its elements.
+        System.out.println(list);
+        int index = Collections.binarySearch(list, "cba");
+        System.out.println("index="+index);
+        //获取最大值。
+        String max = Collections.max(list,new ComparatorByLength());
+        System.out.println("max="+max);
+    }
+    
+    // List
+    public static void demo_1(){
+        List<String> list = new ArrayList<String>();
+        list.add("abcde");
+        list.add("cba");
+        list.add("aa");
+        list.add("zzz");
+        list.add("cba");
+        list.add("nbaa");
+        System.out.println(list);
+        // 对list集合进行指定顺序的排序。
+        // Collections.sort(list);
+        // mySort(list);
+        // mySort(list,new ComparatorByLength());
+        Collections.sort(list, new ComparatorByLength());
+        System.out.println(list);
+    }
+    
+    public static <T> void mySort(List<T> list, Comparator<? super T> comp){
+        for (int i = 0; i < list.size()-1; i++) {
+            for (int j = i+1; j < list.size(); j++) {
+                if(comp.compare(list.get(i), list.get(j))>0){
+                    // T temp = list.get(i);
+                    // list.set(i, list.get(j));
+                    // list.set(j, temp);
+                    Collections.swap(list, i, j); // 交换 List 的值
+                }
+            }
+        }
+    }
+    
+    public static <T extends Comparable<? super T>> void mySort(List<T> list){
+        for (int i = 0; i < list.size()-1; i++) {
+            for (int j = i+1; j < list.size(); j++) {
+                if(list.get(i).compareTo(list.get(j))>0){
+                    // T temp = list.get(i);
+                    // list.set(i, list.get(j));
+                    // list.set(j, temp);
+                    Collections.swap(list, i, j);
+                }
+            }
+        }
+    }
+}
+```
+
 
 
 ### Arrays
+
+数组工具类。
+
+```java
+package com.wansho.hellojava;
+
+import java.util.Arrays;
+import java.util.List;
+
+//数组转成集合。
+public class ArraysDemo {
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        /*
+         * Arrays：集合框架的工具类。里面的方法都是静态的。
+         */
+        // int[] arr = {3,1,5,6,3,6};
+        // System.out.println(Arrays.toString(arr));
+        demo_2();
+        demo_1();
+    }
+    public static void demo_2() {
+        /*
+         * 如果数组中的元素是对象，那么转成集合时，直接将数组中的元素作为集合中的元素进行集合存储。
+         *
+         * 如果数组中的元素是基本类型数值，那么会将该数组作为集合中的元素进行存储。
+         */
+        int[] arr = {31,11,51,61};
+        List<int[]> list = Arrays.asList(arr);
+        System.out.println(list.size()); // 1
+    }
+
+    public static void demo_1() {
+        /*
+         * 重点： List asList(数组)将数组转成集合。
+         *
+         * 好处：其实可以使用集合的方法操作数组中的元素。
+         * 注意：数组的长度是固定的，所以对于集合的增删方法是不可以使用的
+         * 否则会发生UnsupportedOperationException
+         */
+        String[] arr = {"abc","haha","xixi"};
+        boolean b = myContains(arr, "xixi");
+        System.out.println("contains:"+b);
+        List<String> list = Arrays.asList(arr); // Returns a fixed-size list backed by the specified array.
+        boolean b1 = list.contains("xixi");
+        System.out.println("list contaisn:="+b1);
+        // list.add("hiahia"); // UnsupportedOperationException
+        System.out.println(list);
+    }
+
+    public static boolean myContains(String[] arr, String key){
+        for (int i = 0; i < arr.length; i++) {
+            if(arr[i].equals(key))
+                return true;
+        }
+        return false;
+    }
+    //toString的经典实现。
+    public static String myToString(int[] a){
+        int iMax = a.length - 1;
+        if (iMax == -1)
+            return "[]";
+        StringBuilder b = new StringBuilder();
+        b.append('[');
+        for (int i = 0; ; i++) {//中间省略条件判断，提高了效率。
+            b.append(a[i]);
+            if (i == iMax)
+                return b.append(']').toString();
+            b.append(", ");
+        }
+    }
+}
+
+```
+
+### 其他
+
+#### 集合转数组：toArray()
+
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+public class ToArray {
+    public static void main(String[] args) {
+        /*
+        * 集合转成数组呢？
+        *
+        * 使用的就是Collection接口中的toArray方法。
+        *
+        * 集合转成数组：可以对集合中的元素操作的方法进行限定，但不允许对其进行增删。
+        */
+        List<String> list = new ArrayList<String>();
+        list.add("abc1");
+        list.add("abc2");
+        list.add("abc3");
+        /*
+        * toArray方法需要传入一个指定类型的数组。
+        * 长度该如何定义呢？
+        * 如果长度小于集合的size，那么该方法会创建一个同类型并和集合相同size的数组。
+        * 如果长度大于集合的size，那么该方法就会使用指定的数组，存储集合中的元素，其他位置默认为
+        * null。
+        * 所以建议，最后长度就指定为，集合的size。
+        */
+        String[] arr = list.toArray(new String[list.size()]);
+        System.out.println(Arrays.toString(arr));
+    }
+}
+```
+
+#### 增强 for 循环
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+public class ForEachDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        /*
+        * foreach语句：
+        * 格式：
+        * for(类型 变量 ： Collection集合|数组)
+        * {
+        *
+        * }
+        *
+        * 传统for和高级for的区别？
+        * 传统for可以完成对语句执行很多次，因为可以定义控制循环的增量和条件。
+        *
+        * 高级for是一种简化形式。
+        * 它必须有被遍历的目标。该目标要是数组，要么是Collection单列集合。
+        *
+        * 对数数组的遍历如果仅仅是获取数组中的元素，可以使用高级for。
+        * 如果要对数组的角标进行操作建议使用传统for。
+        *
+        */
+        List<String> list =new ArrayList<String>();
+        list.add("abc1");
+        list.add("abc2");
+        list.add("abc3");
+        for(String s : list){ //简化书写。
+            System.out.println(s);
+        }
+        int[] arr = {3,1,5,7,4};
+        for(int i : arr){
+            System.out.println(i);
+        }
+        //可以使用高级for遍历map集合吗？不能直接用，但是可以将map转成单列的set，就可以用了。
+        Map<Integer,String> map = new HashMap<Integer,String>();
+        map.put(3,"zhagsan");
+        map.put(1,"wangyi");
+        map.put(7,"wagnwu");
+        map.put(4,"zhagsansan");
+        for(Integer key : map.keySet()){
+            String value = map.get(key);
+            System.out.println(key+"::"+value);
+        }
+        for(Map.Entry<Integer,String> me : map.entrySet()){
+            Integer key = me.getKey();
+            String value = me.getValue();
+            System.out.println(key+":"+value);
+        }
+        // Iterator<String> it = list.iterator();
+        // while(it.hasNext()){
+        // System.out.println(it.next());
+        // }
+    }
+}
+```
+
+#### 函数的可变参数
+
+```java
+public class ParamterDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        // int sum = add(4,5);
+        // System.out.println("sum="+sum);
+        // int sum1 = add(4,5,6);
+        // System.out.println("sum1="+sum1);
+        // int[] arr = {5,1,4,7,3};
+        // int sum = add(arr);
+        // System.out.println("sum="+sum);
+        // int[] arr1 = {5,1,4,7,3,9,8,7,6};
+        // int sum1 = add(arr1);
+        // System.out.println("sum1="+sum1);
+        int sum = newAdd(5,1,4,7,3);
+        System.out.println("sum="+sum);
+        int sum1 = newAdd(5,1,2,7,3,9,8,7,6);
+        System.out.println("sum1="+sum1);
+    }
+    /*
+    * 函数的可变参数。
+    * 其实就是一个数组，但是接收的是数组的元素。
+    * 自动将这些元素封装成数组。简化了调用者的书写。
+    * 注意：可变参数类型，必须定义在参数列表的结尾。
+    */
+    public static int newAdd(int a,int... arr){
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum+=arr[i];
+        }
+        return sum;
+        // System.out.println(arr);
+        // return 0;
+    }
+    public static int add(int[] arr){
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum+=arr[i];
+        }
+        return sum;
+    }
+    public static int add(int a,int b){
+        return a+b;
+    }
+    public static int add(int a,int b,int c){
+        return a+b+c;
+    }
+}
+```
+
+#### 静态导入
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import static java.util.Collections.*;//静态导入，其实到入的是类中的静态成员。
+//import static java.util.Collections.max;//静态导入，其实到入的是类中的静态成员。
+import static java.lang.System.*;
+public class StaticImportDemo {
+    /**
+* @param args
+*/
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<String>();
+        list.add("abc3");
+        list.add("abc7");
+        list.add("abc1");
+        out.println(list);
+        sort(list);
+        System.out.println(list);
+        String max = max(list);
+        System.out.println("max="+max);
+    }
+}
+```
+
+#### 日期类
+
+Demo1
+
+```java
+package com.wansho.hellojava;
+
+import java.util.Calendar;
+public class CalendarDemo {
+    public static void main(String[] args) {
+        Calendar c = Calendar.getInstance();
+        int year = 2012;
+        showDays(year);
+    }
+    public static void showDays(int year) {
+        Calendar c = Calendar.getInstance();
+        c.set(year, 2, 1); // java Calendar 中的月数是从 0 开始计数，此处输入的时间是 3 月 1 日
+        c.add(Calendar.DAY_OF_MONTH, -1);
+        showDate(c);
+    }
+    public static void showDate(Calendar c) {
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH)+1;
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int week = c.get(Calendar.DAY_OF_WEEK);
+        System.out.println(year+"年"+month+"月"+day+"日"+getWeek(week));
+    }
+    public static String getWeek(int i) {
+        String[] weeks = {"","星期日","星期一","星期二","星期三","星期四","星期五","星期六"};
+        return weeks[i];
+    }
+}
+
+```
+
+Demo2
+
+```java
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateDemo {
+    /**
+    * @param args
+    * @throws ParseException
+    */
+    public static void main(String[] args) throws ParseException {
+        methodDemo_3();
+    }
+    /**
+    * 将日期格式的字符串-->日期对象。
+    * 使用的是 DateFormat 类中的 parse() 方法。
+    *
+    * @throws ParseException
+    */
+    public static void methodDemo_3() throws ParseException {
+        String str_date = "2012年4月19日";
+        str_date = "2011---8---17";
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
+        dateFormat = new SimpleDateFormat("yyyy---MM---dd");
+        Date date = dateFormat.parse(str_date);
+        System.out.println(date);
+    }
+    /**
+    * 对日期对象进行格式化。
+    * 将日期对象-->日期格式的字符串。
+    * 使用的是DateFormat类中的format方法。
+    *
+    */
+    public static void methodDemo_2() {
+        Date date = new Date();
+        //获取日期格式对象。具体着默认的风格。 FULL LONG等可以指定风格。
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
+        dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG);
+        // System.out.println(dateFormat);
+        //如果风格是自定义的如何解决呢？
+        dateFormat = new SimpleDateFormat("yyyy--MM--dd");
+        String str_date = dateFormat.format(date);
+        System.out.println(str_date);
+    }
+    /**
+    * 日期对象和毫秒值之间的转换。
+    *
+    * 毫秒值-->日期对象 ：
+    * 1，通过Date对象的构造方法 new Date(timeMillis);
+    * 2，还可以通过setTime设置。
+    * 因为可以通过Date对象的方法对该日期中的各个字段(年月日等)进行操作。
+    *
+    * 日期对象-->毫秒值：
+    * 2， getTime方法。
+    * 因为可以通过具体的数值进行运算。
+    */
+    public static void methodDemo_1() {
+        long time = System.currentTimeMillis();//
+        // System.out.println(time);//1335671230671
+        Date date = new Date();//将当前日期和时间封装成Date对象。
+        System.out.println(date);//Sun Apr 29 11:48:02 CST 2012
+        Date date2 = new Date(1335664696656l);//将指定毫秒值封装成Date对象。
+        System.out.println(date2);
+    }
+}
+```
+
+Demo3
+
+```java
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+/* 练习：
+* "2012-3-17"到"2012-4-6"
+* 中间有多少天？
+* 思路：
+* 两个日期相减就哦了。
+* 咋减呢？
+* 必须要有两个可以进行减法运算的数。
+* 能减可以是毫秒值。如何获取毫秒值？通过date对象。
+* 如何获取date对象呢？可以将字符串转成date对象。
+*
+* 1,将日期格式的字符串转成Date对象。
+* 2,将Date对象转成毫秒值。
+* 3，相减，在变成天数
+*
+*/
+public class DateTest {
+    /**
+    * @param args
+    * @throws ParseException
+    */
+    public static void main(String[] args) throws ParseException {
+        String str_date1 = "2012-3-17";
+        String str_date2 = "2012-4-18";
+        test(str_date1,str_date2);
+    }
+    public static void test(String str_date1,String str_date2) throws ParseException
+    {
+        //1,将日期字符串转成日期对象。
+        //定义日期格式对象。
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = dateFormat.parse(str_date1);
+        Date date2 = dateFormat.parse(str_date2);
+        long time1 = date1.getTime();
+        long time2 = date2.getTime();
+        long time = Math.abs(time1-time2);
+        int day = getDay(time);
+        System.out.println(day);
+    }
+    private static int getDay(long time) {
+        int day = (int)(time/1000/60/60/24);
+        return day;
+    }
+}
+```
+
+
+
+#### Math类 
+
+```java
+import java.util.Random;
+public class MathDemo {
+    public static void main(String[] args) {
+        /*
+        * Math:提供了操作数学运算的方法， 都是静态的。
+        * 常用的方法：
+        * ceil():返回大于参数的最小整数。 向上取整
+        * floor():返回小于参数的最大整数。向下取整
+        * round():返回四舍五入的整数。   四舍五入
+        * pow(a,b):a的b次方。
+        */
+        double d1 = Math.ceil(12.56);
+        double d2 = Math.floor(12.56);
+        double d3 = Math.round(12.46);
+        // sop("d1="+d1);
+        // sop("d2="+d2);
+        // sop("d3="+d3);
+        // double d = Math.pow(10, 2);
+        // sop("d="+d);
+        Random r = new Random();
+        for (int i = 0; i < 10; i++) {
+            // double d = Math.ceil(Math.random()*10);
+            // double d = (int)(Math.random()*6+1);
+            // double d = (int)(r.nextDouble()*6+1);
+            int d = r.nextInt(6)+1;
+            System.out.println(d);
+        }
+    }
+    public static void sop(String string) {
+        System.out.println(string);
+    }
+}
+```
+
+#### Runtime 类
+
+Every Java application has a single instance of class `Runtime` that allows the application to interface with the environment in which the application is running. The current runtime can be obtained from the `getRuntime` method.
+
+An application cannot create its own instance of this class.
+
+```java
+import java.io.IOException;
+public class RuntimeDemo {
+    /**
+    * @param args
+    * @throws IOException
+    * @throws InterruptedException
+    */
+    public static void main(String[] args) throws IOException, InterruptedException
+    {
+        /*
+        * Runtime:没有构造方法摘要，说明该类不可以创建对象。
+        * 又发现还有非静态的方法。说明该类应该提供静态的返回该类对象的方法。
+        * 而且只有一个，说明Runtime类使用了单例设计模式。
+        *
+        */
+        Runtime r = Runtime.getRuntime();
+        // execute: 执行。 xxx.exe
+        Process p = r.exec("notepad.exe");
+        Thread.sleep(5000);
+        p.destroy();
+    }
+}
+```
+
+#### System 类
+
+java.lang.System
+
+Among the facilities provided by the `System` class are standard input, standard output, and error output streams; access to externally defined properties and environment variables; a means of loading files and libraries; and a utility method for quickly copying a portion of an array.
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
+import java.util.Set;
+public class SystemDemo {
+    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        /*
+        * System: 类中的方法和属性都是静态的。
+        * 常见方法：
+        * long currentTimeMillis();获取当前时间的毫秒值。
+        */
+        // long l1 = 1335664696656l;//System.currentTimeMillis();
+        // System.out.println(l1/1000/60/60/24);//1335664696656
+        // code..
+        // long l2 = System.currentTimeMillis();
+        // System.out.println(l2-l1);
+        System.out.println("hello-"+LINE_SEPARATOR+" world");
+        // demo_1();
+        //给系统设置一些属性信息。这些信息是全局，其他程序都可以使用。
+        // System.setProperty("myclasspath", "c:\myclass");
+    }
+    public static void demo_1(){
+        //获取系统的属性信息，并存储到了Properties集合中。
+        /*
+        * properties集合中存储都是String类型的键和值。
+        * 最好使用它自己的存储和取出的方法来完成元素的操作。
+        */
+        Properties prop = System.getProperties();
+        Set<String> nameSet = prop.stringPropertyNames();
+        for(String name : nameSet){
+            String value = prop.getProperty(name);
+            System.out.println(name+"::"+value);
+        }
+    }
+}
+```
+
+
 
 ### 总结
 
@@ -3738,11 +4836,135 @@ Collection
 		Vector
 	Set
 		HashSet
-			LinkedHashSet
+			LinkedHashSet (存储顺序不变)
 		TreeSet
+	Map
+		HashMap
+			LinkedHashMap (存储顺序不变)
+		HashTable
+		TreeMap
 	Queue
 	Deque
 	SortedSet
+```
+
+```
+泛型：
+	jdk1.5出现的安全机制。
 	
+	好处：
+        1，将运行时期的问题 ClassCastException 转到了编译时期。
+        2，避免了强制转换的麻烦。
+    <>:什么时候用？
+    	当操作的引用数据类型不确定的时候。就使用<>。将要操作的引用数据类型传入即可.
+		其实<>就是一个用于接收具体引用数据类型的参数范围。在程序中，只要用到了带有<>的类或者接口，就要明确传入的具体引用数据类型 。
+	
+	泛型技术是给编译器使用的技术, 用于编译时期。确保了类型的安全。
+	运行时，会将泛型去掉，生成的class文件中是不带泛型的,这个称为泛型的擦除。
+	为什么擦除呢？因为为了兼容运行的类加载器。
+	
+	泛型的补偿：在运行时，通过获取元素的类型进行转换动作。不用使用者在强制转换了。
+
+	泛型的通配符： ? 未知类型。
+
+	泛型的限定：
+		? extends E: 接收E类型或者E的子类型对象。上限
+			一般存储对象的时候用。比如 添加元素 addAll.
+		? super E: 接收E类型或者E的父类型对象。 下限。
+			一般取出对象的时候用。比如比较器。
+--------------------------------------------------------------------------------
+集合的一些技巧：
+
+需要唯一吗？
+	需要： Set
+		需要制定顺序：
+			需要： TreeSet
+			不需要： HashSet
+			但是想要一个和存储一致的顺序(有序):LinkedHashSet
+	不需要： List
+		需要频繁增删吗？
+			需要： LinkedList
+			不需要： ArrayList
+			
+如何记录每一个容器的结构和所属体系呢？看名字！
+List
+|--ArrayList
+|--LinkedList
+Set
+|--HashSet
+|--TreeSet
+后缀名就是该集合所属的体系。
+前缀名就是该集合的数据结构。
+看到array：就要想到数组，就要想到查询快，有角标.
+看到link：就要想到链表，就要想到增删快，就要想要 add get remove+frist last的方法
+看到hash:就要想到哈希表，就要想到唯一性，就要想到元素需要覆盖hashcode方法和equals方法。
+看到tree：就要想到二叉树，就要想要排序，就要想到两个接口Comparable， Comparator 。
+而且通常这些常用的集合容器都是不同步的。
+--------------------------------------------------------------------------------
+Map：一次添加一对元素。 Collection 一次添加一个元素。
+Map也称为双列集合， Collection集合称为单列集合。
+其实map集合中存储的就是键值对。map集合中必须保证键的唯一性。
+
+常用方法：
+    1，添加。
+        value put(key,value):返回前一个和key关联的值，如果没有返回null.
+        2，删除。186
+        void clear():清空map集合。
+        value remove(key):根据指定的key翻出这个键值对。
+    3，判断。
+        boolean containsKey(key):
+        boolean containsValue(value):
+        boolean isEmpty();
+    4，获取。
+        value get(key):通过键获取值，如果没有该键返回null.当然可以通过返回null，来判断是否包含指定键。
+        int size(): 获取键值对的个数。
+        
+Map常用的子类：
+|--Hashtable :内部结构是哈希表，是同步的。不允许null作为键， null作为值。
+|--Properties：用来存储键值对型的配置文件的信息，可以和IO技术相结合。
+|--HashMap : 内部结构是哈希表，不是同步的。允许null作为键， null作为值。
+|--TreeMap : 内部结构是二叉树，不是同步的。可以对Map集合中的键进行排序。
+```
+
+**集合遍历总结**
+
+```java
+//遍历List方法1，使用普通for循环：
+for (int i = 0; i < list.size(); i++) {
+    String temp=(String)list.get(i);
+    System.out.println(temp);
+    //list.remove(i);//遍历删除元素，不过不推荐这种方式！
+}
+//遍历List方法2，使用增强for循环（应该使用泛型定义类型！）：
+for(String temp:list){
+    System.out.println(temp);
+}
+//遍历List方法3，使用Iterator迭代器：
+for(Iterator iter=list.iterator();iter.hasNext();){
+    String temp=(String)iter.next();
+    System.out.println(temp);
+}
+
+Iterator iter=c.iterator();
+while(iter.hasNext()){
+    Object obj=iter.next();
+    iter.remove();//如果要遍历删除集合中的元素，建议使用这种方式！
+    System.out.println(obj);
+}
+//遍历Set方法1，使用增强for循环：
+for(String temp:set){
+    System.out.println(temp);
+}
+//遍历Set方法2，使用Iterator迭代器：
+for(Iterator iter=list.iterator();iter.hasNext();){
+    String temp=(String)iter.next();
+    System.out.println(temp);
+}
+//遍历Map
+Map<Integer, Man> maps=new HashMap<Integer, Man>();
+Set<Integer> keySet=maps.keySet();
+for(Integer id:keySet){
+    System.out.println(maps.get(id).name);
+}
 ```
 
