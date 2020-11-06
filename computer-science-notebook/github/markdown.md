@@ -15,44 +15,16 @@ Typora  兼容 latex 的公式编辑，这里记录在 Typora 中 用 latex 语�
 
 如何写出纯正的 README
 
-https://github.com/matiassingers/awesome-readme
+* https://github.com/matiassingers/awesome-readme
 
-https://github.com/zalando/zalando-howto-open-source/blob/master/READMEtemplate.md
+* https://github.com/zalando/zalando-howto-open-source/blob/master/READMEtemplate.md
 
-## Creating GIFs
+* [anuraghazra](https://github.com/anuraghazra/anuraghazra)
+* [Awesome-Profile-README-templates](https://github.com/kautukkundan/Awesome-Profile-README-templates)
 
-[gif工具集](<https://github.com/matiassingers/awesome-readme#creating-gifs>)
+## 语法
 
-[gif图床](<https://giphy.com/>)
-
-[gif压缩](<https://ezgif.com/>) 选择 resize 和 optimize 两个选项进行压缩，其中 resize 效果最好
-
-[gif软件 Screen to Gif ](<https://www.screentogif.com/>)
-
-## 超链接功能-图片超链接
-
-正常的超链接语法为: `[desc](url)`
-
-需要注意的是 **desc 并不只限于文本**，也可以插入一个图片，GitHub badge 的原理就是这样的。
-
-```
-[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
-```
-
-[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
-
-Github Readme Stats 的原理也是这样的：
-
-```
-[![Wansho's github stats](https://github-readme-stats.vercel.app/api?username=wansho)](https://github.com/wansho)
-```
-
-[![wansho's github stats](https://github-readme-stats.vercel.app/api?username=wansho)](https://github.com/wansho)
-
-
-## 常见的二级标题
-
-## 注释
+### 注释
 
 ```
 <!--
@@ -82,7 +54,59 @@ Contact
 License
 ```
 
-## 插入图片
+### 代码 diff
+
+```diff
+function addTwoNumbers (num1, num2) {
+-  return 1 + 2
++  return num1 + num2
+}
+```
+
+```
+​```diff
+function addTwoNumbers (num1, num2) {
+-  return 1 + 2
++  return num1 + num2
+}
+​```
+```
+
+
+
+## 图片相关
+
+### Creating GIFs
+
+[gif工具集](<https://github.com/matiassingers/awesome-readme#creating-gifs>)
+
+[gif图床](<https://giphy.com/>)
+
+[gif压缩](<https://ezgif.com/>) 选择 resize 和 optimize 两个选项进行压缩，其中 resize 效果最好
+
+[gif软件 Screen to Gif ](<https://www.screentogif.com/>)
+
+### 超链接功能-图片超链接
+
+正常的超链接语法为: `[desc](url)`
+
+需要注意的是 **desc 并不只限于文本**，也可以插入一个图片，GitHub badge 的原理就是这样的。
+
+```
+[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
+```
+
+[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
+
+Github Readme Stats 的原理也是这样的：
+
+```
+[![Wansho's github stats](https://github-readme-stats.vercel.app/api?username=wansho)](https://github.com/wansho)
+```
+
+[![wansho's github stats](https://github-readme-stats.vercel.app/api?username=wansho)](https://github.com/wansho)
+
+### 插入图片
 
 ```html
 <div align="left">
@@ -103,17 +127,7 @@ License
 
 也可以通过图片超链接的方式插入
 
-## 生成 TOC
-
-For Linux, https://github.com/ekalinin/github-markdown-toc
-
-```shell
-$ wget https://raw.githubusercontent.com/ekalinin/github-markdown-toc/master/gh-md-toc
-$ chmod a+x gh-md-toc
-$ ./gh-md-toc README.md # 结果是生成一个 TOC，把该 TOC 粘贴到 markdown 中即可
-```
-
-## 图床
+### 图床
 
 腾讯云对象存储 cos，赠送免费 50G 容量
 
@@ -127,7 +141,7 @@ https://console.cloud.tencent.com/cos5/bucket/setting?type=filelist&bucketName=b
 
 阿里云有专属的客户端：[ossbrowser](http://gosspublic.alicdn.com/oss-browser/1.9.1/oss-browser-win32-x64.zip?spm=a2c4g.11186623.2.10.42741144jhrm9W&file=oss-browser-win32-x64.zip)
 
-## 项目徽章
+### 项目徽章
 
 Demos：
 
@@ -139,19 +153,24 @@ https://img.shields.io/badge/link-996.icu-red.svg
 
 [![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
 [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://github.com/jackeyGao/chinese-poetry/blob/master/LICENSE)
-[![](https://img.shields.io/github/contributors/chinese-poetry/chinese-poetry.svg)](https://github.com/chinese-poetry/chinese-poetry/graphs/contributors)
+[![](https://img.shields.io/github/contributors/chinese-poetry/chinese-poetry.svg)](https://github.com/chinese-poetry/chinese-poetry/graphs/contributors)![项目徽章举例](https://img.shields.io/github/license/wansho/Last-Statement-of-Death-Row.svg)
 ```
-
-![项目徽章举例](https://img.shields.io/github/license/wansho/Last-Statement-of-Death-Row.svg)
 
 https://shields.io/
 
-## Awesome Demos
+## Markdown 工具
 
-* [anuraghazra](https://github.com/anuraghazra/anuraghazra)
-* [Awesome-Profile-README-templates](https://github.com/kautukkundan/Awesome-Profile-README-templates)
+### 生成 TOC
 
-## Markdown 在线部署
+For Linux, https://github.com/ekalinin/github-markdown-toc
+
+```shell
+$ wget https://raw.githubusercontent.com/ekalinin/github-markdown-toc/master/gh-md-toc
+$ chmod a+x gh-md-toc
+$ ./gh-md-toc README.md # 结果是生成一个 TOC，把该 TOC 粘贴到 markdown 中即可
+```
+
+### Markdown 在线部署
 
 * [[GitBook]](https://www.gitbook.com/)
 

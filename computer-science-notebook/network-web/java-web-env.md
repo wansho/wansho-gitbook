@@ -76,6 +76,12 @@ ORM（Object Relational Mapping）, ORM 举例：Django ORM，Java Mybatis puls
 
 优点：替换 SQL 语句，提供获取数据的标准化，避免因为 SQL 查询导致的各种问题，例如 SQL 注入等问题
 
+### RPC
+
+gRPC is a modern, open source **remote procedure call** (RPC) framework that can run anywhere. It enables client and server applications to communicate transparently, and makes it easier to build connected systems. 
+
+<img align="left" src="assets/image-20201106091824908.png" alt="image-20201106091824908" style="zoom:50%;" />
+
 ### 负载均衡
 
 **haproxy**
