@@ -499,6 +499,10 @@ Tutorial:
 
 Django 已经预安装了 `django.contrib.staticfiles` 来管理静态文件，其从各个 app 中获取各自的静态文件，并统一管理。
 
+### 静态文件管理
+
+负责的 app：django.contrib.staticfiles
+
 ### Template 
 
 [Template](https://docs.djangoproject.com/en/2.1/ref/templates/)

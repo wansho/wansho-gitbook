@@ -2,6 +2,23 @@
 
 [TOC]
 
+## assert
+
+Python assert（断言）用于判断一个表达式，在表达式条件为 false 的时候触发异常。
+
+```python
+assert expression
+```
+
+等价于
+
+```python
+if not expression:
+    raise AssertionError
+```
+
+
+
 ## PEP-343 The "with" Statement  
 
 [[with statement in Python]](https://www.geeksforgeeks.org/with-statement-in-python/)
