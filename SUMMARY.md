@@ -9,8 +9,9 @@
 ## Reading
 
 * [毛选](reading/mao-xuan/README.md)
-  * [毛选 第一卷](reading/mao-xuan/volume-1md)
-
+  * [毛选 第一卷](reading/mao-xuan/volume-1.md)
+* [教员语录](reading/mao-xuan/quotation.md)
+  
 * [Modern-Operation-System](reading/modern-os/README.md)
   * [Chapter1-Introduction](reading/modern-os/chapter-1-introduction.md)
   * [Chapter2-Processes-and-Threads](reading/modern-os/chapter-2-processes-and-threads.md)
