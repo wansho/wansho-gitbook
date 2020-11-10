@@ -583,7 +583,7 @@ STATICFILES_DIRS = [
 <link rel="stylesheet" href="{% static 'js/echarts.min.js' %}" >
 ```
 
-
+The `{% static %}` template tag generates the absolute URL of static files.
 
 ### Bootstrap 4
 

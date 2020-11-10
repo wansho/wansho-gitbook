@@ -167,7 +167,7 @@ wc file # 行数 + 单词数 + 字节数
 wc -l file # 行数
 ```
 
-###sort
+### sort
 
 ```
 参数
