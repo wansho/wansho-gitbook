@@ -89,6 +89,7 @@
   * [Questions](computer-science-notebook/network-web/questions.md)
   * [Chrome-Extension](computer-science-notebook/network-web/chrome-extension.md)
   * [jQuery](computer-science-notebook/network-web/jquery.md)
+  * [SVG](computer-science-notebook/network-web/svg.md)
 * [Note-for-C](computer-science-notebook/note-for-c/README.md)
   * [How-to-Learn-C](computer-science-notebook/note-for-c/how-to-learn-c.md)
   * [Think-C](computer-science-notebook/note-for-c/think-c.md)
