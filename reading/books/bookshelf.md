@@ -16,6 +16,7 @@
 * [解决算法和数据结构问题（Python 版）](https://www.cs.auckland.ac.nz/compsci105s1c/resources/ProblemSolvingwithAlgorithmsandDataStructures.pdf)
 * [go-101](https://github.com/go101/go101) 
 * [Java 编程思想](https://github.com/LingCoder/OnJava8)
+* [Ruby 学习指南](https://poignant.guide/book/)
 
 ### 机器学习
 

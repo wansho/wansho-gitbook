@@ -251,6 +251,12 @@ https://ohmyz.sh/
 
 **以后开发，尽量都在 ubuntu 子系统中进行开发。**
 
+## Linux 兼容 Windows 应用
+
+[winapps](https://github.com/Fmstrat/winapps)
+
+一个在 Ubuntu 里面运行 Windows 应用的虚拟机，特点是 Windows 应用就像 Linux 的原生应用一样，直接运行，而不会出现 Windows 的系统环境。
+
 ## 常见问题
 
 ### 虚拟机 buff/cache 占用内存太大
