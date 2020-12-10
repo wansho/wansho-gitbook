@@ -2,6 +2,8 @@
 
 Github: [reborn from xiaolai](<https://github.com/xiaolai/reborn>)
 
+种一棵树最好的时候是十年前，其次是现在。
+
 ![heres-sth-wrong](assets/heres-sth-wrong.jpg)
 
 ## 前言
