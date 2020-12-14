@@ -117,6 +117,7 @@
   * [Linux-cmds](computer-science-notebook/linux/linux-cmds.md)
   * [Linux 使用心得](computer-science-notebook/linux/linux-mythink.md)
   * [Linux 初始化](computer-science-notebook/linux/linux-init.md)
+  * [SSH](computer-science-notebook/linux/ssh.md)
   * [vim](computer-science-notebook/linux/vim.md)
   * [bash](computer-science-notebook/linux/bash.md)
   * [script-demos](computer-science-notebook/linux/script-demos.md)
