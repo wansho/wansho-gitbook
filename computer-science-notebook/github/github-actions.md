@@ -125,6 +125,7 @@ Secrets are not passed to workflows that are triggered by a pull request from a 
 
 * [hub-mirror-action](https://github.com/Yikun/hub-mirror-action) 代码托管平台同步脚本
 * [BILIBILI-HELPER](https://github.com/JunzhouLiu/BILIBILI-HELPER) 哔哩哔哩 签到脚本
+* [如何使用 GitHub Actions 发布到 GitHub Pages](https://itsopensource.com/publish-github-pages-with-github-actions/)
 
 ## Reference
 
