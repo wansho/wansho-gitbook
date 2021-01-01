@@ -403,7 +403,7 @@ file 文件 # 查看文件是什么文件
 ### mkdir
 
 ```shell
-mkdir -p /home/work/odp/app/bq # 递归建立文件夹
+mkdir -p /home/work/odp/app/bq # no error if existing, make parent directories as needed
 # 创建文件夹后并进入该文件夹
 cd $_ # $_ 记录了上一个命令最后一个参数
 ```

@@ -5,7 +5,11 @@
 ## Blueprint
 
 * [阮一峰推荐的免费工具](https://github.com/ruanyf/weekly/blob/master/docs/free-software.md)
-* [Web Development in 2020: What Coding Tools You Should Learn](https://www.freecodecamp.org/news/web-development-2020/)：没必要学全部的知识，具体问题具体分析。
+* [Web Development in 2020: What Coding Tools You Should Learn](https://www.freecodecamp.org/news/web-development-2020/)：没必要学全部的知识，具体问题具体分析
+
+## 基础学习
+
+* [计算机教育缺失的一课](https://missing-semester-cn.github.io/)
 
 ## 前端
 

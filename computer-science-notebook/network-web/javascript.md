@@ -768,3 +768,31 @@ A **closure** is the combination of a function and the scope object in which it 
 * [[JavaScript: The First 20 Years]](https://dl.acm.org/doi/10.1145/3386327) 2020-06 出版，作者：Allen Wirfs-Brock (editor of ES6)，Brendan Eich
 
 ![image-20200917150355760](assets/image-20200917150355760.png)
+
+## ES5 新特性
+
+### use strict
+
+```JavaScript
+// 严格模式下你不能使用未声明的变量
+"use strict";
+x = 3.14;       // 报错 (x 未定义)
+
+function myFunction() {
+   "use strict";
+    y = 3.14;   // 报错 (y 未定义)
+}
+```
+
+
+
+## ES6 新特性
+
+### 解构赋值
+
+```javascript
+let point={x: 1, y: 3, z: 5};
+const {x, y} = point; 
+console.log(x);
+```
+
