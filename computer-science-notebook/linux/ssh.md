@@ -154,3 +154,255 @@ ssh-keygen -F example.com
 ssh-keygen -R example.com
 ```
 
+### ssh-keygen 上传公钥，免密登录
+
+OpenSSH 规定，将客户机的公钥上传到服务机的对应用户的 `.ssh/authorized_keys` 文件中，就可以实现免密登录。
+
+注意
+
+1. 如果我们想要免密登录服务器的 root 用户，那么就需要将客户机的公钥上传到 `/root/.ssh/authorized_keys` 文件中，如果是想免密登录非 root 用户，例如 work 用户，则需要将公钥上传到 `/home/work/.ssh/authorized_keys` 中
+2. authorized_keys 的权限要改成 644
+
+### ssh-copy-id 命令：自动上传公钥
+
+OpenSSH 自带一个`ssh-copy-id`命令，可以自动将公钥拷贝到远程服务器的`~/.ssh/authorized_keys`文件。如果`~/.ssh/authorized_keys`文件不存在，`ssh-copy-id`命令会自动创建该文件。
+
+用户在本地计算机执行下面的命令，就可以把本地的公钥拷贝到服务器。
+
+```
+$ ssh-copy-id -i key_file user@host
+```
+
+上面命令中，`-i`参数用来指定公钥文件，`user`是所要登录的账户名，`host`是服务器地址。如果省略用户名，默认为当前的本机用户名。执行完该命令，公钥就会拷贝到服务器。
+
+注意，公钥文件可以不指定路径和`.pub`后缀名，`ssh-copy-id`会自动在`~/.ssh`目录里面寻找。
+
+```
+$ ssh-copy-id -i id_rsa user@host
+```
+
+上面命令中，公钥文件会自动匹配到`~/.ssh/id_rsa.pub`。
+
+`ssh-copy-id`会采用密码登录，系统会提示输入远程服务器的密码。
+
+注意，`ssh-copy-id`是直接将公钥添加到`authorized_keys`文件的末尾。如果`authorized_keys`文件的末尾不是一个换行符，会导致新的公钥添加到前一个公钥的末尾，两个公钥连在一起，使得它们都无法生效。所以，如果`authorized_keys`文件已经存在，使用`ssh-copy-id`命令之前，务必保证`authorized_keys`文件的末尾是换行符（假设该文件已经存在）。
+
+关闭密码登录：
+
+为了安全性，启用密钥登录之后，最好关闭服务器的密码登录。对于 OpenSSH，具体方法就是打开服务器 sshd 的配置文件`/etc/ssh/sshd_config`，将`PasswordAuthentication`这一项设为`no`。
+
+## SSH 服务器
+
+### 安装，启动
+
+```shell
+# install
+# Debian
+$ sudo aptitude install openssh-server
+# Red Hat
+$ sudo yum install openssh-server
+
+# start
+$ sshd # 或者 /usr/sbin/sshd 自动进入后台，命令后面不需要加 &
+
+# 启动
+$ sudo systemctl start sshd.service
+# 停止
+$ sudo systemctl stop sshd.service
+# 重启
+$ sudo systemctl restart sshd.service
+```
+
+## SSH 端口转发
+
+### 是什么
+
+SSH 除了登录服务器，还有一大用途，就是作为加密通信的中介，充当两台服务器之间的通信加密跳板，使得原本不加密的通信变成加密通信。这个功能称为端口转发（port forwarding），又称 SSH 隧道（tunnel）。
+
+### 动态转发
+
+动态转发指的是，本机与 SSH 服务器之间创建了一个加密连接，然后本机内部针对某个端口的通信，都通过这个加密连接转发。它的一个使用场景就是，访问所有外部网站，都通过 SSH 转发。
+
+动态转发需要把本地端口绑定到 SSH 服务器。至于 SSH 服务器要去访问哪一个网站，完全是动态的，取决于原始通信，所以叫做动态转发。
+
+```
+$ ssh -D local-port tunnel-host -N
+```
+
+上面命令中，`-D`表示动态转发，`local-port`是本地端口，`tunnel-host`是 SSH 服务器，`-N`表示这个 SSH 连接只进行端口转发，不登录远程 Shell，不能执行远程命令，只能充当隧道。
+
+举例来说，如果本地端口是`2121`，那么动态转发的命令就是下面这样。
+
+```
+$ ssh -D 2121 tunnel-host -N
+```
+
+注意，这种转发采用了 SOCKS5 协议。访问外部网站时，需要把 HTTP 请求转成 SOCKS5 协议，才能把本地端口的请求转发出去。
+
+下面是 SSH 隧道建立后的一个使用实例。
+
+```
+$ curl -x socks5://localhost:2121 http://www.example.com
+```
+
+上面命令中，curl 的`-x`参数指定代理服务器，即通过 SOCKS5 协议的本地`2121`端口，访问`http://www.example.com`。
+
+如果经常使用动态转发，可以将设置写入 SSH 客户端的用户个人配置文件（`~/.ssh/config`）。
+
+```
+DynamicForward tunnel-host:local-port
+```
+
+### 本地转发
+
+本地转发（local forwarding）指的是，SSH 服务器作为中介的跳板机，建立本地计算机与特定目标网站之间的加密连接。本地转发是在本地计算机的 SSH 客户端建立的转发规则。
+
+它会指定一个本地端口（local-port），所有发向那个端口的请求，都会转发到 SSH 跳板机（tunnel-host），然后 SSH 跳板机作为中介，将收到的请求发到目标服务器（target-host）的目标端口（target-port）。
+
+```
+$ ssh -L local-port:target-host:target-port tunnel-host
+```
+
+上面命令中，`-L`参数表示本地转发，`local-port`是本地端口，`target-host`是你想要访问的目标服务器，`target-port`是目标服务器的端口，`tunnel-host`是 SSH 跳板机。
+
+举例来说，现在有一台 SSH 跳板机`tunnel-host`，我们想要通过这台机器，在本地`2121`端口与目标网站`www.example.com`的80端口之间建立 SSH 隧道，就可以写成下面这样。
+
+```
+$ ssh -L 2121:www.example.com:80 tunnel-host -N
+```
+
+然后，访问本机的`2121`端口，就是访问`www.example.com`的80端口。
+
+```
+$ curl http://localhost:2121
+```
+
+注意，本地端口转发采用 HTTP 协议，不用转成 SOCKS5 协议。
+
+另一个例子是加密访问邮件获取协议 POP3。
+
+```
+$ ssh -L 1100:mail.example.com:110 mail.example.com
+```
+
+上面命令将本机的1100端口，绑定邮件服务器`mail.example.com`的110端口（POP3 协议的默认端口）。端口转发建立以后，POP3 邮件客户端只需要访问本机的1100端口，请求就会通过 SSH 跳板机（这里是`mail.example.com`），自动转发到`mail.example.com`的110端口。
+
+上面这种情况有一个前提条件，就是`mail.example.com`必须运行 SSH 服务器。否则，就必须通过另一台 SSH 服务器中介，执行的命令要改成下面这样。
+
+```
+$ ssh -L 1100:mail.example.com:110 other.example.com
+```
+
+上面命令中，本机的1100端口还是绑定`mail.example.com`的110端口，但是由于`mail.example.com`没有运行 SSH 服务器，所以必须通过`other.example.com`中介。本机的 POP3 请求通过1100端口，先发给`other.example.com`的22端口（sshd 默认端口），再由后者转给`mail.example.com`，得到数据以后再原路返回。
+
+注意，采用上面的中介方式，只有本机到`other.example.com`的这一段是加密的，`other.example.com`到`mail.example.com`的这一段并不加密。
+
+这个命令最好加上`-N`参数，表示不在 SSH 跳板机执行远程命令，让 SSH 只充当隧道。另外还有一个`-f`参数表示 SSH 连接在后台运行。
+
+如果经常使用本地转发，可以将设置写入 SSH 客户端的用户个人配置文件（`~/.ssh/config`）。
+
+```
+Host test.example.com
+LocalForward client-IP:client-port server-IP:server-port
+```
+
+### 简易 VPN
+
+VPN 用来在外网与内网之间建立一条加密通道。内网的服务器不能从外网直接访问，必须通过一个跳板机，如果本机可以访问跳板机，就可以使用 SSH 本地转发，简单实现一个 VPN。
+
+```
+$ ssh -L 2080:corp-server:80 -L 2443:corp-server:443 tunnel-host -N
+```
+
+上面命令通过 SSH 跳板机，将本机的`2080`端口绑定内网服务器的`80`端口，本机的`2443`端口绑定内网服务器的`443`端口。
+
+### 动态转发和本地转发的区别
+
+![image-20210105093123839](assets/image-20210105093123839.png)
+
+## scp 命令
+
+### 是什么
+
+scp: secure copy, 用于在两台主机之间加密传送文件。
+
+### Demo
+
+```shell
+# 将远程主机（user@host）用户主目录下的foo.txt，复制为本机当前目录的bar.txt。可以看到，主机与文件之间要使用冒号（:）分隔
+$ scp source destination
+$ scp user@host:foo.txt bar.txt
+
+# 支持一次复制多个文件
+$ scp source1 source2 destination
+
+# 本地文件复制到远程服务器
+$ scp SourceFile user@host:directory/TargetFile
+$ scp file.txt remote_username@10.10.0.2:/remote/directory
+
+# 拷贝目录
+# 将本机整个目录拷贝到远程目录下
+$ scp -r localmachine/path_to_the_directory username@server_ip:/path_to_remote_directory/
+# 将本机目录下的所有内容拷贝到远程目录下
+$ scp -r localmachine/path_to_the_directory/* username@server_ip:/path_to_remote_directory/
+
+# 两个远程系统之间的复制
+# 语法
+$ scp user@host1:directory/SourceFile user@host2:directory/SourceFile
+# 示例
+$ scp user1@host1.com:/files/file.txt user2@host2.com:/files
+```
+
+### 配置项
+
+```shell
+# -q 参数用来关闭显示拷贝的进度条。
+$ scp -q Label.pdf mrarianto@202.x.x.x:.
+
+# -r 参数表示是否以递归方式复制目录。
+
+# -v 参数用来显示详细的输出。
+$ scp -v ~/test.txt root@192.168.1.3:/root/help2356.txt
+```
+
+## 其他命令
+
+### rsync 
+
+远程同步命令
+
+rsync 是一个常用的 Linux 应用程序，用于文件同步。
+
+### sftp
+
+secure ftp
+
+`sftp`是 SSH 提供的一个客户端应用程序，主要用来安全地访问 FTP。因为 FTP 是不加密协议，很不安全，`sftp`就相当于将 FTP 放入了 SSH。
+
+下面的命令连接 FTP 主机。
+
+```
+$ sftp username@hostname
+```
+
+执行上面的命令，会要求输入 FTP 的密码。密码验证成功以后，就会出现 FTP 的提示符`sftp>`，下面是一个例子。
+
+```
+$ sftp USER@penguin.example.com
+USER@penguin.example.com's password:
+Connected to penguin.example.com.
+sftp>
+```
+
+FTP 的提示符下面，就可以输入各种 FTP 命令了，这部分完全跟传统的 FTP 用法完全一样。
+
+- `ls [directory]`：列出一个远程目录的内容。如果没有指定目标目录，则默认列出当前目录。
+- `cd directory`：从当前目录改到指定目录。
+- `mkdir directory`：创建一个远程目录。
+- `rmdir path`：删除一个远程目录。
+- `put localfile [remotefile]`：本地文件传输到远程主机。
+- `get remotefile [localfile]`：远程文件传输到本地。
+- `help`：显示帮助信息。
+- `bye`：退出 sftp。
+- `quit`：退出 sftp。
+- `exit`：退出 sftp。
