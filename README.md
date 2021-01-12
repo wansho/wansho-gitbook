@@ -64,6 +64,7 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
 * [Others](reading/others/README.md)
   * [古诗词](reading/others/poetry.md)
   * [电影](reading/others/movies.md)
+  * [命理学](reading/others/fate.md)
 
 ## Computer Science Notebook
 
@@ -121,6 +122,7 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
   * [Linux-cmds](computer-science-notebook/linux/linux-cmds.md)
   * [Linux 使用心得](computer-science-notebook/linux/linux-mythink.md)
   * [Linux 初始化](computer-science-notebook/linux/linux-init.md)
+  * [SSH](computer-science-notebook/linux/ssh.md)
   * [vim](computer-science-notebook/linux/vim.md)
   * [bash](computer-science-notebook/linux/bash.md)
   * [script-demos](computer-science-notebook/linux/script-demos.md)

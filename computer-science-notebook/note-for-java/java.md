@@ -3684,7 +3684,7 @@ public class Person /*extends Object*/ implements Comparable {
 
 在学习容器依赖，我一直忽视了两个很重要的点：
 
-1. 容器可以同时存储不同类型的数据，例如 String 类型，Integer 类型，如果一个容器存储了不同类型的对象，不久乱套了
+1. 容器可以同时存储不同类型的数据，例如 String 类型，Integer 类型，如果一个容器存储了不同类型的对象，不就乱套了
 
    ```java
    ArrayList list = new ArrayList();
@@ -4968,3 +4968,10 @@ for(Integer id:keySet){
 }
 ```
 
+## I/O 流
+
+### 是什么
+
+I，Input：将外存中的数据读取到内存中
+
+O，Output：将内存中的数据写入到外存中

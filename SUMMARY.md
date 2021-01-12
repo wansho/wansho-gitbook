@@ -60,6 +60,7 @@
 * [Others](reading/others/README.md)
   * [古诗词](reading/others/poetry.md)
   * [电影](reading/others/movies.md)
+  * [命理学](reading/others/fate.md)
 
 ## Computer Science Notebook
 
@@ -181,6 +182,7 @@
   * [关于找工作](life-and-thinking/self-examination/for-a-job.md)
   * [细数在拼多多开店遇到的坑](life-and-thinking/self-examination/pin-duo-duo.md)
   * [营销经验](life-and-thinking/self-examination/summary-of-marketing.md)
+  * [买房经验总结](life-and-thinking/self-examination/real-estate.md)
 * [To-Others](life-and-thinking/to-others/README.md)
   - [致万 * 鑫](life-and-thinking/to-others/to-my-brother.md)
   - [关于考试](life-and-thinking/to-others/summary-for-examination-oriented-education.md)
