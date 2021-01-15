@@ -71,7 +71,7 @@
 * 创建数据库 create database senti\_weibo DEFAULT CHARACTER SET utf8 COLLATE utf8\_general\_ci;
 * 更改数据库字符集 ALTER DATABASE `senti_weibo` CHARACTER SET utf8 COLLATE utf8\_general\_ci;
 * 查看所有数据库 show databases;
-* 查看某个数据库建库语句 show create database db\_name;
+* 查看某个数据库建库语句 show create database db\_name; 或者 `desc table`
 * 查看某张表的建表语句 show create table table\_name;
 * 删除数据库 drop database db\_name;
 * 进入某个数据库 use db\_name;
