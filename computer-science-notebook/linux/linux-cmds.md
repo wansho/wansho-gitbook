@@ -862,8 +862,9 @@ The telnet command is used for interactive communication with another host using
 
 **测试远程主机的端口是否打开**
 
-```
+```shell
 telnet ip port
+# 退出 telnet：ctrl + ]，然后 quit
 ```
 
 
