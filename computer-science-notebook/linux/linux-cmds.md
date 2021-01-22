@@ -261,6 +261,15 @@ cat script.awk
 awk -F: -f script.awk /etc/passwd
 ```
 
+### sed 命令
+
+```shell
+# 常见的 sed 替换字符串的语法，全局替换某个字符串
+sed -i 's/Search_String/Replacement_String/g' Input_File
+```
+
+
+
 ### diff 命令
 
 用于比较同一文件，两个版本的区别。
@@ -417,6 +426,7 @@ tar -czvf haha.tar.gz file1 file2
 # 拆包解压缩
 tar -xzvf haha.tar.gz
 tar -xzvf haha.tar.gz -C path # 解压到指定文件夹
+# tar 命令解压的文件，会覆盖原文件
 
 # zip
 zip

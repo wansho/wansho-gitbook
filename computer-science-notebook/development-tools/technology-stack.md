@@ -96,6 +96,7 @@
 * [命令行界面设计指南](https://clig.dev/)
 * [半小时学习 Rust 语言](https://fasterthanli.me/articles/a-half-hour-to-learn-rust) 一篇英语长文，详细介绍 Rust 语言的基本知识点
 * [Python 软件工程](https://merely-useful.github.io/py-rse/) 介绍使用 Python 来做实际的软件项目时，需要了解的各种 Linux 知识，比如命令行、Git、Make 等等
+* [Top 10 Python libraries of 2020](https://tryolabs.com/blog/2020/12/21/top-10-python-libraries-of-2020/)
 
 
 
