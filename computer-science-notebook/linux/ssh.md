@@ -341,7 +341,7 @@ $ scp SourceFile user@host:directory/TargetFile
 $ scp file.txt remote_username@10.10.0.2:/remote/directory
 
 # 拷贝目录
-# 将本机整个目录拷贝到远程目录下
+# 将本机整个目录拷贝到远程目录下，可以同时拷贝多个文件夹
 $ scp -r localmachine/path_to_the_directory username@server_ip:/path_to_remote_directory/
 # 将本机目录下的所有内容拷贝到远程目录下
 $ scp -r localmachine/path_to_the_directory/* username@server_ip:/path_to_remote_directory/
