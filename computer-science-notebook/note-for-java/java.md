@@ -914,16 +914,16 @@ class InnerClassDemo6
 
 注意是在运行期间，程序在运行时总会发生大大小小的问题，但是我们不能因为一个小问题就停止程序的运行，所以要引入叫做异常的容错机制，对异常进行容错。
 
-在java中用类的形式对不正常情况进行了描述和封装对象。描述不正常的情况的类，就称为异常类。  
+在 java 中**用类的形式对不正常情况进行了描述和封装对象**。描述不正常的情况的类，就称为异常类。  
 
 **以前正常流程代码和问题处理代码相结合，现在将正常流程代码和问题处理代码分离。提高阅读性。其实异常就是java通过面向对象的思想将问题封装成了对象。用异常类对其进行描述。不同的问题用不同的类进行具体的描述。 比如角标越界、 空指针等等。**
 问题很多，意味着描述的类也很多，将其共性进行向上抽取，形成了异常体系。 
 
 **异常的共性：Throwable**
 
-无论是error，还是异常，问题，问题发生就应该可以抛出，让调用者知道并处理。
+无论是 error，还是异常，问题，问题发生就应该可以抛出，让调用者知道并处理。
 //该体系的特点就在于Throwable及其所有的子类都具有可抛性。
-可抛性到底指的是什么呢？怎么体现可抛性呢？其实是通过两个关键字来体现的。throws throw ,凡是可以被这两个关键字所操作的类和对象都具备可抛性.  
+可抛性到底指的是什么呢？怎么体现可抛性呢？其实是通过两个关键字来体现的。throws throw , 凡是可以被这两个关键字所操作的类和对象都具备可抛性.  
 
 异常子类的后缀名都是用其父类名作为后缀，阅读性很强。  
 
@@ -1063,7 +1063,7 @@ try
 {
     //需要被检测异常的代码。
 }
-catch(异常类 变量)//该变量用于接收发生的异常对象
+catch(异常类 变量)// 该变量用于接收发生的异常对象
 {
     //处理异常的代码。
 }
@@ -1078,7 +1078,7 @@ finally
 异常处理的原则：
 
 1. 函数内容如果抛出需要检测的异常，那么函数上必须要声明。否则必须在函数内用trycatch捕捉，否则编译失败。
-2. 如果调用到了声明异常的函数，要么trycatch要么throws，否则编译失败。
+2. 如果调用到了声明异常的函数，要么try catch 要么 throws，否则编译失败。
 3. 什么时候catch，什么时候throws 呢？功能内容可以解决，用catch。解决不了，用throws告诉调用者，由调用者解决 。
 4. 一个功能如果抛出了多个异常，那么调用时，必须有对应多个catch进行针对性的处理。内部有几个需要检测的异常，就抛几个异常，抛出几个，就catch几个  
 
@@ -1095,7 +1095,7 @@ class FuShuIndexException extends Exception
 
 class Demo
 {
-    public int method(int[] arr,int index)//throws NullPointerException,FuShuIndexException
+    public int method(int[] arr,int index) // throws NullPointerException,FuShuIndexException
     {
         if(arr==null)
             throw new NullPointerException("没有任何数组实体"); // throw 后，下面的代码就不执行了
@@ -1193,7 +1193,7 @@ class NoPlanException extends Exception
 class Computer
 {
     private int state = 2;
-    public void run()throws LanPingException,MaoYanException
+    public void run() throws LanPingException,MaoYanException
     {
         if(state==1)
             throw new LanPingException("电脑蓝屏啦！！ ");
@@ -1217,7 +1217,7 @@ class Teacher
         this.name = name;
         comp = new Computer();
     }
-    public void prelect()throws NoPlanException // 没有 catch 的异常则抛出
+    public void prelect() throws NoPlanException // 没有 catch 的异常则抛出
     {
         try
         {
@@ -1281,7 +1281,7 @@ com.wansho.hellojava.NoPlanException: 课时进度无法完成，原因： 电�
 1. 对类文件进行分类管理
 2. 给类提供多层命名空间(namespace)，防止类太多命名冲突了
 3. 写在程序文件第一行
-4. 类名的全称是：包名.类名
+4. **类名的全称**是：包名.类名
 5. 包也是一种封装方式
 
 ### package Demo
@@ -1324,7 +1324,7 @@ java mypack.PackageDemo
 
 ### classpath 的作用
 
-编译 java 源文件生成的 class 文件，都放在 classpath 中，以起到源文件与 class 文件隔离的作用。
+编译 java 源文件生成的 class 文件，都放在 classpath 中，以起到**源文件与 class 文件隔离的作用**。
 
 ### 包的封装作用和四种权限
 
@@ -4975,3 +4975,18 @@ for(Integer id:keySet){
 I，Input：将外存中的数据读取到内存中
 
 O，Output：将内存中的数据写入到外存中
+
+### 字符流，字节流
+
+IO 流分为字符流和字节流：
+
+* 字符流：字节流读取文字字节数据后，不直接操作而是先查指定的编码表。获取对应的文字。在对这个文字进行操作。简单说：**字节流+编码表**
+
+  顶层父类：Reader, Writer
+
+* 字节流：顾名思义，计算机中的字节，8 位为一字节
+
+  顶层父类：InputStream, OutputStream
+
+这些体系的子类都以父类名作为后缀。而且子类名的前缀就是该对象的功能。  
+

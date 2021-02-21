@@ -110,6 +110,7 @@
   - [Multiprocessing-and-Threading](computer-science-notebook/note-for-python/multiprocessing-and-threading.md)
 * [Note-for-Java](computer-science-notebook/note-for-java/README.md)
   * [Java-Notebook](computer-science-notebook/note-for-java/java.md)
+  * [Java 开发工具](computer-science-notebook/note-for-java/java-dev-tools.md)
   * [Detailed-Generics](computer-science-notebook/note-for-java/detailed-generics.md)
 * [NLP](computer-science-notebook/nlp/README.md)
   - [NLP-Learning](computer-science-notebook/nlp/nlp-learning.md)

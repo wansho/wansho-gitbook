@@ -8,6 +8,10 @@
 
 
 
+### 图形类
+
+* [《计算机图形学从零讲起》](https://gabrielgambetta.com/computer-graphics-from-scratch/)
+
 ### 编程类
 
 * [Modern C](https://modernc.gforge.inria.fr/)
