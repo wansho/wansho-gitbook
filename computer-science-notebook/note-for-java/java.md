@@ -4978,6 +4978,8 @@ O，Output：将内存中的数据写入到外存中
 
 ### 字符流，字节流
 
+一个字符由多个字节组成！
+
 IO 流分为字符流和字节流：
 
 * 字符流：字节流读取文字字节数据后，不直接操作而是先查指定的编码表。获取对应的文字。在对这个文字进行操作。简单说：**字节流+编码表**
@@ -4989,4 +4991,427 @@ IO 流分为字符流和字节流：
   顶层父类：InputStream, OutputStream
 
 这些体系的子类都以父类名作为后缀。而且子类名的前缀就是该对象的功能。  
+
+### 转换流
+
+Demo 将键盘的输入转换成大写，并输出到控制台：
+
+```java
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+public class TransStreamDemo {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        //字节流。键盘的输入，是字节流……
+        InputStream in = System.in;
+        // int ch = in.read();
+        // System.out.println(ch);
+        // int ch1 = in.read();
+        // System.out.println(ch1);
+        //将字节转成字符的桥梁。装换流。
+        InputStreamReader isr = new InputStreamReader(in);
+        // int ch = isr.read();
+        // System.out.println((char)ch);
+        //字符流。
+        BufferedReader bufr = new BufferedReader(isr);
+        OutputStream out = System.out;
+        OutputStreamWriter osw = new OutputStreamWriter(out);
+        BufferedWriter bufw = new BufferedWriter(osw);
+        String line = null;
+        while((line=bufr.readLine())!=null){
+            if("over".equals(line))
+                break;
+            // System.out.println(line.toUpperCase());
+            // osw.write(line.toUpperCase()+"\r\n");
+            // osw.flush();
+            bufw.write(line.toUpperCase());
+            bufw.newLine();
+            bufw.flush();
+        }
+    }
+}
+```
+
+功能相同的两行代码：
+
+```java
+/*
+* 这两句代码的功能是等同的。
+* FileWriter：其实就是转换流指定了本机默认码表的体现。而且这个转换流的子类对象，可以方
+* 便操作文本文件。
+* 简单说：操作文件的字节流+本机默认的编码表。
+* 这是按照默认码表来操作文件的便捷类。
+*
+* 如果操作文本文件需要明确具体的编码。 FileWriter就不行了。必须用转换流。
+*/
+OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("gbk_3.txt"), "GBK");
+FileWriter fw = new FileWriter("gbk_1.txt");
+```
+
+### File, 过滤器
+
+**File**
+
+```java
+import java.io.File;
+public class FileDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        // constructorDemo();
+    }
+    public static void constructorDemo() {
+        //可以将一个已存在的，或者不存在的文件或者目录封装成file对象。
+        File f1 = new File("c:\\a.txt");
+        File f2 = new File("c:\\","a.txt");
+        File f = new File("c:\\");
+        File f3 = new File(f,"a.txt");
+        File f4 = new File("c:"+File.separator+"abc"+File.separator+"a.txt");
+        System.out.println(f4); // 在 Windows 上执行打印的是：c:\abc\a.txt
+    }
+}
+```
+
+
+
+```java
+import java.io.File;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Date;
+public class FileMethodDemo {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        /*
+        * File对象的常见方法。
+        *
+        * 1，获取。
+        * 1.1 获取文件名称。
+        * 1.2 获取文件路径。
+        * 1.3 获取文件大小。
+        * 1.4 获取文件修改时间。
+        *
+        * 2，创建与删除。
+        *
+        * 3，判断。
+        *
+        * 4， 重命名
+        *
+        */
+        // getDemo();
+        // createAndDeleteDemo();
+        // isDemo();
+        // renameToDemo();
+        // listRootsDemo();
+    }
+    public static void listRootsDemo() {
+        File file = new File("d:\\");
+        System.out.println("getFreeSpace:"+file.getFreeSpace());
+        System.out.println("getTotalSpace:"+file.getTotalSpace());
+        System.out.println("getUsableSpace:"+file.getUsableSpace());
+        // File[] files = File.listRoots();
+        // for(File file : files){
+        // System.out.println(file);
+        // }
+    }
+    public static void renameToDemo() { // 移动文件
+        File f1 = new File("c:\\9.mp3");
+        File f2 = new File("d:\\aa.mp3");
+        boolean b = f1.renameTo(f2);
+        System.out.println("b="+b);
+    }
+    public static void isDemo() throws IOException{
+        File f = new File("aaa");
+        // f.mkdir();
+        f.createNewFile();
+        // boolean b = f.exists();
+        // System.out.println("b="+b);
+        // 最好先判断是否存在。
+        System.out.println(f.isFile());
+        System.out.println(f.isDirectory());
+    }
+    public static void createAndDeleteDemo() throws IOException {
+        File dir = new File("abc\\q\\e\\c\\z\\r\\w\\y\\f\\e\\g\\s");
+        // boolean b = dir.mkdir();//make directory
+        // System.out.println("b="+b);
+        // dir.mkdirs();//创建多级目录
+        System.out.println(dir.delete());
+        // System.out.println(dir.delete());
+        // 文件的创建和删除。
+        // File file = new File("file.txt");
+        /*
+        * 和输出流不一样，如果文件不存在，则创建，如果文件存在，则不创建。
+        *
+        */
+        // boolean b = file.createNewFile();
+        // System.out.println("b="+b);
+        // boolean b = file.delete();
+        // System.out.println("b="+b);
+    }
+    public static void getDemo(){
+        // File file = new File("E:\\java0331\\day22e\\a.txt");
+        File file = new File("a.txt");
+        String name = file.getName();
+        String absPath = file.getAbsolutePath();//绝对路径。
+        String path = file.getPath();
+        long len = file.length();
+        long time = file.lastModified();
+        Date date = new Date(time);
+        DateFormat dateFormat =
+            DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG);
+        String str_time = dateFormat.format(date);
+        System.out.println("parent:"+file.getParent());226
+            System.out.println("name:"+name);
+        System.out.println("absPath:"+absPath);
+        System.out.println("path:"+path);
+        System.out.println("len:"+len);
+        System.out.println("time:"+time);
+        System.out.println("str_time:"+str_time);
+    }
+}
+
+```
+
+
+
+**三种常见过滤器**
+
+1. 后缀名过滤器
+
+   ```java
+   public class FilterByJava implements FilenameFilter {
+       @Override
+       public boolean accept(File dir, String name) {
+           // System.out.println(dir+"---"+name);
+           return name.endsWith(".java");
+       }
+   }
+   ```
+
+2. 根据后缀名可以指定任意后缀名过滤的过滤器  
+
+   ```java
+   import java.io.File;
+   import java.io.FilenameFilter;
+   public class SuffixFilter implements FilenameFilter {
+       private String suffix ;
+       public SuffixFilter(String suffix) {
+           super();
+           this.suffix = suffix;
+       }
+       @Override
+       public boolean accept(File dir, String name) {
+           return name.endsWith(suffix);
+       }
+   }
+   ```
+
+3. 隐藏属性过滤器  
+
+   ```java
+   import java.io.File;
+   import java.io.FileFilter;
+   public class FilterByHidden implements FileFilter {
+       @Override
+       public boolean accept(File pathname) {
+           return !pathname.isHidden();
+       }
+   }
+   ```
+
+Demo：
+
+```java
+import java.io.File;
+import cn.itcast.io.p2.filter.FilterByHidden;
+import cn.itcast.io.p2.filter.SuffixFilter;
+public class FileListDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        listDemo_2();
+    }
+    public static void listDemo_3() {
+        File dir = new File("c:\\");
+        File[] files = dir.listFiles(new FilterByHidden());
+        for(File file : files){
+            System.out.println(file);
+        }
+    }
+    public static void listDemo_2() {
+        File dir = new File("c:\\");
+        String[] names = dir.list(new SuffixFilter(".txt"));
+        for(String name : names){
+            System.out.println(name);
+        }
+    }
+}
+```
+
+### IO流操作规律
+
+想要知道开发时用到哪些对象。只要通过四个明确即可。
+
+1. 明确源和目的(汇)
+   源： InputStream Reader
+   目的： OutputStream Writer
+
+2. 明确数据是否是纯文本数据。
+   源：是纯文本： Reader
+   否： InputStream
+   目的：是纯文本 Writer
+   否： OutputStream
+   到这里，就可以明确需求中具体要使用哪个体系。
+
+3. 明确具体的设备。
+   源设备：
+
+   硬盘： File
+   键盘： System.in
+   内存：数组
+   网络： Socket流
+
+   目的设备：
+
+   硬盘： File
+   控制台： System.out
+   内存：数组
+   网络： Socket流
+
+4. 是否需要其他额外功能。
+   1，是否需要高效(缓冲区);
+   是，就加上buffer.
+   2，转换？
+
+举例：
+
+```
+--------------------------------------------------------------------------------
+需求1：复制一个文本文件。
+1,明确源和目的。
+源： InputStream Reader
+目的： OutputStream Writer
+2,是否是纯文本？
+是！
+源： Reader
+目的： Writer
+3,明确具体设备。
+源：
+硬盘： File
+目的：
+硬盘： File
+FileReader fr = new FileReader("a.txt");
+FileWriter fw = new FileWriter("b.txt");
+4,需要额外功能吗？
+需要，需要高效。
+BufferedReader bufr = new BufferedReader(new FileReader("a.txt"));
+BufferedWriter bufw = new BufferedWriter(new FileWriter("b.txt"));
+--------------------------------------------------------------------------------
+需求2：读取键盘录入信息，并写入到一个文件中。
+1,明确源和目的。
+源： InputStream Reader
+目的： OutputStream Writer
+2，是否是纯文本呢？
+是，
+源： Reader
+目的： Writer
+3，明确设备
+源：
+键盘。 System.in
+目的：
+硬盘。 File
+InputStream in = System.in;
+FileWriter fw = new FileWriter("b.txt");
+这样做可以完成，但是麻烦。将读取的字节数据转成字符串。再由字符流操作。
+4，需要额外功能吗？
+需要。转换。 将字节流转成字符流。因为名确的源是Reader，这样操作文本数据做便捷。
+所以要将已有的字节流转成字符流。使用字节-->字符 。 InputStreamReader
+InputStreamReader isr = new InputStreamReader(System.in);
+FileWriter fw = new FileWriter("b.txt");
+还需要功能吗？
+需要：想高效。
+BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));
+BufferedWriter bufw = new BufferedWriter(new FileWriter("b.txt"));
+-------------------------------------------------------------------------------
+需求3：将一个文本文件数据显示在控制台上。
+1,明确源和目的。
+源： InputStream Reader
+目的： OutputStream Writer
+2，是否是纯文本呢？
+是，
+源： Reader
+目的： Writer
+3，明确具体设备
+源：
+硬盘： File
+目的：
+控制台： System.out
+FileReader fr = new FileReader("a.txt");
+OutputStream out = System.out;//PrintStream
+4，需要额外功能吗？
+需要，转换。
+FileReader fr = new FileReader("a.txt");
+OutputStreamWriter osw = new OutputStreamWriter(System.out);
+需要，高效。
+BufferedReader bufr = new BufferedReader(new FileReader("a.txt"));
+BufferedWriter bufw = new BufferedWriter(new OutputStreamWriter(System.out));
+--------------------------------------------------------------------------------
+需求4：读取键盘录入数据，显示在控制台上。
+1,明确源和目的。
+源： InputStream Reader
+目的： OutputStream Writer
+2，是否是纯文本呢？
+是，
+源： Reader
+目的： Writer
+3，明确设备。
+源：
+键盘： System.in
+目的：
+控制台： System.out229
+InputStream in = System.in;
+OutputStream out = System.out;
+4，明确额外功能？
+需要转换，因为都是字节流，但是操作的却是文本数据。
+所以使用字符流操作起来更为便捷。
+InputStreamReader isr = new InputStreamReader(System.in);
+OutputStreamWriter osw = new OutputStreamWriter(System.out);
+为了将其高效。
+BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));
+BufferedWriter bufw = new BufferedWriter(new OutputStreamWriter(System.out));
+--------------------------------------------------------------------------------
+5，将一个中文字符串数据按照指定的编码表写入到一个文本文件中.
+1，目的。 OutputStream， Writer
+2，是纯文本， Writer。
+3，设备：硬盘File
+FileWriter fw = new FileWriter("a.txt");
+fw.write("你好");
+注意：既然需求中已经明确了指定编码表的动作。
+那就不可以使用FileWriter，因为FileWriter内部是使用默认的本地码表。
+只能使用其父类。 OutputStreamWriter.
+OutputStreamWriter 接 收 一 个 字 节 输 出 流 对 象 ， 既 然 是 操 作 文 件 ， 那 么 该 对 象 应 该 是
+FileOutputStream
+OutputStreamWriter osw = new OutputStreamWriter(new
+FileOutputStream("a.txt"),charsetName);
+需要高效吗？
+BufferedWriter bufw = new BufferedWriter(new OutputStreamWriter(new
+FileOutputStream("a.txt"),charsetName));
+什么时候使用转换流呢？
+1，源或者目的对应的设备是字节流，但是操作的却是文本数据，可以使用转换作为桥梁。
+提高对文本操作的便捷。
+2，一旦操作文本涉及到具体的指定编码表时，必须使用转换流
+```
 
