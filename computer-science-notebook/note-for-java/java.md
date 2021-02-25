@@ -226,7 +226,7 @@ java是严谨性语言，如果函数出现的调用的不确定性，会编译�
 ### 匿名对象
 
 ```java
-new Car();//匿名对象。其实就是定义对象的简写格式。
+new Car(); // 匿名对象。其实就是定义对象的简写格式。
 Car c = new Car();
 c.run();
 new Car().run();
@@ -775,7 +775,7 @@ class InnerClassDemo
 
 ### 匿名内部类
 
-匿名内部类， 就是内部类的简写格式。其实就是一个匿名子类对象。
+匿名内部类， 首先是一个类中类，其次是内部类的简写格式。其实就是一个匿名子类对象。
 必须有前提：内部类必须继承或者实现一个外部类或者接口。
 格式： new 父类or接口(){子类内容}  
 
@@ -3183,6 +3183,11 @@ public class ListDemo2 {
 
 **Vector** 
 
+It is similar to the ArrayList, but with two differences. Vector 是线程安全的。
+
+- Vector is synchronized.
+- Java Vector contains many legacy methods that are not the part of a collections framework.
+
 ```java
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -4994,6 +4999,8 @@ IO 流分为字符流和字节流：
 
 ### 转换流
 
+FileReader 和 FileWriter 是转换流的子类！
+
 Demo 将键盘的输入转换成大写，并输出到控制台：
 
 ```java
@@ -5413,5 +5420,2280 @@ FileOutputStream("a.txt"),charsetName));
 1，源或者目的对应的设备是字节流，但是操作的却是文本数据，可以使用转换作为桥梁。
 提高对文本操作的便捷。
 2，一旦操作文本涉及到具体的指定编码表时，必须使用转换流
+```
+
+### 其他
+
+#### Properties集合+IO流  
+
+Properties = map + io
+
+\* Properties集合：
+\* 特点：
+\* 1，该集合中的键和值都是字符串类型。
+\* 2，集合中的数据可以保存到流中，或者从流获取。
+*
+\* 通常该集合用于操作以键值对形式存在的配置文件。  
+
+Demo：
+
+```java
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.Set;
+public class PropertiesDemo {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        /*
+        * Map
+        * |--Hashtable
+        * |--Properties:
+        *
+        * Properties集合：
+        * 特点：
+        * 1，该集合中的键和值都是字符串类型。
+        * 2，集合中的数据可以保存到流中，或者从流获取。
+        *
+        * 通常该集合用于操作以键值对形式存在的配置文件。
+        */
+        // methodDemo_4();
+        // myLoad();
+        test();
+    }
+    //对已有的配置文件中的信息进行修改。
+    /*
+    * 读取这个文件。
+    * 并将这个文件中的键值数据存储到集合中。
+    * 在通过集合对数据进行修改。
+    * 在通过流将修改后的数据存储到文件中。
+    */
+    public static void test() throws IOException{
+        //读取这个文件。
+        File file = new File("info.txt");
+        if(!file.exists()){
+            file.createNewFile();
+        }
+        FileReader fr = new FileReader(file);
+        //创建集合存储配置信息。
+        Properties prop = new Properties();
+        //将流中信息存储到集合中。
+        prop.load(fr);
+        prop.setProperty("wangwu", "16");
+        FileWriter fw = new FileWriter(file);
+        prop.store(fw,"");
+        // prop.list(System.out);
+        fw.close();
+        fr.close();
+    }
+    //模拟一下load方法。
+    public static void myLoad() throws IOException{
+        Properties prop = new Properties();
+        BufferedReader bufr = new BufferedReader(new FileReader("info.txt"));
+        String line = null;
+        while((line=bufr.readLine())!=null){
+            if(line.startsWith("#"))
+                continue;
+            String[] arr = line.split("=");
+                // System.out.println(arr[0]+"::"+arr[1]);
+                prop.setProperty(arr[0], arr[1]);
+        }
+        prop.list(System.out);
+        bufr.close();
+    }
+    public static void methodDemo_4() throws IOException {
+        Properties prop = new Properties();
+        //集合中的数据来自于一个文件。
+        //注意；必须要保证该文件中的数据是键值对。
+        //需要使用到读取流。
+        FileInputStream fis = new FileInputStream("info.txt");
+        //使用load方法。
+        prop.load(fis);
+        prop.list(System.out);
+    }
+    public static void methodDemo_3() throws IOException {
+        Properties prop = new Properties();
+        //存储元素。
+        prop.setProperty("zhangsan","30");
+        prop.setProperty("lisi","31");
+        prop.setProperty("wangwu","36");
+        prop.setProperty("zhaoliu","20");
+        //想要将这些集合中的字符串键值信息持久化存储到文件中。
+        //需要关联输出流。
+        FileOutputStream fos = new FileOutputStream("info.txt");
+        //将集合中数据存储到文件中，使用store方法。
+        prop.store(fos, "info");
+        fos.close();
+    }
+        /**
+        * 演示Properties集合和流对象相结合的功能。
+        */
+        public static void methodDemo_2(){
+        Properties prop = new Properties();
+        //存储元素。
+        // prop.setProperty("zhangsan","30");
+        // prop.setProperty("lisi","31");
+        // prop.setProperty("wangwu","36");
+        // prop.setProperty("zhaoliu","20");
+        prop = System.getProperties();
+        prop.list(System.out);
+    }
+    /*
+    * Properties集合的存和取。
+    */
+    public static void propertiesDemo(){
+        //创建一个Properties集合。
+        Properties prop = new Properties();
+        //存储元素。
+        prop.setProperty("zhangsan","30");
+        prop.setProperty("lisi","31");
+        prop.setProperty("wangwu","36");
+        prop.setProperty("zhaoliu","20");
+        //修改元素。
+        prop.setProperty("wangwu","26");
+        //取出所有元素。
+        Set<String> names = prop.stringPropertyNames();
+        for(String name : names){
+            String value = prop.getProperty(name);
+            System.out.println(name+":"+value);
+        }
+    }
+}
+```
+
+Demo 用Properties定义一个程序运行次数的程序：
+
+```java
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Properties;
+/*
+* 定义功能，获取一个应用程序运行的次数，如果超过5次，给出使用次数已到请注册的提示。并不要在运行
+程序。
+*
+* 思路：
+* 1，应该有计数器。
+* 每次程序启动都需要计数一次,并且是在原有的次数上进行计数。
+* 2，计数器就是一个变量。 突然冒出一想法，程序启动时候进行计数，计数器必须存在于内存并进行运算。
+* 可是程序一结束，计数器消失了。那么再次启动该程序，计数器又重新被初始化了。
+* 而我们需要多次启动同一个应用程序，使用的是同一个计数器。
+* 这就需要计数器的生命周期变长，从内存存储到硬盘文件中。
+*
+* 3,如何使用这个计数器呢？
+* 首先，程序启动时，应该先读取这个用于记录计数器信息的配置文件。
+* 获取上一次计数器次数。 并进行试用次数的判断。
+* 其次，对该次数进行自增，并自增后的次数重新存储到配置文件中。
+*
+*
+* 4，文件中的信息该如何进行存储并体现。
+* 直接存储次数值可以，但是不明确该数据的含义。 所以起名字就变得很重要。
+* 这就有了名字和值的对应，所以可以使用键值对。
+* 可是映射关系map集合搞定，又需要读取硬盘上的数据，所以 map+io = Properties.
+*/
+public class PropertiesTest {
+    /**
+* @param args
+* @throws IOException
+* @throws Exception
+*/
+    public static void main(String[] args) throws IOException {
+        getAppCount();
+    }
+    public static void getAppCount() throws IOException{
+        //将配置文件封装成File对象。
+        File confile = new File("count.properties");
+        if(!confile.exists()){
+            confile.createNewFile();
+        }
+        FileInputStream fis = new FileInputStream(confile);
+        Properties prop = new Properties();
+        prop.load(fis);
+        //从集合中通过键获取次数。
+        String value = prop.getProperty("time");
+        //定义计数器。记录获取到的次数。
+        int count =0;
+        if(value!=null){
+            count = Integer.parseInt(value);
+            if(count>=5){
+                // System.out.println("使用次数已到，请注册，给钱！ ");
+                // return;
+                throw new RuntimeException("使用次数已到，请注册，给钱！ ");
+            }
+        }
+        count++;
+        //将改变后的次数重新存储到集合中。
+        prop.setProperty("time", count+"");
+        FileOutputStream fos = new FileOutputStream(confile);
+        prop.store(fos, "");
+        fos.close();
+        fis.close();
+    }
+}
+```
+
+Demo 建立一个指定扩展名文件的列表：
+
+```java
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+/*
+* 获取指定目录下，指定扩展名的文件(包含子目录中的)
+* 这些文件的绝对路径写入到一个文本文件中。
+*
+* 简单说，就是建立一个指定扩展名的文件的列表。
+*
+* 思路：
+* 1，必须进行深度遍历。
+* 2，要在遍历的过程中进行过滤。将符合条件的内容都存储到容器中。
+* 3，对容器中的内容进行遍历并将绝对路径写入到文件中。
+*/
+public class Test {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        File dir = new File("e:\\java0331");
+        FilenameFilter filter = new FilenameFilter(){
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".java");
+            }
+        };
+        List<File> list = new ArrayList<File>();
+        getFiles(dir,filter,list);
+        File destFile = new File(dir,"javalist.txt");
+        write2File(list,destFile);
+    }
+    /**
+    * 对指定目录中的内容进行深度遍历，并按照指定过滤器，进行过滤，
+    * 将过滤后的内容存储到指定容器List中。
+    * @param dir
+    * @param filter
+    * @param list
+    */
+    public static void getFiles(File dir,FilenameFilter filter,List<File> list){
+        File[] files = dir.listFiles();
+        for(File file : files){
+            if(file.isDirectory()){
+                //递归啦！
+                getFiles(file,filter,list);
+            }else{
+                //对遍历到的文件进行过滤器的过滤。将符合条件File对象，存储到List集合中。
+                if(filter.accept(dir, file.getName())){
+                    list.add(file);
+                }
+            }
+        }
+    }
+    public static void write2File(List<File> list,File destFile)throws IOException{
+        BufferedWriter bufw = null;
+        try {
+            bufw = new BufferedWriter(new FileWriter(destFile));
+            for(File file : list){
+                bufw.write(file.getAbsolutePath());
+                bufw.newLine();
+                bufw.flush();
+            }
+        } /*catch(IOException e){
+        throw new RuntimeException("写入失败");
+        }*/finally{
+            if(bufw!=null)
+                try {
+                    bufw.close();
+                } catch (IOException e) {
+                    throw new RuntimeException("关闭失败");
+                }
+        }
+    }
+}
+```
+
+#### 打印流 
+
+PrintStream  PrintWriter
+
+```java
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
+public class PrintStreamDemo {
+    /**
+     * @param args
+     * @throws IOException
+     */
+    public static void main(String[] args) throws IOException {
+        /*
+         * PrintStream:
+         * 1,提供了打印方法可以对多种数据类型值进行打印。并保持数据的表示形式。
+         * 2，它不抛IOException.
+         *
+         * 构造函数，接收三种类型的值：
+         * 1，字符串路径。
+         * 2， File对象。
+         * 3，字节输出流。
+         */
+        PrintStream out = new PrintStream("print.txt");
+        // int by = read();
+        // write(by);
+        out.write(610); //只写最低8位，
+        out.print(97); //将97先变成字符保持原样将数据打印到目的地。
+        out.close();
+    }
+}
+```
+
+```java
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+public class PrintWriterDemo {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        /*
+        * PrintWriter：字符打印流。
+        * 构造函数参数：
+        * 1，字符串路径。
+        * 2， File对象。
+        * 3，字节输出流。
+        * 4，字符输出流。
+        *
+        */
+        BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter out = new PrintWriter(new FileWriter("out.txt"),true);
+        String line = null;
+        while((line=bufr.readLine())!=null){
+            if("over".equals(line))
+                break;
+            out.println(line.toUpperCase());
+            // out.flush();
+        }
+        out.close();
+        bufr.close();
+    }
+}
+```
+
+#### SequenceInputStream, Enumeration
+
+SequenceInputStream 接收一个枚举类型的对象
+
+```java
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.SequenceInputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Iterator;
+public class SequenceInputStreamDemo {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+    /*
+    * 需求：将1.txt 2.txt 3.txt文件中的数据合并到一个文件中。
+    */
+    // Vector<FileInputStream> v = new Vector<FileInputStream>();
+    // v.add(new FileInputStream("1.txt"));
+    // v.add(new FileInputStream("2.txt"));
+    // v.add(new FileInputStream("3.txt"));
+    // Enumeration<FileInputStream> en = v.elements();
+    ArrayList<FileInputStream> al = new ArrayList<FileInputStream>();
+    for(int x=1; x<=3; x++){
+        al.add(new FileInputStream(x+".txt"));
+    }
+    Enumeration<FileInputStream> en = Collections.enumeration(al);
+    /*
+    final Iterator<FileInputStream> it = al.iterator();
+    Enumeration<FileInputStream> en = new Enumeration<FileInputStream>(){
+    @Override
+    public boolean hasMoreElements() {
+    return it.hasNext();
+    }
+    @Override
+    public FileInputStream nextElement() {
+    return it.next();
+    }
+    };*/
+    SequenceInputStream sis = new SequenceInputStream(en);
+    FileOutputStream fos = new FileOutputStream("1234.txt");
+    byte[] buf = new byte[1024];
+    int len = 0;
+    while((len=sis.read(buf))!=-1){
+        fos.write(buf,0,len);
+    }
+    fos.close();
+    sis.close();
+}
+}
+```
+
+
+
+#### Demos
+
+**文件切割与合并**
+
+文件切割：
+
+```java
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Properties;
+/*
+* 文件切割器。
+*/
+public class SplitFileDemo {
+    
+    private static final int SIZE = 1024 * 1024;
+    /**
+    * @param args
+    * @throws Exception
+    */
+    public static void main(String[] args) throws Exception {
+        File file = new File("c:\\aa.mp3");
+        splitFile_2(file);
+    }
+    private static void splitFile_2(File file) throws IOException {
+        // 用读取流关联源文件。
+        FileInputStream fis = new FileInputStream(file);
+        // 定义一个1M的缓冲区。
+        byte[] buf = new byte[SIZE];
+        // 创建目的。245
+        FileOutputStream fos = null;
+        int len = 0;
+        int count = 1;
+        /*
+        * 切割文件时，必须记录住被切割文件的名称，以及切割出来碎片文件的个数。 以方便于合并。
+        * 这个信息为了进行描述，使用键值对的方式。用到了properties对象
+        *
+        */
+        Properties prop = new Properties();
+        File dir = new File("c:\\partfiles");
+        if (!dir.exists())
+            dir.mkdirs();
+        while ((len = fis.read(buf)) != -1) {
+            fos = new FileOutputStream(new File(dir, (count++) + ".part"));
+            fos.write(buf, 0, len);
+            fos.close();
+        }
+        //将被切割文件的信息保存到prop集合中。
+        prop.setProperty("partcount", count+"");
+        prop.setProperty("filename", file.getName());
+        fos = new FileOutputStream(new File(dir,count+".properties"));
+        //将prop集合中的数据存储到文件中。
+        prop.store(fos, "save file info");
+        fos.close();
+        fis.close();
+    }
+    public static void splitFile(File file) throws IOException {
+        // 用读取流关联源文件。
+        FileInputStream fis = new FileInputStream(file);
+        // 定义一个1M的缓冲区。
+        byte[] buf = new byte[SIZE];
+        // 创建目的。
+        FileOutputStream fos = null;
+        int len = 0;
+        int count = 1;
+        File dir = new File("c:\\partfiles");
+        if (!dir.exists())
+            dir.mkdirs();
+        while ((len = fis.read(buf)) != -1) {
+            fos = new FileOutputStream(new File(dir, (count++) + ".part"));
+            fos.write(buf, 0, len);
+        }
+        fos.close();
+        fis.close();
+    }
+}
+```
+
+文件合并：
+
+```java
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.SequenceInputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Properties;
+public class MergeFile {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        File dir = new File("c:\\partfiles");
+        mergeFile_2(dir);
+    }
+    public static void mergeFile_2(File dir) throws IOException {
+        /*
+        * 获取指定目录下的配置文件对象。
+        */
+        File[] files = dir.listFiles(new SuffixFilter(".properties"));
+        if(files.length!=1)
+            throw new RuntimeException(dir+",该目录下没有properties扩展名的文件或者不唯一");//记录配置文件对象。
+        File confile = files[0];
+        //获取该文件中的信息================================================。
+        Properties prop = new Properties();
+        FileInputStream fis = new FileInputStream(confile);
+        prop.load(fis);
+        String filename = prop.getProperty("filename");
+        int count = Integer.parseInt(prop.getProperty("partcount"));
+        //获取该目录下的所有碎片文件。 ==============================================
+        File[] partFiles = dir.listFiles(new SuffixFilter(".part"));
+        if(partFiles.length!=(count-1)){
+            throw new RuntimeException(" 碎片文件不符合要求，个数不对!应该"+count+"个");
+        }
+        //将碎片文件和流对象关联 并存储到集合中。
+        ArrayList<FileInputStream> al = new ArrayList<FileInputStream>();
+        for(int x=0; x<partFiles.length; x++){
+            al.add(new FileInputStream(partFiles[x]));
+        }
+        //将多个流合并成一个序列流。
+        Enumeration<FileInputStream> en = Collections.enumeration(al);
+        SequenceInputStream sis = new SequenceInputStream(en);
+        FileOutputStream fos = new FileOutputStream(new File(dir,filename));
+        byte[] buf = new byte[1024];
+        int len = 0;
+        while((len=sis.read(buf))!=-1){
+            fos.write(buf,0,len);
+        }
+        fos.close();
+        sis.close();
+    }
+    public static void mergeFile(File dir) throws IOException{
+        ArrayList<FileInputStream> al = new ArrayList<FileInputStream>();
+        for(int x=1; x<=3 ;x++){
+            al.add(new FileInputStream(new File(dir,x+".part")));
+        }
+        Enumeration<FileInputStream> en = Collections.enumeration(al);
+        SequenceInputStream sis = new SequenceInputStream(en);
+        FileOutputStream fos = new FileOutputStream(new File(dir,"1.bmp"));
+        byte[] buf = new byte[1024];
+        int len = 0;
+        while((len=sis.read(buf))!=-1){
+            fos.write(buf,0,len);
+        }
+        fos.close();
+        sis.close();
+    }
+}
+```
+
+#### Serializable, ObjectStream  
+
+序列化和反序列化。序列化：将对象存储到文件中。
+
+```java
+import java.io.Serializable;
+/*
+* Serializable:用于给被序列化的类加入ID号。
+* 用于判断类和对象是否是同一个版本。
+*/
+public class Person implements Serializable/*标记接口*/ {
+    /**
+    * transient:非静态数据不想被序列化可以使用这个关键字修饰。
+    */
+    private static final long serialVersionUID = 9527l;
+    private transient String name;
+    private static int age;
+    public Person(String name, int age) {
+        super();
+        this.name = name;
+        this.age = age;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+```
+
+```java
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import cn.itcast.io.p2.bean.Person;
+
+public class ObjectStreamDemo {
+    /**
+    * @param args
+    * @throws IOException
+    * @throws ClassNotFoundException
+    */
+    public static void main(String[] args) throws IOException, ClassNotFoundException
+    {
+        // writeObj();
+        readObj();
+    }
+    public static void readObj() throws IOException, ClassNotFoundException {
+        ObjectInputStream ois = new ObjectInputStream(new
+                                                      FileInputStream("obj.object"));
+        //对象的反序列化。
+        Person p = (Person)ois.readObject();
+        System.out.println(p.getName()+":"+p.getAge());
+        ois.close();
+    }
+    public static void writeObj() throws IOException, IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new
+                                                        FileOutputStream("obj.object"));
+        //对象序列化。 被序列化的对象必须实现Serializable接口。
+        oos.writeObject(new Person("小强",30));
+        oos.close();
+    }
+}
+```
+
+#### RandomAccessFile  
+
+#### PipedStream
+
+管道流
+
+```java
+import java.io.IOException;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
+public class PipedStream {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        PipedInputStream input = new PipedInputStream();
+        PipedOutputStream output = new PipedOutputStream();
+        input.connect(output);
+            new Thread(new Input(input)).start();
+        new Thread(new Output(output)).start();
+    }
+}
+class Input implements Runnable{
+    private PipedInputStream in;
+    Input(PipedInputStream in){
+        this.in = in;
+    }
+    public void run(){
+        try {
+            byte[] buf = new byte[1024];
+            int len = in.read(buf);
+            String s = new String(buf,0,len);
+            System.out.println("s="+s);
+            in.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+}
+class Output implements Runnable{
+    private PipedOutputStream out;
+    Output(PipedOutputStream out){
+        this.out = out;
+    }
+    public void run(){
+        try {
+            Thread.sleep(5000);
+            out.write("hi，管道来了！ ".getBytes());
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+}
+```
+
+#### DataStream
+
+```java
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+public class DataSteamDemo {
+    /**
+* @param args
+* @throws IOException
+*/
+    public static void main(String[] args) throws IOException {
+        // writeData();
+        readData();
+    }
+    public static void readData() throws IOException {
+        DataInputStream dis = new DataInputStream(new FileInputStream("data.txt"));
+        String str = dis.readUTF();
+        System.out.println(str);
+    }
+    public static void writeData() throws IOException {
+        DataOutputStream dos = new DataOutputStream(new
+                                                    FileOutputStream("data.txt"));
+        dos.writeUTF("你好");
+        dos.close();
+    }
+}
+```
+
+#### ByteArrayStream 
+
+字节数组流   
+
+```java
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+public class ByteArrayStreamDemo {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) {
+        ByteArrayInputStream bis = new ByteArrayInputStream("abcedf".getBytes());
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        int ch = 0;
+        while((ch=bis.read())!=-1){
+            bos.write(ch);
+        }
+        System.out.println(bos.toString());
+    }
+}
+```
+
+#### 编解码  
+
+编码：字符串 --> **字节数组**
+
+解码：**字节数组** --> 字符串
+
+```java
+package com.wansho.hellojava;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
+public class EncodeDemo {
+    /**
+     * @param args
+     * @throws IOException
+     */
+    public static void main(String[] args) throws IOException {
+        /*
+         * 字符串 --> 字节数组：编码。
+         * 字节数组 --> 字符串：解码。
+         *
+         * 你好： GBK: -60 -29 -70 -61
+         *
+         * 你好: utf-8: -28 -67 -96 -27 -91 -67
+         *
+         *
+         * 如果你编错了，解不出来。
+         * 如果编对了，解错了，有可能有救。
+         */
+        String str = "谢谢";
+        byte[] buf = str.getBytes("gbk"); // 编码
+        String s1 = new String(buf,"UTF-8"); // 解码，解错了
+        System.out.println("s1="+s1); // лл
+        byte[] buf2 = s1.getBytes("UTF-8");//获取源字节.
+        printBytes(buf2); // -17 -65 -67 -17 -65 -67 -17 -65 -67
+        // -17 -65 -67 -17 -65 -67 -17 -65 -67 -17 -65 -67
+        // -48 -69 -48 -69
+        String s2 = new String(buf2,"GBK"); // 解码，解对了
+        System.out.println("s2="+s2);
+        // encodeDemo(str);
+    }
+    /**
+     * @param str
+     * @throws UnsupportedEncodingException
+     */
+    public static void encodeDemo(String str)
+            throws UnsupportedEncodingException {
+        //编码；
+        byte[] buf = str.getBytes("UTF-8");
+        // printBytes(buf);
+        //解码：
+        String s1 = new String(buf,"UTF-8");
+        System.out.println("s1="+s1);
+    }
+    private static void printBytes(byte[] buf) {
+        for(byte b : buf){
+            System.out.print(b +" ");
+        }
+    }
+}
+```
+
+### 总结
+
+```
+IO流：
+输入流：
+输出流：
+字节流：
+字符流：
+	为了处理文字数据方便而出现的对象。
+    其实这些对象的内部使用的还是字节流(因为文字最终也是字节数据)
+    只不过，通过字节流读取了相对应的字节数，没有对这些字节直接操作。
+    而是去查了指定的(本机默认的)编码表，获取到了对应的文字。
+    简单说：字符流就是 ： 字节流+编码表。
+--------------------------------------------------------------------------------
+缓冲区：
+	提高效率的，提高谁的效率？提高流的操作数据的效率。
+	所以创建缓冲区之前必须先有流。
+	缓冲区的基本思想：其实就是定义容器将数据进行临时存储。
+	对于缓冲区对象，其实就是将这个容器进行了封装，并提供了更多高效的操作方法。
+	缓冲区可以提高流的操作效率。
+	其实是使用了一种设计思想完成。设计模式：装饰设计模式。
+	
+缓冲区的设计原理，装饰设计模式的由来：
+    Writer
+        |--TextWriter
+        |--MediaWriter
+    现在要对该体系中的对象进行功能的增强。增强的最常见手段就是缓冲区。
+    先将数据写到缓冲区中，再将缓冲区中的数据一次性写到目的地。
+    按照之前学习过的基本的思想，那就是对对象中的写方法进行覆盖。
+    产生已有的对象子类，复写write方法。不往目的地写，而是往缓冲区写。
+    所以这个体系会变成这样。
+    Writer
+    |--TextWriter write:往目的地
+    |--BufferTextWriter write：往缓冲区写
+    |--MediaWriter
+    |--BufferMediaWriter
+    想要写一些其他数据。就会子类。 DataWriter，为了提高其效率，还要创建该类的子类。 BufferDataWriter
+    Writer
+    |--TextWriter write:往目的地
+    |--BufferTextWriter write：往缓冲区写
+    |--MediaWriter
+    |--BufferMediaWriter
+    |--DataWriter
+    |--BufferDataWriter
+    发现这个体系相当的麻烦。每产生一个子类都要有一个高效的子类。
+    而且这写高效的子类使用的功能原理都一样，都是缓冲区原理。无论数据是什么。
+    都是通过缓冲区临时存储提高效率的。
+    那么， 对于这个体系就可以进行优化，因为没有必要让每一个对象都具备相同功能的子类。
+    哪个对象想要进行效率的提高，只要让缓冲区对其操作即可。也就说，单独将缓冲区进行封装变成对象。
+    //它的出现为了提高对象的效率。所以必须在创建它的时候先有需要被提高效率的对象
+    class BufferWriter
+    {
+    [];
+    BufferedWriter(Writer w)
+    { }
+    /*
+    BufferWriter(TextWriter w)
+    { }
+    BufferedWriter(MediaWriter w)
+    { }
+    */
+    }
+    BufferWriter的出现增强了Writer中的write方法。
+    但是增强过后， BufferWriter对外提供的还是write方法。只不过是高效的。
+    所以写的实质没有变，那么BufferWriter也是Writer中的一员。
+    所以体系就会变成这样。
+    Writer
+    |--TextWriter
+    |--MediaWriter
+    |--BufferWriter
+    |--DataWriter
+    BufferWriter出现了避免了继承体系关系的臃肿，比继承更为灵活。
+    如果是为了增强功能，这样方式解决起来更为方便。
+    所以就把这种优化，总结出来，起个名字：装饰设计模式。
+    装饰类和被装饰类肯定所属于同一个体系。
+    既然明确了BufferedReader由来。
+    我们也可以独立完成缓冲区的建立
+    原理；
+    1，使用流的read方法从源中读取一批数据存储到缓冲区的数组中。
+    2，通过计数器记录住存储的元素个数。
+    3，通过数组的角标来获取数组中的元素(从缓冲区中取数据).
+    4，指针会不断的自增，当增到数组长度，会归0.计数器会自减，当减到0时，就在从源拿一批数据进缓冲区。
+    
+内容补足：
+MyBufferedReader
+LineNumberReader ：可以定义行号。
+
+--------------------------------------------------------------------------------
+字符流：
+    FileReader
+    FileWriter
+    BufferedReader
+    BufferedWriter
+    
+字节流：
+	InputStream OutputStream
+	
+操作文件的字节流对象
+    FileOutputStream
+    FileInputStream
+    BufferedOutputStream
+    BufferedInputStream
+
+--------------------------------------------------------------------------------
+转换流：
+InputStreamReader isr = new InputStreamReader(new FileInputStream("a.txt"));
+InputStreamReader isr = new InputStreamReader(new FileInputStream("a.txt"),"gbk");
+FileReader fr = new FileReader("a.txt");
+FileWriter fw = new FileWriter("b.txt");
+OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("b.txt"));
+OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("b.txt"),"gbk");
+
+转换流：字节流+编码表。
+转换流的子类： FileReader， FileWriter：字节流+本地默认码表(GBK)。
+如果操作文本文件使用的本地默认编码表完成编码。可以使用FileReader，或者FileWriter。因为这样写简
+便。
+如果对操作的文本文件需要使用指定编码表进行编解码操作，这时必须使用转换流来完成。
+
+--------------------------------------------------------------------------------
+IO流的操作规律总结：
+1，明确体系：
+数据源： InputStream ， Reader
+数据汇： OutputStream， Writer
+2，明确数据：因为数据分两种：字节，字符。
+数据源：是否是纯文本数据呢？
+是： Reader
+否： InputStream
+数据汇：
+是： Writer
+否： OutputStream
+到这里就可以明确具体要使用哪一个体系了。
+剩下的就是要明确使用这个体系中的哪个对象。
+3，明确设备：
+数据源：
+键盘： System.in
+硬盘： FileXXX
+内存：数组。
+网络： socket socket.getInputStream();
+数据汇：
+控制台： System.out
+硬盘： FileXXX
+内存：数组
+网络： socket socket.getOutputStream();
+4，明确额外功能：
+1，需要转换？是，使用转换流。 InputStreamReader OutputStreamWriter
+2，需要高效？是，使用缓冲区。 Buffered
+3，需要其他？
+--------------------------------------------------------------------------------
+1，复制一个文本文件。
+1，明确体系：
+源： InputStream ， Reader
+目的： OutputStream ， Writer
+2，明确数据：
+源：是纯文本吗？是 Reader
+目的；是纯文本吗？是 Writer
+3，明确设备：
+源：硬盘上的一个文件。 FileReader
+目的：硬盘上的一个文件。 FileWriter269
+FileReader fr = new FileReader("a.txt");
+FileWriter fw = new FileWriter("b.txt");
+4，需要额外功能吗？
+需要，高效，使用buffer
+BufferedReader bufr = new BufferedReader(new FileReader("a.txt"));
+BufferedWriter bufw = new BufferedWriter(new FileWriter("b.txt"));
+2，读取键盘录入，将数据存储到一个文件中。
+1，明确体系：
+源： InputStream ， Reader
+目的： OutputStream ， Writer
+2，明确数据：
+源：是纯文本吗？是 Reader
+目的；是纯文本吗？是 Writer
+3，明确设备：
+源：键盘， System.in
+目的：硬盘， FileWriter
+InputStream in = System.in;
+FileWriter fw = new FileWriter("a.txt");
+4，需要额外功能吗？
+需要，因为源明确的体系时Reader。可是源的设备是System.in。
+所以为了方便于操作文本数据，将源转成字符流。需要转换流。 InputStreamReader
+InputStreamReader isr = new InputStreamReader(System.in);
+FileWriter fw = new FileWriter("a.txt");
+需要高效不?需要。 Buffer
+BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));
+BufferedWriter bufw = new BufferedWriter(new FileWriter("a.txt"));
+3，读取一个文本文件，将数据展现在控制台上。
+1，明确体系：
+源： InputStream ， Reader
+目的： OutputStream ， Writer
+2，明确数据：
+源：是纯文本吗？是 Reader
+目的；是纯文本吗？是 Writer
+3，明确设备：
+源：硬盘文件， FileReader。
+目的：控制台： System.out。
+FileReader fr = new FileReader("a.txt");
+OutputStream out = System.out;
+4，需要额外功能？
+因为源是文本数据，确定是Writer体系。所以为了方便操作字符数据，
+需要使用字符流，但是目的又是一个字节输出流。
+需要一个转换流， OutputStreamWriter
+FileReader fr = new FileReader("a.txt");270
+OutputStreamWriter osw = new OutputStreamWriter(System.out);
+需要高效吗？需要。
+BufferedReader bufr = new BufferedReader(new FileReader("a.txt"));
+BufferedWriter bufw = new BufferedWriter(new
+OutputStreamWriter(System.out));
+4，读取键盘录入，将数据展现在控制台上。
+1，明确体系：
+源： InputStream ， Reader
+目的： OutputStream ， Writer
+2，明确数据：
+源：是纯文本吗？是 Reader
+目的；是纯文本吗？是 Writer
+3，明确设备：
+源：键盘： System.in
+目的：控制台： System.out
+InputStream in = System.in;
+OutputStream out = System.out;
+4，需要额外功能吗？
+因为处理的数据是文本数据，同时确定是字符流体系。
+为方便操作字符数据的可以将源和目的都转成字符流。使用转换流。
+为了提高效率，使用Buffer
+BufferedReader bufr =new BufferedReader(new
+InputStreamReader(Systme.in));
+BufferedWriter bufw = new BufferedWriter(new
+OutputStreamWriter(System.out));
+5，读取一个文本文件，将文件按照指定的编码表UTF-8进行存储，保存到另一个文件中。
+1，明确体系：
+源： InputStream ， Reader
+目的： OutputStream ， Writer
+2，明确数据：
+源：是纯文本吗？是 Reader
+目的；是纯文本吗？是 Writer
+3，明确设备：
+源：硬盘： FileReader.
+目的：硬盘： FileWriter
+FileReader fr = new FileReader("a.txt");
+FileWriter fw = new FileWriter("b.txt");
+4，额外功能：
+注意：目的中虽然是一个文件，但是需要指定编码表。
+而直接操作文本文件的FileWriter本身内置的是本地默认码表。无法明确具体指定码表。271
+这时就需要转换功能。 OutputStreamWriter,而这个转换流需要接受一个字节输出流，而且
+对应的目的是一个文件。这时就使用字节输出流中的操作文件的流对象。 FileOutputStream.
+FileReader fr = new FileReader("a.txt");
+OutputStreamWriter osw = new OutputStreamWriter(new
+FileOutputStream("b.txt"),"UTF-8");
+需要高效吗？
+BufferedReader bufr = new BufferedReader(new FileReader("a.txt"));
+BufferedWriter bufw =
+new BufferedWriter(new OutputStreamWriter(new
+FileOutputStream("b.txt"),"UTF-8"));
+目前为止， 10个流对象重点掌握。
+字符流：
+FileReader
+FileWriter
+BufferedReader
+BufferedWriter
+InputStreamReader
+OutputStreamWrier
+字节流：
+FileInputStream
+FileOutputStream
+BufferedInputStream
+BufferedOutputStream
+
+--------------------------------------------------------------------------------
+File类：
+用于将文件和文件夹封装成对象。
+1，创建。
+boolean createNewFile():如果该文件不存在，会创建，如果已存在，则不创建。不会像输出流
+一样会覆盖。
+boolean mkdir();
+boolean mkdirs();
+2，删除。
+boolean delete();
+void deleteOnExit();
+3，获取：
+String getAbsolutePath();
+String getPath();
+String getParent();
+String getName();
+long length();
+long lastModified();
+4，判断：
+boolean exists();
+boolean isFile();
+boolean isDirectory();
+5，
+
+--------------------------------------------------------------------------------
+IO中的其他功能流对象：
+
+打印流：
+    PrintStream：字节打印流。
+    特点：
+    1，构造函数接收File对象，字符串路径，字节输出流。意味着打印目的可以有很多。
+    2，该对象具备特有的方法 打印方法 print println,可以打印任何类型的数据。
+    3，特有的print方法可以保持任意类型数据表现形式的原样性，将数据输出到目的地。
+    对于OutputStream父类中的write，是将数据的最低字节写出去。
+    PrintWriter：字符打印流。
+    特点：
+    1，当操作的数据是字符时，可以选择PrintWriter，比PrintStream要方便。
+    2，它的构造函数可以接收 File对象，字符串路径，字节输出流，字符输出流。
+    3，构造函数中，如果参数是输出流，那么可以通过指定另一个参数true完成自动刷新，该true对
+    println方法有效。
+    什么时候用？
+    当需要保证数据表现的原样性时，就可以使用打印流的打印方法来完成，这样更为方便。
+    保证原样性的原理：其实就是将数据变成字符串，在进行写入操作
+    
+SequenceInputStream:
+    特点：
+    1，将多个字节读取流和并成一个读取流，将多个源合并成一个源，操作起来方便。
+    2，需要的枚举接口可以通过Collections.enumeration(collection);
+    
+ObjectInputStream 和 ObjectOutputStream
+    对象的序列化和反序列化。
+    writeObject readObject273
+    Serializable标记接口
+    关键字： transient
+    
+RandomAccessFile:
+    特点：
+    1，即可读取，又可以写入。
+    2，内部维护了一个大型的byte数组，通过对数组的操作完成读取和写入。
+    3，通过getFilePointer方法获取指针的位置，还可以通过seek方法设置指针的位置。
+    4，该对象的内容应该封装了字节输入流和字节输出流。
+    5，该对象只能操作文件。
+    通过seek方法操作指针，可以从这个数组中的任意位置上进行读和写
+    可以完成对数据的修改。
+    但是要注意：数据必须有规律。
+    
+管道流：需要和多线程技术相结合的流对象。
+    PipedOutputStream
+    PipedInputStream
+    
+用操作基本数据类型值的对象：
+    DataInputStream
+    DataOutputStream
+    
+设备是内存的流对象。
+    ByteArrayInputStream ByteArrayOutputStream
+    CharArrayReader CharArrayWriter
+    
+--------------------------------------------------------------------------------
+IO流体系：
+
+字符流：
+Reader
+    |--BufferedReader:
+    |--LineNumberReader
+    |--CharArrayReader
+    |--StringReader
+    |--InputStreamReaer
+    |--FileReader
+Writer
+    |--BufferedWriter
+    |--CharArrayWriter
+    |--StringWriter
+    |--OutputStreamWriter
+    |--FileWriter
+    |--PrintWriter
+    
+字节流：
+InputStream
+    |--FileInputStream:
+    |--FilterInputStream
+    |--BufferedInputStream
+    |--DataInputStream
+    |--ByteArrayInputStream
+    |--ObjectInputStream
+    |--SequenceInputStream
+    |--PipedInputStream
+OutputStream
+    |--FileOutputStream
+    |--FilterOutputStream
+    |--BufferedOutputStream
+    |--DataOutputStream
+    |--ByteArrayOutputStream
+    |--ObjectOutputStream
+    |--PipedOutputStream
+    |--PrintStream
+```
+
+
+
+## 网络编程
+
+### IP
+
+```java
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+public class IPDemo {
+    /**
+     * @param args
+     * @throws UnknownHostException
+     */
+    public static void main(String[] args) throws UnknownHostException {
+        //获取本地主机ip地址对象。
+        InetAddress ip = InetAddress.getLocalHost();
+        //获取其他主机的ip地址对象。
+        //ip = InetAddress.getByName("220.181.38.150");
+        //InetAddress.getByName("my_think");
+        System.out.println(ip.getHostAddress()); // 获取 IP 地址
+        System.out.println(ip.getHostName()); // 获取域名
+    }
+}
+```
+
+### UDP
+
+**send**
+
+```java
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+public class UDPSendDemo {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        System.out.println("发送端启动......");
+        /*
+        * 创建UDP传输的发送端。
+        * 思路：
+        * 1，建立udp的socket服务。
+        * 2，将要发送的数据封装到数据包中。
+        * 3，通过udp的socket服务将数据包发送出去。
+        * 4，关闭socket服务。
+        */
+        //1, udpsocket服务。使用DatagramSocket对象。
+        DatagramSocket ds = new DatagramSocket(8888);
+        //2, 将要发送的数据封装到数据包中。
+        String str = "udp传输演示：哥们来了！ ";
+        // 使用DatagramPacket将数据封装到的该对象包中。
+        byte[] buf = str.getBytes();
+        DatagramPacket dp = new
+            DatagramPacket(buf,buf.length,InetAddress.getByName("192.168.1.100"),10000);
+        //3，通过udp的socket服务将数据包发送出去。使用send方法。
+        ds.send(dp);
+        //4，关闭资源。
+        ds.close();
+    }
+}
+```
+
+**receive**
+
+```java
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+public class UDPReceDemo {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        System.out.println("接收端启动......");
+        /*
+        * 建立UDP接收端的思路。
+        * 1，建立udp socket服务,因为是要接收数据，必须要明确一个端口号。
+        * 2，创建数据包，用于存储接收到的数据。方便用数据包对象的方法解析这些数据.
+        * 3，使用socket服务的receive方法将接收的数据存储到数据包中。
+        * 4，通过数据包的方法解析数据包中的数据。
+        * 5，关闭资源
+        */
+        //1,建立udp socket服务。
+        DatagramSocket ds = new DatagramSocket(10000);
+        //2,创建数据包。
+        byte[] buf = new byte[1024];
+        DatagramPacket dp = new DatagramPacket(buf,buf.length);
+        //3,使用接收方法将数据存储到数据包中。
+        ds.receive(dp);//阻塞式的。
+        //4，通过数据包对象的方法，解析其中的数据,比如，地址，端口，数据内容。
+        String ip = dp.getAddress().getHostAddress();
+        int port = dp.getPort();
+        String text = new String(dp.getData(),0,dp.getLength());
+        System.out.println(ip+":"+port+":"+text);
+        //5,关闭资源。
+        ds.close();
+    }
+}
+```
+
+**交互**
+
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+public class UDPSendDemo2 {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        System.out.println("发送端启动......");
+        /*
+        * 创建UDP传输的发送端。
+        * 思路：
+        * 1，建立udp的socket服务。
+        * 2，将要发送的数据封装到数据包中。
+        * 3，通过udp的socket服务将数据包发送出去。
+        * 4，关闭socket服务。
+        */
+        //1,udpsocket服务。使用DatagramSocket对象。
+        DatagramSocket ds = new DatagramSocket(8888);
+        // String str = "udp传输演示：哥们来了！ ";
+        BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));
+        String line = null;
+        while((line=bufr.readLine())!=null){
+            byte[] buf = line.getBytes();
+            DatagramPacket dp =
+                new
+                DatagramPacket(buf,buf.length,InetAddress.getByName("192.168.1.100"),10000);
+            ds.send(dp);
+            if("886".equals(line))
+                break;
+        }
+        //4，关闭资源。
+        ds.close();
+    }
+}
+
+//（信息接收端）
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+public class UDPReceDemo2 {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        System.out.println("接收端启动......");
+        /*
+        * 建立UDP接收端的思路。
+        * 1，建立udp socket服务,因为是要接收数据，必须要明确一个端口号。
+        * 2，创建数据包，用于存储接收到的数据。方便用数据包对象的方法解析这些数据.
+        * 3，使用socket服务的receive方法将接收的数据存储到数据包中。
+        * 4，通过数据包的方法解析数据包中的数据。
+        * 5，关闭资源
+        */
+        //1,建立udp socket服务。
+        DatagramSocket ds = new DatagramSocket(10000);
+        while(true){
+            //2,创建数据包。
+            byte[] buf = new byte[1024];
+            DatagramPacket dp = new DatagramPacket(buf,buf.length);
+            //3,使用接收方法将数据存储到数据包中。
+            ds.receive(dp);//阻塞式的。
+            //4，通过数据包对象的方法，解析其中的数据,比如，地址，端口，数据内容。
+            String ip = dp.getAddress().getHostAddress();
+            int port = dp.getPort();
+            String text = new String(dp.getData(),0,dp.getLength());
+            System.out.println(ip+":"+port+":"+text);
+        }
+        //5,关闭资源。
+        // ds.close();
+    }
+}
+```
+
+**UDP 聊天程序，多线程**
+
+```java
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+public class Send implements Runnable {
+    private DatagramSocket ds;
+    public Send(DatagramSocket ds){
+        this.ds = ds;
+    }
+    @Override
+    public void run() {
+        try {
+            BufferedReader bufr = new BufferedReader(new
+                                                     InputStreamReader(System.in));
+            String line = null;
+            while((line=bufr.readLine())!=null){
+                byte[] buf = line.getBytes();
+                DatagramPacket dp =
+                    new
+                    DatagramPacket(buf,buf.length,InetAddress.getByName("192.168.1.255"),10001);
+                ds.send(dp);
+                if("886".equals(line))
+                    break;
+            }
+            ds.close();
+        } catch (Exception e) {
+        }
+    }
+}
+//（接收端）
+package cn.itcast.net.p3.chat;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+public class Rece implements Runnable {
+    private DatagramSocket ds;
+    public Rece(DatagramSocket ds) {
+        this.ds = ds;
+    }
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                // 2,创建数据包。
+                byte[] buf = new byte[1024];
+                DatagramPacket dp = new DatagramPacket(buf, buf.length);
+                // 3,使用接收方法将数据存储到数据包中。
+                ds.receive(dp);// 阻塞式的。
+                // 4，通过数据包对象的方法，解析其中的数据,比如，地址，端口，数据内容。
+                String ip = dp.getAddress().getHostAddress();
+                int port = dp.getPort();
+                String text = new String(dp.getData(), 0, dp.getLength());
+                System.out.println(ip + "::" + text);
+                if(text.equals("886")){
+                    System.out.println(ip+"....退出聊天室");
+                }
+            }
+        } catch (Exception e) {
+        }
+    }
+}
+
+// 开启发送和接收两个线程开始运行聊天
+import java.io.IOException;
+import java.net.DatagramSocket;
+import java.net.SocketException;
+public class ChatDemo {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        DatagramSocket send = new DatagramSocket();
+        DatagramSocket rece = new DatagramSocket(10001);
+        new Thread(new Send(send)).start();
+        new Thread(new Rece(rece)).start();
+    }
+}
+```
+
+
+
+### TCP
+
+**客户端**
+
+```java
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+public class ClientDemo {
+    /**
+    * @param args
+    * @throws IOException
+    * @throws UnknownHostException
+    */
+    public static void main(String[] args) throws UnknownHostException, IOException
+    {
+        //客户端发数据到服务端
+        /*
+        * Tcp传输，客户端建立的过程。
+        * 1，创建tcp客户端socket服务。使用的是Socket对象。
+        * 建议该对象一创建就明确目的地。要连接的主机。
+        * 2，如果连接建立成功，说明数据传输通道已建立。
+        * 该通道就是socket流 ,是底层建立好的。 既然是流，说明这里既有输入，又有输出。
+        * 想要输入或者输出流对象，可以找Socket来获取。
+        * 可以通过getOutputStream(),和getInputStream()来获取两个字节流。
+        * 3，使用输出流，将数据写出。
+        * 4，关闭资源。
+        */
+        //创建客户端socket服务。
+        Socket socket = new Socket("192.168.1.100",10002);
+        //获取socket流中的输出流。
+        OutputStream out = socket.getOutputStream();
+        //使用输出流将指定的数据写出去。
+        out.write("tcp演示：哥们又来了!".getBytes());
+        //关闭资源。
+        socket.close();
+    }
+}
+```
+
+
+
+**服务端**
+
+```java
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+public class ServerDemo {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        // 服务端接收客户端发送过来的数据，并打印在控制台上。
+        /*
+        * 建立tcp服务端的思路：
+        * 1，创建服务端socket服务。通过ServerSocket对象。
+        * 2，服务端必须对外提供一个端口，否则客户端无法连接。
+        * 3，获取连接过来的客户端对象。
+        * 4，通过客户端对象获取socket流读取客户端发来的数据
+        * 并打印在控制台上。
+        * 5，关闭资源。关客户端，关服务端。
+        */
+        //1创建服务端对象。
+        ServerSocket ss = new ServerSocket(10002);
+        //2,获取连接过来的客户端对象。
+        Socket s = ss.accept();//阻塞式.
+        String ip = s.getInetAddress().getHostAddress();
+        //3，通过socket对象获取输入流，要读取客户端发来的数据
+        InputStream in = s.getInputStream();
+        byte[] buf = new byte[1024];
+        int len = in.read(buf);
+        String text = new String(buf,0,len);
+        System.out.println(ip+":"+text);
+        s.close();
+        ss.close();
+    }
+}
+```
+
+**交互**
+
+```java
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+public class ClientDemo2 {
+    /**
+    * @param args
+    * @throws IOException
+    * @throws UnknownHostException
+    */
+    public static void main(String[] args) throws UnknownHostException, IOException
+    {
+        //客户端发数据到服务端
+        /*
+        * Tcp传输，客户端建立的过程。
+        * 1，创建tcp客户端socket服务。使用的是Socket对象。
+        * 建议该对象一创建就明确目的地。要连接的主机。
+        * 2，如果连接建立成功，说明数据传输通道已建立。
+        * 该通道就是socket流 ,是底层建立好的。 既然是流，说明这里既有输入，又有输出。
+        * 想要输入或者输出流对象，可以找Socket来获取。
+        * 可以通过getOutputStream(),和getInputStream()来获取两个字节流。
+        * 3，使用输出流，将数据写出。
+        * 4，关闭资源。
+        */
+        Socket socket = new Socket("192.168.1.100", 10002);
+        OutputStream out = socket.getOutputStream();
+        out.write("tcp演示：哥们又来了!".getBytes());
+        // 读取服务端返回的数据,使用 socket 读取流。
+        InputStream in = socket.getInputStream();
+        byte[] buf = new byte[1024];
+        int len = in.read(buf);
+        String text = new String(buf,0,len);
+        System.out.println(text);
+        //关闭资源。
+        socket.close();
+    }
+}
+//（服务端）
+package cn.itcast.net.p4.tcp;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+public class ServerDemo2 {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        // 服务端接收客户端发送过来的数据，并打印在控制台上。
+        /*
+        * 建立tcp服务端的思路：
+        * 1，创建服务端socket服务。通过ServerSocket对象。
+        * 2，服务端必须对外提供一个端口，否则客户端无法连接。
+        * 3，获取连接过来的客户端对象。
+        * 4，通过客户端对象获取socket流读取客户端发来的数据
+        * 并打印在控制台上。
+        * 5，关闭资源。关客户端，关服务端。
+        */
+        //1创建服务端对象。
+        ServerSocket ss = new ServerSocket(10002);
+        //2,获取连接过来的客户端对象。
+        Socket s = ss.accept();
+        String ip = s.getInetAddress().getHostAddress();
+        //3，通过socket对象获取输入流，要读取客户端发来的数据
+        InputStream in = s.getInputStream();
+        byte[] buf = new byte[1024];
+        int len = in.read(buf);
+        String text = new String(buf,0,len);
+        System.out.println(ip+":"+text);
+        //使用客户端socket对象的输出流给客户端返回数据
+        OutputStream out = s.getOutputStream();
+        out.write("收到".getBytes());
+        s.close();
+        ss.close();
+    }
+}
+```
+
+**TCP创建一个英文大写服务器  **
+
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
+public class TransClient {
+    /**
+    * @param args
+    * @throws IOException
+    * @throws UnknownHostException
+    */
+    public static void main(String[] args) throws UnknownHostException, IOException
+    {
+        /*
+        * 思路：
+        * 客户端：
+        * 1，需要先有socket端点。
+        * 2，客户端的数据源：键盘。
+        * 3，客户端的目的： socket.
+        * 4，接收服务端的数据，源： socket。
+        * 5，将数据显示在打印出来：目的：控制台.
+        * 6，在这些流中操作的数据，都是文本数据。
+        * 转换客户端:
+        * 1,创建socket客户端对象。
+        * 2,获取键盘录入。
+        * 3，将录入的信息发送给socket输出流。
+        */
+        //1,创建socket客户端对象。
+        Socket s = new Socket("192.168.1.100",10004);
+        //2，获取键盘录入。
+        BufferedReader bufr =
+            new BufferedReader(new InputStreamReader(System.in));
+        //3,socket输出流。
+        // new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+        PrintWriter out = new PrintWriter(s.getOutputStream(),true);
+        //4,socket输入流，读取服务端返回的大写数据
+        BufferedReader bufIn = new BufferedReader(new
+                                                  InputStreamReader(s.getInputStream()));
+        String line = null;
+        while((line=bufr.readLine())!=null){
+            if("over".equals(line))
+                break;
+            // out.print(line+"\r\n");
+            // out.flush();
+            out.println(line);
+            //读取服务端发回的一行大写数。
+            String upperStr = bufIn.readLine();
+            System.out.println(upperStr);
+        }
+        s.close();
+    }
+}
+
+//（服务端）
+package cn.itcast.net.p5.tcptest;
+import java.io.BufferedReader;292
+    import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+public class TransServer {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        /*
+        * 转换服务端。
+        * 分析：
+        * 1， serversocket服务。
+        * 2，获取socket对象。
+        * 3，源： socket，读取客户端发过来的需要转换的数据。
+        * 4，目的：显示在控制台上。
+        * 5，将数据转成大写发给客户端。
+        */
+        //1,
+        ServerSocket ss = new ServerSocket(10004);
+        //2,获取socket对象。
+        Socket s = ss.accept();
+        //获取ip.
+        String ip = s.getInetAddress().getHostAddress();
+        System.out.println(ip+"......connected");
+        //3,获取socket读取流，并装饰。
+        BufferedReader bufIn = new BufferedReader(new
+                                                  InputStreamReader(s.getInputStream()));
+        //4,获取socket的输出流，并装饰。
+        PrintWriter out = new PrintWriter(s.getOutputStream(),true);
+        String line = null;
+        while((line=bufIn.readLine())!=null){
+            System.out.println(line);
+            out.println(line.toUpperCase());
+            // out.print(line.toUpperCase()+"\r\n");
+            // out.flush();
+        }
+        s.close();
+        ss.close();
+    }
+}
+```
+
+**上传图片**
+
+```java
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+
+public class UploadTask implements Runnable {
+    private static final int SIZE = 1024*1024*2;
+    private Socket s;
+    public UploadTask(Socket s) {
+        this.s = s;
+    }
+    @Override
+    public void run() {
+        int count = 0;
+        String ip = s.getInetAddress().getHostAddress();
+        System.out.println(ip + ".....connected");
+        try{
+            // 读取客户端发来的数据。
+            InputStream in = s.getInputStream();
+            // 将读取到数据存储到一个文件中。
+            File dir = new File("c:\\pic");
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            File file = new File(dir, ip + ".jpg");
+            //如果文件已经存在于服务端
+            while(file.exists()){
+                file = new File(dir,ip+"("+(++count)+").jpg");
+            }
+            FileOutputStream fos = new FileOutputStream(file);
+            byte[] buf = new byte[1024];
+            int len = 0;
+            while ((len = in.read(buf)) != -1) {
+                fos.write(buf, 0, len);
+                if(file.length()>SIZE){
+                    System.out.println(ip+"文件体积过大");
+                    fos.close();
+                    s.close();
+                    System.out.println(ip+"...."+file.delete());
+                    return ;
+                }
+            }
+            // 获取socket输出流， 将上传成功字样发给客户端。
+            OutputStream out = s.getOutputStream();
+            out.write("上传成功".getBytes());
+            fos.close();
+            s.close();
+        }catch(IOException e){
+        }
+    }
+}
+//（上传的客户端）
+package cn.itcast.net.p1.uploadpic;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+public class UploadPicClient {
+    /**
+    * @param args
+    * @throws IOException
+    * @throws UnknownHostException
+    */
+    public static void main(String[] args) throws UnknownHostException, IOException
+    {
+        //1,创建客户端socket。
+        Socket s = new Socket("192.168.1.100",10006);
+        //2,读取客户端要上传的图片文件。
+        FileInputStream fis = new FileInputStream("c:\\0.bmp");
+        //3,获取socket输出流，将读到图片数据发送给服务端。
+        OutputStream out = s.getOutputStream();
+        byte[] buf = new byte[1024];
+        int len = 0;
+        while((len=fis.read(buf))!=-1){
+            out.write(buf,0,len);
+        }
+        //告诉服务端说：这边的数据发送完毕。让服务端停止读取。
+        s.shutdownOutput();
+        //读取服务端发回的内容。
+        InputStream in = s.getInputStream();
+        byte[] bufIn = new byte[1024];
+        int lenIn = in.read(buf);
+        String text = new String(buf,0,lenIn);
+        System.out.println(text);
+        fis.close();
+        s.close();
+    }
+}
+//（上传的服务端）
+package cn.itcast.net.p1.uploadpic;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+public class UploadPicServer {
+    /**
+    * @param args
+    * @throws IOException
+    */
+    public static void main(String[] args) throws IOException {
+        //创建tcp的socket服务端。
+        ServerSocket ss = new ServerSocket(10006);
+        while(true){
+            Socket s = ss.accept();
+            new Thread(new UploadTask(s)).start();
+        }
+        //获取客户端。
+        // ss.close();
+    }
+}
+```
+
+**网络编程小结**
+
+```
+最常见的客户端：
+浏览器 ： IE。
+最常见的服务端：
+服务器： Tomcat。
+为了了解其原理：
+自定义服务端，使用已有的客户端IE，了解一下客户端给服务端发了什么请求？
+发送的请求是：
+GET / HTTP/1.1 请求行 请求方式 /myweb/1.html 请求的资源路径 http协议版本。
+请求消息头 . 属性名：属性值
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg,
+application/x-shockwave-flash,
+application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*
+Accept: */*
+Accept-Language: zh-cn,zu;q=0.5
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; InfoPath.2)
+Host: 192.168.1.100:9090
+//Host: www.huyouni.com:9090
+Connection: Keep-Alive
+//空行
+//请求体。
+//服务端发回应答消息。
+HTTP/1.1 200 OK //应答行， http的协议版本 应答状态码 应答状态描述信息
+应答消息属性信息。 属性名：属性值
+Server: Apache-Coyote/1.1
+ETag: W/"199-1323480176984"
+Last-Modified: Sat, 10 Dec 2011 01:22:56 GMT
+Content-Type: text/html
+Content-Length: 199
+Date: Fri, 11 May 2012 07:51:39 GMT
+Connection: close
+//空行
+//应答体。
+<html>303
+<head>
+<title>这是我的网页</title>
+</head>
+<body>
+<h1>欢迎光临</h1>
+<font size='5' color="red">这是一个tomcat服务器中的资源。是一个html网页。 </font>
+</body>
+</html>
+--------------------------------------------------------------------------------
+网络结构，
+1,C/S client/server
+特点：
+该结构的软件，客户端和服务端都需要编写。
+可发成本较高，维护较为麻烦。
+好处：
+客户端在本地可以分担一部分运算。
+2,B/S browser/server
+特点：
+该结构的软件，只开发服务器端，不开发客户端，因为客户端直接由浏览器取代。
+开发成本相对低，维护更为简单。
+缺点：所有运算都要在服务端完成。
+```
+
+
+
+## 反射机制  
+
+### 什么是反射机制
+
+```java
+/*
+* JAVA反射机制是在运行状态中，对于任意一个类 (class文件)，都能够知道这个类的所有属性和方法；
+* 对于任意一个对象，都能够调用它的任意一个方法和属性；
+* 这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。
+*
+*
+* 动态获取类中信息，就是java反射 。
+* 可以理解为对类的解剖。
+*
+* 要想要对字节码文件进行解剖，必须要有字节码文件对象.
+* 如何获取字节码文件对象呢？
+*
+*/
+```
+
+```java
+public class ReflectDemo {
+    /**
+    * @param args
+    * @throws ClassNotFoundException
+    */
+    public static void main(String[] args) throws ClassNotFoundException {
+        getClassObject_3();
+    }
+    /*
+    * 方式三：
+    * 只要通过给定的类的 字符串名称就可以获取该类，更为扩展。
+    * 可是用Class类中的方法完成。
+    * 该方法就是forName.
+    * 这种方式只要有名称即可，更为方便，扩展性更强。
+    */
+    public static void getClassObject_3() throws ClassNotFoundException {
+        String className = "cn.itcast.bean.Person";
+        Class clazz = Class.forName(className);
+        System.out.println(clazz);
+    }
+    /*
+    * 方式二：
+    * 2，任何数据类型都具备一个静态的属性.class来获取其对应的Class对象。
+    * 相对简单，但是还是要明确用到类中的静态成员。
+    * 还是不够扩展。
+    *
+    */
+    public static void getClassObject_2() {
+        Class clazz = Person.class;
+        Class clazz1 = Person.class;
+        System.out.println(clazz==clazz1);
+    }
+    /*
+    * 获取字节码对象的方式：
+    * 1， Object类中的getClass()方法的。
+    * 想要用这种方式，必须要明确具体的类，并创建对象。
+    * 麻烦 .
+    *
+    */
+    public static void getClassObject_1(){
+        Person p = new Person();
+        Class clazz = p.getClass();
+        Person p1 = new Person();
+        Class clazz1 = p1.getClass();
+        System.out.println(clazz==clazz1);
+    }
+}
+```
+
+### 类的解剖
+
+获取构造函数：
+
+```java
+import java.io.FileReader;
+import java.lang.reflect.Constructor;
+public class ReflectDemo2 {
+    /**
+    * @param args
+    * @throws Exception
+    * @throws InstantiationException
+    * @throws ClassNotFoundException
+    */
+    public static void main(String[] args) throws ClassNotFoundException,
+    InstantiationException, Exception {
+        createNewObject_2();
+    }
+    public static void createNewObject_2() throws Exception {
+        // cn.itcast.bean.Person p = new cn.itcast.bean.Person("小强",39);
+        /*
+        * 当获取指定名称对应类中的所体现的对象时，
+        * 而该对象初始化不使用空参数构造该怎么办呢？
+        * 既然是通过指定的构造 函数进行对象的初始化，
+        * 所以应该先获取到该构造函数。 通过字节码文件对象即可完成。
+        * 该方法是： getConstructor(paramterTypes);
+        *
+        */
+        String name = "cn.itcast.bean.Person";
+        //找寻该名称类文件，并加载进内存，并产生Class对象。
+        Class clazz = Class.forName(name);
+        //获取到了指定的构造函数对 象。
+        Constructor constructor = clazz.getConstructor(String.class,int.class);
+        //通过该构造器对象的newInstance方法进行对象的初始化。
+        Object obj = constructor.newInstance("小明",38);
+    }
+    public static void createNewObject() throws ClassNotFoundException,
+    InstantiationException, IllegalAccessException{
+        //早期： new时候，先根据被new的类的名称找寻该类的字节码文件，并加载进内存，
+        // 并创建该字节码文件对象，并接着创建该字节文件的对应的Person对象.
+        // cn.itcast.bean.Person p = new cn.itcast.bean.Person();
+        //现在：
+        String name = "cn.itcast.bean.Person";
+        //找寻该名称类文件，并加载进内存，并产生Class对象。
+        Class clazz = Class.forName(name);
+        //如何产生该类的对象呢？
+        Object obj = clazz.newInstance();
+    }
+}
+```
+
+获取字段：
+
+```java
+import java.lang.reflect.Field;
+public class ReflectDemo3 {
+    /**
+    * @param args
+    * @throws Exception
+    */
+    public static void main(String[] args) throws Exception {
+        getFieldDemo();
+    }
+    /*
+    * 获取字节码文件中的字段。
+    */
+    public static void getFieldDemo() throws Exception {
+        Class clazz = Class.forName("cn.itcast.bean.Person");
+        Field field = null;//clazz.getField("age");//只能获取公有的，
+        field = clazz.getDeclaredField("age");//只获取本类，但包含私有。
+        //对私有字段的访问取消权限检查。暴力访问。
+        field.setAccessible(true);
+        Object obj = clazz.newInstance();
+        field.set(obj, 89);
+        Object o = field.get(obj);
+        System.out.println(o);
+        // cn.itcast.bean.Person p = new cn.itcast.bean.Person();
+        // p.age = 30;
+    }
+}
+```
+
+获取公共函数：
+
+```java
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+public class ReflectDemo4 {
+    public ReflectDemo4() {
+    }
+    /**
+* @param args
+* @throws Exception
+*/
+    public static void main(String[] args) throws Exception {
+        getMethodDemo_3();
+    }
+    public static void getMethodDemo_3() throws Exception {
+        Class clazz = Class.forName("cn.itcast.bean.Person");
+        Method method = clazz.getMethod("paramMethod", String.class,int.class);
+        Object obj = clazz.newInstance();
+        method.invoke(obj, "小强",89);
+    }
+    public static void getMethodDemo_2() throws Exception {
+        Class clazz = Class.forName("cn.itcast.bean.Person");
+        Method method = clazz.getMethod("show", null); //获取空参数一般方法。
+        // Object obj = clazz.newInstance();
+        Constructor constructor = clazz.getConstructor(String.class,int.class);
+        Object obj = constructor.newInstance("小明",37);
+        method.invoke(obj, null);
+    }
+    /*
+    * 获取指定Class中的所有公共函数。
+    */
+    public static void getMethodDemo() throws Exception {
+        Class clazz = Class.forName("cn.itcast.bean.Person");
+        Method[] methods = clazz.getMethods();//获取的都是公有的方法。
+        methods = clazz.getDeclaredMethods();//只获取本类中所有方法，包含私有。
+        for(Method method : methods){
+            System.out.println(method);
+        }
+    }
+}
+```
+
+## 正则表达式
+
+Demos:
+
+```java
+public class RegexDemo {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        String qq = "123k4567";
+        // checkQQ(qq);
+        String regex = "[1-9][0-9]{4,14}";//正则表达式。
+        // boolean b = qq.matches(regex);
+        // System.out.println(qq+":"+b);
+        // String str = "aoooooooob";
+        // String reg = "ao{4,6}b";
+        // boolean b = str.matches(reg);
+        // System.out.println(str+":"+b);
+    }
+    /*
+    * 需求：定义一个功能对QQ号进行校验。
+    * 要求：长度5~15. 只能是数字， 0不能开头
+    */
+    public static void checkQQ(String qq){
+        int len = qq.length();
+        if(len>=5 && len<=15){
+            if(!qq.startsWith("0")){
+                try {
+                    long l = Long.parseLong(qq);
+                    System.out.println(l+":正确");
+                }catch(NumberFormatException e){
+                    System.out.println(qq+":含有非法字符");
+                }
+            }else{
+                System.out.println(qq+":不能0开头");
+            }
+        }else{
+            System.out.println(qq+":长度错误");
+        }
+    }
+}
+```
+
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class RegexDemo2 {
+    /**
+    * @param args
+    */
+    public static void main(String[] args) {
+        /*
+    * 正则表达式对字符串的常见操作:
+    * 1, 匹配。
+    * 其实使用的就是String类中的matches方法。
+    *
+    * 2，切割。
+    * 其实使用的就是String类中的split方法。
+    *
+    * 3，替换。
+    * 其实使用的就是String类中的replaceAll()方法。
+    *
+    * 4，获取。
+    *
+    */
+        functionDemo_4();
+    }
+    /*
+    * 获取
+    * 将正则规则进行对象的封装。
+    * Pattern p = Pattern.compile("a*b");
+    * //通过正则对象的matcher方法字符串相关联。获取要对字符串操作的匹配器对象Matcher .
+    * Matcher m = p.matcher("aaaaab");
+    * //通过Matcher匹配器对象的方法对字符串进行操作。
+    * boolean b = m.matches();
+    */
+    public static void functionDemo_4() {
+        String str = "da jia hao,ming tian bu fang jia!";
+        String regex = "\\b[a-z]{3}\\b";
+        //1,将正则封装成对象。
+        Pattern p = Pattern.compile(regex);
+        //2, 通过正则对象获取匹配器对象。
+        Matcher m = p.matcher(str);
+        //使用Matcher对象的方法对字符串进行操作。
+        //既然要获取三个字母组成的单词
+        //查找。 find();
+        System.out.println(str);
+        while(m.find()){
+            System.out.println(m.group());//获取匹配的子序列
+            System.out.println(m.start()+":"+m.end());
+        }
+    }
+    /*
+    * 替换
+    */
+    public static void functionDemo_3() {
+        String str = "zhangsanttttxiaoqiangmmmmmmzhaoliu";
+        str = str.replaceAll("(.)\\1+", "$1");
+        System.out.println(str);
+        String tel = "15800001111"; //158****1111;
+        tel = tel.replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
+        System.out.println(tel);
+    }
+    /*
+    * 切割。
+    *
+    * 组： ((A)(B(C)))
+    */
+    public static void functionDemo_2(){
+        String str = "zhangsanttttxiaoqiangmmmmmmzhaoliu";
+        String[] names = str.split("(.)\\1+"); //str.split("\\.");
+        for(String name : names){
+            System.out.println(name);
+        }
+    }
+    /*
+    * 演示匹配。
+    */
+    public static void functionDemo_1(){
+        //匹配手机号码是否正确。
+        String tel = "15800001111";
+        String regex = "1[358]\\d{9}";
+        boolean b = tel.matches(regex);
+        System.out.println(tel+":"+b);
+    }
+}
 ```
 
