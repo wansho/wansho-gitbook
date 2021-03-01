@@ -110,6 +110,7 @@
   - [Multiprocessing-and-Threading](computer-science-notebook/note-for-python/multiprocessing-and-threading.md)
 * [Note-for-Java](computer-science-notebook/note-for-java/README.md)
   * [Java-Notebook](computer-science-notebook/note-for-java/java.md)
+  * [Java-New-Features](computer-science-notebook/note-for-java/java-new-features.md)
   * [Spring](computer-science-notebook/note-for-java/spring.md)
   * [Design-Patterns](computer-science-notebook/note-for-java/design-patterns.md)
   * [Java 开发工具](computer-science-notebook/note-for-java/java-dev-tools.md)
