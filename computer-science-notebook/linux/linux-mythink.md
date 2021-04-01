@@ -251,6 +251,10 @@ https://ohmyz.sh/
 
 **以后开发，尽量都在 ubuntu 子系统中进行开发。**
 
+## WSL 使用技巧
+
+in ubuntu, type `code .`，就可以激活 VSCode 打开当前文件夹
+
 ## Linux 兼容 Windows 应用
 
 [winapps](https://github.com/Fmstrat/winapps)

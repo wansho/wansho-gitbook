@@ -92,7 +92,7 @@ apt advance package tools
 
 ### 更换源后的更新命令
 
-`sudo apt-get update
+`sudo apt-get update`
 
 ### 安装一个新的软件
 直接查看apt工具集里有没有该软件

@@ -763,13 +763,11 @@ ifconfig -a # 查看所有的网卡信息，没有配置的也是
 
 **介绍**
 
-netstat 用于显示网络相关信息，可以用于查看端口
+netstat 用于显示网络相关信息，可以用于查看端口被那个进程占用了
 
 ```shell
-.netstat  -anp | grep 端口号
+netstat -tunpl | grep 端口号
 ```
-
-
 
 ### 1024以下的端口
 
@@ -779,8 +777,10 @@ netstat 用于显示网络相关信息，可以用于查看端口
 
 ### lsof
 
+lsof - list open files
+
 ```shell
-lsof -i:port # 查看指定端口被哪个进程占用
+lsof -i:port # 查看指定端口被哪个进程占用，功能类似于 netstat -tunpl | grep 端口号
 ```
 
 ### wget, curl
@@ -879,9 +879,11 @@ telnet ip port
 
 
 
-## 运维相关
-
 ## 硬件相关
+
+### ethtool 
+
+需要 root 权限
 
 ```shell
 ethtool -p 网口名字 秒数 # 让某个网口亮多少秒，服务器上的网口是可以亮的，因为服务器上通常有很多网口，不好分辨
@@ -1475,4 +1477,24 @@ raid5 兼顾存储性能和存储成本，是 raid0 和 raid1 的折中方案；
 端口号：22
 
 
+
+## Linux 发行版
+
+### lsb_release
+
+查看当前 Linux 系统是哪个发行版
+
+lsb_release - print distribution-specific information
+
+### uname
+
+输出系统信息
+
+uname - print system information
+
+```shell
+uname -a # 查看所有信息
+```
+
+另外 `/proc/version` 文件中也有系统信息
 

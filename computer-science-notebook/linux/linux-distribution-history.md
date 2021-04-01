@@ -8,11 +8,11 @@
 
 Linux 有两大派系：
 
-* debian
+* debian —> Ubuntu
   * 代表发行版：Ubuntu
   * debian 的包管理器是 dpkg，其前端接口是 apg-get
   * 个人感觉，redhat 派系的发行版，多用于桌面系统
-* redhat
+* redhat —> CentOS
   * 代表发行版：cent-os
   * redhat 的包管理器是 rpm，其前端接口是 yum
   * 个人感觉，redhat 派系的发行版，多用于服务器
