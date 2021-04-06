@@ -117,7 +117,7 @@ Demo: [Streaming 101](<https://www.oreilly.com/ideas/the-world-beyond-batch-stre
 
 ### Restful API
 
-**Representational State Transfer** ([**REST**](https://en.wikipedia.org/wiki/Representational_state_transfer)) is a [software architectural](https://en.wikipedia.org/wiki/Software_architecture) style that defines a set of constraints to be used for creating [Web services](https://en.wikipedia.org/wiki/Web_service).
+**Representational state transfer** (**REST**) is a [software architectural style](https://en.wikipedia.org/wiki/Software_architecture) which uses a subset of [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol).[[1\]](https://en.wikipedia.org/wiki/Representational_state_transfer#cite_note-Fielding-Ch5-1) It is commonly used to create [interactive](https://en.wikipedia.org/wiki/Interactivity) applications that use [Web services](https://en.wikipedia.org/wiki/Web_service). A Web service that follows these guidelines is called *RESTful*. Such a Web service must provide its [Web resources](https://en.wikipedia.org/wiki/Web_resource_framework) in a textual representation and allow them to be read and modified with a [stateless protocol](https://en.wikipedia.org/wiki/Stateless_protocol) and a predefined set of operations. 
 
 REST 是一套用于构建 Web Service 的规范。
 

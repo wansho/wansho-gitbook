@@ -134,6 +134,15 @@ sudo /etc/init.d/mysql restart
 sudo /etc/init.d/mysql status
 ```
 
+```shell
+# windows 平台
+net stop mysql
+net start mysql
+# 没有重启的命令
+```
+
+
+
 #### mysqladmin 命令
 
 ```mysql

@@ -337,7 +337,7 @@ $ scp user@host:foo.txt bar.txt
 $ scp source1 source2 destination
 
 # 本地文件复制到远程服务器
-$ scp SourceFile user@host:directory/TargetFile
+$ scp SourceFile user@host:directory
 $ scp file.txt remote_username@10.10.0.2:/remote/directory
 
 # 拷贝目录
