@@ -76,6 +76,8 @@ war 包：`<packaging>war</packaging>` 打包生成 war （Java Web Application 
 2. https://spring.io/guides/gs/rest-service/
 3. https://spring.io/guides/gs/accessing-data-mysql/
 4. https://spring.io/guides/gs/consuming-rest/
+5. https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
+6. https://docs.spring.io/spring-boot/docs/2.4.4/reference/htmlsingle/
 
 ## 打包运行
 

@@ -6,7 +6,6 @@
 
 * [[一篇教会你写90%的shell脚本]](https://zhuanlan.zhihu.com/p/264346586?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 * [完善的 Bash 脚本的最简单形式](https://betterdev.blog/minimal-safe-bash-script-template/)
-* 
 
 
 

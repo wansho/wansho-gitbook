@@ -1,8 +1,14 @@
 # Java 新特性
 
+[TOC]
+
 ## Lambda 表达式
 
-Lambda expressions are not unknown to many of us who have worked on other popular programming languages like Scala. In Java programming language, a Lambda expression (or function) is just an *anonymous function*, i.e., a function with no name and without being bounded to an identifier. They are written exactly in the place where it’s needed, typically *as a parameter to some other function*.
+https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
+
+
+
+Lambda expressions are not unknown to many of us who have worked on other popular programming languages like Scala. **In Java programming language, a Lambda expression (or function) is just an *anonymous function***, i.e., a function with no name and without being bounded to an identifier. They are written exactly in the place where it’s needed, typically *as a parameter to some other function*.
 
 Java 中的 Lambda 表达式就是一个匿名函数。
 
@@ -10,10 +16,10 @@ Java 中的 Lambda 表达式就是一个匿名函数。
 // 1. 不需要参数,返回值为 5  
 () -> 5  
   
-// 2. 接收一个参数(数字类型),返回其2倍的值  
+// 2. 接收一个参数(数字类型),返回其2倍的值，如果只有一个参数，据可以直接忽略掉括号
 x -> 2 * x  
   
-// 3. 接受2个参数(数字),并返回他们的差值  
+// 3. 接受2个参数(数字),并返回他们的差值 （Lambda 可以直接忽视掉参数类型）
 (x, y) -> x – y  
   
 // 4. 接收2个int型整数,返回他们的和  
@@ -34,9 +40,32 @@ String::compareToIngoreCase
 ClassName::new
 ```
 
+```java
+p -> p.getGender() == Person.Sex.MALE 
+    && p.getAge() >= 18
+    && p.getAge() <= 25
+// 等价于
+p -> {
+    return p.getGender() == Person.Sex.MALE
+        && p.getAge() >= 18
+        && p.getAge() <= 25;
+}
+
+// A return statement is not an expression; in a lambda expression, you must enclose statements in braces ({}). However, you do not have to enclose a void method invocation in braces. For example, the following is a valid lambda expression:
+email -> System.out.println(email)
+```
+
+
+
+
+
 ## Functional Interface
 
-函数式接口 (Functional Interface) 就是一个**具有一个方法的普通接口**。常与 Stream 结合用于函数式编程。
+函数式接口 (Functional Interface) 就是一个**只有一个方法的接口**。常与 Stream 结合用于函数式编程。
+
+只要碰到只有一个方法的接口，也就是功能单一的接口，就可以直接用 Lambda Expression 来代替。
+
+A functional interface is any interface that contains only one [abstract method](https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)。(A functional interface may contain one or more [default methods](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html) or [static methods](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html#static).) 
 
 ```java
 Stream.of("d2", "a2", "b1", "b3", "c")
@@ -46,6 +75,34 @@ Stream.of("d2", "a2", "b1", "b3", "c")
     })
     .forEach(s -> System.out.println("forEach: " + s));
 ```
+
+Demo Calculator：
+
+```java
+public class Calculator {
+  
+    interface IntegerMath {
+        int operation(int a, int b);   
+    }
+  
+    public int operateBinary(int a, int b, IntegerMath op) {
+        return op.operation(a, b);
+    }
+ 
+    public static void main(String... args) {
+    
+        Calculator myApp = new Calculator();
+        IntegerMath addition = (a, b) -> a + b;
+        IntegerMath subtraction = (a, b) -> a - b;
+        System.out.println("40 + 2 = " +
+            myApp.operateBinary(40, 2, addition));
+        System.out.println("20 - 10 = " +
+            myApp.operateBinary(20, 10, subtraction));    
+    }
+}
+```
+
+
 
 
 
@@ -85,7 +142,7 @@ public @interface TestAnnotation {
 赋值的方式是在注解的括号内以 value=”” 形式，多个属性之前用 ，隔开。
 
 ```java
-@TestAnnotation(id=3,msg="hello annotation")
+@TestAnnotation(id=3, msg="hello annotation")
 public class Test {
 
 }
@@ -173,7 +230,11 @@ public class Test {
 
 Retention 的英文意为保留期的意思。当 @Retention 应用到一个注解上的时候，它解释说明了这个注解的的存活时间。
 
-它的取值如下：  - RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视。  - RetentionPolicy.CLASS 注解只被保留到编译进行的时候，它并不会被加载到 JVM 中。  - RetentionPolicy.RUNTIME 注解可以保留到程序运行的时候，它会被加载进入到 JVM 中，所以在程序运行时可以获取到它们。
+它的取值如下：  
+
+- RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视。  
+- RetentionPolicy.CLASS 注解只被保留到编译进行的时候，它并不会被加载到 JVM 中。  
+- RetentionPolicy.RUNTIME 注解可以保留到程序运行的时候，它会被加载进入到 JVM 中，所以在程序运行时可以获取到它们。
 
 我们可以这样的方式来加深理解，@Retention 去给一张标签解释的时候，它指定了这张标签张贴的时间。@Retention 相当于给一张标签上面盖了一张时间戳，时间戳指明了标签张贴的时间周期。
 
@@ -208,7 +269,7 @@ Target 是目标的意思，@Target 指定了注解运用的地方。
 
 #### @Inherited
 
-Inherited 是继承的意思，但是它并不是说注解本身可以继承，而是说如果一个超类被 @Inherited 注解过的注解进行注解的话，那么如果它的子类没有被任何注解应用的话，那么这个子类就继承了超类的注解。  说的比较抽象。代码来解释。
+Inherited 是继承的意思，但是它并不是说注解本身可以继承，而是说如果一个超类被 @Inherited 注解过的注解进行注解的话，那么如果它的子类没有被任何注解应用的话，那么这个子类就继承了超类的注解。 说的比较抽象。代码来解释。
 
 ```java
 @Inherited
@@ -301,7 +362,7 @@ Java 官方文档说，未来的版本会授权编译器对这种不安全的操
 
 比如
 
-```text
+```java
 @FunctionalInterface
 public interface Runnable {
     /**
@@ -481,7 +542,11 @@ method testMethod annotation:Perform
 
 注解是一系列元数据，它提供数据用来解释程序代码，但是注解并非是所解释的代码本身的一部分。注解对于代码的运行效果没有直接影响。
 
-注解有许多用处，主要如下：  - 提供信息给编译器： 编译器可以利用注解来探测错误和警告信息  - 编译阶段时的处理： 软件工具可以用来利用注解信息来生成代码、Html文档或者做其它相应处理。  - 运行时的处理： 某些注解可以在程序运行的时候接受代码的提取
+注解有许多用处，主要如下：  
+
+- 提供信息给编译器： 编译器可以利用注解来探测错误和警告信息  
+- 编译阶段时的处理： 软件工具可以用来利用注解信息来生成代码、Html文档或者做其它相应处理。  
+- 运行时的处理： 某些注解可以在程序运行的时候接受代码的提取
 
 值得注意的是，注解不是代码本身的一部分。
 
