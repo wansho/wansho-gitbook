@@ -435,7 +435,7 @@ unzip
 
 ### 查找命令 which, find, locate, whereis
 
-**which** 在 path 变量中查找
+**which** 在 path 变量中查找命令
 
 ```shell
 # which 用来在所有的 PATH 路径中查找 某个命令 所在地址，例如查找 ls, cat 命令所在地址，注意每一个用户的 PATH 命令可能是不一样的，不同用户使用 which 查找某个命令的结果可能有所区别，有的用户可能找不到某个命令的地址

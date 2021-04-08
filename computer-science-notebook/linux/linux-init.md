@@ -147,7 +147,7 @@ https://blog.csdn.net/lyb3b3b/article/details/78706077
 ## 小知识
 ubuntu 17.10截图命令：shift + printSc键
 
-## Linux 安装各种开发环境
+## SDKMan
 
 利用 https://sdkman.io/ SDKMAN 来安装开发环境。
 
@@ -156,9 +156,10 @@ DEMO：
 ```shell
 sdk install java
 sdk install scala 2.12.1
-sdk list
+sdk list # 查看当前仓库有哪些开发环境
 sdk install spring
+sdk current # 查看当前安装了哪些开发环境
 ```
 
-
+SDKMan 安装的各种软件，其目录都在 `$HOME/.sdkman/` 下，可以用 which java 查看安装目录。
 

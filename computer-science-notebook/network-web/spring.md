@@ -14,17 +14,18 @@
 
 ### JavaWeb 基本概念
 
-| 名词         | 解释                                                         | 备注           |
-| ------------ | ------------------------------------------------------------ | -------------- |
-| jar          | Java ARchive                                                 |                |
-| war          | Java Web Application ARchive                                 |                |
-| jsp          | Java Server Pages，html + `<% ... %>`，jsp 最终会被转换成 Servlet |                |
-| Java Servlet | 能处理HTTP请求，发送HTTP响应的小程序                         |                |
-| Tomcat       | JSP 程序运行容器                                             |                |
-| POM          | Project Object Model                                         | 胖母           |
-| Maven        | 项目配置                                                     | 中文译名：专家 |
-| Gradle       | 功能和 Maven 类似                                            |                |
-| CRUD         | create retrieve update delete                                |                |
+| 名词                       | 解释                                                         | 备注                      |
+| -------------------------- | ------------------------------------------------------------ | ------------------------- |
+| jar                        | Java ARchive                                                 |                           |
+| war                        | Java Web Application ARchive                                 |                           |
+| jsp                        | Java Server Pages，html + `<% ... %>`，jsp 最终会被转换成 Servlet |                           |
+| Java Servlet               | 能处理HTTP请求，发送HTTP响应的小程序                         |                           |
+| Tomcat                     | JSP 程序运行容器                                             |                           |
+| POM                        | Project Object Model                                         | 胖母                      |
+| Maven                      | 项目配置                                                     | 中文译名：专家，读作 妹文 |
+| Gradle                     | 功能和 Maven 类似                                            |                           |
+| CRUD                       | create retrieve update delete                                |                           |
+| self-contained application | 把环境依赖一起打包到程序中的应用，例如 electron 应用         |                           |
 
 ### Spring
 

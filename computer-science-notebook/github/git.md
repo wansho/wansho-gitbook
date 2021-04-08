@@ -732,7 +732,7 @@ git status -s
 ```shell
 # 生成公钥的命令
 ssh-keygen
-# 生成的文件地址：/c/Users/wanshuo/.ssh/id_rsa 
+# 生成的文件地址：/c/Users/wanshuo/.ssh/id_rsa，一个公钥一个私钥，公钥为 id_rsa,私钥位 id_rsa.pub
 ```
 
 ### Git 不追踪空文件夹

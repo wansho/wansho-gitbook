@@ -34,5 +34,25 @@
 
 ## 知识图谱与智能问答
 
-* [东南大学王萌](https://pan.baidu.com/s/1pxIN7KiFooyL1tUdSZFeSw)
+[东南大学王萌](https://pan.baidu.com/s/1pxIN7KiFooyL1tUdSZFeSw)
+
+1. 第一阶段：TBSL 手动定义问题模板 2012
+
+   TBSL Template-Based Model 的两个核心贡献：
+
+   * Constructs a query template that directly mirrors thelinguistic structure of the question
+   * Instantiates the template by matching natural language expressions with ontology concepts  
+
+   TBSL的模板定义为SPARQL query模板， 将其直接与自然语言相映射。
+
+2. 第二阶段：Semantic Parsing-Based Model   自动生成模板 2017
+
+   * 提出了QUINT，能够根据utterance-answer对，根据依存树自动学习utterance-query模板
+   * 利用自然语言的组成特点， 可以使用从简单问题中学到的模板来解决复杂问题  
+
+Elastic Search
+
+数学之美
+
+
 
