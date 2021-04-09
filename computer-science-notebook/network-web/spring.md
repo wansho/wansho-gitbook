@@ -20,12 +20,14 @@
 | war                        | Java Web Application ARchive                                 |                           |
 | jsp                        | Java Server Pages，html + `<% ... %>`，jsp 最终会被转换成 Servlet |                           |
 | Java Servlet               | 能处理HTTP请求，发送HTTP响应的小程序                         |                           |
-| Tomcat                     | JSP 程序运行容器                                             |                           |
+| Tomcat                     | JSP 程序运行容器                                             | Servlet容器               |
 | POM                        | Project Object Model                                         | 胖母                      |
 | Maven                      | 项目配置                                                     | 中文译名：专家，读作 妹文 |
 | Gradle                     | 功能和 Maven 类似                                            |                           |
 | CRUD                       | create retrieve update delete                                |                           |
 | self-contained application | 把环境依赖一起打包到程序中的应用，例如 electron 应用         |                           |
+| JDBC                       | Java Database Connectivity is an [application programming interface](https://en.wikipedia.org/wiki/Application_programming_interface) (API) for Java |                           |
+| JavaBean                   | 若干`private`实例字段； 通过`public`方法来读写实例字段。     |                           |
 
 ### Spring
 
@@ -79,6 +81,7 @@ war 包：`<packaging>war</packaging>` 打包生成 war （Java Web Application 
 4. https://spring.io/guides/gs/consuming-rest/
 5. https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
 6. https://docs.spring.io/spring-boot/docs/2.4.4/reference/htmlsingle/
+7. 廖雪峰 Spring 教程 https://www.liaoxuefeng.com/wiki/1252599548343744/1266263217140032
 
 ## 打包运行
 
@@ -95,6 +98,18 @@ war 包：`<packaging>war</packaging>` 打包生成 war （Java Web Application 
   A key difference between a traditional MVC controller and the RESTful web service controller shown earlier is the way that the HTTP response body is created. Rather than relying on a view technology to perform server-side rendering of the greeting data to HTML, this RESTful web service controller populates and returns a `Greeting` object. The object data will be written directly to the HTTP response as JSON.
   
   以前网页是前后端融合在一块的（我之前写的 Senti-weibo 网页，就是前后端融合在一块的，类似 JSP），Restful 标准是实现前后端分离的标准，一个后端服务就可以服务 Web、app 等多个前端平台。
+
+## 廖雪峰 Spring 教程
+
+### IoC 容器
+
+Inversion of Control。Spring的核心就是提供了一个IoC容器，它可以管理所有轻量级的JavaBean组件，提供的底层服务包括组件的生命周期管理、配置和组装服务、AOP支持，以及建立在AOP基础上的声明式事务服务等。
+
+
+
+### 使用 AOP
+
+
 
 ## 问题记录
 
