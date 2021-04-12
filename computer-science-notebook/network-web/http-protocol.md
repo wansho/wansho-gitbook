@@ -8,7 +8,7 @@
 
 * WebService == HTTP 协议（负责传输数据） + XML （数据）
 
-  Rest == HTTP 协议 + json
+  Rest == HTTP 协议 + json（使用Spring MVC开发Web应用程序的主要工作就是编写Controller逻辑。在Web应用中，除了需要使用MVC给用户显示页面外，还有一类API接口，我们称之为REST，通常输入输出都是JSON，便于第三方调用或者使用页面JavaScript与之交互。）
 
   各种 API，也一般是用 HTTP + XML/Json 来实现的
 
