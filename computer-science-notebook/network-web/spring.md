@@ -35,6 +35,7 @@
 | ORM                        | Object-Relational Mapping                                    | [Hibernate](https://hibernate.org/) 就是一个 ORM 框架 |
 | JPA                        | Java Persistence API                                         | JPA 也是一个 Java 的 ORM 框架                         |
 | MyBatis                    |                                                              | 半自动化ORM框架                                       |
+| POJO                       | Plain Old Java Object                                        |                                                       |
 
 ### Spring
 
@@ -185,7 +186,9 @@ Spring Boot自动装配功能是通过自动扫描+条件装配实现的。
 </dependency>
 ```
 
+### SpringCloud
 
+Spring Cloud顾名思义是跟云相关的，云程序实际上就是指分布式应用程序，所以Spring Cloud就是为了让分布式应用程序编写更方便，更容易而提供的一组基础设施，它的核心是Spring框架，利用Spring Boot的自动配置，力图实现最简化的分布式应用程序开发。
 
 
 
@@ -204,7 +207,7 @@ Spring Boot自动装配功能是通过自动扫描+条件装配实现的。
 | @Scope                       | 类         | @Scope(ConfigurableBeanFactory.<br />SCOPE_PROTOTYPE) 表示多例，每次调用返回一个新的实例 |                                                            |                            |
 | @PostConstruct               | 方法       | 标记 `init()` 方法，表示 Bean 初始化时执行的动作             |                                                            |                            |
 | @PreDestroy                  | 方法       | 标记 `shutdown()` 方法，表示 Bean 被销毁时执行的动作         |                                                            |                            |
-| @Value                       | 字段       |                                                              | `@Value("classpath:/logo.txt")` 注入 Resource              |                            |
+| @Value                       | 字段       | 加载配置文件中的属性进行注入                                 | `@Value("classpath:/logo.txt")` 注入 Resource              |                            |
 | @PropertySource              | 类         | 自动读取配置文件                                             | `@Value("${app.zone:Z}")` 提取 app.zone 的 value，默认为 Z |                            |
 | @Profile                     | 方法       | 用来表示不同的环境，不同的环境创建不同的 Bean                | @Profile("!test") 非 test 环境                             |                            |
 | @Conditional                 | 类         | 根据`@Conditional`决定是否创建某个Bean                       |                                                            |                            |
@@ -234,11 +237,18 @@ Spring Boot自动装配功能是通过自动扫描+条件装配实现的。
 
 ## Dependencies
 
-| Dependency               | 作用       | 备注                       |
-| ------------------------ | ---------- | -------------------------- |
-| spring-boot-maven-plugin | 打包       |                            |
-| spring-boot-devtools     | 开发者工具 | 代码和配置更新后，自动更新 |
-|                          |            |                            |
+| Dependency                   | 作用                      | 备注                       |
+| ---------------------------- | ------------------------- | -------------------------- |
+| spring-boot-maven-plugin     | 打包                      |                            |
+| spring-boot-devtools         | 开发者工具                | 代码和配置更新后，自动更新 |
+| spring-boot-starter-actuator | SpringBoot 内置的监控系统 |                            |
+
+## Spring 项目框架梳理
+
+```
+DTO(Data Transfer Object)：数据传输对象， Service 或 Manager 向外传输的对象
+QO(Query Object)：数据查询对象，controller 层接收上层的查询请求时的参数
+```
 
 
 

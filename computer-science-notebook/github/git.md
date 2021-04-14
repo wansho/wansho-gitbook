@@ -609,6 +609,9 @@ git merge testing
 git merge origin/master
 # 如果报错，则
 git merge origin/master --allow-unrelated-histories
+
+# 默认情况下执 fast-forward 合并，并不会产生一个 commit 记录，为了保证版本演进的清晰，加上 --no-ff 参数，生成 commit 记录
+git merge --no-ff develop
 ```
 
 **冲突的解决办法**
