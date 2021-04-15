@@ -328,6 +328,21 @@ git commit --amend -m "message"
 # The obvious value to amending commits is to make minor improvements to your last commit, without cluttering your repository history with commit messages of the form, “Oops, forgot to add a file” or “Darn, fixing a typo in last commit”.
 ```
 
+commit 日志标准化
+
+```
+chore: add Oyster build script
+docs: explain hat wobble
+feat: add beta sequence
+fix: remove broken confirmation message
+refactor: share logic between 4d3d3d3 and flarhgunnstow
+style: convert tabs to spaces
+test: ensure Tayne retains clothing
+
+Demo：
+feat(db-sync-spring-boot-starter): 增加 insert 的 MySQL 实现
+```
+
 ### git rm
 
 ```shell

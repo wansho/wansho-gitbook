@@ -271,14 +271,18 @@ delete from run_case_deploycoveragedetail where query_start_time like '2018-07-1
 
 ### 更新数据
 
-```text
-set 是一个固定的关键字
+```sql
+-- set 是一个固定的关键字
 update run_case_statistics set cycle = 'month', module = "module1" where id >= 5927 and id <= 6265;
+
+-- 多表关联更新
+update test1,test2 set test1.name=test2.name,test1.age=test2.age where test1.id=test2.id;
+
 ```
 
 ### 建表
 
-```reStructuredText
+```sql
 # 测试代码
 create table test_table(
     id int(11) primary key,
