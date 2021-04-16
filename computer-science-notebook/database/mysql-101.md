@@ -264,8 +264,8 @@ insert into userInfo(name,password) values('wanshuo','8979');
 
 ### 删除数据
 
-```text
-* 标准代码
+```sql
+-- 标准代码
 delete from run_case_deploycoveragedetail where query_start_time like '2018-07-15%';
 ```
 

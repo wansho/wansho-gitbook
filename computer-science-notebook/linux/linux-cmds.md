@@ -1490,6 +1490,8 @@ lsb_release - print distribution-specific information
 
 ### uname
 
+unix name
+
 输出系统信息
 
 uname - print system information

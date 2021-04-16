@@ -2715,7 +2715,29 @@ public class StringTest_1 {
 }
 ```
 
+**字符串格式化** 
 
+MessageFormat
+
+```java
+String deleteSql =
+                "delete from \n" +
+                "  {0} \n" +
+                "where \n" +
+                "  {1} in (\n" +
+                "    select \n" +
+                "      {1} \n" +
+                "    from \n" +
+                "      (select * from {0}) as {0}_copy \n" +
+                "      left join \n" +
+                "      (select *, \"{4}\" as \"{4}\" from {2}) as {2}_copy \n" +
+                "      on \n" +
+                "      {0}_copy.{1} = {2}_copy.{3} \n" +
+                "    where \n" +
+                "      {2}_copy.{4} is NULL\n" +
+                "  );";
+deleteSql = MessageFormat.format(deleteSql, mainTableName, mainPrKeyName, subTableName, subPrKeyName, joinNULLFlag);
+```
 
 ### StringBuffer / StringBuilder
 
