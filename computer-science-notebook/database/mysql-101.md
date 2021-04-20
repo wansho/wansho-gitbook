@@ -570,3 +570,38 @@ drop view view_name; -- 删除视图
 
   有时候设置了 键 的约束，但是插入的数据越过了这个约束，就会报错，例如设置了 varchar\(16\)，但是插入的字符串长度为 20 ，那么就会报错。
 
+## 数据库 sql 差异性
+
+* Oracle sql 语句结尾不能加 `;`
+
+* 单引号和双引号的区别
+
+  在 sql 标准中，单引号表示字符串，双引号表示 identifiers，例如表名或者列名
+
+  ```sql
+  delete from 
+    table_a 
+  where 
+    id in (
+      select 
+        id 
+      from 
+        (select * from table_a) as table_a_copy 
+        left join 
+  	  (select *, 'flag' as "flag" from table_b) as table_b_copy 
+  	  on 
+  	  table_a_copy.id = table_b_copy.cc 
+      where 
+        table_b_copy.flag is NULL
+    );
+  ```
+
+   
+
+* Oracle 对 as 的兼容性不太好，不要用 as 了，as 类似于语法糖，不用也 ok 的
+
+  ```sql
+  select *, 'flag' flag from table_b
+  ```
+
+  

@@ -2739,7 +2739,26 @@ String deleteSql =
 deleteSql = MessageFormat.format(deleteSql, mainTableName, mainPrKeyName, subTableName, subPrKeyName, joinNULLFlag);
 ```
 
-### StringBuffer / StringBuilder
+jdk 的 bug，MessageFormat doesn't replace {0} if followed by word with apostrophe。对于单引号，需要用两个单引号来显示：
+
+```java
+String deleteSql =
+                "delete from \n" +
+                "  {0} \n" +
+                "where \n" +
+                "  {1} in (\n" +
+                "    select \n" +
+                "      {1} \n" +
+                "    from \n" +
+                "      (select * from {0}) {0}_copy \n" +
+                "      left join \n" +
+                "      (select {2}.*, ''{4}'' {4} from {2}) {2}_copy \n" +
+                "      on \n" +
+                "      {0}_copy.{1} = {2}_copy.{3} \n" +
+                "    where \n" +
+                "      {2}_copy.{4} is NULL\n" +
+                "  );";
+```
 
 StringBuffer 可以传入 bool 值 和 数值，统一转成字符串再存入 StringBuffer.
 

@@ -125,7 +125,13 @@ Inversion of Control。Spring的核心就是提供了一个IoC容器，它可以
 
 IoC又称为依赖注入（DI：Dependency Injection），它解决了一个最主要的问题：将组件的创建+配置与组件的使用相分离，并且，由 IoC 容器负责管理组件的生命周期。
 
-在Spring的IoC容器中，我们把所有组件统称为JavaBean，即配置一个组件就是配置一个Bean。
+在Spring的IoC容器中，**我们把所有组件统称为JavaBean，即配置一个组件就是配置一个Bean**。
+
+使用Annotation配合自动扫描能大幅简化Spring的配置，我们只需要保证：
+
+- 每个Bean被标注为`@Component`并正确使用`@Autowired`注入；
+- 配置类被标注为`@Configuration`和`@ComponentScan`；
+- 所有Bean均在指定包以及子包内。
 
 ### AOP
 

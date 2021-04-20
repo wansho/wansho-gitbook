@@ -1106,3 +1106,72 @@ streamSupplier.get().noneMatch(s -> true);  // ok
 
 Each call to `get()` constructs a new stream on which we are save to call the desired terminal operation.
 
+## Try with resource
+
+Java 1.7 引入。
+
+类似 Python `with open` 的新特性。对于实现了 closeable 的子类，可以这么写：
+
+```java
+try(
+	InputStream is = new FileInputStream("...");
+	OutputStream os = new FileOutputStream("...");
+){
+	//...
+}catch (IOException e) {
+	//...
+}
+```
+
+替换的代码为：
+
+```java
+InputStream is = null;
+OutputStream os = null;
+try {
+	//...
+} catch (IOException e) {
+	//...
+}finally{
+	try {
+		if(os!=null){
+			os.close();
+		}
+		if(is!=null){
+			is.close();
+		}
+	} catch (IOException e2) {
+		//...
+	}
+}
+```
+
+java 1.7 引入的新特性，自动关闭 closeable 对象。
+
+Demo：
+
+```java
+try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
+    try (Statement stmt = conn.createStatement()) {
+        try (ResultSet rs = stmt.executeQuery("SELECT id, grade, name, gender FROM students WHERE gender=1")) {
+            while (rs.next()) {
+                long id = rs.getLong(1); // 注意：索引从1开始
+                long grade = rs.getLong(2);
+                String name = rs.getString(3);
+                int gender = rs.getInt(4);
+            }
+        }
+    }
+}
+```
+
+`Statment`和`ResultSet`都是需要关闭的资源，因此嵌套使用`try (resource)`确保及时关闭。
+
+## var
+
+java 10 引入。
+
+```java
+var codefx = new URL("http://codefx.org");
+```
+
