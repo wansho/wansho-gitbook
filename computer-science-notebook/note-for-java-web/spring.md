@@ -114,6 +114,8 @@ $ DB_HOST=10.0.1.123 DB_USER=prod DB_PASSWORD=xxxx java -jar xxx.jar
   A key difference between a traditional MVC controller and the RESTful web service controller shown earlier is the way that the HTTP response body is created. Rather than relying on a view technology to perform server-side rendering of the greeting data to HTML, this RESTful web service controller populates and returns a `Greeting` object. The object data will be written directly to the HTTP response as JSON.
   
   以前网页是前后端融合在一块的（我之前写的 Senti-weibo 网页，就是前后端融合在一块的，类似 JSP），Restful 标准是实现前后端分离的标准，一个后端服务就可以服务 Web、app 等多个前端平台。
+  
+* **Controller层是不允许直接操作数据库**，Controller 层是负责调用 Service 的。一般的，一个Controller对应一个Service，一个Service对应一个Dao，一个Dao对应一个数据库表，当然根据项目或业务复杂程度，一个Controller可以调用多个Service，而一个Service也可以调用多个Dao，但是Controller层不允许互调，Service层也不允许互调，意思就是AController不能直接调用BController，AService也不能直接去调用BService，遵循高内聚低耦合原则！
 
 ## 廖雪峰 Spring 教程
 
@@ -204,7 +206,9 @@ Spring Cloud顾名思义是跟云相关的，云程序实际上就是指分布�
 | ---------------------------- | ---------- | ------------------------------------------------------------ | ---------------------------------------------------------- | -------------------------- |
 | @Component                   | 类         | 表示该类为一个组件                                           |                                                            | 定义了一个 Bean，单例      |
 | @Autowired                   | 字段和方法 | 将指定类型的 Bean 注入到字段或者方法上                       | required = false 如果找不到对应的 Bean，就忽略，防止报错   | 通常用于字段               |
-| @Configuration               | 类         | 配置类                                                       |                                                            |                            |
+| @Resource                    | 字段       | @Resource默认按照byName方式进行bean匹配 @Resource(name = "tiger") |                                                            |                            |
+| @Service                     | 类         | 声明该类是一个bean，这点很重要，因为该类是一个bean，其他的类才可以使用@Autowired将该类作为一个成员变量自动注入 |                                                            |                            |
+| @Configuration               | 类         | 告诉 Spring 这个类是一个配置类，等同于配置文件               |                                                            |                            |
 | @ComponentScan               | 类         | 告诉容器，自动搜索当前类所在的包以及子包，把所有标注为`@Component`的Bean自动创建出来，并根据`@Autowired`进行装配 |                                                            |                            |
 | @Order                       | 类         | Component 注入 list 时指定 Bean 的顺序                       |                                                            | 从 @Order(1) 开始          |
 | @Bean                        | 方法       | Bean 不在我们的包中，就在@Configuration 类中编写一个 Java 方法创建并返回它，并且给该方法标记一个 @Bean 注解 | @Bean("z") 给 Bean 起名字，从而创建多个实例                | 单例                       |
@@ -239,6 +243,8 @@ Spring Cloud顾名思义是跟云相关的，云程序实际上就是指分布�
 | @Param()                     | 参数       |                                                              |                                                            |                            |
 | @MapperScan                  | 类         | 让MyBatis自动扫描指定包的所有Mapper并创建实现类              |                                                            |                            |
 | @EnableWebMvc                | 类         | 启用 Spring MVC                                              |                                                            |                            |
+| @Entity                      | 类         | 用来注解该类是一个实体类用来进行和数据库中的表建立关联关系，首次启动项目的时候，默认会在数据中生成一个同实体类相同名字的表（table），也可以通过注解中的 name 属性来修改表（table）名称， 如@Entity(name=“user”) , 这样数据库中表的名称则是 user 。该注解十分重要，如果没有该注解首次启动项目的时候你会发现数据库没有生成对应的表。 |                                                            |                            |
+| @Table                       | 类         | 该注解可以用来修改表的名字，该注解完全可以忽略掉不用，@Entity 注解已具备该注解的功能。 |                                                            |                            |
 |                              |            |                                                              |                                                            |                            |
 
 ## Dependencies
@@ -265,6 +271,87 @@ QO(Query Object)：数据查询对象，controller 层接收上层的查询请�
 以管理员权限运行 IDEA。
 
 
+
+## 组件
+
+### Swagger
+
+Swagger是一款RESTFUL接口的文档在线自动生成 + 功能测试功能软件。
+
+**Spring 配置 Swagger**
+
+在 `config/` 文件夹下，增加 swagger 的配置，文件名可以任意指定，通常设置为 `Swagger2Config`
+
+```java
+/**
+ * 生成swagger2 API文档
+ * @author 
+ */
+@Configuration
+@EnableSwagger2
+public class Swagger2Config {
+
+    @Bean
+    public Docket createRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.xxx"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("Swagger RESTful API")
+                .contact(new Contact("author", "", "email"))
+                .description("demo Server API")
+                .termsOfServiceUrl("")
+                .version("1.0")
+                .build();
+    }
+
+}
+```
+
+ **使用 Swagger Annotations**
+
+```java
+@GetMapping("")
+@ApiOperation(value = "测试数据库同步") // 注解接口名称
+public long getNameByID(@ApiParam("查询的 ID") int id){ // 注解参数
+    return 1;
+}
+```
+
+**测试**
+
+```
+http://localhost:port/xxx/doc.html
+```
+
+
+
+### easypoi
+
+Excel导出,Excel模板导出,Excel导入,Word模板导出。
+
+### spring-boot-maven-plugin
+
+用于简化部署！
+
+```xml
+<plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+</plugin>
+```
+
+用于创建一个可执行的 jar 包。fat jar。clean —> package
+
+```
+java -jar xxx.jar
+```
 
 
 

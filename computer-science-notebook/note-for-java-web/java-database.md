@@ -136,3 +136,32 @@ try (Connection conn = ds.getConnection()) { // 在此获取连接
 - 从全局`DataSource`实例获取`Connection`实例；
 - 通过`Connection`实例创建`PreparedStatement`实例；
 - 执行SQL语句，如果是查询，则通过`ResultSet`读取结果集，如果是修改，则获得`int`结果。
+
+
+
+## JPA
+
+Java Persistence API 是Sun官方提出的Java持久化规范。
+
+注意，JPA是一套规范，不是一套产品，那么像Hibernate,TopLink,JDO他们是一套产品，如果说这些产品实现了这个JPA规范，那么我们就可以叫他们为JPA的实现产品。
+
+Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的一套JPA应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功能，且易于扩展！学习并使用 Spring Data JPA 可以极大提高开发效率！
+
+JPA 更像 Django ORM，统一了 Java ORM 的规范。
+
+reference
+
+* https://www.liaoxuefeng.com/wiki/1252599548343744/1282383789686817
+
+* https://docs.spring.io/spring-data/jpa/docs/2.5.0/reference/html/#jpa.repositories
+
+* Spring Boot系列(五)：spring data jpa的使用 - 极乐君的文章 - 知乎 https://zhuanlan.zhihu.com/p/25000309
+
+## JPA / Hibernate / MyBatis 比较
+
+最常见的两种持久化层框架：**JPA**和**MyBatis**
+
+| JDBC       | Hibernate      | JPA                  | **MyBatis**       | 解释         |
+| :--------- | :------------- | :------------------- | ----------------- | ------------ |
+| DataSource | SessionFactory | EntityManagerFactory | SqlSessionFactory | 数据库连接池 |
+| Connection | Session        | EntityManager        | SqlSession        | 一个连接     |

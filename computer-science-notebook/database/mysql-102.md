@@ -141,8 +141,6 @@ net start mysql
 # 没有重启的命令
 ```
 
-
-
 #### mysqladmin 命令
 
 ```mysql
@@ -152,7 +150,7 @@ mysqladmin -u xxx password xxx
 
 #### 重置密码
 
-```mysql
+```
 1. 在配置文件中 [mysqld] 下添加 skip-grant-tables，保存退出
 2. 重启 mysql，执行以下命令：
    mysql
