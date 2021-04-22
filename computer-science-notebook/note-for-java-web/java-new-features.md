@@ -112,6 +112,8 @@ public class Calculator {
 
 JDK 1.5 引入 Annotation 机制，实际上就是代码标签。Java Annotation 也是一种类型，被封装成了一个类(接口)。
 
+动态修改注解的某个属性值：https://www.cnblogs.com/panchanggui/p/14298333.html
+
 ### 注解的定义
 
 ```java
