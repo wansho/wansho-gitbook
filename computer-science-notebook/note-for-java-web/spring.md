@@ -457,6 +457,47 @@ public class SyncSchedule {
 }
 ```
 
+在分布式环境中，还要为 Schedule 配置分布式锁：
+
+```java
+@Component
+@EnableScheduling
+@Slf4j
+@PropertySource("application.yml")
+public class SyncSchedule {
+
+    public SyncSchedule(@Value("${cron}")String cron) throws NoSuchMethodException, NoSuchFieldException, IllegalAccessException {
+        // 动态修改定时器注解的定时任务
+        Method method = SyncSchedule.class.getDeclaredMethod("schedulingDemo");
+        if ( method != null ) {
+            Scheduled scheduledAnnotation = method.getAnnotation(Scheduled.class);
+            InvocationHandler handler = Proxy.getInvocationHandler(scheduledAnnotation);
+            Field hField = handler.getClass().getDeclaredField("memberValues");
+            hField.setAccessible(true);
+            Map memberValues = (Map) hField.get(handler);
+            memberValues.put("cron", cron);
+        }
+    }
+
+    /**
+    * 定时程序，触发频率可以在 application.yml 中修改
+    * @param
+    * @return
+    */
+    @Scheduled(cron = "*/3 * * * * *")
+    @SchedulerLock(name = "res_schedulingDemo", lockAtMostFor = "10m", lockAtLeastFor = "10m")
+    public void schedulingDemo(){
+        log.info("schedulingDemo run...");
+    }
+}
+```
+
+其中 `name` 必须要取，`lockAtMostFor` 表示加锁时间不能超过 10m，超过 10m 就释放锁，`lockAtLeastFor` 表示加锁至少 10m。
+
+By setting `lockAtMostFor` we make sure that the lock is released even if the node dies and by setting `lockAtLeastFor` we make sure it's not executed more than once in fifteen minutes. Please note that **`lockAtMostFor` is just a safety net in case that the node executing the task dies, so set it to a time that is significantly larger than maximum estimated execution time.** If the task takes longer than `lockAtMostFor`, it may be executed again and the results will be unpredictable (more processes will hold the lock).
+
+https://note.youdao.com/ynoteshare1/index.html?id=fe2f77731cd2b9196f1184a093989488&type=note
+
 
 
 

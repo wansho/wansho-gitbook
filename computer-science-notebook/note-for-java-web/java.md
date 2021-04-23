@@ -73,6 +73,8 @@ int[] integers = new int[10]; // 在堆内存中 new 一个数组，堆内存中
 for(int integer : integers){ // 增强 for 循环
     System.out.println(integer);
 }
+
+dataType[] arrayRefVar = {value0, value1, ..., valuek}
 ```
 
 ```java
@@ -83,6 +85,25 @@ System.out.println(arr[1].length);
 int[][] arr = new int[3][];
 
 ```
+
+匿名数组：
+
+```java
+public class Test { 
+    public static void printArray(int []arr){
+        for (int i : arr) {
+            System.out.print(i);
+        }
+    }
+    public static void main(String[] args) {
+        //Many code
+        printArray(new int[]{1,2,3,4,5,6});
+        //Many code
+    }
+}
+```
+
+
 
 ### 常见方法
 
@@ -7860,5 +7881,80 @@ class Main {
     logger.info("Set score {} for Person {} ok.", score, p.getName());
 }
 
+```
+
+```java
+try{
+    entityItemRepo.save(entityItem);
+}catch (IllegalArgumentException e){
+    log.error("save {} failed", "entityItem", e);
+}
+```
+
+
+
+## 枚举类型
+
+Demo:
+
+```java
+public enum Color {
+    RED, GREEN, BLUE;
+}
+```
+
+编译出的 class 大概是这样的：
+
+```java
+public final class Color extends Enum { // 继承自Enum，标记为final class
+    // 每个实例均为全局唯一:
+    public static final Color RED = new Color();
+    public static final Color GREEN = new Color();
+    public static final Color BLUE = new Color();
+    // private构造方法，确保外部无法调用new操作符:
+    private Color() {}
+}
+```
+
+编译后的`enum`类和普通`class`并没有任何区别。但是我们自己无法按定义普通`class`那样来定义`enum`，必须使用`enum`关键字，这是Java语法规定的。
+
+因为`enum`是一个`class`，每个枚举的值都是`class`实例，因此，这些实例有一些方法：
+
+```java
+// name()
+String s = Color.RED.name(); // "RED"
+
+// ordinal() 返回定义的常量的顺序，从0开始计数
+int n = Color.RED.ordinal(); 
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Weekday day = Weekday.SUN;
+        if (day.dayValue == 6 || day.dayValue == 0) {
+            System.out.println("Today is " + day + ". Work at home!");
+        } else {
+            System.out.println("Today is " + day + ". Work at office!");
+        }
+    }
+}
+
+enum Weekday {
+    MON(1, "星期一"), TUE(2, "星期二"), WED(3, "星期三"), THU(4, "星期四"), FRI(5, "星期五"), SAT(6, "星期六"), SUN(0, "星期日");
+
+    public final int dayValue;
+    private final String chinese;
+
+    private Weekday(int dayValue, String chinese) {
+        this.dayValue = dayValue;
+        this.chinese = chinese;
+    }
+
+    @Override
+    public String toString() {
+        return this.chinese;
+    }
+}
 ```
 

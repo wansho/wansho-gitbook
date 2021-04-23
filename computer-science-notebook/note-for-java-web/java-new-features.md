@@ -1200,3 +1200,36 @@ java 10 引入。
 var codefx = new URL("http://codefx.org");
 ```
 
+## String... args
+
+```java
+function(String... args)
+```
+
+```java
+function(String[] args) 
+```
+
+The only difference between the two is the way you call the function. With String var args you can omit the array creation.
+
+```java
+public static void main(String[] args) {
+    callMe1(new String[] {"a", "b", "c"});
+    callMe2("a", "b", "c");
+    // You can also do this
+    // callMe2(new String[] {"a", "b", "c"});
+}
+public static void callMe1(String[] args) {
+    System.out.println(args.getClass() == String[].class); // True
+    for (String s : args) {
+        System.out.println(s);
+    }
+}
+public static void callMe2(String... args) {
+    System.out.println(args.getClass() == String[].class); // True
+    for (String s : args) {
+        System.out.println(s);
+    }
+}
+```
+

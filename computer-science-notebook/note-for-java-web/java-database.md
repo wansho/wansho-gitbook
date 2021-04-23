@@ -152,10 +152,9 @@ JPA 更像 Django ORM，统一了 Java ORM 的规范。
 reference
 
 * https://www.liaoxuefeng.com/wiki/1252599548343744/1282383789686817
-
 * https://docs.spring.io/spring-data/jpa/docs/2.5.0/reference/html/#jpa.repositories
-
 * Spring Boot系列(五)：spring data jpa的使用 - 极乐君的文章 - 知乎 https://zhuanlan.zhihu.com/p/25000309
+* https://www.baeldung.com/spring-data-save-saveall
 
 ## JPA / Hibernate / MyBatis 比较
 
