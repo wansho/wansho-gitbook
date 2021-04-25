@@ -100,7 +100,7 @@ echo $?
 
 The `$_` variable, in bash, is the last argument given to the previous command.
 
-用途：`mkdir dir && cd $_`
+用途：`mkdir dir && cd $_` 创建文件夹并切换
 
 ### 环境变量 和 自定义变量的区别
 

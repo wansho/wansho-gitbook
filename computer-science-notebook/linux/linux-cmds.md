@@ -672,6 +672,8 @@ top 命令的 %CPU 显示的实际上是该进程占用的单个 CPU 的大小
 
 ### ps
 
+process snapshot.
+
 ```
 # 参数
 -a 不与 terminal 相关的所有进程

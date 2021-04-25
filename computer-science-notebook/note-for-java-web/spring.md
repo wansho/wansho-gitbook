@@ -77,6 +77,8 @@ mvn 下载的依赖都放在了 `/.m2` 文件夹下了
 
 war 包：`<packaging>war</packaging>` 打包生成 war （Java Web Application ARchive）包，有别于 jar（Java ARchive）包。
 
+一个 dependency 由 groupId、artifactId 和 version 三个参数共同决定，
+
 ## Tutorial
 
 * 使用 [Spring Initializr](https://start.spring.io/#!type=gradle-project&language=java&platformVersion=2.4.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=rest-service&name=rest-service&description=Demo project for Spring Boot&packageName=com.example.rest-service&dependencies=web) 新建 Spring 项目
@@ -209,7 +211,7 @@ Spring Cloud顾名思义是跟云相关的，云程序实际上就是指分布�
 | @Autowired                   | 字段和方法 | 将指定类型的 Bean 注入到字段或者方法上                       | required = false 如果找不到对应的 Bean，就忽略，防止报错。通常用于字段 |
 | @Resource                    | 字段       | @Resource默认按照byName方式进行bean匹配 @Resource(name = "tiger") |                                                              |
 | @Service                     | 类         | 声明该类是一个bean，这点很重要，因为该类是一个bean，其他的类才可以使用@Autowired将该类作为一个成员变量自动注入 |                                                              |
-| @Configuration               | 类         | 告诉 Spring 这个类是一个配置类，等同于配置文件               |                                                              |
+| @Configuration               | 类         | 告诉 Spring 这个类是一个配置类，等同于配置文件。配置类通常用于装配组件 |                                                              |
 | @ComponentScan               | 类         | 告诉容器，自动搜索当前类所在的包以及子包，把所有标注为`@Component`的Bean自动创建出来，并根据`@Autowired`进行装配 |                                                              |
 | @Order                       | 类         | Component 注入 list 时指定 Bean 的顺序                       | 从 @Order(1) 开始                                            |
 | @Bean                        | 方法       | Bean 不在我们的包中，就在@Configuration 类中编写一个 Java 方法创建并返回它，并且给该方法标记一个 @Bean 注解。给容器中添加组件。以方法名作为组件的id。返回类型就是组件类型。返回的值，就是组件在容器中的实例 | 单例。                                                       |
@@ -355,6 +357,8 @@ Excel导出,Excel模板导出,Excel导入,Word模板导出。
 java -jar xxx.jar
 ```
 
+注意，如果我们只是做依赖包，那么就不需要留着 main 方法，删除 main 文件后，会报错找不到主类，这个时候就需要删除这个组件了。
+
 ### lombok
 
 lang bao k
@@ -496,7 +500,12 @@ public class SyncSchedule {
 
 By setting `lockAtMostFor` we make sure that the lock is released even if the node dies and by setting `lockAtLeastFor` we make sure it's not executed more than once in fifteen minutes. Please note that **`lockAtMostFor` is just a safety net in case that the node executing the task dies, so set it to a time that is significantly larger than maximum estimated execution time.** If the task takes longer than `lockAtMostFor`, it may be executed again and the results will be unpredictable (more processes will hold the lock).
 
-https://note.youdao.com/ynoteshare1/index.html?id=fe2f77731cd2b9196f1184a093989488&type=note
+
+
+Reference：
+
+* https://note.youdao.com/ynoteshare1/index.html?id=fe2f77731cd2b9196f1184a093989488&type=note
+* https://github.com/lukas-krecan/ShedLock#jdbctemplate
 
 
 

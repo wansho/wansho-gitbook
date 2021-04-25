@@ -255,6 +255,8 @@ https://ohmyz.sh/
 
 in ubuntu, type `code .`，就可以激活 VSCode 打开当前文件夹
 
+使用 file - open folder 来打开文件夹。
+
 ## Linux 兼容 Windows 应用
 
 [winapps](https://github.com/Fmstrat/winapps)
