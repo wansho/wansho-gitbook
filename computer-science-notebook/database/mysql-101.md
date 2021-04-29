@@ -260,6 +260,9 @@ insert into userInfo(name,password) values('ddf','8979');
 
 手动制定需要插入的列，这种方式比较好，如果后来表发生了变化，这个 insert 语句还是可以用的！
 insert into userInfo(name,password) values('wanshuo','8979');
+
+# 不重复插入：主键存在则不插入
+insert ignore into res_entity_item values("55", "111", "2021-01-01 00:00:00", "desc", "expression", "8", "2021-01-01 00:00:00", "test_name");
 ```
 
 ### 删除数据
@@ -273,7 +276,7 @@ delete from run_case_deploycoveragedetail where query_start_time like '2018-07-1
 
 ```sql
 -- set 是一个固定的关键字
-update run_case_statistics set cycle = 'month', module = "module1" where id >= 5927 and id <= 6265;
+update run_case_statistics set cycle = 'month', module = 'module1' where id >= 5927 and id <= 6265;
 
 -- 多表关联更新
 update test1,test2 set test1.name=test2.name,test1.age=test2.age where test1.id=test2.id;

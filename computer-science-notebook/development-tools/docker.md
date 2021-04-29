@@ -379,7 +379,7 @@ docker logs container-id
 
 ### docker exec
 
-在容器中执行命令
+进入容器执行命令
 
 ```shell
 # 在容器中连接 mysql
@@ -388,5 +388,76 @@ docker exec -it <mysql-container-id> mysql -u root -p
 
 ## Docker Compose
 
+Docker compose 的作用是对 docker run 进行配置封装。ubuntu 安装 docker-compose 的命令：`sudo apt-get install docker-compose `
 
+docker-compose 的优点：
+
+* 自动创建 network
+* 对 docker run 进行封装，进而可以进行版本控制
+
+`docker-compose.yml`:
+
+```yml
+version: "2.0"
+
+services:
+  app:
+    image: node:12-alpine
+    command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - todo-mysql-data:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
+
+volumes:
+  todo-mysql-data:
+```
+
+```shell
+# 在 docker-compose.yml 所在文件夹下，执行该命令，就可以调起两个容器
+docker-compose up -d 
+```
+
+```shell
+# 运行日志
+ Creating network "app_default" with the default driver
+ Creating volume "app_todo-mysql-data" with default driver
+ Creating app_app_1   ... done
+ Creating app_mysql_1 ... done
+```
+
+You’ll notice that the volume was created as well as a network! By default, Docker Compose automatically creates a network specifically for the application stack (which is why we didn’t define one in the compose file).
+
+查看实时的运行日志：
+
+```shell
+docker-compose logs -f # 所有的日志
+docker-compose logs -f app # 单个容器的日志
+```
+
+When the app is starting up, it actually sits and waits for MySQL to be up and ready before trying to connect to it. Docker doesn’t have any built-in support to wait for another container to be fully up, running, and ready before starting another container. For Node-based projects, you can use the [wait-port](https://github.com/dwmkerr/wait-port) dependency. Similar projects exist for other languages/frameworks.
+
+关闭 compose
+
+```shell
+docker-compose down
+```
+
+Removing Volumes
+
+By default, named volumes in your compose file are NOT removed when running `docker-compose down`. If you want to remove the volumes, you will need to add the `--volumes` flag. The Docker Dashboard does *not* remove volumes when you delete the app stack.
 

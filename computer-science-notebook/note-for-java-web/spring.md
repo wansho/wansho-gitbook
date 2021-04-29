@@ -336,6 +336,10 @@ http://localhost:port/xxx/doc.html
 
 
 
+其实可以用 PostMan 替代 Swagger……
+
+
+
 ### easypoi
 
 Excel导出,Excel模板导出,Excel导入,Word模板导出。
@@ -509,9 +513,13 @@ Reference：
 
 
 
+## SpringBoot 自定义 starter
 
+SpringBoot四大核心之starter——自定义starter - 贺贺学编程的文章 - 知乎 https://zhuanlan.zhihu.com/p/343094626
 
+## POM 文件
 
+https://maven.apache.org/pom.html
 
 
 
