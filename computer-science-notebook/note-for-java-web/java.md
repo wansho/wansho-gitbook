@@ -74,7 +74,8 @@ for(int integer : integers){ // 增强 for 循环
     System.out.println(integer);
 }
 
-dataType[] arrayRefVar = {value0, value1, ..., valuek}
+dataType[] arrayRefVar = {value0, value1, ..., valuek};
+String[] strings = new String[]{"a", "b", "c", "d", "d1", "a1"};
 ```
 
 ```java
@@ -1361,14 +1362,24 @@ java mypack.PackageDemo
 
 **java 四种权限**
 
-|          | public | protected | default | private |
-| -------- | ------ | --------- | ------- | ------- |
-| 同一类中 | ok     | ok        | ok      | ok      |
-| 同一包中 | ok     | ok        | ok      | 封装    |
-| 子类中   | ok     | ok        | 封装    | 封装    |
-| 不同包中 | ok     | 封装      | 封装    | 封装    |
+|          | public | protected | default        | private |
+| -------- | ------ | --------- | -------------- | ------- |
+| 同一类中 | ok     | ok        | ok             | ok      |
+| 同一包中 | ok     | ok        | ok             | 封装    |
+| 子类中   | ok     | ok        | 封装(访问不到) | 封装    |
+| 不同包中 | ok     | 封装      | 封装           | 封装    |
 
 总结：包与包之间的类进行访问，被访问的包中的类必须是 public 的，被访问的包中的类的方法也必须是 public 的。 
+
+protected：比 default 稍微宽松一点，包外的子类可以访问
+
+default：同包能访问，包外的子类就不能访问了
+
+private：吃独食，子类都访问不了
+
+<img align="left" src="assets/image-20210503084531612.png" alt="image-20210503084531612" style="zoom:80%;" />
+
+
 
 ### import 的作用和规范
 
@@ -3880,7 +3891,7 @@ class CompByName implements Comparator<Person>{
 class CompByStuName implements Comparator<Student>{
     @Override
     public int compare(Student o1, Student o2) {
-        int temp = o1.getName().compareTo(o2.getName());163
+        int temp = o1.getName().compareTo(o2.getName());
             return temp==0? o1.getAge()-o2.getAge():temp;
     }
 }
@@ -4593,7 +4604,7 @@ public class ParamterDemo {
 ```java
 import java.util.ArrayList;
 import java.util.List;
-import static java.util.Collections.*;//静态导入，其实到入的是类中的静态成员。
+import static java.util.Collections.*;//静态导入，其实导入的是类中的静态成员。
 //import static java.util.Collections.max;//静态导入，其实到入的是类中的静态成员。
 import static java.lang.System.*;
 public class StaticImportDemo {
@@ -7437,7 +7448,7 @@ Connection: close
 
 ## 反射机制  
 
-### 什么是反射机制
+### 什么是反射机制（类的解剖）
 
 ```java
 /*

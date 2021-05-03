@@ -4,13 +4,19 @@
 
 ## IDEA
 
-### 快捷键
+### 快捷键 shortcut
 
-| 功能                 | 快捷键 |
-| -------------------- | ------ |
-| main 函数            | psvm   |
-| System.out.println() | sout   |
-|                      |        |
+https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
+
+| 功能                 | 快捷键                |
+| -------------------- | --------------------- |
+| main 函数            | psvm                  |
+| System.out.println() | sout                  |
+| 查看类的继承树       | ctrl + H（Hierarchy） |
+| 查看当前类的结构     | ctrl + F12            |
+| 搜索类文件           | ctrl + N              |
+| 自动补全变量名称     | ctrl + alt + V        |
+| 代码格式化           | ctrl + alt + L        |
 
 ## PostMan
 

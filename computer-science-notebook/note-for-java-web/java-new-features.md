@@ -1202,6 +1202,14 @@ var codefx = new URL("http://codefx.org");
 
 ## String... args
 
+Demo：
+
+```java
+Arrays.asList("a", "b", "c", "d")
+```
+
+
+
 ```java
 function(String... args)
 ```
@@ -1231,5 +1239,16 @@ public static void callMe2(String... args) {
         System.out.println(s);
     }
 }
+```
+
+## 遗忘的知识点
+
+### 三目运算符
+
+作用：二选一
+
+```java
+Object object = (1 == 2? "hello" : "world"); // boolean? value1 : value2
+System.out.println(object); // world
 ```
 

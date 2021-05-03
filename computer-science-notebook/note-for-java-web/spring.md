@@ -79,6 +79,10 @@ war 包：`<packaging>war</packaging>` 打包生成 war （Java Web Application 
 
 一个 dependency 由 groupId、artifactId 和 version 三个参数共同决定，
 
+### Servlet
+
+A servlet is a small Java program that runs within a Web server. Servlets receive and respond to requests from Web clients.
+
 ## Tutorial
 
 * 使用 [Spring Initializr](https://start.spring.io/#!type=gradle-project&language=java&platformVersion=2.4.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=rest-service&name=rest-service&description=Demo project for Spring Boot&packageName=com.example.rest-service&dependencies=web) 新建 Spring 项目

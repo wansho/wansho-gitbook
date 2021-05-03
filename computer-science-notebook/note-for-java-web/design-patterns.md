@@ -2,6 +2,71 @@
 
 [TOC]
 
+## 创建型模式
+
+创建型模式关注点是如何创建对象，其核心思想是要把对象的创建和使用相分离，这样使得两者能相对独立地变换。
+
+### 工厂方法
+
+工厂模式用于定制对象。
+
+定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。
+
+工厂方法可以隐藏创建产品的细节，且不一定每次都会真正创建产品，完全可以返回缓存的产品，从而提升速度并减少内存消耗。
+
+传入不同的配置，获取不同的初始化对象。就跟工厂加工产品一样。
+
+静态工厂方法（Static Factory Method）：
+
+```java
+List<String> list = List.of("A", "B", "C"); // 创建一个 collection
+
+Arrays.asList("a1", "a2", "a3") // 创建一个数组
+
+Integer n = Integer.valueOf(100);
+
+Stream.of("a1", "a2", "a3") // 创建一个 stream
+```
+
+工厂方法：
+
+```java
+public interface NumberFactory {
+    
+    static NumberFactory impl = new NumberFactoryImpl(); // 接口中也可以 new 对象
+    
+    // 创建方法:
+    Number parse(String s);
+
+    // 获取工厂实例:
+    static NumberFactory getFactory() {
+        return impl;
+    }
+    
+}
+
+public class NumberFactoryImpl implements NumberFactory {
+    public Number parse(String s) {
+        return new BigDecimal(s);
+    }
+}
+
+NumberFactory factory = NumberFactory.getFactory();
+Number result = factory.parse("123.456");
+```
+
+总是引用接口而非实现类，能允许变换子类而不影响调用方，即尽可能面向抽象编程。
+
+工厂方法是指定义工厂接口和产品接口，但如何创建实际工厂和实际产品被推迟到子类实现，从而使调用方只和抽象工厂与抽象产品打交道。
+
+实际更常用的是更简单的静态工厂方法，它允许工厂内部对创建产品进行优化。
+
+调用方尽量持有接口或抽象类，避免持有具体类型的子类，以便工厂方法能随时切换不同的子类返回，却不影响调用方代码。
+
+### 生成器
+
+
+
 ## 装饰设计模式
 
 装饰设计模式：对一组对象的功能进行增强时，就可以使用该模式进行问题的解决。
@@ -84,23 +149,9 @@ public BAdapter implements B {
 
 为其他对象提供一种代理以控制对这个对象的访问。
 
+
+
 ## 工厂模式
 
 https://www.liaoxuefeng.com/wiki/1252599548343744/1281319170474017
-
-工厂模式用于定制对象。
-
-定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。
-
-工厂方法可以隐藏创建产品的细节，且不一定每次都会真正创建产品，完全可以返回缓存的产品，从而提升速度并减少内存消耗。
-
-传入不同的配置，获取不同的初始化对象。就跟工厂加工产品一样。
-
-常见的工厂模式：
-
-```java
-List<String> list = List.of("A", "B", "C");
-```
-
-
 
