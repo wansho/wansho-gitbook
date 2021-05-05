@@ -96,6 +96,10 @@ try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PAS
 
 ### jdbc 连接池
 
+#### Hikaricp
+
+HikariCP 是 Spring Boot 默认支持的数据库连接池。
+
 JDBC连接池有一个标准的接口`javax.sql.DataSource`，注意这个类位于Java标准库中，但仅仅是接口。要使用JDBC连接池，我们必须选择一个JDBC连接池的实现。目前使用最广泛的是 HikariCP(黑卡瑞 cp)。我们以 HikariCP 为例，要使用JDBC连接池，先添加HikariCP的依赖如下：
 
 ```xml
@@ -137,7 +141,9 @@ try (Connection conn = ds.getConnection()) { // 在此获取连接
 - 通过`Connection`实例创建`PreparedStatement`实例；
 - 执行SQL语句，如果是查询，则通过`ResultSet`读取结果集，如果是修改，则获得`int`结果。
 
+#### Druid
 
+阿里开源的数据库连接池。
 
 ## JPA
 
@@ -164,3 +170,10 @@ reference
 | :--------- | :------------- | :------------------- | ----------------- | ------------ |
 | DataSource | SessionFactory | EntityManagerFactory | SqlSessionFactory | 数据库连接池 |
 | Connection | Session        | EntityManager        | SqlSession        | 一个连接     |
+
+## NoSQL
+
+### Redis
+
+Redis 有两个 Java 客户端：Jedis 和 Lettuce
+

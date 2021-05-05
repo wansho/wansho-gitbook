@@ -42,43 +42,6 @@
 
 Spring 是一整套解决方案，包含了 Spring Boot，Spring Cloud。
 
-### SpringBoot
-
-SpringBoot 是
-
-### Maven
-
-Java项目管理和构建工具，主要功能是依赖管理和项目打包，Maven 于 Java 就是 Python 的 pip
-
-一个标准的 Java 项目：
-
-```
-a-maven-project
-├── pom.xml
-├── src
-│   ├── main
-│   │   ├── java
-│   │   └── resources
-│   └── test
-│       ├── java
-│       └── resources
-└── target
-```
-
-A Project Object Model or POM is the fundamental unit of work in Maven. It is an XML file that contains information about the project and configuration details used by Maven to build the project. It contains default values for most projects. 
-
-编译项目的命令：`mvn clean package` ，clean 是先执行 clean 周期并运行到 clean 这个phase，package 是执行 default 周期并运行到 package 这个 phase。先执行 clean 周期，再执行 package 周期。
-
-
-
-mvnw: Maven Wrapper 就是给一个项目提供一个独立的，指定版本的Maven给它使用。
-
-mvn 下载的依赖都放在了 `/.m2` 文件夹下了
-
-war 包：`<packaging>war</packaging>` 打包生成 war （Java Web Application ARchive）包，有别于 jar（Java ARchive）包。
-
-一个 dependency 由 groupId、artifactId 和 version 三个参数共同决定，
-
 ### Servlet
 
 A servlet is a small Java program that runs within a Web server. Servlets receive and respond to requests from Web clients.
@@ -123,6 +86,14 @@ $ DB_HOST=10.0.1.123 DB_USER=prod DB_PASSWORD=xxxx java -jar xxx.jar
   以前网页是前后端融合在一块的（我之前写的 Senti-weibo 网页，就是前后端融合在一块的，类似 JSP），Restful 标准是实现前后端分离的标准，一个后端服务就可以服务 Web、app 等多个前端平台。
   
 * **Controller层是不允许直接操作数据库**，Controller 层是负责调用 Service 的。一般的，一个Controller对应一个Service，一个Service对应一个Dao，一个Dao对应一个数据库表，当然根据项目或业务复杂程度，一个Controller可以调用多个Service，而一个Service也可以调用多个Dao，但是Controller层不允许互调，Service层也不允许互调，意思就是AController不能直接调用BController，AService也不能直接去调用BService，遵循高内聚低耦合原则！
+
+## 廖雪峰 Java 教程
+
+### Servlet 开发
+
+Tomcat10 不再支持 javax，转为支持 jakarta
+
+通过 maven 继承 Tomcat：https://www.liaoxuefeng.com/wiki/1252599548343744/1266264743830016
 
 ## 廖雪峰 Spring 教程
 
@@ -525,9 +496,50 @@ SpringBoot四大核心之starter——自定义starter - 贺贺学编程的文�
 
 https://maven.apache.org/pom.html
 
+## 单元测试
 
+Spring Boot 集成了 Junit5.
 
+https://junit.org/junit5/docs/current/user-guide/
 
+需要引入 sprint boot-test 依赖，使用 junit5
 
+| Annotation               | Description                                                  |
+| :----------------------- | :----------------------------------------------------------- |
+| `@Test`                  | Denotes that a method is a test method. Unlike JUnit 4’s `@Test` annotation, this annotation does not declare any attributes, since test extensions in JUnit Jupiter operate based on their own dedicated annotations. Such methods are *inherited* unless they are *overridden*. |
+| `@ParameterizedTest`     | Denotes that a method is a [parameterized test](https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests). Such methods are *inherited* unless they are *overridden*. |
+| `@RepeatedTest`          | Denotes that a method is a test template for a [repeated test](https://junit.org/junit5/docs/current/user-guide/#writing-tests-repeated-tests). Such methods are *inherited* unless they are *overridden*. |
+| `@TestFactory`           | Denotes that a method is a test factory for [dynamic tests](https://junit.org/junit5/docs/current/user-guide/#writing-tests-dynamic-tests). Such methods are *inherited* unless they are *overridden*. |
+| `@TestTemplate`          | Denotes that a method is a [template for test cases](https://junit.org/junit5/docs/current/user-guide/#writing-tests-test-templates) designed to be invoked multiple times depending on the number of invocation contexts returned by the registered [providers](https://junit.org/junit5/docs/current/user-guide/#extensions-test-templates). Such methods are *inherited* unless they are *overridden*. |
+| `@TestMethodOrder`       | Used to configure the [test method execution order](https://junit.org/junit5/docs/current/user-guide/#writing-tests-test-execution-order) for the annotated test class; similar to JUnit 4’s `@FixMethodOrder`. Such annotations are *inherited*. |
+| `@TestInstance`          | Used to configure the [test instance lifecycle](https://junit.org/junit5/docs/current/user-guide/#writing-tests-test-instance-lifecycle) for the annotated test class. Such annotations are *inherited*. |
+| `@DisplayName`           | Declares a custom [display name](https://junit.org/junit5/docs/current/user-guide/#writing-tests-display-names) for the test class or test method. Such annotations are not *inherited*. |
+| `@DisplayNameGeneration` | Declares a custom [display name generator](https://junit.org/junit5/docs/current/user-guide/#writing-tests-display-name-generator) for the test class. Such annotations are *inherited*. |
+| `@BeforeEach`            | Denotes that the annotated method should be executed *before* **each** `@Test`, `@RepeatedTest`, `@ParameterizedTest`, or `@TestFactory` method in the current class; analogous to JUnit 4’s `@Before`. Such methods are *inherited* unless they are *overridden*. |
+| `@AfterEach`             | Denotes that the annotated method should be executed *after* **each** `@Test`, `@RepeatedTest`, `@ParameterizedTest`, or `@TestFactory` method in the current class; analogous to JUnit 4’s `@After`. Such methods are *inherited* unless they are *overridden*. |
+| `@BeforeAll`             | Denotes that the annotated method should be executed *before* **all** `@Test`, `@RepeatedTest`, `@ParameterizedTest`, and `@TestFactory` methods in the current class; analogous to JUnit 4’s `@BeforeClass`. Such methods are *inherited* (unless they are *hidden* or *overridden*) and must be `static` (unless the "per-class" [test instance lifecycle](https://junit.org/junit5/docs/current/user-guide/#writing-tests-test-instance-lifecycle) is used). |
+| `@AfterAll`              | Denotes that the annotated method should be executed *after* **all** `@Test`, `@RepeatedTest`, `@ParameterizedTest`, and `@TestFactory` methods in the current class; analogous to JUnit 4’s `@AfterClass`. Such methods are *inherited* (unless they are *hidden* or *overridden*) and must be `static` (unless the "per-class" [test instance lifecycle](https://junit.org/junit5/docs/current/user-guide/#writing-tests-test-instance-lifecycle) is used). |
+| `@Nested`                | Denotes that the annotated class is a non-static [nested test class](https://junit.org/junit5/docs/current/user-guide/#writing-tests-nested). `@BeforeAll` and `@AfterAll` methods cannot be used directly in a `@Nested` test class unless the "per-class" [test instance lifecycle](https://junit.org/junit5/docs/current/user-guide/#writing-tests-test-instance-lifecycle) is used. Such annotations are not *inherited*. |
+| `@Tag`                   | Used to declare [tags for filtering tests](https://junit.org/junit5/docs/current/user-guide/#writing-tests-tagging-and-filtering), either at the class or method level; analogous to test groups in TestNG or Categories in JUnit 4. Such annotations are *inherited* at the class level but not at the method level. |
+| `@Disabled`              | Used to [disable](https://junit.org/junit5/docs/current/user-guide/#writing-tests-disabling) a test class or test method; analogous to JUnit 4’s `@Ignore`. Such annotations are not *inherited*. |
+| `@Timeout`               | Used to fail a test, test factory, test template, or lifecycle method if its execution exceeds a given duration. Such annotations are *inherited*. |
+| `@ExtendWith`            | Used to [register extensions declaratively](https://junit.org/junit5/docs/current/user-guide/#extensions-registration-declarative). Such annotations are *inherited*. |
+| `@RegisterExtension`     | Used to [register extensions programmatically](https://junit.org/junit5/docs/current/user-guide/#extensions-registration-programmatic) via fields. Such fields are *inherited* unless they are *shadowed*. |
+| `@TempDir`               | Used to supply a [temporary directory](https://junit.org/junit5/docs/current/user-guide/#writing-tests-built-in-extensions-TempDirectory) via field injection or parameter injection in a lifecycle method or test method; located in the `org.junit.jupiter.api.io` package. |
 
+与 Maven 的配合，clean - test 会把所有的单元测试跑一遍。
+
+在单元测试中，要使用 Assert 断言机制，不要使用 sout
+
+https://junit.org/junit5/docs/current/user-guide/#writing-tests-assertions
+
+一个业务逻辑开发完后，一定要写单元测试类。
+
+## 高级特性
+
+### Profile
+
+环境切换
+
+profile 还可以用作条件装配
 

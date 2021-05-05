@@ -1241,7 +1241,7 @@ public static void callMe2(String... args) {
 }
 ```
 
-## 遗忘的知识点
+## 知识点
 
 ### 三目运算符
 
@@ -1252,3 +1252,12 @@ Object object = (1 == 2? "hello" : "world"); // boolean? value1 : value2
 System.out.println(object); // world
 ```
 
+### javax
+
+if a package is introduced as an addition to an existing JRE, it comes in as `javax`.
+
+注意，Tomcat 已经不支持 `javax.servlet`，转而支持 `jakarta.servlet`
+
+### classpath
+
+The `CLASSPATH` variable is one way to tell applications, including the JDK tools, where to look for user classes. (Classes that are part of the JRE, JDK platform, and extensions should be defined through other means, such as the bootstrap class path or the extensions directory.)
