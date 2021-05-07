@@ -2,7 +2,15 @@
 
 [TOC]
 
-## OpenAI GPT-3 API
+## API
+
+### NLPCloud
+
+[如何用自然语言处理（NLP）推送广告？](https://netlabe.com/real-time-context-targeting-using-nlp-baceb4324fc4)（英文）
+
+经过测试，只支持中文。
+
+### OpenAI GPT-3 API
 
 [OpenAI API](https://openai.com/blog/openai-api/)
 
@@ -12,7 +20,9 @@
 
 相关的项目：[awesome-gpt3](https://github.com/elyase/awesome-gpt3)，[gpt3-sandbox](https://github.com/shreyashankar/gpt3-sandbox)，[gpt-3-experiments](https://github.com/minimaxir/gpt-3-experiments) [品玩 gpt-3](https://www.pingwest.com/a/214772)
 
+### 其他
 
+百度云、阿里云
 
 ## 学术会议
 

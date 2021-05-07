@@ -141,7 +141,7 @@ REST 是一套用于构建 Web Service 的规范。
 
 [利用 Webhooks 实现代码的自动拉取](https://blog.csdn.net/mrzhouxiaofei/article/details/84191517)
 
-* **持续集成(Continuous Integration CI)**：持续频繁的将代码集成到主干（集成到主干之前，必须经过自动化测试）
+* **持续集成(Continuous Integration CI)**：持续频繁的将代码集成到主干，小步快跑（集成到主干之前，必须经过自动化测试）
   * 目的：快速高质量的迭代产品
   * 优点：快速发现问题，防止分支大幅度偏离主干
   * 面向团队：研发

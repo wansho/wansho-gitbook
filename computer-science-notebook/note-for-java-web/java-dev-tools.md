@@ -24,7 +24,7 @@ https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
 | 自动补全变量名称 | ctrl + alt + V        |
 | 代码格式化       | ctrl + alt + L        |
 | 手动导包         | alt + enter           |
-|                  |                       |
+| 删除当前行       | ctrl + Y              |
 |                  |                       |
 |                  |                       |
 |                  |                       |
