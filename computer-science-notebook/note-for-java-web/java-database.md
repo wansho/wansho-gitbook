@@ -94,6 +94,17 @@ try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PAS
 }
 ```
 
+注意，`?` 只适用于 value，不适用于字段和表名，下面这个 sql 构造就是有问题的：
+
+```java
+// error case
+String sql = "INSERT IGNORE INTO ? (\n" +
+                "  ?, ?, ?, ? \n" +
+                ") \n" +
+                "VALUES \n" +
+                "  (?, ?, ?, ?)\n";
+```
+
 ### jdbc 连接池
 
 #### Hikaricp
