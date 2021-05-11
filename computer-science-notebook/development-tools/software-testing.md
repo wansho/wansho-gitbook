@@ -27,3 +27,6 @@ Jenkins
 
   Kafka
 
+## Jenkins + SpringBoot + Docker + GitHub
+
+https://zhuanlan.zhihu.com/p/78396471

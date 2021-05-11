@@ -63,7 +63,7 @@ email -> System.out.println(email)
 
 函数式接口 (Functional Interface) 就是一个**只有一个方法的接口**。常与 Stream 结合用于函数式编程。
 
-只要碰到只有一个方法的接口，也就是功能单一的接口，就可以直接用 Lambda Expression 来代替。
+**只要碰到只有一个方法的接口，也就是功能单一的接口，就可以直接用 Lambda Expression 来代替。**
 
 A functional interface is any interface that contains only one [abstract method](https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)。(A functional interface may contain one or more [default methods](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html) or [static methods](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html#static).) 
 
@@ -1107,6 +1107,12 @@ streamSupplier.get().noneMatch(s -> true);  // ok
 ```
 
 Each call to `get()` constructs a new stream on which we are save to call the desired terminal operation.
+
+### Stream toArray() toList()
+
+
+
+
 
 ## Try with resource
 
