@@ -51,6 +51,12 @@
 * 软件测试：Selenium
 * 一键部署工具：LAMP(Apache Mysql PHP)
 
+## 需求分析
+
+发现一块最适合我的需求分析工具：processon 的思维导图
+
+
+
 ## 数据库
 
 * Mysql

@@ -118,6 +118,7 @@
   * [Java-Database](computer-science-notebook/note-for-java-web/java-database.md)
   * [Maven](computer-science-notebook/note-for-java-web/maven.md)
   * [Java 开发工具](computer-science-notebook/note-for-java-web/java-dev-tools.md)
+  * [JMS](computer-science-notebook/note-for-java-web/java-message-service.md)
   * [Restful-Api](computer-science-notebook/note-for-java-web/restful-api.md)
   * [Spring](computer-science-notebook/note-for-java-web/spring.md)
   * [SpringBoot-Reference](computer-science-notebook/note-for-java-web/springboot-reference.md)
