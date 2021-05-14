@@ -79,12 +79,6 @@ $ DB_HOST=10.0.1.123 DB_USER=prod DB_PASSWORD=xxxx java -jar xxx.jar
 
 * Spring 项目代码变更后，要重启服务器，新代码才能生效，不能代码热更新
 
-* MVC 和 RESTful web 的区别
-
-  A key difference between a traditional MVC controller and the RESTful web service controller shown earlier is the way that the HTTP response body is created. Rather than relying on a view technology to perform server-side rendering of the greeting data to HTML, this RESTful web service controller populates and returns a `Greeting` object. The object data will be written directly to the HTTP response as JSON.
-  
-  以前网页是前后端融合在一块的（我之前写的 Senti-weibo 网页，就是前后端融合在一块的，类似 JSP），Restful 标准是实现前后端分离的标准，一个后端服务就可以服务 Web、app 等多个前端平台。
-  
 * **Controller层是不允许直接操作数据库**，Controller 层是负责调用 Service 的。一般的，一个Controller对应一个Service，一个Service对应一个Dao，一个Dao对应一个数据库表，当然根据项目或业务复杂程度，一个Controller可以调用多个Service，而一个Service也可以调用多个Dao，但是Controller层不允许互调，Service层也不允许互调，意思就是AController不能直接调用BController，AService也不能直接去调用BService，遵循高内聚低耦合原则！
 
 ## 廖雪峰 Java 教程
@@ -543,3 +537,4 @@ https://junit.org/junit5/docs/current/user-guide/#writing-tests-assertions
 
 profile 还可以用作条件装配
 
+配合 snakeyml 可以实现   `active: @profile.env@` 动态配置

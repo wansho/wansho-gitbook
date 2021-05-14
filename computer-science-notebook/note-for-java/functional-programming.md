@@ -52,6 +52,8 @@ Stream 方法分为惰性求值方法和及早求值方法：
 * 惰性求值：仍然返回 Stream 对象的就是惰性求值
 * 及早求值：返回一个值或者为空
 
+**学好了流，就相当于在 Java 中使用 Pandas，很舒服！**
+
 ### 惰性求值方法
 
 | 方法    | 功能                             | 备注                                        |
@@ -112,7 +114,7 @@ API Note:
 
 传入一个 Collector 对象，Collector 对象封装了及早求值的规则。Collector 对象由 Collectors 工厂的静态方法生成。
 
-Collectors 提供的静态方法：
+Collectors 提供的静态方法（实际上 Collectors 中提供了各种函数写好的函数）：
 
 ```
 Collectors
@@ -177,6 +179,16 @@ Set<String> origins = album.getMusicians()
     .map(artist -> artist.getNationality())
     .collect(Collectors.toSet());
 ```
+
+```java
+// 找出成员最多的乐队
+public Optional<Artist> biggestGroup(Stream<Artist> artists) {
+    Function<Artist,Long> getCount = artist -> artist.getMembers().count();
+    return artists.collect(Collectors.maxBy(Comparator.comparing(getCount)));
+}
+```
+
+
 
 #### min / max
 
@@ -331,7 +343,9 @@ public interface Sized {
 
 ### 静态方法
 
-前面已多次出现过 Stream.of 方法的调用， 接下来将对其进行详细介绍。 Stream 是个接口，Stream.of 是接口的静态方法。  
+Java 8 允许在接口内定义静态的方法并实现。
+
+Stream 是个接口，Stream.of 是接口的静态方法，of 方法是静态工厂方法，用于生成一个 Stream 对象 。
 
 #### Optional  
 
@@ -377,3 +391,37 @@ assertEquals("c", emptyOptional.orElseGet(() -> "c"));
 
 
 Optional 对象不仅可以用于新的 Java 8 API， 也可用于具体领域类中， 和普通的类别无二致。 当试图避免空值相关的缺陷， 如未捕获的异常时， 可以考虑一下是否可使用 Optional 对象。  
+
+## 高级集合类和收集器
+
+### 方法引用 替代 lambda
+
+方法引用的使用场景：在 lambda 表达式中调用方法的时候，可以使用方法引用替代 lambda 表达式
+
+标准语法为: `Classname::methodName  `
+
+lambda 表达式就是一个函数，是对行为的封装。
+
+```java
+artist -> artist.getName()
+// 用方法引用重写上面的 Lambda 表达式
+Artist::getName
+```
+
+构造函数语法：
+
+```java
+(name, nationality) -> new Artist(name, nationality)
+// 方法引用形式    
+Artist::new
+```
+
+创建数组：
+
+```java
+String[]::new
+```
+
+### 收集器 Collector Collectors
+
+Collector, 一种通用的、 从流生成复杂值的结构  

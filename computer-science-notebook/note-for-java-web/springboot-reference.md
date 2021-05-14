@@ -75,7 +75,4 @@ The @RequestMapping annotation provides “routing” information. It tells Spri
 
 ### @EnableAutoConfiguration  
 
-The second class-level annotation is @EnableAutoConfiguration. This annotation tells Spring Boot to
-“guess” how you want to configure Spring, based on the jar dependencies that you have added.
-Since spring-boot-starter-web added Tomcat and Spring MVC, the auto-configuration assumes that
-you are developing a web application and sets up Spring accordingly  
+The second class-level annotation is @EnableAutoConfiguration. This annotation tells Spring Boot to“guess” how you want to configure Spring, based on the jar dependencies that you have added. Since spring-boot-starter-web added Tomcat and Spring MVC, the auto-configuration assumes that you are developing a web application and sets up Spring accordingly  

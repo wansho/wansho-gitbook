@@ -16,18 +16,18 @@ Open-JDK
 
 https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
 
-| 功能             | 快捷键                |
-| ---------------- | --------------------- |
-| 查看类的继承树   | ctrl + H（Hierarchy） |
-| 查看当前类的结构 | ctrl + F12            |
-| 搜索类文件       | ctrl + N              |
-| 自动补全变量名称 | ctrl + alt + V        |
-| 代码格式化       | ctrl + alt + L        |
-| 手动导包         | alt + enter           |
-| 删除当前行       | ctrl + Y              |
-|                  |                       |
-|                  |                       |
-|                  |                       |
+| 功能                     | 快捷键                |
+| ------------------------ | --------------------- |
+| 查看类的继承树           | ctrl + H（Hierarchy） |
+| 查看当前类的结构         | ctrl + F12            |
+| 搜索类文件               | ctrl + N              |
+| 自动补全变量名称         | ctrl + alt + V        |
+| 代码格式化               | ctrl + alt + L        |
+| 手动导包                 | alt + enter           |
+| 删除当前行               | ctrl + Y              |
+| 查看最近看了改了哪些代码 | ctrl + shift + E      |
+|                          |                       |
+|                          |                       |
 
 
 

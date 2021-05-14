@@ -30,7 +30,7 @@
 
 * HTTP 只是一种协议，并不需要浏览器去发送，只要满足了这种协议，那么任何工具都可以发送 HTTP 协议 
 
-![HTTP学习](http://assets.processon.com/chart_image/5c93aeade4b0f88919b7a567.png)
+![HTTP学习](http://assets.processon.com/chart_image/5c93aeade4b0f88919b7a567.png?_=1620893716766)
 
 ## HTTP Request
 
