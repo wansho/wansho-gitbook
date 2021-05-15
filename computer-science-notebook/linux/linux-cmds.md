@@ -749,7 +749,13 @@ pgrep -l mysql  # 返回 MySQL 的 pid
 pkill -x mysql # 
 ```
 
+### systemctl
 
+system-control
+
+```shell
+systemctl stop firewalld # 关闭防火墙
+```
 
 ## 网络相关
 
@@ -888,7 +894,11 @@ firewall-cmd --zone=public --add-port=3306/tcp --permanent
 firewall-cmd --reload
 ```
 
+```shell
+systemctl stop firewalld # 关闭防火墙 system-control
+```
 
+能 ping 通，但是访问不了，netstat 看一下端口，可能是防火墙的问题
 
 ## 硬件相关
 
