@@ -426,6 +426,43 @@ String[]::new
 
 Collector, 一种通用的、 从流生成复杂值的结构  
 
+## 并行计算
+
+只要将 `Stream()` 改成 `parallelStream()`，就可以启动并行计算。
+
+并行计算常和 flatMap 结合。
+
+不建议对 Set 进行并行计算，因为太难分解。
+
+并行的控制需要消耗额外的计算资源，只有在数据量很大的时候，才适合做并行计算
+
+### flatMap
+
+flatMap 用于处理类似这样的数据结构：`[[], [], []]`，所以常用于并行计算。
+
+```java
+public int parallelArraySum() {
+    return albums.parallelStream()
+        .flatMap(Album::getTracks)
+        .mapToInt(Track::getLength)
+        .sum();
+}
+```
+
+### 并行计算的原理
+
+```java
+private int addIntegers(List<Integer> values) {
+    return values.parallelStream()
+        .mapToInt(i -> i)
+        .sum();
+}
+```
+
+![image-20210516220651843](assets/image-20210516220651843.png)
+
+
+
 ## Reference
 
 https://github.com/RichardWarburton/java-8-Lambdas-exercises  
