@@ -338,6 +338,14 @@ lang bao k
 
 lombok的主要作用是通过一些注解，消除样板式代码。简化 JavaBean 开发。在编译的时候生成 Java 代码。
 
+```xml
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.10</version>
+</dependency>
+```
+
 Demo:
 
 ```java

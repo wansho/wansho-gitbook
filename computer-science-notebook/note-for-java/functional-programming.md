@@ -425,3 +425,7 @@ String[]::new
 ### 收集器 Collector Collectors
 
 Collector, 一种通用的、 从流生成复杂值的结构  
+
+## Reference
+
+https://github.com/RichardWarburton/java-8-Lambdas-exercises  
