@@ -203,6 +203,49 @@ JPA 语法
 | `False`                | `findByActiveFalse()`                                        | `… where x.active = false`                                   |
 | `IgnoreCase`           | `findByFirstnameIgnoreCase`                                  | `… where UPPER(x.firstname) = UPPER(?1)`                     |
 
+## Hibernate
+
+dialect
+
+MySQL 是一种方言，Oracle 也是一种方言，MSSQL 也是一种方言，他们之间在遵循 SQL 规范的前提下，都有各自的扩展特性。
+
+拿分页来说，MySQL 的分页是用关键字 `limit`， 而 Oracle 用的是 `ROWNUM`，MSSQL 可能又是另一种分页方式。
+
+```sql
+# mysql
+select * from t_user limit 10;
+# oracle
+select * from t_user t where ROWNUM <10;
+```
+
+这对于 ORM 框架来说，为了在上层的ORM层做了无差别调用，比如分页，对使用者来说，不管你底层用的是MySQL还是Oracle，他们用的都是一样的接口，但是底层需要根据你使用的数据库方言不同而调用不同的DBAPI。用户只需要在初始化的时候指定用哪种方言就好，其它的事情ORM框架帮你完成了。
+
+```yaml
+spring:
+  jpa:
+    database: oracle
+    show-sql: true
+    hibernate:
+      naming:
+        # 表名及字段全小写下划线分隔命名策略(默认),表名具备前缀res
+        physical-strategy: com.nrec.base.res.config.CustomNamingStrategyConfig
+    properties:
+      hibernate:
+        hbm2ddl:
+          # 自动更新维护表结构
+          auto: update
+        dialect: com.nrec.base.res.config.MyOracle12cDialect
+    open-in-view: false
+  datasource:
+    # ORACLE JDBC 配置
+    url: jdbc:oracle:thin:@ip:1521:ora12a
+    username: ttest
+    password: ttest
+    driver-class-name: oracle.jdbc.OracleDriver
+```
+
+
+
 ## JPA / Hibernate / MyBatis 比较
 
 最常见的两种持久化层框架：**JPA**和**MyBatis**
