@@ -45,6 +45,8 @@ System.out.println(atLeast5.test(5));
 
 ## Stream
 
+### 介绍
+
 Stream 是用函数式编程方式在集合类上进行复杂操作的工具。  
 
 Stream 方法分为惰性求值方法和及早求值方法：
@@ -53,6 +55,17 @@ Stream 方法分为惰性求值方法和及早求值方法：
 * 及早求值：返回一个值或者为空
 
 **学好了流，就相当于在 Java 中使用 Pandas，很舒服！**
+
+**Interface Hierarchy**
+
+```
+java.lang.AutoCloseable
+    java.util.stream.BaseStream<T,S>
+        java.util.stream.DoubleStream
+        java.util.stream.IntStream
+        java.util.stream.LongStream
+        java.util.stream.Stream<T>
+```
 
 ### 惰性求值方法
 
@@ -242,6 +255,55 @@ int count = accumulator.apply(
         2),
     3);
 ```
+
+### IntStream
+
+#### range
+
+range 是一个静态工厂方法，用于生成一个 IntStream。
+
+代码重构：
+
+```java
+for (int i = 0; i < 4; i++) {
+    System.out.println(i+"...");
+}
+// 重构后：
+IntStream.range(0,4).forEach(i -> System.out.print(i +"..."));
+```
+
+Demo：
+
+```java
+/**
+    * 并行打印，看看结果
+    * @param
+    * @return
+    */
+public void parallelPrint(){
+    IntStream.range(0, 10).parallel().forEach(i -> {
+        System.out.println(i);
+    });
+}
+```
+
+```
+并行打印的结果
+6
+5
+1
+0
+2
+3
+9
+7
+8
+4
+```
+
+
+
+
 
 ### Demo
 
@@ -460,6 +522,34 @@ private int addIntegers(List<Integer> values) {
 ```
 
 ![image-20210516220651843](assets/image-20210516220651843.png)
+
+
+
+```java
+/**
+    * 并行打印，看看结果
+    * @param
+    * @return
+    */
+public void parallelPrint(){
+    IntStream.range(0, 10).parallel().forEach(i -> {
+        System.out.println(i);
+    });
+}
+```
+
+```
+6
+5
+1
+0
+2
+3
+9
+7
+8
+4
+```
 
 
 
