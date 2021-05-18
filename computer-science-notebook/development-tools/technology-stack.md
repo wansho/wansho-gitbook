@@ -63,6 +63,12 @@
 * PostgreSQL：最大的开源关系型数据库
 * Redis：数据缓存，内存数据库
 
+数据库连接工具：
+
+Navicat: 收费
+
+DBeaver：开源免费，功能强大
+
 ## 数据分析
 
 * Pandas

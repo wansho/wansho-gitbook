@@ -11,3 +11,8 @@
 ## Others DBs
 
 * [PostgreSQL](https://www.postgresql.org/) 最大的**开源**关系型数据库，很多人都在推荐。
+
+## 数据库连接工具
+
+* Navicat: 收费
+* DBeaver: 开源，功能强大

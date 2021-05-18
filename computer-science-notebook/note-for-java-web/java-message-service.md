@@ -11,3 +11,8 @@ JMS 是 Java 对于消息队列 MQ 的一种实现方式。
 JMS 的实现：ActiveMQ、RabbitMQ、RocketMQ，其中 RocketMQ 并没有完全遵循 JMS 规范。
 
 注意，Kafka 不是 JMS 的实现。
+
+## ActiveMQ
+
+[ActiveMQ](https://activemq.apache.org/)
+
