@@ -55,6 +55,8 @@ https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
 * [Lombok](https://projectlombok.org/) 简化 Java 代码 （读作：lang bao ke）
 * [Alibaba Java Coding Guidelines](https://plugins.jetbrains.com/plugin/10046-alibaba-java-coding-guidelines/) 阿里巴巴 Java 代码规范
 
+可以使用 edu 邮箱到 Jet brain 官网上申请免费使用 jetbrain 的产品，不过得一年激活一次
+
 ### Apache Maven
 
 [[download]](https://maven.apache.org/download.cgi)

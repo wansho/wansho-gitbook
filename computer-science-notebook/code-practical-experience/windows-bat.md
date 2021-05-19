@@ -120,3 +120,11 @@ rem 注意拨号上网的名称要用 ASCII 字符
 rasdial name SZ1716029 300059 
 ```
 
+### 按照端口号查杀进程
+
+```powershell
+netstat -ano | findstr 8007 # 8007 端口号
+tasklist | findstr 20992 # 20992 进程号
+taskkill /f /pid 20992
+```
+
