@@ -4195,7 +4195,7 @@ BufferedWriter bufw = new BufferedWriter(new OutputStreamWriter(System.out));
 源：
 键盘： System.in
 目的：
-控制台： System.out229
+控制台： System.out
 InputStream in = System.in;
 OutputStream out = System.out;
 4，明确额外功能？
@@ -4218,11 +4218,9 @@ fw.write("你好");
 只能使用其父类。 OutputStreamWriter.
 OutputStreamWriter 接 收 一 个 字 节 输 出 流 对 象 ， 既 然 是 操 作 文 件 ， 那 么 该 对 象 应 该 是
 FileOutputStream
-OutputStreamWriter osw = new OutputStreamWriter(new
-FileOutputStream("a.txt"),charsetName);
+OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("a.txt"),charsetName);
 需要高效吗？
-BufferedWriter bufw = new BufferedWriter(new OutputStreamWriter(new
-FileOutputStream("a.txt"),charsetName));
+BufferedWriter bufw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("a.txt"),charsetName));
 什么时候使用转换流呢？
 1，源或者目的对应的设备是字节流，但是操作的却是文本数据，可以使用转换作为桥梁。
 提高对文本操作的便捷。
@@ -4231,7 +4229,7 @@ FileOutputStream("a.txt"),charsetName));
 
 ### 其他
 
-#### Properties集合+IO流  
+#### Properties 集合+IO流  
 
 Properties = map + io
 
@@ -4547,19 +4545,19 @@ public class PrintStreamDemo {
     public static void main(String[] args) throws IOException {
         /*
          * PrintStream:
-         * 1,提供了打印方法可以对多种数据类型值进行打印。并保持数据的表示形式。
+         * 1, 提供了打印方法可以对多种数据类型值进行打印。并保持数据的表示形式。
          * 2，它不抛IOException.
          *
          * 构造函数，接收三种类型的值：
          * 1，字符串路径。
-         * 2， File对象。
+         * 2，File 对象。
          * 3，字节输出流。
          */
         PrintStream out = new PrintStream("print.txt");
         // int by = read();
         // write(by);
-        out.write(610); //只写最低8位，
-        out.print(97); //将97先变成字符保持原样将数据打印到目的地。
+        out.write(610); // 只写最低8位，
+        out.print(97); // 将97先变成字符保持原样将数据打印到目的地。
         out.close();
     }
 }
@@ -6639,6 +6637,10 @@ try{
 
 
 ## 枚举类型
+
+https://www.liaoxuefeng.com/wiki/1252599548343744/1260473188087424
+
+为了让编译器能自动检查某个值在枚举的集合内，并且，不同用途的枚举需要不同的类型来标记，不能混用，我们可以使用`enum`来定义枚举类。
 
 Demo:
 

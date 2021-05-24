@@ -57,7 +57,25 @@ https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
 
 可以使用 edu 邮箱到 Jet brain 官网上申请免费使用 jetbrain 的产品，不过得一年激活一次
 
-### Apache Maven
+### 必装插件
+
+* Alibaba Java Coding Guidelines
+* SonarLint
+* Lombok
+
+### 小惊喜
+
+* todo 功能
+
+  ```
+  // todo todo-content
+  ```
+
+* 下边栏的 Problems 可以提供代码规范检查功能
+
+
+
+## Apache Maven
 
 [[download]](https://maven.apache.org/download.cgi)
 
