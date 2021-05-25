@@ -119,6 +119,7 @@
   * [Java 开发工具](computer-science-notebook/note-for-java/java-dev-tools.md)
 * [Note-for-JavaWeb](computer-science-notebook/note-for-java-web/README.md)
   * [Java-Database](computer-science-notebook/note-for-java-web/java-database.md)
+  * [Java-Persistence-API](computer-science-notebook/note-for-java-web/java-persistence-api.md)
   * [Maven](computer-science-notebook/note-for-java-web/maven.md)
   * [Dependencies](computer-science-notebook/note-for-java-web/dependencies.md)
   * [JMS](computer-science-notebook/note-for-java-web/java-message-service.md)

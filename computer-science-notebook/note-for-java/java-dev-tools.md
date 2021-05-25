@@ -27,7 +27,7 @@ https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
 | 删除当前行                | ctrl + Y              |
 | 查看最近看了改了哪些代码  | ctrl + shift + E      |
 | 生成 getter, setter, test | alt + insert          |
-|                           |                       |
+| 提示参数类型              | ctrl + P              |
 
 
 

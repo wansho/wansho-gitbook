@@ -54,6 +54,7 @@
 | redux | 以新的方式重现 | |
 | compelling | 漂亮的 | |
 | redex | 重新学习(ruai dex) | |
+| persistence | 持久化 | |
 
 ## Authentic Chinese
 

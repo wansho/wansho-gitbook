@@ -156,9 +156,15 @@ try (Connection conn = ds.getConnection()) { // 在此获取连接
 
 阿里开源的数据库连接池。
 
+## javax.persistence
+
+Java Persistence is the API for the management for persistence and object/relational mapping.
+
+用于持久化层和 ORM。提供了大量的注解和枚举类。
+
 ## JPA
 
-Java Persistence API 是Sun官方提出的Java持久化规范。
+Java Persistence API 是 Sun 官方提出的 Java 持久化规范。
 
 注意，JPA是一套规范，不是一套产品，那么像Hibernate,TopLink,JDO他们是一套产品，如果说这些产品实现了这个JPA规范，那么我们就可以叫他们为JPA的实现产品。
 

@@ -14,9 +14,11 @@ Lambda 表达式是一个函数，是对行为的抽象，是函数是一等公�
 
 ## 函数式接口
 
+**只要碰到只有一个方法的接口，也就是功能单一的接口，就可以直接用 Lambda Expression 来代替。**
+
+**所有的 lambda 表达式，其实际上都是函数式接口的实现**。
+
 ![image-20210511131843126](assets/image-20210511131843126.png)
-
-
 
 | 函数式接口        | 方法        | 返回值类型 | 备注           |
 | ----------------- | ----------- | ---------- | -------------- |
@@ -402,6 +404,41 @@ public interface Sized {
 3. 没有规则三。 如果上面两条规则不适用， 子类要么需要实现该方法， 要么将该方法声明
    为抽象方法。
    其中第一条规则是为了让代码向后兼容。  
+
+### return statement in lambda
+
+Demo:
+
+```java
+public class LambdaReturnTest1 {
+   interface Addition {
+      int add(int a, int b);
+   }
+   public static Addition getAddition() {
+      return (a, b) -> a + b; // lambda expression return statement 返回一个函数式接口实现
+   }
+   public static void main(String args[]) {
+      System.out.println("The addition of a and b is: " + getAddition().add(20, 50));
+      // The addition of a and b is: 70
+   }
+}
+```
+
+Demo:
+
+```java
+public class LambdaReturnTest2 {
+   public static void main(String args[]) {
+      Thread th = new Thread(getRunnable());
+      th.run();
+   }
+   public static Runnable getRunnable() {
+      return() -> {    // lambda expression return statement
+         System.out.println("Lambda Expression Return Statement");
+      };
+   }
+}
+```
 
 ### 静态方法
 

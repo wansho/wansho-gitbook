@@ -4719,7 +4719,7 @@ public class SplitFileDemo {
     public static void splitFile(File file) throws IOException {
         // 用读取流关联源文件。
         FileInputStream fis = new FileInputStream(file);
-        // 定义一个1M的缓冲区。
+        // 定义一个 1M 的缓冲区。
         byte[] buf = new byte[SIZE];
         // 创建目的。
         FileOutputStream fos = null;
@@ -4908,7 +4908,7 @@ public class PipedStream {
         PipedInputStream input = new PipedInputStream();
         PipedOutputStream output = new PipedOutputStream();
         input.connect(output);
-            new Thread(new Input(input)).start();
+           new Thread(new Input(input)).start();
         new Thread(new Output(output)).start();
     }
 }
