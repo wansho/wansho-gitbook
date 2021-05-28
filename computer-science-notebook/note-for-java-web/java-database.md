@@ -134,7 +134,7 @@ config.addDataSourceProperty("maximumPoolSize", "10"); // 最大连接数：10
 DataSource ds = new HikariDataSource(config);
 ```
 
-注意创建`DataSource`也是一个非常昂贵的操作，所以通常`DataSource`实例总是作为一个全局变量存储，并贯穿整个应用程序的生命周期。
+注意创建`DataSource`也是一个非常昂贵的操作，所以通常 `DataSource` 实例总是作为一个全局变量存储，并贯穿整个应用程序的生命周期。
 
 ```java
 try (Connection conn = ds.getConnection()) { // 在此获取连接

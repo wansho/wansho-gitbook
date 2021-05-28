@@ -55,6 +55,8 @@
 | compelling | 漂亮的 | |
 | redex | 重新学习(ruai dex) | |
 | persistence | 持久化 | |
+| boilerplate | 样板代码 | |
+| cascade | 级联 | |
 
 ## Authentic Chinese
 
