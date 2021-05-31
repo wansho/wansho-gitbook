@@ -16,22 +16,32 @@ Open-JDK
 
 https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
 
-| 功能                      | 快捷键                |
-| ------------------------- | --------------------- |
-| 查看类的继承树            | ctrl + H（Hierarchy） |
-| 查看当前类的结构          | ctrl + F12            |
-| 搜索类文件                | ctrl + N              |
-| 自动补全变量名称          | ctrl + alt + V        |
-| 代码格式化                | ctrl + alt + L        |
-| 手动导包                  | alt + enter           |
-| 删除当前行                | ctrl + Y              |
-| 查看最近看了改了哪些代码  | ctrl + shift + E      |
-| 生成 getter, setter, test | alt + insert          |
-| 提示参数类型              | ctrl + P              |
+[知乎：IntelliJ IDEA 中有什么让你相见恨晚的技巧?](https://www.zhihu.com/question/300830746/answer/672248406)
+
+| 功能                                            | 快捷键                 |
+| ----------------------------------------------- | ---------------------- |
+| 查看类的继承树                                  | ctrl + H（Hierarchy）  |
+| 查看当前类的结构                                | ctrl + F12             |
+| 搜索类文件                                      | ctrl + N               |
+| 自动补全变量名称                                | ctrl + alt + V         |
+| 代码格式化                                      | ctrl + alt + L         |
+| 手动导包                                        | alt + enter            |
+| 删除当前行                                      | ctrl + Y               |
+| 查看最近看了改了哪些代码                        | ctrl + shift + E       |
+| 给插入提示，例如生成 getter, setter, test，例如 | alt + insert           |
+| 提示参数类型                                    | ctrl + P               |
+| 跳到下一个相同的内容(变量 / 方法)               | alt + J                |
+| 在所有的相同的内容后添加光标(批量修改)          | ctrl + shift + alt + J |
+| 加载导入的依赖                                  | ctrl + alt + O         |
+| 在指定位置添加光标                              | alt + shift + 鼠标左键 |
+| 实现接口方法                                    | ctrl + i               |
+| 代码上移下移                                    | alt + shift + 上下     |
 
 
 
 ### 代码模板
+
+自动代码片的生成快捷键：ctrl + j
 
 | 模板代码                  | 快捷键   |
 | ------------------------- | -------- |

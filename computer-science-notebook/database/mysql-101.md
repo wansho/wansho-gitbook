@@ -361,6 +361,8 @@ default 'wanshuo'
 desc 表名
 ```
 
+
+
 ### SQL 查询 demos
 
 ```sql
@@ -511,6 +513,8 @@ show warnings;
 where table_A left join table_B on table_A.column = table_B.column 
 ```
 
+
+
 ### join (inner join)
 
 join 等价于 inner join
@@ -535,6 +539,59 @@ on
     P.PersonID = A.PersonID
 ;
 ```
+
+### 外键
+
+#### 定义
+
+A foreign key relationship involves a parent table that holds the initial column values, and a child table with column values that reference the parent column values. A foreign key constraint is defined on the child table.
+
+The essential syntax for a defining a foreign key constraint in a [`CREATE TABLE`](https://dev.mysql.com/doc/refman/5.6/en/create-table.html) or [`ALTER TABLE`](https://dev.mysql.com/doc/refman/5.6/en/alter-table.html) statement includes the following:
+
+```sql
+[CONSTRAINT [symbol]] FOREIGN KEY
+    [index_name] (col_name, ...)
+    REFERENCES tbl_name (col_name,...)
+    [ON DELETE reference_option]
+    [ON UPDATE reference_option]
+
+reference_option:
+    RESTRICT | CASCADE | SET NULL | NO ACTION | SET DEFAULT
+```
+
+Demo: 
+
+```sql
+create table test_table(
+    id int(11) primary key,
+    name varchar(8) unique,
+    fid int(11),
+    foreign key (fid) references test_table(id) on update cascade on delete restrict 
+    -- 持有一个 fid 外键，该外键指向本表的 id，父更新后，能够级联更新子，但是不能删除父
+);
+```
+
+#### Referential Actions
+
+When an [`UPDATE`](https://dev.mysql.com/doc/refman/5.6/en/update.html) or [`DELETE`](https://dev.mysql.com/doc/refman/5.6/en/delete.html) operation affects a key value in the parent table that has matching rows in the child table, the result depends on the *referential action* specified by `ON UPDATE` and `ON DELETE` subclauses of the `FOREIGN KEY` clause. Referential actions include:
+
+- `CASCADE`: Delete or update the row from the parent table and automatically delete or update the matching rows in the child table. Both `ON DELETE CASCADE` and `ON UPDATE CASCADE` are supported. Between two tables, do not define several `ON UPDATE CASCADE` clauses that act on the same column in the parent table or in the child table.
+
+  Note：Cascaded foreign key actions do not activate triggers.
+
+- `SET NULL`: Delete or update the row from the parent table and set the foreign key column or columns in the child table to `NULL`. Both `ON DELETE SET NULL` and `ON UPDATE SET NULL` clauses are supported.
+
+  If you specify a `SET NULL` action, *make sure that you have not declared the columns in the child table as `NOT NULL`*.
+
+- `RESTRICT`: Rejects the delete or update operation for the parent table. Specifying `RESTRICT` (or `NO ACTION`) is the same as omitting the `ON DELETE` or `ON UPDATE` clause.
+
+- `NO ACTION`: A keyword from standard SQL. In MySQL, equivalent to `RESTRICT`. The MySQL Server rejects the delete or update operation for the parent table if there is a related foreign key value in the referenced table. Some database systems have deferred checks, and `NO ACTION` is a deferred check. In MySQL, foreign key constraints are checked immediately, so `NO ACTION` is the same as `RESTRICT`.
+
+- `SET DEFAULT`: This action is recognized by the MySQL parser, but both [`InnoDB`](https://dev.mysql.com/doc/refman/5.6/en/innodb-storage-engine.html) and [`NDB`](https://dev.mysql.com/doc/refman/5.6/en/mysql-cluster.html) reject table definitions containing `ON DELETE SET DEFAULT` or `ON UPDATE SET DEFAULT` clauses.
+
+For storage engines that support foreign keys, MySQL rejects any [`INSERT`](https://dev.mysql.com/doc/refman/5.6/en/insert.html) or [`UPDATE`](https://dev.mysql.com/doc/refman/5.6/en/update.html) operation that attempts to create a foreign key value in a child table if there is no matching candidate key value in the parent table.
+
+For an `ON DELETE` or `ON UPDATE` that is not specified, the default action is always `RESTRICT`.
 
 ## 视图 View
 

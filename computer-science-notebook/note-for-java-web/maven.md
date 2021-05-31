@@ -44,7 +44,11 @@ mvn 下载的依赖都放在了 `/.m2` 文件夹下了
 
 war 包：`<packaging>war</packaging>` 打包生成 war （Java Web Application ARchive）包，有别于 jar（Java ARchive）包。
 
+## IDEA + Maven
 
+IDEA 搜索依赖并添加：
+
+在 pom 文件中，`alt + insert`，generate，选择 `Dependency`，然后就可以搜索以来了，例如搜索 mysql 的依赖。添加到 pom 文件后，`ctrl + shift + O` 就可以加载该依赖。
 
 ## 依赖管理
 

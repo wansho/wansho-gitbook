@@ -273,6 +273,40 @@ public class LinkedListDemo {
 }
 ```
 
+#### Queue
+
+| Modifier and Type | Method       | Description                                                  |
+| :---------------- | ------------ | ------------------------------------------------------------ |
+| `boolean`         | `add(E e)`   | Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions, returning `true` upon success and throwing an `IllegalStateException` if no space is currently available. |
+| `E`               | `element()`  | Retrieves, but does not remove, the head of this queue.      |
+| `boolean`         | `offer(E e)` | Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions. |
+| `E`               | `peek()`     | Retrieves, but does not remove, the head of this queue, or returns `null` if this queue is empty. |
+| `E`               | `poll()`     | Retrieves and removes the head of this queue, or returns `null` if this queue is empty. |
+| `E`               | `remove()`   | Retrieves and removes the head of this queue.                |
+
+add()和remove()方法在失败的时候会抛出异常(不推荐)，用 offer 和 poll 代替。
+
+利用 Queue 进行层次遍历 Demo：
+
+```java
+public List<Concept> findAllSubConcepts(Concept rootConcept) {
+        List<Concept> subConcepts = new ArrayList<>();
+        Queue<Concept> queue = new LinkedList<>();
+        Concept tmpConcept = null;
+        queue.add(rootConcept);
+        while(!queue.isEmpty()){
+            tmpConcept = queue.remove();
+            subConcepts.add(tmpConcept);
+            String tmpConceptId = tmpConcept.getId();
+            List<Concept> subLevelConcepts = conceptRepo.findConceptsByFId(tmpConceptId);
+            queue.addAll(subLevelConcepts);
+        }
+        return subConcepts;
+    }
+```
+
+
+
 ### Set
 
 #### HashSet
