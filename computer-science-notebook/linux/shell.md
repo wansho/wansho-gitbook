@@ -22,6 +22,14 @@ Linux 使用 bourne again shell，即 bash, bash 兼容 sh
 
 可以利用 `cat /etc/shells` 命令查看 linux 提供的 shell，默认使用 bash 
 
+**查看当前所用 shell**：
+
+```shell
+echo $SHELL
+```
+
+
+
 ## Bash
 
 **Bourne Again SHell**

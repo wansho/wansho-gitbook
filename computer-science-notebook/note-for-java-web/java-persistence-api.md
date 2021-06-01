@@ -905,6 +905,8 @@ The basic semantics of a Criteria query consists of a `SELECT` clause, a `FROM` 
 
 The Jakarta Persistence Criteria API is used to define queries through the construction of object-based query definition objects, rather than use of the string-based approach of the Jakarta Persistence query language. 动态查询机制。
 
+只需要 root 和 criteriabuilder 两个就够了，root 用来构造属性，criteriabuilder 用来构造查询。
+
 ### maven
 
 ```xml
@@ -915,7 +917,9 @@ The Jakarta Persistence Criteria API is used to define queries through the const
 </dependency>
 ```
 
-### Creating a Criteria Query
+### CriteriaBuilder
+
+查询的构造器，封装了很多查询条件，用于构造查询条件
 
 The `javax.persistence.criteria.CriteriaBuilder` interface is used to construct
 
@@ -932,13 +936,19 @@ EntityManager em = ...;
 CriteriaBuilder cb = em.getCriteriaBuilder();
 ```
 
+### CriteriaQuery
+
+顶层查询对象，自定义查询方式（了解，一般不用）
+
 get CriteriaQuery:
 
 ```java
 CriteriaQuery<Pet> cq = cb.createQuery(Pet.class);
 ```
 
-### Query Roots
+### Root
+
+代表查询的根对象（查询的任何属性都可以从根对象中获取）
 
 For a particular `CriteriaQuery` object, the root entity of the query, from which all navigation originates, is called the **query root**. It is similar to the `FROM` clause in a JPQL query.
 
@@ -959,10 +969,6 @@ Metamodel m = em.getMetamodel();
 EntityType<Pet> Pet_ = m.entity(Pet.class);
 Root<Pet> pet = cq.from(Pet_);
 ```
-
-
-
-
 
 ### example using criteria
 

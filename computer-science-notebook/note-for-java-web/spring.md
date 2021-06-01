@@ -508,6 +508,16 @@ profile 还可以用作条件装配
 
 配合 snakeyml 可以实现   `active: @profile.env@` 动态配置
 
+每一次切换配置文件，都要 reload 一下 maven，否则会报下面这个错误：
+
+```
+found character '@' that cannot start any token. (Do not use @ for indentation)
+ in 'reader', line 6, column 13:
+        active: @profile.env@
+```
+
+
+
 ### bootstrap.yml
 
 bootstrap.yml 比 application.yml 先加载，具有更高的优先级，并且不会被覆盖。
