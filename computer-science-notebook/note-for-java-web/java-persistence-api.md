@@ -527,6 +527,36 @@ Parsing query method names is divided into subject and predicate. The first part
 
 The first `By` acts as a delimiter to indicate the start of the actual criteria predicate. At a very basic level, you can define conditions on entity properties and concatenate them with `And` and `Or`.
 
+JPA 根据函数名构造 SQL 查询：
+
+| Keyword                | Sample                                                       | JPQL snippet                                                 |
+| :--------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| `Distinct`             | `findDistinctByLastnameAndFirstname`                         | `select distinct … where x.lastname = ?1 and x.firstname = ?2` |
+| `And`                  | `findByLastnameAndFirstname`                                 | `… where x.lastname = ?1 and x.firstname = ?2`               |
+| `Or`                   | `findByLastnameOrFirstname`                                  | `… where x.lastname = ?1 or x.firstname = ?2`                |
+| `Is`, `Equals`         | `findByFirstname`,`findByFirstnameIs`,`findByFirstnameEquals` | `… where x.firstname = ?1`                                   |
+| `Between`              | `findByStartDateBetween`                                     | `… where x.startDate between ?1 and ?2`                      |
+| `LessThan`             | `findByAgeLessThan`                                          | `… where x.age < ?1`                                         |
+| `LessThanEqual`        | `findByAgeLessThanEqual`                                     | `… where x.age <= ?1`                                        |
+| `GreaterThan`          | `findByAgeGreaterThan`                                       | `… where x.age > ?1`                                         |
+| `GreaterThanEqual`     | `findByAgeGreaterThanEqual`                                  | `… where x.age >= ?1`                                        |
+| `After`                | `findByStartDateAfter`                                       | `… where x.startDate > ?1`                                   |
+| `Before`               | `findByStartDateBefore`                                      | `… where x.startDate < ?1`                                   |
+| `IsNull`, `Null`       | `findByAge(Is)Null`                                          | `… where x.age is null`                                      |
+| `IsNotNull`, `NotNull` | `findByAge(Is)NotNull`                                       | `… where x.age not null`                                     |
+| `Like`                 | `findByFirstnameLike`                                        | `… where x.firstname like ?1`                                |
+| `NotLike`              | `findByFirstnameNotLike`                                     | `… where x.firstname not like ?1`                            |
+| `StartingWith`         | `findByFirstnameStartingWith`                                | `… where x.firstname like ?1` (parameter bound with appended `%`) |
+| `EndingWith`           | `findByFirstnameEndingWith`                                  | `… where x.firstname like ?1` (parameter bound with prepended `%`) |
+| `Containing`           | `findByFirstnameContaining`                                  | `… where x.firstname like ?1` (parameter bound wrapped in `%`) |
+| `OrderBy`              | `findByAgeOrderByLastnameDesc`                               | `… where x.age = ?1 order by x.lastname desc`                |
+| `Not`                  | `findByLastnameNot`                                          | `… where x.lastname <> ?1`                                   |
+| `In`                   | `findByAgeIn(Collection<Age> ages)`                          | `… where x.age in ?1`                                        |
+| `NotIn`                | `findByAgeNotIn(Collection<Age> ages)`                       | `… where x.age not in ?1`                                    |
+| `True`                 | `findByActiveTrue()`                                         | `… where x.active = true`                                    |
+| `False`                | `findByActiveFalse()`                                        | `… where x.active = false`                                   |
+| `IgnoreCase`           | `findByFirstnameIgnoreCase`                                  | `… where UPPER(x.firstname) = UPPER(?1)`                     |
+
 **根据属性的属性进行查找**
 
 x.address.zipCode
@@ -1192,3 +1222,14 @@ jpa:
 
 
 
+## Questions
+
+* @LastModifiedDate 不起作用的解决方法
+
+  在实体中添加注解 @EntityListeners(AuditingEntityListener.class)监听实体变化
+
+  在自动更新时间戳字段增加 @LastModifiedDate
+
+  在Spring boot启动类增加注解 @EnableJpaAuditing启用JPA审计(自动填充默认值)
+
+* 

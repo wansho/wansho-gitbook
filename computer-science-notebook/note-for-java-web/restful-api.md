@@ -39,3 +39,7 @@ POST http://api.qc.com/v1/friends: 添加好友
 UPDATE http://api.qc.com/v1/profile: 更新个人资料
 ```
 
+## reference
+
+* [RESTful API 设计指南](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
+
