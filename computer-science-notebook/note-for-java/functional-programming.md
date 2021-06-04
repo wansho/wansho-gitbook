@@ -309,6 +309,8 @@ public void parallelPrint(){
 
 ### Demo
 
+#### 函数式重构
+
 原代码：
 
 ```java
@@ -352,6 +354,18 @@ public Set<String> findLongTracks(List<Album> albums) {
         .collect(Collectors.toSet());
 }
 ```
+
+#### 求交集，差集
+
+```java
+List list=list1.stream().filter(t->list2.contains(t)).collect(Collectors.toList());
+
+list=list1.stream().filter(t-> !list2.contains(t)).collect(Collectors.toList());
+
+list=list.stream().distinct().collect(Collectors.toList());
+```
+
+
 
 ## Java8 接口新特性
 

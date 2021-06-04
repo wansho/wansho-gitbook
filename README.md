@@ -1,3 +1,5 @@
+<img align="left" src="assets/image-20210604203254376.png" alt="image-20210604203254376" style="zoom:50%;" />
+
 # Introduction
 
 My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)

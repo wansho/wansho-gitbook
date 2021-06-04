@@ -1175,7 +1175,9 @@ try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PAS
 
 `Statment`和`ResultSet`都是需要关闭的资源，因此嵌套使用`try (resource)`确保及时关闭。
 
-## 接口方法默认实现
+## 接口方法
+
+### 接口默认方法
 
 JDK8 引入。
 
@@ -1188,10 +1190,21 @@ public interface Sized {
 
     /*
      * 默认方法，有方法体
-     * 任何一个实现了Sized接口的类都会向动继承isEmpty的实现
+     * 任何一个实现了Sized接口的类都会继承isEmpty的实现
      */
     default boolean isEmpty() {
         return this.size() == 0;
+    }
+}
+```
+
+### 接口静态方法
+
+```java
+// 接口中的静态方法不能继承
+interface TestInterface1 {
+    static void sayHello(){
+        System.out.println("TestInterface1 Hello");
     }
 }
 ```
