@@ -21,11 +21,37 @@ Building a small game during this tutorial.
 
 https://www.bilibili.com/video/BV1wy4y1D7JT
 
+版本：旧16.8
+
+### React 简介
+
+**为什么要学 React**
+
+* 原生 JS 操作 DOM 繁琐，效率低（DOM-API 操作 UI）
+* 使用 JS 直接操作 DOM，浏览器会进行大量的重绘重排
+* 原生 JS 没有组件化编码方案，代码复用低（组件化：html + css + js 一起复用）
+
+**React 的优点**
+
+* 采用组件化模式，声明式编码，提高开发效率及组件复用率
+* 在 React Native 中可以使用 React 语法进行移动端开发
+* 使用虚拟 DOM + 优秀的 Diffing 算法，尽量减少与真实 DOM 的交互（增量渲染）
+
 ### React 的核心
+
+React 只负责操作 DOM 呈现页面。
 
 使用虚拟 DOM 技术，Diff 算法，增量渲染。React 只关注数据渲染，不负责数据获取和数据处理。
 
 jsx 的作用：方便创建虚拟 DOM，是 `React.createElement()` 的语法糖
+
+**React js 库**
+
+1. react.js：React 核心库。
+
+2. react-dom.js：提供操作 DOM 的 react 扩展库。
+
+3. babel.min.js：解析 JSX 语法代码转为 JS 代码的库（另外一个功能 ES6 -> ES5）。
 
 ### 学习 React 的前提
 
@@ -41,21 +67,33 @@ jsx 的作用：方便创建虚拟 DOM，是 `React.createElement()` 的语法�
 
 JavaScript XML
 
-jsx 语法规则
+**为什么要写 jsx**
+
+jsx 语法可以让编码人员更加简单地创建虚拟 DOM。
+
+可以用 js 面向对象的方式创建虚拟 DOM，也可以直接写 jsx 创建虚拟 DOM。
+
+jsx 是为了避免用 js 创建虚拟 DOM 而产生的语法糖。
+
+
+
+**jsx 语法规则**
 
 ```
-1.定义虚拟DOM时，不要写引号。
-2.标签中混入JS表达式时要用{}。
-3.样式的类名指定不要用class，要用className。
-4.内联样式，要用style={{key:value}}的形式去写。
-5.只有一个根标签
-6.标签必须闭合
-7.标签首字母
+1. 定义虚拟DOM时，不要写引号。
+2. 标签中混入JS表达式时要用{}。
+3. 样式的类名指定不要用class，要用className。
+4. 内联样式，要用style={{key:value}}的形式去写，外层{}表示 js 表达式，内层{}表示 json。
+5. 只有一个根标签
+6. 标签必须闭合
+7. 标签首字母
 (1).若小写字母开头，则将该标签转为html中同名元素，若html中无该标签对应的同名元素，则报错。
 (2).若大写字母开头，react就去渲染对应的组件，若组件没有定义，则报错。
 ```
 
-js 语句和 js 表达式
+**js 语句和 js 表达式**
+
+{} 中只能写 js 表达式。
 
 ```
 一定注意区分：【js语句(代码)】与【js表达式】
@@ -73,7 +111,7 @@ js 语句和 js 表达式
     (3).switch(){case:xxxx}
 ```
 
-jsx 示例代码
+**jsx 示例代码**
 
 ```jsx
 <!DOCTYPE html>
@@ -88,9 +126,9 @@ jsx 示例代码
 	
 	<!-- 引入react核心库 -->
 	<script type="text/javascript" src="../js/react.development.js"></script>
-	<!-- 引入react-dom，用于支持react操作DOM -->
+	<!-- 引入react-dom，用于支持 react 操作DOM -->
 	<script type="text/javascript" src="../js/react-dom.development.js"></script>
-	<!-- 引入babel，用于将jsx转为js -->
+	<!-- 引入babel，用于将 jsx 转为js -->
 	<script type="text/javascript" src="../js/babel.min.js"></script>
 
 	<script type="text/babel" >
