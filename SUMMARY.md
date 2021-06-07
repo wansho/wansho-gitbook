@@ -112,6 +112,7 @@
   * [Java-SE](computer-science-notebook/note-for-java/java.md)
   * [Java-Collection-Map-Array](computer-science-notebook/note-for-java/java-collection-map-array.md)
   * [Java-New-Features](computer-science-notebook/note-for-java/java-new-features.md)
+  * [Java-log](computer-science-notebook/note-for-java/java-log.md)
   * [Java-JUnit](computer-science-notebook/note-for-java/java-junit.md)
   * [Design-Patterns](computer-science-notebook/note-for-java/design-patterns.md)
   * [Detailed-Generics](computer-science-notebook/note-for-java/detailed-generics.md)

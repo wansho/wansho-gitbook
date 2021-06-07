@@ -1,8 +1,4 @@
-<img align="left" src="assets/image-20210604203254376.png" alt="image-20210604203254376" style="zoom:50%;" />
-
-# Introduction
-
-My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
+<img align="left" src="assets/image-20210604203254376.png" alt="image-20210604203254376" style="zoom:40%;" />
 
 # Table of contents
 
@@ -118,6 +114,7 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
   * [Java-SE](computer-science-notebook/note-for-java/java.md)
   * [Java-Collection-Map-Array](computer-science-notebook/note-for-java/java-collection-map-array.md)
   * [Java-New-Features](computer-science-notebook/note-for-java/java-new-features.md)
+  * [Java-log](computer-science-notebook/note-for-java/java-log.md)
   * [Java-JUnit](computer-science-notebook/note-for-java/java-junit.md)
   * [Design-Patterns](computer-science-notebook/note-for-java/design-patterns.md)
   * [Detailed-Generics](computer-science-notebook/note-for-java/detailed-generics.md)
@@ -140,6 +137,7 @@ My GitBook. [https://gitbook.wansho.cn/](https://gitbook.wansho.cn/)
 * [Linux](computer-science-notebook/linux/README.md)
   * [Linux-cmds](computer-science-notebook/linux/linux-cmds.md)
   * [Linux 使用心得](computer-science-notebook/linux/linux-mythink.md)
+  * [Linux-DevOps](computer-science-notebook/linux/linux-devops.md)
   * [Linux 初始化](computer-science-notebook/linux/linux-init.md)
   * [SSH](computer-science-notebook/linux/ssh.md)
   * [vim](computer-science-notebook/linux/vim.md)
