@@ -77,4 +77,20 @@ lsof - list open files
 lsof -i:port # 查看指定端口被哪个进程占用，功能类似于 netstat -tunpl | grep 端口号
 ```
 
-### 
+## 开机自启
+
+**全局-面向所有用户**
+
+* `/etc/rc.local` 每次OS启动都会执行一次,所以一般放服务器管理方面的
+* `/etc/profile` 每次login都会被执行一次,修改后,下次用户登录就会生效,不需要重启
+
+**面向某个用户**
+
+用户登录时，shell 会按照以下顺序查找文件，并运行第一个被找到的文件，其余的则被忽略（三个文件不一定全都存在）
+
+* `$HOME/.bash_profile` # `.bash_profile` 会去执行 `.bashrc` 文件
+* `$HOME/.bash_login`
+* `$HOME/.profile`
+
+
+

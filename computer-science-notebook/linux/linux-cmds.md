@@ -483,7 +483,7 @@ updatedb # 更新db,比较耗时
 # 创建硬链接，本质上是同一个文件，共享 inode 编号，而且文件显示并非链接文件，而实正常的文件，如果把源文件删除，硬链接仍然有效！注意，硬链接可执行文件复制到 PATH 变量包含的目录后，可以直接通过命令运行。
 ln file link_file
 ln file dir/
-# 创建符号 (symbolic) 链接，生成一个链接类型的文件，文件大小很小，文件类型为 l
+# 创建符号 (symbolic) 软件链接，生成一个链接类型的文件，文件大小很小，文件类型为 l
 ln -s file file_link 
 ```
 
@@ -1455,6 +1455,21 @@ yum update # 更新所有软件
 yum remove pakcage_name
 yum erase package_name # 卸载软件，删除文件
 ```
+
+```shell
+# 查询软件包：
+rpm -qa          # 查询系统中安装的所有RPM软件包
+rpm -q 软件名    # 查询指定的软件包是否被安装    
+rpm -qi 软件名    # 查询系统中已安装的软件包的详细信息
+rpm -ql 软件名    # 查询已安装软件包包含的文件
+rpm -qf 文件名    # 查询指定的文件所属的软件包是哪个
+
+# 如你要查你的mysql的版本可以用下面的命令：
+rpm -qa | grep mysql
+# 然后下面就会出来一些mysql的软件，你就可以看到它的版本
+```
+
+
 
 ## Linux 运维
 

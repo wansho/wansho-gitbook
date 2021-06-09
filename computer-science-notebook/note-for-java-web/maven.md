@@ -4,20 +4,129 @@
 
 ## 参考文档
 
-* https://maven.apache.org/pom.html
-* https://www.liaoxuefeng.com/wiki/1252599548343744/1309301196980257
+* [maven 官方文档](https://maven.apache.org/pom.html)
+* [廖雪峰教程](https://www.liaoxuefeng.com/wiki/1252599548343744/1309301196980257)
+* [尚硅谷 maven 教程](https://www.bilibili.com/video/BV1TW411g7hP)
 
 ## 简介
 
-Maven是一个Java项目管理和构建工具，它可以定义项目结构、项目依赖，并使用统一的方式进行自动化构建，是Java项目不可缺少的工具。
-
-Maven就是是专门为Java项目打造的管理和构建工具，它的主要功能有：
+Maven是一个 Java 项目管理和构建工具，它可以定义项目结构、项目依赖，并使用统一的方式进行自动化构建，是 Java 项目不可缺少的工具。它的主要功能有：
 
 - 提供了一套标准化的项目结构；
 - 提供了一套标准化的构建流程（编译，测试，打包，发布……）；
 - 提供了一套依赖管理机制。
 
-一个标准的 Java 项目：
+**自动化构建工具历史**：
+
+Make -> Ant -> Maven -> Gradle
+
+## 构建和部署
+
+### 构建是什么
+
+构建就是以我们编写的 Java 代码、框架配置文件、国际化等其他资源文件、JSP 页面和图片等静态资源作为原材料，去生产出一个可以运行的项目的过程。
+
+**编译结果和 web 工程的区别**：
+
+开发过程中,所有的路径或配置文件中配置的类路径等都是以编译结果的目录结构为标准的
+
+![image-20210609185021160](assets/image-20210609185021160.png)
+
+### 构建中的各个环节
+
+**清理**：将以前编译得到的旧的 class 字节码文件删除,为下一次编译做准备
+
+**编译**：将 Java 源程序编程成 class 字节码文件
+
+**测试**：自动测试！自动调用 JUnit 程序进行测试。
+
+**报告**：测试程序执行的结果。
+
+**打包**：动态 Web 工程打 war 包，Java 工程打 jar 包。
+
+**安装**：Maven 特定的概念一将打包得到的文件复制到 "仓库”中的指定位置
+
+#### 部署
+
+将动态 Web 工程生成的 war 包复制到 Servlet 容器的指定目录下,使其可以运行
+
+## Maven 的安装
+
+maven 依赖 JDK，而且是根据 JAVA_HOME 的环境变量找 JDK 的，所以 JAVA_HOME 就起到了配置 JDK 环境变量的作用。
+
+## mvn cmds
+
+运行Maven命令时一定要进入 pom.xml 文件所在的目录！
+
+**Maven 的核心程序中仅仅定义了抽象的生命周期，但是具体的工作必须由特定的插件来完成。**而插件本身并不包含在Maven的核心程序中。当我们执行的Maven命令需要用到某些插件时，Maven核心程序会首先到本地仓库中查找。本地仓库的默认位置: `C:\USERS\USERNAME\.m2\repository`。Maven 核心程序如果在本地仓库中找不到需要的插件，那么它会到中央仓库下载。
+
+### demos
+
+```shell
+# Maven先执行 clean 生命周期并运行到 clean 这个 phase，然后执行 default 生命周期并运行到 package 这个 phase
+mvn clean package
+
+# 清理所有生成的class和jar
+mvn clean 
+
+# 先清理，再执行到compile；
+mvn clean compile
+
+# 先清理，再执行到package
+mvn clean package
+
+# 查看版本
+mvn -v
+
+```
+
+### clean
+
+
+
+### compile
+
+编译主程序，还会执行测试。
+
+
+
+### test-compile
+
+编译测试程序
+
+### test
+
+执行测试
+
+### package
+
+打包。打包的时候会触发测试。
+
+跳过测试的 pom 配置：
+
+```xml
+<properties>
+    <skipTests>true</skipTests>
+</properties>
+```
+
+
+
+### install
+
+安装
+
+### deploy
+
+部署
+
+
+
+## Maven 核心概念
+
+### 目录结构
+
+一个标准的 Java Maven 项目：
 
 ```
 a-maven-project
@@ -32,36 +141,17 @@ a-maven-project
 └── target
 ```
 
-A Project Object Model or POM is the fundamental unit of work in Maven. It is an XML file that contains information about the project and configuration details used by Maven to build the project. It contains default values for most projects. 
+约定 > 配置 > 编码，能配置，就不要编码。
 
-编译项目的命令：`mvn clean package` ，clean 是先执行 clean 周期并运行到 clean 这个phase，package 是执行 default 周期并运行到 package 这个 phase。先执行 clean 周期，再执行 package 周期。
+### POM 文件
 
+A Project Object Model（项目对象模型） or POM is the fundamental unit of work in Maven. It is an XML file that contains information about the project and configuration details used by Maven to build the project. It contains default values for most projects. 
 
+项目对象模型：将项目中的对象，封装成对象，然后作为一个模型来研究。
 
-mvnw: Maven Wrapper 就是给一个项目提供一个独立的，指定版本的Maven给它使用。
+### 坐标
 
-mvn 下载的依赖都放在了 `/.m2` 文件夹下了
-
-war 包：`<packaging>war</packaging>` 打包生成 war （Java Web Application ARchive）包，有别于 jar（Java ARchive）包。
-
-## IDEA + Maven
-
-IDEA 搜索依赖并添加：
-
-在 pom 文件中，`alt + insert`，generate，选择 `Dependency`，然后就可以搜索以来了，例如搜索 mysql 的依赖。添加到 pom 文件后，`ctrl + shift + O` 就可以加载该依赖。
-
-## 依赖管理
-
-Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`provided`：
-
-| scope    | 说明                                          | 示例            |
-| :------- | :-------------------------------------------- | :-------------- |
-| compile  | 编译时需要用到该jar包（默认）                 | commons-logging |
-| test     | 编译Test时需要用到该jar包                     | junit           |
-| runtime  | 编译时不需要，但运行时需要用到                | mysql           |
-| provided | 编译时需要用到，但运行时由JDK或某个服务器提供 | servlet-api     |
-
-一个 dependency 由 groupId、artifactId 和 version 三个参数共同决定。
+一个 dependency 由 groupId、artifactId 和 version 三个参数唯一决定。artifact(工艺品)
 
 Demo:
 
@@ -73,6 +163,116 @@ Demo:
     <scope>provided</scope>
 </dependency>
 ```
+
+Maven 工程的坐标与仓库中路径的对应关系：
+
+```xml
+<groupId> org.springframework </groupId>
+<artifactId> spring-core </artifactId>
+<version>4.0.0.RELEASE </version>
+```
+
+```
+org/springframework/spring-core/4.0.0.RELEASE/spring-core-4.0.0.RELEASE.jar
+```
+
+
+
+### 依赖
+
+Maven解析依赖信息时会到本地仓库中查找被依赖的jar包。对于我们自己开发的 Maven 工程,使用 mvn install 命令安装后就可以进入仓库。
+
+Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`provided`：
+
+| scope    | 说明                                            | 示例            |
+| :------- | :---------------------------------------------- | :-------------- |
+| compile  | 编译时需要用到该jar包（默认）                   | commons-logging |
+| test     | 编译Test时需要用到该jar包                       | junit           |
+| runtime  | 编译时不需要，但运行时需要用到                  | mysql           |
+| provided | 编译时需要用到，但运行时由 JDK 或某个服务器提供 | servlet-api     |
+
+#### compile
+
+- 对**主程序**是否有效：有效
+- 对测试程序是否有效：**有效**
+- 是否参与打包：参与
+- 是否参与部署：参与
+- 典型例子：spring-core
+
+#### test
+
+- 对主程序是否有效：无效
+- 对测试程序是否有效：有效
+- 是否参与打包：不参与
+- 是否参与部署：不参与
+- 典型例子：junit
+
+
+
+#### provided
+
+- 对主程序是否有效：有效
+- 对测试程序是否有效：有效
+- 是否参与打包：不参与
+- 是否参与部署：不参与（由 servlet 容器提供）
+- 典型例子：servlet-api.jar
+
+### 仓库
+
+<img align="left" src="assets/image-20210609202112181.png" alt="image-20210609202112181" style="zoom: 67%;" />
+
+* 本地仓库：
+
+* 远程仓库
+  * 私服：搭建在局域网，Nexus 是 Maven 私服的一个实现。私服没有的包，私服会从中央仓库拉过来。
+  * 中央仓库：架设在 Internet 上,为全世界所有 Maven 工程服务，负载沉重
+  * 中央仓库镜像：为了分担中央仓库的流量，提升用户访问速度
+
+
+
+- 仓库中保存的内容：Maven 工程
+  - Maven 自身所需的插件
+  - 第三方框架或工具的 jar 包（第一方：jdk，第二方：我们）
+  - 自己开发的 Maven 工程
+
+### 声明周期 / 插件 / 目标
+
+**maven 有三套相互独立的生命周期**
+
+* Clean Lifecycle 在构建前进行清理
+* Default Lifecycle 构建的核心部分，编译、测试、打包、安装、部署
+* Site Lifecycle 生成项目报告，站点，发布站点
+
+每一个周期都有很多阶段。
+
+**注意**
+
+* 各个构建环节执行的顺序: 不能打乱顺序，必须按照既定的正确顺序来执行
+* Maven 的核心程序中定义了抽象的生命周期，**生命周期中各个阶段的具体任务是由插件来完成的**
+* **不论现在要执行生命周期中的哪一个阶段，都是从这个生命周期最初的阶段开始执行**
+
+**插件和目标**
+
+- 生命周期的各个阶段仅仅定义了要执行的任务是什么
+- 各个阶段和插件的目标是对应的
+- 相似的目标由特定的插件来完成
+- 可以将目标看作调用插件功能的命令
+
+![image-20210609210810287](assets/image-20210609210810287.png)
+
+### 集成
+
+
+
+### 聚合
+
+
+
+## IDEA + Maven
+
+IDEA 搜索依赖并添加：
+
+在 pom 文件中，`alt + insert`，generate，选择 `Dependency`，然后就可以搜索以来了，例如搜索 mysql 的依赖。添加到 pom 文件后，`ctrl + shift + O` 就可以加载该依赖。
 
 版本仲裁：
 
@@ -86,25 +286,7 @@ SpringBoot 中对常见的依赖进行了版本的配置(哪个版本最合适�
 </dependency>
 ```
 
-
-
-## 构建流程
-
-```shell
-# Maven先执行clean生命周期并运行到clean这个phase，然后执行default生命周期并运行到package这个phase
-mvn clean package
-
-# 清理所有生成的class和jar
-mvn clean 
-
-# 先清理，再执行到compile；
-mvn clean compile
-
-# 先清理，再执行到package
-mvn clean package
-```
-
-## 插件
+## 插件 plugins
 
 Maven 自带了很多插件：
 
@@ -153,7 +335,7 @@ Maven 自带了很多插件：
 
 
 
-## 模块管理
+## 模块化
 
 一个大项目拆成三个 module
 
@@ -383,3 +565,24 @@ multiple-project
 ```
 
 这样，在根目录执行`mvn clean package`时，Maven根据根目录的`pom.xml`找到包括`parent`在内的共4个`<module>`，一次性全部编译。
+
+## 经验总结
+
+### 把 jar 包导入 maven 仓库并引用
+
+把 jar 包导入本地 maven 库：
+
+```shell
+mvn install:install-file -DgroupId=com.jxdinfo -DartifactId=lcdp_push_sdk -Dversion=2.0.3 -Dpackaging=jar -Dfile=jar包地址
+```
+
+然后在 POM 文件中引用该 sdk：
+
+```xml
+<dependency>
+    <groupId>com.jxdinfo</groupId>
+    <artifactId>lcdp_push_sdk</artifactId>
+    <version>2.0.3</version>
+</dependency>
+```
+
