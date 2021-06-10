@@ -95,6 +95,7 @@ DBeaver：开源免费，功能强大
 
 * Git
 * Trello / Github Projects
+* CC / CQ，ClearCase和ClearQuest来管理代码版本和bug，大公司用的。
 
 ## 其他工具
 

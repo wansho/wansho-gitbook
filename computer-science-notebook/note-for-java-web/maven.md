@@ -191,7 +191,7 @@ Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`p
 | runtime  | 编译时不需要，但运行时需要用到                  | mysql           |
 | provided | 编译时需要用到，但运行时由 JDK 或某个服务器提供 | servlet-api     |
 
-#### compile
+#### compile 类型
 
 - 对**主程序**是否有效：有效
 - 对测试程序是否有效：**有效**
@@ -199,7 +199,7 @@ Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`p
 - 是否参与部署：参与
 - 典型例子：spring-core
 
-#### test
+#### test 类型
 
 - 对主程序是否有效：无效
 - 对测试程序是否有效：有效
@@ -207,15 +207,84 @@ Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`p
 - 是否参与部署：不参与
 - 典型例子：junit
 
-
-
-#### provided
+#### provided 类型
 
 - 对主程序是否有效：有效
 - 对测试程序是否有效：有效
 - 是否参与打包：不参与
 - 是否参与部署：不参与（由 servlet 容器提供）
 - 典型例子：servlet-api.jar
+
+### 依赖【高级】
+
+#### 依赖的传递性
+
+A -> B，C -> A 则 C -> B。
+
+底层的依赖包，在底层依赖引入就好。
+
+好处：可以传递的依赖不必在每个模块工程中都重复声明，在”最下面”的工程中依赖一次即可。
+
+注意：**非 compile 范围的依赖不能传递（也就是说 test 和 provided 类型依赖是传递不了的）。所以在各个工程模块中，如果有需要就得重复声明依赖。**
+
+#### 依赖的排除
+
+排除传递过来的依赖。
+
+```xml
+<dependency>
+    <groupId> org.springframework </groupId>
+    <artifactId> spring-core </artifactId>
+    <version>4.0.0.RELEASE </version>
+    <exclusions>
+        <exclusion>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+```
+
+注意：依赖的排除也有传递性。
+
+#### 依赖的原则
+
+解决 jar 包冲突问题。
+
+两个原则：
+
+* 最短路径优先原则（就近原则）
+* 路径相同时，先声明者优先
+
+#### 统一管理依赖的版本 
+
+一个实际的需求：需要对 spring 各个jar包的依赖版本进行管理，从 4.0.0 升级到 4.1.1，手动逐一修改不靠谱。
+
+建议配置方式：
+
+1. 使用 properties 标签内使用自定义标签统一声明版本号
+2. 在需要统一版本的位置,使用`${自定义标签名}`引用声明的版本号
+
+Demo:
+
+```xml
+<properties>
+    <cvzhanshi.spring.version>4.0.0.RELEASE</cvzhanshi.spring.version>
+</properties>
+
+<version>${cvzhanshi.spring.versio}</version>
+```
+
+注意：properties 中还可以定义其他变量。凡是需要统一声明后再引用的场合都可以使用。例如：
+
+```xml
+<properties>
+    <cvzhanshi.spring.version>4.0.0.RELEASE</cvzhanshi.spring.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+```
+
+
 
 ### 仓库
 
@@ -235,12 +304,50 @@ Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`p
   - 第三方框架或工具的 jar 包（第一方：jdk，第二方：我们）
   - 自己开发的 Maven 工程
 
-### 声明周期 / 插件 / 目标
+### 生命周期 / 插件 / 目标
 
 **maven 有三套相互独立的生命周期**
 
 * Clean Lifecycle 在构建前进行清理
+
+  clean 包含有以下三个阶段
+
+  ```
+  pre-clean
+  clean （注意这个clean不是lifecycle而是phase）
+  post-clean
+  ```
+
 * Default Lifecycle 构建的核心部分，编译、测试、打包、安装、部署
+
+  default 包含有以下阶段：
+
+  ```
+  validate
+  initialize
+  generate-sources
+  process-sources
+  generate-resources
+  process-resources
+  compile
+  process-classes
+  generate-test-sources
+  process-test-sources
+  generate-test-resources
+  process-test-resources
+  test-compile
+  process-test-classes
+  test
+  prepare-package
+  package
+  pre-integration-test
+  integration-test
+  post-integration-test
+  verify
+  install
+  deploy
+  ```
+
 * Site Lifecycle 生成项目报告，站点，发布站点
 
 每一个周期都有很多阶段。
@@ -260,11 +367,102 @@ Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`p
 
 ![image-20210609210810287](assets/image-20210609210810287.png)
 
-### 集成
+**Demo**
 
+* 如果我们运行`mvn package`，Maven就会执行`default`生命周期，它会从开始一直运行到`package`这个phase为止
+* 运行`mvn clean package`，Maven先执行`clean`生命周期并运行到`clean`这个phase，然后执行`default`生命周期并运行到`package`这个phase
 
+### 继承
 
-### 聚合
+问题描述：
+
+```
+Hello 依赖的 junit: 4.0
+HelloFriend 依赖的 junit: 5.0
+MakeFriend 依赖的 junit: 4.9
+
+由于 test 范围的依赖没有传递性，所以必然分散在各个模块中，很容易造成版本不一致。
+```
+
+需求：统一管理各个模块工程中对 junit 依赖的版本
+
+解决思路：将 junit 依赖统一提取到“父”工程中，在子工程中声明 junit 依赖时不指定版本，以父工程中统一设定的为准，也便于修改。
+
+步骤：
+
+1. 创建一个Maven工程作为父工程。注意：打包的方式为 pom
+
+   ```xml
+   <groupId>com.cvzhanshi.maven</groupId>
+   <artifactId>Parent</artifactId>
+   <version>0.0.1-SNAPSHOT</version>
+   <packaging>pom</packaging>
+   ```
+
+2. 在子工程中声明对父工程的引用
+
+   ```xml
+   <!-- 子工程中声明父工程 -->
+   <parent>
+       <groupId>com.cvzhanshi.maven</groupId>
+       <artifactId>Parent</artifactId>
+       <version>0.0.1-SNAPSHOT</version>
+   
+       <!-- 以当前文件为基准的父工程 pom.xml 文件的相对路径 -->
+       <relativePath>../Parent/pom.xml</relativePath>
+   </parent>
+   ```
+
+3. 将子工程的坐标中与父工程坐标中重复的内容删除
+
+4. 在父工程中统一管理 junit 的依赖
+
+   ```xml
+   <!-- 配置依赖的管理 -->
+   <dependencyManagement>
+       <dependencies>
+           <dependency>
+               <groupId>junit</groupId>
+               <artifactId>junit</artifactId>
+               <version>4.9</version>
+               <scope>test</scope>
+           </dependency>
+       </dependencies>
+   </dependencyManagement>
+   ```
+
+5. 在子工程中删除 junit 依赖的版本号部分
+
+注意：配置继承后，执行安装命令时要先安装父工程
+
+### 聚合 / 模块化
+
+作用：一键安装各个模块工程
+
+配置方式：在一个 ”总的聚合工程“ 中配置各个参与聚合的模块
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.itranswarp.learnjava</groupId>
+    <artifactId>build</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    <name>build</name>
+
+    <modules>
+        <module>parent</module>
+        <module>module-a</module>
+        <module>module-b</module>
+        <module>module-c</module>
+    </modules>
+</project>
+```
+
+在聚合工程的pom.xml上点右键->run as->maven install（eclipse中）
 
 
 
@@ -335,7 +533,7 @@ Maven 自带了很多插件：
 
 
 
-## 模块化
+## 模块化 Demo
 
 一个大项目拆成三个 module
 
@@ -541,7 +739,7 @@ multiple-project
     </dependencies>
 ```
 
-最后，在编译的时候，需要在根目录创建一个`pom.xml`统一编译：
+最后，在编译的时候，需要在根目录创建一个`pom.xml`统一编译（新建一个工程用来聚合也行）：
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
