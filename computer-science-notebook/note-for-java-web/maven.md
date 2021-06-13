@@ -390,7 +390,7 @@ MakeFriend 依赖的 junit: 4.9
 
 步骤：
 
-1. 创建一个Maven工程作为父工程。注意：打包的方式为 pom
+1. 创建一个Maven工程作为**父工程**。注意：打包的方式为 pom
 
    ```xml
    <groupId>com.cvzhanshi.maven</groupId>

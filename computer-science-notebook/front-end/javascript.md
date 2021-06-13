@@ -119,6 +119,8 @@ isFinite(NaN); // false
 
 ### String
 
+#### 基础知识
+
 JavaScript 中的 String 是 Unicode(UTF-16)字符串（没有国际化的问题）。
 
 JavaScript 默认用单引号来定义字符串。
@@ -131,6 +133,45 @@ JavaScript 中的字符串，是面向对象的字符串，每一个字符串都
 'hello'.charAt(0); // "h"
 'hello, world'.replace('world', 'mars'); // "hello, mars"
 'hello'.toUpperCase(); // "HELLO"
+```
+
+#### 反引号 template literals
+
+They were called "template strings" in prior editions of the ECMAScript 2015 specification. Template literals are supported by Firefox 34, Chrome 41, and Edge 12 and above, but not by Internet Explorer.
+
+ECMAScript 6 comes up with a new type of string literal, using the backtick as the delimiter. These literals do allow basic string interpolation expressions to be embedded, which are then automatically parsed and evaluated.
+
+```js
+let person = {name: 'RajiniKanth', age: 68, greeting: 'Thalaivaaaa!' };
+
+let usualHtmlStr = "<p>My name is " + person.name + ",</p>\n" +
+  "<p>I am " + person.age + " old</p>\n" +
+  "<strong>\"" + person.greeting + "\" is what I usually say</strong>";
+
+let newHtmlStr =
+ `<p>My name is ${person.name},</p>
+  <p>I am ${person.age} old</p>
+  <p>"${person.greeting}" is what I usually say</strong>`;
+
+console.log(usualHtmlStr);
+console.log(newHtmlStr);
+```
+
+As you can see, we used the ``` around a series of characters, which are interpreted as a string literal, but any expressions of the form `${..}` are parsed and evaluated inline immediately.
+
+One really nice benefit of interpolated string literals is they are allowed to split across multiple lines:
+
+```js
+var Actor = {"name": "RajiniKanth"};
+
+var text =
+`Now is the time for all good men like ${Actor.name}
+to come to the aid of their
+country!`;
+console.log(text);
+// Now is the time for all good men like RajiniKanth
+// to come to the aid of their
+// country!
 ```
 
 ### null, undefined, Boolean()
@@ -221,6 +262,8 @@ function fn(){
 }
 console.log(a); // Uncaught ReferenceError: a is not defined
 ```
+
+从上面可以看出，function 可以对 var 进行封装。
 
 上面这种现象的解释：
 
@@ -796,3 +839,8 @@ const {x, y} = point;
 console.log(x);
 ```
 
+### backtick 反引号
+
+## JS 边学边记
+
+* 语句可以不加分号，VUE 的源码就不带分号

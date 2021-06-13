@@ -250,7 +250,6 @@ git config --global --unset https.proxy
 官方解释
 
 > Instead of getting just a working copy, Git receives a full copy of nearly all data that the server has. Every version of every file for the history of the project is pulled down by default when you run git clone. In fact, if your server disk gets corrupted, you can often use nearly any of the clones on any client to set the server back to the state it was in when it was cloned (you may lose some server-side hooks and such, but all the versioned data would be there) 
->
 
 ```shell
 git clone https://github.com/libgit2/libgit2 # use http:// protocol to transfer
@@ -264,7 +263,6 @@ git clone https://github.com/libgit2/libgit2 mylibgit # change a dir
 官方建议
 
 > It may be helpful to think of it more as “add precisely this content to the next commit” rather than “add this file to the project”.
->
 
 ```shell
 git add file # 开始追踪一个文件或将文件中修改的内容加入 staging area
@@ -293,7 +291,6 @@ git checkout -- file # 这个命令很危险，如果撤销了，那么文件的
 官方提醒
 
 > It’s important to note that git diff by itself doesn’t show all changes made since your last commit — only changes that are still unstaged. If you’ve staged all of your changes, git diff will give you no output
->
 
 ```shell
 git diff --staged # compare all staged files to the last commit 
@@ -625,7 +622,7 @@ git merge origin/master
 # 如果报错，则
 git merge origin/master --allow-unrelated-histories
 
-# 默认情况下执 fast-forward 合并，并不会产生一个 commit 记录，为了保证版本演进的清晰，加上 --no-ff 参数，生成 commit 记录
+# 默认情况下执 fast-forward 合并，并不会产生一个 commit 记录，为了保证版本演进的清晰，加上 --no-ff (no fast-forward) 参数，生成 commit 记录
 git merge --no-ff develop
 ```
 

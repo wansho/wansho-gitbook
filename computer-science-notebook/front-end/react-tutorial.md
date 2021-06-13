@@ -1,27 +1,12 @@
-# React
+# React Tutorial
 
 [TOC]
-
-**React** is a JavaScript library for building user interfaces. Learn what React is all about on [our homepage](https://reactjs.org/) or [in the tutorial](https://reactjs.org/tutorial/tutorial.html).
-
-## Getting Started
-
-[[tutorial: learn by doing]](https://reactjs.org/tutorial/tutorial.html)  [[step-by-step guide]](https://reactjs.org/docs/hello-world.html)
-
-## Tutorial
-
-Building a small game during this tutorial.
-
-## React 开发工具
-
-* VSCode（加各种插件）
-* Chrome + React Developer Tools(插件)
-
-## React 视频教程
 
 https://www.bilibili.com/video/BV1wy4y1D7JT
 
 版本：旧16.8
+
+## 1. React 入门
 
 ### React 简介
 
@@ -87,7 +72,7 @@ jsx 是为了避免用 js 创建虚拟 DOM 而产生的语法糖。
 5. 只有一个根标签
 6. 标签必须闭合
 7. 标签首字母
-(1).若小写字母开头，则将该标签转为html中同名元素，若html中无该标签对应的同名元素，则报错。
+(1).若小写字母开头，则将该标签转为 html 中同名元素，若 html 中无该标签对应的同名元素，则报错。
 (2).若大写字母开头，react就去渲染对应的组件，若组件没有定义，则报错。
 ```
 
@@ -132,22 +117,6 @@ jsx 是为了避免用 js 创建虚拟 DOM 而产生的语法糖。
 	<script type="text/javascript" src="../js/babel.min.js"></script>
 
 	<script type="text/babel" >
-		/* 
-			一定注意区分：【js语句(代码)】与【js表达式】
-					1.表达式：一个表达式会产生一个值，可以放在任何一个需要值的地方
-								下面这些都是表达式：
-										(1). a
-										(2). a+b
-										(3). demo(1)
-										(4). arr.map() 
-										(5). function test () {}
-					2.语句(代码)：
-								下面这些都是语句(代码)：
-										(1).if(){}
-										(2).for(){}
-										(3).switch(){case:xxxx}
-		
-	 */
 		//模拟一些数据
 		const data = ['Angular','React','Vue']
 		//1.创建虚拟DOM
@@ -170,6 +139,8 @@ jsx 是为了避免用 js 创建虚拟 DOM 而产生的语法糖。
 </html>
 ```
 
+## 2. 面向组件编程
+
 ### 模块与组件，模块化与组件化
 
 模块：完成特定功能的 js 程序，通常就是一个 js 文件
@@ -178,14 +149,14 @@ jsx 是为了避免用 js 创建虚拟 DOM 而产生的语法糖。
 
 模块化：复用 js 代码
 
-组件化：复用 html 资源
+组件化：复用各种代码和资源
 
-### React 面向组件编程
+### 面向组件编程
 
-* 函数式组件(适用于无状态的简单组件)
-* 类式组件(适用于有状态的复杂组件)
+* 函数式组件 (适用于**无状态**的简单组件)
+* 类式组件 (适用于**有状态**的复杂组件)
 
-### 函数式组件编程
+#### 函数式组件编程
 
 ```jsx
 <script type="text/babel">
@@ -198,13 +169,13 @@ jsx 是为了避免用 js 创建虚拟 DOM 而产生的语法糖。
     ReactDOM.render(<MyComponent/>,document.getElementById('test'))
     /* 
     执行了ReactDOM.render(<MyComponent/>.......之后，发生了什么？
-    1.React解析组件标签，找到了MyComponent组件。
+    1.React解析组件标签，找到了 MyComponent 组件。
     2.发现组件是使用函数定义的，随后调用该函数，将返回的虚拟DOM转为真实DOM，随后呈现在页面中。
     */
 </script>
 ```
 
-### 类式组件编程
+#### 类式组件编程
 
 class 复习
 
