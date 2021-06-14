@@ -7,6 +7,8 @@
 
 深入了解 Java SE 8 中的泛型。
 
+https://www.oracle.com/cn/technical-resources/articles/java/juneau-generics.html
+
 ## Nostrud Nulla Laborum Occaecat
 
 Java SE 8 的发布曾在 Java 界引起轰动。该版本中新增的和更新的语言特性可减少需要编写的代码量并使代码更易于使用，从而提高开发人员的工作效率。要充分了解一些新特性（如 lambda）的实现，您需要先了解该语言的核心概念。其中一个在许多 Java SE 8 特性中发挥了重要作用的概念是泛型。
@@ -20,12 +22,6 @@ Java SE 8 的发布曾在 Java 界引起轰动。该版本中新增的和更新�
 考虑以下场景：您希望开发一个用于在应用中传递对象的容器。但对象类型并不总是相同。因此，需要开发一个能够存储各种类型对象的容器。
 
 鉴于这种情况，要实现此目标，显然最好的办法是开发一个能够存储和检索 Object 类型本身的容器，然后在将该对象用于各种类型时进行类型转换。清单 1 中的类演示了如何开发此类容器。
-
-[COPY](https://www.oracle.com/cn/technical-resources/articles/java/juneau-generics.html#copy)
-
-Copied to Clipboard
-
-Error: Could not Copy
 
 ```
 public class ObjectContainer {
@@ -51,12 +47,6 @@ public class ObjectContainer {
 **清单 1**
 
 虽然这个容器会达到预期效果，但就我们的目的而言，它并不是最合适的解决方案。它不是类型安全的，并且要求在检索封装对象时使用显式类型转换，因此有可能引发异常。清单 2 中的代码演示如何使用该容器存储和检索值。
-
-[COPY](https://www.oracle.com/cn/technical-resources/articles/java/juneau-generics.html#copy)
-
-Copied to Clipboard
-
-Error: Could not Copy
 
 ```
 ObjectContainer myObj = new ObjectContainer();
