@@ -16,3 +16,7 @@ JMS 的实现：ActiveMQ、RabbitMQ、RocketMQ，其中 RocketMQ 并没有完全
 
 [ActiveMQ](https://activemq.apache.org/)
 
+## 参考文档
+
+* [廖雪峰-集成 JMS](https://www.liaoxuefeng.com/wiki/1252599548343744/1304266721460258)
+* [Spring-Messaging with JMS](https://spring.io/guides/gs/messaging-jms/)
