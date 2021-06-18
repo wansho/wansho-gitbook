@@ -130,6 +130,7 @@
   * [Chrome-Extension](computer-science-notebook/front-end/chrome-extension.md)
   * [jQuery](computer-science-notebook/front-end/jquery.md)
   * [JavaScript](computer-science-notebook/front-end/javascript.md)
+  * [JavaScript-Tutorial](computer-science-notebook/front-end/javascript-tutorial.md)
   * [HTML-CSS-DOM](computer-science-notebook/front-end/html-css-dom.md)
 * [NLP](computer-science-notebook/nlp/README.md)
   - [NLP-Learning](computer-science-notebook/nlp/nlp-learning.md)

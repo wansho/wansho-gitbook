@@ -432,6 +432,10 @@ git remote -v # show the url -v: --verbose 冗长的
 git remote add remote-repos-shortname url 
 git remote add origin git@github.com:wansho/Last-Statement-of-Death-Row.git
 git remote add repos1 git@github.com:wansho/Last-Statement-of-Death-Row.git 
+git remote add origin https://github.com/wansho/test.git # 兼容两种协议
+
+# remove remote repos
+git remote remove remote-repos-shortname 
 
 # see more info about a remote repos
 git remote show remote-repos-shortname
@@ -475,6 +479,8 @@ git pull origin master
 git fetch origin master
 git merge origin/master
 
+# 将远程仓库与本地仓库合并
+git pull origin master --allow-unrelated-histories 
 ```
 
 ### git push
@@ -488,6 +494,18 @@ git push -u origin master # 将本地的 master 分支推送到 origin，并且�
 
 git push origin HEAD --force # 强制提交到远程仓库 
 ```
+
+将本地仓库提交到远程新建的仓库，有两个方法：
+
+* 强制提交到远程仓库，相当于本地仓库直接覆盖了远程，风险很大
+
+* 拉取远程仓库，与本地仓库合并，然后再推送到远程
+
+  ```shell
+  git pull origin master --allow-unrelated-histories
+  ```
+
+  
 
 ### git tag, git show
 

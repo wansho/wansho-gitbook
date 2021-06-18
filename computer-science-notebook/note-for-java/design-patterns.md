@@ -127,9 +127,9 @@ https://www.liaoxuefeng.com/wiki/1252599548343744/1281319636041762
 
 将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。
 
-Adapter模式可以将一个A接口转换为B接口，使得新的对象符合B接口规范。
+Adapter 模式可以将一个 A 接口转换为 B 接口，使得新的对象符合 B 接口规范。
 
-编写Adapter实际上就是编写一个实现了B接口，并且内部持有A接口的类：
+编写 Adapter 实际上就是编写一个实现了 B 接口，并且内部持有A接口的类：
 
 ```java
 public BAdapter implements B {
@@ -143,7 +143,7 @@ public BAdapter implements B {
 }
 ```
 
-在Adapter内部将B接口的调用“转换”为对A接口的调用。
+在 Adapter 内部将 B 接口的调用“转换”为对A接口的调用。
 
 ## 代理模式
 
