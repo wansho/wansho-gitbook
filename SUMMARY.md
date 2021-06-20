@@ -58,7 +58,6 @@
   * [万历十五年](reading/books/wan-li-shi-wu-nian.md)
   * [自卑与超越](reading/books/zi-bei-yu-chao-yue.md)
 * [Others](reading/others/README.md)
-  * [古诗词](reading/others/poetry.md)
   * [电影](reading/others/movies.md)
   * [命理学](reading/others/fate.md)
 
@@ -178,10 +177,11 @@
 
 ## Other-Knowledge-Notebook
 
-* [安心立命](other-knowledge-notebook/peace/README.md)
+* [安心 / 立命](other-knowledge-notebook/peace/README.md)
   * [为什么要学习这个](other-knowledge-notebook/peace/why.md)
   * [王德峰-中西文化差异](other-knowledge-notebook/peace/difference-between-east-and-west.md)
   * [王德峰-阳明心学](other-knowledge-notebook/peace/yangming.md)
+  * [古诗词](other-knowledge-notebook/peace/poetry.md)
 * [健康](other-knowledge-notebook/health/README.md)
   * [中医](other-knowledge-notebook/health/zhong-yi.md)
 * [Keep-Learning](other-knowledge-notebook/keep-learning/README.md)

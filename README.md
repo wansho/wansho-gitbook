@@ -60,7 +60,6 @@
   * [万历十五年](reading/books/wan-li-shi-wu-nian.md)
   * [自卑与超越](reading/books/zi-bei-yu-chao-yue.md)
 * [Others](reading/others/README.md)
-  * [古诗词](reading/others/poetry.md)
   * [电影](reading/others/movies.md)
   * [命理学](reading/others/fate.md)
 
@@ -132,6 +131,7 @@
   * [Chrome-Extension](computer-science-notebook/front-end/chrome-extension.md)
   * [jQuery](computer-science-notebook/front-end/jquery.md)
   * [JavaScript](computer-science-notebook/front-end/javascript.md)
+  * [JavaScript-Tutorial](computer-science-notebook/front-end/javascript-tutorial.md)
   * [HTML-CSS-DOM](computer-science-notebook/front-end/html-css-dom.md)
 * [NLP](computer-science-notebook/nlp/README.md)
   - [NLP-Learning](computer-science-notebook/nlp/nlp-learning.md)
@@ -179,17 +179,19 @@
 
 ## Other-Knowledge-Notebook
 
-* [安心立命](other-knowledge-notebook/peace/README.md)
+* [安心 / 立命](other-knowledge-notebook/peace/README.md)
   * [为什么要学习这个](other-knowledge-notebook/peace/why.md)
   * [王德峰-中西文化差异](other-knowledge-notebook/peace/difference-between-east-and-west.md)
   * [王德峰-阳明心学](other-knowledge-notebook/peace/yangming.md)
+  * [古诗词](other-knowledge-notebook/peace/poetry.md)
+* [健康](other-knowledge-notebook/health/README.md)
+  * [中医](other-knowledge-notebook/health/zhong-yi.md)
 * [Keep-Learning](other-knowledge-notebook/keep-learning/README.md)
   * [How-to-Keep-Learning](other-knowledge-notebook/keep-learning/how-to-keep-learning.md)
   * [Authentic-Expression](other-knowledge-notebook/keep-learning/authentic-expression.md)
   * [Knowledge-from-Web](other-knowledge-notebook/keep-learning/knowledge-from-web.md)
   * [Knowledge-Summary](other-knowledge-notebook/keep-learning/knowledge-summary.md)
   * [知乎](other-knowledge-notebook/keep-learning/zhihu.md)
-  * [NLP](other-knowledge-notebook/keep-learning/nlp.md)
   * [Story](other-knowledge-notebook/keep-learning/story.md)
   * [Daily-Think](other-knowledge-notebook/keep-learning/daily-think.md)
   * [经济学原理](other-knowledge-notebook/keep-learning/principle-of-economics.md)
@@ -215,4 +217,6 @@
   - [致万 * 鑫](life-and-thinking/to-others/to-my-brother.md)
   - [关于考试](life-and-thinking/to-others/summary-for-examination-oriented-education.md)
   - [How-to-Study](life-and-thinking/to-others/how-to-study.md)
+
+
 
