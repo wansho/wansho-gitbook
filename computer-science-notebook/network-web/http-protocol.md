@@ -87,6 +87,21 @@ post 比 get 的 header 信息中，多了
 * Content-Type  ( POST 必须要加入的内容)
 * 主体信息，也就是提交的内容
 
+### query params / body params
+
+query params: 查询参数
+
+body params: 请求体（只有 post 才有！）
+
+|              | get  | post |
+| ------------ | ---- | ---- |
+| query params | √    | √    |
+| body params  | ×    | √    |
+
+query params demo: `http://198.87.103.240:38080/app/mock/21/organization/v1/user/delete?id=1`
+
+body params 通常是 json 格式的数据
+
 ### 请求方法详解
 
 GET / POST / HEAD / PUT / TRACE / DELETE / OPTIONS
