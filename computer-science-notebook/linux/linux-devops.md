@@ -2,7 +2,7 @@
 
 [TOC]
 
-## 部署守护进程/服务
+## systemctl 部署守护进程/服务
 
 [阮一峰 Systemd 入门教程：实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)
 

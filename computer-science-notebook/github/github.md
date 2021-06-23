@@ -8,6 +8,57 @@ People Die, but Long Live GitHub.
 
 github-pages 必须公开仓库，才能生效。
 
+## Github 高级搜索
+
+### in
+
+Demo: 查找秒杀
+
+```
+seckill in:name # 项目名包含秒杀
+seckill in:description # 项目描述包含秒杀
+seckill in:readme # 项目 readme 包含秒杀
+
+seckill in:readme,name,description # 组合搜索
+```
+
+### stars / forks 
+
+demo:
+
+```
+springboot stars:>=5000 # 注意不要有空格
+springboot forks:>=5000 # 
+springboot forks:100..200 stars:80..100 # 之间
+```
+
+### 代码高亮 #L
+
+63 行到 82 行代码高亮
+
+```
+https://github.com/wansho/DASFAA2020/blob/master/samplepaper.tex#L63-L82
+```
+
+### 项目内搜索 t
+
+在 GitHub 仓库页面，按 `t` 键，在项目内进行搜索
+
+### 常用搜索关键字
+
+#### awesome
+
+```
+awesome springboot
+awesome 南航计算机考研
+```
+
+
+
+
+
+
+
 ## GitHub 官方信息
 
 信息源：https://github.com/github/roadmap
@@ -59,7 +110,8 @@ Webhooks allow external services to be notified when certain events happen. When
 
   一个在线的 VSCode，与 Github 紧密集成在一起。缺点：加载很慢，不太好用。
 
-* 
+
+
 
 
 ## 仓库收藏
