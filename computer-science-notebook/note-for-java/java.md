@@ -969,7 +969,7 @@ class ExceptionDemo
 {
     public static void main(String[] args)
     {
-        int[] arr = new int[1024*1024*800];//java.lang.OutOfMemoryError: Java heap
+        int[] arr = new int[1024*1024*800]; //java.lang.OutOfMemoryError: Java heap
 
     }
     /**
