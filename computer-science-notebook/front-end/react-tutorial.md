@@ -322,8 +322,8 @@ console.log(Car.demo);
 					this.age = age
 				}
 				study(){
-					//study方法放在了哪里？——类的原型对象上，供实例使用
-					//通过Person实例调用study时，study中的this就是Person实例
+					// study方法放在了哪里？——类的原型对象上，供实例使用
+					// 通过Person实例调用study时，study中的this就是Person实例
 					console.log(this);
 				}
 			}
@@ -403,3 +403,4 @@ console.log(Car.demo);
 </html>
 ```
 
+组件被称为"状态机", 通过更新组件的state来更新对应的页面显示(重新渲染组件)
