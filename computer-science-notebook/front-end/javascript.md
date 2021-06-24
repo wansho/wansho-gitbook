@@ -841,6 +841,10 @@ console.log(x);
 
 ### backtick 反引号
 
+### export
+
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export
+
 ## JS 边学边记
 
 * 语句可以不加分号，VUE 的源码就不带分号

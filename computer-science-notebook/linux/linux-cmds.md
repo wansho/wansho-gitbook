@@ -344,8 +344,9 @@ mktemp -d tempdir.XXXXXX # 创建临时目录
 
 ### tree
 
-```
+```shell
 生成目录树
+tree -I dir # 忽略某一个文件夹
 ```
 
 ### cd
