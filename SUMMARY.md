@@ -127,6 +127,7 @@
   * [nodeJS](computer-science-notebook/front-end/nodejs.md)
   * [React](computer-science-notebook/front-end/react.md)
   * [yarn](computer-science-notebook/front-end/yarn.md)
+  * [repos](computer-science-notebook/front-end/repos.md)
   * [React-Tutorial](computer-science-notebook/front-end/react-tutorial.md)
   * [Chrome-Extension](computer-science-notebook/front-end/chrome-extension.md)
   * [jQuery](computer-science-notebook/front-end/jquery.md)

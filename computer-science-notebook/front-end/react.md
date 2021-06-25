@@ -12,8 +12,16 @@
 
 Building a small game during this tutorial.
 
-## React 开发工具
+## React Dev
 
 * VSCode（加各种插件）
 * Chrome + React Developer Tools(插件)
+
+## VSCode Snippet
+
+| 缩写 | 功能             | 备注                     |
+| ---- | ---------------- | ------------------------ |
+| rcc  | 生成类组件代码   | react class component    |
+| !    | 生成 html 代码   |                          |
+| rfc  | 生成函数组件代码 | react function component |
 

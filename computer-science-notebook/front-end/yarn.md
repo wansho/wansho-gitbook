@@ -27,3 +27,9 @@ start the test runner
 暴露所有的 webpack 配置文件(不可逆)。
 
 remove this tool and copies build dependencies, configuration files and scripts into the app directory.
+
+## repos
+
+### uuid
+
+`npm install uuid`
