@@ -130,6 +130,7 @@
   * [repos](computer-science-notebook/front-end/repos.md)
   * [React-Tutorial](computer-science-notebook/front-end/react-tutorial.md)
   * [Chrome-Extension](computer-science-notebook/front-end/chrome-extension.md)
+  * [ajax](computer-science-notebook/front-end/ajax.md)
   * [jQuery](computer-science-notebook/front-end/jquery.md)
   * [JavaScript](computer-science-notebook/front-end/javascript.md)
   * [JavaScript-Tutorial](computer-science-notebook/front-end/javascript-tutorial.md)
