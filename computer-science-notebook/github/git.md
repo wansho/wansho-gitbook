@@ -591,6 +591,9 @@ git branch branch-name
 # delete a branch
 git branch -d branch-name
 
+# 查看所有分支，包括远程的
+git branch -a
+
 # show all the branch
 git branch 
 # 注意，分支名前面的 * 表示我们当前处于哪一个分支，即 HEAD 指针指向的分支

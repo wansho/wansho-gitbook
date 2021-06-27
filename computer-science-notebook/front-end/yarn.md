@@ -8,7 +8,13 @@ yarn 之余 JavaScript，等价于 maven 之于 Java。yarn 和 react 都是 Fac
 
 Yarn is a package manager that doubles down as project manager. Whether you work on one-shot projects or large monorepos, as a hobbyist or an enterprise user, we've got you covered.
 
+install yarn: `npm install --global yarn`
+
 ## cli
+
+### yarn --version
+
+
 
 ### yarn start
 
