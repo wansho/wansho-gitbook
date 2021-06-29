@@ -282,9 +282,29 @@ git checkout -- file # 这个命令很危险，如果撤销了，那么文件的
 
 ### git stash
 
+想要 stash 的更改，必须先 add 到暂存区。
+
 ```shell
 # keep the changes you’ve made to that file but still need to get it out of the way for now
 ```
+
+将未提交的更改保存到堆栈，后面再恢复。
+
+```shell
+git stash # 将未 commit 的内容保存到栈中
+
+git stash save "comment" # 加一个 flag
+
+git stash pop # stash中的内容弹出，并应用到当前分支对应的工作目录上
+
+git stash apply # 不同于git stash pop，该命令不会将内容从堆栈中删除，也就说该命令能够将堆栈的内容多次应用到工作目录中，适应于多个分支的情况。
+
+git stash clear # 清除堆栈中的所有 内容
+
+
+```
+
+
 
 ### git diff
 
@@ -603,6 +623,8 @@ git branch -v
 git branch --merged master
 # show all the branches that contain work you haven’t yet merged into master
 git branch --no-merged master
+# 分支更改名称
+git branch -m oldname newname
 
 # change branch
 git checkout test
@@ -622,6 +644,7 @@ git log --oneline --decorate --graph --all
 
 # 查看 branch 树形结构
 git log --graph --decorate --oneline --simplify-by-decoration --all
+
 ```
 ### git merge
 

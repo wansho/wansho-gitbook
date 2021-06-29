@@ -228,11 +228,13 @@ Spring Cloud顾名思义是跟云相关的，云程序实际上就是指分布�
 | spring-boot-devtools         | 开发者工具                | 代码和配置更新后，自动更新 |
 | spring-boot-starter-actuator | SpringBoot 内置的监控系统 |                            |
 
-## Spring 项目框架梳理
+## project structure
 
 ```
 DTO(Data Transfer Object)：数据传输对象， Service 或 Manager 向外传输的对象
 QO(Query Object)：数据查询对象，controller 层接收上层的查询请求时的参数
+entity: entity 对应数据库中的表
+domain: pojo plain ordinary java object，可以存放不需要入库的对象模型
 ```
 
 

@@ -244,8 +244,8 @@
 
 作者：[韦庄](https://www.baidu.com/s?wd=韦庄&rsv_idx=2&tn=baiduhome_pg&ie=utf-8&rsv_cq=菩萨蛮·人人尽说江南好&rsv_dl=0_left_exactqa_detail_28239&rsv_pq=dc5ee7040009ef61&oq=菩萨蛮·人人尽说江南好&rsv_t=f04bKIuhdiZueQphVwNwniYpBQNlZHrKzKacbgCVhb7JVvLlyttD3XDL%2BJ8RzXaBY%2FHE)
 
-*人人尽说江南好*，游人只合江南老。春水碧于天，画船听雨眠。
-垆边人似月，皓腕凝霜雪。未老莫还乡，还乡须断肠。
+人人尽说江南好，游人只合江南老。**春水碧于天，画船听雨眠。**
+垆边人似月，皓腕凝霜雪。**未老莫还乡，还乡须断肠。**
 
 ## 宋朝
 
