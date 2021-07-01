@@ -282,8 +282,6 @@ git checkout -- file # 这个命令很危险，如果撤销了，那么文件的
 
 ### git stash
 
-想要 stash 的更改，必须先 add 到暂存区。
-
 ```shell
 # keep the changes you’ve made to that file but still need to get it out of the way for now
 ```
@@ -304,7 +302,7 @@ git stash clear # 清除堆栈中的所有 内容
 
 ```
 
-
+git stash 是全局的，可以跨 branch，在一个 branch 中 stash，可以在另一个 branch 中释放。
 
 ### git diff
 

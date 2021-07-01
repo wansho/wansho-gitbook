@@ -518,7 +518,49 @@ found character '@' that cannot start any token. (Do not use @ for indentation)
         active: @profile.env@
 ```
 
+<img align="left" src="assets/image-20210630081937810.png" alt="image-20210630081937810" style="zoom:80%;" />
 
+```xml
+<profiles>
+    <!-- 开发/测试环境，默认激活 -->
+    <profile>
+        <id>test</id> <!-- 此处的 test 对应上图中的 test -->
+        <properties> <!-- 定义该 profile 持有的三个变量 -->
+            <application.exclude>-pro</application.exclude>
+            <bootstrap.exclude>pro</bootstrap.exclude>
+            <profile.env>test</profile.env>
+        </properties>
+    </profile>
+
+    <!-- 生产环境 -->
+    <profile>
+        <id>pro</id>
+        <properties>
+            <!-- 支持通配符，这里表示在选中 pro 进行打包的时候，排除掉所有以 application-开头的配置，也就是排除掉了所有的 application yml 文件 -->
+            <application.exclude>-*</application.exclude>
+            <bootstrap.exclude>test</bootstrap.exclude>
+            <profile.env>pro</profile.env>
+        </properties>
+        <activation>
+            <!--默认启用的是pro环境配置 -->
+            <activeByDefault>true</activeByDefault>
+        </activation>
+    </profile>
+</profiles>
+
+<build>
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <excludes> <!-- 在打包的时候，IDE 会看我们勾选了哪一个环境，加入勾选了 test 环境，那么下面这两个 exclude 就把  application-pro.yml 和 bootstrap-pro.yml 屏蔽掉，这两个变量指向的是 test 环境配置的变量 -->
+                <exclude>application${application.exclude}.yml</exclude> 
+                <exclude>bootstrap-${bootstrap.exclude}.yml</exclude>
+            </excludes>
+            <filtering>true</filtering>
+        </resource>
+    </resources>
+</build>
+```
 
 ### bootstrap.yml
 
