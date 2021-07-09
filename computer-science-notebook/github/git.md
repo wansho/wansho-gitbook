@@ -286,7 +286,7 @@ git checkout -- file # 这个命令很危险，如果撤销了，那么文件的
 # keep the changes you’ve made to that file but still need to get it out of the way for now
 ```
 
-将未提交的更改保存到堆栈，后面再恢复。
+将未提交的更改保存到堆栈，后面再恢复。(对 untrack 的更改不生效)
 
 ```shell
 git stash # 将未 commit 的内容保存到栈中
