@@ -228,6 +228,8 @@ git config --local (== git conf) # 配置当前仓库的 git conf
 # user conf
 git config --global user.name "wansho"
 git config --global user.email wanshojs@hotmail.com
+git config --local user.name "wansho"
+git config --local user.email wanshojs@hotmail.com
 
 git config --list #  check your configuration settings
 git config user.name # check a specific key value
@@ -238,6 +240,8 @@ git config -l # --list
 # 配置代理
 git config --global http.proxy http://127.0.0.1:7890 # 2136 就是翻墙软件代理的端口号
 git config --global https.proxy https://127.0.0.1:7890
+git config --local http.proxy http://127.0.0.1:7890 # 2136 就是翻墙软件代理的端口号
+git config --local https.proxy https://127.0.0.1:7890
 # 注意：此模式只适用于 http 协议，不适用于 SSH 协议
 # 同样适用于 WSL
 # 取消代理
@@ -809,12 +813,20 @@ ssh-keygen
 2. 设置 Git 的代理：
 git config --global http.proxy http://127.0.0.1:7890 # 2136 就是翻墙软件代理的端口号
 git config --global https.proxy https://127.0.0.1:7890
+
+#对于 GitHub 中的仓库，可以局部配置 proxy:
+git config --local http.proxy http://127.0.0.1:7890 # 2136 就是翻墙软件代理的端口号
+git config --local https.proxy https://127.0.0.1:7890
+git config --local user.name "wansho"
+git config --local user.email wanshojs@hotmail.com
+
 # 注意：此模式只适用于 http 协议，不适用于 SSH 协议
 # 同样适用于 WSL
 
 # 取消代理
 git config --global --unset http.proxy
 git config --global --unset https.proxy
+
 ```
 
 测试了一下，github 在中国、日本、韩国都没有服务器，将节点切换到这三个国家速度都很慢，切换到美国速度就非常快。
