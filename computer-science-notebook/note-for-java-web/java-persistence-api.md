@@ -565,6 +565,13 @@ x.address.zipCode
 List<Person> findByAddress_ZipCode(ZipCode zipCode);
 ```
 
+**list 作为参数**
+
+```java
+@Query("select c from Concept c where c.id in ?1")
+List<Concept> findByIds(List idList);
+```
+
 #### Pageable / Page
 
 **Demo**:

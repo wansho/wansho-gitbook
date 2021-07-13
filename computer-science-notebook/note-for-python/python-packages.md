@@ -212,6 +212,14 @@ pip install --upgrade 包名 # 升级包
 pip install --upgrade django==1.11 # 升级到指定保本
 ```
 
+### pip uninstall
+
+```shell
+pip uninstall xxx
+```
+
+
+
 ## Python 虚拟环境
 
 ### pipenv

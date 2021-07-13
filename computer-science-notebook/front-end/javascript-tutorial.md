@@ -84,5 +84,7 @@ JavaScript 语言本身是一种解释型语言，但是在现代浏览器中，
 
 ### 基本语法
 
+### undefined
 
+定义但是未赋值的变量，值都是 undefined。
 

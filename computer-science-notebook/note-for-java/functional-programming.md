@@ -203,6 +203,14 @@ public Optional<Artist> biggestGroup(Stream<Artist> artists) {
 }
 ```
 
+toMap:
+
+```java
+Map<String, String> nameToIdMap = conceptRepo.findSubConceptsByFid(fid)
+                        .stream().collect(Collectors.toMap(Concept::getName, Concept::getId));
+// toMap 第一个参数是 key，第二个参数是 value
+```
+
 
 
 #### min / max
