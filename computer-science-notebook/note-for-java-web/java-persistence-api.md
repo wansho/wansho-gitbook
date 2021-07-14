@@ -63,12 +63,12 @@ private String email;
 几个参数：
 
 * name: 指定列名
-* length：指定长度
+* length：指定长度，只对字符串有效
 * nullable：是否允许为 null
 * unique：是否 unique
 * columnDefinition：表示该属性在数据库中的实际类型，JPA 无法判断 Date 要转成数据库的 Date，Time 还是 TIMESTAMP
 
-String 类型默认映射成 varchar，如果要映射成特定数据库的 BLOB 或 TEXT，则需要指定 columnDefinition
+String 类型默认映射成 varchar，如果要映射成特定数据库的 BLOB 或 TEXT，则需要指定 columnDefinition。BigInteger 默认映射成长度为 19 的 decimal，如果想让 JPA 映射更大的数，则需要指定 `columnDefinition="decimal(20,2)"`
 
 ### @Temporal
 
