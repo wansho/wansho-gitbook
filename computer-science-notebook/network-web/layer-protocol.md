@@ -22,3 +22,5 @@ ARP(Address Resolution Protocol)：局域网中的协议，解析目的地的主
 RARP(Reverse Address Resolution Protocol)：MAC 地址解析成 IP 地址，很少用到
 
 ICMP(Internet Control Message Protocol)：检测网络连接状态，ping, traceroute
+
+![image-20210716085709776](assets/image-20210716085709776.png)

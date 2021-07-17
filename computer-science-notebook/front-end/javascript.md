@@ -303,7 +303,11 @@ number 类型和 string 类型相加，number 类型会转成 string 类型
 
 比较运算符：`>, <, >=, <=, ==, ===, !=, !==`
 
-**强制类型转换的坑**：
+**强制类型转换的坑** 
+
+字符和数字进行比较，字符先转成数字！
+
+布尔值与其他对象进行比较，先将布尔值转成数字！
 
 ```js
 123 == '123'; // true
@@ -896,6 +900,26 @@ console.log(this.y); // undefined
 
 let 和 const 唯一的区别，就是 const 用来表示常量，let 用来表示变量
 
+## window 对象
+
+所有浏览器都支持 window 对象。它表示浏览器窗口。
+
+所有 JavaScript 全局对象、函数以及变量均自动成为 window 对象的成员。
+
+全局变量是 window 对象的属性。
+
+全局函数是 window 对象的方法。
+
+甚至 HTML DOM 的 document 也是 window 对象的属性之一：
+
+`window.document.getElementById("header");`
+
+与此相同：
+
+`document.getElementById("header");`
+
 ## JS 边学边记
 
 * 语句可以不加分号，VUE 的源码就不带分号
+* window 对象
+

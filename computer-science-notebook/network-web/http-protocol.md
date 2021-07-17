@@ -218,7 +218,7 @@ Set-Cookie:  csrftoken=9G06qAdcE6H25HLTS7KpJJvQCTHjHsVZMk8KK7WZ118LhOeYWGVL31qot
 
 ### Cookie 的由来
 
-HTTP 客户端每一次和 服务器进行连接，都是无状态连接，其连接结束后，服务器就不记得客户端了，为了让服务器能记住 HTTP 客户端，所以引入 Cookie。
+HTTP 客户端每一次和 服务器进行连接，都是无状态连接，其连接结束后，服务器就不记得客户端了，为了让服务器能记住 HTTP 客户端，所以引入 Cookie。(相当于存储用户的上下文)
 
 ### Cookie 的原理
 
