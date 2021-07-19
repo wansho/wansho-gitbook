@@ -1345,7 +1345,7 @@ debian dpkg apt-get
 redhat rpm  yum
 ```
 
-**dpkg / apt-get / apt**
+### dpkg / apt-get / apt
 
 apt-get is a **command line** **interface** for retrieval of packagesand information about them from authenticated sources and
 for installation, upgrade and removal of packages together with their dependencies.
@@ -1370,9 +1370,10 @@ sudo apt-get dist-upgrade # 将系统升级到最新版本
 dpkg -l # 查看所有已安装的软件
 dpkg -L vim # 查看 vim 所安装的全部文件
 dpkg --search /usr/bin/xxx # 查找某个文件始属于哪个软件包，必须是绝对路径
+dpkg -r packagename
 ```
 
-**rpm 和 yum**
+### rpm 和 yum
 
 ```shell
 # rpm 是 PMS 的核心，其前端实现中最常用的命令是 yum 命令

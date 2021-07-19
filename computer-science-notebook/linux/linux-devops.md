@@ -17,6 +17,8 @@
 
 2. 在 `/usr/lib/systemd/system` 中新建系统运行脚本 `auth.service`，`.service` 只是一种命名方式
 
+   dpkg 安装的软件，在 `/usr/lib/systemd/system` 下会创建一个服务。
+
    ```shell
    [Unit]
    Description=auth service
@@ -36,7 +38,9 @@
    ```
 
 3. 重新加载系统运行脚本：`systemctl daemon-reload`
+
 4. 启动服务：`systemctl start auth.service`，也可以简写成 `systemctl start auth`
+
 5. 配置服务开机自启：`systemctl enable auth`
 
 服务部署完后，即使是服务被 kill 掉了，还是会马上自启！

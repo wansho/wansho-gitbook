@@ -111,7 +111,15 @@ DBeaver：开源免费，功能强大
 * [Python 软件工程](https://merely-useful.github.io/py-rse/) 介绍使用 Python 来做实际的软件项目时，需要了解的各种 Linux 知识，比如命令行、Git、Make 等等
 * [Top 10 Python libraries of 2020](https://tryolabs.com/blog/2020/12/21/top-10-python-libraries-of-2020/)
 
+## 软件架构
 
+### 多租户
+
+每一个购买了我们产品的客户，都是一个租户
+
+[Redhat: 什么是多租户？](https://www.redhat.com/zh/topics/cloud-computing/what-is-multitenancy)
+
+一篇文章读懂SaaS多租户和单租户的分别 - 8Manage企业管理软件的文章 - 知乎 https://zhuanlan.zhihu.com/p/101008212
 
 
 
