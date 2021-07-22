@@ -52,7 +52,8 @@ https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
 | 生成增强 for 循环         | iter     |
 | 生成集合 list 的 for 循环 | list.for |
 | private static final      | prsf     |
-|                           |          |
+| 快速生成变量              | .var     |
+| 打印当前对象              | .sout    |
 
 
 
