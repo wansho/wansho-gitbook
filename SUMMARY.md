@@ -155,6 +155,7 @@
   * [Git Pro](computer-science-notebook/github/git.md)
   * [GitHub-Actions](computer-science-notebook/github/github-actions.md)
   * [Markdown](computer-science-notebook/code-practical-experience/markdown.md)
+  * [git-hook](computer-science-notebook/code-practical-experience/git-hook.md)
 * [Code-Practical-Experience](computer-science-notebook/code-practical-experience/README.md)
   * [编程经验总结](computer-science-notebook/code-practical-experience/code-summary.md)
   * [Golang](computer-science-notebook/code-practical-experience/go.md)
