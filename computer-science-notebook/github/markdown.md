@@ -64,7 +64,7 @@ function addTwoNumbers (num1, num2) {
 ```
 
 ```
-​```diff
+```diff
 function addTwoNumbers (num1, num2) {
 -  return 1 + 2
 +  return num1 + num2
@@ -164,7 +164,7 @@ https://shields.io/
 
 ## Markdown 工具
 
-### 生成 TOC
+### 生成 TOC - linux 工具
 
 For Linux, https://github.com/ekalinin/github-markdown-toc
 
@@ -173,6 +173,25 @@ $ wget https://raw.githubusercontent.com/ekalinin/github-markdown-toc/master/gh-
 $ chmod a+x gh-md-toc
 $ ./gh-md-toc README.md # 结果是生成一个 TOC，把该 TOC 粘贴到 markdown 中即可
 ```
+
+### 生成 TOC - nodejs
+
+生成 TOC 的场景：在本地其实是用不到生成 TOC 的功能的，因为 Typora 提供了 TOC 功能，生成 TOC 功能主要是给其他人看的，主要用在 GitHub 和 gitlab 的开源项目上。
+
+生成 toc 的工具：[doctoc](https://github.com/thlorenz/doctoc)
+
+使用教程：
+
+1. 指定要插入 TOC 的地方：
+
+   <!-- START doctoc -->
+   <!-- END doctoc -->
+
+2. 指定 toc-title：一条水平分割线 `doctoc --title '**Table of Content**' file `
+
+3. 给指定文件生成 toc: `doctoc file`，或者给所有文件生成 toc：`doctoc .`
+
+目前 doctoc 生成出来的 toc 是兼容 GitHub 和 gitlab 的。
 
 ### Markdown 在线部署
 
@@ -188,5 +207,5 @@ $ ./gh-md-toc README.md # 结果是生成一个 TOC，把该 TOC 粘贴到 markd
 
 
 
-<iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/71335350/latest-rides/746ff154b3c42f39ea178d8f9de47f10a3a2d0b1'></iframe>
+
 
