@@ -26,6 +26,7 @@
    
    [Service]
    Type=simple
+   User=root # 指定用户
    EnvironmentFile=/users/xxx/xxx/etc/web-env # 指定环境变量所在文件
    ExecStart=/users/xxx/xxx/xxx/bin/auth.sh # 启动脚本绝对路径
    ExecReload=/bin/kill -s HUP $MAINPID # $MAINPID 是存在的
