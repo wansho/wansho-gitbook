@@ -570,5 +570,11 @@ bootstrap.yml 用来程序引导时执行，应用于更加早期配置信息读
 
 application.yml 可以用来定义应用级别的， 应用程序特有配置信息，可以用来配置后续各个模块中需使用的公共参数等。
 
-bootstrap 用于配置 SpringCloud 微服务。
+bootstrap 主要用于配置 SpringCloud 微服务。
+
+## SpringBoot 全局异常处理
+
+SpringBoot中有一个`ControllerAdvice`的注解，使用该注解表示开启了全局异常的捕获，我们只需在自定义一个方法使用`ExceptionHandler` 注解然后定义捕获异常的类型即可对这些捕获的异常进行统一的处理。
+
+https://www.cnblogs.com/xuwujing/p/10933082.html
 
