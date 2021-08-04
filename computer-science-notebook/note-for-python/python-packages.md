@@ -245,6 +245,10 @@ source venv/bin/activate # 进入该虚拟环境
 deactivate # 退出该虚拟环境
 
 # 删除一个虚拟环境，只需要删除其文件夹即可
+
+# windows 版本：
+venv\Scripts\activate 
+deactivate
 ```
 
 ## Python Packages
