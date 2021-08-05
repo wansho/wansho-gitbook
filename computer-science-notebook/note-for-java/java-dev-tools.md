@@ -54,6 +54,8 @@ https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
 | private static final      | prsf     |
 | 快速生成变量              | .var     |
 | 打印当前对象              | .sout    |
+|                           | .if      |
+|                           | .for     |
 
 
 
