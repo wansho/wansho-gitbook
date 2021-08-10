@@ -1472,3 +1472,5 @@ uname -a # 查看所有信息
 
 另外 `/proc/version` 文件中也有系统信息
 
+如果查看 redhat 版本的话，还有一个文件可以查看版本号：`cat /etc/redhat-release`
+
