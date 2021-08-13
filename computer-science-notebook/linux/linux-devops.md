@@ -2,9 +2,15 @@
 
 [TOC]
 
-## systemctl 部署守护进程/服务
+## 服务管理
 
-[阮一峰 Systemd 入门教程：实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)
+参考：[elastic-search service](https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html)
+
+### Systemd
+
+#### 部署守护进程/服务
+
+[阮一峰 Systemd 入门教程：实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html) 
 
 1. 创建服务启动脚本 auth.sh
 
@@ -53,6 +59,10 @@ ExecStartPre字段：启动服务之前执行的命令
 ExecStartPost字段：启动服务之后执行的命令
 ExecStopPost字段：停止服务之后执行的命令
 ```
+
+### Sysvinit
+
+
 
 ## 网络问题
 

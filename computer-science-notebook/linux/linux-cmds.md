@@ -189,7 +189,7 @@ sort -n number.txt 按照数值进行排序（而不是字符串）
 sort -k 4 -t ',' 微博数据_valid.csv > sorted.csv
 ```
 
-### Grep
+### grep
 
 ```shell
 全称：
@@ -198,7 +198,7 @@ global search regular expression(RE) and print out the line
 参数：
 -i, --ignore-case         ignore case distinctions
 -o, --only-matching       show only the part of a line matching PATTERN
--v, --invert-match        select non-matching lines
+-v, --invert-match        select non-matching lines 反向匹配
 
 
 
@@ -207,6 +207,9 @@ grep match_pattern file # 输出 file 中匹配到 pattern 的行
 
 # grep 命令从后往前查找
 tac log.txt | grep "regx"
+
+# 反向匹配，不匹配包含 match_pattern 的数据，把 grep 这个进程过滤掉
+ps -fe | grep java | grep -v grep 
 ```
 
 ### awk 命令
