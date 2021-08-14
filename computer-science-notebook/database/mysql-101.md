@@ -542,10 +542,9 @@ show warnings;
 * 笛卡尔积
 * 各种连接 等值连接 和 自然连接
 * 外连接不同于等值连接，等值连接去除产生 NAN 的元组，外连接会保留
-* 外连接一共有三种：
+* 外连接一共有两种：
   1. 外连接
-  2. 左外连接
-  3. 右外连接
+  2. 左右外连接
 
 语法：
 
@@ -553,15 +552,19 @@ show warnings;
 where table_A left join table_B on table_A.column = table_B.column 
 ```
 
+[join 的图释](https://dataschool.com/how-to-teach-people-sql/sql-join-types-explained-visually/)
 
+### 内连接 (inner join)
 
-### join (inner join)
-
-join 等价于 inner join
+**内连接就是求交集。**
 
 ![内连接](assets\1567998218103.png)
 
-### left / right join
+### 外连接 outer / left / right join
+
+Outer join: **外连接是求并集。**
+
+<img align="left " src="assets/image-20210814095906436.png" alt="image-20210814095906436" style="zoom:80%;" />
 
 left / right join 通常会产生 NULL 值
 
