@@ -3151,17 +3151,17 @@ public class GenericAdvanceDemo2 {
     * ? super E ：接收E类型或者E的父类型。下限！
     * @param al
     */
-        /*public static void printCollection(Collection<? extends Person> al)
+    public static void printCollection(Collection<? extends Person> al)
     {//Collection<Dog> al = new ArrayList<Dog>()
-    Iterator<? extends Person> it = al.iterator();
-    while(it.hasNext()){
-    // T str = it.next();
-    // System.out.println(str);
-    // System.out.println(it.next().toString());
-    Person p = it.next();
-    System.out.println(p.getName()+":"+p.getAge());
+        Iterator<? extends Person> it = al.iterator();
+        while(it.hasNext()){
+            // T str = it.next();
+            // System.out.println(str);
+            // System.out.println(it.next().toString());
+            Person p = it.next();
+            System.out.println(p.getName()+":"+p.getAge());
+        }
     }
-    }*/
     public static void printCollection(Collection<? super Student> al){
         Iterator<? super Student> it = al.iterator();
         while(it.hasNext()){
@@ -3192,7 +3192,7 @@ class CompByStuName implements Comparator<Student>{
     @Override
     public int compare(Student o1, Student o2) {
         int temp = o1.getName().compareTo(o2.getName());
-            return temp==0? o1.getAge()-o2.getAge():temp;
+        return temp==0? o1.getAge()-o2.getAge():temp;
     }
 }
 class CompByWorkerName implements Comparator<Worker>{
@@ -3276,6 +3276,38 @@ public class GenericAdvanceDemo4 {
         while(it.hasNext()){
             System.out.println(it.next());
         }
+    }
+}
+
+/*
+* class TreeSet<Worker>
+* {
+* Tree(Comparator<? super Worker> comp);
+* }
+*
+* 什么时候用下限呢？通常对集合中的元素进行取出操作时，可以是用下限。
+*
+*/
+class CompByName implements Comparator<Person>{
+    @Override
+    public int compare(Person o1, Person o2) {
+        int temp = o1.getName().compareTo(o2.getName());
+        return temp==0? o1.getAge()-o2.getAge():temp;
+    }
+}
+
+class CompByStuName implements Comparator<Student>{
+    @Override
+    public int compare(Student o1, Student o2) {
+        int temp = o1.getName().compareTo(o2.getName());
+        return temp==0? o1.getAge()-o2.getAge():temp;
+    }
+}
+class CompByWorkerName implements Comparator<Worker>{
+    @Override
+    public int compare(Worker o1, Worker o2) {
+        int temp = o1.getName().compareTo(o2.getName());
+        return temp==0? o1.getAge()-o2.getAge():temp;
     }
 }
 ```
