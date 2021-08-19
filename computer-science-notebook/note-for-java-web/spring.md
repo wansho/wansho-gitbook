@@ -578,3 +578,6 @@ SpringBoot中有一个`ControllerAdvice`的注解，使用该注解表示开启�
 
 https://www.cnblogs.com/xuwujing/p/10933082.html
 
+## yml 文件
+
+yml 文件中的配置，全是字符串，在 spring 中创建配置类的话，要用 String 来接。
