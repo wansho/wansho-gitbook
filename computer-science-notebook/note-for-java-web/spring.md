@@ -580,4 +580,4 @@ https://www.cnblogs.com/xuwujing/p/10933082.html
 
 ## yml 文件
 
-yml 文件中的配置，全是字符串，在 spring 中创建配置类的话，要用 String 来接。
+yml 文件中的配置，如果是数字的配置，可以用 int 来接。
