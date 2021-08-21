@@ -126,6 +126,7 @@
   * [SpringBoot-Tutorial](computer-science-notebook/note-for-java-web/springboot-tutorial.md)
   * [SpringCloud](computer-science-notebook/note-for-java-web/springcloud.md)
   * [big-number](computer-science-notebook/note-for-java-web/big-number.md)
+  * [authentication-authorization](computer-science-notebook/note-for-java-web/authentication-authorization.md)
 * [front-end](computer-science-notebook/front-end/README.md)
   * [nodeJS](computer-science-notebook/front-end/nodejs.md)
   * [React](computer-science-notebook/front-end/react.md)

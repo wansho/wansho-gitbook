@@ -36,6 +36,7 @@ https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
 | 在指定位置添加光标                              | alt + shift + 鼠标左键 |
 | 实现接口方法                                    | ctrl + i               |
 | 代码上移下移                                    | alt + shift + 上下     |
+| 查找文件，包括依赖中的类文件                    | ctrl + shift + N       |
 
 
 
