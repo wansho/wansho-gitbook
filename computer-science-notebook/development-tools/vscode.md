@@ -40,6 +40,8 @@
 
   SSH provides a [secure channel](https://en.wikipedia.org/wiki/Secure_channel) over an unsecured network by using a **[client–server](https://en.wikipedia.org/wiki/Client–server_model)** architecture, connecting an [SSH client](https://en.wikipedia.org/wiki/SSH_client) application with an [SSH server](https://en.wikipedia.org/wiki/SSH_server).
   
+  remote-ssh 会在远程服务器上部署一个 vscode-server，如果远程服务器无法联网，则会报 `Running the contributed command: ‘_workbench.downloadResource` 的错误，解决方案为：https://blog.csdn.net/ibless/article/details/118610776
+  
 * [Remote-WSL]()
 
   Open any folder in the Windows Subsystem for Linux (WSL) and take advantage of Visual Studio Code's full feature set.

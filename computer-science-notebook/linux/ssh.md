@@ -162,6 +162,15 @@ OpenSSH 规定，将客户机的公钥上传到服务机的对应用户的 `.ssh
 
 1. 如果我们想要免密登录服务器的 root 用户，那么就需要将客户机的公钥上传到 `/root/.ssh/authorized_keys` 文件中，如果是想免密登录非 root 用户，例如 work 用户，则需要将公钥上传到 `/home/work/.ssh/authorized_keys` 中
 2. authorized_keys 的权限要改成 644
+3. `.ssh` 的权限要改成 700
+4. `/home/work` 目录 必须是 755权限
+5. 如果不能实现免密登录，去看一下 `tail -f /var/log/secure` 日志
+
+不能免密登录的终极解决方案：
+
+修改 sshd 的配置文件 `/etc/ssh/sshd_config`，更改 `LogLevel` 为 `DEBUG` 模式，然后重启 sshd `systemctl restart sshd`，再登录查看 sshd 的运行日志 `tail -f /var/log/secure`，就可以看到更详细的 debug 信息
+
+如果他妈的还是不行的话，就更改安全环境：`chcon -Rv -t ssh_home_t ~/.ssh` `restorecon -FRvv ~/.ssh` [教程](https://stackoverflow.com/questions/20688844/sshd-gives-error-could-not-open-authorized-keys-although-permissions-seem-corre)
 
 ### ssh-copy-id 命令：自动上传公钥
 
