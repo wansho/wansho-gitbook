@@ -18,10 +18,12 @@ SpringCloud 为微服务提供了一揽子的解决方案。
 
 * 服务开发
   * Spring Boot
-* 服务网关
+* 服务网关(做路由，类似 nginx)
   * Zuul
+  * spring api-gateway
 * 服务注册与发现
   * Eureka
+  * Nacos
 * 服务负载和调用
   * NETFLIX OSS RIBBON
   * NETFLIX FEIGN

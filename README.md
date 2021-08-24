@@ -111,7 +111,7 @@
   * [Java-log](computer-science-notebook/note-for-java/java-log.md)
   * [Java-JUnit](computer-science-notebook/note-for-java/java-junit.md)
   * [Design-Patterns](computer-science-notebook/note-for-java/design-patterns.md)
-  * [Detailed-Generics](computer-science-notebook/note-for-java/detailed-generics.md)
+  * [Generics](computer-science-notebook/note-for-java/generics.md)
   * [Functional-Programming](computer-science-notebook/note-for-java/functional-programming.md)
   * [Java 开发工具](computer-science-notebook/note-for-java/java-dev-tools.md)
 * [Note-for-JavaWeb](computer-science-notebook/note-for-java-web/README.md)

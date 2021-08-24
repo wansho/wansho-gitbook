@@ -8,6 +8,8 @@
 
 https://zhuanlan.zhihu.com/p/342744060
 
+jwt: json web token 
+
 ## Authorization
 
 授权
