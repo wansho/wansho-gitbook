@@ -25,3 +25,6 @@ Building a small game during this tutorial.
 | !    | 生成 html 代码   |                          |
 | rfc  | 生成函数组件代码 | react function component |
 
+## react 打包发布
+
+注意，要在 package.json 中配置 `"homepage": "."`，这样才能以相对路径进行打包。

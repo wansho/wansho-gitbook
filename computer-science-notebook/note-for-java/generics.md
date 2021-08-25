@@ -310,10 +310,6 @@ Object o = constructor.newInstance();
 
 
 
-
-
-
-
 ## 教程
 
 * [Oracle Generic Blog](https://www.oracle.com/cn/technical-resources/articles/java/juneau-generics.html)
