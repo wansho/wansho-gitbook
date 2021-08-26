@@ -6,6 +6,234 @@
 
 面向对象编程是对数据进行抽象， 而函数式编程是对行为进行抽象。
 
+## on java 函数式编程
+
+```java
+interface Strategy {
+    String approach(String msg); // 函数签名，是传入一个 String，返回一个 String
+}
+
+Strategy[] strategies = {
+    // 分别是函数式接口(匿名类)，lambda表达式，函数引用，三者等价
+    new Strategy() { // [2]
+        public String approach(String msg) {
+            return msg.toUpperCase() + "!";
+        }
+    },
+    msg -> msg.substring(0, 5), // [3] 确实是传入一个 String，返回一个 String，没毛病
+    Unrelated::twice // [4]
+};
+```
+
+**函数签名：参数类型和返回值类型。签名才是一个函数的特征，叫甚么不重要！lambda 表达式甚至不起函数名了，只有输入和输出。**
+
+```java
+class Go {
+    static void go() {
+        System.out.println("Go::go()");
+    }
+}
+public class RunnableMethodReference {
+    public static void main(String[] args) {
+        // 三者等价
+        new Thread(new Runnable() {
+            public void run() { // 函数签名：没有传参，没有返回值
+                System.out.println("Anonymous");
+            }
+        }).start();
+        new Thread(
+            () -> System.out.println("lambda")
+        ).start();
+        new Thread(Go::go).start();
+    }
+}
+```
+
+java8 允许我们将函数赋值给函数式接口
+
+```java
+@FunctionalInterface
+interface Functional {
+    String goodbye(String arg);
+}
+
+public class FunctionalAnnotation {
+    public String hehe(String arg) {
+        return "Goodbye, " + arg;
+    }
+    public static void main(String[] args) {
+        FunctionalAnnotation fa =
+            new FunctionalAnnotation();
+        Functional f = fa::hehe; // 将函数赋值给函数式接口
+        Functional fl = a -> "Goodbye, " + a; // 将函数赋值给函数式接口
+    }
+}
+```
+
+
+
+### lambda 表达式
+
+lambda 表达式就是一个函数，Java8 引入了函数式编程，意在将函数提升为第一公民，函数也可以当作变量进行赋值。
+
+### 方法引用
+
+类名或对象名::方法名
+
+### 函数式接口
+
+`java.util.function` 包旨在创建一组完整的函数式接口，使得我们一般情况下不需再定义自己的接口。  
+
+函数式接口其实都大同小异，接口的名字才是关键，要做到看到接口的名字，就了解这个接口的作用。
+
+函数式接口的命名规则：
+
+1. 如果只处理对象而非基本类型，名称则为 Function， Consumer， Predicate 等。参数类型通过泛型添加。
+2. 如果接收的参数是基本类型，则由名称的第一部分表示，如 LongConsumer，DoubleFunction， IntPredicate 等，但返回基本类型的 Supplier 接口例外。
+3. 如果返回值为基本类型，则用 To 表示，如 ToLongFunction <T> 和 IntToLongFunction。
+4. 如果返回值类型与参数类型一致，则是一个运算符：单个参数使用 UnaryOperator，两个参数使用 BinaryOperator。
+5. 如果接收两个参数且返回值为布尔值，则是一个谓词（Predicate）。
+6. 如果接收的两个参数类型不同，则名称中有一个 Bi。
+
+| 函数式接口        | 方法        | 返回值类型 | 备注           |
+| ----------------- | ----------- | ---------- | -------------- |
+| Predicate<T>      | test(T)     | boolean    | 断言           |
+| Consumer<T>       | accept(T)   | void       | 只吃不吐       |
+| Function<T, R>    | apply(T)    | R          | 输入 T，输出 R |
+| BinaryOperator<T> | apply(T, T) | T          | 双飞           |
+| Supplier<T>       | get()       | T          | 只吐不吃       |
+
+```java
+import java.util.function.*;
+
+class In1 {}
+class In2 {}
+
+public class MethodConversion {
+    static void accept(In1 i1, In2 i2) {
+        System.out.println("accept()");
+    }
+    static void someOtherName(In1 i1, In2 i2) {
+        System.out.println("someOtherName()");
+    }
+    public static void main(String[] args) {
+        BiConsumer<In1,In2> bic;
+        bic = MethodConversion::accept;
+        bic.accept(new In1(), new In2());
+        bic = MethodConversion::someOtherName; // 只要函数签名一致，就可以将函数赋值给函数式接口！
+        // bic.someOtherName(new In1(), new In2()); // Nope
+        bic.accept(new In1(), new In2());
+    }
+}
+```
+
+```java
+import java.util.*;
+import java.util.function.*;
+
+class AA {}
+class BB {}
+class CC {}
+
+public class ClassFunctionals {
+    static AA f1() { return new AA(); }
+    static int f2(AA aa1, AA aa2) { return 1; }
+    static void f3(AA aa) {}
+    static void f4(AA aa, BB bb) {}
+    static CC f5(AA aa) { return new CC(); }
+    static CC f6(AA aa, BB bb) { return new CC(); }
+    static boolean f7(AA aa) { return true; }
+    static boolean f8(AA aa, BB bb) { return true; }
+    static AA f9(AA aa) { return new AA(); }
+    static AA f10(AA aa1, AA aa2) { return new AA(); }
+    public static void main(String[] args) {
+        Supplier<AA> s = ClassFunctionals::f1;
+        s.get();
+        Comparator<AA> c = ClassFunctionals::f2;
+        c.compare(new AA(), new AA());
+        Consumer<AA> cons = ClassFunctionals::f3;
+        cons.accept(new AA());
+        BiConsumer<AA,BB> bicons = ClassFunctionals::f4;
+        bicons.accept(new AA(), new BB());
+        Function<AA,CC> f = ClassFunctionals::f5;
+        CC cc = f.apply(new AA());
+        BiFunction<AA,BB,CC> bif = ClassFunctionals::f6;
+        cc = bif.apply(new AA(), new BB());
+        Predicate<AA> p = ClassFunctionals::f7;
+        boolean result = p.test(new AA());
+        BiPredicate<AA,BB> bip = ClassFunctionals::f8;
+        result = bip.test(new AA(), new BB());
+        UnaryOperator<AA> uo = ClassFunctionals::f9;
+        AA aa = uo.apply(new AA());
+        BinaryOperator<AA> bo = ClassFunctionals::f10;
+        aa = bo.apply(new AA(), new AA());
+    }
+}
+```
+
+### 高阶函数
+
+```java
+default <V> Function<T, V> andThen(Function<? super R, ? extends V> after) {
+    Objects.requireNonNull(after);
+    return (T t) -> after.apply(apply(t)); // 注意，这里是，after.apply(this.apply(t))
+}
+```
+
+### 函数组合
+
+函数组合（Function Composition）意为 “多个函数组合成新函数”。它通常是函数式编程的基本组成部分。  
+
+| 默认方法                     | 作用                                               |      |
+| ---------------------------- | -------------------------------------------------- | ---- |
+| function1.andThen(function2) | 生成一个新函数，执行完 function1 再执行  function2 |      |
+| function1.compose(function2) | 生成一个新函数，先执行 f2，再执行 f1               |      |
+| function1.and(function2)     | 生成一个新函数，`function1(x) && function2(x)`     |      |
+| function1.or(function2)      | 生成一个新函数，`function1(x) || function2(x)`     |      |
+| function.negate()            | 生成一个新函数，`!function(x)`                     |      |
+
+```java
+import java.util.function.*;
+public class FunctionComposition {
+    static Function<String, String>
+        f1 = s -> {
+        System.out.println(s);
+        return s.replace('A', '_');
+    },
+    f2 = s -> s.substring(3),
+    f3 = s -> s.toLowerCase(),
+    f4 = f1.compose(f2).andThen(f3);
+    public static void main(String[] args) {
+        System.out.println(
+            f4.apply("GO AFTER ALL AMBULANCES"));
+    }
+}
+
+//AFTER ALL AMBULANCES
+//_fter _ll _mbul_nces
+```
+
+```java
+import java.util.function.*;
+import java.util.stream.*;
+
+public class PredicateComposition {
+    static Predicate<String>
+        p1 = s -> s.contains("bar"),
+    p2 = s -> s.length() < 5,
+    p3 = s -> s.contains("foo"),
+    p4 = p1.negate().and(p2).or(p3);
+    
+    public static void main(String[] args) {
+        Stream.of("bar", "foobar", "foobaz", "fongopuckey")
+            .filter(p4)
+            .forEach(System.out::println);
+    }
+}
+```
+
+
+
 ## Lambda 表达式
 
 Lambda expressions are not unknown to many of us who have worked on other popular programming languages like Scala. **In Java programming language, a Lambda expression (or function) is just an *anonymous function***, i.e., a function with no name and without being bounded to an identifier. They are written exactly in the place where it’s needed, typically *as a parameter to some other function*.
@@ -41,336 +269,6 @@ Predicate<Integer> atLeast6 = new Predicate<Integer>() {
 };
 System.out.println(atLeast6.test(6));
 System.out.println(atLeast5.test(5));
-```
-
-
-
-## Stream
-
-### 介绍
-
-Stream 是用函数式编程方式在集合类上进行复杂操作的工具。  
-
-Stream 方法分为惰性求值方法和及早求值方法：
-
-* 惰性求值：仍然返回 Stream 对象的就是惰性求值
-* 及早求值：返回一个值或者为空
-
-**学好了流，就相当于在 Java 中使用 Pandas，很舒服！**
-
-**Interface Hierarchy**
-
-```
-java.lang.AutoCloseable
-    java.util.stream.BaseStream<T,S>
-        java.util.stream.DoubleStream
-        java.util.stream.IntStream
-        java.util.stream.LongStream
-        java.util.stream.Stream<T>
-```
-
-### 惰性求值方法
-
-| 方法    | 功能                             | 备注                                        |
-| ------- | -------------------------------- | ------------------------------------------- |
-| map     | 将一种类型的值转换成另外一种类型 | Lambda 表达式必须是 Function 接口的一个实例 |
-| flatMap | 用于处理元素是集合的集合         | 用于映射双层 for 循环                       |
-|         |                                  |                                             |
-
-#### flatMap
-
-```java
-List<Integer> together = Stream.of(asList(1, 2), asList(3, 4))
-    .flatMap(numbers -> numbers.stream())
-    .collect(toList());
-assertEquals(asList(1, 2, 3, 4), together);
-```
-
-
-
-### 及早求值方法
-
-| 方法      | 功能                           | 备注     |
-| --------- | ------------------------------ | -------- |
-| collect   | 转为 List / Map                |          |
-| toArray   | 转为 array                     |          |
-| min / max |                                |          |
-| reduce    | count/max/min 都是 reduce 操作 |          |
-| forEach   |                                | 无返回值 |
-
-#### collect
-
-Performs a mutable reduction operation on the elements of this stream using a Collector. A Collector encapsulates the functions used as arguments to collect(Supplier, BiConsumer, BiConsumer), allowing for reuse of collection strategies and composition of collect operations such as multiple-level grouping or partitioning.
-
-`<R, A> R collect(Collector<? super T, A, R> collector);`
-
-```
-Params: collector – the Collector describing the reduction
-
-Type parameters:
-<R> – the type of the result
-<A> – the intermediate accumulation type of the Collector
-
-Returns: the result of the reduction
-
-API Note:
-	The following will accumulate strings into an ArrayList:
-     List<String> asList = stringStream.collect(Collectors.toList());
- 
-	The following will classify Person objects by city:
-     Map<String, List<Person>> peopleByCity 
-     		= personStream.collect(Collectors.groupingBy(Person::getCity));
- 
-	The following will classify Person objects by state and city, cascading two Collectors together:
-     Map<String, Map<String, List<Person>>> peopleByStateAndCity
-         = personStream.collect(Collectors.groupingBy(Person::getState,
-                                                      Collectors.groupingBy(Person::getCity)));
-```
-
-传入一个 Collector 对象，Collector 对象封装了及早求值的规则。Collector 对象由 Collectors 工厂的静态方法生成。
-
-Collectors 提供的静态方法（实际上 Collectors 中提供了各种函数写好的函数）：
-
-```
-Collectors
-Collectors
-averagingDouble
-averagingInt
-averagingLong
-boxSupplier
-castingIdentity
-collectingAndThen
-computeFinalSum
-counting
-groupingBy
-groupingBy
-groupingBy
-groupingByConcurrent
-groupingByConcurrent
-groupingByConcurrent
-joining
-joining
-joining
-mapMerger
-mapping
-maxBy
-minBy
-partitioningBy
-partitioningBy
-reducing
-reducing
-reducing
-summarizingDouble
-summarizingInt
-summarizingLong
-summingDouble
-summingInt
-summingLong
-sumWithCompensation
-throwingMerger
-toCollection
-toConcurrentMap
-toConcurrentMap
-toConcurrentMap
-toList
-toMap
-toMap
-toMap
-toSet
-CH_CONCURRENT_ID
-CH_CONCURRENT_NOID
-CH_ID
-CH_NOID
-CH_UNORDERED_ID
-CollectorImpl
-Partition
-```
-
-Demo:
-
-```java
-Set<String> origins = album.getMusicians()
-    .filter(artist -> artist.getName().startsWith("The"))
-    .map(artist -> artist.getNationality())
-    .collect(Collectors.toSet());
-```
-
-```java
-// 找出成员最多的乐队
-public Optional<Artist> biggestGroup(Stream<Artist> artists) {
-    Function<Artist,Long> getCount = artist -> artist.getMembers().count();
-    return artists.collect(Collectors.maxBy(Comparator.comparing(getCount)));
-}
-```
-
-toMap:
-
-```java
-Map<String, String> nameToIdMap = conceptRepo.findSubConceptsByFid(fid)
-                        .stream().collect(Collectors.toMap(Concept::getName, Concept::getId));
-// toMap 第一个参数是 key，第二个参数是 value
-```
-
-
-
-#### min / max
-
-```java
-Optional<T> max(Comparator<? super T> comparator);
-```
-
-Demo：
-
-```java
-List<Track> tracks = asList(new Track("Bakai", 524), 
-                            new Track("Violets for Your Furs", 378),
-                            new Track("Time Was", 451));
-Track shortestTrack = tracks
-    .stream()
-    .min(Comparator.comparing(track -> track.getLength()))
-    .get();
-assertEquals(tracks.get(1), shortestTrack);
-```
-
-#### reduce
-
-```java
-T reduce(T identity, BinaryOperator<T> accumulator);
-```
-
-等价于：
-
-```java
-T result = identity;
-for (T element : this stream)
-    result = accumulator.apply(result, element)
-return result;
-```
-
-Demo：
-
-```java
-int count = Stream.of(1, 2, 3)
-    .reduce(0, (acc, element) -> acc + element);
-assertEquals(6, count);
-```
-
-等价于：
-
-```java
-BinaryOperator<Integer> accumulator = (acc, element) -> acc + element;
-int count = accumulator.apply(
-    accumulator.apply(
-        accumulator.apply(0, 1),
-        2),
-    3);
-```
-
-### IntStream
-
-#### range
-
-range 是一个静态工厂方法，用于生成一个 IntStream。
-
-代码重构：
-
-```java
-for (int i = 0; i < 4; i++) {
-    System.out.println(i+"...");
-}
-// 重构后：
-IntStream.range(0,4).forEach(i -> System.out.print(i +"..."));
-```
-
-Demo：
-
-```java
-/**
-    * 并行打印，看看结果
-    * @param
-    * @return
-    */
-public void parallelPrint(){
-    IntStream.range(0, 10).parallel().forEach(i -> {
-        System.out.println(i);
-    });
-}
-```
-
-```
-并行打印的结果
-6
-5
-1
-0
-2
-3
-9
-7
-8
-4
-```
-
-
-
-
-
-### Demo
-
-#### 函数式重构
-
-原代码：
-
-```java
-public Set<String> findLongTracks(List<Album> albums) {
-    Set<String> trackNames = new HashSet<>();
-    for(Album album : albums) {
-        for (Track track : album.getTrackList()) {
-            if (track.getLength() > 60) {
-                String name = track.getName();
-                trackNames.add(name);
-            }
-        }
-    } 
-    return trackNames;
-}
-```
-
-函数式重构：
-
-```java
-public Set<String> findLongTracks(List<Album> albums) {
-    Set<String> trackNames = new HashSet<>();
-    albums.stream().forEach(album -> {
-        album.getTrackList.stream()
-            .filter(track -> track.getLength() > 60)
-            .map(track -> track.getName())
-            .forEach(name -> trackNames.add(name));
-    });
-    return trackNames;
-}
-```
-
-函数式重构 - 优化：
-
-```java
-public Set<String> findLongTracks(List<Album> albums) {
-    return albums.stream()
-        .flatMap(album -> album.getTrackList().stream())
-        .filter(track -> track.getLength() > 60)
-        .map(track -> track.getName())
-        .collect(Collectors.toSet());
-}
-```
-
-#### 求交集，差集
-
-```java
-List list=list1.stream().filter(t->list2.contains(t)).collect(Collectors.toList());
-
-list=list1.stream().filter(t-> !list2.contains(t)).collect(Collectors.toList());
-
-list=list.stream().distinct().collect(Collectors.toList());
 ```
 
 

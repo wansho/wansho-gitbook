@@ -11,7 +11,7 @@
 * [毛选](reading/mao-xuan/README.md)
   * [毛选 第一卷](reading/mao-xuan/volume-1.md)
 * [教员语录](reading/mao-xuan/quotation.md)
-  
+
 * [Modern-Operation-System](reading/modern-os/README.md)
   * [Chapter1-Introduction](reading/modern-os/chapter-1-introduction.md)
   * [Chapter2-Processes-and-Threads](reading/modern-os/chapter-2-processes-and-threads.md)
@@ -73,7 +73,6 @@
   * [MySQL-102](computer-science-notebook/database/mysql-102.md)
   * [MySQL-103](computer-science-notebook/database/mysql-103.md)
   * [elastic-search](computer-science-notebook/database/elastic-search.md)
-  * [elastic-logstash](computer-science-notebook/database/elastic-logstash.md)
   * [Oracle-101](computer-science-notebook/database/oracle-101.md)
   * [Mysql-Leetcode](computer-science-notebook/database/mysql-leetcode.md)
   * [Questions](computer-science-notebook/database/questions.md)
@@ -110,7 +109,8 @@
   * [Java-log](computer-science-notebook/note-for-java/java-log.md)
   * [Java-JUnit](computer-science-notebook/note-for-java/java-junit.md)
   * [Design-Patterns](computer-science-notebook/note-for-java/design-patterns.md)
-  * [Detailed-Generics](computer-science-notebook/note-for-java/detailed-generics.md)
+  * [Generics](computer-science-notebook/note-for-java/generics.md)
+  * [Stream](computer-science-notebook/note-for-java/stream.md)
   * [Functional-Programming](computer-science-notebook/note-for-java/functional-programming.md)
   * [Java 开发工具](computer-science-notebook/note-for-java/java-dev-tools.md)
 * [Note-for-JavaWeb](computer-science-notebook/note-for-java-web/README.md)
@@ -126,7 +126,6 @@
   * [SpringBoot-Tutorial](computer-science-notebook/note-for-java-web/springboot-tutorial.md)
   * [SpringCloud](computer-science-notebook/note-for-java-web/springcloud.md)
   * [big-number](computer-science-notebook/note-for-java-web/big-number.md)
-  * [authentication-authorization](computer-science-notebook/note-for-java-web/authentication-authorization.md)
 * [front-end](computer-science-notebook/front-end/README.md)
   * [nodeJS](computer-science-notebook/front-end/nodejs.md)
   * [React](computer-science-notebook/front-end/react.md)
@@ -223,5 +222,4 @@
 * [To-Others](life-and-thinking/to-others/README.md)
   - [致万 * 鑫](life-and-thinking/to-others/to-my-brother.md)
   - [关于考试](life-and-thinking/to-others/summary-for-examination-oriented-education.md)
-  - [How-to-Study](life-and-thinking/to-others/how-to-study.md)
-
+  - [How-to-Study](
