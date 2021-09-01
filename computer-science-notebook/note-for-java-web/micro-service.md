@@ -824,7 +824,7 @@ public class AuthorizeFilter implements GlobalFilter {
 
 跨域只需要在网关处处理就 ok 了。
 
-在gateway服务的application.yml文件中，添加下面的配置：
+在 gateway 服务的 application.yml 文件中，添加下面的配置：
 
 ```yaml
 spring:
@@ -849,6 +849,8 @@ spring:
 ```
 
 
+
+## Docker
 
 
 

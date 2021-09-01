@@ -50,6 +50,10 @@
 
 5. 配置服务开机自启：`systemctl enable auth`
 
+6. 关闭开启自启： `systemctl disable auth`
+
+7. 查看服务状态：`systemctl status auth`
+
 服务部署完后，即使是服务被 kill 掉了，还是会马上自启！
 
 ```

@@ -108,6 +108,8 @@ public class Calculator {
 
 ## Annotation
 
+**注解可用于声明式编程。**
+
 秒懂，Java 注解 （Annotation）你可以这样学 - Larry的文章 - 知乎 https://zhuanlan.zhihu.com/p/27643133
 
 JDK 1.5 引入 Annotation 机制，实际上就是代码标签。Java Annotation 也是一种类型，被封装成了一个类(接口)。
