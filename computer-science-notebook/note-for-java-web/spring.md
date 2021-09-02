@@ -109,6 +109,8 @@ IoC又称为依赖注入（DI：Dependency Injection），它解决了一个最�
 
 ### AOP
 
+![image-20210902090011382](assets/image-20210902090011382.png)
+
 AOP 有 Python 装饰器的味道。
 
 Aspect Oriented Programming 面向切面编程。AOP 是一种和 OOP 不同的新的编程范式。OOP 把系统看作多个对象的交互，AOP 把系统分解为不同的关注点，或者称之为切面（Aspect）。
@@ -123,7 +125,7 @@ Aspect Oriented Programming 面向切面编程。AOP 是一种和 OOP 不同的�
 4. 日志的Aspect；
 5. 事务的Aspect。
 
-然后，以某种方式，让框架来把上述3个Aspect以Proxy的方式“织入”到`BookService`中，这样一来，就不必编写复杂而冗长的Proxy模式。
+然后，以某种方式，让框架来把上述3个 Aspect 以 Proxy 的方式“织入”到 `BookService` 中，这样一来，就不必编写复杂而冗长的Proxy模式。
 
 如何把切面织入到核心逻辑中？这正是AOP需要解决的问题。换句话说，如果客户端获得了`BookService`的引用，当调用`bookService.createBook()`时，如何对调用方法进行拦截，并在拦截前后进行安全检查、日志、事务等处理，就相当于完成了所有业务功能。
 

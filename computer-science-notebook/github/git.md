@@ -647,6 +647,8 @@ git log --oneline --decorate --graph --all
 # 查看 branch 树形结构
 git log --graph --decorate --oneline --simplify-by-decoration --all
 
+# 删除远程分支
+git push origin --delete <远程分支名称>
 ```
 ### git merge
 
