@@ -62,6 +62,7 @@
 * [Others](reading/others/README.md)
   * [电影](reading/others/movies.md)
   * [命理学](reading/others/fate.md)
+  * [天道](reading/others/tian-dao.md)
 
 ## Computer Science Notebook
 
@@ -74,6 +75,7 @@
   * [MySQL-101](computer-science-notebook/database/mysql-101.md)
   * [MySQL-102](computer-science-notebook/database/mysql-102.md)
   * [MySQL-103](computer-science-notebook/database/mysql-103.md)
+  * [design-data-intensive-app](computer-science-notebook/database/design-data-intensive-app.md)
   * [elastic-search](computer-science-notebook/database/elastic-search.md)
   * [Oracle-101](computer-science-notebook/database/oracle-101.md)
   * [Mysql-Leetcode](computer-science-notebook/database/mysql-leetcode.md)

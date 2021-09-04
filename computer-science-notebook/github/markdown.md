@@ -63,16 +63,81 @@ function addTwoNumbers (num1, num2) {
 }
 ```
 
-```
+````
 ```diff
 function addTwoNumbers (num1, num2) {
 -  return 1 + 2
 +  return num1 + num2
 }
-​```
+```
+````
+
+### 高级引用
+
+定义一个引用：
+
+[jpa mybatis比较]: https://www.zhihu.com/question/317183937/answer/1474629982
+
+使用一个引用：
+
+我最近正在看这篇技术技术文章：[jpa mybatis 比较][jpa mybatis比较]
+
+语法：
+
+```
+定义一个引用：
+[jpa mybatis比较]: https://www.zhihu.com/question/317183937/answer/1474629982
+
+使用一个引用：注意是两个 [][]
+[jpa mybatis 比较][jpa mybatis比较]
 ```
 
+定义的引用相当于注释，生成 pdf 的时候会被删除。
 
+
+
+### 页内引用
+
+锚
+
+```
+[描述](#id)
+```
+
+### YAML front matter
+
+*YFM is an* **optional** *section of valid YAML that is placed at the top of a page and is used for maintaining metadata for the page and its contents.*
+
+其实对于 markdown 来说，就是注释，只是这注释
+
+语法：
+
+```
+---
+title: YAML Front Matter
+description: A very simple way to add structured data to a page.
+---
+```
+
+### 脚注
+
+示例：
+
+使用 Markdown[^1]可以效率的书写文档, 直接转换成 HTML[^2], 你可以使用 Typora[^T] 编辑器进行书写。
+[^1]:Markdown是一种纯文本标记语言
+[^2]:HyperText Markup Language 超文本标记语言
+[^T]:NEW WAY TO READ & WRITE MARKDOWN.
+
+语法：
+
+```
+使用 Markdown[^1]可以效率的书写文档, 直接转换成 HTML[^2], 你可以使用 Typora[^T] 编辑器进行书写。
+[^1]:Markdown是一种纯文本标记语言
+[^2]:HyperText Markup Language 超文本标记语言
+[^T]:NEW WAY TO READ & WRITE MARKDOWN.
+```
+
+注意，在生成 pdf 的时候，脚注会自动添加到 pdf 的最后。
 
 ## 图片相关
 
