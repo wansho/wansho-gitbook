@@ -3871,7 +3871,7 @@ public class TransStreamDemo {
         // System.out.println((char)ch);
         //字符流。
         BufferedReader bufr = new BufferedReader(isr);
-        OutputStream out = System.out;
+        OutputStream out = System.out;t
         OutputStreamWriter osw = new OutputStreamWriter(out);
         BufferedWriter bufw = new BufferedWriter(osw);
         String line = null;
