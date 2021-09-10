@@ -98,3 +98,17 @@ Transaction 举例：从账户 A 中取出一万元，存入账户 B。需要定
 
 去规范化的措施：宽表，视图(其实也是宽表)，数据迁移(宽表)
 
+## OLTP OLAP MPP
+
+数据库操作分为两种：
+
+* OLTP online transaction processing
+
+  OLTP 是传统的关系型数据库的主要应用，主要是基本的、日常的事务处理，例如银行交易。传统的INSERT、Update、DELETE等都属于OLTP，主要是涉及事务处理。
+
+* OLAP online analytical processing
+
+  OLAP是数据仓库系统的主要应用，支持复杂的分析操作，侧重决策支持，并且提供直观易懂的查询结果。SELECT中的count(*)、MAX()、MIN()、Group By、Order By等函数都属于OLAP的范畴。
+
+MPP：massive parallel processing 大规模并行计算
+
