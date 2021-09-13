@@ -232,284 +232,348 @@ public class PredicateComposition {
 }
 ```
 
+## 一篇教程
 
+https://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/
 
-## Lambda 表达式
+### How streams work
 
-Lambda expressions are not unknown to many of us who have worked on other popular programming languages like Scala. **In Java programming language, a Lambda expression (or function) is just an *anonymous function***, i.e., a function with no name and without being bounded to an identifier. They are written exactly in the place where it’s needed, typically *as a parameter to some other function*.
-
-Lambda 表达式是一个函数，是对行为的抽象，是函数是一等公民的体现。
-
-## 函数式接口
-
-**只要碰到只有一个方法的接口，也就是功能单一的接口，就可以直接用 Lambda Expression 来代替。**
-
-**所有的 lambda 表达式，其实际上都是函数式接口的实现**。
-
-![image-20210511131843126](assets/image-20210511131843126.png)
-
-| 函数式接口        | 方法        | 返回值类型 | 备注           |
-| ----------------- | ----------- | ---------- | -------------- |
-| Predicate<T>      | test(T)     | boolean    | 断言           |
-| Consumer<T>       | accept(T)   | void       | 只吃不吐       |
-| Function<T, R>    | apply(T)    | R          | 输入 T，输出 R |
-| BinaryOperator<T> | apply(T, T) | T          | 双飞           |
-| Supplier<T>       | get()       | T          | 只吐不吃       |
-
-**所有的 lambda 表达式，其实际上都是以上函数式接口的实现**：
+A stream represents a sequence of elements and supports different kind of operations to perform computations upon those elements:
 
 ```java
-Predicate<Integer> atLeast5 = x -> x >= 5;
-// 两者等价
-Predicate<Integer> atLeast6 = new Predicate<Integer>() {
-    @Override
-    public boolean test(Integer integer) {
-        return integer >= 6;
-    }
-};
-System.out.println(atLeast6.test(6));
-System.out.println(atLeast5.test(5));
+List<String> myList =
+    Arrays.asList("a1", "a2", "b1", "c2", "c1");
+
+myList
+    .stream()
+    .filter(s -> s.startsWith("c"))
+    .map(String::toUpperCase)
+    .sorted()
+    .forEach(System.out::println);
+
+// C1
+// C2
 ```
 
+Stream operations are either intermediate or terminal. Intermediate operations return a stream so we can chain multiple intermediate operations without using semicolons. Terminal operations are either void or return a non-stream result. In the above example `filter`, `map` and `sorted` are intermediate operations whereas `forEach` is a terminal operation. For a full list of all available stream operations see the [Stream Javadoc](http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html). Such a chain of stream operations as seen in the example above is also known as *operation pipeline*.
 
+Most stream operations accept some kind of lambda expression parameter, a functional interface specifying the exact behavior of the operation. Most of those operations must be both *non-interfering* and *stateless*. What does that mean?
 
-## Java8 接口新特性
+A function is [non-interfering](http://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#NonInterference) when it does not modify the underlying data source of the stream, e.g. in the above example no lambda expression does modify `myList` by adding or removing elements from the collection.
 
-### 默认方法
+A function is [stateless](http://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#Statelessness) when the execution of the operation is deterministic, e.g. in the above example no lambda expression depends on any mutable variables or states from the outer scope which might change during execution.
 
-Collection 接口中增加了新的 stream 方法， 如何能让 MyCustomList 类在不知道该方法的情况下通过编译？ Java 8 通过如下方法解决该问题： Collection 接口告诉它所有的子类：“ 如果你没有实现 stream 方法， 就使用我的吧。” 接口中这样的方法叫作默认方法， 在任何接口中， 无论函数接口还是非函数接口， 都可以使用该方法。
+### Different kind of streams
 
-Iterable 接口中也新增了一个默认方法： forEach， 该方法功能和 for 循环类似， 但是允许用户使用一个 Lambda 表达式作为循环体。   
+如何生成 Stream？
 
-默认方法示例： forEach 实现方式：
+Streams can be created from various data sources, especially collections. Lists and Sets support new methods `stream()` and `parallelStream()` to either create a sequential or a parallel stream. Parallel streams are capable of operating on multiple threads and will be covered in a later section of this tutorial. We focus on sequential streams for now:
 
 ```java
-default void forEach(Consumer<? super T> action) {
-    for (T t : this) {
-        action.accept(t);
-    }
-}
+Arrays.asList("a1", "a2", "a3")
+    .stream()
+    .findFirst()
+    .ifPresent(System.out::println);  // a1
 ```
 
-重点就在于代码段前面的新关键字 default。 这个关键字告诉 javac 用户真正需要的是为接口添加一个新方法。 除了添加了一个新的关键
-字， 默认方法在继承规则上和普通方法也略有区别。
-
-Java 8 允许在接口中加入默认方法（已实现）。
+Calling the method `stream()` on a list of objects returns a regular object stream. But we don't have to create collections in order to work with streams as we see in the next code sample:
 
 ```java
-// Demo
-public interface Sized {
-    // 普通抽象方法，默认是public abstract修饰的，没有方法体
-    int size();
-
-    /*
-     * 默认方法，有方法体
-     * 任何一个实现了Sized接口的类都会向动继承isEmpty的实现
-     */
-    default boolean isEmpty() {
-        return this.size() == 0;
-    }
-}
+Stream.of("a1", "a2", "a3")
+    .findFirst()
+    .ifPresent(System.out::println);  // a1
 ```
 
+Just use `Stream.of()` to create a stream from a bunch of object references.
 
+Besides regular object streams Java 8 ships with special kinds of streams for working with the primitive data types `int`, `long` and `double`. As you might have guessed it's `IntStream`, `LongStream` and `DoubleStream`.
 
-如果对默认方法的工作原理， 特别是在多重继承下的行为还没有把握， 如下三条简单的定
-律可以帮助大家。
-
-1. 类胜于接口。 如果在继承链中有方法体或抽象的方法声明， 那么就可以忽略接口中定义
-   的方法。
-2. 子类胜于父类。 如果一个接口继承了另一个接口， 且两个接口都定义了一个默认方法，
-   那么子类中定义的方法胜出。
-3. 没有规则三。 如果上面两条规则不适用， 子类要么需要实现该方法， 要么将该方法声明
-   为抽象方法。
-   其中第一条规则是为了让代码向后兼容。  
-
-### return statement in lambda
-
-Demo:
+IntStreams can replace the regular for-loop utilizing `IntStream.range()`:
 
 ```java
-public class LambdaReturnTest1 {
-   interface Addition {
-      int add(int a, int b);
-   }
-   public static Addition getAddition() {
-      return (a, b) -> a + b; // lambda expression return statement 返回一个函数式接口实现
-   }
-   public static void main(String args[]) {
-      System.out.println("The addition of a and b is: " + getAddition().add(20, 50));
-      // The addition of a and b is: 70
-   }
-}
+IntStream.range(1, 4)
+    .forEach(System.out::println);
+
+// 1
+// 2
+// 3
 ```
 
-Demo:
+All those primitive streams work just like regular object streams with the following differences: Primitive streams use specialized lambda expressions, e.g. `IntFunction` instead of `Function` or `IntPredicate` instead of `Predicate`. And primitive streams support the additional terminal aggregate operations `sum()` and `average()`:
 
 ```java
-public class LambdaReturnTest2 {
-   public static void main(String args[]) {
-      Thread th = new Thread(getRunnable());
-      th.run();
-   }
-   public static Runnable getRunnable() {
-      return() -> {    // lambda expression return statement
-         System.out.println("Lambda Expression Return Statement");
-      };
-   }
-}
+Arrays.stream(new int[] {1, 2, 3})
+    .map(n -> 2 * n + 1)
+    .average()
+    .ifPresent(System.out::println);  // 5.0
 ```
 
-### 静态方法
-
-Java 8 允许在接口内定义静态的方法并实现。
-
-Stream 是个接口，Stream.of 是接口的静态方法，of 方法是静态工厂方法，用于生成一个 Stream 对象 。
-
-#### Optional  
-
-A container object which may or may not contain a non-null value. If a value is present, isPresent() will return true and get() will return the value.
-
-使用工厂方法 of， 可以从某个值创建出一个 Optional 对象。 Optional 对象相当于值的容器， 而该值可以通过 get 方法提取。  
-
-Optional 是为核心类库新设计的一个数据类型， 用来替换 null 值。  
-
-reduce 方法的一个重点尚未提及： reduce 方法有两种形式， 一种如前面出现的需要有一个初始值， 另一种变式则不需要有初始值。 没有初始值的情况下， reduce 的第一步使用Stream 中的前两个元素。 有时， reduce 操作不存在有意义的初始值， 这样做就是有意义
-的， 此时， reduce 方法返回一个 Optional 对象。  
-
-```
-Optional
-Optional
-Optional
-empty
-equals
-filter
-flatMap
-get
-hashCode
-ifPresent
-isPresent
-map
-of
-ofNullable
-orElse
-orElseGet
-orElseThrow
-toString
-EMPTY 返回一个 Optional 容器，容器中没有值
-value
-```
-
-使用 Optional 对象的方式之一是在调用 get() 方法前， 先使用 isPresent 检查 Optional对象是否有值。 使用 orElse 方法则更简洁， 当 Optional 对象为空时， 该方法提供了一个备选值。 如果计算备选值在计算上太过繁琐， 即可使用 orElseGet 方法。 该方法接受一个 Supplier 对象， 只有在 Optional 对象真正为空时才会调用。
-使用 orElse 和 orElseGet 方法：
+Sometimes it's useful to transform a regular object stream to a primitive stream or vice versa. For that purpose object streams support the special mapping operations `mapToInt()`, `mapToLong()` and `mapToDouble`:
 
 ```java
-assertEquals("b", emptyOptional.orElse("b"));
-assertEquals("c", emptyOptional.orElseGet(() -> "c"));
+Stream.of("a1", "a2", "a3")
+    .map(s -> s.substring(1))
+    .mapToInt(Integer::parseInt)
+    .max()
+    .ifPresent(System.out::println);  // 3
 ```
 
-
-Optional 对象不仅可以用于新的 Java 8 API， 也可用于具体领域类中， 和普通的类别无二致。 当试图避免空值相关的缺陷， 如未捕获的异常时， 可以考虑一下是否可使用 Optional 对象。  
-
-## 高级集合类和收集器
-
-### 方法引用 替代 lambda
-
-方法引用的使用场景：在 lambda 表达式中调用方法的时候，可以使用方法引用替代 lambda 表达式
-
-标准语法为: `Classname::methodName  `
-
-lambda 表达式就是一个函数，是对行为的封装。
+Primitive streams can be transformed to object streams via `mapToObj()`:
 
 ```java
-artist -> artist.getName()
-// 用方法引用重写上面的 Lambda 表达式
-Artist::getName
+IntStream.range(1, 4)
+    .mapToObj(i -> "a" + i)
+    .forEach(System.out::println);
+
+// a1
+// a2
+// a3
 ```
 
-构造函数语法：
+Here's a combined example: the stream of doubles is first mapped to an int stream and than mapped to an object stream of strings:
 
 ```java
-(name, nationality) -> new Artist(name, nationality)
-// 方法引用形式    
-Artist::new
+Stream.of(1.0, 2.0, 3.0)
+    .mapToInt(Double::intValue)
+    .mapToObj(i -> "a" + i)
+    .forEach(System.out::println);
+
+// a1
+// a2
+// a3
 ```
 
-创建数组：
+### Processing Order
+
+Stream 为什么效率高，什么样的组合才是效率最高的？原则：先 filter 再 map！
+
+Now that we've learned how to create and work with different kinds of streams, let's dive deeper into how stream operations are processed under the hood.
+
+An important characteristic of intermediate operations is laziness. Look at this sample where a terminal operation is missing:
 
 ```java
-String[]::new
-```
-
-### 收集器 Collector Collectors
-
-Collector, 一种通用的、 从流生成复杂值的结构  
-
-## 并行计算
-
-只要将 `Stream()` 改成 `parallelStream()`，就可以启动并行计算。
-
-并行计算常和 flatMap 结合。
-
-不建议对 Set 进行并行计算，因为太难分解。
-
-并行的控制需要消耗额外的计算资源，只有在数据量很大的时候，才适合做并行计算
-
-### flatMap
-
-flatMap 用于处理类似这样的数据结构：`[[], [], []]`，所以常用于并行计算。
-
-```java
-public int parallelArraySum() {
-    return albums.parallelStream()
-        .flatMap(Album::getTracks)
-        .mapToInt(Track::getLength)
-        .sum();
-}
-```
-
-### 并行计算的原理
-
-```java
-private int addIntegers(List<Integer> values) {
-    return values.parallelStream()
-        .mapToInt(i -> i)
-        .sum();
-}
-```
-
-![image-20210516220651843](assets/image-20210516220651843.png)
-
-
-
-```java
-/**
-    * 并行打印，看看结果
-    * @param
-    * @return
-    */
-public void parallelPrint(){
-    IntStream.range(0, 10).parallel().forEach(i -> {
-        System.out.println(i);
+Stream.of("d2", "a2", "b1", "b3", "c")
+    .filter(s -> {
+        System.out.println("filter: " + s);
+        return true;
     });
-}
 ```
 
+When executing this code snippet, nothing is printed to the console. That is because intermediate operations will only be executed when a terminal operation is present.
+
+Let's extend the above example by the terminal operation `forEach`:
+
+```java
+Stream.of("d2", "a2", "b1", "b3", "c")
+    .filter(s -> {
+        System.out.println("filter: " + s);
+        return true;
+    })
+    .forEach(s -> System.out.println("forEach: " + s));
 ```
-6
-5
-1
-0
-2
-3
-9
-7
-8
-4
+
+Executing this code snippet results in the desired output on the console:
+
+```java
+filter:  d2
+forEach: d2
+filter:  a2
+forEach: a2
+filter:  b1
+forEach: b1
+filter:  b3
+forEach: b3
+filter:  c
+forEach: c
 ```
 
+The order of the result might be surprising. A naive approach would be to execute the operations horizontally one after another on all elements of the stream. But instead each element moves along the chain vertically. The first string "d2" passes `filter` then `forEach`, only then the second string "a2" is processed.
+
+This behavior can reduce the actual number of operations performed on each element, as we see in the next example:
+
+```java
+Stream.of("d2", "a2", "b1", "b3", "c")
+    .map(s -> {
+        System.out.println("map: " + s);
+        return s.toUpperCase();
+    })
+    .anyMatch(s -> {
+        System.out.println("anyMatch: " + s);
+        return s.startsWith("A");
+    });
+
+// map:      d2
+// anyMatch: D2
+// map:      a2
+// anyMatch: A2
+```
+
+The operation `anyMatch` returns `true` as soon as the predicate applies to the given input element. This is true for the second element passed "A2". Due to the vertical execution of the stream chain, `map` has only to be executed twice in this case. So instead of mapping all elements of the stream, `map` will be called as few as possible.
+
+**Why order matters？**
+
+The next example consists of two intermediate operations `map` and `filter` and the terminal operation `forEach`. Let's once again inspect how those operations are being executed:
+
+```java
+Stream.of("d2", "a2", "b1", "b3", "c")
+    .map(s -> {
+        System.out.println("map: " + s);
+        return s.toUpperCase();
+    })
+    .filter(s -> {
+        System.out.println("filter: " + s);
+        return s.startsWith("A");
+    })
+    .forEach(s -> System.out.println("forEach: " + s));
+
+// map:     d2
+// filter:  D2
+// map:     a2
+// filter:  A2
+// forEach: A2
+// map:     b1
+// filter:  B1
+// map:     b3
+// filter:  B3
+// map:     c
+// filter:  C
+```
+
+As you might have guessed both `map` and `filter` are called five times for every string in the underlying collection whereas `forEach` is only called once.
+
+We can greatly reduce the actual number of executions if we change the order of the operations, moving `filter` to the beginning of the chain:
+
+```java
+Stream.of("d2", "a2", "b1", "b3", "c")
+    .filter(s -> {
+        System.out.println("filter: " + s);
+        return s.startsWith("a");
+    })
+    .map(s -> {
+        System.out.println("map: " + s);
+        return s.toUpperCase();
+    })
+    .forEach(s -> System.out.println("forEach: " + s));
+
+// filter:  d2
+// filter:  a2
+// map:     a2
+// forEach: A2
+// filter:  b1
+// filter:  b3
+// filter:  c
+```
+
+Now, `map` is only called once so the operation pipeline performs much faster for larger numbers of input elements. Keep that in mind when composing complex method chains.
+
+Let's extend the above example by an additional operation, `sorted`:
+
+```java
+Stream.of("d2", "a2", "b1", "b3", "c")
+    .sorted((s1, s2) -> {
+        System.out.printf("sort: %s; %s\n", s1, s2);
+        return s1.compareTo(s2);
+    })
+    .filter(s -> {
+        System.out.println("filter: " + s);
+        return s.startsWith("a");
+    })
+    .map(s -> {
+        System.out.println("map: " + s);
+        return s.toUpperCase();
+    })
+    .forEach(s -> System.out.println("forEach: " + s));
+```
+
+Sorting is a special kind of intermediate operation. It's a so called *stateful operation* since in order to sort a collection of elements you have to maintain state during ordering.
+
+Executing this example results in the following console output:
+
+```
+sort:    a2; d2
+sort:    b1; a2
+sort:    b1; d2
+sort:    b1; a2
+sort:    b3; b1
+sort:    b3; d2
+sort:    c; b3
+sort:    c; d2
+filter:  a2
+map:     a2
+forEach: A2
+filter:  b1
+filter:  b3
+filter:  c
+filter:  d2
+```
+
+First, the sort operation is executed on the entire input collection. In other words `sorted` is executed horizontally. So in this case `sorted` is called eight times for multiple combinations on every element in the input collection.
+
+Once again we can optimize the performance by reordering the chain:
+
+```java
+Stream.of("d2", "a2", "b1", "b3", "c")
+    .filter(s -> {
+        System.out.println("filter: " + s);
+        return s.startsWith("a");
+    })
+    .sorted((s1, s2) -> {
+        System.out.printf("sort: %s; %s\n", s1, s2);
+        return s1.compareTo(s2);
+    })
+    .map(s -> {
+        System.out.println("map: " + s);
+        return s.toUpperCase();
+    })
+    .forEach(s -> System.out.println("forEach: " + s));
+
+// filter:  d2
+// filter:  a2
+// filter:  b1
+// filter:  b3
+// filter:  c
+// map:     a2
+// forEach: A2
+```
+
+In this example `sorted` is never been called because `filter` reduces the input collection to just one element. So the performance is greatly increased for larger input collections.
+
+### Reusing Streams
+
+Stream 复用。
+
+Java 8 streams cannot be reused. As soon as you call any terminal operation the stream is closed:
+
+```java
+Stream<String> stream =
+    Stream.of("d2", "a2", "b1", "b3", "c")
+        .filter(s -> s.startsWith("a"));
+
+stream.anyMatch(s -> true);    // ok
+stream.noneMatch(s -> true);   // exception
+```
+
+Calling `noneMatch` after `anyMatch` on the same stream results in the following exception:
+
+```java
+java.lang.IllegalStateException: stream has already been operated upon or closed
+    at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:229)
+    at java.util.stream.ReferencePipeline.noneMatch(ReferencePipeline.java:459)
+    at com.winterbe.java8.Streams5.test7(Streams5.java:38)
+    at com.winterbe.java8.Streams5.main(Streams5.java:28)
+```
+
+To overcome this limitation we have to to create a new stream chain for every terminal operation we want to execute, e.g. we could create a stream supplier to construct a new stream with all intermediate operations already set up:
+
+```java
+Supplier<Stream<String>> streamSupplier =
+    () -> Stream.of("d2", "a2", "b1", "b3", "c")
+            .filter(s -> s.startsWith("a"));
+
+streamSupplier.get().anyMatch(s -> true);   // ok
+streamSupplier.get().noneMatch(s -> true);  // ok
+```
+
+Each call to `get()` constructs a new stream on which we are save to call the desired terminal operation.
 
 
-## Reference
-
-https://github.com/RichardWarburton/java-8-Lambdas-exercises  
