@@ -8,6 +8,23 @@
 
 https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven
 
+```xml
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>5.7.2</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-engine</artifactId>
+    <version>5.7.2</version>
+    <scope>test</scope>
+</dependency>
+```
+
+
+
 ### SpringBoot 配置
 
 #### SpringBoot 2.2+ JUnit5
