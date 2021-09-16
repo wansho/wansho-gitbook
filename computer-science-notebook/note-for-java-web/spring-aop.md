@@ -40,3 +40,7 @@ aop 的一种实现框架，Spring 采用 aspectj 进行 aop 的开发配置。
 ## 基于注解的 aop 开发
 
 <img align="left" src="assets/image-20210902100956134.png" alt="image-20210902100956134" style="zoom:80%;" />
+
+## 参考
+
+* springboot aop 具体实现：https://blog.csdn.net/qq_33257527/article/details/82561635

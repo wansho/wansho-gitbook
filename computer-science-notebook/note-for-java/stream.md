@@ -302,6 +302,9 @@ API Note:
      Map<String, Map<String, List<Person>>> peopleByStateAndCity
          = personStream.collect(Collectors.groupingBy(Person::getState,
                                                       Collectors.groupingBy(Person::getCity)));
+
+统计List中元素出现的次数
+Map<Integer, Long> map = list.stream().collect(Collectors.groupingBy(p -> p,Collectors.counting()));                                                       
 ```
 
 传入一个 Collector 对象，Collector 对象封装了及早求值的规则。Collector 对象由 Collectors 工厂的静态方法生成。

@@ -122,7 +122,6 @@
   * [Java-Persistence-API](computer-science-notebook/note-for-java-web/java-persistence-api.md)
   * [Maven](computer-science-notebook/note-for-java-web/maven.md)
   * [Dependencies](computer-science-notebook/note-for-java-web/dependencies.md)
-  * [JMS](computer-science-notebook/note-for-java-web/java-message-service.md)
   * [Restful-Api](computer-science-notebook/note-for-java-web/restful-api.md)
   * [Spring](computer-science-notebook/note-for-java-web/spring.md)
   * [SpringBoot-Test](computer-science-notebook/note-for-java-web/springboot-test.md)
