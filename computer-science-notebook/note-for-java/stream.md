@@ -388,7 +388,14 @@ toMap:
 ```java
 Map<String, String> nameToIdMap = conceptRepo.findSubConceptsByFid(fid)
                         .stream().collect(Collectors.toMap(Concept::getName, Concept::getId));
-// toMap 第一个参数是 key，第二个参数是 value
+// toMap 第一个参数是 key，第二个参数是 value.
+
+Map<String, String> fieldNameToAliasMap = Arrays.stream(fields)
+                .filter(field -> field.isAnnotationPresent(org.springframework.data.elasticsearch.annotations.Field.class))
+                .filter(field -> StringUtils.isNotEmpty(field.getAnnotation(org.springframework.data.elasticsearch.annotations.Field.class).name()))
+                .collect(Collectors.toMap(
+                        field -> CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, field.getName()),
+                        field -> field.getAnnotation(org.springframework.data.elasticsearch.annotations.Field.class).name()));
 ```
 
 
