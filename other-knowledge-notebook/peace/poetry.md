@@ -570,4 +570,3 @@
 ## 英文
 
 * Follow excellence, success will follow you
-* 
