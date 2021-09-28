@@ -616,7 +616,7 @@ DockerCompose 的详细语法参考官网：https://docs.docker.com/compose/comp
 
 #### compose文件
 
-查看课前资料提供的cloud-demo文件夹，里面已经编写好了docker-compose文件，而且每个微服务都准备了一个独立的目录：
+查看课前资料提供的cloud-demo文件夹，里面已经编写好了 docker-compose 文件，而且每个微服务都准备了一个独立的目录：
 
 ![image-20210731181341330](assets/image-20210731181341330.png)
 
