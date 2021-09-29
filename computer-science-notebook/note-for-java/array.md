@@ -80,7 +80,7 @@ Array 的工具类是 Arrays；Collection 的工具类是 Collections；String �
 CompType[] a = new CompType[12];
 Arrays.setAll(a, n -> CompType.get());
 show("Before sorting", a);
-Arrays.sort(a, Collections.reverseOrder());
+Arrays.sort(a, Collections.reverseOrder())
 show("After sorting", a);
 ```
 
