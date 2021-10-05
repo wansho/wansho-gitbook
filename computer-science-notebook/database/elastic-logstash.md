@@ -10,3 +10,8 @@ While Logstash originally drove innovation in log collection, its capabilities e
 
 <img align="left" src="assets/image-20210812191337704.png" alt="image-20210812191337704" style="zoom:50%;" />
 
+## Logstash vs Prometheus
+
+Logstash 更倾向于日志采集，Prometheus 更倾向于指标监控。
+
+Kibana 和 Grafana 也是如此，Kibana 倾向于日志采集和分析，Grafana 倾向于监控。
