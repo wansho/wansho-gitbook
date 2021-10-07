@@ -131,6 +131,7 @@
   * [SpringBoot-Tutorial](computer-science-notebook/note-for-java-web/springboot-tutorial.md)
   * [SpringCloud](computer-science-notebook/note-for-java-web/springcloud.md)
   * [micro-service](computer-science-notebook/note-for-java-web/micro-service.md)
+  * [mybatis](computer-science-notebook/note-for-java-web/mybatis.md)
   * [big-number](computer-science-notebook/note-for-java-web/big-number.md)
 * [front-end](computer-science-notebook/front-end/README.md)
   * [nodeJS](computer-science-notebook/front-end/nodejs.md)

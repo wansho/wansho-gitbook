@@ -122,7 +122,7 @@ wansho* 可以匹配 wansho,wanshoo,wanshooo,wanshoooo
 ```
 匹配词的边界 
 \b     boundary
-例如 \bthe\b 匹配 the而不是匹配 other
+例如 \bthe\b 匹配 the 而不是匹配 other
 ```
 
 ---

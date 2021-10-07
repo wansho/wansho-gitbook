@@ -235,7 +235,7 @@ mybatis与spring data jpa的功能区别
 
 1. spring data jpa实现了jpa（java persistence api）功能，即可以实现pojo转换为关系型数据库记录的功能，通俗来讲就是可以不写任何的建表sql语句了。jpa是spring data jpa功能的一个子集。
    而mybatis并没有 jpa 功能，建表语句还是要自己写的。
-2. spring data jpa是全自动框架，不需要写任何sql。而mybatis是半自动框架，需要自己写sql，mybatis-plus为mybatis赋能，使其也可以基本上不需要写任何模板sql。
+2. spring data jpa是**全自动框架**，不需要写任何sql。而mybatis是**半自动框架**，需要自己写sql，mybatis-plus为mybatis赋能，使其也可以基本上不需要写任何模板sql。
    以上两点应该是二者功能上的最大的区别
 3. debug模式下看生成的sql，mybatis下的sql可读性很好，而spring data jpa下的查询sql可读性并不好
 4. ……
