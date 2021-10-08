@@ -891,12 +891,14 @@ telnet ip port
 
 ### 防火墙
 
-关闭防火墙：
+开放防火墙上的一个端口
 
 ```shell
 firewall-cmd --zone=public --add-port=3306/tcp --permanent
 firewall-cmd --reload
 ```
+
+关闭防火墙
 
 ```shell
 systemctl stop firewalld # 关闭防火墙 system-control
