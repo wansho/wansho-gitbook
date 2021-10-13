@@ -132,6 +132,7 @@ sudo make install # 将二进制执行文件，库，文档拷贝到系统相关
 | `/usr/share/doc`              | Location of package specific documentation files.            | 存放应用程序的文档                                           |
 | `/usr/share/man`              | Manual pages.                                                | 应用程序手册                                                 |
 | `/usr/src`                    | The 'linux' sub-directory holds the Linux kernel sources, header-files and documentation. | 存放 Linux 内核相关的文件。                                  |
+| `/proc`                       | /proc is very special in that it is also a virtual filesystem. It's sometimes referred to as a process information pseudo-file system. It doesn't contain 'real' files but runtime system information (e.g. system memory, devices mounted, hardware configuration, etc). For this reason it can be regarded as a control and information centre for the kernel. In fact, quite a lot of system utilities are simply calls to files in this directory. For example, 'lsmod' is the same as 'cat /proc/modules' while 'lspci' is a synonym for 'cat /proc/pci'. By altering files located in this directory you can even read/change kernel parameters (sysctl) while the system is running. | process 信息                                                 |
 
 问题：如何找到系统安装的 Mysql 中存储的数据？
 

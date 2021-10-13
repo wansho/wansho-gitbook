@@ -655,7 +655,7 @@ chgrp grp -R dir # 递归修改
 2. 配置该文件所属用户(wansho)属于用户组(work)：usermod -a -G group work
 ```
 
-## 进程管理和磁盘管理
+## 进程/磁盘/资源管理
 
 ### 进程层次图
 
@@ -760,6 +760,101 @@ system-control
 ```shell
 systemctl stop firewalld # 关闭防火墙
 ```
+
+### ulimit
+
+Linux ulimit 命令用于控制进程的资源。
+
+- -a 　显示目前资源限制的设定。
+- -c <core文件上限> 　设定core文件的最大值，单位为区块。
+- -d <数据节区大小> 　程序数据节区的最大值，单位为KB。
+- -f <文件大小> 　shell所能建立的最大文件，单位为区块。
+- -H 　设定资源的硬性限制，也就是管理员所设下的限制。
+- -m <内存大小> 　指定可使用内存的上限，单位为KB。
+- -n <文件数目> 　指定同一时间最多可开启的文件数。
+- -p <缓冲区大小> 　指定管道缓冲区的大小，单位512字节。
+- -s <堆叠大小> 　指定堆叠的上限，单位为KB。
+- -S 　设定资源的弹性限制。
+- -t <CPU时间> 　指定CPU使用时间的上限，单位为秒。
+- -u <程序数目> 　用户最多可开启的程序数目。
+- -v <虚拟内存大小> 　指定可使用的虚拟内存上限，单位为KB。
+
+```shell
+# 查看当前 shell 配置的
+ulimit -a 
+
+# ulimit -n will only display the soft limit.
+ulimit -n
+```
+
+配置进程资源 `/ect/security/limits.conf`，`/etc/security/limits.conf` 文件实际是 Linux PAM（插入式认证模块，Pluggable Authentication Modules）中 `pam_limits.so` 的配置文件。有 soft，hard和 `-`，soft 指的是当前系统生效的设置值，软限制也可以理解为警告值。 hard 表名系统中所能设定的最大值。soft 的限制不能比 hard 限制高，用 `-` 表明同时设置了 soft 和 hard 的值。https://www.cnblogs.com/operationhome/p/11966041.html
+
+```shell
+# 修改 LINUX 系统对用户的内存大小和文件句柄限制限制
+echo "ems soft nofile 65536" >> /etc/security/limits.conf
+echo "ems hard nofile 65536" >> /etc/security/limits.conf
+echo "ems hard memlock unlimited" >> /etc/security/limits.conf
+echo "ems soft memlock unlimited" >> /etc/security/limits.conf
+# max size virtual memory [] for user [] is too low, increase to [unlimited]
+# https://www.elastic.co/guide/en/elasticsearch/reference/master/max-size-virtual-memory-check.html
+echo "ems - as unlimited" >> /etc/security/limits.conf
+echo "root - as unlimited" >> /etc/security/limits.conf
+echo "ems - fsize unlimited" >> /etc/security/limits.conf
+```
+
+https://superuser.com/questions/740000/modify-and-apply-limits-conf-without-reboot
+
+修改完 limits.conf 配置后，重新 ssh 登录用户即可生效。
+
+注意！**wildcard `*` won't apply for `root` user.** 通配符并不适用于 root 用户，如果需要配置 root 用户，则需要明文配置！
+
+These limits will be applied after reboot.
+
+If you want to apply changes without reboot, modify `/etc/pam.d/common-session` by adding this line at the end of file:
+
+```
+session required pam_limits.so
+```
+
+查看一个进程的资源限制：
+
+```shell
+cat /proc/<pid>/limits
+
+# 获取当前 shell 的进程号
+ps | grep $$
+```
+
+### limit
+
+动态修改当前用户的资源配置。
+
+```shell
+# 修改虚拟内存
+limit vmemoryuse unlimited
+
+# 显示所有的可改选项
+limit
+
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    8192 kbytes
+coredumpsize 521000 kbytes
+memoryuse    unlimited
+vmemoryuse   unlimited
+descriptors  1024
+memorylocked unlimited
+maxproc      65535
+maxlocks     unlimited
+maxsignal    513621
+maxmessage   819200
+maxnice      0
+maxrtprio    0
+maxrttime    unlimited
+```
+
+
 
 ## 网络相关
 
