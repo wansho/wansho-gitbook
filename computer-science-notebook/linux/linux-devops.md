@@ -64,6 +64,14 @@ ExecStartPost字段：启动服务之后执行的命令
 ExecStopPost字段：停止服务之后执行的命令
 ```
 
+### journalctl 
+
+指定某个服务的日志进行查看
+
+`journalctl -u elastic-search`
+
+
+
 ### Sysvinit
 
 
