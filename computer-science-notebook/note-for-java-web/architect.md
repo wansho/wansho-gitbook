@@ -101,7 +101,13 @@ B+ 数是一颗有序树，如果主键随机，则需要在插入数据的时�
 * 美团 Leaf
 * 推特 Snowflake
 
+### 缓存一致性
 
+如何保证缓存中的数据，和数据库中的数据，是一致的？
+
+不要更新缓存，不要更新缓存，不要更新缓存！因为更新了缓存，可能导致和数据库中的数据不一致！
+
+正确的做法：更新数据库，然后删除缓存重新加载！
 
 ## 时区问题
 
@@ -130,6 +136,80 @@ T代表后面跟着是时间，Z代表0时区（相差北京时间8小时）
 目前流行的组件：Consul，Nacos，Rocket MQ 底层都采用了 Raft 算法来确认集群的主节点。
 
 作用：在分布式集群架构下进行主节点的确认。
+
+### cap 定理
+
+https://www.ruanyifeng.com/blog/2018/07/cap.html
+
+分布式系统的三个指标：CAP 定理。
+
+* C Consistency 一致性
+
+  Every read receives the most recent write or an error. 
+
+  每个分区的数据都是一致的。
+
+* A Availability 可用性
+
+  Every request receives a (non-error) response, without the guarantee that it contains the most recent write. 
+
+  用户可以选择向 G1 或 G2 发起读操作。不管是哪台服务器，只要收到请求，就必须告诉用户，到底是 v0 还是 v1，否则就不满足可用性。
+
+* P Partition tolerance 分区容错性
+
+  The system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes. 
+
+  指当网络出现分区的情况（即系统中的一部分节点无法和其他节点进行通信）分离的系统也能够正常运行。
+
+CAP 三个指标不可能同时满足。
+
+<img align="left" src="assets/image-20211101201609822.png" alt="image-20211101201609822" style="zoom:50%;" />
+
+Consistency 和 Availability 的矛盾：
+
+如果保证 G2 的一致性，那么 G1 必须在写操作时，锁定 G2 的读操作和写操作。只有数据同步后，才能重新开放读写。锁定期间，G2 不能读写，没有可用性不。如果保证 G2 的可用性，那么势必不能锁定 G2，所以一致性不成立。综上所述，G2 无法同时做到一致性和可用性。系统设计时只能选择一个目标。如果追求一致性，那么无法保证所有节点的可用性；如果追求所有节点的可用性，那就没法做到一致性。
+
+在什么场合，AP 高于 CP？
+
+举例来说，发布一张网页到 CDN，多个服务器有这张网页的副本。后来发现一个错误，需要更新网页，这时只能每个服务器都更新一遍。一般来说，网页的更新不是特别强调一致性。短时期内，一些用户拿到老版本，另一些用户拿到新版本，问题不会特别大。当然，所有人最终都会看到新版本。所以，这个场合就是可用性高于一致性。（很多场合，不求一致性，但求高可用，别宕机）
+
+一个场景，订单创建成功后，发短信告诉用户：
+
+<img align="left" src="assets/image-20211101203121795.png" alt="image-20211101203121795" style="zoom: 67%;" />
+
+CP 的应用场景：并发小，数据一致性要求高，例如订单，银行转账，表现为订单创建后需要等待短信发送成功，用户体验差
+
+AP 的应用场景：表现为订单创建后，立即返回短信发送成功，无需等待短信是否发送成功，保证用户体验。但是 AP 有很大的问题，例如爆了一件神话装备，但是服务器宕机了，缓存没有写入磁盘，导致装备丢失。
+
+### BASE 最终一致性
+
+AP 缺乏数据一致性的解决方案：BASE，是对 CAP 的补充，让短信尽可能地发送成功
+
+- **Basically available**: reading and writing operations are available as much as possible (using all nodes of a database cluster), but may not be consistent (the write may not persist after conflicts are reconciled, the read may not get the latest write)
+
+  基本可用，就是基本实现用户的基本价值和诉求，创建订单后立即返回，就是基本可用的体现
+
+- **Soft-state**: without consistency guarantees, after some amount of time, we only have some probability of knowing the state, since it may not yet have converged
+
+  软状态，表示业务操作没有最终完成前的中间状态，订单创建后，短信记录未成功发送前就属于软状态，CP 没有软状态。
+
+- **Eventually consistent**: If we execute some writes and then the system functions long enough, we can know the state of the data; any further reads of that data item will return the same value
+
+  最终一致性，表示通过技术手段，**过一段时间后**，让数据保持一致性。最终一致性只是对 AP 打补丁，不能 100% 实现 Consistency。
+
+最终一致性的方案：
+
+* 重试
+
+  <img align="left" src="assets/image-20211101203842618.png" alt="image-20211101203842618" style="zoom: 33%;" />
+
+* 数据校对程序
+
+  <img align="left" src="assets/image-20211101204033346.png" alt="image-20211101204033346" style="zoom:33%;" />
+
+* 人工介入
+
+  <img align="left" src="assets/image-20211101204144216.png" alt="image-20211101204144216" style="zoom:33%;" />
 
 ## 微服务架构设计经验
 
