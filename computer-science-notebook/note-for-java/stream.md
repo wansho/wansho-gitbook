@@ -397,7 +397,9 @@ Map<String, String> fieldNameToAliasMap = Arrays.stream(fields)
                 .filter(field -> StringUtils.isNotEmpty(field.getAnnotation(org.springframework.data.elasticsearch.annotations.Field.class).name()))
                 .collect(Collectors.toMap(
                         field -> CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, field.getName()),
-                        field -> field.getAnnotation(org.springframework.data.elasticsearch.annotations.Field.class).name()));
+                        field -> field.getAnnotation(org.springframework.data.elasticsearch.annotations.Field.class).name(),
+                		(v1, v2) -> v2 // 添加 key 重复的策略
+                ));
 ```
 
 

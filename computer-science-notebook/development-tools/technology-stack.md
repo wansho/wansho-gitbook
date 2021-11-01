@@ -50,6 +50,7 @@
 * 依赖管理：Docker
 * 软件测试：Selenium
 * 一键部署工具：LAMP(Apache Mysql PHP)
+* 运维：[KubeSphere](https://github.com/kubesphere/kubesphere) k8s 的封装
 
 ## 需求分析
 
