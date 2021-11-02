@@ -138,6 +138,32 @@ logback 会自动扫描 classpath 中的 `logback.xml` 文件。
 
 ### logback
 
+logback 配置文档详解：https://blog.csdn.net/millery22/article/details/86672284
+
+* appender
+
+  是用来定义一个写日志记录的组件，常用的appender类有ConsoleAppender和RollingFileAppender，前者个是用来在控制台上打印日志，后者是将日志输出到文件中。
+
+* layout
+
+  是指定日志的布局方式，这个基本都不会去特殊的指定，可以忽略，知道有这个东西即可。
+
+* encoder
+
+  负责把事件转换成字节数组并把字节数组写到合适的输出流。encoder可以指定属性值class，这里对应的类只有一个PatternLayoutEncoder，也是默认值，可以不去指定。
+
+* filter
+
+  过滤器分为三种，logback-classic提供的是两种，分别是常规的过滤器和Turbo过滤器。常用的过滤器就是按照日志级别来控制，将不同级别的日志输出到不同文件中，便于查看日志。如：错误日志输出到xxx-error.log，info日志输出到xxx-info.log中。
+
+* rollingPolicy
+
+  用来设置日志的滚动策略，当达到条件后会自动将条件前的日志生成一个备份日志文件，条件后的日志输出到最新的日志文件中。常用的是按照时间来滚动（使用的类TimeBaseRollingPolicy）,还有一种就是基于索引来实现（使用的类FixedWindowRollingPolicy）
+
+* triggeringPolicy
+
+  日志触发器策略，常用的是日志的大小的控制，当日志达到对应的大小的时候，就会触发。生成新的日志文件。日志大小的控制配合rollingPlicy使用的时候，不同的rollingPolicy会有所不同
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
