@@ -49,6 +49,7 @@
     * [经典问题](reading/data-structures-and-algorithm-analysis-in-c/summary/classic-problems.md)
 * [People](reading/people/README.md)
   * [Pioneers-in-Computer-Science](reading/people/pioneer.md)
+  * [lanqingqing](reading/people/lanqingqing.md)
   * [others](reading/people/others.md)
 * [Books](reading/books/README.md)
   * [Bookshelf](reading/books/bookshelf.md)
