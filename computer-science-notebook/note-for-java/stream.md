@@ -137,9 +137,9 @@ Arrays.asList(1,2,3,6,3,6,8,9,1,0,0)
                 .forEach(System.out::println);
 ```
 
-
-
 #### filter
+
+
 
 #### map
 
@@ -147,6 +147,25 @@ Arrays.asList(1,2,3,6,3,6,8,9,1,0,0)
 * mapToInt(ToIntFunction)：操作同上，但结果是 IntStream。
 * mapToLong(ToLongFunction)：操作同上，但结果是 LongStream。
 * mapToDouble(ToDoubleFunction)：操作同上，但结果是 DoubleStream。  
+
+
+
+#### flatMap
+
+flatMap 用于将多个 collection 合并成一个 collection。flat: 降维，将二维降为一维，扁平化合并多个流为一个流。
+
+demo:
+
+```java
+List<String> collection1 = new ArrayList<>(Arrays.asList("str1", "str2"));
+List<String> collection2 = new ArrayList<>(Arrays.asList("str3", "str4"));
+List<List<String>> collectionList = Arrays.asList(collection1, collection2);
+collectionList
+    .stream()
+    .flatMap(lst -> lst.stream())
+    .collect(Collectors.toList());
+// 返回的 list 内容是 [str1, str2, str3, str4]
+```
 
 ### 终端操作
 

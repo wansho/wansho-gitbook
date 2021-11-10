@@ -302,8 +302,6 @@ git stash pop # stash中的内容弹出，并应用到当前分支对应的工�
 git stash apply # 不同于git stash pop，该命令不会将内容从堆栈中删除，也就说该命令能够将堆栈的内容多次应用到工作目录中，适应于多个分支的情况。
 
 git stash clear # 清除堆栈中的所有 内容
-
-
 ```
 
 git stash 是全局的，可以跨 branch，在一个 branch 中 stash，可以在另一个 branch 中释放。
@@ -705,6 +703,29 @@ please contact us at email.support@github.com
 > A topic branch is a short-lived branch that you create and use for a single particular feature or related work. This is something you’ve likely never done with a VCS before because it’s generally too expensive to create and merge branches. But in Git it’s common to create, work on, merge, and delete branches several times a day. 
 
 `git branch`技术给小步试错，快速迭代带来了便捷
+
+### git cherry-pick
+
+git merge 是将一个分支的所有变动，合并到另一个分支。有时候我们不需要把所有的变动合并到某个分支，而是只想要把几次 commit 变动的内容合并到其他分支。这个时候就用到了 cherry-pick。
+
+详细介绍：[阮一峰 git cherry-pick 教程](https://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html)
+
+demo: 如果我们想把 dev 分支的三个提交  5ea6e 8a28f 8b4bc 合并到 master 分支，可以这么做：
+
+```shell
+git checkout master
+git cherry-pick 5ea6e 8a28f 8b4bc
+```
+
+master 分支会产生三个新的 commit，内容和 5ea6e 8a28f 8b4bc 完全一致，但是 hash 值变了，表示是新的提交。
+
+**注意**：5ea6e 要早于 8a28f，否则命令将失败，但不会报错。
+
+也可以批量合并一个范围
+
+```shell
+git cherry-pick A..B 
+```
 
 ### remote branches explanation
 
