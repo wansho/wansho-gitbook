@@ -111,3 +111,13 @@ A网页设置的 Cookie，B网页不能打开，除非这两个网页"同源"。
 - WebSocket
 - CORS
 
+
+
+## jwt
+
+JSON Web Token
+
+### 前后端分离架构下 jwt 认证该怎么设计
+
+https://www.bilibili.com/video/BV1C44y1k7VC
+

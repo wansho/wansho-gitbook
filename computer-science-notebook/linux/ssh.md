@@ -6,6 +6,8 @@
 
 ## 基本知识
 
+SSH 主要用于**远程登录**。由于采用 SSH 进行通信的客户端和服务端，使用了非对称加密加密了通话内容，所以 SSH 是 Secured 的
+
 SSH（**Secure** Shell 的缩写）是一种网络协议，用于**加密**两台计算机之间的**通信**，并且支持各种**身份验证**机制。SSH 是协议，ssh 是基于 SSH 实现的软件。
 
 **SSH 协议的开源实现**：**OpenSSH**
@@ -48,6 +50,9 @@ ssh hostname/ip/
 ssh user@hostname
 ssh -l username host
 
+# 如果本地用户名与远程用户名一致，登录时可以省略用户名。
+ssh host
+
 # 指定端口，默认 22 端口
 ssh -p 8821 foo.com
 
@@ -55,49 +60,92 @@ ssh -p 8821 foo.com
 ssh foo@server.example.com cat /etc/hosts
 ```
 
+### 中间人攻击
+
+SSH之所以能够保证安全，原因在于它采用了公钥加密。
+
+整个过程是这样的：
+
+1. 远程主机收到用户的登录请求，把自己的公钥发给用户。
+2. 用户使用这个公钥，将登录密码加密后，发送回来。
+3. 远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。
+
+![image-20211112170131199](assets/image-20211112170131199.png)
+
+这个过程本身是安全的，但是实施的时候存在一个风险：如果有人截获了登录请求，然后冒充远程主机，将伪造的公钥发给用户，那么用户很难辨别真伪。因为不像https协议，SSH协议的公钥是没有证书中心（CA）公证的，也就是说，都是自己签发的。
+
+可以设想，如果攻击者插在用户与远程主机之间（比如在公共的wifi区域），用伪造的公钥，获取用户的登录密码。再用这个密码登录远程主机，那么SSH的安全机制就荡然无存了。这种风险就是著名的["中间人攻击"](https://en.wikipedia.org/wiki/Man-in-the-middle_attack)（Man-in-the-middle attack）。
+
 ### 连接流程
 
-1. 第一次连接，保存服务器的指纹
+第一次连接服务器的时候，服务器会返回一个指纹
 
-   ```
-   The authenticity of host 'foo.com (192.168.121.111)' can't be established.
-   ECDSA key fingerprint is SHA256:Vybt22mVXuNuB5unE++yowF7lgA/9/2bLSiO3qmYWBY.
-   Are you sure you want to continue connecting (yes/no)?
-   ```
+```
+The authenticity of host 'foo.com (192.168.121.111)' can't be established.
+ECDSA key fingerprint is SHA256:Vybt22mVXuNuB5unE++yowF7lgA/9/2bLSiO3qmYWBY.
+Are you sure you want to continue connecting (yes/no)?
+```
 
-   查看服务器指纹的命令：
+这个指纹，实际上是服务器公钥的签名，主要是因为服务器公钥太长，所以使用 md5 hash 算法对其进行一次 hash，获取一个摘要。
 
-   ```shell
-   ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key.pub
-   ```
+查看服务器公钥指纹的命令：
 
-   指纹会被保存在 `~/.ssh/known_hosts` 文件中
+```shell
+ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key.pub
 
-2. 如果服务器指纹变了（例如重装系统），那么再次 ssh 连接服务器的时候，会报错：
+# -f filename
+# -l Show fingerprint of specified public key file. Private RSA1 keys are also supported. For RSA and DSA keys ssh-keygen tries to find the matching public key file and prints its fingerprint. If combined with -v, an ASCII art representation of the key is supplied with the fingerprint.
+```
 
-   ```
-   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-   @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-   IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-   Someone could be eavesdropping on you right now (man-in-the-middle attack)!
-   It is also possible that the RSA host key has just been changed.
-   The fingerprint for the RSA key sent by the remote host is
-   77:a5:69:81:9b:eb:40:76:7b:13:04:a9:6c:f4:9c:5d.
-   Please contact your system administrator.
-   Add correct host key in /home/me/.ssh/known_hosts to get rid of this message.
-   Offending key in /home/me/.ssh/known_hosts:36
-   ```
+假定经过风险衡量以后，用户决定接受这个远程主机的公钥。
 
-   意思是检测到的指纹，和本地 `~/.ssh/known_hosts` 存储的指纹不一样
+> Are you sure you want to continue connecting (yes/no)? yes
 
-   那么就需要将该服务器的指纹从本地文件中删除(其中 hostname 就是服务器的 hostname)：
+系统会出现一句提示，表示 host 主机已经得到认可。
 
-   ```
-   ssh-keygen -R hostname
-   ```
+> Warning: Permanently added 'host,12.18.429.21' (RSA) to the list of known hosts.
 
-   也可以直接清空 `~/.ssh/known_hosts` 文件，重新缓存服务器的指纹。
+然后，会要求输入密码。
+
+> Password: (enter password)
+
+如果密码正确，就可以登录了。ssh 密码登录过程是这样的：
+
+1. 远程主机收到用户的登录请求，把自己的公钥发给用户。
+2. 用户使用这个公钥，将登录密码加密后，发送回来。
+3. 远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。
+
+
+
+当远程主机的公钥被接受以后，它就会被保存在文件$HOME/.ssh/known_hosts之中。下次再连接这台主机，系统就会认出它的公钥已经保存在本地了，从而跳过警告部分，直接提示输入密码。
+
+每个SSH用户都有自己的known_hosts文件，此外系统也有一个这样的文件，通常是/etc/ssh/ssh_known_hosts，保存一些对所有用户都可信赖的远程主机的公钥。
+
+如果服务器指纹变了，也就是重新生成了密钥（例如重装系统），那么再次 ssh 连接服务器的时候，会报错：
+
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that the RSA host key has just been changed.
+The fingerprint for the RSA key sent by the remote host is
+77:a5:69:81:9b:eb:40:76:7b:13:04:a9:6c:f4:9c:5d.
+Please contact your system administrator.
+Add correct host key in /home/me/.ssh/known_hosts to get rid of this message.
+Offending key in /home/me/.ssh/known_hosts:36
+```
+
+意思是检测到的指纹，和本地 `~/.ssh/known_hosts` 存储的指纹不一样
+
+那么就需要将该服务器的指纹从本地文件中删除(其中 hostname 就是服务器的 hostname)：
+
+```
+ssh-keygen -R hostname
+```
+
+也可以直接清空 `~/.ssh/known_hosts` 文件，重新缓存服务器的指纹。
 
 ## SSH 密钥登录
 
