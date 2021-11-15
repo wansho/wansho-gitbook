@@ -44,6 +44,8 @@ sudo dnf install openssh-clients
 
 ![image-20211112170131199](assets/image-20211112170131199.png)
 
+密码登录用服务端的公钥加密；免密登录用客户端端的私钥加密。
+
 ```shell
 # 登录远程主机，默认使用当前的用户进行远程登录
 ssh hostname/ip/ 

@@ -27,7 +27,7 @@ Cryptography
 * DSA（Digital Signature Algorithm）
 * SM2 商密2
 
-公钥可以解密私钥加密的数据，私钥也可以解密公钥加密的数据。私钥加密也叫做签名（注意摘要和签名是两回事）。
+公钥可以解密私钥加密的数据，私钥也可以解密公钥加密的数据。私钥加密也叫做签名，私钥只有本人拥有，具有唯一性（注意摘要和签名是两回事）。
 
 公钥用来做加密信息，私钥用来做数字签名。通常用 hash 函数生成摘要，然后再用私钥对摘要进行数字签名。
 
@@ -213,14 +213,17 @@ openssl base64 -in crypt-test.txt -out test.txt
 
 证书中心用自己的私钥，对甲的公钥和甲的相关信息进行签名，生成甲的数字证书。然后把文档 + 数字签名 + 数字证书一起发给乙。乙收到后，用证书中心的公钥，对数字证书进行解密，获取里面包含的甲的公钥，就能保证公钥的安全了。
 
+![image-20211115084236450](assets/image-20211115084236450.png)
+
 ## 查表备忘
 
 ### PKCS
 
 The Public-Key Cryptography Standards (PKCS) 公钥密码学标准
 
-| [PKCS #1](https://zh.wikipedia.org/w/index.php?title=PKCS_1&action=edit&redlink=1) | 2.1  | RSA密码编译标准（RSA Cryptography Standard）                 | 定义了RSA的数理基础、公/私钥格式，以及加/解密、签/验章的流程。1.5版本曾经遭到攻击[[1\]](https://zh.wikipedia.org/wiki/公钥密码学标准#cite_note-1)。 |
+| PKCS                                                         | 版本 | 介绍                                                         | 详解                                                         |
 | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [PKCS #1](https://zh.wikipedia.org/w/index.php?title=PKCS_1&action=edit&redlink=1) | 2.1  | RSA密码编译标准（RSA Cryptography Standard）                 | 定义了RSA的数理基础、公/私钥格式，以及加/解密、签/验章的流程。1.5版本曾经遭到攻击[[1\]](https://zh.wikipedia.org/wiki/公钥密码学标准#cite_note-1)。 |
 | PKCS #2                                                      | -    | *弃用*                                                       | 原本是用以规范RSA加密摘要的转换方式，现已被纳入PKCS#1之中。  |
 | PKCS #3                                                      | 1.4  | [DH密钥协议](https://zh.wikipedia.org/wiki/迪菲-赫爾曼密鑰交換)标准（Diffie-Hellman key agreement Standard） | 规范以DH密钥协议为基础的密钥协议标准。其功能，可以让两方透过金议协议，拟定一把会议密钥(Session key)。 |
 | PKCS #4                                                      | -    | *弃用*                                                       | 原本用以规范转换RSA密钥的流程。已被纳入PKCS#1之中。          |
