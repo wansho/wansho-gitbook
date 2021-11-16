@@ -155,6 +155,16 @@ REST 是一套用于构建 Web Service 的规范。
 
 研发将最新的代码提交到 Github 上，commit 配置了 hook，触发了服务端的 Jenkins，Jenkins 从 Github 同步代码进行自动化测试。
 
+### URI URL
+
+URI: Uniform Resource Identifier 统一资源标识符
+
+URL: Uniform Resource Locator 统一资源定位符
+
+URI 是一个 ID，URL 是一个路径，URL 是用一个路径来描述一个 URI，所以 URI 包含 URL。
+
+HTTP 协议中 URI 和 URL 有什么区别？ - denight的回答 - 知乎 https://www.zhihu.com/question/21950864/answer/154309494
+
 
 
 ## 业务名词

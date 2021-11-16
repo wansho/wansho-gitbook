@@ -7,6 +7,16 @@
 * [软件测试的艺术](<https://book.douban.com/subject/1445661/>) 软件测试领域必读圣经
 * [Google软件测试之道](<https://book.douban.com/subject/25742200/>) 
 
+
+
+## 测试经验总结
+
+熟练使用 postman，不要使用 chrome 进行 get 请求的测试，不可靠。
+
+熟练使用 postman 的 environment 进行不同环境下相同服务的测试，例如本机环境下和线上环境的搜索服务的测试
+
+
+
 ## 持续集成 / 自动化
 
 Jenkins

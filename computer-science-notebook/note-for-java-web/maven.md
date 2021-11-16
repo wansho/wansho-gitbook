@@ -464,6 +464,8 @@ MakeFriend 依赖的 junit: 4.9
 
 在聚合工程的pom.xml上点右键->run as->maven install（eclipse中）
 
+**注意，要先在聚合工程上 clean -> install，然后再在子模块上 install。**
+
 
 
 ## IDEA + Maven
