@@ -1,4 +1,4 @@
-**People die, but long live gitbook.**
+记录学习，记录生活。
 
 # Table of contents
 

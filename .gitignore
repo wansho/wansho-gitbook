@@ -1,4 +1,5 @@
 .idea/
 .venv/
 .obsidian/
-._book
+_book/
+node_modules/

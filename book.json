@@ -1,5 +1,5 @@
 {
-  "title": "wanshuo gitbook",
+  "title": "wanshuo-gitbook",
   "description": "记录学习，记录生活",
   "structure": {
     "readme": "README.md"
@@ -43,7 +43,7 @@
 		"theme": "monokai"
 	},
 	"tbfed-pagefooter": {
-        "copyright":"Copyright © wanshuo",
+        "copyright": "Copyright © wanshuo",
         "modify_label": "该文件修订时间：",
         "modify_format": "YYYY-MM-DD HH:mm:ss"
     },
