@@ -1,5 +1,7 @@
 # 优雅锋利的 GitBook
 
+[TOC]
+
 首先抛结论，GitBook 目前满足了我对记笔记的所有幻想，它没有 Hexo 那么多花里胡哨的功能，它就像一把锋利的小刀，简单克制，完美解决了我使用 Hexo 中的一些痛点，满足了笔记创作者和读者最原始的需求，让创作者专注于创作，让读者专注于阅读。
 
 ![&#x4F18;&#x96C5;&#x514B;&#x5236;&#x7684; GitBook](../../.gitbook/assets/1558619487053.png)
@@ -63,4 +65,9 @@
 * GitHub 同步偶尔会有小毛病
 * 频繁修改线上笔记，需要多次 commit
 * 不支持 markdown 文本中的 html 渲染
+
+## gitbook 周边
+
+* [gitbook2pdf](https://github.com/fuergaosi233/gitbook2pdf) 将 gitbook 转成 pdf
+* [ gitbook-use](https://github.com/zhangjikai/gitbook-use) 记录GitBook的一些配置及插件信息
 
