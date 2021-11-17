@@ -1,5 +1,7 @@
 # 如何保持终身学习
 
+[TOC]
+
 ## 心态 / 态度
 
 **Stay hungry，Stay foolish.**
