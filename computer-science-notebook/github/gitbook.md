@@ -101,6 +101,12 @@
    # 会 Installing GitBook 3.2.3
    ```
 
+5. 生成静态文件
+
+   ```shell
+   gitbook build repo-dir --output=静态文件生成的文件夹
+   ```
+
    
 
 
