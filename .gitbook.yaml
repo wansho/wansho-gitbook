@@ -1,6 +1,6 @@
 root: ./
 
 structure:
-  readme: SUMMARY.md
-  summary: SUMMARY.md
+  readme: README.md
+  summary: README.md
   

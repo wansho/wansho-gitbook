@@ -1,14 +1,8 @@
-
+<img align="left" src="assets/image-20210604203254376.png" alt="image-20210604203254376" style="zoom:40%;" />
 
 # Table of contents
 
-[TOC]
-
-* [Introduction](README.md)
-
-## README
-
-- [About](about/about.md)
+[Introduction](README.md)
 
 ## 读书
 
