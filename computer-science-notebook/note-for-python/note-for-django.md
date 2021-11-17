@@ -523,11 +523,7 @@ template 使用 dot 来获取变量的属性，对于 `{{ question.question_text
 
 #### Tags
 
-| Tag                              | 作用                    |      |
-| -------------------------------- | ----------------------- | ---- |
-| `{\% static %\}`                   | w为静态文件生成绝对路径 |      |
-| `{\% url 'detail' question.id %\}` | 匹配到指定的 view       |      |
-|                                  |                         |      |
+![image-20211117181257068](assets/image-20211117181257068.png)
 
 #### 移除模板中的url硬编码
 
@@ -576,14 +572,7 @@ STATICFILES_DIRS = [
 ]
 ```
 
-引用公共的静态文件，例如引用 `static/js/echarts.min.js`：
-
-```html
-{\% load static %\}
-<link rel="stylesheet" href="{\% static 'js/echarts.min.js' %\}" >
-```
-
-The `{\% static %\}` template tag generates the absolute URL of static files.
+![image-20211117181227726](assets/image-20211117181227726.png)
 
 ### Bootstrap 4
 
