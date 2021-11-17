@@ -43,7 +43,7 @@
   # 2.1.7
   ```
 
-###Writing your first Django app, part 1
+### Writing your first Django app, part 1
 
 #### Django 和 Python 版本选择
 
@@ -525,8 +525,8 @@ template 使用 dot 来获取变量的属性，对于 `{{ question.question_text
 
 | Tag                              | 作用                    |      |
 | -------------------------------- | ----------------------- | ---- |
-| `{% static %}`                   | w为静态文件生成绝对路径 |      |
-| `{% url 'detail' question.id %}` | 匹配到指定的 view       |      |
+| `{\% static %\}`                   | w为静态文件生成绝对路径 |      |
+| `{\% url 'detail' question.id %\}` | 匹配到指定的 view       |      |
 |                                  |                         |      |
 
 #### 移除模板中的url硬编码
@@ -579,11 +579,11 @@ STATICFILES_DIRS = [
 引用公共的静态文件，例如引用 `static/js/echarts.min.js`：
 
 ```html
-{% load static %}
-<link rel="stylesheet" href="{% static 'js/echarts.min.js' %}" >
+{\% load static %\}
+<link rel="stylesheet" href="{\% static 'js/echarts.min.js' %\}" >
 ```
 
-The `{% static %}` template tag generates the absolute URL of static files.
+The `{\% static %\}` template tag generates the absolute URL of static files.
 
 ### Bootstrap 4
 

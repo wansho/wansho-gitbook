@@ -71,3 +71,37 @@
 * [gitbook2pdf](https://github.com/fuergaosi233/gitbook2pdf) 将 gitbook 转成 pdf
 * [ gitbook-use](https://github.com/zhangjikai/gitbook-use) 记录GitBook的一些配置及插件信息
 
+## gitbook 本地部署
+
+切换到 root 用户
+
+1. 用 nvm 安装 node v12.16.3
+
+   ```shell
+   nvm install 12.16.3
+   nvm use v12.16.3
+   ```
+
+2. 卸载 gitbook
+
+   ```shell
+   npm uninstall -g gitbook
+   ```
+
+3. 安装 gitbook
+
+   ```
+   npm install -g gitbook-cli
+   ```
+
+4. 查看 gitbook 是否安装成功
+
+   ```shell
+   gitbook -V
+   # 会 Installing GitBook 3.2.3
+   ```
+
+   
+
+
+
