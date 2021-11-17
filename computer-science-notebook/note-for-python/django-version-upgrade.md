@@ -47,15 +47,15 @@ deactivate # 退出该虚拟环境
    ```
 
    解决：
-
-
-
-```python
+   
+   ```python
    # settings.py 
    PROJECT_PATH = os.path.dirname(os.path.realpath(__file__))
    TEMPLATE_DIRS = (os.path.join(PROJECT_PATH, 'templates'),)
    # https://stackoverflow.com/questions/25909833/django-core-exceptions-improperly-configured
-```
+   ```
+   
+   
 
    实际上导致这个异常的原因是，直接使用了字符串绝对路径，而测试环境是在另一个文件夹下的，所以此处是一个bug，后期如果文件夹对不上的话，会有问题，统一改用程序获得绝对路径。
 
@@ -210,21 +210,6 @@ deactivate # 退出该虚拟环境
 **API Test**
 
 从 Nginx 的 log 中挑访问最频繁的 接口进行测试
-
-| API                            | Demo                                                         | Result | Project      |
-| ------------------------------ | ------------------------------------------------------------ | ------ | ------------ |
-| get-result                     | http://10.99.117.55:8999/get-result/?job_id=search@wise@program@dbl@@@system@@@20181204155129818949 | pass   | seMonitor    |
-| selfcheck                      | http://10.99.117.55:8999/selfcheck/                          | pass   | seMonitor    |
-| source_list                    | http://10.99.117.55:8999/source_list/                        | pass   | seMonitor    |
-| config_tasklist_groupby_source | http://10.99.117.55:8998/config_tasklist_groupby_source/?conditions=[{%22t%22%3A%22chained%22%2C%22k%22%3A%22product_info%22%2C%22v%22%3A%22search%2Cwise%22}]&showx_token=gr-release&showx_user=wanshuo | pass   | measure_site |
-| config_tasklist_groupby_module | http://10.99.117.55:8998/config_tasklist_groupby_module/?conditions=%5B%7B%22t%22%3A%22chained%22%2C%22k%22%3A%22product_info%22%2C%22v%22%3A%22search%2Cwise%22%7D%5D&showx_token=gr-release&showx_user=wanshuo | pass   | measure_site |
-| config_monitortype_ismodule    | http://10.99.117.55:8998/config_monitortype_ismodule/?conditions=%5B%7B%22t%22%3A%22chained%22%2C%22k%22%3A%22product_info%22%2C%22v%22%3A%22search%2Cwise%22%7D%5D&showx_token=gr-release&showx_user=wanshuo | pass   | measure_site |
-| dashboard_last_detail          | http://10.99.117.55:8998/dashboard_last_detail/?conditions=%5B%7B%22x%22%3A%22det%22%2C%22t%22%3A%22multiSelect%22%2C%22k%22%3A%22product_info%22%2C%22v%22%3A%22search%2Ccambrian%2Cimage%22%7D%2C%7B%22t%22%3A%22daterange%22%2C%22k%22%3A%22daterange%22%2C%22v%22%3A%222018-11-28%2C2018-12-04%22%2C%22x%22%3A%22week%22%7D%2C%7B%22x%22%3A%22det%22%2C%22t%22%3A%22select%22%2C%22k%22%3A%22statistics_type%22%2C%22v%22%3A%22case_coverage%22%7D%2C%7B%22x%22%3A%22det%22%2C%22t%22%3A%22select%22%2C%22k%22%3A%22key%22%2C%22v%22%3A%22manager%22%7D%2C%7B%22x%22%3A%22det%22%2C%22t%22%3A%22select%22%2C%22k%22%3A%22cycle%22%2C%22v%22%3A%22day%22%7D%5D&showx_token=gr-release&showx_user=wanshuo | pass   | measure_site |
-| result_debug_env_info          | http://10.99.117.55:8998/result_debug_env_info/?conditions=%5B%7B%22t%22%3A%22text%22%2C%22k%22%3A%22job_id%22%2C%22v%22%3A%22search%40wise%40dict%40nj%40%40%40system%40%40%4020181205110513977020%22%7D%5D&showx_token=gr-release&showx_user=wanshuo | pass   | measure_site |
-| result_detail                  | http://10.99.117.55:8998/result_detail/?conditions=%5B%7B%22t%22%3A%22text%22%2C%22k%22%3A%22job_id%22%2C%22v%22%3A%22search%40wise%40dict%40nj%40%40%40system%40%40%4020181205110513977020%22%7D%5D&showx_token=gr-release&showx_user=wanshuo | pass   | measure_site |
-| result_debug_mod_info          | http://10.99.117.55:8998/result_debug_mod_info/?conditions=%5B%7B%22t%22%3A%22text%22%2C%22k%22%3A%22job_id%22%2C%22v%22%3A%22search%40wise%40dict%40nj%40%40%40system%40%40%4020181205110513977020%22%7D%5D&showx_token=gr-release&showx_user=wanshuo | pass   | measure_site |
-| sendHigroup                    | http://10.99.117.55:8998/sendHigroup/?start=20181205135700000000&end=20181205140200000000 | pass   | measure_site |
-| dashboard_trend                | http://10.99.117.55:8998/dashboard_trend/?conditions=%5B%7B%22t%22%3A%22multiSelect%22%2C%22k%22%3A%22product_info%22%2C%22v%22%3A%22search%2Ccambrian%2Cimage%22%7D%2C%7B%22t%22%3A%22daterange%22%2C%22k%22%3A%22daterange%22%2C%22v%22%3A%222018-11-28%2C2018-12-04%22%7D%2C%7B%22t%22%3A%22select%22%2C%22k%22%3A%22statistics_type%22%2C%22v%22%3A%22deploy_coverage%22%7D%2C%7B%22t%22%3A%22select%22%2C%22k%22%3A%22key%22%2C%22v%22%3A%22value1%22%7D%2C%7B%22t%22%3A%22select%22%2C%22k%22%3A%22cycle%22%2C%22v%22%3A%22day%22%7D%5D&showx_token=gr-release&showx_user=wanshuo | pass   | measure_site |
 
 **Command Test**
 
