@@ -1,4 +1,4 @@
-<img align="left" src="assets/image-20210604203254376.png" alt="image-20210604203254376" style="zoom:40%;" />
+
 
 # Table of contents
 
