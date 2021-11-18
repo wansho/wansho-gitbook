@@ -14,16 +14,11 @@
     }
   },
 
-  "plugins": ["advanced-emoji", "simple-page-toc", "-lunr", "-search", "search-plus", "prism", "-highlight", "github", "github-buttons", "katex", "ace", "include-codeblock", "splitter", "tbfed-pagefooter", "anchors", "sitemap-general", "copy-code-button"],
+  "plugins": ["advanced-emoji", "simple-page-toc", "-lunr", "-search", "search-plus", "github", "github-buttons", "ace"],
   "pluginsConfig": {
     "simple-page-toc": {
 		"maxDepth": 3,
 		"skipFirstH1": true
-	},
-	"prism": {
-		"css": [
-			"prism-themes/themes/prism-base16-ateliersulphurpool.light.css"
-		]
 	},
 	"github": {
         "url": "https://github.com/wansho"
@@ -36,19 +31,7 @@
 			"fork"
 		],
 		"size": "small"
-	},
-	"include-codeblock": {
-		"template": "ace",
-		"unindent": "true",
-		"theme": "monokai"
-	},
-	"tbfed-pagefooter": {
-        "copyright": "Copyright © wanshuo",
-        "modify_label": "该文件修订时间：",
-        "modify_format": "YYYY-MM-DD HH:mm:ss"
-    },
-	"sitemap-general": {
-		"prefix": "http://book.wansho.top"
 	}
   }
+}
 }

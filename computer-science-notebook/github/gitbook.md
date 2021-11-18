@@ -98,13 +98,19 @@
 
    ```shell
    gitbook -V
-   # 会 Installing GitBook 3.2.3
+   # 会 Installing GitBook 3.2.3，顺带着安装 book.json 中的插件，非常耗时，等一个晚上
    ```
 
-5. 生成静态文件
+5. 找到 `~/.gitbook/versions/3.2.3/lib/output/website/copyPluginAssets.js` 文件,然后找到这个文件里面的所有的confirm配置项(一共2个地方),将原来的值 true 更改为 false.
+
+   `confirm: false`
+   
+   一共有2个地方,更改一下就可以了
+
+5. 运行 gitbook 服务器
 
    ```shell
-   gitbook build repo-dir --output=静态文件生成的文件夹
+   gitbook serve
    ```
 
    
