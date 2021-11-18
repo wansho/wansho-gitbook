@@ -17,16 +17,23 @@ shell 提供用户操作系统的接口
 2. 方便远程管理
 
 **shell 的种类**
-bourne again shell, C shell, k shell, tcsh, bourne shell(sh)
-Linux 使用 bourne again shell，即 bash, bash 兼容 sh
+bourne again shell, C shell, k shell, tcsh, bourne shell(sh, zsh
+Linux 默认使用 bourne again shell (bash)，即 bash, bash 兼容 sh
 
 可以利用 `cat /etc/shells` 命令查看 linux 提供的 shell，默认使用 bash 
 
-**查看当前所用 shell**：
+查看当前所用 shell：
 
 ```shell
 echo $SHELL
 ```
+
+| shell | 全称                   | 介绍                                      |
+| ----- | ---------------------- | ----------------------------------------- |
+| sh    | Bourne shell           | unix 默认 shell                           |
+| bash  | GNU Bourne-Again SHell | linux 默认 shell，兼容 sh                 |
+| csh   |                        |                                           |
+| zsh   | Z shell                | macOS 默认 shell，Oh My Zsh 是 zsh 的主题 |
 
 
 
