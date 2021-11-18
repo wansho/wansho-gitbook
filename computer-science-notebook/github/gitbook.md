@@ -68,7 +68,7 @@
 
 ## gitbook 周边
 
-* [gitbook2pdf](https://github.com/fuergaosi233/gitbook2pdf) 将 gitbook 转成 pdf
+* [gitbook2pdf](https://github.com/fuergaosi233/gitbook2pdf) 将 gitbook 转成 pdf，亲测能用，不支持 https
 * [ gitbook-use](https://github.com/zhangjikai/gitbook-use) 记录GitBook的一些配置及插件信息
 
 ## gitbook 本地部署
