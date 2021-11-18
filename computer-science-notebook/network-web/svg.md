@@ -28,44 +28,53 @@ SVG 是一种基于 XML 语法的图像格式，全称是可缩放矢量图（Sc
 
 SVG 文件可以直接插入网页，成为 DOM 的一部分，然后用 JavaScript 和 CSS 进行操作。
 
-> ```html
-> <!DOCTYPE html>
-> <html>
-> <head></head>
-> <body>
-> <svg
->   id="mysvg"
->   xmlns="http://www.w3.org/2000/svg"
->   viewBox="0 0 800 600"
->   preserveAspectRatio="xMidYMid meet"
-> >
->   <circle id="mycircle" cx="400" cy="300" r="50" />
-> <svg>
-> </body>
-> </html>
-> ```
+```html
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <svg
+             id="mysvg"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 800 600"
+             preserveAspectRatio="xMidYMid meet"
+             >
+            <circle id="mycircle" cx="400" cy="300" r="50" />
+        <svg>
+    </body>
+</html>
+```
 
 上面是 SVG 代码直接插入网页的例子。
 
-SVG 代码也可以写在一个独立文件中，然后用`<img>`、`<object>`、`<embed>`、`<iframe>`等标签插入网页。
+SVG 代码也可以写在一个独立文件中，然后用
 
-> ```xml
-> <img src="circle.svg">
-> <object id="object" data="circle.svg" type="image/svg+xml"></object>
-> <embed id="embed" src="icon.svg" type="image/svg+xml">
-> <iframe id="iframe" src="icon.svg"></iframe>
-> ```
+```html
+<iframe> <embed> <object> <img>
+```
+
+等标签插入网页。
+
+```html
+<img src="circle.svg">
+<object id="object" data="circle.svg" type="image/svg+xml"></object>
+<embed id="embed" src="icon.svg" type="image/svg+xml">
+<iframe id="iframe" src="icon.svg"></iframe>
+```
 
 CSS 也可以使用 SVG 文件。
 
-> ```css
-> .logo {
->   background: url(icon.svg);
-> }
-> ```
+```css
+.logo {
+background: url(icon.svg);
+}
+```
+
+
 
 SVG 文件还可以转为 BASE64 编码，然后作为 Data URI 写入网页。
 
-> ```xml
-> <img src="data:image/svg+xml;base64,[data]">
-> ```
+```html
+<img src="data:image/svg+xml;base64,[data]">
+```
+
