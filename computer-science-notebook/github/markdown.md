@@ -158,10 +158,10 @@ description: A very simple way to add structured data to a page.
 需要注意的是 **desc 并不只限于文本**，也可以插入一个图片，GitHub badge 的原理就是这样的。
 
 ```
-[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
+[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg)](https://travis-ci.org/chinese-poetry/chinese-poetry)
 ```
 
-[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
+[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg)](https://travis-ci.org/chinese-poetry/chinese-poetry)
 
 Github Readme Stats 的原理也是这样的：
 
@@ -220,7 +220,7 @@ https://img.shields.io/github/forks/yzhao062/anomaly-detection-resources.svg
 https://img.shields.io/github/license/yzhao062/anomaly-detection-resources.svg
 https://img.shields.io/badge/link-996.icu-red.svg
 
-[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg?branch=master)](https://travis-ci.org/chinese-poetry/chinese-poetry)
+[![Build Status](https://travis-ci.org/chinese-poetry/chinese-poetry.svg)](https://travis-ci.org/chinese-poetry/chinese-poetry)
 [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://github.com/jackeyGao/chinese-poetry/blob/master/LICENSE)
 [![](https://img.shields.io/github/contributors/chinese-poetry/chinese-poetry.svg)](https://github.com/chinese-poetry/chinese-poetry/graphs/contributors)![项目徽章举例](https://img.shields.io/github/license/wansho/Last-Statement-of-Death-Row.svg)
 ```

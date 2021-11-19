@@ -64,7 +64,7 @@ chrome.tabs.query(object queryInfo , function callback )
    -- Options Page
 ```
 
-![框架](http://assets.processon.com/chart_image/5c98d6b5e4b0f88919bbbfd0.png?_=1554684741016)
+![框架](http://assets.processon.com/chart_image/5c98d6b5e4b0f88919bbbfd0.png)
 
 ### Background Script 
 
