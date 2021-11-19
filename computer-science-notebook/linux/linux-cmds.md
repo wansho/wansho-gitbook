@@ -464,7 +464,7 @@ find ./ -type f -name "*.txt" -print | xargs ls -l # 不需要加 \; 因为是�
 
 **whereis 和 locate**
 
-```
+```shell
 whereis 和 locate 是使用数据库来搜寻数据，类似于 everything。但是 whereis 和 locate 命令有一个缺点，对于新生成的文件和已删除的文件，不能及时的更新和维护数据库，所以可能导致新的文件查不到。
 实际情况下，locate 的效果要优于 whereis
 
