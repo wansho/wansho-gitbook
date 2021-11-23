@@ -861,7 +861,7 @@ git config --global --unset https.proxy
 快捷键：shift + insert
 ```
 
-### push 不输入密码
+### push / pull 不输入密码
 
 ```shell
 git config --global credential.helper store

@@ -79,6 +79,7 @@
   * [认证和授权](computer-science-notebook/cryptography-web-security/authentication-authorization.md)
   * [SSO 单点登录](computer-science-notebook/cryptography-web-security/single-sign-on.md)
   * [OAuth](computer-science-notebook/cryptography-web-security/oauth.md)
+  * [jwt](computer-science-notebook/cryptography-web-security/jwt.md)
   * [安全漏洞](computer-science-notebook/cryptography-web-security/security-vulnerability.md)
 * [计算机网络相关知识](computer-science-notebook/network-web/README.md)
   * [计算机网络小知识集合](computer-science-notebook/network-web/computer-network.md)
