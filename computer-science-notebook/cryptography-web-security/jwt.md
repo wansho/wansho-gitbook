@@ -137,9 +137,13 @@ jwt 分为三段：
 
 <img align="left" src="assets/image-20211123161342490.png" alt="image-20211123161342490" style="zoom:80%;" />
 
+
+
 方案二：应用认证方案
 
 <img align="left" src="assets/image-20211123161648504.png" alt="image-20211123161648504" style="zoom:80%;" />
+
+
 
 可以通过自定义注解，利用 AOP 做验签。
 
