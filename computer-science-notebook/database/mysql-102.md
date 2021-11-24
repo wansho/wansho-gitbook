@@ -788,6 +788,58 @@ Partition Pruning 还可以对在 partition table 时采用 [`YEAR()`](https://d
 
 
 
+## MySQL 执行计划 explain
+
+explain 命令用来分析 sql 的执行。
+
+```sql
+explain select * from users where name = "wanshuo";
+```
+
+![image-20211124090417979](assets/image-20211124090417979.png)
+
+```sql
+explain select * from users where id = "08e83a509fbe4c3e9010c7c5da984db0";
+```
+
+![image-20211124093408525](assets/image-20211124093408525.png)
+
+```sql
+explain select * from blog_browse_history where chapter_id > 2700;
+```
+
+![image-20211124094340040](assets/image-20211124094340040.png)
+
+```sql
+explain select * from blog_browse_history where chapter_id > 270;
+-- 并没有走索引，查询优化器根据索引数据的分布情况，判断是走索引查询，还是全表扫描，这里是走全表扫描了，所以并不是配置了索引，就一定走索引
+```
+
+![image-20211124095113735](assets/image-20211124095113735.png)
+
+* id: 自增序号
+* select_type: 查询类型，simple 代表直接对表的简单查询
+* table: 查询哪张表
+* partitions: 坐落分区，数据分区存储的时候使用
+* type: 索引检索类型
+  * const 表示针对主键或唯一索引的等值查询扫描，最多只返回一行数据
+  * system 表示表中只有一条数据，这个类型是特殊的 const 类型
+  * all 表示全表扫描，性能最差的查询，我们的查询不应该出现全表扫描
+  * index 表示全索引扫描，和 all 类似，不过 all 是全表扫描，而 index 是扫描所有的索引，包括主键索引和普通索引。`index` 类型通常出现在: 所要查询的数据直接在索引树中就可以获取到, 而不需要扫描数据。当是这种情况时, Extra 字段 会显示 `Using index`
+  * range 表示使用索引范围查询, 通过索引字段范围获取表中部分数据记录. 这个类型通常出现在 =, <>, >, >=, <, <=, IS NULL, <=>, BETWEEN, IN() 操作中。当 `type` 是 `range` 时, 那么 EXPLAIN 输出的 `ref` 字段为 NULL, 并且 `key_len` 字段是此次查询中使用到的索引的最长的那个
+  * ref, eq_ref 通常表示多表 join 查询
+* possible_keys: 与当前查询相关备选的索引，primary 代表主键
+* key: 代表当前实际使用的索引
+* key_len: 代表单个索引值的长度
+* ref: 显示使用哪个列或者常数与 key 一起从表中选择行
+* rows: 本次查询扫描的行数，注意，这个值可能与最终结果不一致，扫描行数越少越好
+* filter: 过滤器
+* extra: 扩展条件的详细信息。
+  * using index condition 表示通过索引筛选满足的 chapter_id
+  * using MRR 表示默认是按照主键索引升序排序
+  * using where 表示直接扫描数据行进行筛选
+  * using filesort 表示使用文件排序，非常低效
+
 
 
 
