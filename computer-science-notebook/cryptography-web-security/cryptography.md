@@ -50,7 +50,7 @@ ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
 
 # -f 指定生成的文件名，生成 mykey 和 mykey.pub
 ssh-keygen -t dsa -f mykey
-
+c
 # 检查某个主机名是否在 known_hosts 中
 ssh-keygen -F example.com
 
