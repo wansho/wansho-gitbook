@@ -216,6 +216,7 @@ OpenSSH 规定，将客户机的公钥上传到服务机的对应用户的 `.ssh
 2. authorized_keys 的权限要改成 644
 3. `.ssh` 的权限要改成 700
 4. `/home/work` 目录 必须是 755权限
+4. 重启 `systemctl restart sshd`
 5. 如果不能实现免密登录，去看一下 `tail -f /var/log/secure` 日志
 
 不能免密登录的终极解决方案：
