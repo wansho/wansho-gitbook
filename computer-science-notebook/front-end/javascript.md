@@ -809,6 +809,8 @@ A **closure** is the combination of a function and the scope object in which it 
 
 [[Several excellent introductions to closures]](http://stackoverflow.com/questions/111102/how-do-javascript-closures-work)
 
+[如何改善函数的可读性](https://www.tinyblog.dev/blog/2020-07-13-javascript-roro-pattern/)
+
 ## JS History
 
 * [[JS-Third-Age]](https://www.swyx.io/writing/js-third-age/)

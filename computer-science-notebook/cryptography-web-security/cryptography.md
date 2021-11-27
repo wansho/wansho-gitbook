@@ -105,6 +105,8 @@ openssl rsautl -decrypt -inkey ~/.ssh/id_rsa -in myEncryptedMessage.txt -out myD
 
 hash 算法通常用于生成消息的**摘要**，这个摘要能代表这个消息，是独一无二的。hash 函数是不可逆的。
 
+摘要类似于一个人的身份证号，给一个人进行 hash，生成一个独一无二的身份证号。
+
 作用：
 
 * 用于表示这条消息没有被修改过

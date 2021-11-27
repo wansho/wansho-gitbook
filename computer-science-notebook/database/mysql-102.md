@@ -182,7 +182,7 @@ MySQL 5.7 的存储引擎默认是 InnoDB，值得一提的是，mysql 支持内
 
 #### 查看 MySQL 版本
 
-```
+```mysql
 -- 在 bash 中
 mysql --help | findstr Distrib
 -- 在 MySQL 中
@@ -704,7 +704,7 @@ This is known as horizontal partitioning—that is, different rows of a table ma
 #### range partition
 
 ```mysql
-# 创建带有分区的表
+-- 创建带有分区的表
 CREATE TABLE tr (id INT, name VARCHAR(50), purchased DATE) PARTITION BY RANGE( YEAR(purchased) ) (
         PARTITION p0 VALUES LESS THAN (1990),
         PARTITION p1 VALUES LESS THAN (1995),
@@ -714,7 +714,7 @@ CREATE TABLE tr (id INT, name VARCHAR(50), purchased DATE) PARTITION BY RANGE( Y
         PARTITION p5 VALUES LESS THAN (2015)
 );
 
-# 正常插入数据
+-- 正常插入数据
 INSERT INTO tr VALUES
 (1, 'desk organiser', '2003-10-15'),
 (2, 'alarm clock', '1997-11-05'),
@@ -727,17 +727,17 @@ INSERT INTO tr VALUES
 (9, 'study desk', '2006-09-16'),
 (10, 'lava lamp', '1998-12-25');
 
-# 从某个分区获取数据
+-- 从某个分区获取数据
 SELECT * FROM tr PARTITION (p2);
 
-# 删除某个分区，注意：在删除某个分区后，该分区的数据也会对应的被删除
+-- 删除某个分区，注意：在删除某个分区后，该分区的数据也会对应的被删除
 ALTER TABLE tr DROP PARTITION p2;
 
-# 对于在创建时，没有设置 partition 的 table，alter 初次设置其 partition 的命令
+-- 对于在创建时，没有设置 partition 的 table，alter 初次设置其 partition 的命令
 ALTER TABLE tr
     PARTITION BY HASH(id)
     PARTITIONS 8;
-# 同上
+-- 同上
 ALTER TABLE senti_weibo_realtime_weibo PARTITION BY RANGE( to_days(post_time) ) (
 
 	PARTITION p0 VALUES LESS THAN (to_days("2016-01-01")),
@@ -790,7 +790,7 @@ Partition Pruning 还可以对在 partition table 时采用 [`YEAR()`](https://d
 
 ## MySQL 执行计划 explain
 
-explain 命令用来分析 sql 的执行。
+explain 命令用来剖析 sql 的执行。
 
 ```sql
 explain select * from users where name = "wanshuo";
@@ -840,9 +840,11 @@ explain select * from blog_browse_history where chapter_id > 270;
   * using where 表示直接扫描数据行进行筛选
   * using filesort 表示使用文件排序，非常低效
 
+## MySQL 执行计划 explain 多表
 
+多表查询类似于嵌套 for 循环，最外层的 for 循环尤为关键，最外层的 for 循环表也被叫做驱动表。
 
-
+驱动表选哪一个，是MySQL 根据查询优化器自己选择的。
 
 
 
