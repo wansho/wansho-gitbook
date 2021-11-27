@@ -2,6 +2,18 @@
 
 [TOC]
 
+## Docker 我的理解
+
+### Docker 是什么
+
+* 镜像是静态的，容器是跑起来的镜像，是动态的
+* Dockerfile 是创建镜像的配置文件
+* DockerCompose 是批量运行容器的配置文件
+
+### Docker 使用感悟
+
+* 在安装版本控制软件时，尝试过 gitlab 手动安装和 gogs docker 安装，docker 真的太丝滑了
+
 ## Introduction
 
 Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. 
@@ -433,6 +445,8 @@ docker run的命令中通过 -v 参数挂载文件或目录到容器中：
 
 ## Dockerfile 自定义镜像
 
+dockerfile 是创建镜像的配置文件。
+
 ### 镜像结构
 
 镜像是将应用程序及其需要的系统函数库、环境、配置、依赖打包而成。
@@ -563,6 +577,8 @@ docker run的命令中通过 -v 参数挂载文件或目录到容器中：
 3. 基础镜像可以是基本操作系统，如Ubuntu。也可以是其他人制作好的镜像，例如：java:8-alpine
 
 ## DockerCompose 
+
+DockerCompose 是容器的批量运行脚本。
 
 Docker Compose可以基于 Compose 文件帮我们快速的部署分布式应用，而无需手动一个个创建和运行容器！
 
@@ -843,6 +859,8 @@ docker push 192.168.150.101:8080/nginx:1.0
 ```sh
 docker pull 192.168.150.101:8080/nginx:1.0 
 ```
+
+## -------------------------------------------
 
 ## CLI
 
