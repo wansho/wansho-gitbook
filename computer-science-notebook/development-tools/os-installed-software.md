@@ -23,6 +23,8 @@
 * idea
 * nodejs
 * java
+* ssh WindTerm
+* Docker
 
 ## 工具
 
@@ -45,5 +47,7 @@
 
 ## Mac 专属
 
-
+* homebrek
+* iTerm
+* oh-my-zsh
 
