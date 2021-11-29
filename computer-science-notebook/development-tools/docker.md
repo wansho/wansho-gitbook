@@ -4,6 +4,27 @@
 
 ## Docker 我的理解
 
+### 常用命令
+
+```shell
+# 查看正在运行的 docker 容器
+docker ps
+
+# 删除容器
+docker rm container-name / hash
+
+# 停止容器
+docker stop container-name / hash
+
+# 开启容器
+docker start container-name
+
+# 进入容器 mariadb 执行命令
+docker exec -it mariadb /bin/bash
+```
+
+
+
 ### Docker 是什么
 
 * 镜像是静态的，容器是跑起来的镜像，是动态的
@@ -13,6 +34,35 @@
 ### Docker 使用感悟
 
 * 在安装版本控制软件时，尝试过 gitlab 手动安装和 gogs docker 安装，docker 真的太丝滑了
+* 每一个程序员，都应该像掌握 git 一样，熟练掌握 docker
+* docker 将每一个软件的安装部署启动环节进行封装，相当于用 `run start stop` 等命令统一了各种软件的安装部署，属实牛批
+
+### docker 使用注意事项
+
+* container 是从镜像生成的，但是  container 也是一个实体，container 关闭后，仍然是存在的，是持久化的
+
+### demo
+
+```shell
+docker run \
+--name mariadb \
+-v /root/mariadb/config:/etc/mysql/conf.d \
+-v /root/mariadb/data:/var/lib/mysql \
+--env MARIADB_USER=his \
+--env MARIADB_PASSWORD=His@9700 \
+--env MARIADB_ROOT_PASSWORD=His@9700 \
+-dp 3307:3306 \
+mariadb:10.3.28
+
+# --name: 容器名称
+# -v xxx:yyy: 把本地 xxx 目录挂载到容器内的 yyy 目录
+# --env: mariadb 配置
+# -d: detached 后端执行
+# -p 3307:3306: 将容器内的 3306 端口映射到宿主机的 3307 端口，可以通过 3307 端口访问容器内的 mariadb
+# mariadb:10.3.28: 从哪一个镜像生成容器，如果本地没有这个镜像，则会从远程仓库拉取
+```
+
+
 
 ## Introduction
 
@@ -149,6 +199,19 @@ docker push
 docker save
 dokcer load
 ```
+
+
+docker save/load
+
+```shell
+# -o: output
+docker save -o mariadb-docker-image.tar mariadb:10.3.28
+
+# -i: input
+docker load --input mariadb-docker-image.tar
+```
+
+
 
 ## Docker 容器
 
@@ -433,7 +496,7 @@ vi index.html
 docker run的命令中通过 -v 参数挂载文件或目录到容器中：
 
 - -v volume名称:容器内目录
-- -v 宿主机文件:容器内文
+- -v 宿主机文件:容器内文件
 - -v 宿主机目录:容器内目录
 
 数据卷挂载与目录直接挂载的

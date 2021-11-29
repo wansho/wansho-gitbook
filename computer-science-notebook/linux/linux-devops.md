@@ -64,6 +64,37 @@ ExecStartPost字段：启动服务之后执行的命令
 ExecStopPost字段：停止服务之后执行的命令
 ```
 
+### systemctl 
+
+```shell
+# 列出当前系统服务的状态
+systemctl list-units
+
+# 查看服务是否开机自启
+systemctl list-unit-files
+
+# 查看指定服务的状态
+systemctl status xxx
+
+# 开启指定服务
+systemctl start xxx           
+
+# 从新启动服务
+systemctl restart sshd          
+
+# 设定指定服务开机开启
+systemctl enable sshd           
+
+# 设定指定服务开机关闭
+systemctl disable sshd          
+
+# 使指定服务从新加载配置
+systemctl reload sshd           
+
+```
+
+
+
 ### journalctl 
 
 指定某个服务的日志进行查看
