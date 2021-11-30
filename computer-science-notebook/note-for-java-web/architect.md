@@ -2,6 +2,32 @@
 
 [TOC]
 
+## 名词解释
+
+| 名词                       | 解释                                                         | 备注                                                         |
+| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| jar                        | Java ARchive                                                 |                                                              |
+| war                        | Java Web Application ARchive                                 |                                                              |
+| jsp                        | Java Server Pages，html + `<% ... %>`，jsp 最终会被转换成 Servlet |                                                              |
+| Java Servlet               | 能处理HTTP请求，发送HTTP响应的小程序                         |                                                              |
+| Tomcat                     | JSP 程序运行容器                                             | Servlet容器                                                  |
+| POM                        | Project Object Model                                         | 胖母                                                         |
+| Maven                      | 项目配置                                                     | 中文译名：专家，读作 妹文                                    |
+| Gradle                     | 功能和 Maven 类似                                            |                                                              |
+| CRUD                       | create retrieve update delete                                |                                                              |
+| self-contained application | 把环境依赖一起打包到程序中的应用，例如 electron 应用         |                                                              |
+| JDBC                       | Java Database Connectivity is an [application programming interface](https://en.wikipedia.org/wiki/Application_programming_interface) (API) for Java |                                                              |
+| JavaBean                   | 若干`private`实例字段； 通过`public`方法来读写实例字段。     | 就是对一个对象的封装                                         |
+| component                  | 组件                                                         |                                                              |
+| DAO                        | Data Access Object                                           |                                                              |
+| ORM                        | Object-Relational Mapping                                    | [Hibernate](https://hibernate.org/) 就是一个 ORM 框架        |
+| JPA                        | Java Persistence API                                         | JPA 也是一个 Java 的 ORM 框架                                |
+| MyBatis                    |                                                              | 半自动化ORM框架                                              |
+| POJO                       | Plain Old Java Object                                        |                                                              |
+| YAML                       | Yet Anohter Markup Language                                  | yaml 中单引号会转义，双引号不会转义，单引号会将 `\n` 作为字符串输出，双引号会将 `\n` 作为换行输出 |
+
+
+
 ## 数据库相关
 
 ### 业务相关

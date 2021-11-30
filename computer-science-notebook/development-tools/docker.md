@@ -36,6 +36,7 @@ docker exec -it mariadb /bin/bash
 * 在安装版本控制软件时，尝试过 gitlab 手动安装和 gogs docker 安装，docker 真的太丝滑了
 * 每一个程序员，都应该像掌握 git 一样，熟练掌握 docker
 * docker 将每一个软件的安装部署启动环节进行封装，相当于用 `run start stop` 等命令统一了各种软件的安装部署，属实牛批
+* 任何封装在 Docker 中的服务，都不用安装到系统中了，以往我们如果想要用 mysql，还需要安装 mysql，现在 docker 的镜像屏蔽了安装这个步骤，用 mysql 的时候，只要跑一个 mysql 容器就行了，随用随关
 
 ### docker 使用注意事项
 

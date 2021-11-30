@@ -89,3 +89,34 @@ public class EntityGraphDto {
 
 
 
+## Commons BeanUtils
+
+Bean 工具类
+
+```yaml
+<dependency>
+    <groupId>commons-beanutils</groupId>
+    <artifactId>commons-beanutils</artifactId>
+    <version>1.9.3</version>
+</dependency>
+```
+
+```java
+BeanUtils.populate(userInfoDto, result.getData());
+// b 拷贝到 a
+BeanUtils.copyProperties(a, b);
+```
+
+
+
+## springframework BeanUtils
+
+
+
+```java
+// a 拷贝到 b
+BeanUtils.copyProperties(a, b);
+```
+
+
+
