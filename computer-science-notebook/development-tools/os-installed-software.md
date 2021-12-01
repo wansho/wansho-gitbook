@@ -100,8 +100,11 @@ https://macwk.com/
 
 ### Docker
 
+docker 适合安装服务和中间件
+
 * mysql
 * redis
+* nginx
 
 
 
@@ -138,5 +141,11 @@ softwares
 code
 nr-code
 doc
+	nr
+	mydoc
+docker
+	config
+	data
+	
 ```
 

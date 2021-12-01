@@ -173,6 +173,7 @@
   * [Hexo 主题定制](computer-science-notebook/code-practical-experience/make-hexo-theme.md)
 * [开发工具入门与技术栈](computer-science-notebook/development-tools/README.md)
   * [技术栈](computer-science-notebook/development-tools/technology-stack.md)
+  * [Web3.0](computer-science-notebook/development-tools/web3.md)
   * [QT](computer-science-notebook/development-tools/qt.md)
   * [VSCode](computer-science-notebook/development-tools/vscode.md)
   * [Docker](computer-science-notebook/development-tools/docker.md)
