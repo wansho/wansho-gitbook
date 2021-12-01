@@ -1,320 +1,849 @@
-# Architect
+#  微服务
 
 [TOC]
 
-## 名词解释
+## 甚么是微服务
 
+微服务是一种经过良好架构设计的分布式架构方案。
 
+![image-20210826154834131](assets/image-20210826154834131.png)
 
-## 数据库相关
+![image-20210826155201843](assets/image-20210826155201843.png)
 
-### 业务相关
+微服务的架构特征：
 
-## {0}不要用外键
+- 单一职责：微服务拆分粒度更小，每一个服务都对应唯一的业务能力，做到单一职责
+- 自治：团队独立、技术独立、数据独立，独立部署和交付
+- 面向服务：服务提供统一标准的接口，与语言和技术无关
+- 隔离性强：服务调用做好隔离、容错、降级，避免出现级联问题
 
-## {0}任何表都需要设置 ID 主键
+<img src="assets/image-20210826161312535.png" alt="image-20210826161312535" style="zoom:80%;" />
 
-## {0}所有业务相关的数据，不能直接删除，因为后面不知道啥时候还会用到，可以设置一个删除标志位
+<img src="assets/image-20210826161412062.png" alt="image-20210826161412062" style="zoom:80%;" />
 
-## {0}不要使用 uuid 作为主键，uuid 作为主键的时候，在进行数据插入的时候，对于磁盘 IO 的压力是非常大的
+## 服务拆分
 
-### MySQL 服务器硬件选型
+微服务拆分的几个原则：
 
-- MySQL 不支持多核同时运算一条 sql
-- CPU 选择原则
-  - 对于高并发的场景，CPU 的核心数比频率更重要
-  - 对于计算密集型场景，CPU 频率比核心数更重要
-- 内存选择原则
-  - InnoDB 引擎会将索引和数据缓存到内存中，速度很快，理想的选择是服务器内存大于数据总量
-- 硬盘选择原则
-  * 优先用 SSD 固态硬盘
+- 业务解耦：不同微服务，不要重复开发相同业务
+- 数据库解耦：微服务数据独立，不要访问其它微服务的数据库
+- 微服务可以将自己的业务暴露为接口，供其它微服务调用
 
-### 列数据库
+## 微服务远程调用
 
-应用场景：批量处理、超大规模即时查询（适用于高查询场景，不适合高增删改场景）
+使用 RestTemplate 向其他服务发起 HTTP 请求。
 
-列式存储数据库：HBase, Cassandra(卡三桌)
+远程调用的问题：
 
-对于传统的行数据库来说，数据是按照行进行**分散存储**的，在读取数据的时候，磁盘要去寻找匹配的行，从而产生多次 IO，而列数据库的数据是**连续存储**的，IO 消耗很小。
+* 服务消费者该如何获取服务提供者的地址信息？
+* 如果有多个服务提供者，消费者该如何选择？
+* 消费者如何得知服务提供者的健康状态？
 
-| 行数据库存储                                                 | 列数据库存储                                                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![image-20210923195912024](assets/image-20210923195912024.png) | ![image-20210923195831697](assets/image-20210923195831697.png) |
+## Eureka 注册中心
 
-Cassandra 官方宣称其速度比 MySQL 快 100 倍。
+1.搭建EurekaServer
 
-**列数据库速度快的原因**：
+* 引入eureka-server依赖
 
-- 不读取无效数据
+* 添加 @EnableEurekaServer 注解
 
-  <img align="left" src="assets/image-20210923200225125.png" alt="image-20210923200225125" style="zoom:50%;" />
+* 在 application.yml 中配置 eureka 地址
 
-- 数据压缩比大
+2.服务注册
 
-  数据相关性大，连续存储的数据，类型都是一样的，可以采用一些算法进行压缩
+* 引入 eureka-client 依赖
 
-**列式数据库遗留问题**
+* 在 application.yml 中配置 eureka 地址
 
-- 如何高效新增 —> 多个列族，并发写磁盘
-- 如何高效更新 —> Cansandra 添加一个新版本号的数据
+3.服务发现
 
-- 如何高效删除 —> 添加删除标记 keyType=Delete（逻辑删除）
+* 给RestTemplate添加@LoadBalanced注解
 
-### 模糊查询
+* 用服务提供者的服务名称远程调用
 
-MySQL5.7 开始提供 Ngram 全文检索
+### 作用
 
-传统的 like 在进行检索的时候，索引可能会失效，导致全表检索
+Eureka 的作用：
 
-```sql
-create index idx_title on article(title)
-# 可能用到索引,看索引选择性
-select * from article where title like ‘Java%’
-# 一定不会用到索引
-select * from article where title like ‘%Java’
-select * from article where title like ‘%Java%’
+<img src="assets/image-20210826164713881.png" alt="image-20210826164713881" style="zoom:80%;" />
+
+### 搭建 Eureka Server
+
+Eureka Server 不是一个独立的软件，依赖于一个独立的微服务，以服务的形式呈现。
+
+1. 引入 eureka-server 依赖
+2. 添加 @EnableEurekaServer 注解
+3. 在 application.yml 中配置 eureka 地址
+
+引入 SpringCloud 为 eureka 提供的 starter 依赖：
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+</dependency>
 ```
 
-替代方法：将数据同步到 Elasticsearch 进行复杂的模糊查询。但是这个方法也会带来更高的成本：
+给 eureka-server 服务编写一个启动类，一定要添加一个 @EnableEurekaServer 注解，开启 eureka 的注册中心功能：
 
-数据一致性如何保证？ElasticSearch高可用架构采用哪种方案？谁来负责维护 ElasticSearch？
+```java
+package cn.itcast.eureka;
 
-MySQL 给出了折中的方法，从 MySQL 5.7.6 开始，MySQL 内置了 ngram 全文解析器，允许对短文本进行全文检索查询，以替代 like 关键字，对于复杂业务场景的全文检索查询，还是要用 ES
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
-在 MySQL 5.7.6 之前，全文索引只支持英文全文索引，不支持中文全文索引，需要利用分词器把中文段落预处理拆分成单词，然后存入数据库。从 **MySQL 5.7.6** 开始，MySQL内置了 ngram 全文解析器，用来**支持中文**、日文、韩文分词。本文使用的MySQL 版本是 **5.7.24**，**InnoDB**数据库引擎。  
+@SpringBootApplication
+@EnableEurekaServer
+public class EurekaApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaApplication.class, args);
+    }
+}
+```
 
-#### UUID
+编写一个 application.yml 文件，内容如下：
 
-接口规则：
+```yaml
+server:
+  port: 10086
+spring:
+  application:
+    name: eureka-server
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://127.0.0.1:10086/eureka # 将自己也注册到 Eureka Server
+```
 
-<img align="left" src="assets/image-20211005105623986.png" alt="image-20211005105623986" style="zoom:50%;" />
 
-UUID 接口有五种实现算法，最常用的是基于随机数的 uuid 生成算法：
 
-- 完全随机生成，会存在极小概率重复的情况
-- 与外部环境无关，不涉及环境信息
-- 生成内容无序无规律
-- 目前的主流做法
+### 注册到 Eureka
 
-Java 的支持：
+下面，我们将 user-service 注册到 eureka-server 中去。
 
-<img align="left" src="assets/image-20211005110126284.png" alt="image-20211005110126284" style="zoom: 50%;" />
+在 user-service 的 pom 文件中，引入下面的 eureka-client 依赖：
 
-UUID 产生主键的问题：不支持趋势递增，影响索引效率
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+```
 
-B+ 数是一颗有序树，如果主键随机，则需要在插入数据的时候，频繁重构索引树，带来严重的效率问题
+在 user-service 中，修改 application.yml 文件，添加服务名称、eureka 地址：
 
-优化方法，有序的数字主键生成策略：
+```yaml
+spring:
+  application:
+    name: userservice
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+```
 
-- 美团 Leaf
-- 推特 Snowflake
+### 服务拉取
 
-### 缓存一致性
+服务拉取是基于服务名称获取服务列表，然后在对服务列表做负载均衡。
 
-如何保证缓存中的数据，和数据库中的数据，是一致的？
+1. 修改 OrderService 的代码，修改访问的 url 路径，用服务名代替ip、端口
 
-不要更新缓存，不要更新缓存，不要更新缓存！因为更新了缓存，可能导致和数据库中的数据不一致！
+   ```java
+   String url = "http://userservice/user/" + order.getUserId();
+   ```
 
-正确的做法：更新数据库，然后删除缓存重新加载！
+2. 在 order-service 项目的启动类 OrderApplication 中的 RestTemplate 添加**负载均衡**注解
 
-## 时区问题
+   ```java
+   @Bean
+   @LoadBalanced
+   public RestTemplate restTemplate() {
+       return new RestTemplate();
+   }
+   ```
 
-- UTC 世界时间
+   
 
-  世界时间比格林威治时间准，使用原子钟。
+### Ribbon 负载均衡
 
-  UTC+8就是国际时加八小时,是东八区时间,是北京时间。
+Ribbon 负载均衡是 SpringCloud 的一个组件， ，spring-cloud-starter-netflix-eureka-client 会自动引入 ribbon。
 
-- GMT 格林威治时间
+负载均衡的流程：
 
-时间解释：`2018-01-31T14:32:19Z`
+<img src="assets/image-20210826191057969.png" alt="image-20210826191057969" style="zoom:80%;" />
 
-T代表后面跟着是时间，Z代表0时区（相差北京时间8小时）
+通过定义IRule实现可以修改负载均衡规则，有两种方式：
 
-2021-09-27T10:45:15.343Z 表示世界时间，其中 343 是毫秒 1s = 1000ms
+1. 代码方式：在 order-service 中的 OrderApplication 类中，定义一个新的 IRule：
 
-## 分布式相关
+   ```java
+   @Bean
+   public IRule randomRule(){
+       return new RandomRule();
+   }
+   ```
 
-### raft 选举算法
+2. 配置文件方式：在 order-service 的 application.yml 文件中，添加新的配置也可以修改规则：
 
-分布式集群中，通常是有一个主节点的，确定主节点的算法，通常是 raft 算法。
+   ```java
+   userservice: # 给某个微服务配置负载均衡规则，这里是userservice服务
+     ribbon:
+       NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 负载均衡规则 
+   ```
 
-目前流行的组件：Consul，Nacos，Rocket MQ 底层都采用了 Raft 算法来确认集群的主节点。
 
-作用：在分布式集群架构下进行主节点的确认。
 
-### cap 定理
+Ribbon 默认是采用懒加载，即第一次访问时才会去创建 LoadBalanceClient，请求时间会很长。
 
-https://www.ruanyifeng.com/blog/2018/07/cap.html
+而饥饿加载则会在项目启动时创建，降低第一次访问的耗时，通过下面配置开启饥饿加载：
 
-分布式系统的三个指标：CAP 定理。
+```yaml
+ribbon:
+  eager-load:
+    enabled: true # 开启饥饿加载 
+    clients: 
+      - userservice # 指定对userservice这个服务饥饿加载
+```
 
-- C Consistency 一致性
 
-  Every read receives the most recent write or an error. 
 
-  每个分区的数据都是一致的。
+## Nacos 注册中心
 
-- A Availability 可用性
+nacos 有别于 eureka，nacos 有一个客户端（其实也是一个 jar 包）。Nacos 也使用 ribbon 做服务拉取和负载均衡。
 
-  Every request receives a (non-error) response, without the guarantee that it contains the most recent write. 
+Nacos 比 Eureka 多了一个配置管理，可以远程管理各个微服务的 yml 文件。
 
-  用户可以选择向 G1 或 G2 发起读操作。不管是哪台服务器，只要收到请求，就必须告诉用户，到底是 v0 还是 v1，否则就不满足可用性。
+### 服务注册
 
-- P Partition tolerance 分区容错性
+在 cloud-demo 父工程的pom文件中的`<dependencyManagement>`中引入 SpringCloudAlibaba 的依赖：
 
-  The system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes. 
+```xml
+<dependency>
+    <groupId>com.alibaba.cloud</groupId>
+    <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+    <version>2.2.6.RELEASE</version>
+    <type>pom</type>
+    <scope>import</scope>
+</dependency>
+```
 
-  指当网络出现分区的情况（即系统中的一部分节点无法和其他节点进行通信）分离的系统也能够正常运行。
+然后在user-service和order-service中的pom文件中引入 nacos-discovery 依赖：
 
-CAP 三个指标不可能同时满足。
+```xml
+<dependency>
+    <groupId>com.alibaba.cloud</groupId>
+    <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+</dependency>
+```
 
-<img align="left" src="assets/image-20211101201609822.png" alt="image-20211101201609822" style="zoom:50%;" />
+在 user-service 和 order-service 的 application.yml 中添加 nacos 地址：
 
-Consistency 和 Availability 的矛盾：
+```yaml
+spring:
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+```
 
-如果保证 G2 的一致性，那么 G1 必须在写操作时，锁定 G2 的读操作和写操作。只有数据同步后，才能重新开放读写。锁定期间，G2 不能读写，没有可用性不。如果保证 G2 的可用性，那么势必不能锁定 G2，所以一致性不成立。综上所述，G2 无法同时做到一致性和可用性。系统设计时只能选择一个目标。如果追求一致性，那么无法保证所有节点的可用性；如果追求所有节点的可用性，那就没法做到一致性。
+### 服务分级存储模型
 
-在什么场合，AP 高于 CP？
+将一个服务的多个实例，部署到多个机房。Nacos 引入了这个机房（地域）的概念。
 
-举例来说，发布一张网页到 CDN，多个服务器有这张网页的副本。后来发现一个错误，需要更新网页，这时只能每个服务器都更新一遍。一般来说，网页的更新不是特别强调一致性。短时期内，一些用户拿到老版本，另一些用户拿到新版本，问题不会特别大。当然，所有人最终都会看到新版本。所以，这个场合就是可用性高于一致性。（很多场合，不求一致性，但求高可用，别宕机）
+<img src="assets/image-20210826201700533.png" alt="image-20210826201700533" style="zoom:80%;" />
 
-一个场景，订单创建成功后，发短信告诉用户：
+服务调用尽可能选择本地集群的服务，跨集群调用延迟较高。本地集群不可访问时，再去访问其它集群。
 
-<img align="left" src="assets/image-20211101203121795.png" alt="image-20211101203121795" style="zoom: 67%;" />
+配置集群(cluster)，修改 user-service 的 application.yml 文件，添加集群配置：
 
-CP 的应用场景：并发小，数据一致性要求高，例如订单，银行转账，表现为订单创建后需要等待短信发送成功，用户体验差
+```yaml
+spring:
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        cluster-name: HZ # 集群名称
+```
 
-AP 的应用场景：表现为订单创建后，立即返回短信发送成功，无需等待短信是否发送成功，保证用户体验。但是 AP 有很大的问题，例如爆了一件神话装备，但是服务器宕机了，缓存没有写入磁盘，导致装备丢失。
+还需要配置以下 Ribbon 的负载均衡规则。修改 order-service 的application.yml文件，修改负载均衡规则：
 
-### BASE 最终一致性
+```yaml
+orderservice:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule # 负载均衡规则 
+```
 
-AP 缺乏数据一致性的解决方案：BASE，是对 CAP 的补充，让短信尽可能地发送成功
+NacosRule 负载均衡策略：
 
-- **Basically available**: reading and writing operations are available as much as possible (using all nodes of a database cluster), but may not be consistent (the write may not persist after conflicts are reconciled, the read may not get the latest write)
+* 优先选择同集群服务实例列表
 
-  基本可用，就是基本实现用户的基本价值和诉求，创建订单后立即返回，就是基本可用的体现
+* 本地集群找不到提供者，才去其它集群寻找，并且会报警告
 
-- **Soft-state**: without consistency guarantees, after some amount of time, we only have some probability of knowing the state, since it may not yet have converged
+* 确定了可用实例列表后，再采用随机负载均衡挑选实例
 
-  软状态，表示业务操作没有最终完成前的中间状态，订单创建后，短信记录未成功发送前就属于软状态，CP 没有软状态。
+**注意**：Ribbon 默认的负载均衡 Rule 是轮询，而 NacosRule 是随机的负载均衡方式。
 
-- **Eventually consistent**: If we execute some writes and then the system functions long enough, we can know the state of the data; any further reads of that data item will return the same value
+### 权重配置
 
-  最终一致性，表示通过技术手段，**过一段时间后**，让数据保持一致性。最终一致性只是对 AP 打补丁，不能 100% 实现 Consistency。
+实际部署中会出现这样的场景：
 
-最终一致性的方案：
+服务器设备性能有差异，部分实例所在机器性能较好，另一些较差，我们希望性能好的机器承担更多的用户请求。但默认情况 NacosRule是同集群内随机挑选，不会考虑机器的性能问题。因此，Nacos提供了权重配置来控制访问频率，权重越大则访问频率越高。在nacos控制台，找到user-service的实例列表，点击编辑，即可修改权重。
 
-- 重试
+Nacos 控制台可以设置实例的权重值，0~1之间。同集群内的多个实例，权重越高被访问的频率越高，权重设置为0则完全不会被访问。
 
-  <img align="left" src="assets/image-20211101203842618.png" alt="image-20211101203842618" style="zoom: 33%;" />
+**注意**：如果权重修改为0，则该实例永远不会被访问。
 
-- 数据校对程序
+权重配置，可以用于服务的平滑(用户无感知)升级，先把一个服务的权重设置为 0，然后设置升级服务，再把权重设置为 0.1，进行小流量测试。
 
-  <img align="left" src="assets/image-20211101204033346.png" alt="image-20211101204033346" style="zoom:33%;" />
+### 环境隔离 namespace
 
-- 人工介入
+Nacos 提供了 namespace 来实现环境隔离功能。
 
-  <img align="left" src="assets/image-20211101204144216.png" alt="image-20211101204144216" style="zoom:33%;" />
+- nacos 中可以有多个 namespace
+- namespace 下可以有 group、service等
+- 不同 namespace 之间相互隔离，例如不同 namespace 的服务互相不可见
 
-## 微服务架构设计经验
+<img align="left" src="assets/image-20210714000101516.png" alt="image-20210714000101516" style="zoom: 33%;" />
 
-https://www.bilibili.com/video/BV1jf4y1c7TZ
+默认情况下，所有service、data、group 都在同一个 namespace，名为 public。我们可以增加 dev, pro, test 等命名空间。
 
-软件开发没有银弹！
+给微服务配置 namespace：
 
-在著名软件著作《人月神话》中提到，软件世界没有“银弹”，这句话当然适用于架构领域，随这从单体架构过度到微服务架构，因为将原有系统打散，给系统增加了许多不稳定因素。
+例如，修改 order-service 的 application.yml 文件：
 
-### 微服务的坑
+```yaml
+spring:
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        cluster-name: HZ
+        namespace: 492a7d5d-237b-46a1-a99a-fa8e98e4b0f9 # 命名空间，填ID
+```
 
-**服务调用失败问题**
+### nacos 与 eureka 区别
 
-以往单体应用是在单机中进行进程内通信，通信稳定性相当好。但是打散为分布式系统后，变为进程间通信，往往这个过程还伴随着跨设备的网络访问，架构师在设计时必须考虑上下游系统因为网络因素无法通信的情况，要假设网络是不可靠的，并设计微服务在网络异常时也能进行符合预期的异常处理。以支付模块为例，用户支付成功后系统自动调用短信服务向用户手机发送“订单支付成功”的消息，此时架构师就必须假设短信服务在服务或者网络不可用时不会影响到订单业务的正常执行。 
+Nacos 和 Eureka 整体结构类似，服务注册、服务拉取、心跳等待，但是也存在一些差异：
 
-<img src="assets/image-20211007221514225.png" alt="image-20211007221514225" style="zoom:80%;" /> 
+<img align="left" src="assets/image-20210826205832777.png" alt="image-20210826205832777" style="zoom: 67%;" />
 
-**性能问题**
+- Nacos 与 eureka 的共同点
+  - 都支持服务注册和服务拉取
+  - 都支持服务提供者心跳方式做健康检测
 
-相比传统单体架构进程内通信，跨进程、跨网络的微服务通信在网络传输与消息序列化带来的延迟是不可被忽略的，尤其是在五个以上微服务间消息调用时，因为网络延迟对于实时系统的影响是是很大的。 
+- Nacos 与 Eureka 的区别
+  - Nacos 支持服务端主动检测提供者状态：临时实例采用心跳模式（默认情况下所有的实例都是临时实例），非临时实例采用主动检测模式
+  - 临时实例心跳不正常会被剔除，非临时实例则不会被剔除
+  - Nacos 支持服务列表变更的消息推送模式，服务列表更新更及时
+  - Nacos 集群默认采用 AP 方式，当集群中存在非临时实例时，采用 CP 模式；Eureka 采用 AP 方式
 
-**运维成本问题**
+配置一个服务实例为永久实例：
 
-运维成本会直线上升，早期单体应用因为结构简单，规模也较小，发版时通常面对几台服务器部署几个Jar/War文件就可以了。同时，应用的交付周期也是以周甚至月为单位，此时硬件设备成本与运维人员技术要求都比较低，采用手动部署即可满足要求。而对于微服务架构而言，每一个服务都是可独立运行、独立部署、独立维护的业务单元，再加上互联网时代用户需求的不断变化以及市场的不稳定因素，运维人员每天面对成百上千台服务器发布几十次已是家常便饭，传统手动部署显然已经无法满足互联网的快速变化。
+```yaml
+spring:
+  cloud:
+    nacos:
+      discovery:
+        ephemeral: false # 设置为非临时实例
+```
 
-<img src="assets/image-20211007221435855.png" alt="image-20211007221435855" style="zoom:80%;" />
+## Nacos 配置管理
 
-**组织架构调整问题**
+### 统一配置管理
 
-微服务不但是一种架构风格，同样也是一种软件组织模型，以往软件公司会按照职能划分，如：研发、测试、运维部门进行独立管理考核，而在微服务的实施过程中，以业务模块进行划分团队，每一个团队是内聚的，要求可以独立完成从调研到发版的全流程，尽量减少对外界的依赖。如何将传统的职能团队调整为按业务划分组织架构，同样是对管理者的巨大挑战，要知道人的思想比架构更难改变。  
+<img src="assets/image-20210830085330590.png" alt="image-20210830085330590" style="zoom:80%;" />
 
-<img align="left" src="assets/image-20211007221559011.png" alt="image-20211007221559011" style="zoom:67%;" />
+1. 引入 nacos-config 依赖
 
-**集成测试问题**
+   首先，在user-service服务中，引入nacos-config的客户端依赖：
 
-服务间的集成测试变得举步维艰，传统单体架构集成测试是将不同的模块按业务流程进行组合，在进程内验证每一种可能性下其模块间协作是否符合预期即可。但对于微服务而言，系统被拆解为很多独立运行的单元，服务件采用接口进行网络通信。要获取准确的测试结果，必须搭建完整的微服务环境，光这一项工作就有很大的工作量。同时，因为是跨网络通信，网络延迟、超时、带宽、数据量等因素都将影响最终结果，测试结果易产生偏差。  
+   ```xml
+   <!--nacos配置管理依赖-->
+   <dependency>
+       <groupId>com.alibaba.cloud</groupId>
+       <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+   </dependency>
+   ```
 
-### 微服务最佳实践
+2. 添加 bootstrap.yaml
 
-**微服务的划分原则**  
+   然后，在user-service中添加一个bootstrap.yaml 文件，内容如下：
 
-- 单一职责原则
+   ```yaml
+   spring:
+     application:
+       name: userservice # 服务名称
+     profiles:
+       active: dev #开发环境，这里是dev 
+     cloud:
+       nacos:
+         server-addr: localhost:8848 # Nacos地址
+         config:
+           file-extension: yaml # 文件后缀名
+   ```
 
-  每一个微服务只做好一件事，体现出“高内聚、低耦合”，尽量减少对外界环境的依赖。比如，在公司创业之初，完全可将订单与仓储服务进行合并。因为订单与仓储在业务与数据紧密相关，如果强行拆分会导致出现跨进程通信带来的数据一致性难题。随着业务的发展，仓储的业务职责扩展，派生出许多与订单无紧密联系的功能，到时再将其剥离形成独立的“仓储服务”也不晚。
+   这里会根据spring.cloud.nacos.server-addr获取nacos地址，再根据`${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}`作为文件id，来读取配置。
 
-- 服务依赖原则
+   本例中，就是去读取`userservice-dev.yaml`：
 
-  避免服务间的循环引用，在设计时就要对服务进行分级，例如区分核心服务与非核心服务。例如订单服务与短信服务，显然短信服务是非核心服务，服务间调用要遵循“核心服务”到“非核心服务”，不允许出现反向调用。同时，对于核心服务要做好保护，避免非核心服务出现问题影响核心服务的正常运行。
+   ![image-20210714170845901](assets/image-20210714170845901.png)
 
-- Two Pizza原则
+3. 读取nacos配置
 
-  就是说让团队保持在两个比萨能让队员吃饱的小规模的概念。团队要小到让每个成员都能做出显著的贡献，并且相互依赖，有共同目标，以及统一的成功标准。一个微服务团队应涵盖从需求到发布运维的完整生命周期，使团队内部便可以解决大部分任务，从人数上4~6人是比较理想的规模。  
+   在user-service中的UserController中添加业务逻辑，读取pattern.dateformat配置：
 
-服务的拆与合是伴随着公司业务的演进而变化的，一切以解决问题为准。
+   ![image-20210714170337448](assets/image-20210714170337448.png)
 
-**微服务确保独立的数据存储  **
+### 配置热更新
 
-数据是任何系统最重要的资产。以往单体应用通常会选择MySQL这种关系型数据库作为数据的统一存储，这样做的好处是涉及多表操作
-时，利用数据库自带的事务机制便可最大程度保证数据完整性。但这样做却存在诸多问题，以下图为例，不同的微服务对数据存储的需求也是不同的，订单服务需要MySQL数据保存订单与订单明细；新闻服务需要Elasticsearch提供全文检索支持；朋友圈需要图数据库表达现实世界人际关系；文件存储服务则需要分布式文件系统。如果将所有数据都揉在MySQL中使用会变得十分蹩脚，好的做法是为每一个微服务提供符合自身业务特性的数据库。  
+Spring 不会自动进行热更新，有两种方式可以配置热更新：
 
-在微服务架构下，因为数据库绝不允许其他团队访问，关联查询只能变为API调用形式，程序实现层面比单库复杂不少。
+1. `@RefreshScope`
 
-<img src="assets/image-20211007222552958.png" alt="image-20211007222552958" style="zoom:67%;" />
+   在 @Value 注入的变量所在类上添加注解 
 
-**服务间通信优先采用聚合器模式  **
+   ![image-20210714171036335](assets/image-20210714171036335.png)
 
-在微服务间通信时存在两种消息传递模式“链式模式”与“聚合器模式”。下图是所示，按业务流程请求在各个服务间流转，最终
-处理完成返回客户端。  
+2. `@ConfigurationProperties`
 
-<img align="left" src="assets/image-20211007222654433.png" alt="image-20211007222654433" style="zoom:80%;" />
+   使用 @ConfigurationProperties 注解代替 @Value 注解。
 
-因为请求是按业务流程传递，很容易能被开发人员理解，因此链式模式称为了最常用的服务间通信模式。但链式模式采用串联模式，调用整个成功率等于服务调用成功率的乘积，假设每个服务可靠性为90%，一个业务代码在4个服务执行后的最终成功率只有`90%*90%*90%*90%≈66%`，有将近一半的请求会处理失败，这是无法接受的。此外，链式模式因默认采用同步方式传输，在服务处理完成前请求会一直处于阻塞状态，当调用链较长时，系统整体性能会严重下滑。
+   在 user-service 服务中，添加一个类，读取 patterrn.dateformat 属性：
 
-聚合器模式则是通过服务作为入口，组装其他服务的调用，因为“订单流程服务”是将其他服务进行聚合操作，所以称其为聚合器模式。以“订单流程服务”为例，将“订单”、“支付”、“库存”服务进行聚合，一个服务实现从下单、支付、减库存的完整流程。
+   ```java
+   package cn.itcast.user.config;
+   
+   import lombok.Data;
+   import org.springframework.boot.context.properties.ConfigurationProperties;
+   import org.springframework.stereotype.Component;
+   
+   @Component
+   @Data
+   @ConfigurationProperties(prefix = "pattern")
+   public class PatternProperties {
+       private String dateformat;
+   }
+   ```
 
-### 适合上马微服务的场景
+   在 UserController 中使用这个类代替 @Value：
 
-- 新规划的大型业务系统
+   ![image-20210714171316124](assets/image-20210714171316124.png)
 
-  这肯定是最适合引入微服务架构的情况了， 微服务强调"高内聚，低耦合"，每一个团队负责一个服务，这就意味着从根上和传统的整体性应用有本质不同。从规划阶段采用微服务架构是再好不过的。
 
-- 敏捷的小团队系统
 
-  在公司在大型项目微服务实践前，往往这类边缘化的小项目会起到"试验田"的作用， 引入快速迭代、持续交付等开发模式，积累适合本公司特点的微服务实践经验，在将这些经验扩大到其他大型项目中。
+### 配置共享
 
-- 历史的大型留存业务系统
+其实微服务启动时，会去nacos读取多个配置文件，例如：
 
-  之前多年我一直在金融软件领域工作，在银行内部许多系统已经使用超过10年时间，长百上千个模块错综复杂维护愈发苦难，无论架构、框架乃至技术人员都需要更新迭代，但都不可能一次大动手术，这是微服务的"微"就体现出来，重构时可以将某一个部分剥离为微服务独立运行，确保无误后再继续剥离出下一个服务，通过抽丝剥茧一般的剥离，逐步将原有大系统剥离为若干子服务，虽然过程十分痛苦，但这是必须做的事情。
+- `[spring.application.name]-[spring.profiles.active].yaml`，例如：userservice-dev.yaml
 
-  
+- `[spring.application.name].yaml`，例如：userservice.yaml
 
-## 真实案例
+而`[spring.application.name].yaml`不包含环境，因此可以被多个环境共享。
 
-### push -> pull -> 数据订阅
+当 nacos、服务本地同时出现相同属性时，优先级有高低之分：
 
-| 架构图                                                       | 特点                                                         |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![image-20211003082959640](assets/image-20211003082959640.png) | 子系统共用一个账户系统，并且每个子系统都有一个本地库         |
-| ![image-20211003083200936](assets/image-20211003083200936.png) | 账户系统修改用户名后，要根据每个子系统提供的接口，推送给每一个子系统。账户系统和子系统耦合非常严重，每增加一个子系统，账户系统都要修改一次代码 |
-| ![image-20211003083445956](assets/image-20211003083445956.png) | 改成子系统从账户系统定时 pull 的模式，降低耦合，但是仍然存在账户系统修改接口的风险 |
-| ![image-20211003083532775](assets/image-20211003083532775.png) | 将可变因素同步接口进行解耦，引入消息队列，直接订阅数据，不对接口产生依赖 |
+![image-20210714174623557](assets/image-20210714174623557.png)
 
+
+
+## HTTP 客户端 Feign
+
+### Feign 替代 RestTemplate
+
+RestTemplate 的缺点：
+
+* 代码可读性差，编程体验不统一
+
+* 参数复杂URL难以维护
+
+Feign 是一个**声明式**的 http 客户端，官方地址：https://github.com/OpenFeign/feign
+
+其作用就是帮助我们优雅的实现http请求的发送，解决上面提到的问题。Feign 还继承了 Ribbon，自带负载均衡。
+
+Fegin的使用步骤如下：
+
+1. 引入依赖
+
+   我们在order-service服务的pom文件中引入feign的依赖：
+
+   ```xml
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-openfeign</artifactId>
+   </dependency>
+   ```
+
+2. 添加注解
+
+   在 order-service 的启动类添加注解开启Feign的功能：
+
+   ![image-20210714175102524](../../../../黑马微服务全栈/实用篇/学习资料/day02-SpringCloud02/讲义/assets/image-20210714175102524.png)
+
+3. 编写Feign的客户端
+
+   在 order-service（消费者，访问生产者 userservice） 的 client 文件夹下，新建一个接口，内容如下：
+
+   ```java
+   package cn.itcast.order.client;
+   
+   import cn.itcast.order.pojo.User;
+   import org.springframework.cloud.openfeign.FeignClient;
+   import org.springframework.web.bind.annotation.GetMapping;
+   import org.springframework.web.bind.annotation.PathVariable;
+   
+   @FeignClient("userservice")
+   public interface UserClient {
+       @GetMapping("/user/{id}")
+       User findById(@PathVariable("id") Long id);
+   }
+   ```
+
+   这个客户端主要是基于 SpringMVC 的注解来声明远程调用的信息，比如：
+
+   * 服务名称：userservice
+   * 请求方式：GET
+   * 请求路径：/user/{id}
+   * 请求参数：Long id
+   * 返回值类型：User
+
+   这样，Feign 就可以帮助我们发送 http 请求，无需自己使用 RestTemplate 来发送了。
+
+
+
+### 自定义配置
+
+Feign运行自定义配置来覆盖默认配置，可以修改的配置如下：
+
+| 类型                   | 作用             | 说明                                                   |
+| ---------------------- | ---------------- | ------------------------------------------------------ |
+| **feign.Logger.Level** | 修改日志级别     | 包含四种不同的级别：NONE、BASIC、HEADERS、FULL         |
+| feign.codec.Decoder    | 响应结果的解析器 | http远程调用的结果做解析，例如解析json字符串为java对象 |
+| feign.codec.Encoder    | 请求参数编码     | 将请求参数编码，便于通过http请求发送                   |
+| feign. Contract        | 支持的注解格式   | 默认是SpringMVC的注解                                  |
+| feign. Retryer         | 失败重试机制     | 请求失败的重试机制，默认是没有，不过会使用Ribbon的重试 |
+
+一般我们需要配置的就是日志级别。
+
+### Feign性能优化
+
+Feign的优化：
+
+1. 日志级别尽量用 basic
+
+2. 使用 HttpClient 或 OKHttp 代替 URLConnection
+
+   2.1 引入 feign-httpClient 依赖
+
+   2.2 配置文件开启 httpClient 功能，设置连接池参数
+
+### Feign 实战
+
+将 Feign 的 Client 抽取为独立模块，并且把接口有关的 POJO、默认的 Feign 配置都放到这个模块中，提供给所有消费者使用。
+
+也就是将所有消费者端写的 feign client，抽取到一个模块中，防止每个消费者模块都写一遍，增加维护成本。
+
+例如，将 UserClient、User、Feign 的默认配置都抽取到一个 feign-api 包中，所有微服务引用该依赖包，即可直接使用。
+
+![image-20210714214041796](assets/image-20210714214041796.png)
+
+## 统一网关 Gateway
+
+### 网关的作用
+
+<img align="left" src="assets/image-20210830111825328.png" alt="image-20210830111825328" style="zoom: 50%;" />
+
+* 身份认证和权限校验
+* 服务路由、负载均衡
+* 请求限流
+
+### gateway 快速入门
+
+gateway 网关以一个独立的服务而存在。
+
+网关搭建步骤：
+
+1. 创建项目，引入nacos服务发现和gateway依赖
+
+2. 配置application.yml，包括服务基本信息、nacos地址、路由
+
+路由配置包括：
+
+1. 路由id：路由的唯一标示
+
+2. 路由目标（uri）：路由的目标地址，http代表固定地址，lb代表根据服务名负载均衡
+
+3. 路由断言（predicates）：判断路由的规则，
+
+4. 路由过滤器（filters）：对请求或响应做处理
+
+<img src="assets/image-20210830182353541.png" alt="image-20210830182353541" style="zoom:67%;" />
+
+步骤：
+
+1. 创建 gateway 服务，引入依赖
+
+   ![image-20210714210919458](assets/image-20210714210919458.png)
+
+   引入依赖：
+
+   ```xml
+   <!--网关-->
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-gateway</artifactId>
+   </dependency>
+   <!--nacos服务发现依赖-->
+   <dependency>
+       <groupId>com.alibaba.cloud</groupId>
+       <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+   </dependency>
+   ```
+
+2. 编写启动类
+
+   ```java
+   package cn.itcast.gateway;
+   
+   import org.springframework.boot.SpringApplication;
+   import org.springframework.boot.autoconfigure.SpringBootApplication;
+   
+   @SpringBootApplication
+   public class GatewayApplication {
+   
+   	public static void main(String[] args) {
+   		SpringApplication.run(GatewayApplication.class, args);
+   	}
+   }
+   ```
+
+3. 编写基础配置和路由规则
+
+   创建application.yml文件，内容如下：
+
+   ```yaml
+   server:
+     port: 10010 # 网关端口
+   spring:
+     application:
+       name: gateway # 服务名称
+     cloud:
+       nacos:
+         server-addr: localhost:8848 # nacos地址
+       gateway:
+         routes: # 网关路由配置
+           - id: user-service # 路由id，自定义，只要唯一即可
+             # uri: http://127.0.0.1:8081 # 路由的目标地址 http就是固定地址
+             uri: lb://userservice # 路由的目标地址 lb就是负载均衡，后面跟服务名称
+             predicates: # 路由断言，也就是判断请求是否符合路由规则的条件
+               - Path=/user/** # 这个是按照路径匹配，只要以/user/开头就符合要求
+   ```
+
+   我们将符合`Path` 规则的一切请求，都代理到 `uri`参数指定的地址。
+
+   本例中，我们将 `/user/**`开头的请求，代理到`lb://userservice`，lb是负载均衡，根据服务名拉取服务列表，实现负载均衡。
+
+### 断言工厂
+
+predicates：
+
+| **名称**   | **说明**                       | **示例**                                                     |
+| ---------- | ------------------------------ | ------------------------------------------------------------ |
+| After      | 是某个时间点后的请求           | -  After=2037-01-20T17:42:47.789-07:00[America/Denver]       |
+| Before     | 是某个时间点之前的请求         | -  Before=2031-04-13T15:14:47.433+08:00[Asia/Shanghai]       |
+| Between    | 是某两个时间点之前的请求       | -  Between=2037-01-20T17:42:47.789-07:00[America/Denver],  2037-01-21T17:42:47.789-07:00[America/Denver] |
+| Cookie     | 请求必须包含某些cookie         | - Cookie=chocolate, ch.p                                     |
+| Header     | 请求必须包含某些header         | - Header=X-Request-Id, \d+                                   |
+| Host       | 请求必须是访问某个host（域名） | -  Host=**.somehost.org,**.anotherhost.org                   |
+| Method     | 请求方式必须是指定方式         | - Method=GET,POST                                            |
+| Path       | 请求路径必须符合指定规则       | - Path=/red/{segment},/blue/**                               |
+| Query      | 请求参数必须包含指定参数       | - Query=name, Jack或者-  Query=name                          |
+| RemoteAddr | 请求者的ip必须是指定范围       | - RemoteAddr=192.168.1.1/24                                  |
+| Weight     | 权重处理                       |                                                              |
+
+### 过滤器工厂
+
+GatewayFilter 是网关中提供的一种过滤器，可以对进入网关的**请求**和微服务返回的**响应**做处理。
+
+<img src="assets/image-20210830202353641.png" alt="image-20210830202353641" style="zoom:67%;" />
+
+Spring提供了31种不同的路由过滤器工厂。例如：
+
+| **名称**             | **说明**                     |
+| -------------------- | ---------------------------- |
+| AddRequestHeader     | 给当前请求添加一个请求头     |
+| RemoveRequestHeader  | 移除请求中的一个请求头       |
+| AddResponseHeader    | 给响应结果中添加一个响应头   |
+| RemoveResponseHeader | 从响应结果中移除有一个响应头 |
+| RequestRateLimiter   | 限制请求的流量               |
+| ...                  |                              |
+
+1. 请求头过滤器
+
+   **需求**：给所有进入userservice的请求添加一个请求头：Truth=itcast is freaking awesome!
+
+   只需要修改gateway服务的application.yml文件，添加路由过滤即可：
+
+   ```yaml
+   spring:
+     cloud:
+       gateway:
+         routes:
+         - id: user-service 
+           uri: lb://userservice 
+           predicates: 
+           - Path=/user/** 
+           filters: # 过滤器
+           - AddRequestHeader=Truth, Itcast is freaking awesome! # 添加请求头
+   ```
+
+   当前过滤器写在userservice路由下，因此仅仅对访问 userservice 的请求有效。
+
+2. 默认过滤器
+
+   如果要对所有的路由都生效，则可以将过滤器工厂写到 default 下。格式如下：
+
+   ```yaml
+   spring:
+     cloud:
+       gateway:
+         routes:
+         - id: user-service 
+           uri: lb://userservice 
+           predicates: 
+           - Path=/user/**
+         default-filters: # 默认过滤项
+         - AddRequestHeader=Truth, Itcast is freaking awesome! 
+   ```
+
+   总结
+
+   过滤器的作用是什么？
+
+   ① 对路由的请求或响应做加工处理，比如添加请求头
+
+   ② 配置在路由下的过滤器只对当前路由的请求生效
+
+   defaultFilters 的作用是什么？
+
+   ① 对所有路由都生效的过滤器
+
+### 全局过滤器
+
+全局过滤器的作用也是处理一切进入网关的请求和微服务响应，与GatewayFilter的作用一样。区别在于GatewayFilter通过配置定义，处理逻辑是固定的；而 GlobalFilter 的逻辑需要自己写代码实现。
+
+定义方式是实现 GlobalFilter 接口。
+
+```java
+public interface GlobalFilter {
+    /**
+     *  处理当前请求，有必要的话通过{@link GatewayFilterChain}将请求交给下一个过滤器处理
+     *
+     * @param exchange 请求上下文，里面可以获取Request、Response等信息
+     * @param chain 用来把请求委托给下一个过滤器 
+     * @return {@code Mono<Void>} 返回标示当前过滤器业务结束
+     */
+    Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain);
+}
+```
+
+在 filter 中编写自定义逻辑，可以实现下列功能：
+
+- 登录状态判断
+- 权限校验
+- 请求限流等
+
+自定义全局过滤器，需求：定义全局过滤器，拦截请求，判断请求的参数是否满足下面条件：
+
+- 参数中是否有authorization，
+
+- authorization参数值是否为admin
+
+如果同时满足则放行，否则拦截。
+
+实现：
+
+在gateway中定义一个过滤器：
+
+```java
+package cn.itcast.gateway.filters;
+
+import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
+
+@Order(-1) // 过滤器的执行顺序
+@Component
+public class AuthorizeFilter implements GlobalFilter {
+    @Override
+    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        // 1.获取请求参数
+        MultiValueMap<String, String> params = exchange.getRequest().getQueryParams();
+        // 2.获取authorization参数
+        String auth = params.getFirst("authorization");
+        // 3.校验
+        if ("admin".equals(auth)) {
+            // 放行
+            return chain.filter(exchange);
+        }
+        // 4.拦截
+        // 4.1.禁止访问，设置状态码
+        exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
+        // 4.2.结束处理
+        return exchange.getResponse().setComplete();
+    }
+}
+```
+
+自定义过滤器，一定要有顺序。
+
+### 过滤器执行顺序
+
+请求进入网关会碰到三类过滤器：当前路由的过滤器、DefaultFilter、GlobalFilter
+
+请求路由后，会将当前路由过滤器和 DefaultFilter、GlobalFilter，合并到一个过滤器链（集合）中，排序后依次执行每个过滤器：
+
+![image-20210714214228409](assets/image-20210714214228409.png)
+
+
+
+排序的规则是什么呢？
+
+- 每一个过滤器都必须指定一个int类型的 order 值，**order值越小，优先级越高，执行顺序越靠前**。
+- GlobalFilter 通过实现 Ordered 接口，或者添加 @Order 注解来指定 order 值，由我们自己指定
+- 路由过滤器和 defaultFilter 的 order 由 Spring 指定，默认是按照声明顺序从1递增。
+- 当过滤器的 order 值一样时，会按照 defaultFilter > 路由过滤器 > GlobalFilter的顺序执行。
+
+
+
+### 网关跨域问题
+
+跨域只需要在网关处处理就 ok 了。
+
+在 gateway 服务的 application.yml 文件中，添加下面的配置：
+
+```yaml
+spring:
+  cloud:
+    gateway:
+      # 。。。
+      globalcors: # 全局的跨域处理
+        add-to-simple-url-handler-mapping: true # 解决options请求被拦截问题
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: # 允许哪些网站的跨域请求 
+              - "http://localhost:8090"
+            allowedMethods: # 允许的跨域ajax的请求方式
+              - "GET"
+              - "POST"
+              - "DELETE"
+              - "PUT"
+              - "OPTIONS"
+            allowedHeaders: "*" # 允许在请求中携带的头信息
+            allowCredentials: true # 是否允许携带cookie
+            maxAge: 360000 # 这次跨域检测的有效期
+```
