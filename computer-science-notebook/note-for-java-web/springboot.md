@@ -206,6 +206,59 @@ found character '@' that cannot start any token. (Do not use @ for indentation)
 
 
 
+## SpringBoot 程序版本控制
+
+想要实现 jar 包程序的版本控制，可以在程序打包的时候，将 git commit 信息打到 jar 包中，然后通过 swagger 暴露出来。
+
+这是一个公共的功能，可以抽取成公共组件！
+
+
+
+## SpringBoot Controller HTTP 请求分类
+
+### Get
+
+```java
+@GetMapping("/entity2groups/{groupId}/access")
+@ApiOperation(value = "获取分组关联的实体ID集合")
+public Result<List<String>> getEntitiesByGroup(@PathVariable("groupId") String groupId){
+    List<String> entityIdList = entityToGroupService.findAllEntityByGroup(groupId);
+    return Result.buildSuccess(entityIdList, "获取分组关联的实体集合");
+}
+
+@GetMapping("/get_id")
+@ApiOperation(value = "测试 get_id")
+public String findIdByName(@RequestParam(value = "name", defaultValue = "test_name") String name){
+    return entityItemService.findIdByName(name);
+}
+```
+
+
+
+### Post
+
+```java
+@PostMapping("/import")
+@ApiOperation(value = "全量导入路由", notes = "全量导入，导入前路由库会清空")
+public Result<Boolean> updateIndexRoute(@RequestBody List<RouteDTO> routeList) throws IOException, ClassNotFoundException {
+    routeService.updateIndexRoute(routeList);
+    return Result.buildSuccess();
+}
+
+
+// 注意这里配置了两个注解，@NotNull 和 @PathVariable，说明多个注解可以同时使用
+// @NotNull 注解也有奇效，可以直接对传参进行控制
+@PostMapping("/{tableName}/import")
+@ApiOperation(value = "全量配置一张表的路由", notes = "全量导入，导入前该表的旧路由会被全部删除")
+public Result<Boolean> updateIndexRouteByTableName(@PathVariable("tableName") @NotNull String tableName,
+                                                   @RequestBody List<RouteDTO> routeList) throws IOException, ClassNotFoundException {
+    routeService.updateIndexRouteByTableName(tableName, routeList);
+    return Result.buildSuccess();
+}
+```
+
+
+
 
 
 ## SpringBoot 开发常用库

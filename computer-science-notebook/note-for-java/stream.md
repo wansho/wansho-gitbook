@@ -2,6 +2,25 @@
 
 [TOC]
 
+## lambda 表达式优缺点
+
+### 优点
+
+* 声明式编程，可读性好
+* 简洁，优雅
+* 减少代码行数
+
+### 缺点
+
+* 不方便 debug
+
+## lambda 调试
+
+1. 使用 peek 打印中间步骤
+2. IDEA 支持对 lambda 表达式下断点进行 debug，下次可以尝试一下！
+
+
+
 ## on java 
 
 在大多数情况下，将对象存储在集合中就是为了处理它们，因此你会发现你把编程的主要焦点从集合转移到了流上。
@@ -244,6 +263,8 @@ int[] rints = new Random(47).ints(0, 1000).limit(100).toArray();
 * orElse(otherObject)：如果值存在则直接返回，否则生成 otherObject。
 * orElseGet(Supplier)：如果值存在则直接返回，否则使用 Supplier 函数生成一个可替代对象。
 * orElseThrow(Supplier)：如果值存在直接返回，否则使用 Supplier 函数生成一个异常。  
+
+## ==========================================================
 
 ## 介绍
 

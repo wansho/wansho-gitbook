@@ -214,6 +214,16 @@ nacos 有别于 eureka，nacos 有一个客户端（其实也是一个 jar 包�
 
 Nacos 比 Eureka 多了一个配置管理，可以远程管理各个微服务的 yml 文件。
 
+
+
+### Nacos API 注册
+
+用于其他服务主动向 nacos 发送心跳。
+
+https://nacos.io/zh-cn/docs/open-api.html
+
+
+
 ### 服务注册
 
 在 cloud-demo 父工程的pom文件中的`<dependencyManagement>`中引入 SpringCloudAlibaba 的依赖：
