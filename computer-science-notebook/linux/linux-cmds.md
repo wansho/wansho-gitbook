@@ -508,7 +508,7 @@ ln -s file file_link
 -s --shell 				login shell of the new account
 
 Demos:
-useradd -m -c "for work" -u 8888 -p ws6226067 -s /bin/bash work
+useradd -m -c "for work" -u 8888 -p xxxxxx -s /bin/bash work
 
 # 注意：
 # 1. 默认情况下，useradd 不会创建用户目录 

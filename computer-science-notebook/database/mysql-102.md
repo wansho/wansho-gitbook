@@ -64,7 +64,7 @@ ON
 TO 
 	'wanshuo'@'%' -- '用户名'@'host', % 表示并没有指定任何 host，用户可以从任何 host 上访问
 IDENTIFIED BY 
-	"ws6226067"; 
+	"xxxxxx"; 
 flush privileges;
 /*
 详解

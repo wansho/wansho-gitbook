@@ -178,7 +178,7 @@ def get_html(username, password):
 
 if __name__ == '__main__':
     WeiBoAccounts = [
-            {'username': 'ws949178872@hotmail.com', 'password': 'ws6226067'}
+            {'username': 'ws949178872@hotmail.com', 'password': 'xxxxxx'}
             ]
     username = WeiBoAccounts[0].get('username')
     password = WeiBoAccounts[0].get('password')
@@ -193,7 +193,7 @@ if __name__ == '__main__':
 2. 如果不是对效率要求特别高,可以不需要进行断点存储或爬取,只需要继续从当天开始爬取,然后去重即可.
 
 3. HTTP Error 403: Forbidden  是被服务器拒绝访问的异常,
-  一旦一个账号被forbidden了,那么该账号就已经被列入了黑名单,成为了重点检测的对象.
+    一旦一个账号被forbidden了,那么该账号就已经被列入了黑名单,成为了重点检测的对象.
 
 4. 爬虫的代码设计过程充满了随机性，有些错误是不可控的，只能在bug出现的时候去及时修复bug
 

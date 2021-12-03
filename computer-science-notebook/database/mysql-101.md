@@ -125,7 +125,7 @@ INSERT INTO 新表(字段1,字段2,.......) SELECT 字段1,字段2,...... FROM �
 ### 导出 MySQL 查询到的数据
 
 ```shell
-mysql -uroot -pws6226067 -e "select weibo_content from spider_db.spider_realtime_weibo" > /home/admin/test/weibo_content.txt
+mysql -uroot -pxxxxxx -e "select weibo_content from spider_db.spider_realtime_weibo" > /home/admin/test/weibo_content.txt
 ```
 
 ### 表添加/删除/修改字段
