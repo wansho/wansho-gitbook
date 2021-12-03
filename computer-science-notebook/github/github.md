@@ -2,13 +2,19 @@
 
 [TOC]
 
-People Die, but Long Live GitHub.
+Long Live GitHub.
 
-## 基本信息
+## github 经验总结
 
-github-pages 必须公开仓库，才能生效。
+* github-pages 必须公开仓库，才能生效。
 
-## Github 高级搜索
+* 白嫖 License
+
+  可以使用 github 进行免费 license 查询，有很多粗心的程序员，会把一些 license 上传到公共仓库
+
+  例如我想获取 http://ig507.com/data/time/real/xxx?licence=xxx  的 license，可以直接去 github 中搜索 `http://ig507.com/data/time/real/ licence`，然后去 code 中查询！
+
+## github 高级搜索
 
 ### in
 
@@ -59,7 +65,7 @@ awesome 南航计算机考研
 
 
 
-## GitHub 官方信息
+## github 官方信息
 
 信息源：https://github.com/github/roadmap
 
@@ -137,9 +143,3 @@ Webhooks allow external services to be notified when certain events happen. When
 * [socialify](https://github.com/wei/socialify)
 
   generating a beautiful project image
-
-
-
-## To do
-
-* Web Hook

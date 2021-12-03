@@ -50,7 +50,35 @@ SpringBoot四大核心之starter——自定义starter - 贺贺学编程的文�
 
 ## SpringBoot Scheduling
 
+https://juejin.cn/post/6844904047237955592
+
 https://spring.io/guides/gs/scheduling-tasks/
+
+Cron expression must consist of 6 fields！没有年！！！
+
+` [秒] [分] [时] [日] [月] [周]`
+
+| 域   | 是否必填 | 值以及范围      | 通配符        |
+| ---- | -------- | --------------- | ------------- |
+| 秒   | 是       | 0-59            | , - * /       |
+| 分   | 是       | 0-59            | , - * /       |
+| 时   | 是       | 0-23            | , - * /       |
+| 日   | 是       | 1-31            | , - * ? / L W |
+| 月   | 是       | 1-12 或 JAN-DEC | , - * /       |
+| 周   | 是       | 1-7 或 SUN-SAT  | , - * ? / L # |
+
+通配符：
+
+```
+,  这里指的是在两个以上的时间点中都执行，如果我们在 “分” 这个域中定义为 8,12,35 ，则表示分别在第8分，第12分 第35分执行该定时任务。
+-  这个比较好理解就是指定在某个域的连续范围，如果我们在 “时” 这个域中定义 1-6，则表示在1到6点之间每小时都触发一次，用 , 表示 1,2,3,4,5,6
+*  表示所有值，可解读为 “每”。 如果在“日”这个域中设置 *,表示每一天都会触发。
+?  表示不指定值。使用的场景为不需要关心当前设置这个字段的值。例如:要在每月的8号触发一个操作，但不关心是周几，我们可以这么设置 0 0 0 8 * ?
+/  在某个域上周期性触发，该符号将其所在域中的表达式分为两个部分，其中第一部分是起始值，除了秒以外都会降低一个单位，比如 在 “秒” 上定义 5/10 表示从 第 5 秒开始 每 10 秒执行一次，而在 “分” 上则表示从 第 5 秒开始 每 10 分钟执行一次。
+L  表示英文中的LAST 的意思，只能在 “日”和“周”中使用。在“日”中设置，表示当月的最后一天(依据当前月份，如果是二月还会依据是否是润年), 在“周”上表示周六，相当于”7”或”SAT”。如果在”L”前加上数字，则表示该数据的最后一个。例如在“周”上设置”7L”这样的格式,则表示“本月最后一个周六”
+W  表示离指定日期的最近那个工作日(周一至周五)触发，只能在 “日” 中使用且只能用在具体的数字之后。若在“日”上置”15W”，表示离每月15号最近的那个工作日触发。假如15号正好是周六，则找最近的周五(14号)触发, 如果15号是周未，则找最近的下周一(16号)触发.如果15号正好在工作日(周一至周五)，则就在该天触发。如果是 “1W” 就只能往本月的下一个最近的工作日推不能跨月往上一个月推。
+#  表示每月的第几个周几，只能作用于 “周” 上。例如 ”2#3” 表示在每月的第三个周二。
+```
 
 创建 `scheduledtask` 包，然后在该包下新建定时任务。
 
@@ -366,6 +394,29 @@ private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Lo
 ```
 
 注意：需要在 IDEA 中安装 lombok 插件。setting - plugins 
+
+
+
+### RestTemplate
+
+发起 http 请求的库。
+
+get 请求的两种请求方式：
+
+```java
+@Resource
+private RestTemplate restTemplate;
+	
+// getForEntity 是 Spring 对 HTTP请求响应 的封装
+entity = httpClientTemplate.getForEntity(casUrl, String.class);
+entity.getStatusCodeValue();
+entity.getBody();
+
+// getForObject函数实际上是对getForEntity函数的进一步封装，是对消息体的进一步封装
+IG507StockInfo responseStockInfo = restTemplate.getForObject(ig507Url, IG507StockInfo.class);
+```
+
+
 
 
 
