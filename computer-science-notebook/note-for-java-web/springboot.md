@@ -418,6 +418,12 @@ IG507StockInfo responseStockInfo = restTemplate.getForObject(ig507Url, IG507Stoc
 
 
 
+### FastJSON
+
+
+
+
+
 
 
 ## SpringBoot 项目测试
