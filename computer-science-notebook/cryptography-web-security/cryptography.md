@@ -8,6 +8,12 @@ Cryptography
 
 [阮一峰-密码学笔记](https://www.ruanyifeng.com/blog/2006/12/notes_on_cryptography.html)
 
+## demo
+
+<img align="left" src="assets/image-20211205205142481.png" alt="image-20211205205142481" style="zoom:67%;" />
+
+公钥加密，私钥解密？
+
 ## 对称加密 / 单钥加密
 
 对称密钥，采用单钥加密，加密和解密都用一个密钥。
