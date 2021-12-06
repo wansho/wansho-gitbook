@@ -57,6 +57,8 @@
 | persistence | 持久化 | |
 | boilerplate | 样板代码 | |
 | cascade | 级联 | |
+| suppress | 抑制，镇压 | @SuppressWarnings 关闭警告 |
+| retention | 保留 | @Retention |
 
 ## Authentic Chinese
 

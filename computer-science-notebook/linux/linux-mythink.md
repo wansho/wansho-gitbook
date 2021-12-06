@@ -2,6 +2,11 @@
 
 [TOC]
 
+## 总结
+
+* `/usr` 目录存储用户相关的静态文件，包括安装程序的静态文件，`/usr/lib/systemd/system`
+* `/var` 目录存储用户相关的动态文件，例如 `/var/lib` 中存储了 mysql 和 elasticsearch 的动态文件
+
 ## Linux 版本
 
 我最常用的 Linux 版本是 Ubuntu16.04，使用了 Ubuntu18 后，我发现 18 有很多兼容性问题，所以我又切换到 14。
