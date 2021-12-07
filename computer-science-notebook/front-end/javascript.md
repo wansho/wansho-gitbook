@@ -2,6 +2,22 @@
 
 [TOC]
 
+## 我的思考
+
+### 箭头函数
+
+```javascript
+const hehe = (input) => {
+	console.log(input);	
+}
+
+hehe('nihao');
+```
+
+箭头函数实际上是把一个函数复制给一个变量，JavaScript 中函数是一等公民。
+
+
+
 ## JS Tutorial
 
 [[A re-introduction to JavaScript]](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
@@ -901,6 +917,67 @@ console.log(this.y); // undefined
 ```
 
 let 和 const 唯一的区别，就是 const 用来表示常量，let 用来表示变量
+
+
+
+### es6 三种暴露方法
+
+#### 多行暴露
+
+```javascript
+//a.js
+export function aa1(){
+    console.log('分别导出1');
+}
+export function aa2(){
+    console.log('分别导出2');
+}
+
+//index.js
+//解构赋值
+import { aa1 , aa2 } from 'a.js'
+
+```
+
+
+
+#### 统一暴露
+
+```javascript
+//b.js
+function bb1(){
+    console.log('综合导出1');
+}
+function bb2(){
+    console.log('综合导出2');
+}
+export {bb1,bb2}
+
+
+//index.js
+//解构赋值
+import {aa1,aa2} from 'b.js'
+```
+
+
+
+#### 默认暴露
+
+```javascript
+//c.js
+export default function cc(){
+    console.log('默认导出');
+}
+
+//index.js
+//使用定义变量
+import c from 'c.js'
+c.cc()
+```
+
+
+
+
 
 ## window 对象
 

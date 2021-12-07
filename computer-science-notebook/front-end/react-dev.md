@@ -41,6 +41,57 @@
 
 
 
+## react 项目代码结构
+
+```
+public/
+	index.html
+src/
+	components/
+		Footer/
+			index.css
+			index.jsx
+		Header/
+			index.css
+			index.jsx
+	redux/
+		store.js // redux 管理员
+		header_reducer.js // 为 Header 服务的 reducer 
+	App.css 
+	App.js 
+	index.js	// 入口文件
+```
+
+
+
+
+
+## react 打包发布
+
+注意，要在 package.json 中配置 `"homepage": "."`，这样才能以相对路径进行打包。
+
+
+
+## react + antd 开发流程
+
+用脚手架创建 app
+
+```
+create-react-app hello-react
+```
+
+启动 app
+
+```
+npm start
+```
+
+安装 antd
+
+
+
+
+
 ## react 基础
 
 
@@ -189,7 +240,39 @@ js 语句和 js 表达式，{ } 中只能写 js 表达式
     (3).switch(){case:xxxx}
 ```
 
+demo:
 
+```react
+<script type="text/babel">
+    class Person extends React.Component{
+        // 限定类型
+        static propTypes = {
+            name: PropTypes.string.isRequired,
+            age: PropTypes.number,
+            sex: PropTypes.string
+        }
+        // 设置默认值
+        static defaultProps = {
+            age: 18,
+            sex: "男"
+        }
+        render(){
+            const {name, age, sex} = this.props
+            return (
+                <ul>
+                    <li>姓名：{name}</li>
+                    <li>年龄：{age + 1}</li>
+                    <li>性别：{sex}</li>
+                </ul>
+            )
+        }
+    }
+    let data = {name: 'wansho'}
+    ReactDOM.render(<Person {...data}/>, document.getElementById("test"))
+</script>
+```
+
+以上的 `{name}` 的用法，类似于前后端一体时候的模板语言。
 
 ### react 函数式组件
 
@@ -389,6 +472,7 @@ this.refs; // 存储组件内定义的标签的 id
     class Demo extends React.Component{
         showData1 = () => {
             console.log(this.refs)
+            // 从 ref 中获取标签
             const {input1} = this.refs
             alert(input1.value)
         }
@@ -429,7 +513,7 @@ this.refs; // 存储组件内定义的标签的 id
         render(){
             return (
                 <div>
-                    { /* ref 内传入一个回调函数，函数的输入是 currentNode，将其与实例进行绑定 */ }
+                    { /* ref 内传入一个回调函数，函数的输入是 currentNode，将其与实例进行绑定，这里在 Demo 实例上，加了 input1 成员变量和 input2 成员变量*/ }
                     <input ref={(currentNode) => this.input1 = currentNode} placeholder="输入内容，点击按钮弹窗显示"/>
                     <button onClick={this.showData1}> 点我提示左侧的数据 </button>
                     <input ref={(currentNode) => this.input2 = currentNode} onBlur={this.showData2}/>
@@ -475,11 +559,10 @@ this.refs; // 存储组件内定义的标签的 id
 
 
 
-事件处理 demo:
+事件处理 event:
 
 ```react
 <script type="text/babel">
-
     class Demo extends React.Component{
         myRef1 = React.createRef();
         showData1 = () => {
@@ -491,6 +574,8 @@ this.refs; // 存储组件内定义的标签的 id
             2) React 中的事件是通过事件委托方式处理的(委托给组件最外层的元素)  ————————为了的高效
          2. 通过 event.target 得到发生事件的 DOM 元素对象 ———————不要过度使用ref
         */
+        
+        // 传入一个事件
         showData2 = (event) => {
             alert(event.target.value)
         }
@@ -507,56 +592,480 @@ this.refs; // 存储组件内定义的标签的 id
     }
     ReactDOM.render(<Demo/>, document.getElementById("test"))
 </script>
-
 ```
-
-
 
  
 
-## react 代码结构
+非受控组件：
 
-```
-public 
-	index.html
-src
-	components
-		Footer/
-			index.css
-			index.jsx
-		Header/
-			index.css
-			index.jsx
-	App.css 
-	App.js 
-	index.js	// 入口文件
-```
+非受控组件，页面内所有输入类的 DOM，现用现取，就是非受控组件。
 
-
-
-
-
-## react 打包发布
-
-注意，要在 package.json 中配置 `"homepage": "."`，这样才能以相对路径进行打包。
-
-
-
-## react + antd 开发流程
-
-用脚手架创建 app
-
-```
-create-react-app hello-react
+```react
+<script type="text/babel">
+    class Forum extends React.Component {
+        username = React.createRef()
+        password = React.createRef()
+        submitForum = (event) => {
+            event.preventDefault() // 阻止表单提交
+            console.log(this.refs)
+            console.log(this.username.current.value)
+            console.log(this.password.current.value)
+            // 发起 ajax 请求
+        }
+        render(){
+            return (
+                <form onSubmit={this.submitForum}>
+                    username: <input ref={this.username} name="username"/>
+                    password: <input ref={this.password} name="password"/>
+                    <button>提交</button>
+                </form>
+            )
+        }
+    }
+    ReactDOM.render(<Forum/>, document.getElementById("test"))
+</script>
 ```
 
-启动 app
+
+
+受控组件：
+
+页面内所有输入类的 DOM，随着输入，会把内容维护到状态中。等到需要用的时候，就从状态中取出来。受控组件用得比较多。
+
+```react
+<script type="text/babel">
+    class Forum extends React.Component {
+        //初始化状态
+        state = {
+            username: '',
+            password: ''
+        }
+        // 保存用户名到 state 中
+        saveUsername = (event) => {
+            this.setState({username: event.target.value})
+        }
+        // 保存密码到 state 中
+        savePassword = (event) => {
+            this.setState({password: event.target.value})
+        }
+        // 提交表单时，从 state 读出信息提交
+        submitForum = () => {
+            const {username, password} = this.state
+            alert(`username: ${username}, password: ${password}`)
+        }
+        render(){
+            return (
+                <form onSubmit={this.submitForum}>
+                    { /* onChange 绑定一个回调函数，onXxx 都是传入一个函数进行绑定 */ }
+                    username: <input onChange={this.saveUsername} name="username"/>
+                    password: <input onChange={this.savePassword} name="password"/>
+                    <button>提交</button>
+                </form>
+            )
+        }
+    }
+    ReactDOM.render(<Forum/>, document.getElementById("test"))
+</script>
+```
+
+
+
+函数的柯里化：
+
+```react
+<script type="text/babel">
+    class Forum extends React.Component {
+        //初始化状态
+        state = {
+            username: '',
+            password: ''
+        }
+        // 提交表单时，从 state 读出信息提交
+        submitForum = () => {
+            const {username, password} = this.state
+            alert(`username: ${username}, password: ${password}`)
+        }
+        /*
+        高阶函数：如果一个函数符合下面 2 个规范中的任何一个，那该函数就是高阶函数。
+            1.若A函数，接收的参数是一个函数，那么A就可以称之为高阶函数。
+            2.若A函数，调用的返回值依然是一个函数，那么A就可以称之为高阶函数。
+            常见的高阶函数有：Promise、setTimeout、arr.map()等等
+
+        函数的柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式。
+            function sum(a){
+                return(b)=>{
+                    return (c)=>{
+                        return a+b+c
+                    }
+                }
+            }
+        */
+        saveFormData = (data) => {
+            // 返回的这个函数，才是 onChange 的回调函数
+            // console.log(data)
+            return (event) => {
+                // console.log(data, event.target.value)
+                this.setState({[data]: event.target.value})
+            }
+        }
+        render() {
+            return (
+                <form onSubmit={this.submitForum}>
+                    { /* onChange 必须绑定一个回调函数，这个函数返回一个函数 */}
+                    username: <input onChange={this.saveFormData('username')} name="username"/>
+                    password: <input onChange={this.saveFormData('password')} name="password"/>
+                    <button>提交</button>
+                </form>
+            )
+        }
+    }
+    ReactDOM.render(<Forum/>, document.getElementById("test"))
+</script>
+```
+
+
+
+不使用柯里化的方式：
+
+```react
+<script type="text/babel">
+    class Forum extends React.Component {
+        //初始化状态
+        state = {
+            username: '',
+            password: ''
+        }
+        // 提交表单时，从 state 读出信息提交
+        submitForum = () => {
+            const {username, password} = this.state
+            alert(`username: ${username}, password: ${password}`)
+        }
+        saveFormData = (data, event) => {
+            this.setState({[data]: event.target.value})
+        }
+        render() {
+            return (
+                <form onSubmit={this.submitForum}>
+                    { /* onChange 必须绑定一个回调函数，这里传入一个匿名函数 */}
+                    username: <input onChange={(event) => {this.saveFormData('username', event)}} name="username"/>
+                    password: <input onChange={(event) => {this.saveFormData('password', event)}} name="password"/>
+                    <button>提交</button>
+                </form>
+            )
+        }
+    }
+    ReactDOM.render(<Forum/>, document.getElementById("test"))
+</script>
+```
+
+
+
+### 组件的生命周期
+
+初始化阶段，由 ReactDOM.render()触发，初次渲染  
+
+* constructor()
+
+  
+
+* getDerivedStateFromProps
+
+  
+
+* render()
+
+  
+
+* componentDidMount()  
+
+  加载完后进行初始化，例如开启定时器发送网络请求，订阅消息
+
+  
+
+更新阶段，由组件内部 this.setSate()或父组件重新 render 触发  
+
+* getDerivedStateFromProps()
+2. shouldComponentUpdate()
+3. render()
+3. getSnapshotBeforeUpdate()
+4. componentDidUpdate()
+
+
+
+卸载组件，由 ReactDOM.unmountComponentAtNode() 触发  
+
+* componentWillUnmount()  
+
+
+
+重要的钩子：
+
+1. render： 初始化渲染或更新渲染调用
+2. componentDidMount： 开启监听, 发送 ajax 请求
+3. componentWillUnmount： 做一些收尾工作, 如: 清理定时器  
+
+
+
+### diffing 算法
+
+新虚拟 DOM 会和旧虚拟 DOM 进行比较，然后增量渲染。
+
+<img align="left" src="assets/image-20211207091205684.png" alt="image-20211207091205684" style="zoom: 50%;" />
+
+Diffing 算法对比的最小粒度，是标签，而且是嵌套逐层对比。
 
 ```
-npm start
+/*
+经典面试题:
+1). react/vue中的key有什么作用？（key的内部原理是什么？）
+2). 为什么遍历列表时，key最好不要用index?
+
+1. 虚拟DOM中key的作用：
+    1). 简单的说: key是虚拟DOM对象的标识, 在更新显示时key起着极其重要的作用。
+
+    2). 详细的说: 当状态中的数据发生变化时，react会根据【新数据】生成【新的虚拟DOM】,
+    随后React进行【新虚拟DOM】与【旧虚拟DOM】的diff比较，比较规则如下：
+
+        a. 旧虚拟DOM中找到了与新虚拟DOM相同的key：
+        (1).若虚拟DOM中内容没变, 直接使用之前的真实DOM
+        (2).若虚拟DOM中内容变了, 则生成新的真实DOM，随后替换掉页面中之前的真实DOM
+
+        b. 旧虚拟DOM中未找到与新虚拟DOM相同的key
+        根据数据创建新的真实DOM，随后渲染到到页面
+
+2. 用index作为key可能会引发的问题：
+    1. 若对数据进行：逆序添加、逆序删除等破坏顺序操作:
+    会产生没有必要的真实DOM更新 ==> 界面效果没问题, 但效率低。
+
+    2. 如果结构中还包含输入类的DOM：
+    会产生错误DOM更新 ==> 界面有问题。
+
+    3. 注意！如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，
+    仅用于渲染列表用于展示，使用index作为key是没有问题的。
+
+3. 开发中如何选择key?:
+    1. 最好使用每条数据的唯一标识作为key, 比如id、手机号、身份证号、学号等唯一值。
+    2. 如果确定只是简单的展示数据，用index也是可以的。
+    
+*/
 ```
 
-安装 antd
+
+
+```react
+<script type="text/babel">
+    class Person extends React.Component {
+        state = {data: [{id: 1, name: 'wansho', age: 26}, {id: 2, name: 'ceshi', age: 20}]}
+        addXiaoWang = ()=>{
+            let {data} = this.state
+            let xiaowang = {id: 3, name: '小王', age: 29 }
+            this.setState({data: [xiaowang, ...data]})
+        }
+        render(){
+            return (
+                <div>
+                    <h2>展示人员信息</h2>
+                    <button onClick={this.addXiaoWang}>添加一个小王</button>
+                    {this.state.data.map((person) => {
+                        return <li key={person.id}>id: {person.id}, name: {person.name}, age: {person.age} <input text='input'/></li>
+                    })}
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(<Person/>, document.getElementById('test'))
+</script>
+```
+
+
+
+使用 index 索引值作为 key，和使用 id 唯一标志作为 key
+
+```
+/* 
+	慢动作回放----使用index索引值作为key
+
+			初始数据：
+					{id:1,name:'小张',age:18},
+					{id:2,name:'小李',age:19},
+			初始的虚拟DOM：
+					<li key=0>小张---18<input type="text"/></li>
+					<li key=1>小李---19<input type="text"/></li>
+
+			更新后的数据：
+					{id:3,name:'小王',age:20},
+					{id:1,name:'小张',age:18},
+					{id:2,name:'小李',age:19},
+			更新数据后的虚拟DOM：
+					<li key=0>小王---20<input type="text"/></li>
+					<li key=1>小张---18<input type="text"/></li>
+					<li key=2>小李---19<input type="text"/></li>
+			新的虚拟 DOM 和旧的虚拟 DOM，一对比，发现都得更新，根本没有复用
+	-----------------------------------------------------------------
+
+	慢动作回放----使用id唯一标识作为key
+
+			初始数据：
+					{id:1,name:'小张',age:18},
+					{id:2,name:'小李',age:19},
+			初始的虚拟DOM：
+					<li key=1>小张---18<input type="text"/></li>
+					<li key=2>小李---19<input type="text"/></li>
+
+			更新后的数据：
+					{id:3,name:'小王',age:20},
+					{id:1,name:'小张',age:18},
+					{id:2,name:'小李',age:19},
+			更新数据后的虚拟DOM：
+					<li key=3>小王---20<input type="text"/></li>
+					<li key=1>小张---18<input type="text"/></li>
+					<li key=2>小李---19<input type="text"/></li>
+
+*/
+```
+
+
+
+
+
+
+
+## redux
+
+将多个组件中的共享数据，交给 redux 管理。
+
+redux 是独立第三方库，不是集成到 react 中的，和 Facebook 没关系。
+
+
+
+<img align="left" src="assets/image-20211207150355387.png" alt="image-20211207150355387" style="zoom:40%;" />
+
+
+
+### action
+
+action 是一个对象，封装了动作的类型和动作的数据。
+
+* type: 标识属性, 值为字符串, 唯一, 必要属性  
+* data: 数据属性, 值类型任意, 可选属性 
+
+Demo: `{ type: 'ADD_STUDENT',data:{name: 'tom',age:18} }  `
+
+
+
+action 分成两类：
+
+* 同步 action：action 值是一个 object 对象
+* 异步 action：action 值是一个函数
+
+其实函数也是对象，函数在 JavaScript 中是一等公民。实际创建一个异步 action 函数，就是自定义了一个 reducer，store 不需要手下人去干活了，直接运行这个新建的函数。
+
+
+
+### reducer
+
+map / reduce，reducer 是一个打工仔，是一个计算单元
+
+用于对 redux 中存储的状态进行加工处理
+
+1. 用于初始化状态、 加工状态。
+2. 加工时，根据旧的 state 和 action，产生新的 state 的纯函数。
+
+  
+
+### store
+
+store 是一个调度者，管理者，将 state、 action、 reducer 联系在一起的对象  
+
+```javascript
+// 创建 store 对象
+import {createStore} from 'redux'
+import reducer from './reducers'
+const store = createStore(reducer)
+
+// store 的 api
+getState() // 得到 state
+dispatch(action) // 分发 action, 触发 reducer 调用, 产生新的 state
+subscribe(listener) // 注册监听, 当产生了新的 state 时, 自动调用
+```
+
+
+
+### redux install
+
+redux 不是默认集成到 react 中的，需要手动安装。
+
+```shell
+npm install redux
+yarn add redux
+```
+
+
+
+### redux 精简版
+
+```
+	(1) 去除 Count 组件自身的状态
+	(2) src下建立:
+    	-redux
+            -store.js
+            -count_reducer.js
+
+	(3) store.js：
+        1) 引入 redux 中的 createStore 函数，创建一个 store
+        2) createStore 调用时要传入一个为其服务的 reducer
+        3) 记得暴露 store 对象
+
+	(4) count_reducer.js：
+        1) reducer 的本质是一个函数，接收：preState, action，返回加工后的状态
+        2) reducer 有两个作用：初始化状态，加工状态
+        3) reducer 被第一次调用时，是 store 自动触发的，
+            传递的 preState 是 undefined,
+            传递的 action 是:{type:'@@REDUX/INIT_a.2.b.4}
+
+	(5) 在 index.js 中监测 store 中状态的改变，一旦发生改变重新渲染<App/>
+    	备注：redux 只负责管理状态，至于状态的改变驱动着页面的展示，要靠我们自己写。
+```
+
+
+
+### redux 完整版
+
+```
+新增文件：
+	1. count_action.js 专门用于创建 action 对象
+	2. constant.js 放置容易写错的 type 值
+```
+
+
+
+### redux-thunk
+
+如果想要 redux 的 store 能接收并执行函数，则需要一个中间件 redux-thunk
+
+```shell
+npm install redux-thunk
+```
+
+```
+(1) 明确：延迟的动作不想交给组件自身，想交给 action
+(2) 何时需要异步 action：想要对状态进行操作，但是具体的数据靠异步任务返回。
+(3) 具体编码：
+    1) yarn add redux-thunk，并配置在 store 中
+    2) 创建 action 的函数不再返回一般对象，而是一个函数，该函数中写异步任务。
+    3) 异步任务有结果后，分发一个同步的 action 去真正操作数据
+(4) 备注：异步 action 不是必须要写的，完全可以自己等待异步任务的结果了再去分发同步 action
+```
+
+
+
+## react-redux
+
+react-redux 是 react 官方出的库，相当于 react + redux。
+
+<img align="left" src="assets/image-20211207201359698.png" alt="image-20211207201359698" style="zoom:50%;" />
+
+
 
 
 

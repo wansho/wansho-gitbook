@@ -12,7 +12,7 @@ Cryptography
 
 <img align="left" src="assets/image-20211205205142481.png" alt="image-20211205205142481" style="zoom:67%;" />
 
-公钥加密，私钥解密？
+对称加密，密钥只能由加密方和解密方持有，不能公开。身份证就是密钥。
 
 ## 对称加密 / 单钥加密
 
