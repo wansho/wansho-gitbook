@@ -58,8 +58,13 @@ src/
 		Header/  // Header 的容器组件
 			index.jsx
 	redux/
+		actions/
+			header.js // 为 Header 封装的 action
+			count.js
+		reducers/
+			header.js // 为 Header 服务的 reducer
+		constant.js // 配置常量
 		store.js // redux 管理员
-		header_reducer.js // 为 Header 服务的 reducer 
 	App.css 
 	App.jsx // 所有组件的外壳组件 
 	index.js	// 入口文件
