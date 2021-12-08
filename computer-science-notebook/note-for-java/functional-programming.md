@@ -6,6 +6,8 @@
 
 面向对象编程是对数据进行抽象， 而函数式编程是对行为进行抽象。
 
+
+
 ## on java 函数式编程
 
 ```java
@@ -76,9 +78,100 @@ public class FunctionalAnnotation {
 
 lambda 表达式就是一个函数，Java8 引入了函数式编程，意在将函数提升为第一公民，函数也可以当作变量进行赋值。
 
+![image-20211208091948344](assets/image-20211208091948344.png)
+
+以上的过程，优雅的把「一块代码」赋给了一个变量。**而「这块代码」，或者说「这个被赋给一个变量的函数」，就是一个 Lambda 表达式**。
+
+blockOfCode 的类型是什么呢？要用什么类型来接住 lambda 表达式呢？这就引出了函数式接口。Java8 规定，lambda 表达式的类型，是一个函数式接口。**lambda 表达式本身是一个函数式接口的实现**。
+
+![image-20211208092333873](assets/image-20211208092333873.png)
+
+![image-20211208092339828](assets/image-20211208092339828.png)
+
+![image-20211208092345615](assets/image-20211208092345615.png)
+
+lambda 表达式本身，是对一个函数式接口的实现：
+
+![image-20211208092448575](assets/image-20211208092448575.png)
+
+
+
 ### 方法引用
 
 类名或对象名::方法名
+
+有以下四种形式的方法引用：
+
+- 引用静态方法: `ContainingClass::staticMethodName`
+- 引用某个对象的实例方法: `containingObject::instanceMethodName`
+- 引用某个类型的任意对象的实例方法: `ContainingType::methodName`
+- 引用构造方法: `ClassName::new`
+
+
+
+Demo:
+
+```java
+public class Person {
+
+    String name;
+
+    LocalDate birthday;
+
+    public Person(String name, LocalDate birthday) {
+        this.name = name;
+        this.birthday = birthday;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public static int compareByAge(Person a, Person b) {
+        return a.birthday.compareTo(b.birthday);
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+}
+```
+
+```java
+public class MethodReferenceTest {
+
+    @Test
+    public static void main() {
+        Person[] pArr = new Person[] {
+            new Person("003", LocalDate.of(2016,9,1)),
+            new Person("001", LocalDate.of(2016,2,1)),
+            new Person("002", LocalDate.of(2016,3,1)),
+            new Person("004", LocalDate.of(2016,12,1))
+        };
+
+        // 使用匿名类
+        Arrays.sort(pArr, new Comparator<Person>() {
+            @Override
+            public int compare(Person a, Person b) {
+                return a.getBirthday().compareTo(b.getBirthday());
+            }
+        });
+
+        //使用lambda表达式
+        Arrays.sort(pArr, (Person a, Person b) -> {
+            return a.getBirthday().compareTo(b.getBirthday());
+        });
+
+        //使用方法引用，引用的是类的静态方法
+        Arrays.sort(pArr, Person::compareByAge);
+    }
+}
+```
+
+
+
+
 
 ### 函数式接口
 
@@ -231,6 +324,8 @@ public class PredicateComposition {
     }
 }
 ```
+
+
 
 ## 一篇教程
 
@@ -575,5 +670,4 @@ streamSupplier.get().noneMatch(s -> true);  // ok
 ```
 
 Each call to `get()` constructs a new stream on which we are save to call the desired terminal operation.
-
 

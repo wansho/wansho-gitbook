@@ -963,6 +963,8 @@ import {aa1,aa2} from 'b.js'
 
 #### 默认暴露
 
+默认暴露只能暴露一次。
+
 ```javascript
 //c.js
 export default function cc(){

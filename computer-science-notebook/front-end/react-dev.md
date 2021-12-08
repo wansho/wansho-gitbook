@@ -54,11 +54,14 @@ src/
 		Header/
 			index.css
 			index.jsx
+	containers/ // 容器组件
+		Header/  // Header 的容器组件
+			index.jsx
 	redux/
 		store.js // redux 管理员
 		header_reducer.js // 为 Header 服务的 reducer 
 	App.css 
-	App.js 
+	App.jsx // 所有组件的外壳组件 
 	index.js	// 入口文件
 ```
 
@@ -817,18 +820,18 @@ Diffing 算法对比的最小粒度，是标签，而且是嵌套逐层对比。
 ```
 /*
 经典面试题:
-1). react/vue中的key有什么作用？（key的内部原理是什么？）
-2). 为什么遍历列表时，key最好不要用index?
+1) react/vue中的key有什么作用？（key的内部原理是什么？）
+2) 为什么遍历列表时，key最好不要用index?
 
 1. 虚拟DOM中key的作用：
-    1). 简单的说: key是虚拟DOM对象的标识, 在更新显示时key起着极其重要的作用。
+    1) 简单的说: key是虚拟DOM对象的标识, 在更新显示时key起着极其重要的作用。
 
-    2). 详细的说: 当状态中的数据发生变化时，react会根据【新数据】生成【新的虚拟DOM】,
+    2) 详细的说: 当状态中的数据发生变化时，react会根据【新数据】生成【新的虚拟DOM】,
     随后React进行【新虚拟DOM】与【旧虚拟DOM】的diff比较，比较规则如下：
 
         a. 旧虚拟DOM中找到了与新虚拟DOM相同的key：
-        (1).若虚拟DOM中内容没变, 直接使用之前的真实DOM
-        (2).若虚拟DOM中内容变了, 则生成新的真实DOM，随后替换掉页面中之前的真实DOM
+        (1) 若虚拟DOM中内容没变, 直接使用之前的真实DOM
+        (2) 若虚拟DOM中内容变了, 则生成新的真实DOM，随后替换掉页面中之前的真实DOM
 
         b. 旧虚拟DOM中未找到与新虚拟DOM相同的key
         根据数据创建新的真实DOM，随后渲染到到页面
@@ -923,10 +926,6 @@ Diffing 算法对比的最小粒度，是标签，而且是嵌套逐层对比。
 
 */
 ```
-
-
-
-
 
 
 
@@ -1066,6 +1065,49 @@ react-redux 是 react 官方出的库，相当于 react + redux。
 <img align="left" src="assets/image-20211207201359698.png" alt="image-20211207201359698" style="zoom:50%;" />
 
 
+
+### install
+
+```shell
+npm install redux
+npm install react-redux
+```
+
+
+
+### 基本使用
+
+```
+(1) 明确两个概念：
+    1) UI组件: 不能使用任何 redux 的 api，只负责页面的呈现、交互等。
+    2) 容器组件：负责和 redux 通信，将结果交给 UI 组件。
+(2) 如何创建一个容器组件————靠 react-redux 的 connect 函数
+    connect(mapStateToProps,mapDispatchToProps)(UI 组件)
+        -mapStateToProps: 映射状态，是一个函数，返回值是一个对象
+        -mapDispatchToProps: 映射操作状态的方法，是一个函数，返回值是一个对象
+    容器组件会自动监测 redux 中状态的概念，不需要 subscribe 进行监测了
+(3) 备注1：容器组件中的 store 是靠 props 传进去的，而不是在容器组件中直接引入
+(4) 备注2：mapDispatchToProps，也可以是一个对象
+```
+
+
+
+### 优化
+
+```
+(1) 容器组件和 UI组件 整合一个文件
+(2) 无需自己给容器组件传递 store，给 <App/> 包裹一个 <Provider store={store}> 即可。
+(3) 使用了 react-redux 后也不用再自己检测 redux 中状态的改变了，容器组件可以自动完成这个工作。
+(4) mapDispatchToProps 也可以简单的写成一个对象
+(5) 一个组件要和 redux “打交道”要经过哪几步？
+    (1) 定义好 UI组件 ---不暴露
+    (2) 引入 connect 生成一个容器组件，并暴露，写法如下：
+        connect(
+            state => ({key:value}), // 映射状态
+            {key:xxxxxAction} // 映射操作状态的方法
+        )(UI组件)
+    (3) 在 UI组件 中通过 this.props.xxxxxxx 读取和操作状态
+```
 
 
 

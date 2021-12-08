@@ -2,22 +2,124 @@
 
 [TOC]
 
-## lambda 表达式优缺点
 
-### 优点
+
+## stream 调试
+
+1. 使用 peek 打印中间步骤
+2. IDEA 支持对 lambda 表达式下断点进行 debug，下次可以尝试一下！
+
+
+
+## stream 特点
+
+### 与 for 循环比较
+
+for 循环采用外部迭代，流采用内部迭代。
+
+![image-20211208095104284](assets/image-20211208095104284.png)
+
+
+
+再举一个生活中实际的例子（引自《Java 8 实战》），比如您想让您两岁的孩子索菲亚把她的玩具都收到盒子里面去，你们之间可能会产生如下的对话：
+
+- 你：“索菲亚，我们把玩具收起来吧，地上还有玩具吗？”
+- 索菲亚：“有，球。”
+- 你：“好，把球放进盒子里面吧，还有吗？”
+- 索菲亚：“有，那是我的娃娃。”
+- 你：“好，把娃娃也放进去吧，还有吗？”
+- 索菲亚：“有，有我的书。”
+- 你：“好，把书也放进去，还有吗？”
+- 索菲亚：“没有了。”
+- 你：“好，我们收好啦。”
+
+这正是你每天都要对 Java 集合做的事情。你外部迭代了一个集合，显式地取出每个项目再加以处理，但是如果你只是跟索菲亚说：“把地上所有玩具都放进盒子里”，那么索菲亚就可以选择一手拿娃娃一手拿球，或是选择先拿离盒子最近的那个东西，再拿其他的东西。采用内部迭代，项目可以透明地并行处理，或者用优化的顺序进行处理，要是使用 Java 过去的外部迭代方法，这些优化都是很困难的。
+
+
+
+### stream 优缺点
+
+优点
 
 * 声明式编程，可读性好
 * 简洁，优雅
 * 减少代码行数
 
-### 缺点
+缺点
 
 * 不方便 debug
 
-## lambda 调试
 
-1. 使用 peek 打印中间步骤
-2. IDEA 支持对 lambda 表达式下断点进行 debug，下次可以尝试一下！
+
+### 只能遍历一次
+
+和迭代器一样，流只能遍历一次。当流遍历完之后，我们就说这个流已经被消费掉了，你可以从原始数据那里重新获得一条新的流，但是却不允许消费已消费掉的流。例如下面代码就会抛出一个异常，说流已被消费掉了：
+
+```java
+List<String> title = Arrays.asList("Wmyskxz", "Is", "Learning", "Java8", "In", "Action");
+Stream<String> s = title.stream();
+s.forEach(System.out::println);
+s.forEach(System.out::println);
+// 运行上面程序会报以下错误
+/*
+Exception in thread "main" java.lang.IllegalStateException: stream has already been operated upon or closed
+    at java.util.stream.AbstractPipeline.sourceStageSpliterator(AbstractPipeline.java:279)
+    at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580)
+    at Test1.main(Tester.java:17)
+*/
+```
+
+
+
+### 并行处理
+
+Java 8 中不仅提供了方便的一些流操作（比如过滤、排序之类的），更重要的是对于并行处理有很好的支持，只需要加上 `.parallel()` 就行了！例如我们使用下面程序来说明一下多线程流操作的方便和快捷，并且与单线程做了一下对比：
+
+```java
+COPYpublic class StreamParallelDemo {
+
+    /** 总数 */
+    private static int total = 100_000_000;
+
+    public static void main(String[] args) {
+        System.out.println(String.format("本计算机的核数：%d", Runtime.getRuntime().availableProcessors()));
+
+        // 产生1000w个随机数(1 ~ 100)，组成列表
+        Random random = new Random();
+        List<Integer> list = new ArrayList<>(total);
+
+        for (int i = 0; i < total; i++) {
+            list.add(random.nextInt(100));
+        }
+
+        long prevTime = getCurrentTime();
+        list.stream().reduce((a, b) -> a + b).ifPresent(System.out::println);
+        System.out.println(String.format("单线程计算耗时：%d", getCurrentTime() - prevTime));
+
+        prevTime = getCurrentTime();
+        // 只需要加上 .parallel() 就行了
+        list.stream().parallel().reduce((a, b) -> a + b).ifPresent(System.out::println);
+        System.out.println(String.format("多线程计算耗时：%d", getCurrentTime() - prevTime));
+
+    }
+
+    private static long getCurrentTime() {
+        return System.currentTimeMillis();
+    }
+}
+```
+
+以上程序分别使用了单线程流和多线程流计算了一千万个随机数的和，输出如下：
+
+```
+本计算机的核数：8
+655028378
+单线程计算耗时：4159
+655028378
+多线程计算耗时：540
+```
+
+并行流的内部使用了默认的 ForkJoinPool 分支/合并框架，它的默认线程数量就是你的处理器数量，这个值是由 `Runtime.getRuntime().availableProcessors()` 得到的（当然我们也可以全局设置这个值）。我们也不再去过度的操心加锁线程安全等一系列问题。
 
 
 
