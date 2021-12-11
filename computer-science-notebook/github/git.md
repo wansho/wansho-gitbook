@@ -706,6 +706,8 @@ please contact us at email.support@github.com
 
 ### git cherry-pick
 
+遴选！
+
 git merge 是将一个分支的所有变动，合并到另一个分支。有时候我们不需要把所有的变动合并到某个分支，而是只想要把几次 commit 变动的内容合并到其他分支。这个时候就用到了 cherry-pick。
 
 详细介绍：[阮一峰 git cherry-pick 教程](https://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html)

@@ -71,6 +71,7 @@
   * [Logstash](computer-science-notebook/database/elastic-logstash.md)
   * [Oracle-101](computer-science-notebook/database/oracle-101.md)
   * [Mysql-Leetcode](computer-science-notebook/database/mysql-leetcode.md)
+  * [其他数据库产品](computer-science-notebook/database/database-others.md)
   * [书籍-设计数据密集型应用](computer-science-notebook/database/design-data-intensive-app.md)
   * [Questions](computer-science-notebook/database/questions.md)
 * [密码学与网络安全](computer-science-notebook/cryptography-web-security/README.md)

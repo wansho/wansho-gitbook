@@ -160,7 +160,16 @@ bootstrap 主要用于配置 SpringCloud 微服务。
 
 ## SpringBoot yml 配置文件
 
-yml 文件中的配置，如果是数字的配置，可以用 int 或者 float 来接。
+yml 文件中的配置，如果是数字的配置，可以用 int 或者 float 来接。以下的配置，都是有效的：
+
+```yaml
+boost:
+  boost1: 1.1f
+  boost2: 2.2f
+  crontab: 0 */10 * * * *
+```
+
+
 
 
 

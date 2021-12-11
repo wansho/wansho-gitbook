@@ -788,3 +788,10 @@ mvn install:install-file -DgroupId=org.elasticsearch.plugin -DartifactId=x-pack-
 </dependency>
 ```
 
+
+
+### dependency 分析插件
+
+IDEA Maven Helper
+
+可以对依赖进行树形分析，并且可以直接搜索。

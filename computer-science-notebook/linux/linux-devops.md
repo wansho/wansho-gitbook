@@ -64,7 +64,11 @@ ExecStartPost字段：启动服务之后执行的命令
 ExecStopPost字段：停止服务之后执行的命令
 ```
 
+注意，ExecStart 配置的路径，必须是绝对路径！
+
 ### systemctl 
+
+systemctl 和 docker 有点类似，都对软件的开启关闭重启注册开启自启进行了封装。
 
 ```shell
 # 列出当前系统服务的状态
