@@ -6,7 +6,8 @@
 
 * 能不能自己也做一个类似的东西
 * 能不能发现项目中的问题，提交一些 bug
-* 能不能
+
+
 
 ## 学习教程
 
@@ -26,7 +27,17 @@
 
 * **三指操作**：左右移动切换应用，上下切换回到桌面或回到应用
 
+
+
 ## 技术名词
+
+
+
+## 图灵完备
+
+图灵完备意味着你的语言可以做到能够用图灵机能做到的所有事情，可以解决所有的可计算问题。
+
+
 
 ### Shadowsocks
 
@@ -38,6 +49,8 @@ Shadowsocks 不同于 VPN，SS 的一大特点是网络分流技术（部分代�
 
 Shadowsocks 原理和 VPN 类似，其同样受限于服务器。
 
+
+
 ### UML Sequence Diagram
 
 * **什么是 UML 时序图？**
@@ -48,6 +61,7 @@ Shadowsocks 原理和 VPN 类似，其同样受限于服务器。
   * [UML Sequence Diagram Tutorial](https://www.lucidchart.com/pages/uml-sequence-diagram#top)
   * [What is Sequence Diagram?](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-sequence-diagram/)
   * [Unified Modeling Language (UML) | Sequence Diagrams](https://www.geeksforgeeks.org/unified-modeling-language-uml-sequence-diagrams/)
+  
 * **绘制 UML 时序图的工具**
   * 所见即所得
     * ProcessOn
@@ -55,18 +69,27 @@ Shadowsocks 原理和 VPN 类似，其同样受限于服务器。
   * 代码生成
     * [plantuml](http://plantuml.com/zh/) 
     * [zenuml](https://app.zenuml.com/) 
+  
 * **绘图注意事项**
   * 一个 Activation box 就是一个任务，box 越长，代表任务越长，发起的请求应该指向 box 的头部，create 除外
+  
+  
 
 ### VPN
 
 VPN 就是在国外的一台机器上搭建了一个服务端，然后用国内的客户端进行连接，建立特殊的通道（VPN），将上网的所有流量，通过国外的机器打出去。
 
+
+
 ![VPN](assets/1564559916530.png)
+
+
 
 ### HTTPs
 
 HTTPS == HTTP Secure == Secured HTTP
+
+
 
 ### MongoDB 
 
@@ -74,11 +97,17 @@ MongoDB is a general purpose, **document-based**, **distributed** database built
 
 MongoDB 和 MySQL 最大的不同：stores data in JSON-like document other than the traditional row/column model. MongoDB 存储的数据结构为 JSON，而传统的存储则是按照表进行存储。MongoDB 适用于 Node.js 项目。
 
+
+
 ### docx 和 xlsx 文档
 
 docx 和 xlsx 文档实际上是一个压缩包，可以用解压软件打开，压缩包内有大量的 xml 文件，实际上 docx 格式的文档是一种**标记语言文档**，其和 markdown / HTML 没有本质的区别。
 
+docx 的 x 是 xml(Extensible Markup Language)。
+
 注意：doc 和 xlsx 文档并不是一种标记语言文档，其压缩包内的文件并不是纯文本。
+
+
 
 ### 秒/毫秒/微秒/纳秒
 
@@ -88,11 +117,15 @@ docx 和 xlsx 文档实际上是一个压缩包，可以用解压软件打开，
 | 1 微秒 | $1s = 10^6μs$ | microseconds |
 | 1 纳秒 | $1s = 10^9ns$ | nanosecond   |
 
+
+
 ### 101 
 
 Demo: [Streaming 101](<https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-101>)，[火箭少女 101](<https://baike.baidu.com/item/%E7%81%AB%E7%AE%AD%E5%B0%91%E5%A5%B3101/22681022?fr=aladdin>)
 
 101 代表一个领域的 Introduction。
+
+
 
 ### 华为鸿蒙
 
@@ -115,11 +148,15 @@ Demo: [Streaming 101](<https://www.oreilly.com/ideas/the-world-beyond-batch-stre
 
 云计算 / 物联网 / 5G 这些变革，早晚会催生出一款大一统的操作系统，华为抓住了这一机遇，所以说鸿蒙是非常具有战略意义的。如果说，VSCode 是 IDE 的未来，那么我觉得鸿蒙可能是操作系统的未来，或者说，面向云计算 / 物联网 / 5G 的操作系统，是操作系统的未来。
 
+
+
 ### Restful API
 
 **Representational state transfer** (**REST**) is a [software architectural style](https://en.wikipedia.org/wiki/Software_architecture) which uses a subset of [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol).[[1\]](https://en.wikipedia.org/wiki/Representational_state_transfer#cite_note-Fielding-Ch5-1) It is commonly used to create [interactive](https://en.wikipedia.org/wiki/Interactivity) applications that use [Web services](https://en.wikipedia.org/wiki/Web_service). A Web service that follows these guidelines is called *RESTful*. Such a Web service must provide its [Web resources](https://en.wikipedia.org/wiki/Web_resource_framework) in a textual representation and allow them to be read and modified with a [stateless protocol](https://en.wikipedia.org/wiki/Stateless_protocol) and a predefined set of operations. 
 
 REST 是一套用于构建 Web Service 的规范。
+
+
 
 ### 许可证
 
@@ -134,6 +171,8 @@ REST 是一套用于构建 Web Service 的规范。
 2. 要求使用后开源：GUN GPLv3
 
    The [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/) also lets people do almost anything they want with your project, *except* to distribute closed source versions. 
+   
+   
 
 ### 持续集成 / 持续交付 / 持续部署 / 上线流程
 
@@ -154,6 +193,8 @@ REST 是一套用于构建 Web Service 的规范。
 **一次上线的标准流程**：
 
 研发将最新的代码提交到 Github 上，commit 配置了 hook，触发了服务端的 Jenkins，Jenkins 从 Github 同步代码进行自动化测试。
+
+
 
 ### URI URL
 
