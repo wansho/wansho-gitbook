@@ -140,6 +140,9 @@ docker 适合安装服务和中间件
 ```
 softwares
 code
+	demo
+		springboot/
+		
 nr-code
 doc
 	nr
