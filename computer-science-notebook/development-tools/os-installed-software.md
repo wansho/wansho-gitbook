@@ -17,8 +17,8 @@
 | VSCode     |                  |                                   | 配置同步                  |
 | Notepad++  |                  | BBEdit 13 / Sublime Text / VSCode |                           |
 | Terminal   | Windows Terminal | iTerm + oh-my-zsh                 |                           |
-| ssh        | MobaXterm        | WindTerm                          |                           |
-| 包管理     |                  | homebrek                          |                           |
+| ssh        | MobaXterm        |                                   |                           |
+| 包管理     |                  | homebrew                          |                           |
 | Typora     |                  |                                   | github 主题，1.0 版本以下 |
 | Clash      |                  |                                   | tangtang.win              |
 | Docker     |                  |                                   |                           |
