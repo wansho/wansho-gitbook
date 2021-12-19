@@ -234,4 +234,5 @@
   * [王德峰-中西文化差异](life-and-thinking/peace/difference-between-east-and-west.md)
   * [王德峰-阳明心学](life-and-thinking/peace/yangming.md)
   * [王德峰-命运与修行](life-and-thinking/peace/feat-and-practice.md)
+  * [关于成熟](life-and-thinking/peace/truly-maturity.md)
   * [古诗词摘抄](life-and-thinking/peace/poetry.md)
