@@ -93,6 +93,39 @@
 
 
 
+### 快捷键
+
+```
+# 全屏
+fn + f (fullscreen)
+
+# chrome
+# 打开一个 tab
+command + t (tab)
+# 关闭一个 tab
+command + w
+# 刷新
+command + r (refresh)
+
+```
+
+
+
+
+
+### 经验总结
+
+```
+* 配置 clash 运行规则，兼容内网
+* 配置 oh-my-zsh 和 zsh
+* 能够通过 nvm 安装各种版本的 nodejs
+* 支持 Java 开发，Springboot 的一个项目，从 8 秒减少到 4 秒
+```
+
+
+
+
+
 ### 软件资源
 
 https://macwk.com/
