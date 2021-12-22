@@ -4,29 +4,29 @@
 
 ## 软件开发
 
-| 软件名     | Windows          | macOS                             | 备注                      |
-| ---------- | ---------------- | --------------------------------- | ------------------------- |
-| jdk        |                  | zulu arm jdk                      | 环境变量配置              |
-| maven      |                  |                                   |                           |
-| git        |                  |                                   | 配置 GitHub 账户密码      |
-| sourceTree |                  |                                   |                           |
-| python     |                  |                                   |                           |
-| nodejs     |                  |                                   |                           |
-| IDEA       |                  |                                   | 配置同步                  |
-| PyCharm    |                  |                                   | 配置同步                  |
-| VSCode     |                  |                                   | 配置同步                  |
-| Notepad++  |                  | BBEdit 13 / Sublime Text / VSCode |                           |
-| Terminal   | Windows Terminal | iTerm + oh-my-zsh                 |                           |
-| ssh        | MobaXterm        |                                   |                           |
-| 包管理     |                  | homebrew                          |                           |
-| Typora     |                  |                                   | github 主题，1.0 版本以下 |
-| Clash      |                  |                                   | tangtang.win              |
-| Docker     |                  |                                   |                           |
-| DBeaver    |                  |                                   |                           |
-| Go         |                  |                                   |                           |
-| PostMan    |                  |                                   |                           |
-| MySQL      |                  | docker 安装                       |                           |
-| 开发文档   |                  | dash                              |                           |
+| 软件名     | Windows          | macOS              | 备注                      |
+| ---------- | ---------------- | ------------------ | ------------------------- |
+| jdk        |                  | zulu arm jdk       | 环境变量配置              |
+| maven      |                  |                    |                           |
+| git        |                  |                    | 配置 GitHub 账户密码      |
+| sourceTree |                  |                    |                           |
+| python     |                  |                    |                           |
+| nodejs     |                  |                    |                           |
+| IDEA       |                  |                    | 配置同步                  |
+| PyCharm    |                  |                    | 配置同步                  |
+| VSCode     |                  |                    | 配置同步                  |
+| Notepad++  |                  | CotEditor / VSCode |                           |
+| Terminal   | Windows Terminal | iTerm + oh-my-zsh  |                           |
+| ssh        | MobaXterm        | shuttle            |                           |
+| 包管理     |                  | homebrew           |                           |
+| Typora     |                  |                    | github 主题，1.0 版本以下 |
+| Clash      |                  |                    | tangtang.win              |
+| Docker     |                  |                    |                           |
+| DBeaver    |                  |                    |                           |
+| Go         |                  |                    |                           |
+| PostMan    |                  |                    |                           |
+| MySQL      |                  | docker 安装        |                           |
+| 开发文档   |                  | dash               |                           |
 
 
 
@@ -93,11 +93,31 @@
 
 
 
+### todo
+
+深入学习
+
+- [ ] Alfred
+
+  增加浏览器历史记录搜索
+
+- [ ] Shuttle
+
+- [ ] iTerm 
+
+
+
 ### 快捷键
 
 ```
 # 全屏
 fn + f (fullscreen)
+# 锁屏
+电源键
+# 关闭当前窗口
+command + w
+# 退出当前应用
+command + q
 
 # chrome
 # 打开一个 tab
@@ -110,6 +130,21 @@ command + r (refresh)
 ```
 
 
+
+### Alfred
+
+Alfred 就是定义一些命令
+
+```
+# 搜索文件或者文件夹
+space + xxx 或者 open + xxx
+
+# 配置了百度搜索
+dd xxx
+
+```
+
+- [ ] 在 iterm 中打开某个文件夹
 
 
 
