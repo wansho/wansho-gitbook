@@ -118,6 +118,8 @@ fn + f (fullscreen)
 command + w
 # 退出当前应用
 command + q
+# 把应用从一个屏幕移到另一个屏幕
+退出全屏幕 -> 悬停全屏按钮 -> 移到另一个屏幕
 
 # chrome
 # 打开一个 tab

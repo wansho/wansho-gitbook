@@ -240,6 +240,8 @@ found character '@' that cannot start any token. (Do not use @ for indentation)
 </build>
 ```
 
+**注意**：如果切换 profile 后，不生效的话，要把 target 目录下的内容 clean 掉！
+
 
 
 ## SpringBoot 程序版本控制
@@ -262,9 +264,10 @@ public Result<List<String>> getEntitiesByGroup(@PathVariable("groupId") String g
     return Result.buildSuccess(entityIdList, "获取分组关联的实体集合");
 }
 
+// required: 可以传参，也可以不传
 @GetMapping("/get_id")
 @ApiOperation(value = "测试 get_id")
-public String findIdByName(@RequestParam(value = "name", defaultValue = "test_name") String name){
+public String findIdByName(@RequestParam(value = "name", defaultValue = "test_name", required = false) String name){
     return entityItemService.findIdByName(name);
 }
 ```
