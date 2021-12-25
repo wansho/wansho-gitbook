@@ -218,6 +218,7 @@
   * [关于健康](life-and-thinking/health/health.md)
 * [求知若渴虚心若愚](life-and-thinking/keep-learning/README.md)
   * [如何保持学习激情](life-and-thinking/keep-learning/how-to-keep-learning.md)
+  * [周刊](life-and-thinking/keep-learning/weekly.md)
   * [英语单词和专业词汇](life-and-thinking/keep-learning/authentic-expression.md)
   * [网上冲浪知识总结](life-and-thinking/keep-learning/knowledge-summary.md)
   * [知乎摘抄](life-and-thinking/keep-learning/zhihu.md)

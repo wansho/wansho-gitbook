@@ -25,6 +25,16 @@ docker exec -it mariadb /bin/bash
 
 
 
+## Docker ARM
+
+```shell
+# 拉取 arm 版本的镜像，要加上 --platform 参数，优先使用 arm64 架构的
+docker pull --platform linux/amd64 mysql
+docker pull --platform linux/arm64 redis
+```
+
+
+
 ### Docker 是什么
 
 * 镜像是静态的，容器是跑起来的镜像，是动态的

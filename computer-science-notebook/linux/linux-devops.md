@@ -113,14 +113,18 @@ systemctl reload sshd
 
 ## 网络问题
 
-**测试远程主机的端口是否打开**
+
+
+### 测试远程主机的端口是否打开
 
 ```shell
 telnet ip port
 # 退出 telnet：ctrl + ]，然后 quit
 ```
 
-**关闭防火墙**
+
+
+### 关闭防火墙
 
 ```shell
 firewall-cmd --zone=public --add-port=3306/tcp --permanent
@@ -133,7 +137,9 @@ systemctl stop firewalld # 关闭防火墙 system-control
 
 能 ping 通，但是访问不了，netstat 看一下端口，可能是防火墙的问题
 
-**查看端口被哪个进程占用**
+
+
+### 查看端口被哪个进程占用
 
 netstat 用于显示网络相关信息，可以用于查看端口被那个进程占用了
 
@@ -146,6 +152,8 @@ lsof - list open files
 ```shell
 lsof -i:port # 查看指定端口被哪个进程占用，功能类似于 netstat -tunpl | grep 端口号
 ```
+
+
 
 ## 开机自启
 
@@ -164,13 +172,15 @@ lsof -i:port # 查看指定端口被哪个进程占用，功能类似于 netstat
 
 
 
-## 脚本控制
+## 进程相关
 
 基本思想：
 
 **我们远程登陆的每一个终端，实际上都是一个 shell 进程，在该终端中运行的每个命令，都是new一个子进程（也叫作业），如果我们运行的是一个脚本，那么就会new一个子shell来运行该脚本我们在终端中输入的任何命令（或发送信号），实际上都是和 shell 进程进行交互。当我们退出终端时，那么该终端的所有子进程（包括后台模式的进程）都会结束。**
 
 这解释了，为什么我们用 `&` 实现后端守护进程后，在关闭终端还是挂掉了，因为父 shell 结束了！如果想要在终端关闭时，保证后台进程不关闭，就要用 `nohup`
+
+
 
 ### 与 bash 交互 ctrl + C, ctrl + Z, kill -9
 
@@ -180,6 +190,8 @@ Ctrl + z 会生成 SIGTSTP (暂停进程) 信号，并将其发送到 shell 中�
 
 `kill -9 pid` 会发送一个 SIGKILL（无条件终止） 信号，并杀死指定 pid 的进程
 
+
+
 ### 后台模式详解 &
 
 后台模式运行的进程，会将该进程与 bash shell 分离，将该进程作为系统中的一个独立的后台进程运行。
@@ -187,6 +199,8 @@ Ctrl + z 会生成 SIGTSTP (暂停进程) 信号，并将其发送到 shell 中�
 后台模式运行的进程，其仍然会将标准输出和标准错误输出打印到终端。
 
 后台模式运行的进程，在终端 exit 的时候，同样会被杀死
+
+
 
 ### nohup 在 exit 时保留该进程
 
@@ -197,6 +211,8 @@ Demo:
 ```shell
 nohup python demo.py &
 ```
+
+
 
 ### 作业控制 jobs, kill, bg, fg
 
@@ -220,6 +236,8 @@ bg job_id # # 按照作业 id 以后台模式重启指定的作业
 fg job_id
 ```
 
+
+
 ### nice, renice 调整进程优先级
 
 调度优先级是一个整数，从 -20 — +19，-20 优先级最高，+19 优先级最低。默认情况下， bash shell 中的子进程的 nice 值都是 0。注意：0 以下的优先级，只有 root 用户可以分配。
@@ -235,4 +253,95 @@ renice -n 10 -p pid
 ```
 
 
+
+## expect 交互式自动化
+
+https://linux.die.net/man/1/expect
+
+expect 是一款 Linux 系统的软件，用 expect 可以定义脚本，用于和交互式的程序进行自动化交互。
+
+**Expect** is a program that "talks" to other interactive programs according to a script.
+
+Expect 包含以下常用命令：
+
+
+
+### spawn
+
+Creates a new process running *program args*. Its stdin, stdout and stderr are connected to Expect, so that they may be read and written by other **Expect** commands. The connection is broken by **close** or if the process itself closes any of the file identifiers.
+
+
+
+### exp_continue
+
+The command **exp_continue** allows **expect** itself to continue executing rather than returning as it normally would. By default **exp_continue** resets the timeout timer.
+
+继续执行
+
+
+
+### expect
+
+waits until one of the patterns matches the output of a spawned process, a specified time period has passed, or an end-of-file is seen.
+
+```shell
+expect {
+    busy               {puts busy\n ; exp_continue}
+    failed             abort
+    "invalid password" abort
+    timeout            abort
+    connected
+}
+```
+
+
+
+### interact
+
+gives control of the current process to the user, so that keystrokes are sent to the current process, and the stdout and stderr of the current process are returned.
+
+把控制权交给终端用户，并且把运行结果打印出来。
+
+
+
+### send
+
+Sends *string* to the current process. For example, the command
+
+```
+send "hello world\r"
+```
+
+sends the characters, h e l l o <blank> w o r l d <return> to the current process. (Tcl includes a printf-like command (called **format**) which can build arbitrarily complex strings.)
+
+
+
+### demos
+
+```shell
+#!/usr/bin/expect
+set timeout 10
+spawn ssh -X -p [lindex $argv 0] [lindex $argv 1]
+expect {
+        "Are you sure you want?*"     
+        {
+                send "yes\r"
+                exp_continue
+        }
+        "(yes/no)?*"     
+        {
+                send "yes\r"
+                exp_continue
+        }
+        "*assword:*"
+        {
+                send "[lindex $argv 2]\r"
+        }
+        timeout {
+                puts "connect is timeout"
+                exit 3
+        }
+    }
+interact
+```
 
