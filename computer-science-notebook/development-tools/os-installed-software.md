@@ -160,6 +160,12 @@ dd xxx
 
 
 
+### autojump
+
+和 shuttle 类似，autojump 可以在命令行中穿梭。
+
+
+
 ### 经验总结
 
 ```
