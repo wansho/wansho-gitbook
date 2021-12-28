@@ -133,6 +133,11 @@ command + w
 # 刷新
 command + r (refresh)
 
+# 输入表情包
+ctrl + command + space
+
+# 反撤销
+shift + command + z
 ```
 
 
