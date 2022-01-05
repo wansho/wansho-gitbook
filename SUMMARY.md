@@ -140,6 +140,7 @@
   * [spring-boot](computer-science-notebook/note-for-java-web/springboot.md)
   * [spring-cloud](computer-science-notebook/note-for-java-web/springcloud.md)
   * [响应式 web](computer-science-notebook/note-for-java-web/reactive.md)
+  * [缓存](computer-science-notebook/note-for-java-web/cache.md)
 * [前端开发](computer-science-notebook/front-end/README.md)
   * [nodejs](computer-science-notebook/front-end/nodejs.md)
   * [yarn 使用](computer-science-notebook/front-end/yarn.md)
