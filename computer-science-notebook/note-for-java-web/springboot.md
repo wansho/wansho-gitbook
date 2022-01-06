@@ -42,7 +42,10 @@ task: 存放定时任务，命名规则：XxxSchedule
 
 SpringBoot四大核心之starter——自定义starter - 贺贺学编程的文章 - 知乎 https://zhuanlan.zhihu.com/p/343094626
 
-组件开发经验：不通组件，包路径可以一样，但是类名不能一样，如果冲突了，会报 bean 注入失败的错误。
+组件开发经验：
+
+1. 不同组件，包路径可以一样，但是类名不能一样，如果冲突了，会报 bean 注入失败的错误
+2. 新的子组件写好了，要先 clean install 父组件，再 clean install 这个子组件
 
 
 

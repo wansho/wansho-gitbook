@@ -124,6 +124,8 @@ command + q
 退出全屏幕 -> 悬停全屏按钮 -> 移到另一个屏幕
 # 显示隐藏的文件
 command + shift + .
+# 在相同应用的不同实例之间切换
+command + `
 
 # chrome
 # 打开一个 tab

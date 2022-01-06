@@ -260,6 +260,8 @@ $ ./gh-md-toc README.md # 结果是生成一个 TOC，把该 TOC 粘贴到 markd
 
 ### Markdown 在线部署
 
+* [mdBook](https://github.com/rust-lang/mdBook) rust 编写，兼容 gitbook，测试了一下，很优秀，暂时没有 bug
+
 * [[GitBook]](https://www.gitbook.com/)
 
   完美支持 GitHub，唯一的缺点，就是国内加载太慢，认可度不高
