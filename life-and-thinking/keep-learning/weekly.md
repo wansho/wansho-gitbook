@@ -54,4 +54,20 @@
 
   黄昏意味着生命的流逝，月光蕴含着联系
 
-* 
+* [mdbook](https://github.com/rust-lang/mdBook) 
+
+  rust 语言编写的，兼容 gitbook 的电子书生成服务。Create book from markdown files. Like Gitbook but implemented in Rust。
+
+  mdbook 对中文不友好，不支持中文搜索。
+
+  Rust 正在成为 Linux 官方的第二大开发语言。
+
+* [shan-shui-inf](https://github.com/LingDong-/shan-shui-inf)
+
+  用 JavaScript 绘制山水画
+
+* https://eja.tv/ 
+
+  可以看国外的电视频道
+
+  
