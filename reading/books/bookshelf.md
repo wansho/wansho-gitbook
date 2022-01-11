@@ -4,6 +4,8 @@
 
 ## 计算机科学与技术
 
+
+
 ### 系统类
 
 
@@ -11,6 +13,8 @@
 ### 图形类
 
 * [《计算机图形学从零讲起》](https://gabrielgambetta.com/computer-graphics-from-scratch/)
+
+
 
 ### 编程类
 
@@ -22,9 +26,19 @@
 * [Java 编程思想](https://github.com/LingCoder/OnJava8)
 * [Ruby 学习指南](https://poignant.guide/book/)
 
+
+
 ### 机器学习
 
 * [Probabilistic-Programming-and-Bayesian-Methods-for-Hackers](https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers) 
+
+
+
+### 项目管理
+
+* 信息系统项目管理师教程（第3版）
+
+
 
 ## 其他
 

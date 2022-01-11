@@ -109,7 +109,7 @@ https://github.com/jaywcjlove/awesome-mac
 
 
 
-### 快捷键
+### 快捷键 / 触摸板操作
 
 ```
 # 全屏
@@ -126,6 +126,8 @@ command + q
 command + shift + .
 # 在相同应用的不同实例之间切换
 command + `
+# 三指拖动选中
+三个手指选中，然后左右一根手指拖动
 
 # chrome
 # 打开一个 tab
