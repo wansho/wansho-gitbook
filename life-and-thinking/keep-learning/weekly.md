@@ -91,7 +91,13 @@
 
   在 MacOS 上装 IOS 应用打原神
 
-* 
+* [复旦大学教授王德峰解读《坛经》横屏4K精修](https://www.bilibili.com/video/BV1uZ4y1D787)
+
+  考研坚持不下去的时候，遇到困难的时候，可以看一看
+
+* [王德峰坛经十品-录音稿-markdown版本](https://github.com/wansho/altar-sutra-wdf)
+
+  整理的录音稿
 
 
 
