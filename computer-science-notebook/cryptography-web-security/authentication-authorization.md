@@ -58,6 +58,8 @@ Cross site request forgery 跨网站请求伪造
 
 Cross-Origin Resource Sharing 跨域资源共享
 
+**浏览器存在跨域的限制，CORS 的出现，是用于实现跨域访问！**
+
 [跨域资源共享 CORS 详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)
 
 CORS 用于实现跨域的资源请求。CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）。

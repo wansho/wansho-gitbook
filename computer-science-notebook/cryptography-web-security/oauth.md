@@ -7,8 +7,40 @@
 * [[Wiki-OAuth]](https://en.wikipedia.org/wiki/OAuth)
 * [[阮一峰 - OAuth 2.0 的一个简单解释]](http://www.ruanyifeng.com/blog/2019/04/oauth_design.html)
 * [[阮一峰 - OAuth 2.0 的四种方式]](http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html)
+* [阮一峰 - 理解OAuth 2.0](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
+
+
 
 ## 学习笔记
+
+OAuth 不能解决所有的验证问题，只能解决第三方客户端获取用户信息的问题。
+
+现实中遇到 OAuth 问题，只需要代入几种角色，对号入座，问题即可迎刃而解。
+
+
+
+### OAuth 中的几个概念
+
+1. **Third-party application**：第三方应用程序，本文中又称"客户端"（client），即上一节例子中的"云冲印"。
+
+2. **HTTP service**：HTTP服务提供商，本文中简称"服务提供商"，即上一节例子中的Google。
+
+3. **Resource Owner**：资源所有者，本文中又称"用户"（user）。
+
+4. **User Agent**：用户代理，本文中就是指浏览器。
+
+5. **Authorization server**：认证服务器，即服务提供商专门用来处理认证的服务器。
+
+6. **Resource server**：资源服务器，即服务提供商存放用户生成的资源的服务器。它与认证服务器，可以是同一台服务器，也可以是不同的服务器。
+
+
+
+### OAuth 实例
+
+* 第三方应用导向 GitHub，微信，QQ 进行认证，实际上就是为了获取授权码
+* Strava 案例分析
+
+
 
 ### wiki
 
@@ -17,6 +49,8 @@
 OAuth essentially allows [access tokens](https://en.wikipedia.org/wiki/Access_token) to be issued to third-party clients by an authorization server, with the approval of the resource owner. The third party then uses the access token to access the protected resources hosted by the resource server.
 
 OAuth 有 1.0 和 2.0，2.0 不兼容 1.0
+
+
 
 ### 阮一峰 - 什么是 OAuth2
 
@@ -33,6 +67,8 @@ OAuth 有 1.0 和 2.0，2.0 不兼容 1.0
 上面这些设计，保证了令牌既可以让第三方应用获得权限，同时又随时可控，不会危及系统安全。这就是 OAuth 2.0 的优点。
 
 注意，只要知道了令牌，就能进入系统。系统一般不会再次确认身份，所以**令牌必须保密，泄漏令牌与泄漏密码的后果是一样的。** 这也是为什么令牌的有效期，一般都设置得很短的原因。
+
+
 
 ### 阮一峰 - OAuth 2.0 的四种方式
 
@@ -52,6 +88,8 @@ OAuth 2.0 的标准是 [RFC 6749](https://tools.ietf.org/html/rfc6749) 文件。
 > - 客户端凭证（client credentials）
 
 注意，不管哪一种授权方式，第三方应用申请令牌之前，都必须先到系统备案，说明自己的身份，然后会拿到两个身份识别码：客户端 ID（client ID）和客户端密钥（client secret）。这是为了防止令牌被滥用，没有备案过的第三方应用，是不会拿到令牌的。
+
+
 
 #### 授权码
 
@@ -117,3 +155,13 @@ OAuth 2.0 的标准是 [RFC 6749](https://tools.ietf.org/html/rfc6749) 文件。
 上面 JSON 数据中，`access_token`字段就是令牌，A 网站在后端拿到了。
 
 ![img](https://www.wangbase.com/blogimg/asset/201904/bg2019040905.jpg)
+
+#### 简化模式
+
+
+
+#### 密码模式
+
+
+
+#### 客户端模式

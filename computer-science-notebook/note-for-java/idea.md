@@ -34,11 +34,11 @@ https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
 
 ### macOS
 
-| 功能         | 快捷键      |
-| ------------ | ----------- |
-| 查看代码结构 | command + 7 |
-|              |             |
-|              |             |
+| 功能           | 快捷键                 |
+| -------------- | ---------------------- |
+| 查看代码结构   | command + 7            |
+| 跳到下一个变量 | control + option + ↑ ↓ |
+|                |                        |
 
 
 

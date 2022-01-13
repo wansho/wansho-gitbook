@@ -1259,3 +1259,10 @@ Removing Volumes
 
 By default, named volumes in your compose file are NOT removed when running `docker-compose down`. If you want to remove the volumes, you will need to add the `--volumes` flag. The Docker Dashboard does *not* remove volumes when you delete the app stack.
 
+
+
+## ------------------------------------------------------
+
+## 青云 KubeSphere
+
+对 K8s 进行封装，做可视化配置。
