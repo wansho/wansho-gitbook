@@ -80,6 +80,15 @@ DBeaver：开源免费，功能强大
 * sklearn 传统的机器学习方法
 * pyToarch 深度学习
 
+
+
+## 搜索
+
+* Elasticsearch
+* [Zinc](https://github.com/prabhatsharma/zinc) 轻量的全文搜索引擎
+
+
+
 ## 工作流处理
 
 * IFTTT

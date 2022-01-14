@@ -39,6 +39,7 @@ OAuth 不能解决所有的验证问题，只能解决第三方客户端获取�
 
 * 第三方应用导向 GitHub，微信，QQ 进行认证，实际上就是为了获取授权码
 * Strava 案例分析
+* 对于常见的 web 系统来说，web 前端和 app 客户端，相对于后端服务来说，都是第三方客户端
 
 
 
@@ -160,8 +161,12 @@ OAuth 2.0 的标准是 [RFC 6749](https://tools.ietf.org/html/rfc6749) 文件。
 
 
 
-#### 密码模式
+#### 密码模式 
+
+resource owner password credentials
 
 
 
 #### 客户端模式
+
+client credentials
