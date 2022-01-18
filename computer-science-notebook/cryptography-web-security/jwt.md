@@ -73,18 +73,17 @@ jwt 分为三段：
   	"sub": "08e83a509fbe4c3e9010c7c5da984db0",
   	"ver": "DB1.0",
   	"user_name": "wanshuo",
-  	"pri": ["ADMIN"],
+  	"pri": ["xxx"],
   	"last_login": 1637651866000,
-  	"scope": ["all"],
   	"iss": "nrec",
   	"exp": 1637738266,
-  	"jti": "513f9427-81b1-4c09-8a0f-363d03050054",
-  	"client_id": "frontend"
+  	"jti": "513f9427-81b1-4c09-8a0f-xxx",
+  	"client_id": "xxx"
   }
   ```
-
+  
   Payload 部分也是一个 JSON 对象，用来存放实际需要传递的数据。JWT 规定了7个官方字段，供选用。
-
+  
   ```
   iss (issuer)：签发人
   exp (expiration time)：过期时间
@@ -94,7 +93,7 @@ jwt 分为三段：
   iat (Issued At)：签发时间
   jti (JWT ID)：编号
   ```
-
+  
 * **Signature**（签名）
 
   用服务端私钥对 header 和 payload 进行签名

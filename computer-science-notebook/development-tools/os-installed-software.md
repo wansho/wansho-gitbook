@@ -163,6 +163,12 @@ dd xxx
 
 
 
+### iTerm
+
+横竖向分屏：command + D，command + D + shift
+
+
+
 ### shuttle 穿梭
 
 在 macOS 中穿梭

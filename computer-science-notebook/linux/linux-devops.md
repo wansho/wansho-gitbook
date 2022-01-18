@@ -12,7 +12,7 @@
 
 [阮一峰 Systemd 入门教程：实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html) 
 
-1. 创建服务启动脚本 auth.sh
+1.  -创建服务启动脚本 auth.sh
 
    ```shell
    #!/bin/csh
