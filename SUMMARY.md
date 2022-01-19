@@ -145,6 +145,7 @@
   * [响应式 web](computer-science-notebook/note-for-java-web/reactive.md)
   * [缓存](computer-science-notebook/note-for-java-web/cache.md)
   * [WebAPI 的设计与开发](computer-science-notebook/note-for-java-web/web-api-the-good-parts.md)
+  * [RBAC](computer-science-notebook/note-for-java-web/rbac.md)
 * [前端开发](computer-science-notebook/front-end/README.md)
   * [nodejs](computer-science-notebook/front-end/nodejs.md)
   * [yarn 使用](computer-science-notebook/front-end/yarn.md)
