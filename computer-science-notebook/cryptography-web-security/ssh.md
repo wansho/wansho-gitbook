@@ -4,6 +4,23 @@
 
 [阮一峰 SSH 教程](https://wangdoc.com/ssh/)
 
+## 我的理解
+
+* 公钥用来加密，账户密码登录 server 就是用的 server 的公钥
+
+* 私钥用来签名，免密登录 server 就是用的 client 的私钥
+
+* `.ssh/` 下的所有文件释义
+
+  ```
+  * id_rsa 用 rsa 算法生成的私钥
+  * id_rsa.pub 用 rsa 算法生成的公钥
+  * know_hosts client 所有，保存登录 server 时，存储的 server 的公钥
+  * authorized_keys server 所有，保存免密登录时，上传到 server 的公钥
+  ```
+
+
+
 ## 基本知识
 
 SSH 主要用于**远程登录**。由于采用 SSH 进行通信的客户端和服务端，使用了非对称加密加密了通话内容，所以 SSH 是 Secured 的
@@ -46,7 +63,12 @@ sudo dnf install openssh-clients
 
 密码登录用服务端的公钥加密；免密登录用客户端端的私钥加密。
 
+实现 ssh 免密登录的时候，第一次登录是要输入服务器的账户密码的，也就是相当于第一次登录的时候，用服务器的账户密码换一个 token。
+
 ```shell
+# 免密登录
+ssh-copy-id -i id_rsa user@host
+
 # 登录远程主机，默认使用当前的用户进行远程登录
 ssh hostname/ip/ 
 
@@ -64,6 +86,8 @@ ssh -p 8821 foo.com
 ssh foo@server.example.com cat /etc/hosts
 ```
 
+
+
 ### 中间人攻击
 
 SSH之所以能够保证安全，原因在于它采用了公钥加密。
@@ -79,6 +103,8 @@ SSH之所以能够保证安全，原因在于它采用了公钥加密。
 这个过程本身是安全的，但是实施的时候存在一个风险：如果有人截获了登录请求，然后冒充远程主机，将伪造的公钥发给用户，那么用户很难辨别真伪。因为不像https协议，SSH协议的公钥是没有证书中心（CA）公证的，也就是说，都是自己签发的。
 
 可以设想，如果攻击者插在用户与远程主机之间（比如在公共的wifi区域），用伪造的公钥，获取用户的登录密码。再用这个密码登录远程主机，那么SSH的安全机制就荡然无存了。这种风险就是著名的["中间人攻击"](https://en.wikipedia.org/wiki/Man-in-the-middle_attack)（Man-in-the-middle attack）。
+
+
 
 ### 连接流程
 
@@ -121,9 +147,9 @@ ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key.pub
 
 
 
-当远程主机的公钥被接受以后，它就会被保存在文件$HOME/.ssh/known_hosts之中。下次再连接这台主机，系统就会认出它的公钥已经保存在本地了，从而跳过警告部分，直接提示输入密码。
+当远程主机的公钥被接受以后，它就会被保存在文件 `$HOME/.ssh/known_hosts` 之中。下次再连接这台主机，系统就会认出它的公钥已经保存在本地了，从而跳过警告部分，直接提示输入密码。
 
-每个SSH用户都有自己的known_hosts文件，此外系统也有一个这样的文件，通常是/etc/ssh/ssh_known_hosts，保存一些对所有用户都可信赖的远程主机的公钥。
+每个SSH用户都有自己的 `known_hosts` 文件，此外系统也有一个这样的文件，通常是 `/etc/ssh/ssh_known_hosts`，保存一些对所有用户都可信赖的远程主机的公钥。
 
 如果服务器指纹变了，也就是重新生成了密钥（例如重装系统），那么再次 ssh 连接服务器的时候，会报错：
 
@@ -206,6 +232,8 @@ ssh-keygen -F example.com
 ssh-keygen -R example.com
 ```
 
+
+
 ### ssh-keygen 上传公钥，免密登录
 
 OpenSSH 规定，将客户机的公钥上传到服务机的对应用户的 `.ssh/authorized_keys` 文件中，就可以实现免密登录。
@@ -224,6 +252,8 @@ OpenSSH 规定，将客户机的公钥上传到服务机的对应用户的 `.ssh
 修改 sshd 的配置文件 `/etc/ssh/sshd_config`，更改 `LogLevel` 为 `DEBUG` 模式，然后重启 sshd `systemctl restart sshd`，再登录查看 sshd 的运行日志 `tail -f /var/log/secure`，就可以看到更详细的 debug 信息
 
 如果他妈的还是不行的话，就更改安全环境：`chcon -Rv -t ssh_home_t ~/.ssh` `restorecon -FRvv ~/.ssh` [教程](https://stackoverflow.com/questions/20688844/sshd-gives-error-could-not-open-authorized-keys-although-permissions-seem-corre)
+
+
 
 ### ssh-copy-id 命令：自动上传公钥
 
@@ -252,6 +282,8 @@ $ ssh-copy-id -i id_rsa user@host
 关闭密码登录：
 
 为了安全性，启用密钥登录之后，最好关闭服务器的密码登录。对于 OpenSSH，具体方法就是打开服务器 sshd 的配置文件`/etc/ssh/sshd_config`，将`PasswordAuthentication`这一项设为`no`。
+
+
 
 ## SSH 服务器
 

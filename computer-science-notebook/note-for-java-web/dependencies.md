@@ -91,7 +91,7 @@ public class EntityGraphDto {
 
 
 
-## Commons BeanUtils
+## Apache Commons BeanUtils
 
 Bean 工具类
 
@@ -105,18 +105,20 @@ Bean 工具类
 
 ```java
 BeanUtils.populate(userInfoDto, result.getData());
-// b 拷贝到 a
+// b 拷贝到 a，浅拷贝
 BeanUtils.copyProperties(a, b);
 ```
+
+拷贝性能比较差，
 
 
 
 ## springframework BeanUtils
 
-
+优先使用 Spring 提供的 BeanUtils
 
 ```java
-// a 拷贝到 b
+// a 拷贝到 b，比较符合直接，把 a 复制到 b
 BeanUtils.copyProperties(a, b);
 ```
 
