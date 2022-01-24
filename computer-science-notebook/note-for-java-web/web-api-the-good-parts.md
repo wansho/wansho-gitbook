@@ -171,6 +171,7 @@
 ## 第四章 最大程度地利用 HTTP 协议规范
 
 * 5 开头的响应码表示服务端出错，4 开头的响应码表示客户端请求出错
+
 * 3 打头的响应码表示资源的地址变了，服务端返回一个新的地址
 
 * 重要的响应码
@@ -258,7 +259,30 @@
 
   如果不携带的话，浏览器会直接拒绝来自服务器的响应请求。
 
-  
+
+
+
+常见的 MIME 媒体类型
+
+| 媒体类型                 | 数据格式                    |
+| ------------------------ | --------------------------- |
+| text/plain               | 纯文本                      |
+| text/html                | html 文件                   |
+| application/xml          | xml 文件                    |
+| text/css                 | css 文件                    |
+| application/javascript   | javascript                  |
+| application/json         | json 文件                   |
+| application/rss+xml      | RSS 域                      |
+| application/octet-stream | 二进制数据                  |
+| application/zip          | zip 文件                    |
+| image/jpeg               | jpeg 图像                   |
+| image/png                | png 图像                    |
+| image/svg+xml            | svg 图像                    |
+| multipart/form-data      | 多个数据组成的 web 表单数据 |
+| video/mp4                | mp4 动画文件                |
+| application/vnd.ms-excel | excel 文件                  |
+
+
 
 ## 第五章 开发方便更改设计的 web api
 

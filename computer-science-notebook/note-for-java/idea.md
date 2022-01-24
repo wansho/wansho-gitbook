@@ -38,7 +38,7 @@ https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
 | -------------- | ---------------------- |
 | 查看代码结构   | command + 7            |
 | 跳到下一个变量 | control + option + ↑ ↓ |
-|                |                        |
+| 查看继承关系   | control + H            |
 
 
 
