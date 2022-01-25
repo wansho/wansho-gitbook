@@ -254,3 +254,11 @@ docker
 	
 ```
 
+
+
+### homebrew
+
+```bash
+# 安装带有界面的软件
+brew install --cask firefox
+```

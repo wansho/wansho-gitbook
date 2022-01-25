@@ -111,6 +111,7 @@
 * [Java 学习笔记](computer-science-notebook/note-for-java/README.md)
   * [IDEA 使用学习笔记](computer-science-notebook/note-for-java/idea.md)
   * [毕向东 java se 学习笔记](computer-science-notebook/note-for-java/java.md)
+  * [java 进阶](computer-science-notebook/note-for-java/java.md)
   * [Java collection学习笔记](computer-science-notebook/note-for-java/java-collection-map.md)
   * [Java array 学习笔记](computer-science-notebook/note-for-java/java-array.md)
   * [Java string 学习笔记](computer-science-notebook/note-for-java/string.md)

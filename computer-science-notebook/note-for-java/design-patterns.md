@@ -70,8 +70,7 @@ Number result = factory.parse("123.456");
 ## 装饰设计模式
 
 装饰设计模式：对一组对象的功能进行增强时，就可以使用该模式进行问题的解决。
-装饰和继承都能实现一样的特点：进行功能的扩展增强，但是装饰比继承灵活，装饰的特点：装饰类和被装饰类
-都必须所属同一个接口或者父类。  
+装饰和继承都能实现一样的特点：进行功能的扩展增强，但是装饰比继承灵活，装饰的特点：装饰类和被装饰类都必须所属同一个接口或者父类。  
 
 Demo:
 
@@ -115,6 +114,8 @@ class NewPerson2 extends Person{
 }
 ```
 
+
+
 ## 模板方法
 
 https://www.liaoxuefeng.com/wiki/1252599548343744/1281319636041762
@@ -122,6 +123,8 @@ https://www.liaoxuefeng.com/wiki/1252599548343744/1281319636041762
 可见，模板方法的核心思想是：父类定义骨架，子类实现某些细节。
 
 为了防止子类重写父类的骨架方法，可以在父类中对骨架方法使用`final`。对于需要子类实现的抽象方法，一般声明为`protected`，使得这些方法对外部客户端不可见。
+
+
 
 ## 适配器模式
 
@@ -145,6 +148,8 @@ public BAdapter implements B {
 
 在 Adapter 内部将 B 接口的调用“转换”为对A接口的调用。
 
+
+
 ## 代理模式
 
 https://www.bilibili.com/video/BV1M54y1X78p
@@ -156,6 +161,8 @@ https://www.bilibili.com/video/BV1M54y1X78p
 目标类：原来的对象
 
 代理类：替身
+
+
 
 ### 静态代理
 
@@ -200,7 +207,133 @@ JDK 自带的动态代理技术，需要使用一个静态方法来创建代理�
   * 我们在开发时，由于基于  jdk 的动态代理要求比较多，更不容易实现，所以很多人习惯于统一配置为使用 cglib 进行代理，也就是 cglib 更通用
   * 如果使用 dubbo + zookeeper，底层进行代理时，最好配置定死使用 cglib 的方式进行代理，因为 dubbo 会使用基于包名的扫描方式进行类的处理，而 jdk 代理生成的包名类似于 `com.sun.proxy` 格式。我们实际需要代理类和目标类保持同样的包名，只有 cglib 能保持原包名不变生成代理类
 
+
+
 ## 工厂模式
 
 https://www.liaoxuefeng.com/wiki/1252599548343744/1281319170474017
+
+
+
+## 策略设计模式
+
+Strategy Pattern
+
+
+
+### 类图
+
+<img src="assets/image-20220125153718245.png" alt="image-20220125153718245" style="zoom:50%;" />
+
+
+
+
+
+### 核心概念
+
+* Context 封装角色
+
+  起承上启下封装作用，屏蔽高层模块对策略的直接访问，封装可能存在的变化。注意，Context 中要提供一个和函数式接口中一样的方法，例如 `void operate()`
+
+* IStrategy
+
+  抽象的策略，实际上是一个函数式接口
+
+* ConcreteStrategy
+
+  具体的策略，函数式接口的具体实现，可以是一个具体的类，也可以是匿名内部类，也可以直接就是一个 lambda 表达式
+
+
+
+### SpringBoot 实战
+
+代码结构：
+
+```
+├── strategy
+│   ├── IQuantStrategy.java
+│   ├── QuantContext.java
+│   └── quant
+│       ├── CriticalStrategy.java
+│       └── RiseFallStrategy.java
+```
+
+在 SpringBoot 项目中，一个策略就是一个 Bean：
+
+```java
+@Component
+public class CriticalStrategy implements IQuantStrategy {
+
+    @Resource
+    private MailService mailService;
+
+    @Override
+    public boolean quant(IG507StockInfoWithMetaInfo ig507StockInfoWithMetaInfo) {
+        return true;
+    }
+}
+```
+
+
+
+### 优化
+
+`IStrategy` 实际上是一个函数式接口，可以使用 lambda 表达式来简化各个策略。
+
+```java
+package strategy;
+
+/**
+ * @author wanshuo
+ * @date 2022-01-25 16:14:34
+ * 折扣策略
+ */
+public interface IDiscountStrategy {
+    /***
+     * 施加折扣
+     * @param total 总价
+     * @return 打折后的价格
+     */
+    float applyDiscount(float total);
+
+    /***
+     * java8 中接口内可以定义静态方法及其实现！
+     * 5 折策略
+     * @return 策略函数对象
+     */
+    static IDiscountStrategy halfDiscountStrategy(){
+        return total -> total * 0.5f;
+    }
+
+    /***
+     * 打 8 折的策略
+     * @return 策略函数对象
+     */
+    static IDiscountStrategy eightyDiscountStrategy(){
+        return total -> total * 0.8f;
+    }
+}
+
+class IDiscountStrategyTest {
+    @Test
+    void strategy(){
+        IDiscountStrategy halfDiscountStrategy = IDiscountStrategy.halfDiscountStrategy();
+        System.out.println(halfDiscountStrategy.applyDiscount(50));
+    }
+}
+```
+
+
+
+### 注意
+
+策略设计模式的重点就是封装角色 Context，它不是代理类，虽然有着和函数式接口一样的方法，但是并没有实现函数式接口，如果实现了函数式接口，就是代理设计模式了。
+
+
+
+### 参考
+
+* [Strategy Design Pattern in Java 8](https://www.baeldung.com/java-strategy-pattern)
+* [Strategy Design Pattern with in Spring Boot application](https://ravthiru.medium.com/strategy-design-pattern-with-in-spring-boot-application-2ff5a7486cd8)
+* [设计模式之禅](https://book.douban.com/subject/25843319/)
 
