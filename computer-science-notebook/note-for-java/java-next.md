@@ -203,3 +203,107 @@ public interface IDiscountStrategy {
 * [fields in interface](https://stackoverflow.com/questions/9446893/fields-in-interfaces/9446909)
 * [Java 8 Interface Changes – default method and static method](https://beginnersbook.com/2017/10/java-8-interface-changes-default-method-and-static-method/)
 
+
+
+## 枚举
+
+
+
+### 枚举的本质
+
+枚举类其实就是一个继承自 Enum 类的构造函数私有（不能从外部实例化）的 final class（不能被继承）。
+
+枚举对象是在枚举类中事先定义好的一个个实例常量(`public static final`)。
+
+Demo:
+
+```java
+public enum Color {
+    RED, GREEN, BLUE;
+}
+```
+
+反编译 class 文件 `javap -cp build/classes/main Color` 后得到：
+
+```java
+public final class Color extends Enum { // 继承自Enum，标记为final class
+    // 每个实例均为全局唯一:
+    public static final Color RED = new Color();
+    public static final Color GREEN = new Color();
+    public static final Color BLUE = new Color();
+  	public static Color[] values();
+		public static Color valueOf(java.lang.String);
+    // private构造方法，确保外部无法调用new操作符:
+    private Color() {}
+}
+```
+
+编译后的 `enum` 类和普通 `class` 并没有任何区别。
+
+枚举类可以定义构造函数，但是构造函数必须是私有的！
+
+枚举类也可以定义正常的方法，例如 public 方法。枚举类中甚至可以定义 abstract 方法。
+
+枚举类虽然已经继承了 Enum，但是仍然可以实现其他接口，它只是一个普通类！
+
+枚举策略 Demo:
+
+```java
+public enum Calculator{
+  // 定义枚举实例的时候，要实现抽象方法，相当于实现一个策略
+	ADD("+"){
+    public int exec(int a, int b){
+      return a + b;
+    }
+  },
+  
+  SUB("-"){
+    public int exec(int a, int b){
+      return a - b;
+    }
+  };
+  String value = "";
+  private Calculator(String value){
+    this.value = value;
+  }
+  public String getValue(){
+    return this.value;
+  }
+  // 定义一个抽象方法，让子类来实现
+  public abstract int exec(int a, int b);
+}
+
+Calculator.ADD.exec(1, 2)
+```
+
+
+
+
+
+### 枚举类自带的方法
+
+因为所有的枚举类都继承自 Enum 类，所以枚举类自带的方法，就是 Enum 自带的方法：
+
+| Modifier and Type             | Method and Description                                       |
+| :---------------------------- | :----------------------------------------------------------- |
+| `int`                         | `compareTo(E o)` Compares this enum with the specified object for order. 比较的是顺序 |
+| `boolean`                     | `equals(Object other)` Returns true if the specified object is equal to this enum constant. |
+| `Class<E>`                    | `getDeclaringClass()` Returns the Class object corresponding to this enum constant's enum type. |
+| `int`                         | `hashCode() `Returns a hash code for this enum constant.     |
+| `String`                      | `name()` Returns the name of this enum constant, exactly as declared in its enum declaration. |
+| `int`                         | `ordinal() `Returns the ordinal of this enumeration constant (its position in its enum declaration, where the initial constant is assigned an ordinal of zero). 返回枚举常量的顺序，从 0 开始 |
+| `String`                      | `toString()` Returns the name of this enum constant, as contained in the declaration. |
+| `static <T extends Enum<T>>T` | `valueOf(Class<T> enumType, String name)`Returns the enum constant of the specified enum type with the specified name. 根据名称返回枚举常量 |
+
+枚举类还有两个特殊的静态方法，是编译器在编译阶段加到 class 文件中的，在源码中没有体现。
+
+* `values()` 这个方法用来返回所有的枚举实例
+* `valueOf(java.lang.String)` 这个方法和 Enum 类自带的 valueOf 方法不一样，自带的需要传两个参数，而编译器加的只需要一个参数
+
+
+
+### 参考文献
+
+* [廖雪峰讲枚举](https://www.liaoxuefeng.com/wiki/1252599548343744/1260473188087424)
+* [Where is the documentation for the values() method of Enum?](https://stackoverflow.com/questions/13659217/where-is-the-documentation-for-the-values-method-of-enum)
+* 设计模式之禅 - 策略设计模式

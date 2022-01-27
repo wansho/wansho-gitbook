@@ -180,7 +180,16 @@
 
   
 
-  
+
+## 2022-week-04
+
+* [SpringBoot3.0 M1版本正式发布](https://spring.io/blog/2022/01/20/spring-boot-3-0-0-m1-is-now-available)
+
+  抛弃 Java8，最低兼容 Java17
+
+* [Liskov Substitution Principle in Java](https://www.baeldung.com/java-liskov-substitution-principle)
+
+  讲里式替换原则，讲得非常好，非常透彻的文章
 
 
 

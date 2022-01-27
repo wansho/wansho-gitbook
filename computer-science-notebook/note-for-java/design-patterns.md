@@ -2,6 +2,135 @@
 
 [TOC]
 
+## 设计模式
+
+设计模式就是讲如何应对变化的。
+
+SOLID
+
+```
+Single Responsibility Principle
+Open Closed Principle
+Liskov Substitution Principle
+Law of Demeter
+Interface Segregation Principle
+Dependence Inversion Principle
+```
+
+
+
+## 里式替换原则
+
+里式替换原则教我们如何实现子类。
+
+[![Portrait of Barbara Liskov](assets/220px-Barbara_Liskov_MIT_computer_scientist_2010.jpg)]()你好
+
+
+
+### 核心概念
+
+Liskov Substitution Principle LSP 原则
+
+把父类替换成子类，结果不变！
+
+面向接口或父类编程：在类中调用其他类时，务必要使用父类或者接口，如果不能使用父类或接口，则说明类的设计已经违反了 LSP 原则。
+
+玩具枪案例：如果子类不能完整地实现父类的方法，或者父类的某些方法在子类中已经发生畸变，则建议断开父子继承关系，采用依赖、聚合、组合等关系代替继承。
+
+LSP 可以正着用，但不能反着用。
+
+对于覆盖（重写）来说，父类和子类的同名方法的输入参数是相同的，子类的方法的返回值范围应该小于父类；（肯定要小于父类的，因为客户端是用父类的引用指向子类的对象，如果子类返回的类型父类接不住，那不肯定出错！）
+
+对于重载来说，则要求方法的输入参数类型或数量不相同，在里式替换原则要求下，子类的输入参数要宽于父类的输入参数，这样子类的这个重载方法才不会被调用。（入参范围变大，会产生危险，在调用的时候，就会寻找父类更小入参的方法，进而保证了父类的方法在每一个子类都能被优先执行）。
+
+在采用里式替换原则时，要尽量避免子类的个性。
+
+
+
+### Demo
+
+A great example illustrating LSP (given by Uncle Bob in a podcast I heard recently) was how sometimes something that sounds right in natural language doesn't quite work in code.
+
+In mathematics, a `Square` is a `Rectangle`. Indeed it is a specialization of a rectangle. The "is a" makes you want to model this with inheritance. However if in code you made `Square` derive from `Rectangle`, then a `Square` should be usable anywhere you expect a `Rectangle`. This makes for some strange behavior.
+
+Imagine you had `SetWidth` and `SetHeight` methods on your `Rectangle` base class; this seems perfectly logical. However if your `Rectangle` reference pointed to a `Square`, then `SetWidth` and `SetHeight` doesn't make sense because setting one would change the other to match it. In this case `Square` fails the Liskov Substitution Test with `Rectangle` and the abstraction of having `Square` inherit from `Rectangle` is a bad one.
+
+[![enter image description here](assets/ilxzO.jpg)](https://i.stack.imgur.com/ilxzO.jpg)
+
+
+
+
+
+
+
+## 依赖倒置原则
+
+Dependence Inversion Principle DIP
+
+
+
+### 核心概念
+
+模块间的依赖通过抽象发生，实现类之间不发生直接的依赖关系，其依赖关系是通过接口或者抽象类产生的。
+
+六个字：面向接口编程！
+
+接口就是契约，先定好契约，再实现具体的细节。
+
+依赖正置：类间的依赖是实实在在的实现类之间的依赖，也就是面向实现编程，我要开奔驰车就依赖奔驰车，要使用笔记本电脑就直接依赖笔记本电脑。
+
+依赖倒置：类间的依赖是接口之间的依赖，也就是面向接口编程。
+
+
+
+## 接口隔离原则
+
+Interface-Segregation Principle
+
+
+
+### 核心概念
+
+接口尽量细化，接口中的方法尽量少。
+
+与单一职责不同。单一职责要求的是类与接口职责单一，注重的是职责，是业务逻辑上的划分。而接口隔离原则要求接口的方法尽量少。例如一个接口的职责可能包含 10 个方法，这 10 个方法都放到一个接口中，并且提供给多个模块访问，各个模块按照规定的权限来访问，在系统外通过文档约束「不使用的方法不要访问」，按照单一职责原则是允许的，按照接口隔离原则是不允许的，因为其要求「尽量使用多个专门的接口」。
+
+
+
+## 迪米特法则
+
+Law of Demeter
+
+
+
+### 核心概念
+
+最少知识原则。一个类对自己需要耦合或调用的类知道得越少越好。
+
+怎么做：解耦！
+
+
+
+## 开闭原则
+
+Open Close Principe
+
+
+
+### 核心概念
+
+对扩展开放，对修改关闭。
+
+一个软件实体应该通过扩展来实现变化，而不是通过修改已有的代码来实现变化。
+
+
+
+
+
+
+
+
+
 ## 创建型模式
 
 创建型模式关注点是如何创建对象，其核心思想是要把对象的创建和使用相分离，这样使得两者能相对独立地变换。
@@ -331,9 +460,139 @@ class IDiscountStrategyTest {
 
 
 
-### 参考
+### 应用案例
 
+* 商场打折促销策略
+* 告警策略
+
+
+
+## 装饰设计模式
+
+Decorator pattern
+
+
+
+### 类图
+
+<img src="assets/image-20220126113450562.png" alt="image-20220126113450562" style="zoom:50%;" />
+
+
+
+### 核心概念
+
+装饰模式的核心，是装饰器（装饰类）。
+
+装饰类继承自要装饰的接口，和要装饰的实体类，是兄弟关系。
+
+Decorator 抽象类的目的很简单，就是让其子类来封装 SchoolReport 对象，重写 report 方法。
+
+用继承也可以实现方法的装饰，但是继承太多会变得复杂，而且不容易维护。装饰模式相比生成子类更为灵活。
+
+装饰设计模式是继承的一个替代方法，装饰类不管装饰多少层，返回的仍然是要装饰的对象，还是 is-a 的关系。
+
+
+
+### Demo
+
+```java
+public abstract class SchoolReport{
+  // 成绩报告
+  public abstract void report();
+  // 签字
+  public abstract void sign();
+}
+// 四年级的成绩报告
+public class FouthGradeSchoolReport extends SchoolReport{
+  public void report(){
+    sout("语文：80 分");
+  }
+  public void sign(){
+    sout("张三");
+  }
+}
+
+// 下面开始装饰
+public abstract class Decorator extends SchoolReport{
+
+    private SchoolReport schoolReport;
+
+    public Decorator(SchoolReport schoolReport){
+        this.schoolReport = schoolReport;
+    }
+
+    @Override
+    public void report() {
+        this.schoolReport.report();
+    }
+
+    @Override
+    public void sign() {
+        this.schoolReport.sign();
+    }
+}
+
+public class HighestScoreDecorator extends Decorator{
+
+    public HighestScoreDecorator(SchoolReport schoolReport) {
+        super(schoolReport);
+    }
+
+    private void myReport(){
+        System.out.println("语文最高分：81");
+    }
+
+    /***
+     * 想要装饰哪个方法，就重写那个方法
+     */
+    public void report(){
+        this.myReport();
+        super.report();
+    }
+}
+
+public class SortOrderDecorator extends Decorator{
+
+    public SortOrderDecorator(SchoolReport schoolReport) {
+        super(schoolReport);
+    }
+
+    private void myReport(){
+        System.out.println("我排名第 10 名");
+    }
+
+    /***
+     * 想要装饰哪个方法，就重写那个方法
+     */
+    public void report(){
+        this.myReport();
+        super.report();
+    }
+}
+
+public class Father {
+    public static void main(String[] args) {
+        SchoolReport schoolReport = new FouthGradeSchoolReport();
+        schoolReport = new HighestScoreDecorator(schoolReport);
+      	// 不管怎么装饰，返回的都是被装饰的对象
+        schoolReport = new SortOrderDecorator(schoolReport);
+        schoolReport.report();
+    }
+}
+
+/**
+我排名第 10 名
+语文最高分：81
+语文：80 分
+*/
+```
+
+
+
+## 参考文献
+
+* [Liskov Substitution Principle in Java](https://www.baeldung.com/java-liskov-substitution-principle) 
+* [What is an example of the Liskov Substitution Principle?](https://stackoverflow.com/questions/56860/what-is-an-example-of-the-liskov-substitution-principle)
 * [Strategy Design Pattern in Java 8](https://www.baeldung.com/java-strategy-pattern)
 * [Strategy Design Pattern with in Spring Boot application](https://ravthiru.medium.com/strategy-design-pattern-with-in-spring-boot-application-2ff5a7486cd8)
 * [设计模式之禅](https://book.douban.com/subject/25843319/)
-
