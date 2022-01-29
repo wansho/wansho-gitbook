@@ -23,7 +23,7 @@ Dependence Inversion Principle
 
 里式替换原则教我们如何实现子类。
 
-[![Portrait of Barbara Liskov](assets/220px-Barbara_Liskov_MIT_computer_scientist_2010.jpg)]()你好
+[![Portrait of Barbara Liskov](assets/220px-Barbara_Liskov_MIT_computer_scientist_2010.jpg)]() 麻省理工学院教授，04 年获得冯诺依曼奖，08 年获得图灵奖。
 
 
 

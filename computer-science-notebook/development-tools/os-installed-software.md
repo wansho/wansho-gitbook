@@ -128,6 +128,8 @@ command + shift + .
 command + `
 # 三指拖动选中
 三个手指选中，然后左右一根手指拖动
+# 最小化
+command + m
 
 # chrome
 # 打开一个 tab

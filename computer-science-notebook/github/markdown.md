@@ -151,6 +151,8 @@ description: A very simple way to add structured data to a page.
 
 [gif软件 Screen to Gif ](<https://www.screentogif.com/>)
 
+
+
 ### 超链接功能-图片超链接
 
 正常的超链接语法为: `[desc](url)`
@@ -172,6 +174,8 @@ Github Readme Stats 的原理也是这样的：
 ```
 
 [![wansho's github stats](https://github-readme-stats.vercel.app/api?username=wansho)](https://github.com/wansho)
+
+**图片超链接的方式可以天然地实现图片的居左显示**，以后不要再缩小居左了，直接用图片超链接的方式！
 
 
 
@@ -195,6 +199,8 @@ Github Readme Stats 的原理也是这样的：
 ```
 
 也可以通过图片超链接的方式插入
+
+
 
 ### 图床
 
