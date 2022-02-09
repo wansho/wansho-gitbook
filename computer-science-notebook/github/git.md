@@ -308,6 +308,8 @@ git stash clear # 清除堆栈中的所有 内容
 
 git stash 是全局的，可以跨 branch，在一个 branch 中 stash，可以在另一个 branch 中释放。
 
+
+
 ### git diff
 
 官方提醒
@@ -328,6 +330,8 @@ git diff HEAD -- readme.txt # 查看工作区 和 版本库里面最新版本的
 # 查看两个分支之间的差异
 git diff branch1 branch2
 ```
+
+
 
 ### git commit
 
