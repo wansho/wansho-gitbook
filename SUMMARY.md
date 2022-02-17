@@ -121,6 +121,7 @@
   * [java 反射学习笔记](computer-science-notebook/note-for-java/java-reflection.md)
   * [Java 新特性](computer-science-notebook/note-for-java/java-new-features.md)
   * [Java 日志](computer-science-notebook/note-for-java/java-log.md)
+  * [Java 异常](computer-science-notebook/note-for-java/java-exception.md)
   * [Java JUnit 测试](computer-science-notebook/note-for-java/java-junit.md)
   * [Java 模板引擎](computer-science-notebook/note-for-java/template-engine.md)
   * [设计模式学习](computer-science-notebook/note-for-java/design-patterns.md)
