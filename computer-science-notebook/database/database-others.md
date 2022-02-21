@@ -34,6 +34,13 @@
 
 PostgreSQL 不允许创建名为 user 的表，user 在 PostgreSQL 中是一个保留字……
 
+尽量不要将 column 重命名为 name，可以加 as
+
+```sql
+❎ select a.name name from people a;
+✔️ select a.name as name from people a;
+```
+
 
 
 ## 内存数据库
