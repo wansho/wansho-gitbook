@@ -207,6 +207,7 @@
   * [软件测试](computer-science-notebook/development-tools/software-testing.md)
   * [软件版本命名](computer-science-notebook/development-tools/software-version.md)
   * [项目管理-禅道](computer-science-notebook/development-tools/zentao.md)
+  * [软件工程](computer-science-notebook/development-tools/software-engineering.md)
   * [电脑常用软件整理](computer-science-notebook/development-tools/os-installed-software.md)
 * [技术讲座](computer-science-notebook/technology-lecture/README.md)
   * [keep-learning](computer-science-notebook/technology-lecture/cs-keep-learning.md)
