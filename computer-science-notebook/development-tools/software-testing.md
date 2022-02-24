@@ -21,7 +21,23 @@
 
 Jenkins
 
-使用 Jenkins 之前，首先要有一个自动化的需求 
+使用 Jenkins 之前，首先要有一个自动化的需求
+
+
+
+## jmeter
+
+jmeter 运行在 Java 虚拟机中，是跨平台的
+
+```shell
+# run
+cd bin
+./jmeter
+```
+
+Ramp-up Period（in seconds）：启动完所有线程所需时间。如果线程数是 500，ramp-up period 是 1 秒，那么就是 1 秒并发 500 次。如果想要 1 秒并发 100 次，则线程数设置为 100，ramp-up period 设置成 1。
+
+
 
 ## 测试开放性问题
 
@@ -36,7 +52,10 @@ Jenkins
 * 如何测试一个消息系统，这个消息系统包含了：今日头条的评论消息、点赞消息、关注提醒、头条号提醒、问答邀请和系统消息（比如头条活动）
 
   Kafka
+  
+  
 
 ## Jenkins + SpringBoot + Docker + GitHub
 
 https://zhuanlan.zhihu.com/p/78396471
+

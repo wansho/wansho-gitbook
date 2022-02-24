@@ -87,9 +87,32 @@ ORM（Object Relational Mapping）, ORM 举例：Django ORM，Java Mybatis puls
 
 ### RPC
 
-gRPC is a modern, open source **remote procedure call** (RPC) framework that can run anywhere. It enables client and server applications to communicate transparently, and makes it easier to build connected systems. 
+gRPC（Google RPC） is a modern, open source **remote procedure call** (RPC) framework that can run anywhere. It enables client and server applications to communicate transparently, and makes it easier to build connected systems. 
 
 <img align="left" src="assets/image-20201106091824908.png" alt="image-20201106091824908" style="zoom:50%;" />
+
+
+
+RPC 通常是长链接，HTTP 是短连接。
+
+HTTP 调用也是一种特殊的 RPC，HTTP1.0 协议时，HTTP 调用还只能是短链接调用，一个请求来回之后连接就会关闭。HTTP1.1 在 HTTP1.0 协议的基础上进行了改进，引入了 KeepAlive 特性可以保持 HTTP 连接长时间不断开，以便在同一个连接之上进行多次连续的请求，进一步拉近了 HTTP 和 RPC 之间的距离。
+
+HTTP vs RPC
+
+HTTP 与 RPC 的关系就好比普通话与方言的关系。要进行跨企业服务调用时，往往都是通过 HTTP API，也就是普通话，虽然效率不高，但是通用，没有太多沟通的学习成本。但是在企业内部还是 RPC 更加高效，同一个企业公用一套方言进行高效率的交流，要比通用的 HTTP 协议来交流更加节省资源。整个中国有非常多的方言，正如有很多的企业内部服务各有自己的一套交互协议一样。虽然国家一直在提倡使用普通话交流，但是这么多年过去了，你回一趟家乡探个亲什么的就会发现身边的人还是流行说方言。
+
+如果再深入一点说，普通话本质上也是一种方言，只不过它是官方的方言，使用最为广泛的方言，相比而言其它方言都是小语种，小语种之中也会有几个使用比较广泛比较特色的方言占比也会比较大。这就好比开源 RPC 协议中 Protobuf 和 Thrift 一样，它们两应该是 RPC 协议中使用最为广泛的两个。
+
+一个完整的RPC框架底层往往是socket搭配序列化反序列化的工作。
+
+
+
+作者：老钱
+链接：https://www.zhihu.com/question/25536695/answer/417707733
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
 
 ### 负载均衡
 
