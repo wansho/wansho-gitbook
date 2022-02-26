@@ -169,6 +169,8 @@ dd xxx
 
 横竖向分屏：command + D，command + D + shift
 
+[iTerm 实现 ssh X11 forwarding](https://www.cyberciti.biz/faq/apple-osx-mountain-lion-mavericks-install-xquartz-server/)
+
 
 
 ### shuttle 穿梭

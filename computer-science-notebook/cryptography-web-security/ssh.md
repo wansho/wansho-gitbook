@@ -82,6 +82,9 @@ ssh host
 # 指定端口，默认 22 端口
 ssh -p 8821 foo.com
 
+# Enables X11 forwarding 加 X 参数可以打开图形界面
+ssh -X ...
+
 # 在登录完服务器后，直接执行命令
 ssh foo@server.example.com cat /etc/hosts
 ```
