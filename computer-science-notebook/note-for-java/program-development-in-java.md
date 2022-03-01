@@ -242,3 +242,137 @@ try{
 
 ## 第五章 数据抽象
 
+
+
+### 类的定义
+
+数据抽象的规格。
+
+一个类型的意义，不应该由其任何一个实现给出，而是应该由规格定义其行为。由于类型的对象只通过调用操作使用，所以大多数规格都是用于解释这些操作做了什么。（类的定义）
+
+
+
+成员方法分类：
+
+* 创建者（creator）：构造函数
+* 生成者（producer）：这些操作将其类型的对象作为输入，并且生成一个新的同类型对象，既可能是构造函数，也可能是普通方法，例如 add 和 mul 就是 Poly 的生成者
+* 改变者（mutator）：修改对象的状态，例如 List 的 add 方法，setter 方法
+* 观察者（observer）：读取对象的状态，getter 方法
+
+
+
+immutable 对象：没有 modified（mutator） 的方法，成员变量不会被改动，例如定义一个多项式，定义一个 String
+
+mutable 对象： 有 modified（mutator） 方法，会改动成员变量，例如 Set 和 List
+
+
+
+### getter 和 setter
+
+
+
+成员变量为何一定是 private 的？
+
+为了支持抽象，将访问成员变量在方法和构造函数的实现范围内是很重要的。比如，这让你能够重新实现一个抽象类型而不影响任何使用这个类型的代码。成员变量对用户来说必须是不可见的，使用对象的代码只可以指向其方法。要防止成员变量被 client 看到，则需要声明它们为非公有。类只暴露方法，不暴露成员变量。
+
+[Why use getters and setters/accessors?](https://stackoverflow.com/questions/1568091/why-use-getters-and-setters-accessors)
+
+[Significance of Getters and Setters in Java](https://www.baeldung.com/java-why-getters-setters)
+
+如果 Java 中没有 getter setter 的话：
+
+1. 如果任何 client 都可以通过 `.` 直接修改对象的成员变量，那么某些类型便失去了 immutable 特性，例如 Poly 类型
+
+2. we cannot provide any conditional logic to the change of the variable. Let's consider we have a class *Employee* with a field *retirementAge*:
+
+   ```java
+   public class Employee {
+       public String name;
+       public int retirementAge;
+   
+   // Constructor, but no getter/setter
+   }
+   ```
+
+   Note that, here we've set the fields as public to enable access from outside the class *Employee*. Now, we need to change the *retirementAge* of an employee:
+
+   ```java
+   public class RetirementAgeModifier {
+   
+       private Employee employee = new Employee("John", 58);
+   
+       private void modifyRetirementAge(){
+           employee.retirementAge=18;
+       }
+   }
+   ```
+
+   Here, any client of the *Employee* class can easily do what they want with the *retirementAge* field. **There's no way to validate the change.**
+
+3. how could we achieve read-only or write-only access to the fields from outside the class?
+
+Java 中 getter 和 setter 的作用：
+
+1. It helps us achieve encapsulation which is used to hide the state of a structured data object inside a class, preventing unauthorized direct access to them
+2. Achieve immutability by declaring the fields as private and using only getters
+3. Getters and setters also allow additional functionalities like validation（例如校验退休年龄是否超过 60 岁）, error handling that could be added more easily in the future. Thus we can add conditional logic and provide behavior according to the needs
+4. We can provide different access levels to the fields; for example, the get (read-access) may be public, while the set (write-access) could be protected
+5. Control over setting the value of the property correctly
+6. With getters and setters, we achieve one more key principle of OOP, i.e., abstraction, which is hiding implementation details so that no one can use the fields directly in other classes or modules
+
+
+
+在使用 getter 和 setter 时可能犯的错误：
+
+* Assigning Object References Directly in the Setter Methods
+
+  When we assign object reference directly in the setter methods, both these references point to a single object in memory. So, changes made using any of the reference variables are actually made on the same object:
+
+  ```java
+  public void setEmployee(Employee employee) {
+      this.employee = employee;
+  }
+  ```
+
+  However, we can copy all the elements from one object to another object using a [deep copy](https://www.baeldung.com/java-deep-copy). Due to this, the state of *this* object becomes independent of the existing (passed) employee object:
+
+  ```java
+  public void setEmployee(Employee employee) {
+      this.employee.setName(employee.getName());
+      this.employee.setRetirementAge(employee.getRetirementAge());
+  }
+  ```
+
+* Returning Object References Directly From the Getter Methods
+
+  Similarly, if the getter method returns the reference of the object directly, anyone can use this reference from the outside code to change the state of the object:
+
+  ```java
+  public Employee getEmployee() {
+      return this.employee;
+  }
+  ```
+
+  Let's use this *getEmployee()* method and change the *retirementAge:*
+
+  ```java
+  private void modifyAge() {
+      Employee employeeTwo = getEmployee();
+      employeeTwo.setRetirementAge(65);
+  }
+  ```
+
+  This leads to the unrecoverable loss of the original object.
+
+  So, instead of returning the reference from the getter method, we should return a copy of the object. One such way is as below:
+
+  ```java
+  public Employee getEmployee() {
+      return new Employee(this.employee.getName(), this.employee.getRetirementAge());
+  }
+  ```
+
+  However, we should also keep in mind that creating copies of objects within the getter or setter might not always be a best practice. For example, calling the above getter method in a loop could result in an expensive operation.
+
+  On the other hand, if we want that our collection should remain unmodifiable, it would make sense to return a copy of the collection from a getter. We then have to determine which approach suits best in a certain situation.
+

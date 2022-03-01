@@ -64,17 +64,19 @@
 | 向日葵            |              |                         |      |
 | 系统管家          | 火绒         | lemon                   |      |
 | 录屏 gif 工具     | screenToGif  | Kap                     |      |
+| 视频格式转换      |              | HandBrake               |      |
 
 
 
 ## 创作
 
-| 软件名            | Windows | macOS | 备注 |
-| ----------------- | ------- | ----- | ---- |
-| OBSStudio         |         |       |      |
-| bilibili 直播姬   |         |       |      |
-| bilibili 投稿工具 |         |       |      |
-|                   |         |       |      |
+| 软件名            | Windows | macOS     | 备注 |
+| ----------------- | ------- | --------- | ---- |
+| OBSStudio         |         |           |      |
+| bilibili 直播姬   |         |           |      |
+| bilibili 投稿工具 |         |           |      |
+| 视频格式转换      |         | handbrake |      |
+| 视频剪辑          |         | iMovie    |      |
 
 
 
