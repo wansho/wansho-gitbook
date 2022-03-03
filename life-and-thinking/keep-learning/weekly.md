@@ -277,3 +277,24 @@
   4、随时可以申请可升降办公桌。
 
   5、网速超级快，整套装备使用体验相当好。
+
+* [如果你有以下10种症状，说明你压力过大，这4招帮你走出困境](https://mp.weixin.qq.com/s/WwlWCa5LV-bzWXaKn67TRg)
+
+  命中了好多症状，忙得有点麻木了，很多时候都忽视了自己的压力
+
+* [房价还会涨🐴](https://www.zhihu.com/question/519615042/answer/2371272939) 
+
+  <img align="left" src="assets/image-20220303103326514.png" alt="image-20220303103326514" style="zoom: 33%;" />
+
+  太形象了，土地财政绑架了 zf，再吸一口，哈哈哈哈，只是扭转了三阶导数
+
+* 低代码
+
+  最近在调研低代码，和大家分享一些我看过的文章：
+
+  * [百度吴多益：低代码，要怎么低？和低代码有关的 10 个问题](https://zhuanlan.zhihu.com/p/225987562)
+  * [知乎：聊聊我对 GraphQL 的一些认知](https://zhuanlan.zhihu.com/p/419475396)
+  * [美团：GraphQL及元数据驱动架构在后端BFF中的实践](https://zhuanlan.zhihu.com/p/370436576)
+  * [爱奇艺：减少重复开发，GraphQL在低代码平台如何落地？](https://zhuanlan.zhihu.com/p/348950745)
+  * [dataway 10 minutes](https://zhuanlan.zhihu.com/p/421426635)
+  * [graphql-springboot 10 minutes](https://www.graphql-java.com/tutorials/getting-started-with-spring-boot)

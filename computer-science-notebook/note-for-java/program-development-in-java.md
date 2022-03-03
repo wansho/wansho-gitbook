@@ -376,3 +376,9 @@ Java 中 getter 和 setter 的作用：
 
   On the other hand, if we want that our collection should remain unmodifiable, it would make sense to return a copy of the collection from a getter. We then have to determine which approach suits best in a certain situation.
 
+
+
+## 第六章 迭代抽象
+
+
+
