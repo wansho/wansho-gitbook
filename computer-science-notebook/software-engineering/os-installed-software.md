@@ -161,9 +161,9 @@ space + xxx 或者 open + xxx
 # 配置了百度搜索
 dd xxx
 
+# command + 回车
+打开文件所在文件夹而不是打开文件
 ```
-
-- [ ] 在 iterm 中打开某个文件夹
 
 
 

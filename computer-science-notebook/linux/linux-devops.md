@@ -52,16 +52,16 @@
 
 6. 关闭开启自启： `systemctl disable auth`
 
-7. 查看服务状态：`systemctl status auth`
+7. 查看服务状态：`systemctl status auth` 这个很重要！
 
 服务部署完后，即使是服务被 kill 掉了，还是会马上自启！
 
 ```
-ExecReload字段：重启服务时执行的命令
-ExecStop字段：停止服务时执行的命令
-ExecStartPre字段：启动服务之前执行的命令
-ExecStartPost字段：启动服务之后执行的命令
-ExecStopPost字段：停止服务之后执行的命令
+ExecReload 字段：重启服务时执行的命令
+ExecStop 字段：停止服务时执行的命令
+ExecStartPre 字段：启动服务之前执行的命令
+ExecStartPost 字段：启动服务之后执行的命令
+ExecStopPost 字段：停止服务之后执行的命令
 ```
 
 注意，ExecStart 配置的路径，必须是绝对路径！

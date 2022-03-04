@@ -2,6 +2,8 @@
 
 记录每一周的所见所闻。学习阮老师。
 
+每周都对 gitbook 提交记录进行整理，把有趣的，有价值的知识，分享到周报。
+
 [TOC]
 
 
@@ -298,3 +300,4 @@
   * [爱奇艺：减少重复开发，GraphQL在低代码平台如何落地？](https://zhuanlan.zhihu.com/p/348950745)
   * [dataway 10 minutes](https://zhuanlan.zhihu.com/p/421426635)
   * [graphql-springboot 10 minutes](https://www.graphql-java.com/tutorials/getting-started-with-spring-boot)
+

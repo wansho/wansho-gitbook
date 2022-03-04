@@ -269,8 +269,6 @@ mutable 对象： 有 modified（mutator） 方法，会改动成员变量，例
 
 ### getter 和 setter
 
-
-
 成员变量为何一定是 private 的？
 
 为了支持抽象，将访问成员变量在方法和构造函数的实现范围内是很重要的。比如，这让你能够重新实现一个抽象类型而不影响任何使用这个类型的代码。成员变量对用户来说必须是不可见的，使用对象的代码只可以指向其方法。要防止成员变量被 client 看到，则需要声明它们为非公有。类只暴露方法，不暴露成员变量。
@@ -319,6 +317,28 @@ Java 中 getter 和 setter 的作用：
 4. We can provide different access levels to the fields; for example, the get (read-access) may be public, while the set (write-access) could be protected
 5. Control over setting the value of the property correctly
 6. With getters and setters, we achieve one more key principle of OOP, i.e., abstraction, which is hiding implementation details so that no one can use the fields directly in other classes or modules
+
+
+
+David John Wheeler有一句名言：
+
+“All problems in computer science can be solved by another level of indirection.”
+
+getter、setter就是个很好的中间层。
+
+直接摘录stackoverflow上一个不错的总结：
+
+[oop - Why use getters and setters?](http://stackoverflow.com/questions/1568091/why-use-getters-and-setters)
+
+1. 这两个方法可以方便增加额外功能（比如验证）。
+2. 内部存储和外部表现不同。
+3. 可以保持外部接口不变的情况下，修改内部存储方式和逻辑。
+4. 任意管理变量的生命周期和内存存储方式。
+5. 提供一个debug接口。
+6. 能够和模拟对象、序列化乃至WPF库等融合。
+7. 允许继承者改变语义。
+8. 可以将getter、setter用于lambda表达式。（大概即作为一个函数，参与函数传递和运算）
+9. getter和setter可以有不同的访问级别。
 
 
 

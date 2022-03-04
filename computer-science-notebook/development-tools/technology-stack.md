@@ -18,7 +18,7 @@
 * Browser: ECharts, D3, vis.js(timeline, network)
 * 可视化云平台: Baidu Sugar
 * Python 可视化: matplotlib，seaborn(基于 matplotlib 的高层次接口)，wordcloud，reportlab(生成 pdf 报告)，Demo: [YouTube-Report](https://github.com/A3M4/YouTube-Report)
-* 流程图：processon, ASCII flowchart: Graph Easy
+* 流程图：processon, ASCII flowchart: Graph Easy，手绘风格在线绘图 https://excalidraw.com/
 * 历史数据排名可视化：[Historical-ranking-data-visualization-based-on-d3.js](https://github.com/Jannchie/Historical-ranking-data-visualization-based-on-d3.js)
 * 代码可视化、代码修饰工具：[Carbon](https://carbon.now.sh/)
 * [Mapbox](https://www.mapbox.com/)  地图展示
@@ -116,12 +116,16 @@ DBeaver：开源免费，功能强大
 * 视频转码压缩软件：VidCoder
 * 提醒我去休息的工具：[stretchly](https://hovancik.net/stretchly/downloads/)
 
+
+
 ## 学习资源
 
 * [命令行界面设计指南](https://clig.dev/)
 * [半小时学习 Rust 语言](https://fasterthanli.me/articles/a-half-hour-to-learn-rust) 一篇英语长文，详细介绍 Rust 语言的基本知识点
 * [Python 软件工程](https://merely-useful.github.io/py-rse/) 介绍使用 Python 来做实际的软件项目时，需要了解的各种 Linux 知识，比如命令行、Git、Make 等等
 * [Top 10 Python libraries of 2020](https://tryolabs.com/blog/2020/12/21/top-10-python-libraries-of-2020/)
+
+
 
 ## 软件架构
 
