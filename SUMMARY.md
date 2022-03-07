@@ -137,6 +137,7 @@
   * [泛型](computer-science-notebook/note-for-java/generics.md)
   * [stream 学习](computer-science-notebook/note-for-java/stream.md)
   * [函数式编程](computer-science-notebook/note-for-java/functional-programming.md)
+  * [Java 程序开发原理](computer-science-notebook/note-for-java/program-development-in-java.md)
   * [Java 自带命令学习](computer-science-notebook/note-for-java/java-bin.md)
   * [Java 开发工具](computer-science-notebook/note-for-java/java-dev-tools.md)
   * [大数计算和存储](computer-science-notebook/note-for-java/big-number.md)

@@ -97,6 +97,7 @@
   * [regex](computer-science-notebook/programming-language/regex.md)
   * [windows-bat](computer-science-notebook/programming-language/windows-bat.md)
   * [QT](computer-science-notebook/programming-language/qt.md)
+
 * [C++ 开发](computer-science-notebook/note-for-c/README.md)
   * [C语言学习教程](computer-science-notebook/note-for-c/how-to-learn-c.md)
   * [书籍：Think-C](computer-science-notebook/note-for-c/think-c.md)
@@ -136,6 +137,7 @@
   * [泛型](computer-science-notebook/note-for-java/generics.md)
   * [stream 学习](computer-science-notebook/note-for-java/stream.md)
   * [函数式编程](computer-science-notebook/note-for-java/functional-programming.md)
+  * [Java 程序开发原理](computer-science-notebook/note-for-java/program-development-in-java.md)
   * [Java 自带命令学习](computer-science-notebook/note-for-java/java-bin.md)
   * [Java 开发工具](computer-science-notebook/note-for-java/java-dev-tools.md)
   * [大数计算和存储](computer-science-notebook/note-for-java/big-number.md)
@@ -201,6 +203,7 @@
   * [Selenium](computer-science-notebook/development-tools/selenium.md)
   * [nginx](computer-science-notebook/development-tools/nginx.md)
   * [zookeeper](computer-science-notebook/development-tools/zookeeper.md)
+  * [haproxy-keepalived](computer-science-notebook/development-tools/haproxy.md)
   * [webhook](computer-science-notebook/development-tools/webhook.md)
   * [网络爬虫](computer-science-notebook/development-tools/web-spider.md)
   * [Hexo 主题定制](computer-science-notebook/development-tools/make-hexo-theme.md)

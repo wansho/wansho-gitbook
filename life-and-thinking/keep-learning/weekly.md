@@ -305,13 +305,39 @@
 
 ## 2022 - week 10
 
-* 「我们已经可以依靠科技进入外太空，却依然无法走进一个人内心的宇宙」
+### 一部电影[《大佛普拉斯》](https://movie.douban.com/subject/27059130/)
 
-  「富人造佛，穷人拜佛」
+「我们已经可以依靠科技进入外太空，却依然无法走进一个人内心的宇宙」
 
-  ​	— 大佛普拉斯
+「富人造佛，穷人拜佛」
 
-  <img align="left" src="assets/image-20220305110320548.png" alt="image-20220305110320548" style="zoom: 25%;" />
+<img align="left" src="assets/image-20220305110320548.png" alt="image-20220305110320548" style="zoom: 25%;" />
 
-* 
+
+
+### 一首诗词
+
+西江月·世事短如春梦
+世事短如春梦，人情薄似秋云。不须计较苦劳心。万事原来有命。
+幸遇三杯酒好，况逢一朵花新。片时欢笑且相亲。明日阴晴未定。
+
+
+
+### 快速入门 HAProxy 和 keepalived
+
+https://www.bilibili.com/video/BV1Fh411Y7hc
+
+HAProxy 用来做负载均衡，keepalived 用来做高可用
+
+
+
+### 在线图表绘制工具（手绘风格）excalidraw
+
+https://excalidraw.com/
+
+优点：手绘风格 缺点：云同步功能得付费
+
+
+
+### java 中 getter 和 setter 的作用
 
