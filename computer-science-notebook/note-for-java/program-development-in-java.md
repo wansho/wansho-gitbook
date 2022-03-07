@@ -400,5 +400,22 @@ getter、setter就是个很好的中间层。
 
 ## 第六章 迭代抽象
 
+迭代背后的实现原理。如何实现一个数据抽象的迭代机制？
 
+迭代的要求：一次只生成一项，递增地生成想要迭代的项。
+
+```java
+for each result item i produced by iterator A:
+		do perform some action on i
+```
+
+对于拥有索引的数据抽象，例如 ArrayList，可以没有迭代机制：
+
+```java
+for(i=0; i<list.size(); i++){
+  do perform some action on list.get(i);
+}
+```
+
+考虑如下的一个需求，对多项式
 
