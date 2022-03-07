@@ -301,3 +301,17 @@
   * [dataway 10 minutes](https://zhuanlan.zhihu.com/p/421426635)
   * [graphql-springboot 10 minutes](https://www.graphql-java.com/tutorials/getting-started-with-spring-boot)
 
+
+
+## 2022 - week 10
+
+* 「我们已经可以依靠科技进入外太空，却依然无法走进一个人内心的宇宙」
+
+  「富人造佛，穷人拜佛」
+
+  ​	— 大佛普拉斯
+
+  <img align="left" src="assets/image-20220305110320548.png" alt="image-20220305110320548" style="zoom: 25%;" />
+
+* 
+
