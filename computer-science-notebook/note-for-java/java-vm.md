@@ -28,3 +28,9 @@ hostname 是 ip 地址，port 是 jmx 监控端口。
 
 
 ![image-20220224200621658](assets/image-20220224200621658.png)
+
+
+
+## Java 性能检测 jconsole
+
+jconsole 是 jre 自带的，直接输入 jconsole 就可以调起监控页面，很方便，感觉比 visualvm 好用。
