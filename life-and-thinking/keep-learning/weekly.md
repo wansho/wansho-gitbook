@@ -388,7 +388,27 @@ Rest：HTTP + JSON
 
 
 
-## 2022 week - 11
+## 2022 - week - 11
+
+
+
+### 一个视频
+
+【范 大 神 仙 怒 斥 天 兵 天 将-哔哩哔哩】 https://b23.tv/pHHfBGg
+
+迄今为止，我看到的范志毅宇宙，最离谱的一个视频。
+
+<img align="left" src="assets/image-20220313165915522.png" alt="image-20220313165915522" style="zoom: 25%;" />
+
+
+
+### 一个 up 主
+
+马刀刻森 https://space.bilibili.com/14048220
+
+代表作：[张无忌！！！你就是歌姬吧？！！](https://www.bilibili.com/video/BV1GZ4y1d7yP?spm_id_from=333.999.0.0)
+
+百万 up 主预定。
 
 
 
