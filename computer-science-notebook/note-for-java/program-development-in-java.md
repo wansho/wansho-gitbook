@@ -400,6 +400,10 @@ getter、setter就是个很好的中间层。
 
 ## 第六章 迭代抽象
 
+
+
+### 没有索引的对象，怎么迭代？
+
 迭代背后的实现原理。如何实现一个数据抽象的迭代机制？
 
 迭代的要求：一次只生成一项，递增地生成想要迭代的项。
@@ -417,5 +421,53 @@ for(i=0; i<list.size(); i++){
 }
 ```
 
-考虑如下的一个需求，对多项式
+考虑如下的一个需求，对一个多项式对象的，迭代获取其每一项的系数，我们应该怎么办呢？
+
+我们所需要的，是一种普遍的迭代机制，避免出现时间和空间问题。
+
+
+
+### Java 的迭代
+
+迭代器
+
+```java
+public interface Iterator{
+  public boolean hasNext();
+  // EFFECTS: return true if there are more elements to yield, else return false
+  
+  public Object next() throws NoSuchElementException;
+  // MODIFIES: this
+  // EFFECTS: if there are more results to yield, returns the next result and modifies the state of this to record the yield. Otherwise, throws NoSuchElementException
+}
+```
+
+迭代器和发生器：
+
+* 迭代器是一个返回发生器的过程。一个数据抽象，可以有一个或多个迭代器方法
+* 发生器是生成用于迭代的元素的对象
+* 迭代器的规格定义了发生器的行为
+
+注意：
+
+* 一个数据抽象可以有多个迭代器
+
+
+
+### 实现迭代器
+
+数据抽象中的迭代器抽象：
+
+```java
+public class Poly{
+  public Iterator terms()
+    // EFFECTS: Returns a generator that will produce exponents
+}
+```
+
+为了实现一个迭代器，需要在数据抽象中定义并实现一个内部类（发生器类）。迭代器的实现：
+
+[![image-20220315191911989](assets/image-20220315191911989.png)]()
+
+
 
