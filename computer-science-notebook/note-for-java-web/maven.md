@@ -184,12 +184,12 @@ Maven解析依赖信息时会到本地仓库中查找被依赖的jar包。对于
 
 Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`provided`：
 
-| scope    | 说明                                            | 示例            |
-| :------- | :---------------------------------------------- | :-------------- |
-| compile  | 编译时需要用到该jar包（默认）                   | commons-logging |
-| test     | 编译Test时需要用到该jar包                       | junit           |
-| runtime  | 编译时不需要，但运行时需要用到                  | mysql           |
-| provided | 编译时需要用到，但运行时由 JDK 或某个服务器提供 | servlet-api     |
+| scope    | 说明                                            | 示例               |
+| :------- | :---------------------------------------------- | :----------------- |
+| compile  | 编译时需要用到该jar包（默认）                   | commons-logging    |
+| test     | 编译Test时需要用到该jar包                       | junit              |
+| runtime  | 编译时不需要，但运行时需要用到                  | mysql              |
+| provided | 编译时需要用到，但运行时由 JDK 或某个服务器提供 | servlet-api tomcat |
 
 #### compile 类型
 
