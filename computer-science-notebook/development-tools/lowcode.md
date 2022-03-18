@@ -33,17 +33,22 @@ https://gitee.com/ssssssss-team/magic-api
 特性
 
 * 支持自定义 web api —> 解放了后端，不再需要写胶水代码，允许工程人员自定义数据接口
+
 * 支持自定义模块 —> 自定义数据源插件
+
 * 支持数据源 —> 符合我们前端多数据源的要求
+
 * 脚本支持断点调试
+
 * 可以通过 magic-script 脚本直接调用 Java —> 对 Java 方法的直接封装
+
 * 提供了与 rest 对应的第三方开发的接口 —> 除了通过 rest 接口与 web api 进行交互外，magic-api 还暴露了第三方开发者接口
-* 
+
+  
 
 我的思考
 
 * magic-editor 是面向我们开发者的 magic-script 调试工具，在实际的使用时，我们还要对 magic-api 进一步地封装，自动生成 magic-script
-* 
 
  
 

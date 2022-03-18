@@ -128,6 +128,51 @@ dispatcher 根据路径分发
 
 
 
+### 重定向
+
+我们已经编写了一个能处理`/hello`的`HelloServlet`，如果收到的路径为`/hi`，希望能重定向到`/hello`，可以再编写一个`RedirectServlet`：
+
+```
+@WebServlet(urlPatterns = "/hi")
+public class RedirectServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 构造重定向的路径:
+        String name = req.getParameter("name");
+        String redirectToUrl = "/hello" + (name == null ? "" : "?name=" + name);
+        // 发送重定向响应:
+        resp.sendRedirect(redirectToUrl);
+    }
+}
+```
+
+如果浏览器发送`GET /hi`请求，`RedirectServlet`将处理此请求。由于`RedirectServlet`在内部又发送了重定向响应，因此，浏览器会收到如下响应：
+
+```
+HTTP/1.1 302 Found
+Location: /hello
+```
+
+当浏览器收到302响应后，它会立刻根据`Location`的指示发送一个新的`GET /hello`请求，这个过程就是重定向：
+
+```ascii
+┌───────┐   GET /hi     ┌───────────────┐
+│Browser│ ────────────> │RedirectServlet│
+│       │ <──────────── │               │
+└───────┘   302         └───────────────┘
+
+
+┌───────┐  GET /hello   ┌───────────────┐
+│Browser│ ────────────> │ HelloServlet  │
+│       │ <──────────── │               │
+└───────┘   200 <html>  └───────────────┘
+```
+
+重定向有两种：一种是 302 响应，称为临时重定向，一种是 301 响应，称为永久重定向。两者的区别是，如果服务器发送 301 永久重定向响应，浏览器会缓存`/hi`到 `/hello` 这个重定向的关联，下次请求 `/hi` 的时候，浏览器就直接发送 `/hello` 请求了。
+
+重定向有什么作用？重定向的目的是当 Web 应用升级后，如果请求路径发生了变化，可以将原来的路径重定向到新路径，从而避免浏览器请求原路径找不到资源。
+
+
+
 ### 多线程模型
 
 一个Servlet类在服务器中只有一个实例，但对于每个HTTP请求，Web服务器会使用多线程执行请求。因此，一个 Servlet 的`doGet()`、`doPost()`等处理请求的方法是多线程并发执行的。如果Servlet中定义了字段，要注意多线程并发访问的问题：
@@ -159,7 +204,9 @@ JavaEE 的 Servlet 机制内建了对 Session 的支持。我们以登录为例�
 
 Servlet 提供的 `HttpSession` 本质上就是通过一个名为 `JSESSIONID` 的 Cookie 来跟踪用户会话的。
 
-Cookie 本质上是用来记录客户端的信息，可以记录用户的 id，也可以记录用于的语言和地区。
+Cookie 本质上是用来记录客户端的信息，可以记录用户的 id，也可以记录用于的语言和地区。Cookie 是由服务端创建好，返回给客户端存储的，用来标记客户的信息。
+
+![image-20220318133947112](assets/image-20220318133947112.png)
 
 https://www.liaoxuefeng.com/wiki/1252599548343744/1328768897515553
 
@@ -193,8 +240,8 @@ jsp 是一个模板。jsp 方便了动态 html 页面的生成，不再需要频
 
 整个 JSP 的内容实际上是一个 HTML，但是稍有不同：
 
-- 包含在 `<%-- `和 `--%>` 之间的是JSP的注释，它们会被完全忽略；
-- 包含在 `<%` 和 `%>` 之间的是Java代码，可以编写任意Java代码；
+- 包含在 `<%-- `和 `--%>` 之间的是 JSP 的注释，它们会被完全忽略；
+- 包含在 `<%` 和 `%>` 之间的是 Java 代码，可以编写任意Java代码；
 - 如果使用 `<%= xxx %>` 则可以快捷输出一个变量的值。
 
 JSP页面内置了几个变量：
@@ -337,3 +384,7 @@ public class AuthFilter implements Filter {
 ```
 
 Filter 可以有针对性地拦截或者放行 HTTP 请求。
+
+Filter是一种对HTTP请求进行预处理的组件，它可以构成一个处理链，使得公共处理代码能集中到一起；
+
+Filter适用于日志、登录检查、全局设置等。
