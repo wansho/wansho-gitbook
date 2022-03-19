@@ -77,8 +77,8 @@ systemctl list-units
 # 查看服务是否开机自启
 systemctl list-unit-files
 
-# 查看指定服务的状态
-systemctl status xxx
+# 查看指定服务的状态 -l: 查看详细信息
+systemctl status -l xxx
 
 # 开启指定服务
 systemctl start xxx           
