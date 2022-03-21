@@ -383,7 +383,7 @@ public class AuthFilter implements Filter {
 }
 ```
 
-Filter 可以有针对性地拦截或者放行 HTTP 请求。
+Filter 可以有针对性地拦截或者放行 HTTP 请求。如果Filter要使请求继续被处理，就一定要调用chain.doFilter()！
 
 Filter是一种对HTTP请求进行预处理的组件，它可以构成一个处理链，使得公共处理代码能集中到一起；
 

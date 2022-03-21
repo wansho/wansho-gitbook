@@ -161,6 +161,7 @@
   * [Socket](computer-science-notebook/note-for-java-web/socket.md)
   * [webservice](computer-science-notebook/note-for-java-web/webservice.md)
   * [tomcat-servlet](computer-science-notebook/note-for-java-web/tomcat-servlet.md)
+  * [编解码](computer-science-notebook/note-for-java-web/encode-decode.md)
 * [前端开发](computer-science-notebook/front-end/README.md)
   * [nodejs](computer-science-notebook/front-end/nodejs.md)
   * [yarn 使用](computer-science-notebook/front-end/yarn.md)
