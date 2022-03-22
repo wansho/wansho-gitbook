@@ -63,7 +63,7 @@ csrftoken: Zr6Sy6DpRMjMYjDGjHavuS9lwc5JLCt2MxMiogaNhd7pueKHwR4tbOcvJa5smoaz
 
 其中第一行分别是 请求方式/ 请求路径/ 请求所用协议
 
-第二行和第三行都是请求头信息
+第二行和第三行都是请求头信息（注意，如果头信息中有多对 key value，那么一对 key value 放入作为一行）
 
 第三方是一个空行，用来表示头信息已经输入完毕
 

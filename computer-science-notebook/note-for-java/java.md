@@ -6248,7 +6248,7 @@ public class ReflectDemo {
     * 方式三：
     * 只要通过给定的类的 字符串名称就可以获取该类，更为扩展。
     * 可是用Class类中的方法完成。
-    * 该方法就是forName.
+    * 该方法就是 forName.
     * 这种方式只要有名称即可，更为方便，扩展性更强。
     */
     public static void getClassObject_3() throws ClassNotFoundException {
