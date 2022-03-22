@@ -4564,7 +4564,9 @@ public class Test {
 }
 ```
 
-#### 打印流 
+#### 打印流
+
+打印流也是输出流的装饰流。
 
 PrintStream  PrintWriter
 
@@ -4579,9 +4581,9 @@ public class PrintStreamDemo {
      */
     public static void main(String[] args) throws IOException {
         /*
-         * PrintStream:
+         * PrintStream: 字节打印流
          * 1, 提供了打印方法可以对多种数据类型值进行打印。并保持数据的表示形式。
-         * 2，它不抛IOException.
+         * 2，它不抛 IOException
          *
          * 构造函数，接收三种类型的值：
          * 1，字符串路径。

@@ -434,9 +434,9 @@ Rest：HTTP + JSON
 
 [廖雪峰 Web 开发教程](https://www.liaoxuefeng.com/wiki/1252599548343744/1255945497738400)
 
-推荐廖大神的 web 开发教程，从 servlet 讲起，一步步讲到 springboot，授人以鱼，也授人以渔。
+推荐廖大神的 web 开发教程，从 servlet 讲起，一直到 mvc 框架的由来，授人以鱼，也授人以渔。
 
-
+很多人学习 web 开发，是从 Springboot 开始学起，但实际应该从最基础的 HTTP 和 Servlet 开始学起。
 
 
 
@@ -451,3 +451,11 @@ Rest：HTTP + JSON
 每当我无法忍受日常生活时，我就提醒自己，没有什么比每天坚持做下去更重要了。虽然我很难看到未来会怎样，但我知道持久性具有强大的威力，就像一句古老格言说的"继续去做"（keep doing）。
 
 -- [《大海教给我的》](https://www.collaborativefund.com/blog/lessons-from-the-sea/)
+
+
+
+### 一个观点
+
+房价真的到顶了吗
+
+https://www.zhihu.com/question/340712338/answer/2387456275
