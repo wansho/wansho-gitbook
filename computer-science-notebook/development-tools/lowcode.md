@@ -18,6 +18,8 @@ APIjson [http://apijson.org/](https://gitee.com/link?target=http%3A%2F%2Fapijson
 
 Graphql [https://graphql.cn/](https://gitee.com/link?target=https%3A%2F%2Fgraphql.cn%2F)
 
+mybatis-plus-generator-ui https://github.com/davidfantasy/mybatis-plus-generator-ui
+
 
 
 ### 流程
@@ -36,7 +38,7 @@ https://gitee.com/ssssssss-team/magic-api
 
 * 支持自定义模块 —> 自定义数据源插件
 
-* 支持数据源 —> 符合我们前端多数据源的要求
+* 支持多数据源 —> 符合我们前端多数据源的要求
 
 * 脚本支持断点调试
 
@@ -49,8 +51,6 @@ https://gitee.com/ssssssss-team/magic-api
 我的思考
 
 * magic-editor 是面向我们开发者的 magic-script 调试工具，在实际的使用时，我们还要对 magic-api 进一步地封装，自动生成 magic-script
-
- 
 
 
 
@@ -71,3 +71,17 @@ https://gitee.com/ssssssss-team/magic-api
 ```
 
 但是错误信息并没有将详细的信息打印出来，此处要修改一下。
+
+
+
+## todo
+
+- [x] 多数据源的配置，是否所有的数据源都需要在 yml 中配置？
+
+  不需要，只需要在 application.yml 中配置一个主数据源，然后如果增加其他数据源的话，会生成到配置文件中
+
+- [ ] 调研 mybatis-plus-generator-ui，学习怎么选列名
+
+- [ ] 
+
+- [ ] 接口信息写入默认的数据库，而不是写入配置文件

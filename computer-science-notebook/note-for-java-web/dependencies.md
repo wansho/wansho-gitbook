@@ -118,7 +118,7 @@ BeanUtils.copyProperties(a, b);
 优先使用 Spring 提供的 BeanUtils
 
 ```java
-// a 拷贝到 b，比较符合直接，把 a 复制到 b
+// a 拷贝到 b，比较符合直觉，把 a 复制到 b
 BeanUtils.copyProperties(a, b);
 ```
 
