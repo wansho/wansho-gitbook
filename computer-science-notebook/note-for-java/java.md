@@ -1351,6 +1351,36 @@ java mypack.PackageDemo
 
 编译 java 源文件生成的 class 文件，都放在 classpath 中，以起到**源文件与 class 文件隔离的作用**。
 
+一篇文章让你弄懂到底什么是classpath - yuan的文章 - 知乎 https://zhuanlan.zhihu.com/p/113234567
+
+classpath其实就是一个路径而已，我们经常在spring的配置文件中这样写：
+
+```java
+<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" />
+```
+
+这样配置完之后spring就知道mybatis配置文件所在的地方。
+
+那么？这个classpath指向的地方到底是哪里呢？
+
+
+
+![img](assets/v2-912d9181496a25f578a970615189c378_r.jpg)
+
+**classpath指向的就是打war包之后的classes的位置**。而classes文件夹下就是我们原项目的java文件和resources文件夹里面的内容。
+
+所以上面的代码的意思就是在编译后的classes文件中找mybatis/SqlMapConfig.xml文件。
+
+------
+
+在编译打包后的项目中，根目录是`META-INF`和`WEB-INF` 。这个时候，我们可以看到classes这个文件夹，它就是我们要找的classpath。
+
+`classpath:mybatis/SqlMapConfig.xml` 中，classpath 就是指 `WEB-INF/classes/` 这个目录的路径。需要声明的一点是，使用`classpath:`这种前缀，**就只能代表一个文件**。
+
+而另一种写法，`classpath*:**/mapper/mapping/*Mapper.xml`，使用`classpath*:`这种前缀，**则可以代表多个匹配的文件**；`**/mapper/mapping/*Mapper.xml`，双星号`**`表示在任意目录下，也就是说在`WEB-INF/classes/`下任意层的目录，只要符合后面的文件路径，都会被作为资源文件找到。
+
+
+
 ### 包的封装作用和四种权限
 
 包是对类的进一步封装。既然封装了，那么就涉及到外部的访问问题。在包中，只有 `public class` 才是外部可以访问的 class，不是 public 的 class 都被包封装了。

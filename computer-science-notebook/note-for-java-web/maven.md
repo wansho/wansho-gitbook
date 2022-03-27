@@ -8,6 +8,50 @@
 * [廖雪峰教程](https://www.liaoxuefeng.com/wiki/1252599548343744/1309301196980257)
 * [尚硅谷 maven 教程](https://www.bilibili.com/video/BV1TW411g7hP)
 
+
+
+## 经验总结
+
+### scope 范围
+
+* 默认的 scope 是 compile，如果设置了 compile，那么该库的所有类，都会引入到当前的项目中。
+
+* 对于所有的 maven 依赖包，都要**显式**地指定其依赖范围
+
+  例如 MySQL 的 jdbc 驱动 jar 包，如果没有配置其依赖范围，那么其代码就会被引入当前 IDE 中，虽然也能正常编译，但是在IDE里写程序的时候，会多出来一大堆类似`com.mysql.jdbc.Connection`这样的类，非常容易与Java标准库的JDBC接口混淆，所以坚决不要设置为`compile`
+
+
+
+### 把 jar 包导入 maven 仓库并引用
+
+把 jar 包导入本地 maven 库：
+
+```shell
+mvn install:install-file -DgroupId=com.jxdinfo -DartifactId=lcdp_push_sdk -Dversion=2.0.3 -Dpackaging=jar -Dfile=jar包地址
+
+mvn install:install-file -DgroupId=org.elasticsearch.plugin -DartifactId=x-pack-sql-jdbc -Dversion=7.6.2 -Dpackaging=jar -Dfile=x-pack-sql-jdbc-7.6.2.jar
+```
+
+然后在 POM 文件中引用该 sdk：
+
+```xml
+<dependency>
+    <groupId>com.jxdinfo</groupId>
+    <artifactId>lcdp_push_sdk</artifactId>
+    <version>2.0.3</version>
+</dependency>
+```
+
+
+
+### dependency 分析插件
+
+IDEA Maven Helper
+
+可以对依赖进行树形分析，并且可以直接搜索。
+
+
+
 ## 简介
 
 Maven是一个 Java 项目管理和构建工具，它可以定义项目结构、项目依赖，并使用统一的方式进行自动化构建，是 Java 项目不可缺少的工具。它的主要功能有：
@@ -53,6 +97,8 @@ Make -> Ant -> Maven -> Gradle
 ## Maven 的安装
 
 maven 依赖 JDK，而且是根据 JAVA_HOME 的环境变量找 JDK 的，所以 JAVA_HOME 就起到了配置 JDK 环境变量的作用。
+
+
 
 ## mvn cmds
 
@@ -184,12 +230,14 @@ Maven解析依赖信息时会到本地仓库中查找被依赖的jar包。对于
 
 Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`provided`：
 
-| scope    | 说明                                            | 示例               |
-| :------- | :---------------------------------------------- | :----------------- |
-| compile  | 编译时需要用到该jar包（默认）                   | commons-logging    |
-| test     | 编译Test时需要用到该jar包                       | junit              |
-| runtime  | 编译时不需要，但运行时需要用到                  | mysql              |
-| provided | 编译时需要用到，但运行时由 JDK 或某个服务器提供 | servlet-api tomcat |
+默认的 scope 就是 compile。
+
+| scope    | 说明                                            | 示例               | 是否需要打包进程序 |
+| :------- | :---------------------------------------------- | :----------------- | ------------------ |
+| compile  | 编译时需要用到该jar包                           | commons-logging    | 需要               |
+| test     | 编译Test时需要用到该jar包                       | junit              | 不需要             |
+| runtime  | 编译时不需要，但运行时需要用到                  | mysql              | 需要               |
+| provided | 编译时需要用到，但运行时由 JDK 或某个服务器提供 | servlet-api tomcat | 不需要             |
 
 #### compile 类型
 
@@ -198,6 +246,8 @@ Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`p
 - 是否参与打包：参与
 - 是否参与部署：参与
 - 典型例子：spring-core
+
+
 
 #### test 类型
 
@@ -214,6 +264,18 @@ Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`p
 - 是否参与打包：不参与
 - 是否参与部署：不参与（由 servlet 容器提供）
 - 典型例子：servlet-api.jar
+
+#### runtime 类型
+
+* 对主程序是否有效：有效
+* 对测试程序是否有效：？
+* 是否参与打包：参与
+* 是否参与部署：参与
+* 典型例子：jdbc jar 包
+
+注意，对于 scope 为 Runtime 类型的 jar 包，如果
+
+
 
 ### 依赖【高级】
 
@@ -766,32 +828,3 @@ multiple-project
 
 这样，在根目录执行`mvn clean package`时，Maven根据根目录的`pom.xml`找到包括`parent`在内的共4个`<module>`，一次性全部编译。
 
-## 经验总结
-
-### 把 jar 包导入 maven 仓库并引用
-
-把 jar 包导入本地 maven 库：
-
-```shell
-mvn install:install-file -DgroupId=com.jxdinfo -DartifactId=lcdp_push_sdk -Dversion=2.0.3 -Dpackaging=jar -Dfile=jar包地址
-
-mvn install:install-file -DgroupId=org.elasticsearch.plugin -DartifactId=x-pack-sql-jdbc -Dversion=7.6.2 -Dpackaging=jar -Dfile=x-pack-sql-jdbc-7.6.2.jar
-```
-
-然后在 POM 文件中引用该 sdk：
-
-```xml
-<dependency>
-    <groupId>com.jxdinfo</groupId>
-    <artifactId>lcdp_push_sdk</artifactId>
-    <version>2.0.3</version>
-</dependency>
-```
-
-
-
-### dependency 分析插件
-
-IDEA Maven Helper
-
-可以对依赖进行树形分析，并且可以直接搜索。

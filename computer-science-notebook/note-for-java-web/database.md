@@ -6,11 +6,62 @@
 
 ## JDBC
 
+### jdbc 是什么
+
 java database connector
 
 JDBC 是 Java jdk 自带的标准库。
 
-<img align="left" src="assets/image-20210416161831690.png" alt="image-20210416161831690" style="zoom:80%;" />
+```
+┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+
+│  ┌───────────────┐  │
+   │   Java App    │
+│  └───────────────┘  │
+           │
+│          ▼          │
+   ┌───────────────┐
+│  │JDBC Interface │<─┼─── JDK
+   └───────────────┘
+│          │          │
+           ▼
+│  ┌───────────────┐  │
+   │ MySQL Driver  │<───── Oracle
+│  └───────────────┘  │
+           │
+└ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ┘
+           ▼
+   ┌───────────────┐
+   │     MySQL     │
+   └───────────────┘
+```
+
+jdbc jar 包和数据库通信也是采用的
+
+```
+┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+   ┌───────────────┐
+│  │   App.class   │  │
+   └───────────────┘
+│          │          │
+           ▼
+│  ┌───────────────┐  │
+   │  java.sql.*   │
+│  └───────────────┘  │
+           │
+│          ▼          │
+   ┌───────────────┐     TCP    ┌───────────────┐
+│  │ mysql-xxx.jar │──┼────────>│     MySQL     │
+   └───────────────┘            └───────────────┘
+└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+          JVM
+```
+
+jdbc 是接口，是标准，就在 Java 的标准库 `java.sql` 里放着。
+
+
+
+
 
 ### maven 配置
 
@@ -26,6 +77,8 @@ JDBC 驱动就是各种数据库实现的 jar 包，只需要在 maven 中添加
 ```
 
 注意到这里添加依赖的`scope`是`runtime`，因为编译Java程序并不需要MySQL的这个jar包，只有在运行期才需要使用。如果把`runtime`改成`compile`，虽然也能正常编译，但是在IDE里写程序的时候，会多出来一大堆类似`com.mysql.jdbc.Connection`这样的类，非常容易与Java标准库的JDBC接口混淆，所以坚决不要设置为`compile`。
+
+
 
 ### jdbc url
 
@@ -79,6 +132,8 @@ try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PAS
 }
 ```
 
+
+
 ### jdbc 增删改
 
 ```java
@@ -105,7 +160,11 @@ String sql = "INSERT IGNORE INTO ? (\n" +
                 "  (?, ?, ?, ?)\n";
 ```
 
+
+
 ### jdbc 连接池
+
+
 
 #### Hikaricp
 
@@ -152,15 +211,21 @@ try (Connection conn = ds.getConnection()) { // 在此获取连接
 - 通过`Connection`实例创建`PreparedStatement`实例；
 - 执行SQL语句，如果是查询，则通过`ResultSet`读取结果集，如果是修改，则获得`int`结果。
 
+
+
 #### Druid
 
 阿里开源的数据库连接池。
+
+
 
 ## javax.persistence
 
 Java Persistence is the API for the management for persistence and object/relational mapping.
 
 用于持久化层和 ORM。提供了大量的注解和枚举类。
+
+
 
 ## JPA
 
@@ -178,6 +243,8 @@ reference
 * https://docs.spring.io/spring-data/jpa/docs/2.5.0/reference/html/#jpa.repositories
 * Spring Boot系列(五)：spring data jpa的使用 - 极乐君的文章 - 知乎 https://zhuanlan.zhihu.com/p/25000309
 * https://www.baeldung.com/spring-data-save-saveall
+
+
 
 ## Hibernate
 
