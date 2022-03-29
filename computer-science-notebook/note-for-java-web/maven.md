@@ -172,7 +172,7 @@ mvn -v
 
 ### 目录结构
 
-一个标准的 Java Maven 项目：
+一个标准的 Java Maven 项目（这是 maven 的标准！）：
 
 ```
 a-maven-project
@@ -180,6 +180,7 @@ a-maven-project
 ├── src
 │   ├── main
 │   │   ├── java
+│   │   │   ├── top.wansho.demo
 │   │   └── resources
 │   └── test
 │       ├── java
