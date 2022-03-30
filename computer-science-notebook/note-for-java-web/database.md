@@ -4,6 +4,10 @@
 
 
 
+![image-20220330094704796](assets/image-20220330094704796.png)
+
+
+
 ## JDBC
 
 ### jdbc 是什么
@@ -248,7 +252,7 @@ reference
 
 ## Hibernate
 
-dialect
+### dialect
 
 MySQL 是一种方言，Oracle 也是一种方言，MSSQL 也是一种方言，他们之间在遵循 SQL 规范的前提下，都有各自的扩展特性。
 
@@ -271,13 +275,13 @@ spring:
     hibernate:
       naming:
         # 表名及字段全小写下划线分隔命名策略(默认),表名具备前缀res
-        physical-strategy: com.nrec.base.res.config.CustomNamingStrategyConfig
+        physical-strategy: CustomNamingStrategyConfig
     properties:
       hibernate:
         hbm2ddl:
           # 自动更新维护表结构
           auto: update
-        dialect: com.nrec.base.res.config.MyOracle12cDialect
+        dialect: MyOracle12cDialect
     open-in-view: false
   datasource:
     # ORACLE JDBC 配置
@@ -285,6 +289,53 @@ spring:
     username: ttest
     password: ttest
     driver-class-name: oracle.jdbc.OracleDriver
+```
+
+### 代理
+
+使用Hibernate或JPA操作数据库时，这类ORM干的主要工作就是把ResultSet的每一行变成Java Bean，或者把Java Bean自动转换到INSERT或UPDATE语句的参数中，从而实现ORM。
+
+而ORM框架之所以知道如何把行数据映射到Java Bean，是因为我们在Java Bean的属性上给了足够的注解作为元数据，ORM框架获取Java Bean的注解后，就知道如何进行双向映射。
+
+那么，ORM框架是如何跟踪Java Bean的修改，以便在`update()`操作中更新必要的属性？
+
+答案是使用[Proxy模式](https://www.liaoxuefeng.com/wiki/1252599548343744/1281319432618017)，从ORM框架读取的User实例实际上并不是User类，而是代理类，代理类继承自User类，但针对每个setter方法做了覆写：
+
+```
+public class UserProxy extends User {
+    boolean _isNameChanged;
+
+    public void setName(String name) {
+        super.setName(name);
+        _isNameChanged = true;
+    }
+}
+```
+
+这样，代理类可以跟踪到每个属性的变化。
+
+针对一对多或多对一关系时，代理类可以直接通过getter方法查询数据库：
+
+```
+public class UserProxy extends User {
+    Session _session;
+    boolean _isNameChanged;
+
+    public void setName(String name) {
+        super.setName(name);
+        _isNameChanged = true;
+    }
+
+    /**
+     * 获取User对象关联的Address对象:
+     */
+    public Address getAddress() {
+        Query q = _session.createQuery("from Address where userId = :userId");
+        q.setParameter("userId", this.getId());
+        List<Address> list = query.list();
+        return list.isEmpty() ? null : list(0);
+    }
+}
 ```
 
 
