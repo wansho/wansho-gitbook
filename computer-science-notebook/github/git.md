@@ -36,7 +36,9 @@
 
 - 取消加入暂存区，只需要让这个文件回滚到之前的一个版本即可
 
-  `git reset HEAD file`
+  `git reset file`
+
+  `git reset` 取消所有添加到暂存区的内容
 
 - 回滚到某个版本
 
@@ -516,7 +518,9 @@ git pull origin master --allow-unrelated-histories
 git push origin master # origin 代表远程库，master 代表本地的 branch
 git push origin dev # dev 是另外一个 local branch
 
-git push -u origin master # 将本地的 master 分支推送到 origin，并且指定 origin 为默认主机，后面就可以不加任何参数，使用 git push 了
+# 将本地的 master 分支推送到 origin，并且指定 origin 为默认主机，后面就可以不加任何参数，使用 git push 了
+# 如果我们在 push 的时候，加了 -u 参数，就将本地的 master 分支推送到远程的这个配置，存储了。等到 pull 的时候，git pull 就会默认从远程拉取内容合并到本地的 master 分支，不需要 git pull origin master
+git push -u origin master 
 
 git push origin HEAD --force # 强制提交到远程仓库 
 ```
