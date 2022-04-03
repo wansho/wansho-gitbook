@@ -709,6 +709,16 @@ https://www.zhihu.com/question/340712338/answer/2387456275
 也爱你坚持的位置，
 足下的土地。
 
+
+
 ### 一个短视频
 
 【【亮剑版毒液】龙 液 （李云龙大战楚云飞！）-哔哩哔哩】 https://b23.tv/H6MSif5
+
+
+
+### GitHub Copilot
+
+早就听说过 GitHub 副驾驶的大名，最近试用了一下，确实爽。
+
+<img align="left" src="assets/image-20220402090658079.png" alt="image-20220402090658079" style="zoom:50%;" />
