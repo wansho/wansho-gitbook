@@ -292,46 +292,6 @@ create table test_table(
     name varchar(8) unique
 );
 
-* 标准代码
-create table if not exists run_case_functions(
-     id int(11) not null auto_increment,
-     card_id int(11) not null comment '卡片号',
-     module varchar(64) not null comment '所属业务',
-     function varchar(128) not null comment '功能点<对应卡片标题>',
-     function_type varchar(64) not null comment '功能类型',
-     level varchar(16) not null default 'P0' comment '优先级',
-     team varchar(32) not null comment '所属团队',
-     pm varchar(32) not null comment 'PM负责人',
-     rd varchar(32) not null comment 'RD负责人',
-     qa varchar(32) not null comment 'QA负责人',
-     pv varchar(32) default '' not null comment 'pv',
-     cid varchar(32) default '' not null comment 'cid',
-     jiaotu_need enum('Y', 'N', '') default '' not null comment '是否需接入 Y or N',
-     jiaotu_coverage enum('Y', 'N', '') default '' not null comment '是否已接入 Y or N', -- 三选一，枚举
-     description varchar(256) default '' not null comment '备注描述',
-     created_time timestamp not null comment '卡片创建时间', -- 时间戳格式可以存储 python 的 datetime 格式
-     last_modify_time timestamp not null default current_timestamp on update current_timestamp comment '最后更新时间', -- 时间默认更新
-
-     PRIMARY KEY (id),
-     KEY card_id (card_id), -- 加快查询速度
-     KEY module (module),
-     KEY function (function),
-     KEY function_type (function_type),
-     KEY level (level),
-     KEY team (team),
-     KEY pm (pm),
-     KEY rd (rd),
-     KEY qa (qa),
-     KEY pv (pv),
-     KEY cid (cid),
-     KEY jiaotu_need (jiaotu_need),
-     KEY jiaotu_coverage (jiaotu_coverage),
-     KEY description (description),
-     KEY created_time (created_time),
-     KEY last_modify_time (last_modify_time)
-
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
-
 * 重点    
 if not exists
 可以先判断表是否存在
