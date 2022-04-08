@@ -722,3 +722,9 @@ https://www.zhihu.com/question/340712338/answer/2387456275
 早就听说过 GitHub 副驾驶的大名，最近试用了一下，确实爽。
 
 <img align="left" src="assets/image-20220402090658079.png" alt="image-20220402090658079" style="zoom:50%;" />
+
+
+
+### DeepL
+
+比 Google 翻译，百度翻译都好用的翻译。

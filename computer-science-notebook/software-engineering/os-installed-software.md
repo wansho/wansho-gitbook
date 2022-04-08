@@ -218,17 +218,18 @@ docker 适合安装服务和中间件
 
 ### 特有软件
 
-| 软件          | 功能                                                         | 备注    |
-| ------------- | ------------------------------------------------------------ | ------- |
-| homebrew      | 用 homebrew 安装各种程序                                     |         |
-| Easy New File | 集成到Finder的插件，可以在finder的任意位置点击鼠标右键，新建文件夹、txt、word、xsl、ppt、markdown、html等格式文件 |         |
-| Go2Shell      | 集成到finder中的插件，在finder的任意路径下，点击该图标都可以快速的打开terminal，且将terminal的路径自动前进到该文件夹路径下 |         |
-| iStat         | 资源监控                                                     |         |
-| Itsycal       | 日历软件                                                     |         |
-| Alfred 4      | 全自动效率神器                                               |         |
-| PopClip       | 划词搜索                                                     | 70 块钱 |
-| Moom          | 屏幕分屏                                                     | 60 块钱 |
-| mouse catch   | 多个屏幕间快速移动鼠标                                       |         |
+| 软件                                                     | 功能                                                         | 备注    |
+| -------------------------------------------------------- | ------------------------------------------------------------ | ------- |
+| homebrew                                                 | 用 homebrew 安装各种程序                                     |         |
+| Easy New File                                            | 集成到Finder的插件，可以在finder的任意位置点击鼠标右键，新建文件夹、txt、word、xsl、ppt、markdown、html等格式文件 |         |
+| Go2Shell                                                 | 集成到finder中的插件，在finder的任意路径下，点击该图标都可以快速的打开terminal，且将terminal的路径自动前进到该文件夹路径下 |         |
+| iStat                                                    | 资源监控                                                     |         |
+| Itsycal                                                  | 日历软件                                                     |         |
+| Alfred 4                                                 | 全自动效率神器                                               |         |
+| PopClip                                                  | 划词搜索                                                     | 70 块钱 |
+| Moom                                                     | 屏幕分屏                                                     | 60 块钱 |
+| mouse catch                                              | 多个屏幕间快速移动鼠标                                       |         |
+| [Scroll Reverser](https://pilotmoon.com/scrollreverser/) | 插上鼠标后，滚轮自然切换                                     |         |
 
 
 
