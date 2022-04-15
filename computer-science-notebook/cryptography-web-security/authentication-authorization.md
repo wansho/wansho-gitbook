@@ -46,6 +46,8 @@ https://blog.csdn.net/xiaoguan_liu/article/details/91492110
 
 **同源请求总是被允许的，跨源请求则取决于服务端。**
 
+
+
 ### csrf
 
 Cross site request forgery 跨网站请求伪造

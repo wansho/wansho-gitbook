@@ -740,3 +740,28 @@ https://space.bilibili.com/70757306
 顶尖大学的顶尖演技。
 
 https://www.bilibili.com/video/BV1vr4y1p7KA
+
+
+
+## 2022-week-15
+
+
+
+### 民间互助
+
+上海疫情，各个微信群里，扑面而来的负面消息，看得让人揪心，我也分不清真假。今天看到一个暖心的小故事，虽然故事可能发生在高档小区，虽然故事可能是一场营销，但看到这个还是蛮治愈的。但行直心。
+
+<img align="left" src="assets/image-20220415155826292.png" alt="image-20220415155826292" style="zoom:33%;" />
+
+
+
+### 这里是中国 - 如何架设一个石油钻井平台
+
+很久没看到这种硬核的，配图专业的科普文章了
+
+https://mp.weixin.qq.com/s/atAiSpkNyWte0MSoJ6TFzw
+
+![img](assets/bg2022040903-20220415164323803.webp)
+
+
+
