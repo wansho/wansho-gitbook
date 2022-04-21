@@ -70,3 +70,19 @@ PostgreSQL / 高斯数据库
 * 数据库 int 不能接 String 类型
 
   ![image-20211213080752162](assets/image-20211213080752162.png)
+
+
+
+## 数据同步
+
+* dataX
+
+  不支持分布式
+
+* SeaTunnel（海量数据的管道）
+
+  和 logstash 类似，通过配置的方式（低代码），实现海量数据的同步。分布式特性。
+
+  SeaTunnel 对 Spark 和 Flink 做了一层包装。SeaTunnel 的日常使用，就是编辑配置文件，然后配置文件被 SeaTunnel 转换成具体的 Spark 或 Flink 任务。
+
+  ![image-20220421191506205](assets/image-20220421191506205.png)
