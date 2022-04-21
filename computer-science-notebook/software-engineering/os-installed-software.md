@@ -146,6 +146,9 @@ ctrl + command + space
 
 # 反撤销
 shift + command + z
+
+# Chrome 强制刷新
+shift + command + R
 ```
 
 
