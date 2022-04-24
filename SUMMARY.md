@@ -85,7 +85,6 @@
   * [安全漏洞](computer-science-notebook/cryptography-web-security/security-vulnerability.md)
 * [计算机网络相关知识](computer-science-notebook/network-web/README.md)
   * [计算机网络小知识集合](computer-science-notebook/network-web/computer-network.md)
-  * [网络分层和协议](computer-science-notebook/network-web/layer-protocol.md)
   * [web-service](computer-science-notebook/network-web/web-service.md)
   * [http 协议](computer-science-notebook/network-web/http-protocol.md)
   * [questions](computer-science-notebook/network-web/questions.md)
@@ -97,7 +96,6 @@
   * [regex](computer-science-notebook/programming-language/regex.md)
   * [windows-bat](computer-science-notebook/programming-language/windows-bat.md)
   * [QT](computer-science-notebook/programming-language/qt.md)
-
 * [C++ 开发](computer-science-notebook/note-for-c/README.md)
   * [C语言学习教程](computer-science-notebook/note-for-c/how-to-learn-c.md)
   * [书籍：Think-C](computer-science-notebook/note-for-c/think-c.md)
