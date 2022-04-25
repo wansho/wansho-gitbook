@@ -73,6 +73,35 @@ PostgreSQL / 高斯数据库
 
 
 
+### 字符字段大小写敏感
+
+用 mysql 碰到这个问题，大小写不敏感。
+
+<img align="left" src="assets/image-20220425162817212.png" alt="image-20220425162817212" style="zoom: 33%;" />
+
+查阅文档后 https://dev.mysql.com/doc/refman/8.0/en/case-sensitivity.html，发现 mysql 字符内容默认就是大小写不敏感，除非手动配置：
+
+```sql
+ALTER TABLE nrcloud.users modify name varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '用户登录名';
+```
+
+
+
+For nonbinary strings ([`CHAR`](https://dev.mysql.com/doc/refman/8.0/en/char.html), [`VARCHAR`](https://dev.mysql.com/doc/refman/8.0/en/char.html), [`TEXT`](https://dev.mysql.com/doc/refman/8.0/en/blob.html)), string searches use the collation of the comparison operands. For binary strings ([`BINARY`](https://dev.mysql.com/doc/refman/8.0/en/binary-varbinary.html), [`VARBINARY`](https://dev.mysql.com/doc/refman/8.0/en/binary-varbinary.html), [`BLOB`](https://dev.mysql.com/doc/refman/8.0/en/blob.html)), comparisons use the numeric values of the bytes in the operands; this means that for alphabetic characters, comparisons are case-sensitive.
+
+
+
+经测试，Oracle 和 Postgre 都是默认大小写敏感的，这好像是 mysql 独有的问题……
+
+
+
+参考文献：
+
+* https://dev.mysql.com/doc/refman/8.0/en/case-sensitivity.html
+* https://dev.mysql.com/doc/refman/8.0/en/create-table.html
+
+
+
 ## 数据同步
 
 * dataX

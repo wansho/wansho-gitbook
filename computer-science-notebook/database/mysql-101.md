@@ -140,6 +140,9 @@ alter table senti_weibo_realtime_weibo modify last_modify_time timestamp not nul
 
 -- 删除字段
 ALTER TABLE mytable DROP 字段名;
+
+-- 修改字段的编码和排序规则（配置字段内容大小写敏感） CHARSET is a synonym for CHARACTER SET，COLLATE 用来指定排序字符集
+ALTER TABLE users modify name varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '用户登录名';
 ```
 
 ### 修改表的编码

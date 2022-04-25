@@ -803,5 +803,17 @@ https://www.bilibili.com/video/BV1sq4y1w7Dx
 
 
 
+## 2022-week-17
+
+
+
+### 对最近很火的一个视频的看法
+
+最近和朋友聊天，聊到了这个话题，我忍不住发发牢骚，最近的各种负面新闻，我也是受够了。
+
+<img align="left" src="assets/image-20220425132753972.png" alt="image-20220425132753972" style="zoom:50%;" />
+
+
+
 
 
