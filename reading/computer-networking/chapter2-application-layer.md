@@ -118,3 +118,18 @@ TCP 和 UDP 都没有加密，明文通过互联网传输。
 
 SSL 在 TCP 上面实现，提供加密的 TCP 连接。SSL 在应用层。https 跑在 ssl 之上。
 
+
+
+## URL 格式
+
+```
+Prot://user:password@www.oldschool.edu/someDept/pic.gif:port
+```
+
+
+
+## HTTP 协议
+
+客户端发起一个与服务器的 TCP 连接（建立套接字），端口号为 TCP-80。
+
+服务端起来后，建立一个守候 Socket，监听 TCP-80 端口，有客户端发起请求后，则建立 socket1，socket2，与客户端进行通信，守候 Socket 不变。
