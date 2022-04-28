@@ -831,5 +831,54 @@ https://www.bilibili.com/video/BV1sq4y1w7Dx
 
 
 
+### JSON
 
+天天用 json，但是 json 到底是啥？JavaScript Object Notation.
 
+JSON 是 JavaScript 序列化的标准。JSON 是字符串。
+
+JSON 的语法超级简单，只有几种数据类型：
+
+```
+number：和JavaScript的number完全一致；
+boolean：就是JavaScript的true或false；
+string：就是JavaScript的string；
+null：就是JavaScript的null；
+array：就是JavaScript的Array表示方式——[]；
+object：就是JavaScript的{ ... }表示方式。
+```
+
+以及上面的任意组合。
+
+并且，JSON还定死了字符集必须是UTF-8，表示多语言就没有问题了。为了统一解析，JSON的字符串规定必须用双引号`""`，Object的键也必须用双引号`""`。
+
+一个 json 示例：
+
+```json
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "isAlive": true,
+  "age": 27,
+  "address": {
+    "streetAddress": "21 2nd Street",
+    "city": "New York",
+    "state": "NY",
+    "postalCode": "10021-3100"
+  },
+  "phoneNumbers": [
+    {
+      "type": "home",
+      "number": "212 555-1234"
+    },
+    {
+      "type": "office",
+      "number": "646 555-4567"
+    }
+  ],
+  "children": [],
+  "spouse": null
+}
+```
+
+参考：https://www.liaoxuefeng.com/wiki/1022910821149312/1023021554858080
