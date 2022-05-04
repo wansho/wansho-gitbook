@@ -209,3 +209,123 @@ SMTP 协议负责推，HTTP/POP3/IMAP 负责拉取。
 
 
 原始的 SMTP 协议只支持 ASCII 报文。中文一个字占两个字节，需要先经过 base64 编码成 ASCII，然后再传输。
+
+
+
+## DNS 协议
+
+Domain Name System
+
+早期的 arpnet 维护了一张 hosts.txt 表，里面存储了域名到 IP 地址的映射。Hosts 文件就是源于此。
+
+DNS 服务器，除了提供域名解析，还提供负载均衡的功能。例如我们访问 www.baidu.com，DNS 那边存储了 www.baidu.com 的不止一个机房的地址，DNS 会返回不同的 IP，进而实现负载均衡的功能。
+
+![image-20220430190836374](assets/image-20220430190836374.png)
+
+域名划分：
+
+```
+* 顶级域名
+	* 通用域名 com / org / edu
+	* 国家域名 cn / us / jp  	
+```
+
+全球有 13 个根名字服务器。查找的时候，从树根往下找，例如查找南航官网的 IP https://www.nuaa.edu.cn/ 先从 cn 往下找，再找 edu，再找 nuaa，再找 www，就找到了。
+
+
+
+域名可以分成两种：
+
+* 域的域名：可以用于表示一个域，一个域下面可能有多个子域或者主机，域管理其下的子域或者主机的划分。
+
+  例如，.jp 划分了 .ac.jp，.co.jp 等若干个子域名，nuaa.edu.cn 划分了 www.nuaa.edu.cn 和 mail.nuaa.edu.cn 等若干个主机。
+
+* 主机的域名：表示域里的一个主机
+
+
+
+## 名字服务器 / 权威 DNS 服务器 / TTL
+
+每个区域都有一个名字服务器（name server），维护着它所管辖区域的权威信息（authoritative record）。
+
+权威 DNS 服务器：组织机构的 DNS 服务器，提供组织内的主机和 IP 的映射，组织机构可以选择自己实现并维护权威 DNS 服务器，或者交由服务提供商来维护。
+
+
+
+ttl: time to live
+
+如果我们查到的 IP 地址，是从权威 DNS 服务器上查到的，那么 ttl 就是无限大的，因为权威服务器维护的是该区域内的权威信息。
+
+如果 IP 地址是从非权威 DNS 服务器查到的，而该条映射记录是非权威服务器从权威 DNS 服务器请求并缓存过来的，那么 TTL 就不是无限大了。因为 IP 地址可能会改变，权威服务器中的域名到 IP 的映射不是一成不变的，所以其他非权威 DNS 服务器上缓存的映射，是有有效期的，是会定期删除的，而 TTL 就是这个有效期，以秒为单位。
+
+缓存是为了性能，删除是为了一致性。
+
+
+
+name server 维护的资源记录，数据结构如下：
+
+| name | ttl                                  | class                  | value   | type |
+| ---- | ------------------------------------ | ---------------------- | ------- | ---- |
+| 域名 | time to live(记录失效时间，单位为秒) | 类别，Internet 对应 IN | IP 地址 |      |
+
+type 定义了 4 中 DNS 记录：
+
+* type = A：表示 name 字段记录的是主机域名，value 字段记录的是 IP 地址
+* type = CNAME: 表示 name 字段记录的是域名的别名，value 字段记录的是重定向到的最终域名，例如我想把 wansho.cn 域名定向到 wansho.top，那么 name 为 wansho.cn，value 为 wansho.top
+* type = NS: 表示 name 字段记录的是域的名字，value 字段记录的是该域的 local name server 这台主机的名字
+
+这种数据结构的设计方式，还是挺有意思的，有可取之处。
+
+
+
+## 一个机器入网要配置的四个信息
+
+* IP 地址
+* 子网掩码
+* DNS 服务器的 IP（通常配 local name server）
+* default gateway 的 IP (我如果想要从子网内出去，要走哪个路由器，它的 IP 地址是什么)
+
+这四个信息，要么自动配（DHCP协议），要么手动配。
+
+
+
+## DNS 解析流程
+
+输入一个主机的域名，hosts 文件中没有映射，则找 local name server（local name server 最好在子网内，这样就很快）来解析获取 IP，如果 local name server 缓存了我要访问的域名到 IP 的映射关系，那就最好了。
+
+如果 local name server 缓存中没有这条 mapping，那么步骤如下（以访问 www.nuaa.edu.cn 为例）
+
+先访问 cn DNS 服务器，再访问 edu.cn DNS 服务器，再访问 nuaa.edu.cn DNS服务器，最终查找到了主机名 www.nuaa.edu.cn 对应的 IP 地址为 xxx （顺着树根往下找，迭代查询）
+
+一旦 name server 学到了一个映射，就将该映射缓存起来，提高查询效率，但是缓存还有一个过期时间。
+
+
+
+## 添加一个域名的流程
+
+在上级域的名字服务器中，增加两条记录：
+
+* type = NS: 子域的名字，子域的 local name server 的主机域名
+* type = A，子域的 local name server 的主机域名，子域的 local name server 的 IP 地址
+
+至于子域内的各种应用，例如 ftp 应用对应的域名，邮箱应用对应的域名，都在子域的 local name server 维护就行了。
+
+
+
+## P2P 架构
+
+P2P 架构对比的是 C/S 架构。
+
+P2P vs C/S：
+
+* P2P 可以看成有无数个服务端，所以 P2P 很难被搞挂掉。
+
+* P2P 没有服务端，不需要耗费服务器资源。
+
+
+
+## CDN
+
+Content Delivery Network 内容分发网络
+
+Netflix 和 YouTube 占据 37%，16% 的 ISP 下行流量
