@@ -69,3 +69,19 @@ npm config set electron-builder-binaries_mirror=https://npm.taobao.org/mirrors/e
 **`npm run dist` 打包失败 - cannot move downloaded into final location (another process downloaded faster?)**
 
 关闭火绒！！！
+
+
+
+## nvm nodejs 版本管理
+
+```shell
+# 安装指定版本的 nodejs
+nvm install v14.15.5
+
+# 切换到指定的版本
+nvm use v14.15.5
+
+# 查看当前安装的版本
+nvm ls
+```
+
