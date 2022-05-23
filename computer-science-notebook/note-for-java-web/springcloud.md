@@ -167,7 +167,7 @@ eureka:
 
 ### Ribbon 负载均衡
 
-Ribbon 负载均衡是 SpringCloud 的一个组件， ，spring-cloud-starter-netflix-eureka-client 会自动引入 ribbon。
+Ribbon 负载均衡是 SpringCloud 的一个组件，spring-cloud-starter-netflix-eureka-client 会自动引入 ribbon。
 
 负载均衡的流程：
 
@@ -213,6 +213,8 @@ ribbon:
 nacos 有别于 eureka，nacos 有一个客户端（其实也是一个 jar 包）。Nacos 也使用 ribbon 做服务拉取和负载均衡。
 
 Nacos 比 Eureka 多了一个配置管理，可以远程管理各个微服务的 yml 文件。
+
+nacos 已经升级到 nacos2 版本，性能提了 3 倍，加入了 gRPC 协议（nacos1.x 采用 restful 的方式）。
 
 
 

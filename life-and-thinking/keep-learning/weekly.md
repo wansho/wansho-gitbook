@@ -959,3 +959,42 @@ object：就是JavaScript的{ ... }表示方式。
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![image-20220508214004300](assets/image-20220508214004300.png) | ![image-20220508213911674](assets/image-20220508213911674.png) |
 
+
+
+## 2022-week-20
+
+
+
+### 百年孤独
+
+生命中曾经有过的所有喧嚣，都将用寂寞来偿还。
+
+
+
+### 一句话
+
+I am a pessimist by nature. Many people can only keep on fighting when they expect to win. I'm not like that, I always expect to lose. I fight anyway, and sometimes I win. 
+
+—— Richard Stallman 自由软件之父
+
+
+
+
+
+## 2022-week-21
+
+
+
+### 一首诗
+
+临江仙·夜饮东坡醒复醉
+
+苏轼
+
+夜饮东坡醒复醉，归来仿佛三更。家童鼻息已雷鸣。敲门都不应，倚杖听江声。
+
+长恨此身非我有，何时忘却营营。夜阑风静縠纹平。小舟从此逝，江海寄余生。
+
+[我们在这个世界上可以拥有多少自由？（解读苏轼《临江仙》）](https://www.bilibili.com/video/BV1R54y1Z7xE)
+
+<img align="left" src="assets/image-20220522095419452.png" alt="image-20220522095419452" style="zoom:50%;" />
