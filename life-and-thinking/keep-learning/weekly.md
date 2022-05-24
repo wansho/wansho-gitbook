@@ -998,3 +998,15 @@ I am a pessimist by nature. Many people can only keep on fighting when they expe
 [我们在这个世界上可以拥有多少自由？（解读苏轼《临江仙》）](https://www.bilibili.com/video/BV1R54y1Z7xE)
 
 <img align="left" src="assets/image-20220522095419452.png" alt="image-20220522095419452" style="zoom:50%;" />
+
+
+
+### 仿生阅读
+
+一种快速阅读英文文献的方式，亲测有用。大致原理是，在英语文本里，给每个单词的前几个字母加粗，就可以引导人眼迅速识别出单词。
+
+Demo:
+
+<img align="left" src="assets/image-20220523194104582.png" alt="image-20220523194104582" style="zoom:50%;" />
+
+这是一个 Chrome 插件实现：https://github.com/ansh/bionic-reading
