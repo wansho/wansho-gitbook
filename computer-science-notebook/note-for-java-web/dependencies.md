@@ -118,9 +118,12 @@ BeanUtils.copyProperties(a, b);
 优先使用 Spring 提供的 BeanUtils
 
 ```java
-// a 拷贝到 b，比较符合直觉，把 a 复制到 b
+// a 拷贝到 b，比较符合直觉，把 a 复制到 b, from, to
 BeanUtils.copyProperties(a, b);
 ```
 
 
 
+## java bean 序列化，反序列化
+
+fastjson gson

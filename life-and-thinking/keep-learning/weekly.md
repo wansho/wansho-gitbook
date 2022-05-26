@@ -1010,3 +1010,9 @@ Demo:
 <img align="left" src="assets/image-20220523194104582.png" alt="image-20220523194104582" style="zoom:50%;" />
 
 这是一个 Chrome 插件实现：https://github.com/ansh/bionic-reading
+
+
+
+### 王心凌能出圈的客观原因
+
+<img align="left" src="assets/image-20220525132124060.png" alt="image-20220525132124060" style="zoom:50%;" />

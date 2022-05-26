@@ -150,6 +150,7 @@
   * [IT老齐架构课笔记](computer-science-notebook/note-for-java-web/architect.md)
   * [restful-api](computer-science-notebook/note-for-java-web/restful-api.md)
   * [spring](computer-science-notebook/note-for-java-web/spring.md)
+  * [spring-security](computer-science-notebook/note-for-java-web/spring-security.md)
   * [spring-boot](computer-science-notebook/note-for-java-web/springboot.md)
   * [spring-cloud](computer-science-notebook/note-for-java-web/springcloud.md)
   * [响应式 web](computer-science-notebook/note-for-java-web/reactive.md)
