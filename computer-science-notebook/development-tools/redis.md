@@ -20,6 +20,29 @@ Redis 的应用场景：
 * 用 Redis 替换频繁读取数据库稳定数据的逻辑，在 Web 服务与数据库之间充当缓存的功能。
 * 计数器
 
+
+
+## install
+
+```shell
+brew install redis
+
+# 启动 redis
+redis-server
+
+# Redis 默认端口是6379，你也可以换个端口号启动，
+redis-server --port 6380
+
+# 使用了肯定需要停止，停止怎么弄呢？
+# 停止
+# 执行命令
+redis-cli shutdown
+```
+
+
+
+
+
 ## Quickstart
 
 [Redis quickstart](https://redis.io/topics/quickstart)
