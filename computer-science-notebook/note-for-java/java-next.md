@@ -307,3 +307,20 @@ Calculator.ADD.exec(1, 2)
 * [廖雪峰讲枚举](https://www.liaoxuefeng.com/wiki/1252599548343744/1260473188087424)
 * [Where is the documentation for the values() method of Enum?](https://stackoverflow.com/questions/13659217/where-is-the-documentation-for-the-values-method-of-enum)
 * 设计模式之禅 - 策略设计模式
+
+
+
+## Serializable
+
+Serializable 接口的定义：
+
+```java
+public interface Serializable {
+}
+```
+
+Serializable 啥也没定义，只是一个语义接口，标志着一个对象可以被 Java 自带的序列化标准进行序列化（序列化成二进制文件）。
+
+Java 自带的序列化标准是序列化成二进制文件，不是序列化成文本文件。
+
+是一种上古技术，现代的 JavaWeb 开发中基本用不到了。
