@@ -1016,3 +1016,19 @@ Demo:
 ### 王心凌能出圈的客观原因
 
 <img align="left" src="assets/image-20220525132124060.png" alt="image-20220525132124060" style="zoom:50%;" />
+
+
+
+### 一部电影 《一一》
+
+<img align="left" src="assets/image-20220529164025428.png" alt="image-20220529164025428" style="zoom:13%;" />
+
+
+
+### 缓解腰肌劳损的方法
+
+绝大多数人忽略了一个关键环节：睡觉。
+
+一个 trick: 睡觉时，把脚放在一个枕头上面
+
+https://www.zhihu.com/question/453312421/answer/2333888047
