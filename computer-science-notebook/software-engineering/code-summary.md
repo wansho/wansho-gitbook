@@ -227,30 +227,7 @@ Debug 要考虑 有没有 log 文件可以分析，这是第一手资料
 
 Debug 思路要清晰，不能慌
 
-### Demo: 网络传输耗时问题
 
-**问题描述**
-
-```
-Basic交接后，出现了某些 URL 访问超时的问题。
-```
-
-**log 文件定位**
-
-```
-/home/work/odp/log/error_log 文件中报错：
-2018/08/24 15:49:54 [error] 9830#0: *2233 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 172.24.128.30, logid: 2984131137, -, server: yq01-yq-qadev-wanshuo.epc.baidu.com, request: "GET /summary/pzeroproblem?productid=all&subproduct=all&stime=2018-01-01%2000%3A00%3A00&etime=2018-08-24%2000%3A00%3A00 HTTP/1.1", -, upstream: "fastcgi://unix:/home/work/odp/var/php-cgi.sock", host: "yq01-yq-qadev-wanshuo.epc.baidu.com:8081", referrer: "http://yq01-yq-qadev-wanshuo.epc.baidu.com:8081/", -, -,
-```
-
-**问题定位过程**
-
-```
-经过测试，在修改开始时间后，例如从 4月1日 开始计算，那么能返回数据。
-目前定位到错误应该源自：\baidu\ceqa-mdns\bq\models\service\page\summary\PZeroProblem.php 文件，因为两个接口都调用了该文件。所以问题应该都来自于该文件。
-进一步定位发现，耗时操作来源于频繁访问数据库：`$this->product->get_product_name($product_id);`。线上 Basic 之所以没有产生超时的问题，是因为 ODP 服务和 数据库是放在了一台机器上，虽然 ODP 是通过 IP 访问的数据库，但是 IP 报文最终只是在局域网内进行传输，所以传输较快。
-
-测试的时候出现该问题，原因在于测试机的 ODP 环境 和 线上数据库 属于不同的局域网，大部分时间浪费在了数据的传输上，实测线上机器运行上一条语句的时间只有不要 1 ms，而测试机需要 7 ms。更进一步的原因在于代码没有针对数据库的访问进行优化，频繁的访问数据库，后期的开发中，如果频繁的访问一张表，可以直接将整张表读取出来，放入内存中进行查询，这样数据只需要传输一次即可。
-```
 
 **解决方案**
 

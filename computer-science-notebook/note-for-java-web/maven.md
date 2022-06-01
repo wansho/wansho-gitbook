@@ -478,7 +478,7 @@ MakeFriend 依赖的 junit: 4.9
 
 3. 将子工程的坐标中与父工程坐标中重复的内容删除
 
-4. 在父工程中统一管理 junit 的依赖
+4. 在父工程中统一管理 junit 的依赖（注意，在父类的 dependencyManagement 中定义的 dependency，不会被继承到子 module 中 [参考链接](https://stackoverflow.com/questions/2619598/differences-between-dependencymanagement-and-dependencies-in-maven)）
 
    ```xml
    <!-- 配置依赖的管理 -->
