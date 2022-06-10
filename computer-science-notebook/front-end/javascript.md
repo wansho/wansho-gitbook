@@ -387,6 +387,17 @@ python 和 JavaScript 比较：
 
 
 
+```javascript
+// The AND operator preserves non-Boolean values and returns them as they are
+result = '' && 'foo';  // result is assigned "" (empty string)
+result = 2 && 0;       // result is assigned 0
+result = 'foo' && 4;   // result is assigned 4
+```
+
+
+
+
+
 #### 三目运算符
 
 ```js
@@ -972,7 +983,7 @@ export default function cc(){
 }
 
 //index.js
-//使用定义变量
+//使用自定义变量
 import c from 'c.js'
 c.cc()
 ```
@@ -998,6 +1009,8 @@ c.cc()
 与此相同：
 
 `document.getElementById("header");`
+
+
 
 ## JS 边学边记
 
