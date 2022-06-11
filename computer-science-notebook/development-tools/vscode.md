@@ -46,6 +46,8 @@
 
   Open any folder in the Windows Subsystem for Linux (WSL) and take advantage of Visual Studio Code's full feature set.
 
+
+
 ## 快捷键
 
 | cmd                   | desc             |
@@ -53,4 +55,14 @@
 | F1 / ctrl + shift + p | 打开 vscode 命令 |
 |                       |                  |
 |                       |                  |
+
+
+
+## snippet 生成快捷键
+
+| 快捷键 | 效果                   |
+| ------ | ---------------------- |
+| rcc    | react 快速生成一个组件 |
+| !      | 生成 html 模板代码     |
+|        |                        |
 
