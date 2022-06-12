@@ -209,7 +209,7 @@ https://www.runoob.com/cssref/css-reference.htmlasp
 ```css
 div /*选择器名称*/
 {
-    属性名: 属性值; 
+    属性名: 属性值1 属性值2; 
     属性名: 属性值; 
     属性名: 属性值;
 }
