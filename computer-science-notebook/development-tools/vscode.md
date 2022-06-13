@@ -6,6 +6,8 @@
 
 轻量高效的**代码编辑工具**，而不是代码编译工具。其作为一款工具的属性更为突出，而不是一款 IDE。
 
+
+
 ## 在 Windows 系统上进行 Linux 开发
 
 想要实现在 Windows 上进行 Linux 开发，虚拟机太笨重，占用 Windows 系统太多的资源，Windows10 提供了一个 Linux 子系统，WSL：Windows Subsystem for Linux，与 Windows 深度融合，可以通过 VSCode + Remote-WSL 访问 Linux 子系统
@@ -30,7 +32,9 @@
 
 * 连接 WSL，不需要打开 WSL App，只需要在用 VSCode 的 Remote-WSL 插件连接就行了，WSL 应该有一个后台服务一直在跑
 
-## 高效插件
+
+
+## 插件
 
 * [Remote-SSH](https://www.cnblogs.com/liyufeia/p/11405779.html) 
 
@@ -45,6 +49,10 @@
 * [Remote-WSL]()
 
   Open any folder in the Windows Subsystem for Linux (WSL) and take advantage of Visual Studio Code's full feature set.
+  
+* Live Server
+
+  为静态网站开启一个服务器
 
 
 
@@ -60,9 +68,9 @@
 
 ## snippet 生成快捷键
 
-| 快捷键 | 效果                   |
-| ------ | ---------------------- |
-| rcc    | react 快速生成一个组件 |
-| !      | 生成 html 模板代码     |
-|        |                        |
+| 快捷键     | 效果                                      |
+| ---------- | ----------------------------------------- |
+| rcc        | react 快速生成一个组件                    |
+| !          | 生成 html 模板代码                        |
+| .classname | 生成一个 `<div class="classname"> </div>` |
 
