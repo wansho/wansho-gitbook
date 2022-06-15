@@ -23,6 +23,8 @@ npm config get registry
 
 `npm config delete ELECTRON_MIRROR`
 
+
+
 ## 代理
 
 配置代理
@@ -32,6 +34,8 @@ npm config set proxy http://127.0.0.1:7890
 npm config set https-proxy=https://127.0.0.1:7890
 ```
 
+
+
 取消代理
 
 ```shell
@@ -39,11 +43,15 @@ npm config delete proxy
 npm config delete https-proxy
 ```
 
+
+
 ## npm install
 
 `npm install` 默认将 `package.json` 的配置的环境依赖下载到当前目录下的 `node_modules` 中，如果想要复用这些环境依赖，可以直接加参数：`-g --global`。
 
 `npm install -g`
+
+
 
 ## npm pack
 
@@ -52,6 +60,8 @@ npm run pack
 # 或者
 npm run dist
 ```
+
+
 
 ## electron 项目打包
 
@@ -75,6 +85,9 @@ npm config set electron-builder-binaries_mirror=https://npm.taobao.org/mirrors/e
 ## nvm nodejs 版本管理
 
 ```shell
+# 配置默认的版本
+nvm alias default v14.15.5
+
 # 安装指定版本的 nodejs
 nvm install v14.15.5
 

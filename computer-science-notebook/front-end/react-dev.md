@@ -792,7 +792,8 @@ this.refs; // 存储组件内定义的标签的 id
 
 更新阶段，由组件内部 this.setSate()或父组件重新 render 触发  
 
-* getDerivedStateFromProps()
+1. getDerivedStateFromProps()
+
 2. shouldComponentUpdate()
 3. render()
 3. getSnapshotBeforeUpdate()
