@@ -840,6 +840,8 @@ explain select * from blog_browse_history where chapter_id > 270;
   * using where 表示直接扫描数据行进行筛选
   * using filesort 表示使用文件排序，非常低效
 
+
+
 ## MySQL 执行计划 explain 多表
 
 多表查询类似于嵌套 for 循环，最外层的 for 循环尤为关键，最外层的 for 循环表也被叫做驱动表。
@@ -848,3 +850,8 @@ explain select * from blog_browse_history where chapter_id > 270;
 
 
 
+## MySQL 保留字
+
+不能将字段名命名为如下列举的名字：
+
+* order 

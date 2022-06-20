@@ -1091,3 +1091,15 @@ https://www.zhihu.com/question/453312421/answer/2333888047
 
 ![image-20220619183649444](assets/image-20220619183649444.png)
 
+## week-25
+
+
+
+### 一个开源项目 PyScript
+
+[PyScript 官网](https://pyscript.net/)
+
+只需要引入一个样式文件，和一个 js 库，就可以在前端运行 Python 脚本！
+
+给大家看一下，一个简单的 html + python，能实现的效果：
+
