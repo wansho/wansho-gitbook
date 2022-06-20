@@ -1056,3 +1056,38 @@ https://www.zhihu.com/question/453312421/answer/2333888047
 
 
 我又想起了阮老师的这篇文章，分享给大家。
+
+
+
+## week-24
+
+
+
+### 分享几个最近看到的视频
+
+看看普通人的生活。
+
+![image-20220617090554214](assets/image-20220617090554214.png)
+
+![image-20220617090602661](assets/image-20220617090602661.png)
+
+![image-20220617090615973](assets/image-20220617090615973.png)
+
+
+
+### 一个开源项目
+
+[photography blog generator](https://github.com/hangbale/photography-blog) 一个摄影类的博客生成器。
+
+挺有设计感的，我在云上部署了一个版本，把最近几年的照片 po 了上去。
+
+[wansho gallery](http://gallery.wansho.top/)
+
+![image-20220618162232453](assets/image-20220618162232453.png)
+
+
+
+### 旅途
+
+![image-20220619183649444](assets/image-20220619183649444.png)
+

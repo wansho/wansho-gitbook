@@ -549,6 +549,8 @@ git tag
 git tag -l "v1.*" # -l: --list
 
 # create a tag
+# -a annotate
+# -m message
 git tag -a tag-name -m tag-message # -a: --annotate
 git tag -a v1.4 -m "my version 1.4"
 
