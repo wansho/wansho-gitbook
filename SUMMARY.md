@@ -174,6 +174,7 @@
   * [immutable.js](computer-science-notebook/front-end/immutable-js.md)
   * [npm库](computer-science-notebook/front-end/npm-libs.md)
   * [html-css-dom 学习](computer-science-notebook/front-end/html-css-dom.md)
+  * [web-assembly](computer-science-notebook/front-end/web-assembly.md)
 * [NLP](computer-science-notebook/nlp/README.md)
   - [NLP-Learning](computer-science-notebook/nlp/nlp-learning.md)
   - [Machine-Learning](computer-science-notebook/nlp/machine-learning.md)

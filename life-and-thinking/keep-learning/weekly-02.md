@@ -69,3 +69,29 @@
 ```
 
 ![image-20220620141155388](assets/image-20220620141155388.png)
+
+
+
+### wasm
+
+看到上面 pyscript 项目，我很好奇，pyscript 是用的什么技术，实现的在 html 中写 Python 代码。
+
+经过一番调研，发现其使用的就是大名鼎鼎的 web assembly（wasm） 技术。通过 wasm，可以将其他编程语言（例如 C++，Rust，Python）的代码，编译成 wasm，然后由浏览器执行 wasm 文件。
+
+wasm 是 web 端一种偏底层的技术，其执行效率，要高于 JavaScript。
+
+这里是我查到的一些资料：
+
+* [wasm org](https://webassembly.org/getting-started/developers-guide/)
+* python -> wasm: [Pyodide](https://pyodide.org/en/stable/), a Python distribution for the browser and Node.js based on WebAssembly.
+* python -> wasm: [PyScript](https://pyscript.net/) Run Python in Your HTML 
+* C++ -> wasm 的在线工具：https://mbebenita.github.io/WasmExplorer/
+* Bilibili 视频介绍：https://www.bilibili.com/video/BV13i4y1n74s
+
+
+
+### 新概念英语
+
+逛知乎看到有人评价《新概念英语》英语这本书是学习英语的最好教材。
+
+不明觉厉。
