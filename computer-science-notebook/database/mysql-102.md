@@ -334,6 +334,8 @@ mysqldump -uroot -p123456 diff getdiffrate_difftraceinfo --where="id > 1 ORDER B
 # 只 dump 表结构 -d 参数
 mysqldump -d 数据库名 -uroot -p > xxx.sql
 
+mysql -h 106.54.116.243 -P 3306 -u root -pxxxxxx
+
 # 只 dump 数据 -t 参数
 mysqldump -h 10.91.162.162 -umonitor -pmonitor123 -P 3306 se_monitor run_case_detail_20180201 -t --single-transaction --where="id > 1000 limit 10"  > /home/work/mysql_dump/sql/run_case_detail_20180201.sql
 ```

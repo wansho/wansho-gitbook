@@ -269,7 +269,7 @@ name server 维护的资源记录，数据结构如下：
 type 定义了 4 中 DNS 记录：
 
 * type = A：表示 name 字段记录的是主机域名，value 字段记录的是 IP 地址
-* type = CNAME: 表示 name 字段记录的是域名的别名，value 字段记录的是重定向到的最终域名，例如我想把 wansho.cn 域名定向到 wansho.top，那么 name 为 wansho.cn，value 为 wansho.top
+* type = CNAME(Canonical Name 真实名称): 表示 name 字段记录的是域名的别名，value 字段记录的是重定向到的最终域名，例如我想把 wansho.cn 域名定向到 wansho.top，那么 name 为 wansho.cn，value 为 wansho.top
 * type = NS: 表示 name 字段记录的是域的名字，value 字段记录的是该域的 local name server 这台主机的名字
 
 这种数据结构的设计方式，还是挺有意思的，有可取之处。

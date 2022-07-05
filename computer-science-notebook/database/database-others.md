@@ -102,16 +102,30 @@ For nonbinary strings ([`CHAR`](https://dev.mysql.com/doc/refman/8.0/en/char.htm
 
 
 
+## OLAP 数据库
+
+
+
+### Databend
+
+rust 开发的数据仓库，兼容 MySQL，国产
+
+
+
 ## 数据同步
 
-* dataX
+### dataX
 
-  不支持分布式
+不支持分布式
 
-* SeaTunnel（海量数据的管道）
 
-  和 logstash 类似，通过配置的方式（低代码），实现海量数据的同步。分布式特性。
 
-  SeaTunnel 对 Spark 和 Flink 做了一层包装。SeaTunnel 的日常使用，就是编辑配置文件，然后配置文件被 SeaTunnel 转换成具体的 Spark 或 Flink 任务。
+### SeaTunnel
 
-  ![image-20220421191506205](assets/image-20220421191506205.png)
+海量数据的管道
+
+和 logstash 类似，通过配置的方式（低代码），实现海量数据的同步。分布式特性。
+
+SeaTunnel 对 Spark 和 Flink 做了一层包装。SeaTunnel 的日常使用，就是编辑配置文件，然后配置文件被 SeaTunnel 转换成具体的 Spark 或 Flink 任务。
+
+![image-20220421191506205](assets/image-20220421191506205.png)
