@@ -175,6 +175,7 @@
   * [jquery](computer-science-notebook/front-end/jquery.md)
   * [javascript-101](computer-science-notebook/front-end/javascript-101.md)
   * [javascript-102](computer-science-notebook/front-end/javascript-102.md)
+  * [javascript兼容IE11](computer-science-notebook/front-end/javascript-ie11-compatible.md)
   * [immutable.js](computer-science-notebook/front-end/immutable-js.md)
   * [npm库](computer-science-notebook/front-end/npm-libs.md)
   * [html-css-dom 学习](computer-science-notebook/front-end/html-css-dom.md)
