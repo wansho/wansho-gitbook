@@ -4,6 +4,8 @@
 
 [Introduction](README.md)
 
+
+
 ## 读书
 
 * [现代操作系统](reading/modern-os/README.md)
@@ -56,6 +58,8 @@
   * [人类简史](reading/books/a-brief-history-of-humankind.md)
   * [毛选](reading/books/mao-xuan.md)
   * [遥远的救世主](reading/books/tian-dao.md)
+
+
 
 ## 计算机笔记
 
@@ -224,6 +228,17 @@
   * [吴翰清-计算的未来](computer-science-notebook/technology-lecture/future-of-computation.md)
   * [许式伟-架构课](computer-science-notebook/technology-lecture/xu-shi-wei-architecture.md)
   * [questions](computer-science-notebook/technology-lecture/questions.md)
+
+
+
+## 周刊
+
+* [2022](weekly/2022/README.md)
+  * [week-27](weekly/2022/week-27.md)
+
+
+
+
 
 ## 生活和思考
 

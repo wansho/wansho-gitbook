@@ -4,6 +4,8 @@
 
 [Introduction](README.md)
 
+
+
 ## 读书
 
 * [现代操作系统](reading/modern-os/README.md)
@@ -57,6 +59,8 @@
   * [毛选](reading/books/mao-xuan.md)
   * [遥远的救世主](reading/books/tian-dao.md)
 
+
+
 ## 计算机笔记
 
 * [算法](computer-science-notebook/algorithms/README.md)
@@ -85,7 +89,6 @@
   * [安全漏洞](computer-science-notebook/cryptography-web-security/security-vulnerability.md)
 * [计算机网络相关知识](computer-science-notebook/network-web/README.md)
   * [计算机网络小知识集合](computer-science-notebook/network-web/computer-network.md)
-  * [网络分层和协议](computer-science-notebook/network-web/layer-protocol.md)
   * [web-service](computer-science-notebook/network-web/web-service.md)
   * [http 协议](computer-science-notebook/network-web/http-protocol.md)
   * [questions](computer-science-notebook/network-web/questions.md)
@@ -97,7 +100,6 @@
   * [regex](computer-science-notebook/programming-language/regex.md)
   * [windows-bat](computer-science-notebook/programming-language/windows-bat.md)
   * [QT](computer-science-notebook/programming-language/qt.md)
-
 * [C++ 开发](computer-science-notebook/note-for-c/README.md)
   * [C语言学习教程](computer-science-notebook/note-for-c/how-to-learn-c.md)
   * [书籍：Think-C](computer-science-notebook/note-for-c/think-c.md)
@@ -152,6 +154,7 @@
   * [IT老齐架构课笔记](computer-science-notebook/note-for-java-web/architect.md)
   * [restful-api](computer-science-notebook/note-for-java-web/restful-api.md)
   * [spring](computer-science-notebook/note-for-java-web/spring.md)
+  * [spring-security](computer-science-notebook/note-for-java-web/spring-security.md)
   * [spring-boot](computer-science-notebook/note-for-java-web/springboot.md)
   * [spring-cloud](computer-science-notebook/note-for-java-web/springcloud.md)
   * [响应式 web](computer-science-notebook/note-for-java-web/reactive.md)
@@ -160,6 +163,8 @@
   * [RBAC](computer-science-notebook/note-for-java-web/rbac.md)
   * [Socket](computer-science-notebook/note-for-java-web/socket.md)
   * [webservice](computer-science-notebook/note-for-java-web/webservice.md)
+  * [tomcat-servlet](computer-science-notebook/note-for-java-web/tomcat-servlet.md)
+  * [编解码](computer-science-notebook/note-for-java-web/encode-decode.md)
 * [前端开发](computer-science-notebook/front-end/README.md)
   * [nodejs](computer-science-notebook/front-end/nodejs.md)
   * [yarn 使用](computer-science-notebook/front-end/yarn.md)
@@ -168,9 +173,12 @@
   * [chrome 插件开发](computer-science-notebook/front-end/chrome-extension.md)
   * [ajax](computer-science-notebook/front-end/ajax.md)
   * [jquery](computer-science-notebook/front-end/jquery.md)
-  * [JavaScript-学习教程](computer-science-notebook/front-end/javascript.md)
-  * [JavaScript-阮一峰学习教程](computer-science-notebook/front-end/javascript-tutorial.md)
+  * [javascript-101](computer-science-notebook/front-end/javascript-101.md)
+  * [javascript-102](computer-science-notebook/front-end/javascript-102.md)
+  * [immutable.js](computer-science-notebook/front-end/immutable-js.md)
+  * [npm库](computer-science-notebook/front-end/npm-libs.md)
   * [html-css-dom 学习](computer-science-notebook/front-end/html-css-dom.md)
+  * [web-assembly](computer-science-notebook/front-end/web-assembly.md)
 * [NLP](computer-science-notebook/nlp/README.md)
   - [NLP-Learning](computer-science-notebook/nlp/nlp-learning.md)
   - [Machine-Learning](computer-science-notebook/nlp/machine-learning.md)
@@ -205,6 +213,7 @@
   * [zookeeper](computer-science-notebook/development-tools/zookeeper.md)
   * [haproxy-keepalived](computer-science-notebook/development-tools/haproxy.md)
   * [webhook](computer-science-notebook/development-tools/webhook.md)
+  * [低代码](computer-science-notebook/development-tools/lowcode.md)
   * [网络爬虫](computer-science-notebook/development-tools/web-spider.md)
   * [Hexo 主题定制](computer-science-notebook/development-tools/make-hexo-theme.md)
 * [软件工程](computer-science-notebook/software-engineering/README.md)
@@ -219,6 +228,17 @@
   * [吴翰清-计算的未来](computer-science-notebook/technology-lecture/future-of-computation.md)
   * [许式伟-架构课](computer-science-notebook/technology-lecture/xu-shi-wei-architecture.md)
   * [questions](computer-science-notebook/technology-lecture/questions.md)
+
+
+
+## 周刊
+
+* [2022](weekly/2022/README.md)
+  * [week-27](weekly/2022/week-27.md)
+
+
+
+
 
 ## 生活和思考
 
@@ -239,6 +259,7 @@
 * [求知若渴虚心若愚](life-and-thinking/keep-learning/README.md)
   * [如何保持学习激情](life-and-thinking/keep-learning/how-to-keep-learning.md)
   * [周刊](life-and-thinking/keep-learning/weekly.md)
+  * [周刊-02](life-and-thinking/keep-learning/weekly-02.md)
   * [英语单词和专业词汇](life-and-thinking/keep-learning/authentic-expression.md)
   * [网上冲浪知识总结](life-and-thinking/keep-learning/knowledge-summary.md)
   * [知乎摘抄](life-and-thinking/keep-learning/zhihu.md)
