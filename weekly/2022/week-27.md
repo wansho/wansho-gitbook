@@ -41,3 +41,16 @@ https://capsule-render.vercel.app/api?color=gradient&height=300&section=header&t
 * [Zola](https://github.com/getzola/zola) A fast static site generator in a single binary with everything built-in.
 * [adidoks](https://github.com/aaranxu/adidoks) AdiDoks is a mordern documentation theme, which is a port of the Hugo theme Doks for Zola.
 
+
+
+## bug 的波粒二象性
+
+![image-20220706072415271](assets/image-20220706072415271.png)
+
+
+
+## 平原上的夏洛克
+
+乡土浪漫
+
+![image-20220706132516135](assets/image-20220706132516135.png)

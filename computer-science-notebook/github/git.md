@@ -178,6 +178,8 @@ origin 是对 remote-repos 的 shortname
 
 > Just like the branch name “master” does not have any special meaning in Git, neither does “origin”. While “master” is the default name for a starting branch when you run git init which is the only reason it’s widely used, “origin” is the default name for a remote when you run git clone. If you run git clone -o booyah instead, then you will have booyah/master as your default remote branch. 
 
+In Git, "origin" is a shorthand name for the remote repository that a project was originally cloned from.
+
 ### HEAD
 
 官方解释
@@ -522,7 +524,11 @@ git push origin dev # dev 是另外一个 local branch
 # 如果我们在 push 的时候，加了 -u 参数，就将本地的 master 分支推送到远程的这个配置，存储了。等到 pull 的时候，git pull 就会默认从远程拉取内容合并到本地的 master 分支，不需要 git pull origin master
 git push -u origin master 
 
-git push origin HEAD --force # 强制提交到远程仓库 
+# 强制提交到远程仓库 
+git push origin HEAD --force 
+
+# 将本地的分支强制提交到远程的某分支
+git push -f origin HEAD:远程的分支
 ```
 
 将本地仓库提交到远程新建的仓库，有两个方法：
@@ -682,6 +688,9 @@ git merge origin/master --allow-unrelated-histories
 
 # 默认情况下执 fast-forward 合并，并不会产生一个 commit 记录，为了保证版本演进的清晰，加上 --no-ff (no fast-forward) 参数，生成 commit 记录
 git merge --no-ff develop
+
+# 如果合并后，引起冲突，想取消 git pull，则使用该命令
+git merge --abort
 ```
 
 **冲突的解决办法**

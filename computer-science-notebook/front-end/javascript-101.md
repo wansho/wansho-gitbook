@@ -845,6 +845,8 @@ A **closure** is the combination of a function and the scope object in which it 
 
 ![image-20200917150355760](assets/image-20200917150355760.png)
 
+
+
 ## ES5 新特性
 
 ### use strict
