@@ -49,8 +49,6 @@ PostgreSQL 不允许创建名为 user 的表，user 在 PostgreSQL 中是一个�
 
 
 
-
-
 ## 数据库比较
 
 ### MySQL vs PostgreSQL
