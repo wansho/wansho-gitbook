@@ -379,6 +379,8 @@ java -jar xxx.jar
 
 注意，如果我们只是做依赖包，那么就不需要留着 main 方法，删除 main 文件后，会报错找不到主类，这个时候就需要删除这个组件了。
 
+
+
 ### lombok
 
 lang bao k
@@ -453,11 +455,47 @@ public class Config {
 
 
 
-### FastJSON
+### fastjson jackson
 
+序列化和反序列化工具。
 
+SpringBoot 自带的是 jackson，如果要切换成 fastjson，则需要单独配置。
 
+jackson 有一个巨坑，就是无法反序列化第二个字母大写的字段，举例：
 
+将下面的 json 反序列化成 bean 的时
+
+```json
+{
+  "eMail": "wanshojs@gmail.com"
+}
+```
+
+得到的 eMail 字段是 null。需要强制指定来进行反序列化：
+
+```java
+@Data
+public class User {
+
+    private String name;
+
+    @JsonProperty("eMail")
+    private String eMail;
+  
+  	/***
+     * 前端传过来的是 more-info，解析对应到 moreInfo 字段
+     */
+    @JsonProperty("more-info")
+    private String moreInfo;
+
+}
+```
+
+fastjson 不存在上述问题。
+
+fastjson 中和 @JsonProperty 功能类似的注解是：`@JSONField(name="eMail")`。
+
+https://stackoverflow.com/questions/30205006/why-does-jackson-2-not-recognize-the-first-capital-letter-if-the-leading-camel-c
 
 
 

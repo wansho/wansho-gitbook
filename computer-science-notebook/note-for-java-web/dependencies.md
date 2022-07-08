@@ -126,4 +126,4 @@ BeanUtils.copyProperties(a, b);
 
 ## java bean 序列化，反序列化
 
-fastjson gson
+fastjson jackson gson
