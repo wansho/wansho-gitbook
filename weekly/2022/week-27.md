@@ -97,3 +97,13 @@ fastjson 不存在上述问题。
 
 fastjson 中和 @JsonProperty 功能类似的注解是：`@JSONField(name="eMail")`。
 
+
+
+## 换手机 Redmi Note9 Pro -> Redmi K50
+
+这周我的 Redmi Note9 Pro 实在是卡得不行了，没办法换了 K50。
+
+什么感觉呢，感觉就是直接起飞🛫！
+
+Note9 Pro 才用了一年半，就拉垮了，看来买小米还是得买 K 系列！2000 的价格，3000 的体验！
+
