@@ -1,52 +1,16 @@
-# npm 库
-
-[toc]
+# week-28
 
 
 
+## 快乐秘籍
 
-
-## 库
-
-### create-react-app
-
-
-
-react 脚手架
+1. 少关注别人的人生（少上网）
+2. 珍视自己（多投资自己，多关注自己）
+3. 多多搞钱
 
 
 
-### lodash
-
-Lodash 是一个一致性、模块化、高性能的 JavaScript 实用工具库。
-
-
-
-```javascript
-import '_' from 'lodash';
-// 深拷贝
-let data = _.cloneDeep(this.state.data);
-```
-
-
-
-### dayjs
-
-时间处理的库。
-
-
-
-### moment.js
-
-和 dayjs 一样，是时间处理的库。
-
-
-
-## 功能
-
-
-
-### 代码格式化并在前端高亮展示
+## 代码格式化并在前端高亮展示
 
 代码格式化：[sql-formatter](https://github.com/sql-formatter-org/sql-formatter)
 
