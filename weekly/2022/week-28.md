@@ -24,3 +24,8 @@ react 中使用 highlight.js 会有如下警告，目前尚未解决：
 One of your code blocks includes unescaped HTML. This is a potentially serious security risk.
 ```
 
+
+
+## 我看老师你是完全不懂哦
+
+![FkcaCzh82nF8bZ4PKwwx6Cf5VIBnv3.png](assets/FkcaCzh82nF8bZ4PKwwx6Cf5VIBnv3.png)
