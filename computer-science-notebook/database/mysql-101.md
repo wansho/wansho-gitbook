@@ -206,9 +206,11 @@ select icafe_id from feedbackorigindata where product_id = 1 and subproduct_id =
 需求：从数据库中读取 1000 条数据，要求这 1000 条数据是随机选择的，
 SELECT * FROM tablename ORDER BY RAND() LIMIT num；
 
-* limit offset 关键字
-Limit子句可以被用于强制 SELECT 语句返回指定的记录数。Limit接受一个或两个数字参数。参数必须是一个整数常量。如果给定两个参数，第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目。
-
+-- limit offset 关键字
+-- Limit子句可以被用于强制 SELECT 语句返回指定的记录数。Limit接受一个或两个数字参数。参数必须是一个整数常量。如果给定两个参数，第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目。
+-- 注意：
+-- 1. limit 要在 offset 前面，如果颠倒了，会出现语法错误
+-- 2. offset 不能单独使用，要配合 limit 一起使用，limit 可以单独使用 https://stackoverflow.com/questions/255517/mysql-offset-infinite-rows
 SELECT * FROM table LIMIT 5; //检索前 5 个记录行
 SELECT * FROM table LIMIT 5,10; //检索记录行6-15 从第六行开始检索
 SELECT * FROM table LIMIT 10 offset 5; //检索记录行6-15 从第六行开始检索，跳过前5 行
