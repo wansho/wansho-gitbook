@@ -243,7 +243,7 @@ OpenSSH 规定，将客户机的公钥上传到服务机的对应用户的 `.ssh
 
 注意
 
-1. 如果我们想要免密登录服务器的 root 用户，那么就需要将客户机的公钥上传到 `/root/.ssh/authorized_keys` 文件中，如果是想免密登录非 root 用户，例如 work 用户，则需要将公钥上传到 `/home/work/.ssh/authorized_keys` 中
+1. 如果我们想要免密登录服务器的 root 用户，那么就需要将客户机的公钥上传到服务器的 `/root/.ssh/authorized_keys` 文件中，如果是想免密登录非 root 用户，例如 work 用户，则需要将公钥上传到 `/home/work/.ssh/authorized_keys` 中
 2. authorized_keys 的权限要改成 644
 3. `.ssh` 的权限要改成 700
 4. `/home/work` 目录 必须是 755权限
@@ -269,8 +269,6 @@ $ ssh-copy-id -i key_file user@host
 ```
 
 上面命令中，`-i`参数用来指定公钥文件，`user`是所要登录的账户名，`host`是服务器地址。如果省略用户名，默认为当前的本机用户名。执行完该命令，公钥就会拷贝到服务器。
-
-注意，公钥文件可以不指定路径和`.pub`后缀名，`ssh-copy-id`会自动在`~/.ssh`目录里面寻找。
 
 ```
 $ ssh-copy-id -i id_rsa user@host
