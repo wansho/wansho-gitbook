@@ -8,7 +8,7 @@
 
 The Reliable, High Performance TCP/HTTP Load Balancer
 
-haproxy 的定位，就是负载均衡。
+haproxy 的定位，就是负载均衡，做反向代理。
 
 https://www.bilibili.com/video/BV1Fh411Y7hc
 

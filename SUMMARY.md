@@ -202,6 +202,7 @@
   * [githook](computer-science-notebook/github/git-hook.md)
 * [开发工具与技术栈](computer-science-notebook/development-tools/README.md)
   * [技术栈](computer-science-notebook/development-tools/technology-stack.md)
+  * [serverless](computer-science-notebook/development-tools/serverless.md)
   * [apifox](computer-science-notebook/development-tools/apifox.md)
   * [区块链](computer-science-notebook/development-tools/blockchain.md)
   * [Web3.0](computer-science-notebook/development-tools/web3.md)
