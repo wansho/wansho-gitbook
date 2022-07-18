@@ -42,7 +42,15 @@ Zookeeper（业界简称zk）是一种提供配置管理、分布式协同以及
 
 <img align="left" src="assets/image-20211005102817857.png" alt="image-20211005102817857" style="zoom: 60%;" />
 
+
+
+Zookeeper被称为分布式协调服务器，通过对Zookeeper的应用，可以实现分布式系统同步运行，实现各系统功能的协调推进。例如，可以实现集群管理、Master选举、分布式锁、分布式队列等功能，都是ZK协调性机制的体现。
+
+
+
 ## Apache Curator
 
 Zookeeper 的一个高级封装。在实际的 Java 代码中，引入该依赖进行分布式锁的开发。
+
+
 

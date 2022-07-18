@@ -228,6 +228,7 @@
   * [编程经验总结](computer-science-notebook/software-engineering/code-summary.md)
 * [技术讲座](computer-science-notebook/technology-lecture/README.md)
   * [keep-learning](computer-science-notebook/technology-lecture/cs-keep-learning.md)
+  * [尚硅谷-操作系统](computer-science-notebook/technology-lecture/atguigu-os.md)
   * [吴翰清-计算的未来](computer-science-notebook/technology-lecture/future-of-computation.md)
   * [许式伟-架构课](computer-science-notebook/technology-lecture/xu-shi-wei-architecture.md)
   * [questions](computer-science-notebook/technology-lecture/questions.md)
