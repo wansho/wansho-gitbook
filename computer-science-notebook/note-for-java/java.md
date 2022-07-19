@@ -234,7 +234,7 @@ static
 
 java是严谨性语言，如果函数出现的调用的不确定性，会编译失败。
 
-<img align='left' src="assets/clip_image001.png" alt="重载" style="zoom:90%;" />
+<img align='left' src="assets/clip_image001.png" alt="重载"  />
 
 
 
