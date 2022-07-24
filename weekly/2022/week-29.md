@@ -74,3 +74,31 @@
 
 
 
+## 两个段子
+
+1. 跑步的多巴胺仅次于谈恋爱 三公里专治各种不爽，五公里专治各种内伤，十公里跑完内心全是坦荡和善良
+2. ![FnqUNciaRL8wQ2HKlX6ya4_6aT_sv3.jpg](assets/FnqUNciaRL8wQ2HKlX6ya4_6aT_sv3.jpg)
+
+
+
+## 一个免费的内网穿透工具
+
+[bore.pub](https://github.com/ekzhang/bore) 一个命令行工具，将本地端口映射到远程服务器上的端口。很好用，但是速度很慢。
+
+
+
+```shell
+# 将本地的 8000 端口暴露到公网，命令
+bore local 8000 --to bore.pub
+
+# 得到一个 bore.pub 指定的访问端口
+# 2022-07-22T09:18:57.311562Z  INFO bore_cli::client: connected to server remote_port=38611
+# 2022-07-22T09:18:57.311591Z  INFO bore_cli::client: listening at bore.pub:38611
+# 访问 bore.pub:38611 即可访问本地 8000 端口
+```
+
+
+
+原理如下：
+
+![image-20220723083245946](assets/image-20220723083245946.png)
