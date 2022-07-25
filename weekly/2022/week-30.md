@@ -45,3 +45,26 @@
 你最近的一支笔芯用了多久？
 
 ![image-20220725111924125](assets/image-20220725111924125.png)
+
+
+
+## vscode 两个插件
+
+* [excalidraw vscode](https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor)
+
+  在 vscode 中画图，画图源文件还能保存到本地。完美解决了 excalidraw 需要付费的问题。
+
+  ![image-20220725195940103](assets/image-20220725195940103.png)
+
+* [typora vscode](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-typora)
+
+  在 vscode 中集成 typora，markdown 所见即所得。也完美解决了 typora 的付费问题。
+
+  ![image-20220725200548354](assets/image-20220725200548354.png)
+
+
+
+我会使用一段时间 typora vscode，如果没有问题，那么 vscode 将覆盖我平时工作学习中几乎所有的使用场景。
+
+
+
