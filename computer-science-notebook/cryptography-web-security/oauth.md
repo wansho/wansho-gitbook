@@ -114,7 +114,7 @@ OAuth 2.0 的标准是 [RFC 6749](https://tools.ietf.org/html/rfc6749) 文件。
 
 ![img](https://www.wangbase.com/blogimg/asset/201904/bg2019040902.jpg)
 
-第二步，用户跳转后，B 网站会要求用户登录（我们也是 B 网站的用户！），然后询问是否同意给予 A 网站授权。用户表示同意，这时 B 网站就会跳回`redirect_uri`参数指定的网址。跳转时，会传回一个授权码，就像下面这样。
+第二步，用户跳转后，B 网站会要求用户登录（我们也是 B 网站的用户！），然后询问是否同意给予 A 网站授权。用户表示同意，这时 B 网站就会跳回`redirect_uri`参数指定的网址（这个网址 A 网站后端的端点！）。跳转时，会传回一个授权码，就像下面这样。
 
 > ```javascript
 > https://a.com/callback?code=AUTHORIZATION_CODE
@@ -124,7 +124,7 @@ OAuth 2.0 的标准是 [RFC 6749](https://tools.ietf.org/html/rfc6749) 文件。
 
 ![img](https://www.wangbase.com/blogimg/asset/201904/bg2019040907.jpg)
 
-第三步，A 网站拿到授权码以后，就可以在后端，向 B 网站请求令牌。
+第三步，A 网站拿到授权码以后，就可以在后端（注意，这里 A 向 B 请求令牌，是在后端发生的！），向 B 网站请求令牌。
 
 > ```javascript
 > https://b.com/oauth/token?

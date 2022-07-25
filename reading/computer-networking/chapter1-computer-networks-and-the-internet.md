@@ -44,6 +44,8 @@
 
   两个协议：TCP（在吗，在。一起吃饭去，好的。） / UDP （一起吃饭去，好的。）
 
+  传输层向应用层提供 socket api，使得应用层能够方便地使用 TCP 和 UDP 协议。
+
 * 应用层
 
   按照应用层协议，在 TCP 和 UDP 两种连接的基础上，交换应用报文。
@@ -51,6 +53,10 @@
   基于 TCP 的应用：HTTP，Telnet，FTP，SMTP
   
   基于 UDP 的应用：DNS，流媒体，远程电话
+
+
+
+![enter image description here](assets/kOrOP.png)
 
 
 
