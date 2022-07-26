@@ -22,6 +22,7 @@ IE 11 只兼容到 ES5。
 * for of
 * Array.fill
 * Object.assign
+* String.prototype.replaceAll()
 
 
 
