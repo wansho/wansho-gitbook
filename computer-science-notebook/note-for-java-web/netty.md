@@ -121,3 +121,48 @@ Selector, Channel 和 Buffer 的关系图（简单版）：
 
 
 
+## NIO
+
+
+
+### Buffer
+
+缓冲区：本质上是一个可以读写数据的内存块，可以理解成一个容器对象，该容器提供了一组方法，可以更轻松地使用内存块。Channel 提供从文件、网络读取数据的渠道，但是读取或写入的数据都必须经由 Buffer。
+
+每一种缓冲区都带有的四个属性：
+
+* Capacity：缓冲区的容量
+* Limit：缓冲区当前的终点，不能对缓冲区超过极限的位置进行读写操作。极限是可以修改的
+* Position：索引，下一个要被读或者写的元素的索引
+* Mark：标记
+
+ mark <= position <= limit <= capacity
+
+
+
+缓冲区常见方法：
+
+```java
+position(int newPosition); // 设置此缓冲区的位置
+
+clear(); // 清除这个缓冲区，所有标记恢复初试状态，但是数据并没有真正擦除
+
+flip(); // 反转缓冲区
+
+hasRemaining(); // 告知在 position 和 limit 之前是否还有元素
+```
+
+
+
+ByteBuffer 特有的方法：
+
+```java
+get(); // 从当前 position 上 get，然后 position 自动+1
+get(position); // 从绝对位置 get
+put(byte b); // 从当前位置添加，put 后 position 自动+1
+put(int position, byte b); // 从绝对位置 put
+allocate(int capacity); // 设置缓冲区的初试容量
+```
+
+
+
