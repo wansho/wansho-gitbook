@@ -975,7 +975,7 @@ dev 出口网关 物理设备名
 
 一个与其他主机进行通信的工具集。
 
-The telnet command is used for interactive communication with another host using the TELNET protocol. It begins in command mode, where it prints a telnet prompt ("telnet> "). If telnet is invoked with a host argument, it performs an open command implicitly; see the description below.
+The telnet command is used for interactive communication with another host using the TELNET protocol. It begins in command mode, where it prints a telnet prompt ("telnet> "). If telnet is invoked with a host argument, it performs an open command implicitly; 
 
 **测试远程主机的端口是否打开**
 
@@ -983,6 +983,10 @@ The telnet command is used for interactive communication with another host using
 telnet ip port
 # 退出 telnet：ctrl + ]，然后 quit
 ```
+
+
+
+
 
 ### 防火墙
 
