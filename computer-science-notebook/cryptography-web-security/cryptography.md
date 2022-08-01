@@ -33,8 +33,6 @@ Cryptography
 
 
 
-
-
 ## 对称加密 / 单钥加密
 
 对称密钥，采用单钥加密，加密和解密都用一个密钥。
@@ -42,6 +40,7 @@ Cryptography
 常见的单钥加密算法：
 
 * DES（Data Encryption Standard）
+* AES
 * SM4 商密
 
 ## 非对称加密 / 双钥加密
