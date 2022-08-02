@@ -854,6 +854,22 @@ explain select * from blog_browse_history where chapter_id > 270;
 
 ## MySQL 保留字
 
+mysql 使用反引号来括住表名和字段名，以区分保留字和普通字符。注意，只有 MySQL 才有反引号这个怪东西。
+
+```mysql
+CREATE TABLE `students` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `nickname` varchar(20) DEFAULT NULL,
+  `sex` char(1) DEFAULT NULL,
+  `in_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8
+```
+
+
+
 不能将字段名命名为如下列举的名字：
 
 * order 
+

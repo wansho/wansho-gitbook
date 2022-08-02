@@ -51,6 +51,14 @@ PostgreSQL 不允许创建名为 user 的表，user 在 PostgreSQL 中是一个�
 
 ## 数据库比较
 
+### MySQL 独有的特性
+
+insert ignore: 主键重复则不插入
+
+反引号：用来区分保留字
+
+
+
 ### MySQL vs PostgreSQL
 
  MySQL
