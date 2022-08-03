@@ -20,7 +20,7 @@ compareTo();
 
 ## java8 datetime
 
-java8 引入的新类：LocalDateTime，LocalDate，Instant
+java8 引入的新类：LocalDateTime，LocalDate，LocalTime，Instant
 
 ```java
 LocalDate today = LocalDate.now(); 
@@ -46,7 +46,7 @@ LocalDate nextYear = today.plus(1, YEARS);
 Instant timestamp = Instant.now();
 
 LocalDateTime now = LocalDateTime.now();
-        LocalDateTime morningStartDateTime = LocalDateTime.of(now.getYear(), now.getMonthValue(), now.getDayOfMonth(),
+LocalDateTime morningStartDateTime = LocalDateTime.of(now.getYear(), now.getMonthValue(), now.getDayOfMonth(),
                 9, 30, 0);
 ```
 
