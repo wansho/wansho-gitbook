@@ -893,6 +893,17 @@ lsof -i:port # 查看指定端口被哪个进程占用，功能类似于 netstat
 ### wget, curl
 
 ```shell
+# post 请求
+curl -XPOST http://localhost:8080/a
+# 显示详细信息
+curl -v  http://localhost:8080/hello
+# 加入头信息
+curl -H "Authorization: Basic dXNlcjphMmNmYTU3Yy0xNzA3LTQzOGYtODBlNi04MDFiZTQ0YTM0MDk=" http://localhost:8080/hello
+# http basic 认证
+curl -u user:a2cfa57c-1707-438f-80e6-801be44a3409  http://localhost:8080/hello
+# 多个 header
+curl -v -H "Authorization: key123456" -H "Request-Id: 123456" http://localhost:8080/hello
+
 curl 域名 # 在终端中打印 HTML 源码，注意这里只是域名，不是完整的URL链接
 curl -O http://man.linuxde.net/text.iso # O 大写，下载文件
 curl -o tmp.iso http://man.linuxde.net/text.iso # 下载文件并重命名
