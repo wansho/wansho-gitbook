@@ -49,6 +49,12 @@ PostgreSQL 不允许创建名为 user 的表，user 在 PostgreSQL 中是一个�
 
 
 
+### h2
+
+h2 的访问路径：http://localhost:8080/h2-console/login.do
+
+
+
 ## 数据库比较
 
 ### MySQL 独有的特性
