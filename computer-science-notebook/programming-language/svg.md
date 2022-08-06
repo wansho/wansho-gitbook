@@ -2,6 +2,24 @@
 
 [TOC]
 
+## 我的思考
+
+SVG 最本质的突破，是用纯文本来描述图像。
+
+纯文本可以写论文：Latex
+
+纯文本可以写 ppt：Marpit
+
+纯文本可以画图：SVG
+
+纯文本可以记笔记：Markdown
+
+下一步：纯文本可以做视频？（其实已经实现了，机器学习用文本生成视频，只是没有形成一个通用的协议）
+
+纯文本可以干这么多事情，本质上是制定了各种协议，然后由协议来实现的。
+
+
+
 ## Wiki
 
 [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics)
@@ -18,13 +36,13 @@ SVG 图片的特点：
 * 可交互，支持动画
 * 文本文件，采用 xml 语言定义，主流浏览器可渲染
 
+
+
 ## 阮一峰 SVG 入门教程
 
 [link](http://www.ruanyifeng.com/blog/2018/08/svg.html)
 
 SVG 是一种基于 XML 语法的图像格式，全称是可缩放矢量图（Scalable Vector Graphics）。其他图像格式都是基于像素处理的，SVG 则是属于对图像的形状描述，所以它本质上是文本文件，体积较小，且不管放大多少倍都不会失真。
-
-![img](https://www.wangbase.com/blogimg/asset/201808/bg2018080601.jpg)
 
 SVG 文件可以直接插入网页，成为 DOM 的一部分，然后用 JavaScript 和 CSS 进行操作。
 
@@ -78,3 +96,52 @@ SVG 文件还可以转为 BASE64 编码，然后作为 Data URI 写入网页。
 <img src="data:image/svg+xml;base64,[data]">
 ```
 
+
+
+## 用 JavaScript 生成 SVG 标签
+
+实际应用中，我们不可能手写 SVG，可以由 JavaScript 生成的。
+
+
+
+## 给 SVG 标签添加事件
+
+给标签加标识，然后对标识添加事件。本质上是对 svg 标签添加点击事件。
+
+```javascript
+// 给所有的线和圆添加鼠标移到上面的事件
+var lines = document.getElementsByClassName('lineStyle');
+var circles = document.getElementsByClassName('circleStyle');
+for(var i=0; i<circles.length; i++){
+  // onmouseover 事件发生在鼠标指针移动到元素或它的子元素上时。
+  circle[i].onmouseover = function(){
+  
+  }
+  circle[i].onmouseleave = function(){
+  
+  }
+}
+for(var i=0; i<lines.length; i++){
+  // onmouseover 事件发生在鼠标指针移动到元素或它的子元素上时。
+  lines[i].onmouseover = function(){
+  
+  }
+  lines[i].onmouseleave = function(){
+  
+  }
+}
+```
+
+
+
+## 运动动画
+
+* 原生 JS 操作 JQuery 的 animate
+  * duration
+  * easing
+  * step
+* svg 运动标签 animate
+  * attributeName
+  * dur
+  * from
+  * to
