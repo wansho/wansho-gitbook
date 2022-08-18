@@ -233,6 +233,30 @@ Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`p
 
 默认的 scope 就是 compile。
 
+注意，不同的 scope 依赖关系，会有不同的导入策略，例如 h2 数据库，如果是想用 h2 作为内存数据库，则导包策略如下：
+
+```xml
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <scope>runtime</scope>
+  <version>1.4.193</version>
+</dependency>
+```
+
+如果是想用 h2 的 server 模式，则导包策略如下：
+
+```xml
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <scope>compile</scope>
+  <version>1.4.193</version>
+</dependency>
+```
+
+不同的导入策略，导入的类也有所不同，Runtime 模式就不会导入 `org.h2.tools.Server` 类。
+
 | scope    | 说明                                            | 示例               | 是否需要打包进程序 |
 | :------- | :---------------------------------------------- | :----------------- | ------------------ |
 | compile  | 编译时需要用到该jar包                           | commons-logging    | 需要               |
@@ -273,8 +297,6 @@ Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`p
 * 是否参与打包：参与
 * 是否参与部署：参与
 * 典型例子：jdbc jar 包
-
-注意，对于 scope 为 Runtime 类型的 jar 包，如果
 
 
 
