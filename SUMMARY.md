@@ -220,6 +220,7 @@
   * [低代码](computer-science-notebook/development-tools/lowcode.md)
   * [网络爬虫](computer-science-notebook/development-tools/web-spider.md)
   * [Hexo 主题定制](computer-science-notebook/development-tools/make-hexo-theme.md)
+  * [Swagger](computer-science-notebook/development-tools/swagger.md)
 * [软件工程](computer-science-notebook/software-engineering/README.md)
   * [软件测试](computer-science-notebook/software-engineering/software-testing.md)
   * [持续集成](computer-science-notebook/software-engineering/continuous-integration.md)
@@ -247,6 +248,7 @@
   * [week-31-32](weekly/2022/week-31-32.md)
   * [week-32](weekly/2022/week-32.md)
   * [week-33](weekly/2022/week-33.md)
+  * [week-34](weekly/2022/week-34.md)
 
 
 

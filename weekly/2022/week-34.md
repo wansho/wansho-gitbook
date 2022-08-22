@@ -43,3 +43,48 @@ localStorage.getItem 有5%几率返回空字符串。
 
 
 
+## 五彩斑斓的蓝
+
+冲浪遇到两种颜色，群青和克莱因蓝，很安静，很喜欢的颜色。
+
+### 群青
+
+![image-20220821093022499](assets/image-20220821093022499.png)
+
+### 克莱因蓝
+
+rgb(0, 47, 167)：
+
+![image-20220821093327915](assets/image-20220821093327915.png)
+
+
+
+## 关于原生家庭
+
+不管你原生家庭好，还是不好，其实都会有缺失。如果你原生家庭不好，那么你就缺少爱。如果你原生家庭好，你就缺少历练。你在原生家庭里没有上到的课，终究还是要出去上。
+
+——杨幂
+
+
+
+## 凤凰架构
+
+一本好书
+
+[凤凰架构，构建可靠的大型分布式系统](https://icyfenix.cn/)   [pdf download](https://raw.githubusercontent.com/fenixsoft/awesome-fenix/gh-pages/pdf/the-fenix-project.pdf)
+
+![image-20220822112053995](assets/image-20220822112053995.png)
+
+
+
+## 为技术文章在线生成海报
+
+[CoverView](https://coverview.vercel.app/editor) 
+
+![image-20220822132659891](assets/image-20220822132659891.png)
+
+
+
+## 庄稼地旁写代码
+
+![img](assets/3000000@.jpeg)
