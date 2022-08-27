@@ -249,6 +249,7 @@
   * [week-32](weekly/2022/week-32.md)
   * [week-33](weekly/2022/week-33.md)
   * [week-34](weekly/2022/week-34.md)
+  * [week-35](weekly/2022/week-35.md)
 
 
 
