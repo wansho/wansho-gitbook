@@ -114,6 +114,12 @@ For nonbinary strings ([`CHAR`](https://dev.mysql.com/doc/refman/8.0/en/char.htm
 
 
 
+### postgresql 无法插入空字符串
+
+如果插入空字符串，会被转成 null
+
+
+
 ## OLAP 数据库
 
 

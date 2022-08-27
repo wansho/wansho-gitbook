@@ -2,13 +2,7 @@
 
 [TOC]
 
-
-
-## 带逛知乎
-
-
-
-### 为何许多男士痴迷于练肌肉
+## 为何许多男士痴迷于练肌肉
 
 因为身体是你能掌控的唯一东西，也是你练就能给你正向回馈的东西。[为何许多男士痴迷于练肌肉？ - 谭四瞳的回答 - 知乎]( https://www.zhihu.com/question/23850556/answer/2633571157)
 
@@ -88,3 +82,49 @@ rgb(0, 47, 167)：
 ## 庄稼地旁写代码
 
 ![img](assets/3000000@.jpeg)
+
+
+
+## 济你太美
+
+同济大学军训 2021,2022 表演节目。
+
+![image-20220823182644099](assets/image-20220823182644099.png)
+
+![image-20220823182637209](assets/image-20220823182637209.png)
+
+
+
+## 软件本地优先
+
+[本地优先软件 Local-first software](https://zhuanlan.zhihu.com/p/557353347)
+
+翻译了 Local-first software。原文是深度好文，一作是 DDIA 的作者，文中指出了目前云应用普遍存在的问题「用户不再拥有自己的数据的控制权」，并指出了如何在不损失用户体验的情况下重新「让用户掌握自己数据所属权」的可行路线。
+
+
+
+## 跨平台框架 Electron 和 Tauri 比较
+
+[Tauri VS. Electron - Real world application](https://www.levminer.com/blog/tauri-vs-electron)
+
+结论：
+
+Electron is being replaced? Yes, Tauri is way better, but it still misses a lot. In a couple of years I'm sure the Tauri team will catch app to Electron. The things I'm excited for: Deno as the backend, better auto update and iOS/Android support.
+
+
+
+## 据意查句
+
+清华大学出的一款垂直搜索引擎，可以据意查句，很有意思，前端设计也很有美感。
+
+![image-20220826213105362](assets/image-20220826213105362.png)
+
+![image-20220826213842871](assets/image-20220826213842871.png)
+
+
+
+## 重庆山火
+
+![Fkzyx9FKpxjg9uOpLDIR3llFzxbav3.jpg](assets/Fkzyx9FKpxjg9uOpLDIR3llFzxbav3.jpg)
+
+![Fr7bsYtIq30F3RQzMgrffDRauzpUv3.jpg](assets/Fr7bsYtIq30F3RQzMgrffDRauzpUv3.jpg)
