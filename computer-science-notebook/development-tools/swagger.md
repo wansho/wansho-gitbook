@@ -10,10 +10,17 @@ Swagger 可以看作是一个遵循了 OpenAPI 规范的一项技术，而 sprin
 
 
 
-## springfox-swagger2
+## springfox-swagger2 
+
+切换到 3.0.0 分支 git checkout 3.0.0
 
 开发环境：
 
 node 12.16.2
 
 gradle 6.5
+
+使用的中央仓库：jcenter，jcenter 已被启用
+
+
+
