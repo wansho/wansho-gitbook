@@ -1,5 +1,11 @@
 # week-37
 
+
+
+[TOC]
+
+
+
 ## 带逛知乎 & 贴吧
 
 
@@ -71,3 +77,33 @@ Keep looking, don't settle.
 不开玩笑，真的贼解压。
 
 ![img](assets/v2-830a48d1c67a048fd7e594d6eb1d9e07_r.jpg)
+
+
+
+## 马上相逢无纸笔，凭君传语报平安
+
+![image-20220916074302799](assets/image-20220916074302799.png)
+
+
+
+## 内卷，裁员
+
+在[科技爱好者周刊（第 223 期）：程序员需要担心裁员吗？](https://www.ruanyifeng.com/blog/2022/09/weekly-issue-223.html) 看到一个观点：
+
+"与其担心宏观经济，不如关注自己。**你对自己生活的影响，往往比宏观经济对你的影响大得多。**"
+
+"如果你忧心忡忡，那是不必要的；如果你毫不担心，那么你需要担心。"
+
+
+
+## HTAP 数据库
+
+*HTAP*（Hybrid Transaction Analytical Processing）
+
+*HTAP*= OLTP +OLAP
+
+HTAP 数据库代表：TiDB 全能数据库
+
+[why-we-choose-tidb-to-support-ossinsight](https://ossinsight.io/blog/why-we-choose-tidb-to-support-ossinsight/)
+
+![Simplified architecture after we use TiDB](assets/how-different-db-handle-github-data-097746b55085a93fa36a6bfb7af4cb0b.png)

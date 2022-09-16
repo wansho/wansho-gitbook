@@ -147,3 +147,19 @@ rust 开发的数据仓库，兼容 MySQL，国产
 SeaTunnel 对 Spark 和 Flink 做了一层包装。SeaTunnel 的日常使用，就是编辑配置文件，然后配置文件被 SeaTunnel 转换成具体的 Spark 或 Flink 任务。
 
 ![image-20220421191506205](assets/image-20220421191506205.png)
+
+
+
+
+
+## HTAP 数据库
+
+*HTAP*（Hybrid Transaction Analytical Processing）
+
+*HTAP*= OLTP +OLAP
+
+HTAP 数据库代表：TiDB 全能数据库
+
+[why-we-choose-tidb-to-support-ossinsight](https://ossinsight.io/blog/why-we-choose-tidb-to-support-ossinsight/)
+
+![Simplified architecture after we use TiDB](assets/how-different-db-handle-github-data-097746b55085a93fa36a6bfb7af4cb0b.png)
