@@ -18,6 +18,8 @@
 
 达梦数据库类似 Oracle
 
+达梦数据库低版本不支持 Java 的 LocalDateTime 
+
 
 
 ### 金仓
