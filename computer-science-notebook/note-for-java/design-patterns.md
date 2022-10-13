@@ -291,6 +291,8 @@ https://www.bilibili.com/video/BV1M54y1X78p
 
 代理类：替身
 
+既然是代理，那么行为必须是一样的！
+
 
 
 ### 静态代理

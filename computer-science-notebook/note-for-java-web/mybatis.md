@@ -12,3 +12,9 @@ mybatis：sql 语句交给开发人员编写（将与数据库交互的命脉，
 
 
 
+## mybatis 编程注意事项
+
+* selectBatchIds 会被映射成 where id in ()，所以传入的查询参数 list 不能为空，否则会报异常
+
+
+

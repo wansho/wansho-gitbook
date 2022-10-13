@@ -223,6 +223,7 @@
   * [Swagger](computer-science-notebook/development-tools/swagger.md)
 * [软件工程](computer-science-notebook/software-engineering/README.md)
   * [软件测试](computer-science-notebook/software-engineering/software-testing.md)
+  * [UML](computer-science-notebook/software-engineering/uml.md)
   * [持续集成](computer-science-notebook/software-engineering/continuous-integration.md)
   * [软件版本命名](computer-science-notebook/software-engineering/software-version.md)
   * [项目管理-禅道](computer-science-notebook/software-engineering/zentao.md)
@@ -250,8 +251,11 @@
   * [week-33](weekly/2022/week-33.md)
   * [week-34](weekly/2022/week-34.md)
   * [week-35](weekly/2022/week-35.md)
-
-
+  * [week-36](weekly/2022/week-36.md)
+  * [week-37](weekly/2022/week-37.md)
+  * [week-38](weekly/2022/week-38.md)
+  * [week-39](weekly/2022/week-39.md)
+  * [week-40](weekly/2022/week-40.md)
 
 
 
