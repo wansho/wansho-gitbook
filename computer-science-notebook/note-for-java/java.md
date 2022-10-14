@@ -2189,7 +2189,7 @@ class Input implements Runnable
                     r.name = "丽丽";
                     r.sex = "女女女女女女";
                 }
-                r.flag = true; // 标记有资源，然后环境消费者来消费
+                r.flag = true; // 标记有资源，然后唤醒消费者来消费
                 r.notify();
             }
             x = (x+1)%2; 
