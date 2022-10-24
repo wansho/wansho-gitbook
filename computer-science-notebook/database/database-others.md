@@ -45,6 +45,10 @@ PostgreSQL 不允许创建名为 user 的表，user 在 PostgreSQL 中是一个�
 
 
 
+postgresql 保留字段：user, status
+
+
+
 ## 内存数据库
 
 ### redis
