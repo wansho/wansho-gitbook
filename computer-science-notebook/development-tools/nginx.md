@@ -73,15 +73,24 @@ server{
 		   proxy_pass http://127.0.0.1:1200;      #域名中有shop，转发到 1200 端口的 rss 服务
 		   set $is_matched 1;
 		}
+    
+    if ($sub_domain ~* "gitlab") {
+		   proxy_pass http://127.0.0.1:10880;      #域名中有shop，转发到 1200 端口的 rss 服务
+		   set $is_matched 1;
+		}
+    
 		
 		# 没有匹配到，跳转到默认页面
-        if ($is_matched = 0) {
-            proxy_pass https://127.0.0.1:8000;
-        }
+    if ($is_matched = 0) {
+      proxy_pass https://127.0.0.1:8000;
+    }
 		
 		tcp_nodelay     on;
 
 		proxy_set_header Host            $host;
+    
+    # 配置上传文件大小限制
+    client_max_body_size 100m;
 
 		proxy_set_header X-Real-IP       $remote_addr;
 
