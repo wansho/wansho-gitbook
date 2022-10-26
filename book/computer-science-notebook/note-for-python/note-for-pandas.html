@@ -1,0 +1,1286 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>pandas 学习笔记 - wanshuo-gitbook</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Table of contents</li><li class="chapter-item expanded "><a href="../../reading/modern-os/index.html"><strong aria-hidden="true">1.</strong> 现代操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/modern-os/chapter-1-introduction.html"><strong aria-hidden="true">1.1.</strong> chapter1-introduction</a></li><li class="chapter-item expanded "><a href="../../reading/modern-os/chapter-2-processes-and-threads.html"><strong aria-hidden="true">1.2.</strong> chapter2-processes-and-threads</a></li><li class="chapter-item expanded "><a href="../../reading/modern-os/chapter-7-virtualization-and-cloud.html"><strong aria-hidden="true">1.3.</strong> chapter7-virtualization-and-cloud</a></li><li class="chapter-item expanded "><a href="../../reading/modern-os/questions.html"><strong aria-hidden="true">1.4.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/index.html"><strong aria-hidden="true">2.</strong> 流畅的 Python</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/index.html"><strong aria-hidden="true">2.1.</strong> chapters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter1.the-python-data-model.html"><strong aria-hidden="true">2.1.1.</strong> chapter1-the-python-data-model</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter2.an-array-of-sequences.html"><strong aria-hidden="true">2.1.2.</strong> chapter2-an-array-of-sequences</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter3.dictionaries-and-sets.html"><strong aria-hidden="true">2.1.3.</strong> chapter3-dictionaries-and-sets</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter4.text-versus-bytes.html"><strong aria-hidden="true">2.1.4.</strong> chapter4-text-versus-bytes</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter5.first-class-functions.html"><strong aria-hidden="true">2.1.5.</strong> chapter5-first-class-functions</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter6-design-patterns-with-first-class-functions.html"><strong aria-hidden="true">2.1.6.</strong> chapter6-design-patterns-with-functions</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter7-function-decorators-and-closures.html"><strong aria-hidden="true">2.1.7.</strong> chapter7-function-decorators-and-closures</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter8-object-reference-mutability-recycling.html"><strong aria-hidden="true">2.1.8.</strong> chapter8-object-reference-mutability-and-recycling</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter9-a-pythonic-object.html"><strong aria-hidden="true">2.1.9.</strong> chapter9-a-pythonic-object</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter10-sequence-hacking-hashing-slicing.html"><strong aria-hidden="true">2.1.10.</strong> chapter10-sequencec-hacking-hashing-and-slicing</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter11-interfaces-from-protocols-to-abcs.html"><strong aria-hidden="true">2.1.11.</strong> chapter11-interfaces-from-protocols-to-abcs</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/index.html"><strong aria-hidden="true">2.2.</strong> summary</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/questions.html"><strong aria-hidden="true">2.2.1.</strong> questions</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/python-code-optimization.html"><strong aria-hidden="true">2.2.2.</strong> python-code-optimization</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/python-30-seconds.html"><strong aria-hidden="true">2.2.3.</strong> python-30-seconds</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reading/computer-networking/index.html"><strong aria-hidden="true">3.</strong> 计算机网络-自顶向下</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/computer-networking/chapter1-computer-networks-and-the-internet.html"><strong aria-hidden="true">3.1.</strong> chapter1-computer-networks-and-the-internet</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/index.html"><strong aria-hidden="true">4.</strong> 数据结构与算法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/index.html"><strong aria-hidden="true">4.1.</strong> chapters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-1-introduction.html"><strong aria-hidden="true">4.1.1.</strong> chapter1-introduction</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-2-algorithm-analysis.html"><strong aria-hidden="true">4.1.2.</strong> chapter2-algorithm-analysis</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-3-list-stack-queue.html"><strong aria-hidden="true">4.1.3.</strong> chapter3-list-stack-queue</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-4-tree.html"><strong aria-hidden="true">4.1.4.</strong> chapter4-tree</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-6-heap.html"><strong aria-hidden="true">4.1.5.</strong> chapter6-heap</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-7-sorting.html"><strong aria-hidden="true">4.1.6.</strong> chapter7-sorting</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/summary/index.html"><strong aria-hidden="true">4.2.</strong> summary</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/summary/questions.html"><strong aria-hidden="true">4.2.1.</strong> questions</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/summary/classic-problems.html"><strong aria-hidden="true">4.2.2.</strong> 经典问题</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reading/books/index.html"><strong aria-hidden="true">5.</strong> 其他书籍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/books/bookshelf.html"><strong aria-hidden="true">5.1.</strong> 书籍列表</a></li><li class="chapter-item expanded "><a href="../../reading/books/zen-and-the-art.html"><strong aria-hidden="true">5.2.</strong> 禅与摩托车维修艺术</a></li><li class="chapter-item expanded "><a href="../../reading/books/the-road-less-traveled.html"><strong aria-hidden="true">5.3.</strong> 少有人走的路</a></li><li class="chapter-item expanded "><a href="../../reading/books/time-as-a-friend.html"><strong aria-hidden="true">5.4.</strong> 李笑来-与时间做朋友</a></li><li class="chapter-item expanded "><a href="../../reading/books/reborn.html"><strong aria-hidden="true">5.5.</strong> 李笑来-Reborn</a></li><li class="chapter-item expanded "><a href="../../reading/books/shediao-yingxiongzhuan.html"><strong aria-hidden="true">5.6.</strong> 射雕英雄传</a></li><li class="chapter-item expanded "><a href="../../reading/books/liangjian.html"><strong aria-hidden="true">5.7.</strong> 亮剑</a></li><li class="chapter-item expanded "><a href="../../reading/books/wan-li-shi-wu-nian.html"><strong aria-hidden="true">5.8.</strong> 万历十五年</a></li><li class="chapter-item expanded "><a href="../../reading/books/zi-bei-yu-chao-yue.html"><strong aria-hidden="true">5.9.</strong> 自卑与超越</a></li><li class="chapter-item expanded "><a href="../../reading/books/ming-li-xue.html"><strong aria-hidden="true">5.10.</strong> 王德峰-命理学</a></li><li class="chapter-item expanded "><a href="../../reading/books/a-brief-history-of-humankind.html"><strong aria-hidden="true">5.11.</strong> 人类简史</a></li><li class="chapter-item expanded "><a href="../../reading/books/mao-xuan.html"><strong aria-hidden="true">5.12.</strong> 毛选</a></li><li class="chapter-item expanded "><a href="../../reading/books/tian-dao.html"><strong aria-hidden="true">5.13.</strong> 遥远的救世主</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/index.html"><strong aria-hidden="true">6.</strong> 算法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/arraylist-vs-linklist.html"><strong aria-hidden="true">6.1.</strong> arraylist-vs-linklist</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/information-entropy.html"><strong aria-hidden="true">6.2.</strong> information-entropy</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/summary.html"><strong aria-hidden="true">6.3.</strong> summary</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/index.html"><strong aria-hidden="true">7.</strong> database</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/zen-of-db.html"><strong aria-hidden="true">7.1.</strong> zen-of-db</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-101.html"><strong aria-hidden="true">7.2.</strong> MySQL-101</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-102.html"><strong aria-hidden="true">7.3.</strong> MySQL-102</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-103.html"><strong aria-hidden="true">7.4.</strong> MySQL-103</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/elastic-search.html"><strong aria-hidden="true">7.5.</strong> Elasticsearch</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/elastic-logstash.html"><strong aria-hidden="true">7.6.</strong> Logstash</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/oracle-101.html"><strong aria-hidden="true">7.7.</strong> Oracle-101</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-leetcode.html"><strong aria-hidden="true">7.8.</strong> Mysql-Leetcode</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/database-others.html"><strong aria-hidden="true">7.9.</strong> 其他数据库产品</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/design-data-intensive-app.html"><strong aria-hidden="true">7.10.</strong> 书籍-设计数据密集型应用</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/questions.html"><strong aria-hidden="true">7.11.</strong> Questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/index.html"><strong aria-hidden="true">8.</strong> 密码学与网络安全</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/cryptography.html"><strong aria-hidden="true">8.1.</strong> 密码学</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/ssh.html"><strong aria-hidden="true">8.2.</strong> ssh 教程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/authentication-authorization.html"><strong aria-hidden="true">8.3.</strong> 认证和授权</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/single-sign-on.html"><strong aria-hidden="true">8.4.</strong> SSO 单点登录</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/oauth.html"><strong aria-hidden="true">8.5.</strong> OAuth</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/jwt.html"><strong aria-hidden="true">8.6.</strong> jwt</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/security-vulnerability.html"><strong aria-hidden="true">8.7.</strong> 安全漏洞</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/index.html"><strong aria-hidden="true">9.</strong> 计算机网络相关知识</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/computer-network.html"><strong aria-hidden="true">9.1.</strong> 计算机网络小知识集合</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/web-service.html"><strong aria-hidden="true">9.2.</strong> web-service</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/http-protocol.html"><strong aria-hidden="true">9.3.</strong> http 协议</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/questions.html"><strong aria-hidden="true">9.4.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/index.html"><strong aria-hidden="true">10.</strong> 编程语言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/go.html"><strong aria-hidden="true">10.1.</strong> go</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/kotlin.html"><strong aria-hidden="true">10.2.</strong> kotlin</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/rust.html"><strong aria-hidden="true">10.3.</strong> rust</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/svg.html"><strong aria-hidden="true">10.4.</strong> svg</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/regex.html"><strong aria-hidden="true">10.5.</strong> regex</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/windows-bat.html"><strong aria-hidden="true">10.6.</strong> windows-bat</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/qt.html"><strong aria-hidden="true">10.7.</strong> QT</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/index.html"><strong aria-hidden="true">11.</strong> C++ 开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/how-to-learn-c.html"><strong aria-hidden="true">11.1.</strong> C语言学习教程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/think-c.html"><strong aria-hidden="true">11.2.</strong> 书籍：Think-C</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/deep-c.html"><strong aria-hidden="true">11.3.</strong> C语言深度剖析</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/c++.html"><strong aria-hidden="true">11.4.</strong> C++学习</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/index.html"><strong aria-hidden="true">12.</strong> Python 学习</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/note-for-pandas.html" class="active"><strong aria-hidden="true">12.1.</strong> pandas 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/django-version-upgrade.html"><strong aria-hidden="true">12.2.</strong> django 版本升级</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-hacker.html"><strong aria-hidden="true">12.3.</strong> 书籍：python-hacker</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-craftsman.html"><strong aria-hidden="true">12.4.</strong> 书籍：python 工匠</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-packages.html"><strong aria-hidden="true">12.5.</strong> pip 相关知识</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-exception.html"><strong aria-hidden="true">12.6.</strong> python 异常处理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-cheetsheet.html"><strong aria-hidden="true">12.7.</strong> python 小知识</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/jupyter-notebook.html"><strong aria-hidden="true">12.8.</strong> jupyter 使用笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/different-methods-in-class.html"><strong aria-hidden="true">12.9.</strong> python 不同的方法</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/pep.html"><strong aria-hidden="true">12.10.</strong> pep: python-enhanced-proposal</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-algorithm-data-structure.html"><strong aria-hidden="true">12.11.</strong> python 数据结构与算法</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/multiprocessing-and-threading.html"><strong aria-hidden="true">12.12.</strong> 多线程和多进程</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/index.html"><strong aria-hidden="true">13.</strong> Java 学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java.html"><strong aria-hidden="true">13.1.</strong> 毕向东 java se 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java.html"><strong aria-hidden="true">13.2.</strong> java 进阶</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-collection-map.html"><strong aria-hidden="true">13.3.</strong> Java collection学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-array.html"><strong aria-hidden="true">13.4.</strong> Java array 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/string.html"><strong aria-hidden="true">13.5.</strong> Java string 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/annotation.html"><strong aria-hidden="true">13.6.</strong> Java Annotation 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-datetime.html"><strong aria-hidden="true">13.7.</strong> java datetime 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-reflection.html"><strong aria-hidden="true">13.8.</strong> java 反射学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-new-features.html"><strong aria-hidden="true">13.9.</strong> Java 新特性</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-log.html"><strong aria-hidden="true">13.10.</strong> Java 日志</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-exception.html"><strong aria-hidden="true">13.11.</strong> Java 异常</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-vm.html"><strong aria-hidden="true">13.12.</strong> java 虚拟机</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-junit.html"><strong aria-hidden="true">13.13.</strong> Java JUnit 测试</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/template-engine.html"><strong aria-hidden="true">13.14.</strong> Java 模板引擎</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/design-patterns.html"><strong aria-hidden="true">13.15.</strong> 设计模式学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/generics.html"><strong aria-hidden="true">13.16.</strong> 泛型</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/stream.html"><strong aria-hidden="true">13.17.</strong> stream 学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/functional-programming.html"><strong aria-hidden="true">13.18.</strong> 函数式编程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/program-development-in-java.html"><strong aria-hidden="true">13.19.</strong> Java 程序开发原理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-bin.html"><strong aria-hidden="true">13.20.</strong> Java 自带命令学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-dev-tools.html"><strong aria-hidden="true">13.21.</strong> Java 开发工具</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/big-number.html"><strong aria-hidden="true">13.22.</strong> 大数计算和存储</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/index.html"><strong aria-hidden="true">14.</strong> JavaWeb 学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/database.html"><strong aria-hidden="true">14.1.</strong> 访问数据库笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/java-persistence-api.html"><strong aria-hidden="true">14.2.</strong> JPA 深入学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/mybatis.html"><strong aria-hidden="true">14.3.</strong> mybatis 学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/bean-pojo-dto.html"><strong aria-hidden="true">14.4.</strong> java-bean 分类</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/maven.html"><strong aria-hidden="true">14.5.</strong> Maven 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/dependencies.html"><strong aria-hidden="true">14.6.</strong> 依赖库整理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/micro-service.html"><strong aria-hidden="true">14.7.</strong> 微服务架构课</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/architect.html"><strong aria-hidden="true">14.8.</strong> IT老齐架构课笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/restful-api.html"><strong aria-hidden="true">14.9.</strong> restful-api</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/spring.html"><strong aria-hidden="true">14.10.</strong> spring</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/spring-security.html"><strong aria-hidden="true">14.11.</strong> spring-security</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/springboot.html"><strong aria-hidden="true">14.12.</strong> spring-boot</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/springcloud.html"><strong aria-hidden="true">14.13.</strong> spring-cloud</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/reactive.html"><strong aria-hidden="true">14.14.</strong> 响应式 web</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/cache.html"><strong aria-hidden="true">14.15.</strong> 缓存</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/web-api-the-good-parts.html"><strong aria-hidden="true">14.16.</strong> WebAPI 的设计与开发</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/rbac.html"><strong aria-hidden="true">14.17.</strong> RBAC</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/socket.html"><strong aria-hidden="true">14.18.</strong> Socket</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/webservice.html"><strong aria-hidden="true">14.19.</strong> webservice</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/tomcat-servlet.html"><strong aria-hidden="true">14.20.</strong> tomcat-servlet</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/encode-decode.html"><strong aria-hidden="true">14.21.</strong> 编解码</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/netty.html"><strong aria-hidden="true">14.22.</strong> Netty</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/index.html"><strong aria-hidden="true">15.</strong> 前端开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/nodejs.html"><strong aria-hidden="true">15.1.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/yarn.html"><strong aria-hidden="true">15.2.</strong> yarn 使用</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/repos.html"><strong aria-hidden="true">15.3.</strong> 前端库总结</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/react-dev.html"><strong aria-hidden="true">15.4.</strong> React 开发笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/chrome-extension.html"><strong aria-hidden="true">15.5.</strong> chrome 插件开发</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/ajax.html"><strong aria-hidden="true">15.6.</strong> ajax</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/jquery.html"><strong aria-hidden="true">15.7.</strong> jquery</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/javascript-101.html"><strong aria-hidden="true">15.8.</strong> javascript-101</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/javascript-102.html"><strong aria-hidden="true">15.9.</strong> javascript-102</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/javascript-ie11-compatible.html"><strong aria-hidden="true">15.10.</strong> javascript兼容IE11</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/immutable-js.html"><strong aria-hidden="true">15.11.</strong> immutable.js</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/npm-libs.html"><strong aria-hidden="true">15.12.</strong> npm库</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/html-css-dom.html"><strong aria-hidden="true">15.13.</strong> html-css-dom 学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/web-assembly.html"><strong aria-hidden="true">15.14.</strong> web-assembly</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/nlp/index.html"><strong aria-hidden="true">16.</strong> NLP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/nlp/nlp-learning.html"><strong aria-hidden="true">16.1.</strong> NLP-Learning</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/nlp/machine-learning.html"><strong aria-hidden="true">16.2.</strong> Machine-Learning</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/index.html"><strong aria-hidden="true">17.</strong> linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-cmds.html"><strong aria-hidden="true">17.1.</strong> linux 命令手册</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-cmd-enhanced.html"><strong aria-hidden="true">17.2.</strong> linux 增强命令</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-mythink.html"><strong aria-hidden="true">17.3.</strong> linux 使用心得</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-devops.html"><strong aria-hidden="true">17.4.</strong> linux-运维</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-init.html"><strong aria-hidden="true">17.5.</strong> linux 初始化</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/vim.html"><strong aria-hidden="true">17.6.</strong> vim</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/shell.html"><strong aria-hidden="true">17.7.</strong> shell</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/script-demos.html"><strong aria-hidden="true">17.8.</strong> shell 脚本 demo</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-distribution-history.html"><strong aria-hidden="true">17.9.</strong> linux 历史和发行版</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/index.html"><strong aria-hidden="true">18.</strong> github</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/github.html"><strong aria-hidden="true">18.1.</strong> github 使用技巧</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/gitbook.html"><strong aria-hidden="true">18.2.</strong> 优雅锋利的 gitbook</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/git.html"><strong aria-hidden="true">18.3.</strong> 书籍：git-pro</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/github-actions.html"><strong aria-hidden="true">18.4.</strong> github-actions</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/markdown.html"><strong aria-hidden="true">18.5.</strong> markdown 语法</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/git-hook.html"><strong aria-hidden="true">18.6.</strong> githook</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/index.html"><strong aria-hidden="true">19.</strong> 开发工具与技术栈</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/technology-stack.html"><strong aria-hidden="true">19.1.</strong> 技术栈</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/idea.html"><strong aria-hidden="true">19.2.</strong> IDEA 使用学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/idea-debug.html"><strong aria-hidden="true">19.3.</strong> IDEA Debug</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/serverless.html"><strong aria-hidden="true">19.4.</strong> serverless</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/apifox.html"><strong aria-hidden="true">19.5.</strong> apifox</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/blockchain.html"><strong aria-hidden="true">19.6.</strong> 区块链</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/web3.html"><strong aria-hidden="true">19.7.</strong> Web3.0</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/vscode.html"><strong aria-hidden="true">19.8.</strong> VSCode</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/docker.html"><strong aria-hidden="true">19.9.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/cloud-native.html"><strong aria-hidden="true">19.10.</strong> 云原生</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/message-queue.html"><strong aria-hidden="true">19.11.</strong> 消息队列</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/redis.html"><strong aria-hidden="true">19.12.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/selenium.html"><strong aria-hidden="true">19.13.</strong> Selenium</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/nginx.html"><strong aria-hidden="true">19.14.</strong> nginx</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/zookeeper.html"><strong aria-hidden="true">19.15.</strong> zookeeper</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/haproxy.html"><strong aria-hidden="true">19.16.</strong> haproxy-keepalived</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/webhook.html"><strong aria-hidden="true">19.17.</strong> webhook</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/lowcode.html"><strong aria-hidden="true">19.18.</strong> 低代码</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/web-spider.html"><strong aria-hidden="true">19.19.</strong> 网络爬虫</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/make-hexo-theme.html"><strong aria-hidden="true">19.20.</strong> Hexo 主题定制</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/swagger.html"><strong aria-hidden="true">19.21.</strong> Swagger</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/index.html"><strong aria-hidden="true">20.</strong> 软件工程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/software-testing.html"><strong aria-hidden="true">20.1.</strong> 软件测试</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/uml.html"><strong aria-hidden="true">20.2.</strong> UML</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/continuous-integration.html"><strong aria-hidden="true">20.3.</strong> 持续集成</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/software-version.html"><strong aria-hidden="true">20.4.</strong> 软件版本命名</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/zentao.html"><strong aria-hidden="true">20.5.</strong> 项目管理-禅道</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/software-engineering.html"><strong aria-hidden="true">20.6.</strong> 软件工程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/os-installed-software.html"><strong aria-hidden="true">20.7.</strong> 电脑常用软件整理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/code-summary.html"><strong aria-hidden="true">20.8.</strong> 编程经验总结</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/index.html"><strong aria-hidden="true">21.</strong> 技术讲座</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/cs-keep-learning.html"><strong aria-hidden="true">21.1.</strong> keep-learning</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/atguigu-os.html"><strong aria-hidden="true">21.2.</strong> 尚硅谷-操作系统</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/future-of-computation.html"><strong aria-hidden="true">21.3.</strong> 吴翰清-计算的未来</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/xu-shi-wei-architecture.html"><strong aria-hidden="true">21.4.</strong> 许式伟-架构课</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/questions.html"><strong aria-hidden="true">21.5.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../weekly/2022/index.html"><strong aria-hidden="true">22.</strong> 2022</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../weekly/2022/week-27.html"><strong aria-hidden="true">22.1.</strong> week-27</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-28.html"><strong aria-hidden="true">22.2.</strong> week-28</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-29.html"><strong aria-hidden="true">22.3.</strong> week-29</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-30.html"><strong aria-hidden="true">22.4.</strong> week-30</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-31-32.html"><strong aria-hidden="true">22.5.</strong> week-31-32</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-32.html"><strong aria-hidden="true">22.6.</strong> week-32</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-33.html"><strong aria-hidden="true">22.7.</strong> week-33</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-34.html"><strong aria-hidden="true">22.8.</strong> week-34</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-35.html"><strong aria-hidden="true">22.9.</strong> week-35</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-36.html"><strong aria-hidden="true">22.10.</strong> week-36</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-37.html"><strong aria-hidden="true">22.11.</strong> week-37</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-38.html"><strong aria-hidden="true">22.12.</strong> week-38</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-39.html"><strong aria-hidden="true">22.13.</strong> week-39</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-40.html"><strong aria-hidden="true">22.14.</strong> week-40</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/index.html"><strong aria-hidden="true">23.</strong> blog</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/for-a-job.html"><strong aria-hidden="true">23.1.</strong> 关于找工作</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/how-to-study.html"><strong aria-hidden="true">23.2.</strong> 如何学习</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/summary-for-examination-oriented-education.html"><strong aria-hidden="true">23.3.</strong> 应试教育总结思考</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/cyber-spirit-opium.html"><strong aria-hidden="true">23.4.</strong> 网络精神鸦片</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/why-perfect.html"><strong aria-hidden="true">23.5.</strong> 追求完美？</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/about-love.html"><strong aria-hidden="true">23.6.</strong> 我的恋爱观</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/pin-duo-duo.html"><strong aria-hidden="true">23.7.</strong> 细数在拼多多开店遇到的坑</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/summary-of-marketing.html"><strong aria-hidden="true">23.8.</strong> 营销经验总结</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/real-estate.html"><strong aria-hidden="true">23.9.</strong> 买房经验总结</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/health/index.html"><strong aria-hidden="true">24.</strong> 关于健康</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/health/zhong-yi.html"><strong aria-hidden="true">24.1.</strong> 关于中医</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/health/health.html"><strong aria-hidden="true">24.2.</strong> 关于健康</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/index.html"><strong aria-hidden="true">25.</strong> 求知若渴虚心若愚</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/how-to-keep-learning.html"><strong aria-hidden="true">25.1.</strong> 如何保持学习激情</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/weekly.html"><strong aria-hidden="true">25.2.</strong> 周刊</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/weekly-02.html"><strong aria-hidden="true">25.3.</strong> 周刊-02</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/authentic-expression.html"><strong aria-hidden="true">25.4.</strong> 英语单词和专业词汇</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/knowledge-summary.html"><strong aria-hidden="true">25.5.</strong> 网上冲浪知识总结</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/zhihu.html"><strong aria-hidden="true">25.6.</strong> 知乎摘抄</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/story.html"><strong aria-hidden="true">25.7.</strong> 好的文章</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/principle-of-economics.html"><strong aria-hidden="true">25.8.</strong> 经济学原理学习</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/how-to.html"><strong aria-hidden="true">25.9.</strong> 如何</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/office-tricks.html"><strong aria-hidden="true">25.10.</strong> Office 三件套</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/movies.html"><strong aria-hidden="true">25.11.</strong> 看电影</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/daily-news.html"><strong aria-hidden="true">25.12.</strong> 每日新闻</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/index.html"><strong aria-hidden="true">26.</strong> 安心立命</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/why.html"><strong aria-hidden="true">26.1.</strong> 为什么要学习</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/difference-between-east-and-west.html"><strong aria-hidden="true">26.2.</strong> 王德峰-中西文化差异</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/yangming.html"><strong aria-hidden="true">26.3.</strong> 王德峰-阳明心学</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/feat-and-practice.html"><strong aria-hidden="true">26.4.</strong> 王德峰-命运与修行</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/truly-maturity.html"><strong aria-hidden="true">26.5.</strong> 关于成熟</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/poetry.html"><strong aria-hidden="true">26.6.</strong> 古诗词摘抄</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-perface.html"><strong aria-hidden="true">26.7.</strong> 王德峰讲坛经-序言</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-01.html"><strong aria-hidden="true">26.8.</strong> 王德峰讲坛经-行由品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-02.html"><strong aria-hidden="true">26.9.</strong> 王德峰讲坛经-般若品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-03.html"><strong aria-hidden="true">26.10.</strong> 王德峰讲坛经-疑问品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-04.html"><strong aria-hidden="true">26.11.</strong> 王德峰讲坛经-定慧品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-05.html"><strong aria-hidden="true">26.12.</strong> 王德峰讲坛经-坐禅品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-06.html"><strong aria-hidden="true">26.13.</strong> 王德峰讲坛经-忏悔品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-07.html"><strong aria-hidden="true">26.14.</strong> 王德峰讲坛经-机缘品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-08.html"><strong aria-hidden="true">26.15.</strong> 王德峰讲坛经-顿悟品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-09.html"><strong aria-hidden="true">26.16.</strong> 王德峰讲坛经-护法品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-10.html"><strong aria-hidden="true">26.17.</strong> 王德峰讲坛经-付嘱品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-finish.html"><strong aria-hidden="true">26.18.</strong> 王德峰讲坛经-结束语</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">wanshuo-gitbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="pandas"><a class="header" href="#pandas">Pandas</a></h1>
+<p>[TOC]</p>
+<h2 id="learning-pandas"><a class="header" href="#learning-pandas">Learning Pandas</a></h2>
+<ol>
+<li>官方文档1：http://pandas.pydata.org/pandas-docs/stable/</li>
+<li>官网文档2：https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html</li>
+<li><a href="https://book.douban.com/subject/25779298/">《利用 Python 进行数据分析》</a></li>
+</ol>
+<h2 id="pandas-introduction"><a class="header" href="#pandas-introduction">Pandas Introduction</a></h2>
+<p>Pandas 是 Excel 和 SQL 的结合体。Excel 和 SQL 中实现的数据处理功能，Pandas 基本上都能实现。</p>
+<h2 id="pandas-特征"><a class="header" href="#pandas-特征">Pandas 特征</a></h2>
+<ul>
+<li>pandas 能够替换一些非常复杂的嵌套 for 循环，或者 if 的嵌套，能用 pandas 简化，就尽量用 pandas 简化，包括将 pandas 的所有值转换成一个 字典 list</li>
+<li>pandas 能够简化大多数的数据处理，能用 pandas，就尽量不要用其他逻辑</li>
+<li>很多时候，是需要什么功能，去找 pandas 的功能，而不是学会了再去用，这种思想要转变过来</li>
+<li>学习 pandas 一定要有开放的心态，我们不可能把所有的方法都记住的，我们需要具备的能力，是能敏锐的观察到 pandas 会提供一种解决这个问题的方法，然后我们再去快速的找出来；其实学习其他技术也是如此。</li>
+<li>Pandas 几乎所有的方法，都是级联的，cascade，在方法处理完后，都会返回一个 pandas 对象</li>
+</ul>
+<h2 id="pandas-series"><a class="header" href="#pandas-series">Pandas Series</a></h2>
+<p>Series 是一个类数组的数据结构，同时带有标签（lable）或者说索引（index）。</p>
+<h3 id="init-a-pandas-series"><a class="header" href="#init-a-pandas-series">Init a Pandas Series</a></h3>
+<p>新建 Series 对象，有三种常见方法</p>
+<pre><code class="language-python">from pandas import Series
+ser1 = Series([1,2,3,4]) # 直接用 list 生成，index 默认从 0 开始
+
+ser1 = Series([1,2,3,4], index=[0,1,2,3]) # 指定 index，values 值不支持 关键字参数
+
+sdata = {'Ohio': 35000, 'Texas': 71000, 'Oregon': 16000, 'Utah': 5000} # 用字典生成，key 作为 index，value 作为 value，采用此种生成方式，比较耗费内存
+ser3 = Series(sdata)
+</code></pre>
+<h3 id="series-查找赋值"><a class="header" href="#series-查找赋值">Series 查找/赋值</a></h3>
+<p>Series 查找的时间复杂度为 O(1)，可以按照元素在 series 中的位置进行查找，也可以按照标签进行查找</p>
+<pre><code class="language-Python">series_demo[0]
+series[&quot;name&quot;]
+
+# DataFrame Demo
+for index, row in pd_data.iterrows():
+    print row[0] # 按照位置查找
+    print row[&quot;name&quot;] # 按照标签查找
+    
+# 对 Series 的 index 重新赋值
+pd_series.index = [&quot;1&quot;,&quot;2&quot;, &quot;3&quot;, &quot;4&quot;]
+</code></pre>
+<h3 id="series-特有的方法"><a class="header" href="#series-特有的方法">Series 特有的方法</a></h3>
+<h4 id="value_counts"><a class="header" href="#value_counts">value_counts()</a></h4>
+<p>统计每个 value 出现的次数</p>
+<pre><code class="language-Python">pd_demo = pd.Series([1,2,3,4,5,5,2,3])
+pd_demo.value_counts() # 返回一个 pandas.Series 对象，index为value 集合，value 为每一个index的频数，按照降序排列
+</code></pre>
+<h4 id="计算分位数--获取中位数"><a class="header" href="#计算分位数--获取中位数">计算分位数 / 获取中位数</a></h4>
+<pre><code class="language-Python"># 计算分位数
+pd_series.quantile(0.5) # 将 pd_series 中的数先排序，然后获取 0.9 分位的数
+</code></pre>
+<h4 id="series-去重"><a class="header" href="#series-去重">Series 去重</a></h4>
+<pre><code class="language-Python"># unique 方法，获取去重后的值，其功能等价于 set()
+pd_series = pd_series.unique()
+</code></pre>
+<h2 id="pandas-dataframe"><a class="header" href="#pandas-dataframe">Pandas DataFrame</a></h2>
+<h3 id="dataframe-attention-"><a class="header" href="#dataframe-attention-">DataFrame Attention !!!</a></h3>
+<ul>
+<li>DataFrame 的算数运算/函数运算等各种运算，其都是按照 index 进行匹配，我们在计算的时候，不能忽略 index 这个潜藏的因素</li>
+</ul>
+<h3 id="dataframe-构造"><a class="header" href="#dataframe-构造">DataFrame 构造</a></h3>
+<p>一个 DataFrame 对象就是一张数据库中的表。</p>
+<p>DataFrame 构造方式：</p>
+<ul>
+<li>第一种：传入一个 元素为 dict 的 sequence</li>
+<li>第二种：传入一个元素为 tuple 的 sequence，并指定 column</li>
+<li>第三种：传入一个 dict</li>
+<li>第四种：传入一个 DataFrame (浅拷贝)</li>
+<li>指定 index，column，构建一个空的 DataFrame</li>
+</ul>
+<p><strong>注意，对于没有指定 index 的 DataFrame，其 Index 为 [0, 1, 2, 3, ……]</strong></p>
+<pre><code class="language-python">import pandas as pd
+
+# 第一种：dict in list
+my_list = [{&quot;name1&quot;:&quot;wanshuo&quot;,&quot;age&quot;:&quot;11&quot;}, {&quot;name1&quot;:&quot;wangyanan&quot;,&quot;age&quot;:&quot;13&quot;}]
+pd_data = pd.DataFrame(my_list) # 传入一个 list 
+
+# 第二种：tuple in list + column
+my_list = [(&quot;wansho&quot;, 11), (&quot;wandongxin&quot;, 12)]
+pd_data = pd.DataFrame(my_list, columns=[&quot;name&quot;, &quot;age&quot;])
+
+# 第三种：dict
+data = {'name' : ['万朔', '王雅楠'], 'age' : [12,13]}
+pd_data = pd.DataFrame(data)
+
+# 第四种：传入一个 DataFrame
+pd.DataFrame(dataframe)
+
+# 构建空的 DataFrame，但是有 columns，有 index
+pd_result = pd.DataFrame(index=[&quot;index1&quot;, &quot;index2&quot;], columns=[&quot;timelist&quot;, &quot;type&quot;, &quot;name&quot;, &quot;refer&quot;]) # pd_result 仍然是空的 pd_result.empty
+</code></pre>
+<h3 id="empty-判空"><a class="header" href="#empty-判空">empty 判空</a></h3>
+<p>empty 适用于 Pandas 中的任何对象，包括 DataFrame， Series</p>
+<pre><code class="language-Python"># empty 判空
+pandas_data = pd.DataFrame()
+if pandas_data.empty:
+    continue
+</code></pre>
+<h3 id="dataframe-元素查找与替换"><a class="header" href="#dataframe-元素查找与替换">DataFrame 元素查找与替换</a></h3>
+<h4 id="replace-元素替换"><a class="header" href="#replace-元素替换">replace() 元素替换</a></h4>
+<pre><code class="language-python"># replace 替换方法
+pd_data.replace([100, 101], 1) # 把所有的 100 和 101 替换成 1
+pd_data.replace([100, 101], [1, 2]) # 把 100 替换成 1，101 替换成 2
+</code></pre>
+<h4 id="loc-元素查找"><a class="header" href="#loc-元素查找">loc() 元素查找</a></h4>
+<pre><code class="language-Python">pd_hour_statistics.loc[run_id_period, cid] += 1 # loc 的第一个值为 index，第二个值就是 column 的名字
+</code></pre>
+<h3 id="iterrows-遍历每行"><a class="header" href="#iterrows-遍历每行">iterrows() 遍历每行</a></h3>
+<pre><code class="language-python"># 遍历 DataFrame 每行
+for index, row in pandas_data_deployed.iterrows():
+    deploy_plat = row['deploy_plat'] # 直接传入
+    source = row['source']
+    module = row['module']
+    
+# 上面的代码可以用这个代替
+data['rows'] = pandas_data.T.to_dict().values()
+</code></pre>
+<h3 id="concat-数据连接"><a class="header" href="#concat-数据连接">concat() 数据连接</a></h3>
+<p>cancat 分为横向连接，纵向连接</p>
+<pre><code class="language-Python"># 纵向的连接，相当于给表中加入更多的元组
+pd_deployed = [pd_863, pd_noah, pd_beehive, pd_dfp]
+pd_deployed = pd.concat(pd_deployed).fillna(&quot;&quot;) # 连接并且填充空值为 &quot;&quot;
+
+# 横线连接
+pd.concat([pd1, pd2], axis=1)
+</code></pre>
+<h3 id="drop_duplicates-去重"><a class="header" href="#drop_duplicates-去重">drop_duplicates() 去重</a></h3>
+<p><strong>参数</strong></p>
+<pre><code>subset: 
+	column label or sequence of labels, optional 
+	用来指定特定的列，默认所有列
+keep: 
+	{‘first’, ‘last’, False}, default ‘first’ 
+	删除重复项并保留第一次出现的项
+inplace: 
+	boolean, default False 
+	是直接在原来数据上修改还是保留一个副本
+</code></pre>
+<p><strong>Demo</strong></p>
+<pre><code class="language-Python">DataFrame.drop_duplicates([&quot;&quot;, &quot;&quot;, &quot;&quot;], keep='first', inplace=True) # 对 DataFrame 格式的数据，去除特定列的重复行，重复数据保留第一次出现的数据，就地去重
+
+import pandas as pd
+data = pd.DataFrame({'A' : [1,2,3,4], 'B' : ['a', 'b', 'a', 'b']}) 
+data.drop_duplicates('B',  keep='first', inplace = True)
+&quot;&quot;&quot;
+print data
+结果
+ A B
+ 0 1 a
+ 1 2 b
+&quot;&quot;&quot;
+</code></pre>
+<h3 id="index-column-设置"><a class="header" href="#index-column-设置">index, column 设置</a></h3>
+<h4 id="设置-column-和-index-的-name"><a class="header" href="#设置-column-和-index-的-name">设置 column 和 index 的 name</a></h4>
+<pre><code class="language-Python"># 设置 index 或 columns 的 name
+frame.index.name = xxx # 可以在 reset_index 的时候用到，给 index 起一个名字，然后就可以把 index 变成一个 column
+frame.columns.name = yyy
+</code></pre>
+<h4 id="reindex"><a class="header" href="#reindex">reindex()</a></h4>
+<p>注意：reindex 只是改变 pandas 数据按照 index 的排列顺序，并不是更改 index</p>
+<pre><code class="language-Python">frame.reindex(columns = [...], index=[...])
+# 如果没有指定 index 和 column，那么默认修改 index
+frame.reindex(['a', 'b', 'c'], fill_value=0) # 如果 'c' 无对应的值，则为 Nan
+</code></pre>
+<h4 id="导出-index-和-column"><a class="header" href="#导出-index-和-column">导出 index 和 column</a></h4>
+<p>注意，pd_data.index 和 pd_data.column 返回的都是一个 Iterable 对象，这样可以在适当的情况下节省内存</p>
+<pre><code class="language-Python">index_list = pd_data.index.tolist()
+column_list = pd_data.column.tolist()
+</code></pre>
+<h4 id="重命名-rename"><a class="header" href="#重命名-rename">重命名 rename()</a></h4>
+<p>可以通过 rename 重命名 column 和 index，需要注意的是，rename 默认并不是一个 inplace 函数，其仍然符合 cascade 法则，会开辟一块新的内存，最好加上 <code>inplace=True</code> 的参数。</p>
+<pre><code class="language-Python"># 修改 column
+pd_whitelist = pd_whitelist.rename(columns = {&quot;deploy_module&quot;: &quot;module&quot;, &quot;monitor_whitelist&quot;: &quot;idc&quot; }, inplace=True)
+</code></pre>
+<h4 id="重置-index--index-对齐"><a class="header" href="#重置-index--index-对齐">重置 index / index 对齐</a></h4>
+<p>当我们对多个 DataFrame 进行计算时，往往需要两个 DataFrame 进行 Index 对齐，目前我发现的最简单的方法是：</p>
+<pre><code class="language-Python">pd_data = pd_data.reset_index().drop(&quot;index&quot;, axis=1) # index 为 index name
+
+# reset_index() 用于将 index 转成 column，然后 index 重新设置为 0,1,2,3
+</code></pre>
+<h4 id="column-转-index-set_index"><a class="header" href="#column-转-index-set_index">column 转 index: set_index</a></h4>
+<pre><code class="language-Python"># 将某几列转成行索引
+pd_frame = pd_frame.set_index([&quot;column1&quot;, &quot;column2&quot;])
+</code></pre>
+<h3 id="导出某列的值"><a class="header" href="#导出某列的值">导出某列的值</a></h3>
+<pre><code class="language-Python"># 获取字段对应的列的所有值，转成 list
+name = pd_data['姓名'] # 这里返回了 姓名 的Series
+name = pd_data.姓名.tolist()
+name_list = pd_data['姓名'].tolist()
+</code></pre>
+<h3 id="获取元组个数"><a class="header" href="#获取元组个数">获取元组个数</a></h3>
+<pre><code class="language-Python">pd_size = len(pd_data)
+</code></pre>
+<h3 id="sort_values-排序"><a class="header" href="#sort_values-排序">sort_values 排序</a></h3>
+<p>sort_values 已经替换了 sort_index 的功能，其可以对 index 和 column 进行排序。默认情况下，该方法对 index 进行排序，但是该方法已经可以根据 <code>by</code> 自动识别 index 和 column，我们不需要显式的指定 index 还是 value，但是为了严谨一点，我们还是加入 axis = 1，表示是对 column 进行排序</p>
+<pre><code class="language-Python">pandas_data = pandas_data.sort_values(by = [&quot;created_time&quot;, &quot;age&quot;], ascending = [False,True], axis=1) 	
+</code></pre>
+<h3 id="append--concat-添加行列"><a class="header" href="#append--concat-添加行列">append / concat 添加行列</a></h3>
+<p>axis = 1: 添加列; axis = 0: 添加行</p>
+<p>注意，如果我们合并的行列与 index 无关的话，那么最好加上 <code>ignore_index</code> ，否则 index 在合并的时候，可能会带来问题。</p>
+<pre><code class="language-Python"># 添加 行，
+pd_result = pd.concat([pd_result, pd_new_data], ignore_index=True, axis=1)
+
+# 添加列
+pd_result = pd.concat([pd_result, pd_new_data], ignore_index=True, axis=1)
+</code></pre>
+<pre><code class="language-Python"># append 只能用来添加元组，并返回一个新的对象
+pd_vote_tor_train.append(pd_vote_for_test, ignore_index=True)
+</code></pre>
+<h3 id="drop-删除数据"><a class="header" href="#drop-删除数据">drop 删除数据</a></h3>
+<p>Drop specified labels from rows or columns. 返回 drop 之后的 pandas</p>
+<pre><code class="language-Python"># 删除两列
+pd_data = pd_data.drop([&quot;vote_result&quot;, &quot;score&quot;], axis=1)
+
+# 删除行数据，
+frame.drop([index1, index2]) # 默认 drop 删除行数据 axis = 0 就是行
+</code></pre>
+<h3 id="矩阵转置"><a class="header" href="#矩阵转置">矩阵转置</a></h3>
+<pre><code class="language-Python"># 矩阵和图标的转置
+pd_demo = pd_demo.T
+</code></pre>
+<h2 id="空值--missing-value处理"><a class="header" href="#空值--missing-value处理">空值 / missing value处理</a></h2>
+<h3 id="判断空值-isnull-notnull"><a class="header" href="#判断空值-isnull-notnull">判断空值, isnull(), notnull()</a></h3>
+<pre><code class="language-python"># isnull, notnull 检测缺失值
+pd.isnull(obj)
+pd.notnull(obj)
+</code></pre>
+<h2 id="pandas-科学计算--函数--映射"><a class="header" href="#pandas-科学计算--函数--映射">Pandas 科学计算 / 函数 / 映射</a></h2>
+<h3 id="科学计算"><a class="header" href="#科学计算">科学计算</a></h3>
+<pre><code class="language-python"># 引入 numpy 的科学计算函数
+import numpy as np
+np.log2(pd_data)
+np.log10(pd_data)
+np.exp(pd_data)
+
+# 求最大值最小值
+pd_demo.max()
+# 如果 pd_demo 是 DataFrame，则默认对列进行操作，获取每列的最大值，形成一个 series
+# 如果 pd_demo 是 Series，则返回最大值
+
+# Series 可以直接进行算术运算
+(pd_statistics_daycount * pd_sum_statistics).sort_values(ascending=False)
+# Series 在进行算术运算时可以自动对齐不同索引的数据，而笛卡尔积式的索引
+
+# apply
+pd_data[&quot;meddle_time&quot;] = (pd_data[&quot;meddle_end&quot;].apply(
+            lambda x: datetime.datetime.strptime(str(x), &quot;%Y-%m-%d %H:%M:%S&quot;)) - \
+                            pd_data[&quot;meddle_start&quot;].apply(
+            lambda x: datetime.datetime.strptime(str(x), &quot;%Y-%m-%d %H:%M:%S&quot;)))
+
+
+</code></pre>
+<h3 id="map-方法实现映射"><a class="header" href="#map-方法实现映射">map 方法实现映射</a></h3>
+<p>map 方法需要传入一个 func，该 func 可以是 built-in function ，也可以是 lambda expression</p>
+<pre><code class="language-Python">pd_frame[&quot;animal&quot;] = data[&quot;food&quot;].map(str.lower).map(food_to_animal_dict)
+</code></pre>
+<h3 id="排序"><a class="header" href="#排序">排序</a></h3>
+<pre><code class="language-Python"># 对 Series 进行排序
+pd_statistics_daycount = pd.Series(statistics_daycount_dict).sort_values(ascending=False) # 按值进行排序
+pd_statistics_daycount = pd.Series(statistics_daycount_dict).sort_index(ascending=False) # 按索引进行排序
+</code></pre>
+<h3 id="集合运算"><a class="header" href="#集合运算">集合运算</a></h3>
+<h4 id="index-扩展差集交集并集"><a class="header" href="#index-扩展差集交集并集">index 扩展/差集/交集/并集</a></h4>
+<pre><code>append 连接另一个index对象，返回一个新的index
+
+diff 计算差集
+intersection 计算交集
+union 计算并集
+</code></pre>
+<h2 id="pandas-内存优化"><a class="header" href="#pandas-内存优化">Pandas 内存优化</a></h2>
+<h3 id="深拷贝与浅拷贝"><a class="header" href="#深拷贝与浅拷贝">深拷贝与浅拷贝</a></h3>
+<pre><code class="language-python">pd_demo_copy= pd.DataFrame(pd_demo) # pd_demo_copy 其实是 pd_demo 的一个浅拷贝，对 pd_demo_copy 的任何操作，当相当于直接对 pd_demo_copy 进行操作
+pd_demo_copy = pd_demo.copy(deep=True) # 这才是深拷贝
+</code></pre>
+<h3 id="iterable-objects"><a class="header" href="#iterable-objects">Iterable objects</a></h3>
+<p>如果我们想要对 iterable objects 进行变换，那么就不需要将其先转成 list <code>to_list()</code> 再变换</p>
+<pre><code class="language-Python">obj.index # 返回 RangeIndex类型的可迭代的对象
+obj.values # 返回 numpy.ndarray 类型的可迭代的对象
+</code></pre>
+<h3 id="inplace-选项"><a class="header" href="#inplace-选项">inplace 选项</a></h3>
+<p>大多数方法都有 inplace 选项，如果 inplace = True，就不会开辟额外的内存。例如 drop_duplicates 方法，就有 inplace 选项，下面列举一下带有 inplace 选项的方法：</p>
+<pre><code>rename
+drop_duplicates
+</code></pre>
+<p>注意：inplace = True 后，返回的 pandas 就是 None，代码就应该改成：</p>
+<pre><code class="language-python">df_one_column = df_one_column.drop_duplicates(&quot;weibo&quot;)
+# 改成
+df_one_column.drop_duplicates(&quot;weibo&quot;, inplace=True) # 返回 None
+</code></pre>
+<h2 id="pandas-index-and-select"><a class="header" href="#pandas-index-and-select">Pandas Index and Select</a></h2>
+<p>pandas 数据筛选，其功能等价于 sql 语句的 where 条件筛选。</p>
+<p>官网文档：<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html">https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html</a></p>
+<h3 id="tips"><a class="header" href="#tips">Tips</a></h3>
+<ul>
+<li>
+<p>Python 的 index operator <code>[]</code> 和 attribute operator <code>.</code>在 pandas 中同样通用。但是在不知道传入数据的数据类型的情况下，使用 index/attribute 操作符往往会出现一些意想不到的问题，例如<code>chained assignment</code>。所以我们要尽量用 Pandas 提供的 API 写 Pandasic 的代码，而不是 Pythonic。</p>
+<p>总的来说，在系统报 <code>SettingWithCopy</code> 的错误时，我们应该将 chained assignment 改成 loc 的模式。 </p>
+<table><thead><tr><th>Object Type</th><th>Selection(Chained assignment)</th><th>Return Value Type</th></tr></thead><tbody>
+<tr><td>Series</td><td><code>series[label]</code></td><td>scalar value</td></tr>
+<tr><td>DataFrame</td><td><code>frame[colname]</code></td><td><code>Series</code> corresponding to colname</td></tr>
+</tbody></table>
+</li>
+<li>
+<p>Pandas 的数据筛选的大部分 API，都是 Series/DataFrame 通用的，所以同样一个 API，以下的示例通常有两个Demo</p>
+</li>
+<li>
+<p>Pandas 中的 label-based slice 是包含尾部元素的</p>
+</li>
+<li>
+<p>ix 已经被 iloc 和 loc 替换</p>
+</li>
+</ul>
+<h3 id="-operator-synx"><a class="header" href="#-operator-synx"><code>[].</code> Operator Synx</a></h3>
+<h4 id="添加新列"><a class="header" href="#添加新列">添加新列</a></h4>
+<p>注意，不能使用 attribute 的方式创建新列</p>
+<pre><code class="language-Python"># 添加新列
+pd_data[&quot;flag&quot;] = &quot;defaut_value&quot;
+df.two = [4, 5, 6] # 会报 UserWarning
+
+</code></pre>
+<h4 id="select"><a class="header" href="#select">select</a></h4>
+<pre><code class="language-Python">df1[lambda df: df.columns[0]] # 选取第一列
+</code></pre>
+<h3 id="-operator-和-loc-的优缺点分析"><a class="header" href="#-operator-和-loc-的优缺点分析"><code>[].</code> Operator 和 loc 的优缺点分析</a></h3>
+<table><thead><tr><th></th><th>优点</th><th>缺点</th></tr></thead><tbody>
+<tr><td><code>[] .</code></td><td>简洁明了</td><td>1. 不能 slice 2. 会导致很多奇怪的问题</td></tr>
+<tr><td><code>loc(),iloc()</code></td><td>准确规范</td><td>不够简洁</td></tr>
+</tbody></table>
+<h3 id="slice-for-dataframe"><a class="header" href="#slice-for-dataframe">Slice for DataFrame</a></h3>
+<p>DataFrame 的 slice 是对行进行 slice。</p>
+<pre><code class="language-Python">df[:3] # 对前三行进行 slice
+df[::-1] # 按行逆置
+</code></pre>
+<h3 id="loc-label-based-index"><a class="header" href="#loc-label-based-index">loc (label-based index)</a></h3>
+<p>loc 是根据 label 进行查找，label 包括 index 和 column。</p>
+<table><thead><tr><th>Object Type</th><th>Indexers</th></tr></thead><tbody>
+<tr><td>Series</td><td><code>s.loc[indexer]</code></td></tr>
+<tr><td>DataFrame</td><td><code>df.loc[row_indexer,column_indexer]</code></td></tr>
+</tbody></table>
+<p><strong>Series</strong></p>
+<pre><code class="language-Python"># 对 Series 进行切片
+s1 = pd.Series(np.random.randn(6), index=list('abcdef'))
+&quot;&quot;&quot;
+a    1.431256
+b    1.340309
+c   -1.170299
+d   -0.226169
+e    0.410835
+f    0.813850
+dtype: float64
+&quot;&quot;&quot;
+s1.loc['c':] # 从 c slice 到最后
+s1.loc['b'] # 获取 index 为 b 对应的值
+s1.loc['c':] = 0 # slice 后统一赋值
+
+# slice slice 是对 3 到 5 之间的元素进行 slice，并不是 对 3，4，5进行 slice，slice 是按照 index 顺序的
+s = pd.Series(list('abcde'), index=[0, 3, 2, 5, 4])
+s.loc[3:5] # 3,2,5
+s.sort_index() # 对数据按照 index 进行排序
+</code></pre>
+<p><strong>DataFrame</strong></p>
+<pre><code class="language-Python">df1 = pd.DataFrame(np.random.randn(6, 4),
+                     index=list('abcdef'),
+                     columns=list('ABCD'))
+df1.loc[['a', 'b', 'd'], :] # sample index 为 a,b,d 的 dataframe
+df1.loc['d':, 'A':'C'] # sample index 为 d, column 为 ABC 的 dataframe
+df1.loc['a'] # sample index 为 a 的 series
+df1.loc['a', 'A'] # get a value in df1[&quot;a&quot;][&quot;A&quot;]
+
+dfi.loc[:, 'C'] = dfi.loc[:, 'A'] # 新建 C 列，并将 A 列的数据赋值给 C 列
+</code></pre>
+<h3 id="iloc-postion-based-index"><a class="header" href="#iloc-postion-based-index">iloc (postion-based index)</a></h3>
+<p>loc 是根据 position 进行 index 的。</p>
+<p><strong>Series</strong></p>
+<pre><code class="language-Python">s1 = pd.Series(np.random.randn(5), index=list(range(0, 10, 2)))
+s1.iloc[:3] # 获取前三个数据
+s1.iloc[3] # 获取第四个数据
+s1.iloc[:3] = 0 # 对前三个数据进行赋值
+
+</code></pre>
+<p><strong>DataFrame</strong></p>
+<pre><code class="language-Python">df1 = pd.DataFrame(np.random.randn(6, 4),
+                       index=list(range(0, 12, 2)),
+                       columns=list(range(0, 8, 2)))
+df1.iloc[:3] # 获取前三行的 df
+df1.iloc[1:5, 2:4] # 获取第二行到第五行，第三列到第四列的 df
+df1.iloc[[1, 3, 5], [1, 3]] # 获取第 2，4，6 行，第2，4列的 df
+df1.iloc[1:3, :]
+df1.iloc[1] # 获取第二行的 series
+
+# assign a dict to a row of a DataFrame
+x = pd.DataFrame({'x': [1, 2, 3], 'y': [3, 4, 5]})
+x.iloc[1] = {'x': 9, 'y': 99}
+</code></pre>
+<p>注意，当 slice 的界限超出了 pandas 的界限时，pandas 的处理方式 和 Python 的处理方式一样，都返回空，但是对于指定的 index，如果超出了界限，就会报 <code>IndexError</code></p>
+<h3 id="selection-by-callable"><a class="header" href="#selection-by-callable">Selection By Callable</a></h3>
+<p>在 select 的时候加入函数，实现更复杂的 select</p>
+<pre><code class="language-Python">df1 = pd.DataFrame(np.random.randn(6, 4),
+                       index=list('abcdef'),
+                       columns=list('ABCD'))
+&quot;&quot;&quot;
+ 	A         B         C         D
+a -0.023688  2.410179  1.450520  0.206053
+b -0.251905 -2.213588  1.063327  1.266143
+c  0.299368 -0.863838  0.408204 -1.048089
+d -0.025747 -0.988387  0.094055  1.262731
+e  1.289997  0.082423 -0.055758  0.536580
+f -0.489682  0.369374 -0.034571 -2.484478
+&quot;&quot;&quot;
+df1.loc[lambda df: df.A &gt; 0, :] # 对 row 进行 select，条件为 列 A 的值 &gt; 0
+&quot;&quot;&quot;
+ 	A         B         C         D
+c  0.299368 -0.863838  0.408204 -1.048089
+e  1.289997  0.082423 -0.055758  0.536580
+&quot;&quot;&quot;
+df1.loc[:, lambda df: ['A', 'B']] # 选取 A，B 列
+df1.iloc[:, lambda df: [0, 1]] # 选取第一列和第二列
+df1[lambda df: df.columns[0]] # 选取第一列
+df1.A.loc[lambda s: s &gt; 0] # 选取第一列中大于0的元素
+
+# 两列进行比较
+pd_candidate[pd_candidate.label != pd_candidate.predicted_label]
+</code></pre>
+<h3 id="sample--head"><a class="header" href="#sample--head">sample() / head()</a></h3>
+<pre><code class="language-Python">df_sample = df1.sample(n=5) # 随机采样 5 个元素
+df.head(n=10) # 选取头几个元素
+</code></pre>
+<h3 id="at--iat-快速-index"><a class="header" href="#at--iat-快速-index">at / iat 快速 index</a></h3>
+<p><code>[] .</code> ，和 <code>loc,iloc</code> 都是先进行查找，再进行列查找，查找效率很低。如果想要快速定位到某一个位置的值，可以使用 <code>at/iat</code></p>
+<pre><code class="language-Python">df1 = pd.DataFrame({'A':list(&quot;avb&quot;)})
+df1.iat[0,0] # 返回 a
+df1.iat[0,0] = &quot;s&quot; # 赋值
+</code></pre>
+<h3 id="boolean-selecting"><a class="header" href="#boolean-selecting">Boolean Selecting</a></h3>
+<p>Operators: |<code>for </code>or<code>, </code>&amp;<code>for</code>and<code>, and </code>~<code>for</code>not`</p>
+<p>注意，这些操作符必须被 <code>()</code> 圈起来。</p>
+<pre><code class="language-Python"># series
+s = pd.Series(range(-3, 4))
+s[s &gt; 0] # 返回大于 0 的 series
+s[(s &lt; -1) | (s &gt; 0.5)] # 返回一定范围的 series
+
+# dataframe
+df[df['A'] &gt; 0] 
+df2 = pd.DataFrame({'a': ['one', 'one', 'two', 'three', 'two', 'one', 'six'],
+                       'b': ['x', 'y', 'y', 'x', 'y', 'x', 'x'],
+                       'c': np.random.randn(7)})
+criterion = df2['a'].map(lambda x: x.startswith('t'))
+df2[criterion]
+&quot;&quot;&quot;
+       a  b         c
+2    two  y  0.041290
+3  three  x  0.361719
+4    two  y -0.238075
+&quot;&quot;&quot;
+df2[criterion &amp; (df2['b'] == 'x')] # 多个条件
+&quot;&quot;&quot;
+ 	a  	  b       c
+3  three  x  0.361719
+&quot;&quot;&quot;
+df2.loc[criterion &amp; (df2['b'] == 'x'), 'b':'c'] # 多多个条件
+&quot;&quot;&quot;
+ 	b         c
+3  x  0.361719
+&quot;&quot;&quot;
+
+pandas_selected = pandas_data[(pandas_data.status == 'fail') \
+                            &amp; ((pandas_data.reason == 'online') \
+                               | (pandas_data.reason == 'known_online') \
+                               | (pandas_data.reason == 'deploy')
+                              )]
+
+# 否定的使用
+pandas_selected = pandas_data[~(pandas_data.status == 'fail')]
+</code></pre>
+<h3 id="select-with-isin"><a class="header" href="#select-with-isin">select with isin()</a></h3>
+<pre><code class="language-Python">s = pd.Series(np.arange(5), index=np.arange(5)[::-1], dtype='int64')
+s.isin([2, 4, 6])
+&quot;&quot;&quot;
+4    False
+3    False
+2     True
+1    False
+0     True
+dtype: bool
+&quot;&quot;&quot;
+s[s.isin([2, 4, 6])]
+&quot;&quot;&quot;
+2    2
+0    4
+dtype: int64
+&quot;&quot;&quot;
+s[s.index.isin([2, 4, 6])] # 判断 index isin
+
+# df
+pd_vote_for_test = pd_training_data[pd_training_data.hash_id.isin(test_hash_id)]
+
+# not in 
+pd_vote_for_test = pd_training_data[~(pd_training_data.hash_id.isin(test_hash_id))]
+</code></pre>
+<h3 id="where-method-for-select"><a class="header" href="#where-method-for-select"><code>where()</code> method for select</a></h3>
+<p>where 和 boolen select 的区别：</p>
+<p>Boolean select 出来的数据，通常是原 pandas 的子集，而 where 可以保留原 pandas 的结构。</p>
+<pre><code class="language-Python">s.where(s &gt; 0)
+&quot;&quot;&quot;
+4    NaN
+3    1.0
+2    2.0
+1    3.0
+0    4.0
+dtype: float64
+&quot;&quot;&quot;
+</code></pre>
+<h3 id="query-method-for-select"><a class="header" href="#query-method-for-select"><code>query()</code> method for select</a></h3>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame"><code>DataFrame</code></a> objects have a <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.query.html#pandas.DataFrame.query"><code>query()</code></a> method that allows selection using an expression.</p>
+<p>query() 的优点：</p>
+<ul>
+<li>兼容 Python 的语法，更接近自然语言表达，例如其兼容 and/or/in/not in</li>
+<li><code>DataFrame.query()</code> using <code>numexpr</code> is slightly faster than Python for large frames.</li>
+</ul>
+<pre><code class="language-Python">df[(df.a &lt; df.b) &amp; (df.b &lt; df.c)] # 等价于
+df.query('(a &lt; b) &amp; (b &lt; c)') # 等价于
+df.query('a &lt; b &amp; b &lt; c') # 等价于
+df.query('a &lt; b and b &lt; c')
+
+df.query('a in b') # 等价于
+df[df.a.isin(df.b)]
+
+df.query('a not in b') # 等价于
+df[~df.a.isin(df.b)] 
+
+df.query('a in b and c &lt; d')
+
+df.query('b == [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]') # simlilar to in ，等价于
+df[df.b.isin([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])]
+
+df.query('[1, 2] in c')
+df.query('[1, 2] not in c')
+</code></pre>
+<h3 id="returning-a-view-versus-a-copy"><a class="header" href="#returning-a-view-versus-a-copy">Returning a view versus a copy</a></h3>
+<p><code>SettingWithCopy</code> warning !!! 的原因：</p>
+<pre><code class="language-Python">dfmi = pd.DataFrame([list('abcd'),
+                      list('efgh'),
+                      list('ijkl'),
+                      list('mnop')],
+                      columns=pd.MultiIndex.from_product([['one', 'two'],
+                                                        ['first', 'second']]))
+&quot;&quot;&quot;
+    one          two       
+  first second first second
+0     a      b     c      d
+1     e      f     g      h
+2     i      j     k      l
+3     m      n     o      p
+&quot;&quot;&quot;
+
+dfmi.loc[:, ('one', 'second')] = value 
+# 等价于
+dfmi.loc.__setitem__((slice(None), ('one', 'second')), value) # 一步到位
+
+dfmi['one']['second'] = value 
+# 等价于
+dfmi.__getitem__('one').__setitem__('second', value) # 由于不确定 getitem 返回的对象是原对象还是新 copy 的对象，所以才会抛出 SettingWithCopy 的警告
+</code></pre>
+<h2 id="pandas-数据重塑和透视表"><a class="header" href="#pandas-数据重塑和透视表">Pandas 数据重塑和透视表</a></h2>
+<p><strong>stack， unstack</strong></p>
+<p><strong>stack</strong>: 将 dataframe 转成 多重索引的 series</p>
+<p><strong>unstack</strong>: 将 多重索引的 series 转成 dataframe</p>
+<pre><code class="language-python">pd_series.unstack(&quot;index1&quot;) # 将 index1 转成以 index1 为 column 的 dataframe
+</code></pre>
+<p><strong>pivot</strong></p>
+<pre><code class="language-python"># pivot 用于将 信息量很大的长表（例如从数据库中读取的一张表），透视成一张宽表
+pd_frame.pivot(&quot;index_column&quot;, &quot;column_column&quot;, &quot;value&quot;)
+# 参数一：Column to use to make new frame’s index. If None, uses existing index.
+# 参数二：Column to use to make new frame’s columns.
+# 参数三：Column(s) to use for populating new frame’s values. If not specified, all remaining columns will be used and the result will have hierarchically indexed columns.
+# raise: When there are any index, columns combinations with multiple values. DataFrame.pivot_table when you need to aggregate.
+</code></pre>
+<p><strong>pivot_table</strong></p>
+<p>用于将长表变短表</p>
+<p>http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.pivot_table.html#pandas.DataFrame.pivot_table</p>
+<pre><code class="language-python">df = pd.DataFrame({&quot;A&quot;: [&quot;foo&quot;, &quot;foo&quot;, &quot;foo&quot;, &quot;foo&quot;, &quot;foo&quot;,
+                          &quot;bar&quot;, &quot;bar&quot;, &quot;bar&quot;, &quot;bar&quot;],
+                   &quot;B&quot;: [&quot;one&quot;, &quot;one&quot;, &quot;one&quot;, &quot;two&quot;, &quot;two&quot;,
+                         &quot;one&quot;, &quot;one&quot;, &quot;two&quot;, &quot;two&quot;],
+                   &quot;C&quot;: [&quot;small&quot;, &quot;large&quot;, &quot;large&quot;, &quot;small&quot;,
+                         &quot;small&quot;, &quot;large&quot;, &quot;small&quot;, &quot;small&quot;,
+                         &quot;large&quot;],
+                   &quot;D&quot;: [1, 2, 2, 3, 3, 4, 5, 6, 7]})
+'''         
+df
+     A    B      C  D
+0  foo  one  small  1
+1  foo  one  large  2
+2  foo  one  large  2
+3  foo  two  small  3
+4  foo  two  small  3
+5  bar  one  large  4
+6  bar  one  small  5
+7  bar  two  small  6
+8  bar  two  large  7
+'''    
+
+table = pivot_table(df, values='D', index=['A', 'B'],
+                     columns=['C'], aggfunc=np.sum)
+''' 
+table
+C        large  small
+A   B
+bar one    4.0    5.0
+    two    7.0    6.0
+foo one    4.0    1.0
+    two    NaN    6.0
+'''    
+
+table = pivot_table(df, values=['D', 'E'], index=['A', 'C'],
+                   aggfunc={'D': np.mean, 'E': [min, max, np.mean]})
+'''
+table
+                  D   E
+               mean max median min
+A   C
+bar large  5.500000  16   14.5  13
+    small  5.500000  15   14.5  14
+foo large  2.000000  10    9.5   9
+    small  2.333333  12   11.0   8
+'''
+</code></pre>
+<h2 id="pandas-字符串处理函数"><a class="header" href="#pandas-字符串处理函数">pandas 字符串处理函数</a></h2>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html#indexing-with-str">Index with Str</a></p>
+<pre><code class="language-python"># 过滤出 name 列包含有 pandas 的数据
+pd_frame = pd_frame[pd_frame.name.str.contains(&quot;pandas&quot;)] # 类似的进行判断的字符串方法还有 endswith, startswith
+
+# 对 name 列进行正则表达式的匹配，返回的是匹配到的 series
+pd_series = pd_frame.name.str.match(pattern)
+&quot;&quot;&quot;
+index0 [&quot;wansho&quot;, &quot;wangkai&quot;]
+index2 [&quot;libohan&quot;, &quot;guandonghai&quot;]
+&quot;&quot;&quot;
+# 获取元素的第 几个 字符
+pd_series = pd_series.str.get(0)
+# join 元素列表 
+pd_series = pd_series.str.join(&quot;-&quot;)
+
+# 判断 name 列的所有名字，某个字符串的出现次数
+pd_series = pd_frame.name.str.count(&quot;love&quot;)
+
+# 对某列的长度进行筛选
+df = df[df.A.str.len() &gt; 2]
+
+# 其他函数
+lower(), upper()
+center() # 在字符串左右两边添加空白符
+repeat(3) # 字符串重复 3 次
+replace(pattern, str, regex=True) # 用 str 替换 pattern 匹配的模式
+split() # 根据分隔符或正则表达式对字符串进行拆分
+strip(), lstrip(), rstrip()
+len() 
+
+</code></pre>
+<h2 id="pandas-mergeconcat-详解"><a class="header" href="#pandas-mergeconcat-详解">pandas merge/concat 详解</a></h2>
+<pre><code class="language-python">* merge 等价于数据库上的外连接，merge 是横向的连接
+* 等值连接的时候，如果按照左边为主，就是左外连接，如果按照右边为主，就是右外连接
+* 没有内连接
+* 自然连接 没有 how 属性
+* 外连接一共有三种：（都是等值连接）
+    1. 外连接 how = 'out'
+    2. 左外连接 how = 'left'
+    3. 右外连接 how = 'right'
+* 参数 on 就是设置按照哪一列进行等值连接
+
+参考：
+https://blog.csdn.net/zhouwenyuan1015/article/details/77334889
+https://blog.csdn.net/starter_____/article/details/79198137
+
+Code Demo1：
+loss_data = pd.merge(pandas_data_deployed, pandas_data_called, how = 'left', on = columnsOfCoverageMerge)
+pandas_data_deployed_columns_len = len(pandas_data_deployed.columns) # 获取字段数 22 个
+col_y = loss_data.columns[pandas_data_deployed_columns_len] # 获取某个字段
+
+loss_data = loss_data[loss_data[col_y].isnull()] # 如果该字段为空（NaN），那么选取该组数据，该方法经常用来获取两张表关于 某一 字段 的差集
+如果是左连接，那么 isnull() 得到的就是关于某一字段的 A - B 的差集  
+如果是右连接，那么 isnull() 得到的就是关于某一字段的 B - A 的差集  
+注意如果是左连接，那么字段判空选择的字段 X 肯定是右边的那个表的非等值连接的某个字段，也就是可能会产生 空值 的字段。
+
+loss_data = loss_data[columnsOfCoverageMerge]
+
+Code Demo2：
+data1 = {
+        'A': ['a1', 'a1', 'a2', 'a2'],
+        'B': ['b1', 'b2', 'b3', 'b4'],
+        'C': [5, 6, 8, 12]
+        }
+data2 = {
+        'B': ['b1', 'b2', 'b3', 'b3', 'b5'],
+        'E': [3, 7, 10, 2, 2]
+        }
+
+pandas_data1 = pd.DataFrame(data1)
+pandas_data2 = pd.DataFrame(data2)
+
+merge_data1 = pd.merge(pandas_data1, pandas_data2, 
+                 how = 'left', on = ['B'])
+merge_data2 = pd.merge(pandas_data1, pandas_data2, how = 'outer', 
+                 on = ['B']).fillna(0)
+print merge_data1[merge_data1['A'].isnull()]
+print merge_data1
+print merge_data2
+
+# left_on, right_on
+pd.merge(pd_left, pd_right, left_on=[&quot;name&quot;], right_on=[&quot;姓名&quot;])
+
+# suffixes 对于重复的字段，添加后缀
+pd.merge(pd_left, pd_right, on=[], how=&quot;left&quot;, suffixes=[&quot;_left&quot;, &quot;_right&quot;])
+
+# left_index, right_index, 将索引作为连接的键，类似于 left_on, right_on, 这四个参数可以混用
+pd.merge(pd_left, pd_right, left_on=&quot;key1&quot;, right_index=True)
+
+# how 参数的默认值为 inner，即内连接，其 merge 后的字段为两个 dataframe 的交集，left, right, outer 的字段为两个 dataframe 字段的并集
+
+# 多个 pandas 横向纵向连接
+pd.concat([pd1, pd2, pd3], axis=1, keys=[&quot;one&quot;, &quot;two&quot;, &quot;three&quot;], ignore_index=True， names=[&quot;upper&quot;, &quot;lower&quot;])
+axis： 1 为横向连接，0 为纵向连接，默认纵向连接
+keys： 连接后，新加的二层索引
+ignore_index：是否不加入 index
+names: 给多层索引从上到下起名称
+pd.concat({&quot;level1&quot;: pd1, &quot;level2&quot;: pd2}) # 加入第二层索引的另一种方式
+</code></pre>
+<h2 id="groupby-详解"><a class="header" href="#groupby-详解">groupby 详解</a></h2>
+<p>groupby 分两个步骤</p>
+<ol>
+<li>分组</li>
+<li>计算</li>
+</ol>
+<pre><code class="language-python">################################### step1: 分组 #####################################
+* groupby 通过 某几列 进行分组
+pg_data = pandas_data.groupby([&quot;status&quot;, &quot;reason&quot;], as_index=False) # 返回一个 DataFrameGroupBy 对象, 如果 as_index 为 False，则不会将 staus 和 reason 变成 index
+groupby 不会删除数据，只是对数据按照 N = |status| * |reason| 分成 N 组。分组后的数据条数不会变化。
+demo:
+pd_times_statistics = pandas_data_deployed[[&quot;deploy_plat&quot;, &quot;module&quot;, &quot;deploy_times&quot;]].groupby([&quot;deploy_plat&quot;, &quot;module&quot;]).count() # 生成一个 frame
+# 解析 pd_times_statistics 获取 key:deploy_plat + module, value: times 的字典
+module2times_dict = {','.join(index): row[&quot;deploy_times&quot;] for index, row in pd_times_statistics.iterrows()}
+
+# 通过 字典 进行分组
+mapping = {&quot;图搜&quot;: &quot;大搜&quot;, &quot;分级&quot;: &quot;大搜&quot;, &quot;人脸识别&quot;: &quot;AI&quot;}
+pd_data = pd_data.group(mapping).count()
+pd_data = pd_data.group(mapping, axis=1).count()
+
+# 通过多级索引的索引级别进行分组 level
+import pandas as pd
+import numpy as np
+columns = pd.MultiIndex.from_arrays([[&quot;US&quot;, &quot;US&quot;, &quot;US&quot;, &quot;JP&quot;, &quot;JP&quot;], [1,2,3,4,5]], names=[&quot;country&quot;, &quot;number&quot;])
+pd_data = pd.DataFrame(np.random.randn(4, 5), columns=columns)
+print(pd_data)
+pd_data = pd_data.groupby(level=&quot;country&quot;, axis=1).sum()
+print(pd_data)
+'''
+country        US                            JP          
+number          1         2         3         4         5
+0        0.014945  0.498798  0.939967  1.053238  2.689140
+1       -0.092643  0.671471  0.255130 -0.035580 -1.422467
+2       -1.594973  0.753659 -0.983928  0.341066  0.999692
+3       -0.590248 -0.339360 -0.706315  0.277258 -1.921277
+
+country        JP        US
+0        3.742378  1.453709
+1       -1.458048  0.833959
+2        1.340759 -1.825242
+3       -1.644020 -1.635923
+'''
+
+################################### step2: 计算 #####################################
+
+# groupby 后的方法
+count()
+sum()
+mean()
+medain()
+std() # 标准差
+var() # 方差
+min() 
+max()
+first(), last()
+quantile(num) # 获取分位数 0 &lt;= num &lt;= 1
+
+# groupby 自定义计算方法
+def peak_2_peak(series):
+    return series.max() - series.min()
+grouped.agg(peak_2_peak)
+
+# groupby 后进行多函数计算
+grouped.agg([&quot;mean&quot;, &quot;count&quot;, &quot;std&quot;])
+# groupby 后对不同的列进行不同的计算方法
+grouped.agg({&quot;age&quot;: &quot;mean&quot;, &quot;sex&quot;: [&quot;sum&quot;, &quot;count&quot;]})
+
+# groupby 遍历
+for module, idc_group in dfp_pandas_data_called.groupby([&quot;module&quot;]): # module 是单个值或元组，idc_group 是 pandas dataframe 格式
+    idcs = list(set(idc_group[&quot;idc&quot;].tolist()))
+    dfp_module2idcs_dict[module] = idcs 
+group 后的group 其实是一个 pandas dataframe 对象，其中存放了除 module属性 外的所有属于 module 组的属性，如果只选取一部分属性，可以直接 
+idc_group[[&quot;A&quot;, &quot;B&quot;]]  # 这是 pandas 的一个语法糖
+
+# 注意
+groupby 后，groupby 的对象是唯一的，可以当 key 使用
+
+# Demo
+import pandas as pd
+data1 = {
+        'A': ['a1', 'a1', 'a2', 'a2', 'a3'],
+        'B': ['b1', 'b1', 'b2', 'b2', 'b3'],
+        'C': [5, 6, 8, 12, 1]
+        }
+pd_frame = pd.DataFrame(data1)
+pd_statistics = pd_frame.groupby(['A','B']).count() # 注意结果是一个 DataFrame，有两个 index：A 和 B。C 变成了 count 字段。
+结果：
+      C
+ A B    
+a1 b1 2
+a2 b2 2
+a3 b3 1
+上述结果得到的是一个 DataFrame，但是其得到的是一个有两个 index 的dataframe，实际上，按照那几个参数进行了groupby，那么index就有几个，如果想要将 index 转换成列信息，那么可以用：
+pd_statistics.reset_index() # 将 两级 index 转成 列数据
+那么结果就变成了：
+     A B C
+ 0 a1 b1 2
+ 1 a2 b2 2
+ 2 a3 b3 1
+ 其中，index 变成了 数字
+</code></pre>
+<h2 id="pandas-io"><a class="header" href="#pandas-io">pandas IO</a></h2>
+<h3 id="pandas-读写-mysql"><a class="header" href="#pandas-读写-mysql">pandas 读写 MySQL</a></h3>
+<p><strong>官方文档</strong></p>
+<p>http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_sql.html?highlight=to_sql#pandas.DataFrame.to_sql</p>
+<p><strong>环境依赖</strong></p>
+<pre><code class="language-shell">pip install sqlalchemy
+pip install pymysql
+</code></pre>
+<p><strong>写数据库Demo</strong></p>
+<pre><code class="language-python"># 写入 MySQL
+from sqlalchemy import create_engine
+# test 是 dbname ，localhost 指的是 IP
+engine = create_engine('mysql+pymysql://user1:123456@localhost:3306/test')
+# index 参数用于判断是否将 index 写入数据库
+pd_conf.to_sql(table_name, con=engine, if_exists=&quot;append&quot;, index=False)
+</code></pre>
+<p><strong>注意</strong></p>
+<ol>
+<li>pandas 写入数据库时，如果数据表不存在，则会建立数据库，但是不会指定数据表的主键</li>
+</ol>
+<p><strong>读数据库Demo</strong></p>
+<p>http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_sql.html#pandas.read_sql</p>
+<p>http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_sql_table.html?highlight=read_sql#pandas.read_sql_table</p>
+<p>http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_sql_query.html?highlight=read_sql#pandas.read_sql_query</p>
+<p>read_sql 是 对 read_sql_table 和 read_sql_query 的封装。</p>
+<h3 id="pandas-读写-excel"><a class="header" href="#pandas-读写-excel">pandas 读写 excel</a></h3>
+<p>对于非文本的文件的读取，excel 中存储的是什么格式，pandas 就读取的什么格式，如果一串数字以字符串的形式存储，其读到pandas中就是一个字符串，如果一列单元格存储的是时间，那么 pandas 读取后就是 datetime。</p>
+<pre><code class="language-python">from openpyxl import load_workbook
+def init_excel(self):
+    &quot;&quot;&quot;创建一个空的 Excel 文件&quot;&quot;&quot;
+    pd_empty = pd.DataFrame()
+    try:
+        pd_empty.to_excel(self.excel_path)
+    except Exception as e:
+        logging.error(&quot;init excel failed, because {e}&quot;.format(e=e))
+    logging.info(&quot;init excel success&quot;)
+
+def to_excel(self, pd_data, sheet_name):
+    &quot;&quot;&quot;将 pandas 写入 Excel 的指定的 sheet 中&quot;&quot;&quot;
+    excel_writer = pd.ExcelWriter(self.excel_path, engine='openpyxl')
+    # 写入 Excel
+    try:
+        book = load_workbook(excel_writer.path)
+        excel_writer.book = book
+        pd_data.to_excel(excel_writer=excel_writer, sheet_name=sheet_name, index=False)
+        excel_writer.close()
+    except Exception as e:
+        logging.error(&quot;pandas into excel failed, because {e}&quot;.format(e=e))
+    logging.info(&quot;pandas into excel success&quot;)
+    
+# 读取 excel
+pd_demo = pd.read_excel(path)
+</code></pre>
+<h3 id="pandas-读写-csv-文件"><a class="header" href="#pandas-读写-csv-文件">pandas 读写 csv 文件</a></h3>
+<p>pandas 读取文本文件时，对于所有的数字内容，读取后都会转成数字，不管其读取之前是否为字符串</p>
+<pre><code class="language-python"># 读取 csv 文件
+pd.read_csv(path, header=None, index_col=[&quot;col1&quot;, &quot;col2&quot;]) # 不读取列名，并选择两列作为索引
+pd.read_csv(path, error_bad_lines=False) # 跳过错误行
+# 注意 如果文件中有数字类型的数据，那么统一转成 long 类型，即使存储前是 str 类型，那么读取出来也是 数字类型
+
+# to_csv()
+# 将 DataFrame 表存储成 csv 格式
+deploy_cfg.to_csv(&quot;file.csv&quot;, encoding = 'utf_8_sig') # 注意文件名不要写中文
+pd_data.to_csv(&quot;test.csv&quot;, mode=&quot;a&quot;, header=&quot;False&quot;) # 增量模式，不加 header
+</code></pre>
+<h2 id="pandas-时间序列"><a class="header" href="#pandas-时间序列">pandas 时间序列</a></h2>
+<h3 id="时间戳作为-index"><a class="header" href="#时间戳作为-index">时间戳作为 index</a></h3>
+<p><strong>TimeSeries初始化</strong></p>
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+from datetime import datetime
+# TimeSeries 初始化，传入的 index 必须是 datetime 类型的 list
+index = [datetime(2019, 1, 1), datetime(2019, 2, 2), datetime(2019, 3, 3), datetime(2021, 1, 3)] # DatetimeIndex 类型
+pd_time = pd.Series(range(len(index)), index=index)
+pd_time.index
+</code></pre>
+<pre><code>DatetimeIndex(['2019-01-01', '2019-02-02', '2019-03-03', '2021-01-03'], dtype='datetime64[ns]', freq=None)
+</code></pre>
+<p><strong>TimeSeries切片、选取、索引</strong></p>
+<pre><code class="language-python"># 模糊选取
+pd_time[&quot;2019&quot;]
+</code></pre>
+<pre><code>2019-01-01    0
+2019-02-02    1
+2019-03-03    2
+dtype: int64
+</code></pre>
+<pre><code class="language-python"># 精确获取某个 index 对应的值
+pd_time[datetime(2019,1,1)]
+</code></pre>
+<pre><code>0
+</code></pre>
+<pre><code class="language-python"># 按照给定时间范围切片
+pd_time[&quot;2019-01-01&quot;: &quot;2019-03-01&quot;] 
+</code></pre>
+<pre><code>2019-01-01    0
+2019-02-02    1
+dtype: int64
+</code></pre>
+<p><strong>生成指定长度的 DatetimeIndex: date_range</strong></p>
+<pre><code class="language-python">pd.date_range(&quot;2019-01&quot;, &quot;2020-01&quot;) # 默认的时间间隔是 天，注意：date_range 生成的是时间戳，而不是时间段
+</code></pre>
+<pre><code>DatetimeIndex(['2019-01-01', '2019-01-02', '2019-01-03', '2019-01-04',
+               '2019-01-05', '2019-01-06', '2019-01-07', '2019-01-08',
+               '2019-01-09', '2019-01-10',
+               ...
+               '2019-12-23', '2019-12-24', '2019-12-25', '2019-12-26',
+               '2019-12-27', '2019-12-28', '2019-12-29', '2019-12-30',
+               '2019-12-31', '2020-01-01'],
+              dtype='datetime64[ns]', length=366, freq='D')
+</code></pre>
+<pre><code class="language-python"># 生成由每月最后一个工作日组成的日期索引
+pd.date_range(start=&quot;2019-01&quot;, end=&quot;2019-12&quot;, freq=&quot;BM&quot;)
+</code></pre>
+<pre><code>DatetimeIndex(['2019-01-31', '2019-02-28', '2019-03-29', '2019-04-30',
+               '2019-05-31', '2019-06-28', '2019-07-31', '2019-08-30',
+               '2019-09-30', '2019-10-31', '2019-11-29'],
+              dtype='datetime64[ns]', freq='BM')
+</code></pre>
+<pre><code class="language-python"># 由开始时间和持续时间生成的 index
+pd.date_range(start=&quot;2019-01&quot;, periods=10) # period 指定了按照默认的 freq天级生成 10 组数据
+</code></pre>
+<pre><code>DatetimeIndex(['2019-01-01', '2019-01-02', '2019-01-03', '2019-01-04',
+               '2019-01-05', '2019-01-06', '2019-01-07', '2019-01-08',
+               '2019-01-09', '2019-01-10'],
+              dtype='datetime64[ns]', freq='D')
+</code></pre>
+<pre><code class="language-python"># 频率和日期偏移量
+# 按照 6hmin 的间隔生成 10 组时间戳, 注意： freq 可以写成任意时间间隔，P314  
+pd.date_range(start=&quot;2019-01&quot;, periods=10, freq=&quot;6h20min&quot;) 
+</code></pre>
+<pre><code>DatetimeIndex(['2019-01-01 00:00:00', '2019-01-01 06:20:00',
+               '2019-01-01 12:40:00', '2019-01-01 19:00:00',
+               '2019-01-02 01:20:00', '2019-01-02 07:40:00',
+               '2019-01-02 14:00:00', '2019-01-02 20:20:00',
+               '2019-01-03 02:40:00', '2019-01-03 09:00:00'],
+              dtype='datetime64[ns]', freq='380T')
+</code></pre>
+<h3 id="时间段作为-index"><a class="header" href="#时间段作为-index">时间段作为 index</a></h3>
+<p><strong>period_range</strong></p>
+<pre><code class="language-python"># PeriodIndex 类型
+index_period = pd.period_range(&quot;2019-01-01&quot;, &quot;2019-01-12&quot;, freq=&quot;D&quot;)
+pd.period_range(&quot;2019-01-01&quot;, &quot;2019-01-12&quot;, freq=&quot;D&quot;)
+</code></pre>
+<pre><code>PeriodIndex(['2019-01-01', '2019-01-02', '2019-01-03', '2019-01-04',
+             '2019-01-05', '2019-01-06', '2019-01-07', '2019-01-08',
+             '2019-01-09', '2019-01-10', '2019-01-11', '2019-01-12'],
+            dtype='period[D]', freq='D')
+</code></pre>
+<pre><code class="language-python"># index 为 period 的 timeseries 的构造
+pd_period = pd.Series(range(len(index_period)), index=index_period)
+pd.Series(range(len(index_period)), index=index_period)
+</code></pre>
+<pre><code>2019-01-01     0
+2019-01-02     1
+2019-01-03     2
+2019-01-04     3
+2019-01-05     4
+2019-01-06     5
+2019-01-07     6
+2019-01-08     7
+2019-01-09     8
+2019-01-10     9
+2019-01-11    10
+2019-01-12    11
+Freq: D, dtype: int64
+</code></pre>
+<pre><code class="language-python"># 一时间段内的任意时间都可以作为 时间戳，化为 index
+pd_period[&quot;2019-01-01 19:23:00&quot;] = 100
+pd_period
+</code></pre>
+<pre><code>2019-01-01    100
+2019-01-02      1
+2019-01-03      2
+2019-01-04      3
+2019-01-05      4
+2019-01-06      5
+2019-01-07      6
+2019-01-08      7
+2019-01-09      8
+2019-01-10      9
+2019-01-11     10
+2019-01-12     11
+Freq: D, dtype: int64
+</code></pre>
+<h3 id="重采样-resample"><a class="header" href="#重采样-resample">重采样 resample</a></h3>
+<p><strong>时间戳重采样</strong></p>
+<pre><code class="language-python">pd_time.resample(&quot;Y&quot;).sum()
+</code></pre>
+<pre><code>2019-12-31    3
+2020-12-31    3
+Freq: A-DEC, dtype: int64
+</code></pre>
+<pre><code class="language-python"># 时间戳重采样
+index_timestamp = pd.date_range(&quot;2019-01-01&quot;, periods=12, freq=&quot;T&quot;)
+pd_time = pd.Series(range(len(index_timestamp)), index=index_timestamp) # 时间戳最细粒度的数据
+pd_time.resample(&quot;5min&quot;).sum().index
+</code></pre>
+<pre><code>DatetimeIndex(['2019-01-01 00:00:00', '2019-01-01 00:05:00',
+               '2019-01-01 00:10:00'],
+              dtype='datetime64[ns]', freq='5T')
+</code></pre>
+<pre><code class="language-python"># 通过 groupby 和 lambda 函数进行重采样
+index_range = pd.date_range(&quot;2019-01-01&quot;, periods=100, freq=&quot;D&quot;) 
+pd_time = pd.Series(range(len(index_range)), index=index_range)
+pd_time.groupby(lambda x: x.month).sum()
+</code></pre>
+<pre><code>1     465
+2    1246
+3    2294
+4     945
+dtype: int64
+</code></pre>
+<p><strong>时间段重采样</strong></p>
+<pre><code class="language-python">pd_frame = pd.DataFrame(np.random.randn(12, 4),
+                        index=pd.period_range(&quot;2010-01&quot;, &quot;2011-12&quot;, freq=&quot;2M&quot;), 
+                        columns=[&quot;Colorado&quot;, &quot;Texas&quot;, &quot;New York&quot;, &quot;Ohio&quot;])
+pd_frame.resample(&quot;D&quot;).mean().index # 升采样
+</code></pre>
+<pre><code>PeriodIndex(['2010-01-01', '2010-01-02', '2010-01-03', '2010-01-04',
+             '2010-01-05', '2010-01-06', '2010-01-07', '2010-01-08',
+             '2010-01-09', '2010-01-10',
+             ...
+             '2011-12-22', '2011-12-23', '2011-12-24', '2011-12-25',
+             '2011-12-26', '2011-12-27', '2011-12-28', '2011-12-29',
+             '2011-12-30', '2011-12-31'],
+            dtype='period[D]', length=730, freq='D')
+</code></pre>
+<p><strong>重采样参数</strong></p>
+<pre><code class="language-python">A year
+M month
+W week
+D day
+H hour
+T minute
+S second
+
+Demo:
+resample_time = &quot;5min&quot; # 5 分钟采样一次
+resample_time = &quot;1H&quot; # 1 hour 采样一次
+resample_time = &quot;1D&quot; # 1 天采样一次
+pd_result = pd_result.resample(resample_time, how=&quot;sum&quot;)
+</code></pre>
+<h2 id="pandas-error"><a class="header" href="#pandas-error">Pandas Error</a></h2>
+<h3 id="only-integers-accepted-as-n-values"><a class="header" href="#only-integers-accepted-as-n-values">Only integers accepted as n values</a></h3>
+<pre><code class="language-Python">pd_data.sample(n) # n 一定要是非负整数，否则会报该错误
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../computer-science-notebook/note-for-python/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../computer-science-notebook/note-for-python/django-version-upgrade.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../computer-science-notebook/note-for-python/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../computer-science-notebook/note-for-python/django-version-upgrade.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

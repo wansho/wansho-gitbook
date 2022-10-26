@@ -1,0 +1,962 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>书籍：git-pro - wanshuo-gitbook</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Table of contents</li><li class="chapter-item expanded "><a href="../../reading/modern-os/index.html"><strong aria-hidden="true">1.</strong> 现代操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/modern-os/chapter-1-introduction.html"><strong aria-hidden="true">1.1.</strong> chapter1-introduction</a></li><li class="chapter-item expanded "><a href="../../reading/modern-os/chapter-2-processes-and-threads.html"><strong aria-hidden="true">1.2.</strong> chapter2-processes-and-threads</a></li><li class="chapter-item expanded "><a href="../../reading/modern-os/chapter-7-virtualization-and-cloud.html"><strong aria-hidden="true">1.3.</strong> chapter7-virtualization-and-cloud</a></li><li class="chapter-item expanded "><a href="../../reading/modern-os/questions.html"><strong aria-hidden="true">1.4.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/index.html"><strong aria-hidden="true">2.</strong> 流畅的 Python</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/index.html"><strong aria-hidden="true">2.1.</strong> chapters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter1.the-python-data-model.html"><strong aria-hidden="true">2.1.1.</strong> chapter1-the-python-data-model</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter2.an-array-of-sequences.html"><strong aria-hidden="true">2.1.2.</strong> chapter2-an-array-of-sequences</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter3.dictionaries-and-sets.html"><strong aria-hidden="true">2.1.3.</strong> chapter3-dictionaries-and-sets</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter4.text-versus-bytes.html"><strong aria-hidden="true">2.1.4.</strong> chapter4-text-versus-bytes</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter5.first-class-functions.html"><strong aria-hidden="true">2.1.5.</strong> chapter5-first-class-functions</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter6-design-patterns-with-first-class-functions.html"><strong aria-hidden="true">2.1.6.</strong> chapter6-design-patterns-with-functions</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter7-function-decorators-and-closures.html"><strong aria-hidden="true">2.1.7.</strong> chapter7-function-decorators-and-closures</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter8-object-reference-mutability-recycling.html"><strong aria-hidden="true">2.1.8.</strong> chapter8-object-reference-mutability-and-recycling</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter9-a-pythonic-object.html"><strong aria-hidden="true">2.1.9.</strong> chapter9-a-pythonic-object</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter10-sequence-hacking-hashing-slicing.html"><strong aria-hidden="true">2.1.10.</strong> chapter10-sequencec-hacking-hashing-and-slicing</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter11-interfaces-from-protocols-to-abcs.html"><strong aria-hidden="true">2.1.11.</strong> chapter11-interfaces-from-protocols-to-abcs</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/index.html"><strong aria-hidden="true">2.2.</strong> summary</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/questions.html"><strong aria-hidden="true">2.2.1.</strong> questions</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/python-code-optimization.html"><strong aria-hidden="true">2.2.2.</strong> python-code-optimization</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/python-30-seconds.html"><strong aria-hidden="true">2.2.3.</strong> python-30-seconds</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reading/computer-networking/index.html"><strong aria-hidden="true">3.</strong> 计算机网络-自顶向下</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/computer-networking/chapter1-computer-networks-and-the-internet.html"><strong aria-hidden="true">3.1.</strong> chapter1-computer-networks-and-the-internet</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/index.html"><strong aria-hidden="true">4.</strong> 数据结构与算法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/index.html"><strong aria-hidden="true">4.1.</strong> chapters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-1-introduction.html"><strong aria-hidden="true">4.1.1.</strong> chapter1-introduction</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-2-algorithm-analysis.html"><strong aria-hidden="true">4.1.2.</strong> chapter2-algorithm-analysis</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-3-list-stack-queue.html"><strong aria-hidden="true">4.1.3.</strong> chapter3-list-stack-queue</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-4-tree.html"><strong aria-hidden="true">4.1.4.</strong> chapter4-tree</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-6-heap.html"><strong aria-hidden="true">4.1.5.</strong> chapter6-heap</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-7-sorting.html"><strong aria-hidden="true">4.1.6.</strong> chapter7-sorting</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/summary/index.html"><strong aria-hidden="true">4.2.</strong> summary</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/summary/questions.html"><strong aria-hidden="true">4.2.1.</strong> questions</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/summary/classic-problems.html"><strong aria-hidden="true">4.2.2.</strong> 经典问题</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reading/books/index.html"><strong aria-hidden="true">5.</strong> 其他书籍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/books/bookshelf.html"><strong aria-hidden="true">5.1.</strong> 书籍列表</a></li><li class="chapter-item expanded "><a href="../../reading/books/zen-and-the-art.html"><strong aria-hidden="true">5.2.</strong> 禅与摩托车维修艺术</a></li><li class="chapter-item expanded "><a href="../../reading/books/the-road-less-traveled.html"><strong aria-hidden="true">5.3.</strong> 少有人走的路</a></li><li class="chapter-item expanded "><a href="../../reading/books/time-as-a-friend.html"><strong aria-hidden="true">5.4.</strong> 李笑来-与时间做朋友</a></li><li class="chapter-item expanded "><a href="../../reading/books/reborn.html"><strong aria-hidden="true">5.5.</strong> 李笑来-Reborn</a></li><li class="chapter-item expanded "><a href="../../reading/books/shediao-yingxiongzhuan.html"><strong aria-hidden="true">5.6.</strong> 射雕英雄传</a></li><li class="chapter-item expanded "><a href="../../reading/books/liangjian.html"><strong aria-hidden="true">5.7.</strong> 亮剑</a></li><li class="chapter-item expanded "><a href="../../reading/books/wan-li-shi-wu-nian.html"><strong aria-hidden="true">5.8.</strong> 万历十五年</a></li><li class="chapter-item expanded "><a href="../../reading/books/zi-bei-yu-chao-yue.html"><strong aria-hidden="true">5.9.</strong> 自卑与超越</a></li><li class="chapter-item expanded "><a href="../../reading/books/ming-li-xue.html"><strong aria-hidden="true">5.10.</strong> 王德峰-命理学</a></li><li class="chapter-item expanded "><a href="../../reading/books/a-brief-history-of-humankind.html"><strong aria-hidden="true">5.11.</strong> 人类简史</a></li><li class="chapter-item expanded "><a href="../../reading/books/mao-xuan.html"><strong aria-hidden="true">5.12.</strong> 毛选</a></li><li class="chapter-item expanded "><a href="../../reading/books/tian-dao.html"><strong aria-hidden="true">5.13.</strong> 遥远的救世主</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/index.html"><strong aria-hidden="true">6.</strong> 算法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/arraylist-vs-linklist.html"><strong aria-hidden="true">6.1.</strong> arraylist-vs-linklist</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/information-entropy.html"><strong aria-hidden="true">6.2.</strong> information-entropy</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/summary.html"><strong aria-hidden="true">6.3.</strong> summary</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/index.html"><strong aria-hidden="true">7.</strong> database</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/zen-of-db.html"><strong aria-hidden="true">7.1.</strong> zen-of-db</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-101.html"><strong aria-hidden="true">7.2.</strong> MySQL-101</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-102.html"><strong aria-hidden="true">7.3.</strong> MySQL-102</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-103.html"><strong aria-hidden="true">7.4.</strong> MySQL-103</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/elastic-search.html"><strong aria-hidden="true">7.5.</strong> Elasticsearch</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/elastic-logstash.html"><strong aria-hidden="true">7.6.</strong> Logstash</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/oracle-101.html"><strong aria-hidden="true">7.7.</strong> Oracle-101</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-leetcode.html"><strong aria-hidden="true">7.8.</strong> Mysql-Leetcode</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/database-others.html"><strong aria-hidden="true">7.9.</strong> 其他数据库产品</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/design-data-intensive-app.html"><strong aria-hidden="true">7.10.</strong> 书籍-设计数据密集型应用</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/questions.html"><strong aria-hidden="true">7.11.</strong> Questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/index.html"><strong aria-hidden="true">8.</strong> 密码学与网络安全</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/cryptography.html"><strong aria-hidden="true">8.1.</strong> 密码学</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/ssh.html"><strong aria-hidden="true">8.2.</strong> ssh 教程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/authentication-authorization.html"><strong aria-hidden="true">8.3.</strong> 认证和授权</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/single-sign-on.html"><strong aria-hidden="true">8.4.</strong> SSO 单点登录</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/oauth.html"><strong aria-hidden="true">8.5.</strong> OAuth</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/jwt.html"><strong aria-hidden="true">8.6.</strong> jwt</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/security-vulnerability.html"><strong aria-hidden="true">8.7.</strong> 安全漏洞</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/index.html"><strong aria-hidden="true">9.</strong> 计算机网络相关知识</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/computer-network.html"><strong aria-hidden="true">9.1.</strong> 计算机网络小知识集合</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/web-service.html"><strong aria-hidden="true">9.2.</strong> web-service</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/http-protocol.html"><strong aria-hidden="true">9.3.</strong> http 协议</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/questions.html"><strong aria-hidden="true">9.4.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/index.html"><strong aria-hidden="true">10.</strong> 编程语言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/go.html"><strong aria-hidden="true">10.1.</strong> go</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/kotlin.html"><strong aria-hidden="true">10.2.</strong> kotlin</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/rust.html"><strong aria-hidden="true">10.3.</strong> rust</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/svg.html"><strong aria-hidden="true">10.4.</strong> svg</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/regex.html"><strong aria-hidden="true">10.5.</strong> regex</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/windows-bat.html"><strong aria-hidden="true">10.6.</strong> windows-bat</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/qt.html"><strong aria-hidden="true">10.7.</strong> QT</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/index.html"><strong aria-hidden="true">11.</strong> C++ 开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/how-to-learn-c.html"><strong aria-hidden="true">11.1.</strong> C语言学习教程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/think-c.html"><strong aria-hidden="true">11.2.</strong> 书籍：Think-C</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/deep-c.html"><strong aria-hidden="true">11.3.</strong> C语言深度剖析</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/c++.html"><strong aria-hidden="true">11.4.</strong> C++学习</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/index.html"><strong aria-hidden="true">12.</strong> Python 学习</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/note-for-pandas.html"><strong aria-hidden="true">12.1.</strong> pandas 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/django-version-upgrade.html"><strong aria-hidden="true">12.2.</strong> django 版本升级</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-hacker.html"><strong aria-hidden="true">12.3.</strong> 书籍：python-hacker</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-craftsman.html"><strong aria-hidden="true">12.4.</strong> 书籍：python 工匠</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-packages.html"><strong aria-hidden="true">12.5.</strong> pip 相关知识</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-exception.html"><strong aria-hidden="true">12.6.</strong> python 异常处理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-cheetsheet.html"><strong aria-hidden="true">12.7.</strong> python 小知识</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/jupyter-notebook.html"><strong aria-hidden="true">12.8.</strong> jupyter 使用笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/different-methods-in-class.html"><strong aria-hidden="true">12.9.</strong> python 不同的方法</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/pep.html"><strong aria-hidden="true">12.10.</strong> pep: python-enhanced-proposal</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-algorithm-data-structure.html"><strong aria-hidden="true">12.11.</strong> python 数据结构与算法</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/multiprocessing-and-threading.html"><strong aria-hidden="true">12.12.</strong> 多线程和多进程</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/index.html"><strong aria-hidden="true">13.</strong> Java 学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java.html"><strong aria-hidden="true">13.1.</strong> 毕向东 java se 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java.html"><strong aria-hidden="true">13.2.</strong> java 进阶</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-collection-map.html"><strong aria-hidden="true">13.3.</strong> Java collection学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-array.html"><strong aria-hidden="true">13.4.</strong> Java array 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/string.html"><strong aria-hidden="true">13.5.</strong> Java string 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/annotation.html"><strong aria-hidden="true">13.6.</strong> Java Annotation 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-datetime.html"><strong aria-hidden="true">13.7.</strong> java datetime 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-reflection.html"><strong aria-hidden="true">13.8.</strong> java 反射学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-new-features.html"><strong aria-hidden="true">13.9.</strong> Java 新特性</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-log.html"><strong aria-hidden="true">13.10.</strong> Java 日志</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-exception.html"><strong aria-hidden="true">13.11.</strong> Java 异常</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-vm.html"><strong aria-hidden="true">13.12.</strong> java 虚拟机</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-junit.html"><strong aria-hidden="true">13.13.</strong> Java JUnit 测试</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/template-engine.html"><strong aria-hidden="true">13.14.</strong> Java 模板引擎</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/design-patterns.html"><strong aria-hidden="true">13.15.</strong> 设计模式学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/generics.html"><strong aria-hidden="true">13.16.</strong> 泛型</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/stream.html"><strong aria-hidden="true">13.17.</strong> stream 学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/functional-programming.html"><strong aria-hidden="true">13.18.</strong> 函数式编程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/program-development-in-java.html"><strong aria-hidden="true">13.19.</strong> Java 程序开发原理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-bin.html"><strong aria-hidden="true">13.20.</strong> Java 自带命令学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-dev-tools.html"><strong aria-hidden="true">13.21.</strong> Java 开发工具</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/big-number.html"><strong aria-hidden="true">13.22.</strong> 大数计算和存储</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/index.html"><strong aria-hidden="true">14.</strong> JavaWeb 学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/database.html"><strong aria-hidden="true">14.1.</strong> 访问数据库笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/java-persistence-api.html"><strong aria-hidden="true">14.2.</strong> JPA 深入学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/mybatis.html"><strong aria-hidden="true">14.3.</strong> mybatis 学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/bean-pojo-dto.html"><strong aria-hidden="true">14.4.</strong> java-bean 分类</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/maven.html"><strong aria-hidden="true">14.5.</strong> Maven 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/dependencies.html"><strong aria-hidden="true">14.6.</strong> 依赖库整理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/micro-service.html"><strong aria-hidden="true">14.7.</strong> 微服务架构课</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/architect.html"><strong aria-hidden="true">14.8.</strong> IT老齐架构课笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/restful-api.html"><strong aria-hidden="true">14.9.</strong> restful-api</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/spring.html"><strong aria-hidden="true">14.10.</strong> spring</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/spring-security.html"><strong aria-hidden="true">14.11.</strong> spring-security</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/springboot.html"><strong aria-hidden="true">14.12.</strong> spring-boot</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/springcloud.html"><strong aria-hidden="true">14.13.</strong> spring-cloud</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/reactive.html"><strong aria-hidden="true">14.14.</strong> 响应式 web</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/cache.html"><strong aria-hidden="true">14.15.</strong> 缓存</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/web-api-the-good-parts.html"><strong aria-hidden="true">14.16.</strong> WebAPI 的设计与开发</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/rbac.html"><strong aria-hidden="true">14.17.</strong> RBAC</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/socket.html"><strong aria-hidden="true">14.18.</strong> Socket</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/webservice.html"><strong aria-hidden="true">14.19.</strong> webservice</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/tomcat-servlet.html"><strong aria-hidden="true">14.20.</strong> tomcat-servlet</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/encode-decode.html"><strong aria-hidden="true">14.21.</strong> 编解码</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/netty.html"><strong aria-hidden="true">14.22.</strong> Netty</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/index.html"><strong aria-hidden="true">15.</strong> 前端开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/nodejs.html"><strong aria-hidden="true">15.1.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/yarn.html"><strong aria-hidden="true">15.2.</strong> yarn 使用</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/repos.html"><strong aria-hidden="true">15.3.</strong> 前端库总结</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/react-dev.html"><strong aria-hidden="true">15.4.</strong> React 开发笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/chrome-extension.html"><strong aria-hidden="true">15.5.</strong> chrome 插件开发</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/ajax.html"><strong aria-hidden="true">15.6.</strong> ajax</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/jquery.html"><strong aria-hidden="true">15.7.</strong> jquery</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/javascript-101.html"><strong aria-hidden="true">15.8.</strong> javascript-101</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/javascript-102.html"><strong aria-hidden="true">15.9.</strong> javascript-102</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/javascript-ie11-compatible.html"><strong aria-hidden="true">15.10.</strong> javascript兼容IE11</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/immutable-js.html"><strong aria-hidden="true">15.11.</strong> immutable.js</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/npm-libs.html"><strong aria-hidden="true">15.12.</strong> npm库</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/html-css-dom.html"><strong aria-hidden="true">15.13.</strong> html-css-dom 学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/web-assembly.html"><strong aria-hidden="true">15.14.</strong> web-assembly</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/nlp/index.html"><strong aria-hidden="true">16.</strong> NLP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/nlp/nlp-learning.html"><strong aria-hidden="true">16.1.</strong> NLP-Learning</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/nlp/machine-learning.html"><strong aria-hidden="true">16.2.</strong> Machine-Learning</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/index.html"><strong aria-hidden="true">17.</strong> linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-cmds.html"><strong aria-hidden="true">17.1.</strong> linux 命令手册</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-cmd-enhanced.html"><strong aria-hidden="true">17.2.</strong> linux 增强命令</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-mythink.html"><strong aria-hidden="true">17.3.</strong> linux 使用心得</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-devops.html"><strong aria-hidden="true">17.4.</strong> linux-运维</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-init.html"><strong aria-hidden="true">17.5.</strong> linux 初始化</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/vim.html"><strong aria-hidden="true">17.6.</strong> vim</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/shell.html"><strong aria-hidden="true">17.7.</strong> shell</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/script-demos.html"><strong aria-hidden="true">17.8.</strong> shell 脚本 demo</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-distribution-history.html"><strong aria-hidden="true">17.9.</strong> linux 历史和发行版</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/index.html"><strong aria-hidden="true">18.</strong> github</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/github.html"><strong aria-hidden="true">18.1.</strong> github 使用技巧</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/gitbook.html"><strong aria-hidden="true">18.2.</strong> 优雅锋利的 gitbook</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/git.html" class="active"><strong aria-hidden="true">18.3.</strong> 书籍：git-pro</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/github-actions.html"><strong aria-hidden="true">18.4.</strong> github-actions</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/markdown.html"><strong aria-hidden="true">18.5.</strong> markdown 语法</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/git-hook.html"><strong aria-hidden="true">18.6.</strong> githook</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/index.html"><strong aria-hidden="true">19.</strong> 开发工具与技术栈</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/technology-stack.html"><strong aria-hidden="true">19.1.</strong> 技术栈</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/idea.html"><strong aria-hidden="true">19.2.</strong> IDEA 使用学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/idea-debug.html"><strong aria-hidden="true">19.3.</strong> IDEA Debug</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/serverless.html"><strong aria-hidden="true">19.4.</strong> serverless</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/apifox.html"><strong aria-hidden="true">19.5.</strong> apifox</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/blockchain.html"><strong aria-hidden="true">19.6.</strong> 区块链</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/web3.html"><strong aria-hidden="true">19.7.</strong> Web3.0</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/vscode.html"><strong aria-hidden="true">19.8.</strong> VSCode</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/docker.html"><strong aria-hidden="true">19.9.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/cloud-native.html"><strong aria-hidden="true">19.10.</strong> 云原生</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/message-queue.html"><strong aria-hidden="true">19.11.</strong> 消息队列</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/redis.html"><strong aria-hidden="true">19.12.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/selenium.html"><strong aria-hidden="true">19.13.</strong> Selenium</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/nginx.html"><strong aria-hidden="true">19.14.</strong> nginx</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/zookeeper.html"><strong aria-hidden="true">19.15.</strong> zookeeper</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/haproxy.html"><strong aria-hidden="true">19.16.</strong> haproxy-keepalived</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/webhook.html"><strong aria-hidden="true">19.17.</strong> webhook</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/lowcode.html"><strong aria-hidden="true">19.18.</strong> 低代码</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/web-spider.html"><strong aria-hidden="true">19.19.</strong> 网络爬虫</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/make-hexo-theme.html"><strong aria-hidden="true">19.20.</strong> Hexo 主题定制</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/swagger.html"><strong aria-hidden="true">19.21.</strong> Swagger</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/index.html"><strong aria-hidden="true">20.</strong> 软件工程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/software-testing.html"><strong aria-hidden="true">20.1.</strong> 软件测试</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/uml.html"><strong aria-hidden="true">20.2.</strong> UML</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/continuous-integration.html"><strong aria-hidden="true">20.3.</strong> 持续集成</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/software-version.html"><strong aria-hidden="true">20.4.</strong> 软件版本命名</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/zentao.html"><strong aria-hidden="true">20.5.</strong> 项目管理-禅道</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/software-engineering.html"><strong aria-hidden="true">20.6.</strong> 软件工程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/os-installed-software.html"><strong aria-hidden="true">20.7.</strong> 电脑常用软件整理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/code-summary.html"><strong aria-hidden="true">20.8.</strong> 编程经验总结</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/index.html"><strong aria-hidden="true">21.</strong> 技术讲座</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/cs-keep-learning.html"><strong aria-hidden="true">21.1.</strong> keep-learning</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/atguigu-os.html"><strong aria-hidden="true">21.2.</strong> 尚硅谷-操作系统</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/future-of-computation.html"><strong aria-hidden="true">21.3.</strong> 吴翰清-计算的未来</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/xu-shi-wei-architecture.html"><strong aria-hidden="true">21.4.</strong> 许式伟-架构课</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/questions.html"><strong aria-hidden="true">21.5.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../weekly/2022/index.html"><strong aria-hidden="true">22.</strong> 2022</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../weekly/2022/week-27.html"><strong aria-hidden="true">22.1.</strong> week-27</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-28.html"><strong aria-hidden="true">22.2.</strong> week-28</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-29.html"><strong aria-hidden="true">22.3.</strong> week-29</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-30.html"><strong aria-hidden="true">22.4.</strong> week-30</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-31-32.html"><strong aria-hidden="true">22.5.</strong> week-31-32</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-32.html"><strong aria-hidden="true">22.6.</strong> week-32</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-33.html"><strong aria-hidden="true">22.7.</strong> week-33</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-34.html"><strong aria-hidden="true">22.8.</strong> week-34</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-35.html"><strong aria-hidden="true">22.9.</strong> week-35</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-36.html"><strong aria-hidden="true">22.10.</strong> week-36</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-37.html"><strong aria-hidden="true">22.11.</strong> week-37</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-38.html"><strong aria-hidden="true">22.12.</strong> week-38</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-39.html"><strong aria-hidden="true">22.13.</strong> week-39</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-40.html"><strong aria-hidden="true">22.14.</strong> week-40</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/index.html"><strong aria-hidden="true">23.</strong> blog</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/for-a-job.html"><strong aria-hidden="true">23.1.</strong> 关于找工作</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/how-to-study.html"><strong aria-hidden="true">23.2.</strong> 如何学习</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/summary-for-examination-oriented-education.html"><strong aria-hidden="true">23.3.</strong> 应试教育总结思考</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/cyber-spirit-opium.html"><strong aria-hidden="true">23.4.</strong> 网络精神鸦片</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/why-perfect.html"><strong aria-hidden="true">23.5.</strong> 追求完美？</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/about-love.html"><strong aria-hidden="true">23.6.</strong> 我的恋爱观</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/pin-duo-duo.html"><strong aria-hidden="true">23.7.</strong> 细数在拼多多开店遇到的坑</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/summary-of-marketing.html"><strong aria-hidden="true">23.8.</strong> 营销经验总结</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/real-estate.html"><strong aria-hidden="true">23.9.</strong> 买房经验总结</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/health/index.html"><strong aria-hidden="true">24.</strong> 关于健康</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/health/zhong-yi.html"><strong aria-hidden="true">24.1.</strong> 关于中医</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/health/health.html"><strong aria-hidden="true">24.2.</strong> 关于健康</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/index.html"><strong aria-hidden="true">25.</strong> 求知若渴虚心若愚</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/how-to-keep-learning.html"><strong aria-hidden="true">25.1.</strong> 如何保持学习激情</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/weekly.html"><strong aria-hidden="true">25.2.</strong> 周刊</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/weekly-02.html"><strong aria-hidden="true">25.3.</strong> 周刊-02</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/authentic-expression.html"><strong aria-hidden="true">25.4.</strong> 英语单词和专业词汇</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/knowledge-summary.html"><strong aria-hidden="true">25.5.</strong> 网上冲浪知识总结</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/zhihu.html"><strong aria-hidden="true">25.6.</strong> 知乎摘抄</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/story.html"><strong aria-hidden="true">25.7.</strong> 好的文章</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/principle-of-economics.html"><strong aria-hidden="true">25.8.</strong> 经济学原理学习</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/how-to.html"><strong aria-hidden="true">25.9.</strong> 如何</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/office-tricks.html"><strong aria-hidden="true">25.10.</strong> Office 三件套</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/movies.html"><strong aria-hidden="true">25.11.</strong> 看电影</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/daily-news.html"><strong aria-hidden="true">25.12.</strong> 每日新闻</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/index.html"><strong aria-hidden="true">26.</strong> 安心立命</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/why.html"><strong aria-hidden="true">26.1.</strong> 为什么要学习</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/difference-between-east-and-west.html"><strong aria-hidden="true">26.2.</strong> 王德峰-中西文化差异</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/yangming.html"><strong aria-hidden="true">26.3.</strong> 王德峰-阳明心学</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/feat-and-practice.html"><strong aria-hidden="true">26.4.</strong> 王德峰-命运与修行</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/truly-maturity.html"><strong aria-hidden="true">26.5.</strong> 关于成熟</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/poetry.html"><strong aria-hidden="true">26.6.</strong> 古诗词摘抄</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-perface.html"><strong aria-hidden="true">26.7.</strong> 王德峰讲坛经-序言</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-01.html"><strong aria-hidden="true">26.8.</strong> 王德峰讲坛经-行由品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-02.html"><strong aria-hidden="true">26.9.</strong> 王德峰讲坛经-般若品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-03.html"><strong aria-hidden="true">26.10.</strong> 王德峰讲坛经-疑问品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-04.html"><strong aria-hidden="true">26.11.</strong> 王德峰讲坛经-定慧品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-05.html"><strong aria-hidden="true">26.12.</strong> 王德峰讲坛经-坐禅品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-06.html"><strong aria-hidden="true">26.13.</strong> 王德峰讲坛经-忏悔品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-07.html"><strong aria-hidden="true">26.14.</strong> 王德峰讲坛经-机缘品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-08.html"><strong aria-hidden="true">26.15.</strong> 王德峰讲坛经-顿悟品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-09.html"><strong aria-hidden="true">26.16.</strong> 王德峰讲坛经-护法品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-10.html"><strong aria-hidden="true">26.17.</strong> 王德峰讲坛经-付嘱品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-finish.html"><strong aria-hidden="true">26.18.</strong> 王德峰讲坛经-结束语</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">wanshuo-gitbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="git-深入学习"><a class="header" href="#git-深入学习">Git 深入学习</a></h1>
+<p>[TOC]</p>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>如果你不满足仅仅会用 <code>git add/commit/push/clone/</code> 等等这些 Git 最基础的命令，想要知其然，也知其所以然，那么我强烈推荐你去阅读 <a href="https://git-scm.com/book/en/v2">《Pro Git》</a> ，哪怕只把前 101 页读完，都可以对 Git 有一个系统的理解。</p>
+<p>学习 Git 的资源：</p>
+<ul>
+<li>
+<p><a href="https://git-scm.com/docs">Git Reference </a> Git 速查手册</p>
+</li>
+<li>
+<p><a href="https://git-scm.com/book/en/v2f">《Pro Git》</a> </p>
+</li>
+</ul>
+<p>本文是我读 <a href="https://git-scm.com/book/en/v2">《Pro Git》</a> 的学习笔记， 95% 的内容来源了该书前 101 页的内容，我对我认为重要的内容进行了归纳整理。</p>
+<p>学习 Git，用上述两个官方资源，足矣。</p>
+<h2 id="名词解释"><a class="header" href="#名词解释">名词解释</a></h2>
+<table><thead><tr><th>名词</th><th>解释</th></tr></thead><tbody>
+<tr><td>master</td><td>仓库的默认分支</td></tr>
+<tr><td>HEAD</td><td>HEAD 指针，指向当前工作分支的指针</td></tr>
+<tr><td>origin</td><td>指代远程库</td></tr>
+</tbody></table>
+<h2 id="questions"><a class="header" href="#questions">Questions</a></h2>
+<p>几个经常忘记的命令，基本上都和 checkout，reset 有关</p>
+<ul>
+<li>
+<p>取消某个文件的修改</p>
+<p><code>git checkout -- file</code></p>
+</li>
+<li>
+<p>取消加入暂存区，只需要让这个文件回滚到之前的一个版本即可</p>
+<p><code>git reset file</code></p>
+<p><code>git reset</code> 取消所有添加到暂存区的内容</p>
+</li>
+<li>
+<p>回滚到某个版本</p>
+<p><code>git reset --hard 459f</code></p>
+</li>
+</ul>
+<h2 id="使用-git-做开发"><a class="header" href="#使用-git-做开发">使用 Git 做开发</a></h2>
+<h3 id="git-开发分支"><a class="header" href="#git-开发分支">Git 开发分支</a></h3>
+<p><a href="https://zepel.io/blog/5-git-workflows-to-improve-development/">5 Git workflows you can use to deliver better code and improve your development process</a></p>
+<table><thead><tr><th>Git Feature Branch Workflow</th><th>Git Feature Workflow with Develop Branch</th></tr></thead><tbody>
+<tr><td><img src="assets/image-20200807205239022.png" alt="image-20200807205239022" /></td><td><img src="assets/image-20200807205247838.png" alt="image-20200807205247838" /></td></tr>
+</tbody></table>
+<p>其他分支：</p>
+<p>gh-pages 分支：存放静态文件，通常用于静态网页部署</p>
+<h3 id="git-辅助软件"><a class="header" href="#git-辅助软件">Git 辅助软件</a></h3>
+<ul>
+<li>
+<p><a href="https://www.sourcetreeapp.com/">SourceTree: A free Git client for Windows and Mac</a></p>
+<p>Git 装饰软件，提供了一系列可视化的功能</p>
+</li>
+</ul>
+<h2 id="vcs-introduction"><a class="header" href="#vcs-introduction">VCS Introduction</a></h2>
+<p>Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later. </p>
+<p>It allows you to revert selected files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when, and more. Using a VCS also generally means that if you screw things up or lose files, you can easily recover. In addition, you get all this for very little overhead. </p>
+<h3 id="history-of-version-control"><a class="header" href="#history-of-version-control">History of Version Control</a></h3>
+<ol>
+<li>
+<p>Copy files to another directory</p>
+</li>
+<li>
+<p>Local version control system</p>
+</li>
+<li>
+<p>Centralized version control system</p>
+<p>For example: SVN</p>
+<p>Advantage: help people collaborate with others</p>
+<p>Disadvantage: loss everything if central machine break down</p>
+</li>
+<li>
+<p>Distributed Version Control System</p>
+<p>For example: Git (2005)</p>
+</li>
+</ol>
+<p>软件开发中对于版本控制的需求推动了版本控制系统的发展。正是因为正式开发中出现过中心服务器崩溃导致历史版本代码丢失的问题，才会催生出分布式的版本控制工具。</p>
+<h3 id="environments-to-use-vcs"><a class="header" href="#environments-to-use-vcs">Environments to use VCS</a></h3>
+<p>只要涉及到文本文件，无论是写 Blog，还是写代码，都可以用 Git 进行版本控制，上传到 Github 进行分布式的管理。</p>
+<h3 id="difference-between-git-and-other-vcsfor-example-svn"><a class="header" href="#difference-between-git-and-other-vcsfor-example-svn">Difference between Git and other VCS(for example: SVN)</a></h3>
+<ol>
+<li>
+<p>Main difference: Snapshots, Not Differences </p>
+<p>SVN: Think of the information they store as a set of files and the changes made to each file over time (this is commonly described as delta-based version control) </p>
+<p>Git: Git thinks about its data more like astream of snapshots. </p>
+</li>
+<li>
+<p>Nearly Every Operation Is Local (offline work)</p>
+</li>
+<li>
+<p>Git uses hash to checksum each subtle chage of file</p>
+</li>
+</ol>
+<h2 id="git-terminology"><a class="header" href="#git-terminology">Git Terminology</a></h2>
+<h3 id="centralized-vs-distributed"><a class="header" href="#centralized-vs-distributed">Centralized Vs Distributed</a></h3>
+<p>CVS 和 SVN 都是集中式的版本控制工具
+Git 是分布式的版本控制工具</p>
+<p>集中式版本控制工具有一个中央服务器，所有的 client 都要从与 server 进行通信，如果 server 挂掉了，那么所有的 history 就没了。</p>
+<p>分布式版本控制工具是去中心化的，没有中央服务器，每个人的电脑都有一个完整的版本库。 if any server dies, and these systems werecollaborating via that server, any of the client repositories can be copied back up to the server to restore it. Every clone is really a full backup of all the data</p>
+<h3 id="three-sections-working-directory-staging-area-repository"><a class="header" href="#three-sections-working-directory-staging-area-repository">Three sections: Working Directory, Staging Area, Repository</a></h3>
+<p>Working directory: 工作区.git dir 所在文件夹
+Staging Area：暂存区
+Repository：仓库</p>
+<p><code>git add</code>：把 工作区 中的 modified 的内容添加到 暂存区；
+<code>git commit</code>：把暂存区的所有内容提交到当 仓库 中。</p>
+<h3 id="untracked-or-tracked"><a class="header" href="#untracked-or-tracked">untracked or tracked</a></h3>
+<p>Tracked files are files that were in the last snapshot; they can be unmodified, modified, or staged. In short, tracked files are files that Git knows about. </p>
+<p>Untracked files are everything else — any files in your working directory that were not in your last
+snapshot and are not in your staging area. </p>
+<p>tracked 文件就是 Git 开始追踪的文件；untracked 文件就是 Git 没有追踪的文件，如果需要追踪，需要 <code>git add</code></p>
+<h3 id="gitignore"><a class="header" href="#gitignore">.gitignore</a></h3>
+<p>Create a file named <code>.gitignore</code> to list patterns to match the untracked files.</p>
+<p>.gitignore 文件可以有多个，每个文件只在当前文件夹内递归生效.</p>
+<p>.gitignore 的语法规则：</p>
+<ol>
+<li>注释：#</li>
+<li>兼容 Linux 的通配符规则，并且规则有递归性</li>
+<li><code>/pattern</code> 表示只当前文件夹下的 pattern 匹配到的文件</li>
+<li><code>pattern/</code> 表示忽略所有 pattern 匹配到的文件夹</li>
+<li><code>!pattern</code> 表示 track 该 pattern 匹配到的文件</li>
+</ol>
+<p>Demos:</p>
+<pre><code class="language-shell"># ignore all .a files
+*.a
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+# ignore all files in any directory named build
+build/
+# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/*.txt
+# ignore all .pdf files in the doc/ directory and any of its subdirectories
+doc/**/*.pdf
+
+# 添加一个空文件夹
+*
+!.gitignore
+</code></pre>
+<h3 id="origin"><a class="header" href="#origin">origin</a></h3>
+<p>origin 是对 remote-repos 的 shortname</p>
+<p>官方解释</p>
+<blockquote>
+<p>Just like the branch name “master” does not have any special meaning in Git, neither does “origin”. While “master” is the default name for a starting branch when you run git init which is the only reason it’s widely used, “origin” is the default name for a remote when you run git clone. If you run git clone -o booyah instead, then you will have booyah/master as your default remote branch. </p>
+</blockquote>
+<p>In Git, &quot;origin&quot; is a shorthand name for the remote repository that a project was originally cloned from.</p>
+<h3 id="head"><a class="header" href="#head">HEAD</a></h3>
+<p>官方解释</p>
+<blockquote>
+<p>How does Git know what branch you’re currently on? It keeps a special pointer called HEAD. </p>
+<p>This is a pointer to the local branch you’re currently on. </p>
+</blockquote>
+<p>HEAD 是一个指向当前工作分支的指针</p>
+<h3 id="master"><a class="header" href="#master">master</a></h3>
+<p>官方解释</p>
+<blockquote>
+<p>The “master” branch in Git is not a special branch. It is exactly like any other branch. The only reason nearly every repository has one is that the git init command creates it by default and most people don’t bother to change it </p>
+</blockquote>
+<h3 id="fast-forward"><a class="header" href="#fast-forward">fast-forward</a></h3>
+<p>官方解释</p>
+<blockquote>
+<p>when you try to merge one commit with a commit that can be reached by following the first commit’s history, Git simplifies things by moving the pointer forward because there is no divergent work to merge together — this is called a “fast-forward.” </p>
+</blockquote>
+<h3 id="topic-branch"><a class="header" href="#topic-branch">topic branch</a></h3>
+<p>官方解释：</p>
+<blockquote>
+<p>A topic branch is a short-lived branch that you create and use for a single particular feature or related work. This is something you’ve likely never done with a VCS before because it’s generally too expensive to create and merge branches. But in Git it’s common to create, work on, merge, and delete branches several times a day. </p>
+</blockquote>
+<p><code>git branch</code>技术给小步试错，快速迭代带来了便捷，topic branch 方法是日常开发最常用的方法。</p>
+<h2 id="git-commands"><a class="header" href="#git-commands">Git Commands</a></h2>
+<h3 id="git-syntax"><a class="header" href="#git-syntax">git syntax</a></h3>
+<p>git 的所有命令，自带一个 <code>git</code> 的前缀，实际上第二个 word 才是命令，其并不是一个参数。</p>
+<pre><code class="language-shell"># 查看某一个 command 的帮助命令
+git command --help 
+git command -h
+</code></pre>
+<h3 id="git-config"><a class="header" href="#git-config">git config</a></h3>
+<pre><code class="language-shell">git config --system # 配置所有用户的 git conf
+git config --global # 配置当前用户的 git conf
+git config --local (== git conf) # 配置当前仓库的 git conf
+
+# user conf
+git config --global user.name &quot;wansho&quot;
+git config --global user.email wanshojs@hotmail.com
+git config --local user.name &quot;wansho&quot;
+git config --local user.email wanshojs@hotmail.com
+
+git config --list #  check your configuration settings
+git config user.name # check a specific key value
+
+# 查看配置好的 git config
+git config -l # --list
+
+# 配置代理
+git config --global http.proxy http://127.0.0.1:7890 # 2136 就是翻墙软件代理的端口号
+git config --global https.proxy https://127.0.0.1:7890
+git config --local http.proxy http://127.0.0.1:7890 # 2136 就是翻墙软件代理的端口号
+git config --local https.proxy https://127.0.0.1:7890
+# 注意：此模式只适用于 http 协议，不适用于 SSH 协议
+# 同样适用于 WSL
+# 取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+</code></pre>
+<h3 id="git-clone"><a class="header" href="#git-clone">git clone</a></h3>
+<p>官方解释</p>
+<blockquote>
+<p>Instead of getting just a working copy, Git receives a full copy of nearly all data that the server has. Every version of every file for the history of the project is pulled down by default when you run git clone. In fact, if your server disk gets corrupted, you can often use nearly any of the clones on any client to set the server back to the state it was in when it was cloned (you may lose some server-side hooks and such, but all the versioned data would be there) </p>
+</blockquote>
+<pre><code class="language-shell">git clone https://github.com/libgit2/libgit2 # use http:// protocol to transfer
+git clone user@server:path/to/repo.git # use SSH protocol to transfer
+
+git clone https://github.com/libgit2/libgit2 mylibgit # change a dir
+</code></pre>
+<h3 id="git-add"><a class="header" href="#git-add">git add</a></h3>
+<p>官方建议</p>
+<blockquote>
+<p>It may be helpful to think of it more as “add precisely this content to the next commit” rather than “add this file to the project”.</p>
+</blockquote>
+<pre><code class="language-shell">git add file # 开始追踪一个文件或将文件中修改的内容加入 staging area
+git add dir # 开始追踪一个文件夹(递归)，或者将文件夹中修改的内容加入 staging area
+
+git add --all # 将所有的工作区的修改，加入暂存区，对于 untracked 的文件也生效
+
+# 如果指向将 tracked modified 的文件加入暂存区，可以使用，这只对 tracked 的文件生效
+git commit -a -m &quot;&quot;
+
+# add 逆向操作 Unstaging a Staged File
+git reset HEAD file
+
+# Unmodifying a Modified File 取消工作区的更改
+git checkout -- file # 这个命令很危险，如果撤销了，那么文件的修改就全没了，慎用
+</code></pre>
+<h3 id="git-stash"><a class="header" href="#git-stash">git stash</a></h3>
+<p>git stash 多用于多个分支之间切换</p>
+<pre><code class="language-shell"># keep the changes you’ve made to that file but still need to get it out of the way for now
+</code></pre>
+<p>将未提交的更改保存到堆栈，后面再恢复。(对 untrack 的更改不生效)</p>
+<pre><code class="language-shell">git stash # 将未 add 和 commit 的内容保存到栈中
+
+git stash save &quot;comment&quot; # 加一个 flag
+
+git stash pop # stash中的内容弹出，并应用到当前分支对应的工作目录上
+
+git stash apply # 不同于git stash pop，该命令不会将内容从堆栈中删除，也就说该命令能够将堆栈的内容多次应用到工作目录中，适应于多个分支的情况。
+
+git stash clear # 清除堆栈中的所有 内容
+</code></pre>
+<p>git stash 是全局的，可以跨 branch，在一个 branch 中 stash，可以在另一个 branch 中释放。</p>
+<h3 id="git-diff"><a class="header" href="#git-diff">git diff</a></h3>
+<p>官方提醒</p>
+<blockquote>
+<p>It’s important to note that git diff by itself doesn’t show all changes made since your last commit — only changes that are still unstaged. If you’ve staged all of your changes, git diff will give you no output</p>
+</blockquote>
+<pre><code class="language-shell">git diff --staged # compare all staged files to the last commit 
+git diff --staged file # compare file staged to the last commit
+
+# git diff 的结果是 工作区 并没有进入过暂存区的 diff
+git diff # compare all modified files to the file not yet go to the staging area
+git diff file # compare one file
+
+# not understand
+git diff HEAD -- readme.txt # 查看工作区 和 版本库里面最新版本的区别
+
+# 查看两个分支之间的差异
+git diff branch1 branch2
+</code></pre>
+<h3 id="git-commit"><a class="header" href="#git-commit">git commit</a></h3>
+<pre><code class="language-shell">git commit -m &quot;message&quot; # -m: --message
+
+git commit -a -m &quot;message&quot; # 等价于 git add + git commit, -a: --all
+# 注意，-a 参数只对 tracked files 生效，对于 untracked files 不生效
+
+# redo that commit, make the additional changes you forgot, stage them, and commit again using the --amend option
+git commit --amend 
+# 如果自上次提交后没有做任何更改，那么该命令就是修改上次 commit 的 message，通常用 git commit --amend -m &quot;message&quot;
+# 如果发现有一个文件修改后忘记 commit，则可以
+git add file
+git commit --amend -m &quot;message&quot;
+# It’s important to understand that when you’re amending your last commit, it’s as if the previous commit never happened, and it won’t show up in your repository history.
+# The obvious value to amending commits is to make minor improvements to your last commit, without cluttering your repository history with commit messages of the form, “Oops, forgot to add a file” or “Darn, fixing a typo in last commit”.
+</code></pre>
+<p>commit 日志标准化</p>
+<pre><code>chore: add Oyster build script
+docs: explain hat wobble
+feat: add beta sequence
+fix: remove broken confirmation message
+refactor: share logic between 4d3d3d3 and flarhgunnstow
+style: convert tabs to spaces
+test: ensure Tayne retains clothing
+
+Demo：
+feat(db-sync-spring-boot-starter): 增加 insert 的 MySQL 实现
+</code></pre>
+<h3 id="git-rm"><a class="header" href="#git-rm">git rm</a></h3>
+<pre><code class="language-shell"># untrack a file, rm it from the disk
+git rm file
+
+# untrack a fie, but keep it in the disk
+git rm --cache file
+
+# 误删恢复
+git checkout -- file
+
+# 对于已经手动删除的文件，可以直接 add 进入暂存区
+git add --all
+</code></pre>
+<h3 id="git-mv"><a class="header" href="#git-mv">git mv</a></h3>
+<pre><code class="language-shell"># rename a file in Git
+git mv file_from file_to
+
+# 等价于
+mv README.md README
+git rm README.md
+git add README
+</code></pre>
+<h3 id="git-log"><a class="header" href="#git-log">git log</a></h3>
+<pre><code class="language-shell">git log -p/--patch # shows the difference introduced in each commit
+
+git log -2 # 显示最新的两次 commit history
+
+git log --stat # Show statistics for files modified in each commit.
+
+# --pretty 对 log 输出进行格式化
+git log --pretty 
+git log --pretty=oneline # 一次 commit 只输出一行 log
+git log --pretty=short/full/fuller # more info than online
+git log --pretty=format:&quot;%h - %an, %ar : %s&quot;
+# The oneline and format options are particularly useful with another log option called --graph. This option adds a nice little ASCII graph showing your branch and merge history:
+git log --pretty=format:&quot;%h %s&quot; --graph
+git log --oneline --decorate --graph --all # view the commit history
+
+git log --since=2.weeks # gets the list of commits made in the last two weeks
+
+git log --author=&quot;wansho&quot; # filter on a specific author
+
+git log --grep=&quot;test.*&quot; # search for keywords in the commit messages
+
+git log -S  function_name # Only show commits adding or removing code matching the string
+
+# 在 非fast-forward 的类型 的 merge 后，会产生一个 commit 记录，但是这种 commit log 往往是不需要的，可以用 --no-merges 过滤掉这些 merge log  
+git log --no-merges # 
+
+#  if you want to see which commits modifying test files in the Git source code history were committed by Junio Hamano in the month of October 2008 and are not merge commits
+git log --pretty=&quot;%h - %s&quot; --author='Junio C Hamano' --since=&quot;2008-10-01&quot;  --before=&quot;2008-11-01&quot; --no-merges -- t/
+
+# 查看 branch 树形结构
+git log --graph --decorate --oneline --simplify-by-decoration --all
+</code></pre>
+<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>-&lt;n&gt;</code></td><td>Show only the last n commits</td></tr>
+<tr><td>--since, --after</td><td>Limit the commits to those made after the specified date.</td></tr>
+<tr><td>--until, --before</td><td>Limit the commits to those made before the specified date.</td></tr>
+<tr><td>--author</td><td>Only show commits in which the author entry matches the specified string.</td></tr>
+<tr><td>--committer</td><td>Only show commits in which the committer entry matches the specified string.</td></tr>
+<tr><td>--grep</td><td>Only show commits with a commit message containing the string</td></tr>
+<tr><td>-S</td><td>Only show commits adding or removing code matching the string</td></tr>
+</tbody></table>
+<h3 id="git-remote"><a class="header" href="#git-remote">git remote</a></h3>
+<p><strong>origin</strong>: default name Git gives to the server you cloned from. Git 给默认的远程库起的名称，实际上，origin 只是一个 nick-name，我们给远程库起任何名字都可以。</p>
+<p>注意：</p>
+<ol>
+<li>远程库可能不止一个，尤其是多人协作的时候</li>
+<li>远程库并不一定在远程，可能就是在本地电脑上</li>
+</ol>
+<pre><code class="language-shell"># show all remote repos
+git remote
+git remote -v # show the url -v: --verbose 冗长的
+
+# add remote repos
+git remote add remote-repos-shortname url 
+git remote add origin git@github.com:wansho/Last-Statement-of-Death-Row.git
+git remote add repos1 git@github.com:wansho/Last-Statement-of-Death-Row.git 
+git remote add origin https://github.com/wansho/test.git # 兼容两种协议
+
+# remove remote repos
+git remote remove remote-repos-shortname 
+
+# see more info about a remote repos
+git remote show remote-repos-shortname
+# The command helpfully tells you that if you’re on the master branch and you run git pull, it will automatically merge in the master branch on the remote after it fetches all the remote references. It also lists all the remote references it has pulled down.
+
+# change remote-repos-shortname
+git remote rename origin repos1
+
+# remote a remote-repos
+git remote remove origin
+</code></pre>
+<h3 id="git-fetch"><a class="header" href="#git-fetch">git fetch</a></h3>
+<p>官方解释</p>
+<blockquote>
+<p>This command looks up which server “origin” is (in this case, it’s git.ourcompany.com), fetches any data from it that you don’t yet have, and updates your local database, moving your origin/master pointer to its new, more up-to-date position. </p>
+<p>Git fetch origin fetches any new work that has been pushed to that server since you cloned (or last fetched from) it. It’s important to note that the git fetch command only downloads the data to your local repository — it doesn’t automatically merge it with any of your work or modify what you’re currently working on. You have to merge it manually into your work when you’re ready .</p>
+</blockquote>
+<pre><code class="language-shell"># 从远程库拉取所有分支
+git fetch origin
+
+# 从指定远程库拉取指定分支
+git fetch origin test 
+git fetch git://git.kernel.org/pub/scm/git/git.git maint # 从远程库 拉取 maint 分支
+
+git fetch origin +pu:pu maint:tmp
+# This updates (or creates, as necessary) branches pu and tmp in the local repository by fetching from the branches (respectively) pu and maint from the remote repository. The pu branch will be updated even if it is does not fast-forward, because it is prefixed with a plus sign; tmp will not be.
+</code></pre>
+<h3 id="git-pull"><a class="header" href="#git-pull">git pull</a></h3>
+<p>git-pull - Fetch from and integrate with another repository or a local branch.</p>
+<pre><code class="language-shell"># 从远程仓库拉取某个分支
+git pull origin master
+# 等价于
+git fetch origin master
+git merge origin/master
+
+# 将远程仓库与本地仓库合并
+git pull origin master --allow-unrelated-histories 
+</code></pre>
+<h3 id="git-push"><a class="header" href="#git-push">git push</a></h3>
+<pre><code class="language-shell"># push local branch to remote repos
+git push origin master # origin 代表远程库，master 代表本地的 branch
+git push origin dev # dev 是另外一个 local branch
+
+# 将本地的 master 分支推送到 origin，并且指定 origin 为默认主机，后面就可以不加任何参数，使用 git push 了
+# 如果我们在 push 的时候，加了 -u 参数，就将本地的 master 分支推送到远程的这个配置，存储了。等到 pull 的时候，git pull 就会默认从远程拉取内容合并到本地的 master 分支，不需要 git pull origin master
+git push -u origin master 
+
+# 强制提交到远程仓库 
+git push origin HEAD --force 
+
+# 将本地的分支强制提交到远程的某分支
+git push -f origin HEAD:远程的分支
+</code></pre>
+<p>将本地仓库提交到远程新建的仓库，有两个方法：</p>
+<ul>
+<li>
+<p>强制提交到远程仓库，相当于本地仓库直接覆盖了远程，风险很大</p>
+</li>
+<li>
+<p>拉取远程仓库，与本地仓库合并，然后再推送到远程</p>
+<pre><code class="language-shell">git pull origin master --allow-unrelated-histories
+</code></pre>
+</li>
+</ul>
+<h3 id="git-tag-git-show"><a class="header" href="#git-tag-git-show">git tag, git show</a></h3>
+<p>注意：<code>git push</code> 并不会默认将 tags 推送到 remote-repos</p>
+<pre><code class="language-shell"># show all the tags
+git tag
+
+# show the tags that match a particular pattern
+git tag -l &quot;v1.*&quot; # -l: --list
+
+# create a tag
+# -a annotate
+# -m message
+git tag -a tag-name -m tag-message # -a: --annotate
+git tag -a v1.4 -m &quot;my version 1.4&quot;
+
+# 为之前的 commit 记录打标签
+git tag -a v1.2 commit-hash-str
+
+# show tags with commit message
+git show tag-name
+
+# push all tags to the remote-repos that are not already there
+git push origin --tags
+# push one tag to remote-repos
+git push origin tag-name
+
+# delete tags
+git tag -d tag-name
+git push origin --delete tag-name
+
+# 查看一个标签指向的版本文件
+git checkout tag-name
+# 则会使仓库进入 detached HEAD 状态，即当前不在任何分支，如果我们在此基础上做了某些修改并 commit，这个 commit 就会因为没有 branch 而丢失，所以如果我们想要修改一个老版本的 bug，应该先创建一个分支：
+git checkout -b branch-name tag-name
+</code></pre>
+<h3 id="git-reset-git-reflog"><a class="header" href="#git-reset-git-reflog">git reset, git reflog</a></h3>
+<pre><code class="language-shell"># 回滚到上一个版本
+git reset --hard HEAD^
+git reset --hard 459f # 此处的版本号不需要写全，写前几个字符就够了，git 会自动去查找补全。
+
+# show all the commits since the initialization of repos
+git reflog
+
+# Unstaging a Staged File 取消加入暂存区，git add 的逆操作
+git reset HEAD file
+</code></pre>
+<h2 id="git-branching"><a class="header" href="#git-branching">Git Branching</a></h2>
+<h3 id="git-branch-git-checkout"><a class="header" href="#git-branch-git-checkout">git branch, git checkout</a></h3>
+<p>Branching means you diverge from the main line of development and continue to do work without messing with that main line. </p>
+<p>Git 的杀手级功能，Git 分支的创建是轻量的，快速的。</p>
+<p>一个 branch 实际上只是一个指向某一个 commit 对象的指针。</p>
+<p><strong>branch</strong> 官方解释：</p>
+<blockquote>
+<p>A branch in Git is simply a lightweight movable pointer to one of these commits. The default branch name in Git is master. As you start making commits, you’re given a master branch that points to the last commit you made. Every time you commit, the master branch pointer moves forward automatically </p>
+<p>a branch in Git is actually a simple file that contains the 40 character SHA-1 checksum of the commit it points to, branches are cheap to create and destroy. Creating a new branch is as quick and simple as writing 41 bytes to a file (40 characters and a newline) </p>
+</blockquote>
+<p><strong>master</strong> 官方解释：</p>
+<blockquote>
+<p>The “master” branch in Git is not a special branch. It is exactly like any other branch. The only reason nearly every repository has one is that the git init command creates it by default and most people don’t bother to change it </p>
+</blockquote>
+<p><strong>HEAD</strong> 官方解释：</p>
+<blockquote>
+<p>How does Git know what branch you’re currently on? It keeps a special pointer called HEAD. </p>
+<p>This is a pointer to the local branch you’re currently on. </p>
+</blockquote>
+<pre><code class="language-shell"># new a branch
+git branch branch-name
+# This creates a new pointer to the same commit you’re currently on
+
+# delete a branch
+git branch -d branch-name
+
+# 查看所有分支，包括远程的
+git branch -a
+
+# show all the branch
+git branch 
+# 注意，分支名前面的 * 表示我们当前处于哪一个分支，即 HEAD 指针指向的分支
+# show the last commit of all branch
+git branch -v
+# show which branches are already merged into the branch you refer to
+git branch --merged master
+# show all the branches that contain work you haven’t yet merged into master
+git branch --no-merged master
+# 分支更改名称
+git branch -m oldname newname
+
+# change branch
+git checkout test
+# This moves HEAD to point to the testing branch. HEAD points to the current branch
+# 注意：如果我们的工作区有没有 commit 的修改，而且与要 checkout 的分支冲突的话，Git 是不允许 checkout 的
+git checkout master
+# 上面这个命令做了两件事：
+# 1. 将 HEAD 指针指向了 master 分支
+# 2. 将工作区的文件恢复到 master 的状态
+# new a branch and checkout 
+git checkout -b branch-name
+# new a branch called serverfix pulled from origin/serverfix, a local branch that you can work on that starts where origin/serverfix is
+git checkout -b serverfix origin/serverfix
+
+# 查看 commit 的 history
+git log --oneline --decorate --graph --all
+
+# 查看 branch 树形结构
+git log --graph --decorate --oneline --simplify-by-decoration --all
+
+# 删除远程分支
+git push origin --delete &lt;远程分支名称&gt;
+</code></pre>
+<h3 id="git-merge"><a class="header" href="#git-merge">git merge</a></h3>
+<p>没有分叉(<strong>diverged</strong>)的 merge，叫做 <strong>fast-forward</strong> ，其合并后并不会产生一个 commit 记录。</p>
+<p>有分叉的 merge，Git 采用 Three-way（two snapshots pointed to by the branch tips and the common ancestor of the two ） merge，Git 根据三方创建了一个新的快照，并产生了一个新的 commit 记录。</p>
+<p>fast-forward 官方解释：</p>
+<blockquote>
+<p>when you try to merge one commit with a commit that can be reached by following the first commit’s history, Git simplifies things by moving the pointer forward because there is no divergent work to merge together — this is called a “fast-forward.”</p>
+</blockquote>
+<pre><code class="language-shell"># merge demo, master merge testing
+git checkout master
+git merge testing
+
+# 将远程仓库的 master 分支 merge 到当前的分支
+git merge origin/master
+# 如果报错，则
+git merge origin/master --allow-unrelated-histories
+
+# 默认情况下执 fast-forward 合并，并不会产生一个 commit 记录，为了保证版本演进的清晰，加上 --no-ff (no fast-forward) 参数，生成 commit 记录
+git merge --no-ff develop
+
+# 如果合并后，引起冲突，想取消 git pull，则使用该命令
+git merge --abort
+</code></pre>
+<p><strong>冲突的解决办法</strong></p>
+<p>merge 发起后，如果出现了冲突，Git 会一直处于 merging 的状态，并提醒用户处理 conflict，并且冲突的文件里，会用 Git 的 standard conflict-resolution marker 去 mark 有冲突的地方，只有解决了这些有冲突的行，才能继续下去。下面是一个标准的冲突域：</p>
+<pre><code class="language-shell">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html
+&lt;div id=&quot;footer&quot;&gt;contact : email.support@github.com&lt;/div&gt;
+=======
+&lt;div id=&quot;footer&quot;&gt;
+please contact us at support@github.com
+&lt;/div&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html
+</code></pre>
+<p><code>=======</code> 上面的是 master 分支的内容，下面的是 testing 分支的内容，我们需要判断保留哪一个版本，或者改成一个新的版本，然后在代码里进行修改，例如修改成如下的内容，注意要把所有的 conflict-resolution marker 全部删除：</p>
+<pre><code class="language-html">&lt;div id=&quot;footer&quot;&gt;
+please contact us at email.support@github.com
+&lt;/div&gt;
+</code></pre>
+<p>注意此时我们仍然还处于 merging 的状态，可以用 <code>git status</code> 看到我们的状态：<code>All conflicts fixed but you are still merging. </code> 所以最后我们需要将 merge 的修改 commit: <code>git commit -m &quot;message&quot;</code></p>
+<h4 id="topic-branch-1"><a class="header" href="#topic-branch-1">topic branch</a></h4>
+<p>官方解释：</p>
+<blockquote>
+<p>A topic branch is a short-lived branch that you create and use for a single particular feature or related work. This is something you’ve likely never done with a VCS before because it’s generally too expensive to create and merge branches. But in Git it’s common to create, work on, merge, and delete branches several times a day. </p>
+</blockquote>
+<p><code>git branch</code>技术给小步试错，快速迭代带来了便捷</p>
+<h3 id="git-cherry-pick"><a class="header" href="#git-cherry-pick">git cherry-pick</a></h3>
+<p>遴选！</p>
+<p>git merge 是将一个分支的所有变动，合并到另一个分支。有时候我们不需要把所有的变动合并到某个分支，而是只想要把几次 commit 变动的内容合并到其他分支。这个时候就用到了 cherry-pick。</p>
+<p>详细介绍：<a href="https://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html">阮一峰 git cherry-pick 教程</a></p>
+<p>demo: 如果我们想把 dev 分支的三个提交  5ea6e 8a28f 8b4bc 合并到 master 分支，可以这么做：</p>
+<pre><code class="language-shell">git checkout master
+git cherry-pick 5ea6e 8a28f 8b4bc
+</code></pre>
+<p>master 分支会产生三个新的 commit，内容和 5ea6e 8a28f 8b4bc 完全一致，但是 hash 值变了，表示是新的提交。</p>
+<p><strong>注意</strong>：5ea6e 要早于 8a28f，否则命令将失败，但不会报错。</p>
+<p>也可以批量合并一个范围</p>
+<pre><code class="language-shell">git cherry-pick A..B 
+</code></pre>
+<h3 id="remote-branches-explanation"><a class="header" href="#remote-branches-explanation">remote branches explanation</a></h3>
+<h4 id="cmd-git-remote-show"><a class="header" href="#cmd-git-remote-show">cmd: git remote show</a></h4>
+<pre><code class="language-shell"># show remote branch and info of remote-repos
+git remote show origin
+</code></pre>
+<h4 id="cmd-git-push"><a class="header" href="#cmd-git-push">cmd: git push</a></h4>
+<pre><code class="language-shell"># push local branch to remote repos
+git push origin master # origin 代表远程库，master 代表本地的 main branch
+git push origin dev # dev 是另外一个 local branch
+
+# Take my serverfix and make it the remote’s serverfix
+git push origin serverfix:serverfix
+# push your local serverfix branch to the awesomebranch branch on the remote project
+git push origin serverfix:awesomebranch
+</code></pre>
+<h4 id="concept-remote-tracking-branches"><a class="header" href="#concept-remote-tracking-branches">concept: Remote-tracking branches</a></h4>
+<p>remote-tracking branch 是一个本地的指向 remote branch 的指针。</p>
+<p>官方解释：</p>
+<blockquote>
+<p>Remote-tracking branches are references to the state of remote branches. They’re local references that you can’t move; Git moves them for you whenever you do any network communication, to make sure they accurately represent the state of the remote repository. Think of them as bookmarks, to remind you where the branches in your remote repositories were the last time you connected to them. </p>
+</blockquote>
+<p>form of remote-tracking branch：<code>&lt;remote&gt;/&lt;branch&gt; </code></p>
+<p>实际上，<code>git fetch</code> 命令只是用来 update remote-tracking branches，它会 fetches any data from it that you don’t yet have, and updates your local database, moving your origin/master pointer to its new, more up-to-date position. </p>
+<p>官方解释</p>
+<blockquote>
+<p>It’s important to note that when you do a fetch that brings down new remote-tracking branches, you don’t automatically have local, editable copies of them. In other words, in this case, you don’t have a new serverfix branch — you have only an origin/serverfix pointer that you can’t modify.</p>
+</blockquote>
+<h4 id="concept-tracking-branches"><a class="header" href="#concept-tracking-branches">concept: Tracking Branches</a></h4>
+<p>顾名思义，指的是一个本地的分支，与  remote-repos/branch 关联，然后变成了要给 tracking branch</p>
+<p>官方解释</p>
+<blockquote>
+<p>When you clone a repository, it generally automatically creates a master branch that tracks
+origin/master. </p>
+<p>Checking out a local branch from a remote-tracking branch automatically creates what is called a “tracking branch” (and the branch it tracks is called an “upstream branch”). Tracking branches are local branches that have a direct relationship to a remote branch. If you’re on a tracking branch and type git pull, Git automatically knows which server to fetch from and which branch to merge in. </p>
+</blockquote>
+<pre><code class="language-shell"># 使得当前的分支与远程的分支关联
+git checkout --track origin/serverfix
+
+# 在本地创建一个分支，并于远程的分支产生关联
+git checkout -b &lt;branch&gt; &lt;remote&gt;/&lt;branch&gt;
+
+# In fact, this is so common that there’s even a shortcut for that shortcut. If the branch name you’re trying to checkout (a) doesn’t exist and (b) exactly matches a name on only one remote, Git will create a tracking branch for you:
+git checkout serverfix 
+
+# If you already have a local branch and want to set it to a remote branch you just pulled down, or want to change the upstream branch you’re tracking, you can use the -u or --set-upstream-to option to git branch to explicitly set it at any time.
+git branch -u origin/serverfix # 修改关联的远程分支
+
+# see what tracking branches you have set up
+git branch -vv # 查看本地仓库的分支和远程仓库的分支的 diff 和 relationship
+
+# It’s important to note that these numbers are only since the last time you fetched from each server. This command does not reach out to the servers, it’s telling you about what it has cached from these servers locally. If you want totally up to date ahead and behind numbers, you’ll need to fetch from all your remotes right before running this. You could do that like this
+git fetch --all; git branch -vv # 及时更新本地的仓库和远程仓库的 diff
+
+# 删除远程仓库的分支
+git push origin --delete serverfix
+</code></pre>
+<h2 id="fixed-problems"><a class="header" href="#fixed-problems">Fixed Problems</a></h2>
+<h3 id="git-不区分文件名大小写"><a class="header" href="#git-不区分文件名大小写">Git 不区分文件名大小写</a></h3>
+<h3 id="中文乱码"><a class="header" href="#中文乱码">中文乱码</a></h3>
+<pre><code class="language-shell"># 中文乱码
+git config --global core.quotepath false
+git status -s
+</code></pre>
+<h3 id="生成公钥的命令"><a class="header" href="#生成公钥的命令">生成公钥的命令</a></h3>
+<pre><code class="language-shell"># 生成公钥的命令
+ssh-keygen
+# 生成的文件地址：/c/Users/wanshuo/.ssh/id_rsa，一个公钥一个私钥，私钥为 id_rsa, 公钥为 id_rsa.pub
+</code></pre>
+<h3 id="git-不追踪空文件夹"><a class="header" href="#git-不追踪空文件夹">Git 不追踪空文件夹</a></h3>
+<pre><code class="language-shell"># git 不追踪空的文件夹
+在空文件夹下加入 .gitignore 文件，内容为
+*
+!.gitignore
+</code></pre>
+<h3 id="设置代理"><a class="header" href="#设置代理">设置代理</a></h3>
+<pre><code class="language-shell"># git clone 速度慢到几 KB
+1. 打开 lantern，使用代理服务器，把端口调整到 lantern 的监听端口
+2. 设置 Git 的代理：
+git config --global http.proxy http://127.0.0.1:7890 # 2136 就是翻墙软件代理的端口号
+git config --global https.proxy https://127.0.0.1:7890
+
+#对于 GitHub 中的仓库，可以局部配置 proxy:
+git config --local http.proxy http://127.0.0.1:7890 # 2136 就是翻墙软件代理的端口号
+git config --local https.proxy https://127.0.0.1:7890
+git config --local user.name &quot;wansho&quot;
+git config --local user.email wanshojs@hotmail.com
+
+# 注意：此模式只适用于 http 协议，不适用于 SSH 协议
+# 同样适用于 WSL
+
+# 取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+</code></pre>
+<p>测试了一下，github 在中国、日本、韩国都没有服务器，将节点切换到这三个国家速度都很慢，切换到美国速度就非常快。</p>
+<h3 id="windows-git-的-vim-无法粘贴"><a class="header" href="#windows-git-的-vim-无法粘贴">Windows git 的 vim 无法粘贴</a></h3>
+<pre><code class="language-shell"># windows git 下的 vim 无法粘贴
+快捷键：shift + insert
+</code></pre>
+<h3 id="push--pull-不输入密码"><a class="header" href="#push--pull-不输入密码">push / pull 不输入密码</a></h3>
+<pre><code class="language-shell">git config --global credential.helper store
+</code></pre>
+<h2 id="github"><a class="header" href="#github">Github</a></h2>
+<h3 id="约定俗成的规则"><a class="header" href="#约定俗成的规则">约定俗成的规则</a></h3>
+<ol>
+<li>Github 的仓库名字的标准：<code>awesome-react-native</code></li>
+<li>Github 的 README 渲染不支持 TOC</li>
+<li>Github 在 VPN 环境下 clone 时，Https 的协议比 SSH 的协议快</li>
+</ol>
+<h3 id="github-gist"><a class="header" href="#github-gist">Github Gist</a></h3>
+<p>Gist 是一个用来存放文件的仓库，本质上就是一个 Git Repository，不能上传文件夹</p>
+<p>With gists, you can share single files, parts of files, and full applications with other people. Directories can't be shared. You can access your gists at <a href="https://gist.github.com/">https://gist.github.com</a>.</p>
+<p>Every gist is a Git repository, which means that it can be forked and cloned. The gist editor is powered by <a href="https://codemirror.net/">CodeMirror</a>.</p>
+<p><strong>作用</strong></p>
+<p>共享文件，例如共享专业课考研资料。</p>
+<h3 id="github-collaboration"><a class="header" href="#github-collaboration">GitHub Collaboration</a></h3>
+<h4 id="fork"><a class="header" href="#fork">fork</a></h4>
+<p>fork 有两个作用：</p>
+<ol>
+<li>在别人代码的基础上进行自己的开发</li>
+<li>向 forked 的 project 提交修改，通常用于代码协作</li>
+</ol>
+<h4 id="pull-requests"><a class="header" href="#pull-requests">pull requests</a></h4>
+<p>pull  request 用于提交修改，通常用于仓库没有写入权限时的多人协作。</p>
+<p>如果对于仓库有写入权限，那么用 topic branch 即可。<code>pull request</code>的具体操作如下：</p>
+<ol>
+<li>
+<p>Fork the repository.</p>
+</li>
+<li>
+<p>Make the fix.</p>
+</li>
+<li>
+<p>Submit a <em>pull request</em> to the project owner</p>
+</li>
+</ol>
+<h3 id="github-organization"><a class="header" href="#github-organization">GitHub Organization</a></h3>
+<p>Github 可以创建一个 Organization, setting —&gt; organization。</p>
+<p>Github Organization 不能自己申请加入，只能通过别人的邀请才能加入</p>
+<h3 id="github-contributions-规则"><a class="header" href="#github-contributions-规则">Github Contributions 规则</a></h3>
+<ul>
+<li>必须是主分支（其他分支不计入 contribution），通常是 master 分支，如果是其他分支的 commit，那么在 merge 到主分支之后，就会加入统计</li>
+<li>隐藏的项目，也算作 contribution 的</li>
+</ul>
+<h3 id="github-projects-介绍"><a class="header" href="#github-projects-介绍">Github projects 介绍</a></h3>
+<h3 id="优秀的开源组织"><a class="header" href="#优秀的开源组织">优秀的开源组织</a></h3>
+<p><a href="https://github.com/apachecn">ApacheCN</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../computer-science-notebook/github/gitbook.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../computer-science-notebook/github/github-actions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../computer-science-notebook/github/gitbook.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../computer-science-notebook/github/github-actions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

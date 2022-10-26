@@ -1,0 +1,791 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>MySQL-101 - wanshuo-gitbook</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Table of contents</li><li class="chapter-item expanded "><a href="../../reading/modern-os/index.html"><strong aria-hidden="true">1.</strong> 现代操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/modern-os/chapter-1-introduction.html"><strong aria-hidden="true">1.1.</strong> chapter1-introduction</a></li><li class="chapter-item expanded "><a href="../../reading/modern-os/chapter-2-processes-and-threads.html"><strong aria-hidden="true">1.2.</strong> chapter2-processes-and-threads</a></li><li class="chapter-item expanded "><a href="../../reading/modern-os/chapter-7-virtualization-and-cloud.html"><strong aria-hidden="true">1.3.</strong> chapter7-virtualization-and-cloud</a></li><li class="chapter-item expanded "><a href="../../reading/modern-os/questions.html"><strong aria-hidden="true">1.4.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/index.html"><strong aria-hidden="true">2.</strong> 流畅的 Python</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/index.html"><strong aria-hidden="true">2.1.</strong> chapters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter1.the-python-data-model.html"><strong aria-hidden="true">2.1.1.</strong> chapter1-the-python-data-model</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter2.an-array-of-sequences.html"><strong aria-hidden="true">2.1.2.</strong> chapter2-an-array-of-sequences</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter3.dictionaries-and-sets.html"><strong aria-hidden="true">2.1.3.</strong> chapter3-dictionaries-and-sets</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter4.text-versus-bytes.html"><strong aria-hidden="true">2.1.4.</strong> chapter4-text-versus-bytes</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter5.first-class-functions.html"><strong aria-hidden="true">2.1.5.</strong> chapter5-first-class-functions</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter6-design-patterns-with-first-class-functions.html"><strong aria-hidden="true">2.1.6.</strong> chapter6-design-patterns-with-functions</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter7-function-decorators-and-closures.html"><strong aria-hidden="true">2.1.7.</strong> chapter7-function-decorators-and-closures</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter8-object-reference-mutability-recycling.html"><strong aria-hidden="true">2.1.8.</strong> chapter8-object-reference-mutability-and-recycling</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter9-a-pythonic-object.html"><strong aria-hidden="true">2.1.9.</strong> chapter9-a-pythonic-object</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter10-sequence-hacking-hashing-slicing.html"><strong aria-hidden="true">2.1.10.</strong> chapter10-sequencec-hacking-hashing-and-slicing</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter11-interfaces-from-protocols-to-abcs.html"><strong aria-hidden="true">2.1.11.</strong> chapter11-interfaces-from-protocols-to-abcs</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/index.html"><strong aria-hidden="true">2.2.</strong> summary</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/questions.html"><strong aria-hidden="true">2.2.1.</strong> questions</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/python-code-optimization.html"><strong aria-hidden="true">2.2.2.</strong> python-code-optimization</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/python-30-seconds.html"><strong aria-hidden="true">2.2.3.</strong> python-30-seconds</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reading/computer-networking/index.html"><strong aria-hidden="true">3.</strong> 计算机网络-自顶向下</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/computer-networking/chapter1-computer-networks-and-the-internet.html"><strong aria-hidden="true">3.1.</strong> chapter1-computer-networks-and-the-internet</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/index.html"><strong aria-hidden="true">4.</strong> 数据结构与算法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/index.html"><strong aria-hidden="true">4.1.</strong> chapters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-1-introduction.html"><strong aria-hidden="true">4.1.1.</strong> chapter1-introduction</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-2-algorithm-analysis.html"><strong aria-hidden="true">4.1.2.</strong> chapter2-algorithm-analysis</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-3-list-stack-queue.html"><strong aria-hidden="true">4.1.3.</strong> chapter3-list-stack-queue</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-4-tree.html"><strong aria-hidden="true">4.1.4.</strong> chapter4-tree</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-6-heap.html"><strong aria-hidden="true">4.1.5.</strong> chapter6-heap</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-7-sorting.html"><strong aria-hidden="true">4.1.6.</strong> chapter7-sorting</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/summary/index.html"><strong aria-hidden="true">4.2.</strong> summary</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/summary/questions.html"><strong aria-hidden="true">4.2.1.</strong> questions</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/summary/classic-problems.html"><strong aria-hidden="true">4.2.2.</strong> 经典问题</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reading/books/index.html"><strong aria-hidden="true">5.</strong> 其他书籍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/books/bookshelf.html"><strong aria-hidden="true">5.1.</strong> 书籍列表</a></li><li class="chapter-item expanded "><a href="../../reading/books/zen-and-the-art.html"><strong aria-hidden="true">5.2.</strong> 禅与摩托车维修艺术</a></li><li class="chapter-item expanded "><a href="../../reading/books/the-road-less-traveled.html"><strong aria-hidden="true">5.3.</strong> 少有人走的路</a></li><li class="chapter-item expanded "><a href="../../reading/books/time-as-a-friend.html"><strong aria-hidden="true">5.4.</strong> 李笑来-与时间做朋友</a></li><li class="chapter-item expanded "><a href="../../reading/books/reborn.html"><strong aria-hidden="true">5.5.</strong> 李笑来-Reborn</a></li><li class="chapter-item expanded "><a href="../../reading/books/shediao-yingxiongzhuan.html"><strong aria-hidden="true">5.6.</strong> 射雕英雄传</a></li><li class="chapter-item expanded "><a href="../../reading/books/liangjian.html"><strong aria-hidden="true">5.7.</strong> 亮剑</a></li><li class="chapter-item expanded "><a href="../../reading/books/wan-li-shi-wu-nian.html"><strong aria-hidden="true">5.8.</strong> 万历十五年</a></li><li class="chapter-item expanded "><a href="../../reading/books/zi-bei-yu-chao-yue.html"><strong aria-hidden="true">5.9.</strong> 自卑与超越</a></li><li class="chapter-item expanded "><a href="../../reading/books/ming-li-xue.html"><strong aria-hidden="true">5.10.</strong> 王德峰-命理学</a></li><li class="chapter-item expanded "><a href="../../reading/books/a-brief-history-of-humankind.html"><strong aria-hidden="true">5.11.</strong> 人类简史</a></li><li class="chapter-item expanded "><a href="../../reading/books/mao-xuan.html"><strong aria-hidden="true">5.12.</strong> 毛选</a></li><li class="chapter-item expanded "><a href="../../reading/books/tian-dao.html"><strong aria-hidden="true">5.13.</strong> 遥远的救世主</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/index.html"><strong aria-hidden="true">6.</strong> 算法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/arraylist-vs-linklist.html"><strong aria-hidden="true">6.1.</strong> arraylist-vs-linklist</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/information-entropy.html"><strong aria-hidden="true">6.2.</strong> information-entropy</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/summary.html"><strong aria-hidden="true">6.3.</strong> summary</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/index.html"><strong aria-hidden="true">7.</strong> database</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/zen-of-db.html"><strong aria-hidden="true">7.1.</strong> zen-of-db</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-101.html" class="active"><strong aria-hidden="true">7.2.</strong> MySQL-101</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-102.html"><strong aria-hidden="true">7.3.</strong> MySQL-102</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-103.html"><strong aria-hidden="true">7.4.</strong> MySQL-103</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/elastic-search.html"><strong aria-hidden="true">7.5.</strong> Elasticsearch</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/elastic-logstash.html"><strong aria-hidden="true">7.6.</strong> Logstash</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/oracle-101.html"><strong aria-hidden="true">7.7.</strong> Oracle-101</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-leetcode.html"><strong aria-hidden="true">7.8.</strong> Mysql-Leetcode</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/database-others.html"><strong aria-hidden="true">7.9.</strong> 其他数据库产品</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/design-data-intensive-app.html"><strong aria-hidden="true">7.10.</strong> 书籍-设计数据密集型应用</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/questions.html"><strong aria-hidden="true">7.11.</strong> Questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/index.html"><strong aria-hidden="true">8.</strong> 密码学与网络安全</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/cryptography.html"><strong aria-hidden="true">8.1.</strong> 密码学</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/ssh.html"><strong aria-hidden="true">8.2.</strong> ssh 教程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/authentication-authorization.html"><strong aria-hidden="true">8.3.</strong> 认证和授权</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/single-sign-on.html"><strong aria-hidden="true">8.4.</strong> SSO 单点登录</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/oauth.html"><strong aria-hidden="true">8.5.</strong> OAuth</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/jwt.html"><strong aria-hidden="true">8.6.</strong> jwt</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/security-vulnerability.html"><strong aria-hidden="true">8.7.</strong> 安全漏洞</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/index.html"><strong aria-hidden="true">9.</strong> 计算机网络相关知识</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/computer-network.html"><strong aria-hidden="true">9.1.</strong> 计算机网络小知识集合</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/web-service.html"><strong aria-hidden="true">9.2.</strong> web-service</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/http-protocol.html"><strong aria-hidden="true">9.3.</strong> http 协议</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/questions.html"><strong aria-hidden="true">9.4.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/index.html"><strong aria-hidden="true">10.</strong> 编程语言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/go.html"><strong aria-hidden="true">10.1.</strong> go</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/kotlin.html"><strong aria-hidden="true">10.2.</strong> kotlin</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/rust.html"><strong aria-hidden="true">10.3.</strong> rust</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/svg.html"><strong aria-hidden="true">10.4.</strong> svg</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/regex.html"><strong aria-hidden="true">10.5.</strong> regex</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/windows-bat.html"><strong aria-hidden="true">10.6.</strong> windows-bat</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/qt.html"><strong aria-hidden="true">10.7.</strong> QT</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/index.html"><strong aria-hidden="true">11.</strong> C++ 开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/how-to-learn-c.html"><strong aria-hidden="true">11.1.</strong> C语言学习教程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/think-c.html"><strong aria-hidden="true">11.2.</strong> 书籍：Think-C</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/deep-c.html"><strong aria-hidden="true">11.3.</strong> C语言深度剖析</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/c++.html"><strong aria-hidden="true">11.4.</strong> C++学习</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/index.html"><strong aria-hidden="true">12.</strong> Python 学习</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/note-for-pandas.html"><strong aria-hidden="true">12.1.</strong> pandas 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/django-version-upgrade.html"><strong aria-hidden="true">12.2.</strong> django 版本升级</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-hacker.html"><strong aria-hidden="true">12.3.</strong> 书籍：python-hacker</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-craftsman.html"><strong aria-hidden="true">12.4.</strong> 书籍：python 工匠</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-packages.html"><strong aria-hidden="true">12.5.</strong> pip 相关知识</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-exception.html"><strong aria-hidden="true">12.6.</strong> python 异常处理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-cheetsheet.html"><strong aria-hidden="true">12.7.</strong> python 小知识</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/jupyter-notebook.html"><strong aria-hidden="true">12.8.</strong> jupyter 使用笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/different-methods-in-class.html"><strong aria-hidden="true">12.9.</strong> python 不同的方法</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/pep.html"><strong aria-hidden="true">12.10.</strong> pep: python-enhanced-proposal</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-algorithm-data-structure.html"><strong aria-hidden="true">12.11.</strong> python 数据结构与算法</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/multiprocessing-and-threading.html"><strong aria-hidden="true">12.12.</strong> 多线程和多进程</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/index.html"><strong aria-hidden="true">13.</strong> Java 学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java.html"><strong aria-hidden="true">13.1.</strong> 毕向东 java se 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java.html"><strong aria-hidden="true">13.2.</strong> java 进阶</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-collection-map.html"><strong aria-hidden="true">13.3.</strong> Java collection学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-array.html"><strong aria-hidden="true">13.4.</strong> Java array 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/string.html"><strong aria-hidden="true">13.5.</strong> Java string 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/annotation.html"><strong aria-hidden="true">13.6.</strong> Java Annotation 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-datetime.html"><strong aria-hidden="true">13.7.</strong> java datetime 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-reflection.html"><strong aria-hidden="true">13.8.</strong> java 反射学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-new-features.html"><strong aria-hidden="true">13.9.</strong> Java 新特性</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-log.html"><strong aria-hidden="true">13.10.</strong> Java 日志</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-exception.html"><strong aria-hidden="true">13.11.</strong> Java 异常</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-vm.html"><strong aria-hidden="true">13.12.</strong> java 虚拟机</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-junit.html"><strong aria-hidden="true">13.13.</strong> Java JUnit 测试</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/template-engine.html"><strong aria-hidden="true">13.14.</strong> Java 模板引擎</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/design-patterns.html"><strong aria-hidden="true">13.15.</strong> 设计模式学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/generics.html"><strong aria-hidden="true">13.16.</strong> 泛型</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/stream.html"><strong aria-hidden="true">13.17.</strong> stream 学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/functional-programming.html"><strong aria-hidden="true">13.18.</strong> 函数式编程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/program-development-in-java.html"><strong aria-hidden="true">13.19.</strong> Java 程序开发原理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-bin.html"><strong aria-hidden="true">13.20.</strong> Java 自带命令学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-dev-tools.html"><strong aria-hidden="true">13.21.</strong> Java 开发工具</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/big-number.html"><strong aria-hidden="true">13.22.</strong> 大数计算和存储</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/index.html"><strong aria-hidden="true">14.</strong> JavaWeb 学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/database.html"><strong aria-hidden="true">14.1.</strong> 访问数据库笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/java-persistence-api.html"><strong aria-hidden="true">14.2.</strong> JPA 深入学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/mybatis.html"><strong aria-hidden="true">14.3.</strong> mybatis 学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/bean-pojo-dto.html"><strong aria-hidden="true">14.4.</strong> java-bean 分类</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/maven.html"><strong aria-hidden="true">14.5.</strong> Maven 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/dependencies.html"><strong aria-hidden="true">14.6.</strong> 依赖库整理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/micro-service.html"><strong aria-hidden="true">14.7.</strong> 微服务架构课</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/architect.html"><strong aria-hidden="true">14.8.</strong> IT老齐架构课笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/restful-api.html"><strong aria-hidden="true">14.9.</strong> restful-api</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/spring.html"><strong aria-hidden="true">14.10.</strong> spring</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/spring-security.html"><strong aria-hidden="true">14.11.</strong> spring-security</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/springboot.html"><strong aria-hidden="true">14.12.</strong> spring-boot</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/springcloud.html"><strong aria-hidden="true">14.13.</strong> spring-cloud</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/reactive.html"><strong aria-hidden="true">14.14.</strong> 响应式 web</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/cache.html"><strong aria-hidden="true">14.15.</strong> 缓存</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/web-api-the-good-parts.html"><strong aria-hidden="true">14.16.</strong> WebAPI 的设计与开发</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/rbac.html"><strong aria-hidden="true">14.17.</strong> RBAC</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/socket.html"><strong aria-hidden="true">14.18.</strong> Socket</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/webservice.html"><strong aria-hidden="true">14.19.</strong> webservice</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/tomcat-servlet.html"><strong aria-hidden="true">14.20.</strong> tomcat-servlet</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/encode-decode.html"><strong aria-hidden="true">14.21.</strong> 编解码</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/netty.html"><strong aria-hidden="true">14.22.</strong> Netty</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/index.html"><strong aria-hidden="true">15.</strong> 前端开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/nodejs.html"><strong aria-hidden="true">15.1.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/yarn.html"><strong aria-hidden="true">15.2.</strong> yarn 使用</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/repos.html"><strong aria-hidden="true">15.3.</strong> 前端库总结</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/react-dev.html"><strong aria-hidden="true">15.4.</strong> React 开发笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/chrome-extension.html"><strong aria-hidden="true">15.5.</strong> chrome 插件开发</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/ajax.html"><strong aria-hidden="true">15.6.</strong> ajax</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/jquery.html"><strong aria-hidden="true">15.7.</strong> jquery</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/javascript-101.html"><strong aria-hidden="true">15.8.</strong> javascript-101</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/javascript-102.html"><strong aria-hidden="true">15.9.</strong> javascript-102</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/javascript-ie11-compatible.html"><strong aria-hidden="true">15.10.</strong> javascript兼容IE11</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/immutable-js.html"><strong aria-hidden="true">15.11.</strong> immutable.js</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/npm-libs.html"><strong aria-hidden="true">15.12.</strong> npm库</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/html-css-dom.html"><strong aria-hidden="true">15.13.</strong> html-css-dom 学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/web-assembly.html"><strong aria-hidden="true">15.14.</strong> web-assembly</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/nlp/index.html"><strong aria-hidden="true">16.</strong> NLP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/nlp/nlp-learning.html"><strong aria-hidden="true">16.1.</strong> NLP-Learning</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/nlp/machine-learning.html"><strong aria-hidden="true">16.2.</strong> Machine-Learning</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/index.html"><strong aria-hidden="true">17.</strong> linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-cmds.html"><strong aria-hidden="true">17.1.</strong> linux 命令手册</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-cmd-enhanced.html"><strong aria-hidden="true">17.2.</strong> linux 增强命令</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-mythink.html"><strong aria-hidden="true">17.3.</strong> linux 使用心得</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-devops.html"><strong aria-hidden="true">17.4.</strong> linux-运维</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-init.html"><strong aria-hidden="true">17.5.</strong> linux 初始化</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/vim.html"><strong aria-hidden="true">17.6.</strong> vim</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/shell.html"><strong aria-hidden="true">17.7.</strong> shell</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/script-demos.html"><strong aria-hidden="true">17.8.</strong> shell 脚本 demo</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-distribution-history.html"><strong aria-hidden="true">17.9.</strong> linux 历史和发行版</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/index.html"><strong aria-hidden="true">18.</strong> github</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/github.html"><strong aria-hidden="true">18.1.</strong> github 使用技巧</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/gitbook.html"><strong aria-hidden="true">18.2.</strong> 优雅锋利的 gitbook</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/git.html"><strong aria-hidden="true">18.3.</strong> 书籍：git-pro</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/github-actions.html"><strong aria-hidden="true">18.4.</strong> github-actions</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/markdown.html"><strong aria-hidden="true">18.5.</strong> markdown 语法</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/git-hook.html"><strong aria-hidden="true">18.6.</strong> githook</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/index.html"><strong aria-hidden="true">19.</strong> 开发工具与技术栈</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/technology-stack.html"><strong aria-hidden="true">19.1.</strong> 技术栈</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/idea.html"><strong aria-hidden="true">19.2.</strong> IDEA 使用学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/idea-debug.html"><strong aria-hidden="true">19.3.</strong> IDEA Debug</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/serverless.html"><strong aria-hidden="true">19.4.</strong> serverless</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/apifox.html"><strong aria-hidden="true">19.5.</strong> apifox</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/blockchain.html"><strong aria-hidden="true">19.6.</strong> 区块链</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/web3.html"><strong aria-hidden="true">19.7.</strong> Web3.0</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/vscode.html"><strong aria-hidden="true">19.8.</strong> VSCode</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/docker.html"><strong aria-hidden="true">19.9.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/cloud-native.html"><strong aria-hidden="true">19.10.</strong> 云原生</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/message-queue.html"><strong aria-hidden="true">19.11.</strong> 消息队列</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/redis.html"><strong aria-hidden="true">19.12.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/selenium.html"><strong aria-hidden="true">19.13.</strong> Selenium</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/nginx.html"><strong aria-hidden="true">19.14.</strong> nginx</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/zookeeper.html"><strong aria-hidden="true">19.15.</strong> zookeeper</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/haproxy.html"><strong aria-hidden="true">19.16.</strong> haproxy-keepalived</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/webhook.html"><strong aria-hidden="true">19.17.</strong> webhook</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/lowcode.html"><strong aria-hidden="true">19.18.</strong> 低代码</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/web-spider.html"><strong aria-hidden="true">19.19.</strong> 网络爬虫</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/make-hexo-theme.html"><strong aria-hidden="true">19.20.</strong> Hexo 主题定制</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/swagger.html"><strong aria-hidden="true">19.21.</strong> Swagger</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/index.html"><strong aria-hidden="true">20.</strong> 软件工程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/software-testing.html"><strong aria-hidden="true">20.1.</strong> 软件测试</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/uml.html"><strong aria-hidden="true">20.2.</strong> UML</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/continuous-integration.html"><strong aria-hidden="true">20.3.</strong> 持续集成</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/software-version.html"><strong aria-hidden="true">20.4.</strong> 软件版本命名</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/zentao.html"><strong aria-hidden="true">20.5.</strong> 项目管理-禅道</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/software-engineering.html"><strong aria-hidden="true">20.6.</strong> 软件工程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/os-installed-software.html"><strong aria-hidden="true">20.7.</strong> 电脑常用软件整理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/code-summary.html"><strong aria-hidden="true">20.8.</strong> 编程经验总结</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/index.html"><strong aria-hidden="true">21.</strong> 技术讲座</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/cs-keep-learning.html"><strong aria-hidden="true">21.1.</strong> keep-learning</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/atguigu-os.html"><strong aria-hidden="true">21.2.</strong> 尚硅谷-操作系统</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/future-of-computation.html"><strong aria-hidden="true">21.3.</strong> 吴翰清-计算的未来</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/xu-shi-wei-architecture.html"><strong aria-hidden="true">21.4.</strong> 许式伟-架构课</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/questions.html"><strong aria-hidden="true">21.5.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../weekly/2022/index.html"><strong aria-hidden="true">22.</strong> 2022</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../weekly/2022/week-27.html"><strong aria-hidden="true">22.1.</strong> week-27</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-28.html"><strong aria-hidden="true">22.2.</strong> week-28</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-29.html"><strong aria-hidden="true">22.3.</strong> week-29</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-30.html"><strong aria-hidden="true">22.4.</strong> week-30</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-31-32.html"><strong aria-hidden="true">22.5.</strong> week-31-32</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-32.html"><strong aria-hidden="true">22.6.</strong> week-32</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-33.html"><strong aria-hidden="true">22.7.</strong> week-33</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-34.html"><strong aria-hidden="true">22.8.</strong> week-34</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-35.html"><strong aria-hidden="true">22.9.</strong> week-35</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-36.html"><strong aria-hidden="true">22.10.</strong> week-36</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-37.html"><strong aria-hidden="true">22.11.</strong> week-37</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-38.html"><strong aria-hidden="true">22.12.</strong> week-38</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-39.html"><strong aria-hidden="true">22.13.</strong> week-39</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-40.html"><strong aria-hidden="true">22.14.</strong> week-40</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/index.html"><strong aria-hidden="true">23.</strong> blog</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/for-a-job.html"><strong aria-hidden="true">23.1.</strong> 关于找工作</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/how-to-study.html"><strong aria-hidden="true">23.2.</strong> 如何学习</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/summary-for-examination-oriented-education.html"><strong aria-hidden="true">23.3.</strong> 应试教育总结思考</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/cyber-spirit-opium.html"><strong aria-hidden="true">23.4.</strong> 网络精神鸦片</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/why-perfect.html"><strong aria-hidden="true">23.5.</strong> 追求完美？</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/about-love.html"><strong aria-hidden="true">23.6.</strong> 我的恋爱观</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/pin-duo-duo.html"><strong aria-hidden="true">23.7.</strong> 细数在拼多多开店遇到的坑</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/summary-of-marketing.html"><strong aria-hidden="true">23.8.</strong> 营销经验总结</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/real-estate.html"><strong aria-hidden="true">23.9.</strong> 买房经验总结</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/health/index.html"><strong aria-hidden="true">24.</strong> 关于健康</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/health/zhong-yi.html"><strong aria-hidden="true">24.1.</strong> 关于中医</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/health/health.html"><strong aria-hidden="true">24.2.</strong> 关于健康</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/index.html"><strong aria-hidden="true">25.</strong> 求知若渴虚心若愚</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/how-to-keep-learning.html"><strong aria-hidden="true">25.1.</strong> 如何保持学习激情</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/weekly.html"><strong aria-hidden="true">25.2.</strong> 周刊</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/weekly-02.html"><strong aria-hidden="true">25.3.</strong> 周刊-02</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/authentic-expression.html"><strong aria-hidden="true">25.4.</strong> 英语单词和专业词汇</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/knowledge-summary.html"><strong aria-hidden="true">25.5.</strong> 网上冲浪知识总结</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/zhihu.html"><strong aria-hidden="true">25.6.</strong> 知乎摘抄</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/story.html"><strong aria-hidden="true">25.7.</strong> 好的文章</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/principle-of-economics.html"><strong aria-hidden="true">25.8.</strong> 经济学原理学习</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/how-to.html"><strong aria-hidden="true">25.9.</strong> 如何</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/office-tricks.html"><strong aria-hidden="true">25.10.</strong> Office 三件套</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/movies.html"><strong aria-hidden="true">25.11.</strong> 看电影</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/daily-news.html"><strong aria-hidden="true">25.12.</strong> 每日新闻</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/index.html"><strong aria-hidden="true">26.</strong> 安心立命</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/why.html"><strong aria-hidden="true">26.1.</strong> 为什么要学习</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/difference-between-east-and-west.html"><strong aria-hidden="true">26.2.</strong> 王德峰-中西文化差异</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/yangming.html"><strong aria-hidden="true">26.3.</strong> 王德峰-阳明心学</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/feat-and-practice.html"><strong aria-hidden="true">26.4.</strong> 王德峰-命运与修行</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/truly-maturity.html"><strong aria-hidden="true">26.5.</strong> 关于成熟</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/poetry.html"><strong aria-hidden="true">26.6.</strong> 古诗词摘抄</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-perface.html"><strong aria-hidden="true">26.7.</strong> 王德峰讲坛经-序言</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-01.html"><strong aria-hidden="true">26.8.</strong> 王德峰讲坛经-行由品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-02.html"><strong aria-hidden="true">26.9.</strong> 王德峰讲坛经-般若品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-03.html"><strong aria-hidden="true">26.10.</strong> 王德峰讲坛经-疑问品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-04.html"><strong aria-hidden="true">26.11.</strong> 王德峰讲坛经-定慧品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-05.html"><strong aria-hidden="true">26.12.</strong> 王德峰讲坛经-坐禅品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-06.html"><strong aria-hidden="true">26.13.</strong> 王德峰讲坛经-忏悔品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-07.html"><strong aria-hidden="true">26.14.</strong> 王德峰讲坛经-机缘品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-08.html"><strong aria-hidden="true">26.15.</strong> 王德峰讲坛经-顿悟品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-09.html"><strong aria-hidden="true">26.16.</strong> 王德峰讲坛经-护法品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-10.html"><strong aria-hidden="true">26.17.</strong> 王德峰讲坛经-付嘱品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-finish.html"><strong aria-hidden="true">26.18.</strong> 王德峰讲坛经-结束语</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">wanshuo-gitbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="mysql-入门"><a class="header" href="#mysql-入门">Mysql 入门</a></h1>
+<p>[TOC]</p>
+<h2 id="经验总结"><a class="header" href="#经验总结">经验总结</a></h2>
+<ul>
+<li>多表连接查询是一个特别耗时的操作，涉及到笛卡尔积</li>
+<li>varchar varchar 用来存储变长的字符串。varchar 可以节省空间，存入多少个字符（ASCII）字符，就占用多少字节的空间。MySQL4.1 之前，varchar所支持的最大长度为 255 个字符，MySQL5.0 以上的版本能够存储 65535个字节，utf8编码下，最多存储21843个字符</li>
+<li>使用 Mysql 进行项目优化 对于一个负载很大的线上系统，是很怕慢查询的，一个原则：<strong>把更多的计算放在本地，而不是放在数据库。</strong>，例如，宁愿进行两次单表数据库，然后在本地处理数据，也不要进行联合查询。</li>
+</ul>
+<h2 id="数据库名词解释"><a class="header" href="#数据库名词解释">数据库名词解释</a></h2>
+<ul>
+<li>DBA: Database Administrator</li>
+<li>数据库与文件的本质区别 db 实现了整体数据的结构化，体现了数据之间的相关性。</li>
+<li>域 Domain 属性的取值范围</li>
+<li>候选码 和 主键 能够唯一标识一个元组的属性组（如果属性组只有一个属性，那么该属性就是 主键）</li>
+<li>E-R 图 Entity-Relationship</li>
+<li>关系数据模型 1. 实体和实体间的联系都用 表 来表示（学生是一张表、课程也是一张表，学生与课程的选课关系也是一张表） 2. 关系数据模型最大的缺点是利用 SQL 语句隐藏了数据存取的细节，所以查询效率需要优化，所以才会有 高效 SQL 这门学问 3. 在关系模型中，现实世界中的实体和实体之间的联系都可以用 关系 来描述 4. 关系实质上就是一张二维表，表的每行为一个元组，每列为一个属性。一个元组就是该关系所设计的属性集的笛卡尔积的一个元素。其实也就是学生表与课程表做笛卡尔积得到的一个子集，称为表。一张关系表就是两个实体的笛卡尔积的子集。</li>
+<li>关系的三种类型 1. 基本表：数据库中实际存在的表 2. 查询表：SQL 查询结果 3. 视图表：由基本表或其他视图导出的表，是虚表</li>
+<li>关系的完整性约束条件 1. 实体完整性（Entity Integrity）若某属性 A 是关系 R 的主属性，那么 A 非空。（主键 非空） 2. 参照完整性（Referential Integrity）某一张表中的某个属性的取值参考 另一张表中的主键 （表中的某一属性参照另一张表中的主键） 3. 用户定义完整性</li>
+<li>关系运算 1. 选择：从关系 R （表）中选择满足给定条件的元组 2. 投影：选择若干属性列组成新的关系 3. 连接：对两张表进行笛卡尔积，选择满足条件的元组构成新表 4. 除：待学习</li>
+<li>参照完整性规则 如果表 A 中的属性 S 是外键，参考了 表B 中的 S 属性，属性 S 的取值要么为空，要么来源应该来源于 表 B中的 S 属性的所有值。</li>
+</ul>
+<h2 id="mysql-配置文件"><a class="header" href="#mysql-配置文件">MySQL 配置文件</a></h2>
+<p>通过 <code>apt-get install mysql-server</code> 命令安装的 MySQL，其配置文件默认为 <code>/etc/mysql/my.cnf</code>。</p>
+<p><code>/etc/mysql/my.cnf</code> 是一个全局配置文件，如果我们想要面向不同的用户进行不同的配置，需要把全局配置文件拷贝到 <code>~/.my.cnf</code>并进行配置。</p>
+<p>注意</p>
+<ol>
+<li>所有的配置文件，都需要以 <code>.cnf</code> 结尾</li>
+<li>全局配置文件中，还包含了两个文件夹，在该两个文件夹内的所有 .cnf 文件都是配置文件，其中 <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>中存储了大量的 MySQL 配置</li>
+</ol>
+<pre><code class="language-text">#
+# The MySQL database server configuration file.
+#
+# You can copy this to one of:
+# - &quot;/etc/mysql/my.cnf&quot; to set global options,
+# - &quot;~/.my.cnf&quot; to set user-specific options.
+# 
+# One can use all long options that the program supports.
+# Run program with --help to get a list of available options and with
+# --print-defaults to see which it would actually understand and use.
+#
+# For explanations see
+# http://dev.mysql.com/doc/mysql/en/server-system-variables.html
+
+#
+# * IMPORTANT: Additional settings that can override those from this file!
+#   The files must end with '.cnf', otherwise they'll be ignored.
+#
+# 
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mysql.conf.d/
+</code></pre>
+<h2 id="mysql-小知识"><a class="header" href="#mysql-小知识">MySQL 小知识</a></h2>
+<ol>
+<li>
+<p>默认端口号：3306</p>
+</li>
+<li>
+<p>SQL 语句最后要加 ;</p>
+</li>
+<li>
+<p>注释：</p>
+<p>单行注释：--</p>
+<p>多行注释：/ __/</p>
+</li>
+</ol>
+<h2 id="数据库增删改查"><a class="header" href="#数据库增删改查">数据库增删改查</a></h2>
+<ul>
+<li>创建数据库 create database senti_weibo DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;</li>
+<li>更改数据库字符集 ALTER DATABASE <code>senti_weibo</code> CHARACTER SET utf8 COLLATE utf8_general_ci;</li>
+<li>查看所有数据库 show databases;</li>
+<li>查看某个数据库建库语句 show create database db_name; 或者 <code>desc table</code></li>
+<li>查看某张表的建表语句 show create table table_name;</li>
+<li>删除数据库 drop database db_name;</li>
+<li>进入某个数据库 use db_name;</li>
+<li>查看某个数据库中的表的情况 select table_name from information_schema.tables where table_schema='csdb' and table_type='base table';</li>
+<li>查看某个数据库的表的信息 show tables;</li>
+</ul>
+<h2 id="数据库表级别操作"><a class="header" href="#数据库表级别操作">数据库表级别操作</a></h2>
+<h3 id="查看表"><a class="header" href="#查看表">查看表</a></h3>
+<pre><code class="language-text">show tables;
+</code></pre>
+<h3 id="表重命名"><a class="header" href="#表重命名">表重命名</a></h3>
+<pre><code class="language-text">RENAME TABLE old_table TO new_table;
+</code></pre>
+<h3 id="删除表"><a class="header" href="#删除表">删除表</a></h3>
+<pre><code class="language-text">drop table table_name;
+</code></pre>
+<h3 id="复制表"><a class="header" href="#复制表">复制表</a></h3>
+<p><strong>参考</strong></p>
+<p><a href="https://www.cnblogs.com/zhangjpn/p/6231662.html">https://www.cnblogs.com/zhangjpn/p/6231662.html</a></p>
+<p><a href="https://www.jb51.net/article/47562.htm">https://www.jb51.net/article/47562.htm</a></p>
+<p><strong>Demo</strong></p>
+<pre><code class="language-mysql"># 把旧表的所有数据复制到新表
+insert into table1 select * from table2
+# 复制旧表的部分数据到新表
+insert into table1 select  *   from   table2 where ……
+
+# 复制表结构到新表
+CREATE TABLE 新表 LIKE 旧表 ;
+# 复制表结构和所有数据到新表
+CREATE TABLE 新表 SELECT * FROM 旧表
+# 复制旧表的数据到新表(假设两个表结构不一样)
+INSERT INTO 新表(字段1,字段2,.......) SELECT 字段1,字段2,...... FROM 旧表
+</code></pre>
+<h3 id="导出-mysql-查询到的数据"><a class="header" href="#导出-mysql-查询到的数据">导出 MySQL 查询到的数据</a></h3>
+<pre><code class="language-shell">mysql -uroot -pxxxxxx -e &quot;select weibo_content from spider_db.spider_realtime_weibo&quot; &gt; /home/admin/test/weibo_content.txt
+</code></pre>
+<h3 id="表添加删除修改字段"><a class="header" href="#表添加删除修改字段">表添加/删除/修改字段</a></h3>
+<pre><code class="language-mysql">-- 增加字段
+alter table senti_weibo_realtime_weibo add seged_words varchar(4096) COLLATE utf8mb4_unicode_ci DEFAULT &quot;&quot;;
+alter table senti_weibo_keyword add sentiment varchar(32) DEFAULT &quot;&quot;;
+
+-- 修改字段
+alter table senti_weibo_realtime_weibo modify last_modify_time timestamp not null default current_timestamp on update current_timestamp;
+
+-- 删除字段
+ALTER TABLE mytable DROP 字段名;
+
+-- 修改字段的编码和排序规则（配置字段内容大小写敏感） CHARSET is a synonym for CHARACTER SET，COLLATE 用来指定排序字符集
+ALTER TABLE users modify name varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '用户登录名';
+</code></pre>
+<h3 id="修改表的编码"><a class="header" href="#修改表的编码">修改表的编码</a></h3>
+<pre><code class="language-mysql">alter table spider_realtime_weibo character set utf8 COLLATE utf8_general_ci;
+</code></pre>
+<h2 id="数据库-表数据-增删改查"><a class="header" href="#数据库-表数据-增删改查">数据库-表数据-增删改查</a></h2>
+<h3 id="查询数据"><a class="header" href="#查询数据">查询数据</a></h3>
+<pre><code class="language-Mysql">* distinct
+distinct 只能放在开头
+通常的用法是 distinct(name)，加 括号
+如果 distinct 没有加括号，则默认对（所有的字段放在一起）进行去重
+sql = &quot;&quot;&quot;select distinct product_line, deploy_plat,
+         source, module, 1 as callednum
+         from %s
+         where source != &quot;sample&quot;
+         and idc != &quot;sample&quot;
+         and idc != &quot;se-offline&quot;
+         and idc != &quot;ipad_page&quot;
+         and idc != &quot;debug&quot;
+         and deploy_plat != &quot;dfp&quot;
+         &quot;&quot;&quot; % (table)
+
+* distinct，count 组合
+select count(DISTINCT(username)) as count1 from managerConfig_online ; # count1 为 重新命名
+
+* 模糊匹配
+url like '%.baidu.com'
+% 类似于 正则表达式中的 .*
+Demo:
+select problem_occur_time, problem_solve_time from feedbackorigindata where problem_occur_time &gt; problem_solve_time and problem_solve_time like &quot;%2018-%&quot;;
+
+* or 关键字
+select * from managerConfig where username = 'v_liulonggang' or username = 'v_zhangyafei';
+
+* in 关键字
+in 关键字可以替换 or 关键字的作用，而且更加简洁。
+select 
+ count(DISTINCT(module)) 
+from 
+ run_case_deploycoveragedetail 
+where 
+ is_coverage in (&quot;Y&quot;, &quot;N&quot;, &quot;W&quot;) and 
+ query_start_time &gt;= &quot;2018-07-01 00:00:00&quot; and 
+ query_end_time &lt;= &quot;2018-07-31 00:00:00&quot; and 
+ deploy_plat = '863';
+
+* select 子句 嵌套查询
+select mailbox_id from co_user where mailbox_id not in (select mailbox_id from core_mailbox);
+
+* 按字段进行排序
+select icafe_id from feedbackorigindata where product_id = 1 and subproduct_id = 'all' and space = 'http://cp01-sys-rpm66.cp01.baidu.com:8235/getFeedback.php' order by icafe_id desc ;
+默认 对 结果 升序排序，加了 **desc** 后，则改成降序排序。
+
+* rand() 函数随机选择条数
+需求：从数据库中读取 1000 条数据，要求这 1000 条数据是随机选择的，
+SELECT * FROM tablename ORDER BY RAND() LIMIT num；
+
+-- limit offset 关键字
+-- Limit子句可以被用于强制 SELECT 语句返回指定的记录数。Limit接受一个或两个数字参数。参数必须是一个整数常量。如果给定两个参数，第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目。
+-- 注意：
+-- 1. limit 要在 offset 前面，如果颠倒了，会出现语法错误
+-- 2. offset 不能单独使用，要配合 limit 一起使用，limit 可以单独使用 https://stackoverflow.com/questions/255517/mysql-offset-infinite-rows
+SELECT * FROM table LIMIT 5; //检索前 5 个记录行
+SELECT * FROM table LIMIT 5,10; //检索记录行6-15 从第六行开始检索
+SELECT * FROM table LIMIT 10 offset 5; //检索记录行6-15 从第六行开始检索，跳过前5 行
+
+* group by， having
+group by 将结果按照指定的列进行分组，该属性列值相等的元组为一个组。通常会在每组中运行聚集函数进行计算。
+group by 的 select 中字段的选择，应该选择 group by x1,x2,x3 中的 x1, x2, x3 中的子集。例如 group by product_line, deploy_plat, source, module ，那么 只能 select 其中的子集。
+selet 后面还可以加入聚集函数，例如 count(*), min(*) 等。例如 select group by product_line, deploy_plat, source, module, count(*)。
+having 是 group by 的子句，表示只有满足指定条件的组才予以输出
+注意 groupby 并没有删除数据，只是将查询到的数据进行分组。
+
+* 嵌套查询
+将第一次查询的结果当作一张表进行二次查询。可多层嵌套。
+select 
+ run_id, module, source, idc, status, reason, times 
+from 
+ (
+  select 
+   *, count(DISTINCT run_id, task_type, task_id, execute_id)
+  from 
+   run_case_detail
+  where 
+   run_id &gt;= &quot;20180717000000000000&quot; and run_id &lt;= &quot;20180725000000000000&quot;
+  group by 
+   run_id, task_type, task_id, execute_id
+ ) 
+ as 
+ distinct_data
+where 
+ product_line = &quot;search&quot; and 
+ product_form = &quot;wise&quot; and 
+ source != &quot;sample&quot; and 
+ (idc != &quot;se-offline&quot; and idc != &quot;template&quot; and idc != &quot;ipad_page&quot;) and
+  module != &quot;debug&quot;
+;
+</code></pre>
+<h3 id="插入数据"><a class="header" href="#插入数据">插入数据</a></h3>
+<pre><code class="language-Mysql">全插入
+insert into userInfo values(1,'aaa','1212');
+指定列插入（推荐这种方式）
+insert into userInfo(name,password) values('ddf','8979');
+
+* 自增长主键插入数据
+当数据表中有自增长主键时，当用SQL插入语句中插入语句带有ID列值记录的时候，有两种做法：
+1. 指定了该列的值，则新插入的值不能和已有的值重复，而且必须大于其中最大的一个值；
+2. 不指定该列的值，只将其他列的值插入，让ID还是按照MySQL自增自己填，有两种做法：
+    1. 把id的值设置为null或者0，这样子mysql都会自己做处理 
+    2. 手动指定需要插入的列，不插入这一个字段的数据
+
+手动制定需要插入的列，这种方式比较好，如果后来表发生了变化，这个 insert 语句还是可以用的！
+insert into userInfo(name,password) values('wanshuo','8979');
+
+# 不重复插入：主键存在则不插入
+insert ignore into res_entity_item values(&quot;55&quot;, &quot;111&quot;, &quot;2021-01-01 00:00:00&quot;, &quot;desc&quot;, &quot;expression&quot;, &quot;8&quot;, &quot;2021-01-01 00:00:00&quot;, &quot;test_name&quot;);
+</code></pre>
+<h3 id="删除数据"><a class="header" href="#删除数据">删除数据</a></h3>
+<pre><code class="language-sql">-- 标准代码
+delete from run_case_deploycoveragedetail where query_start_time like '2018-07-15%';
+</code></pre>
+<h3 id="更新数据"><a class="header" href="#更新数据">更新数据</a></h3>
+<pre><code class="language-sql">-- set 是一个固定的关键字
+update run_case_statistics set cycle = 'month', module = 'module1' where id &gt;= 5927 and id &lt;= 6265;
+
+-- 多表关联更新
+update test1,test2 set test1.name=test2.name,test1.age=test2.age where test1.id=test2.id;
+
+</code></pre>
+<h3 id="建表"><a class="header" href="#建表">建表</a></h3>
+<pre><code class="language-sql"># 测试代码
+create table test_table(
+    id int(11) primary key,
+    name varchar(8) unique
+);
+
+* 重点    
+if not exists
+可以先判断表是否存在
+
+varchar(n)
+设置变长字符，最大长度为 n，有多长，就动态的占用多大的空间
+n 在 MySQL 4.1 版本下，最长可以达到 255。
+varchar 写越大越好，否则会报 Data truncated for column 'module_detail' at row 1 错，后期各种心累。
+
+varchar 长度计算：https://www.cnblogs.com/jewave/p/6214540.html
+
+KEY
+Key是索引约束,主要是用来加快查询速度的
+
+COMMENT
+字段注释
+
+AUTO_INCREMENT
+只适用于 int 字段，MySQL 会自动生成
+
+default
+default 'wanshuo'
+使用 DEFAULT 修饰符为字段设定一个默认值，如果没有设置default，那么 MySQL 会根据该字段是 NULL 还是 NOT NULL 自动设置默认值
+
+* desc 命令
+查看表中各个字段的描述
+desc 表名
+</code></pre>
+<p>mysql 建表数据类型</p>
+<p>包括严格数值数据类型(INTEGER、SMALLINT、DECIMAL和NUMERIC)，以及近似数值数据类型(FLOAT、REAL和DOUBLE PRECISION),还有枚举类型enum 和集合类型set 以及布尔值、<a href="https://www.yiibai.com/mysql/boolean.html">json</a></p>
+<h4 id="数值数据"><a class="header" href="#数值数据">数值数据</a></h4>
+<table><thead><tr><th style="text-align: left">型</th><th style="text-align: left">大小</th><th style="text-align: left">范围（有符号）</th><th style="text-align: left">范围（无符号）</th><th style="text-align: center">用途</th></tr></thead><tbody>
+<tr><td style="text-align: left">TINYINT</td><td style="text-align: left">1 byte</td><td style="text-align: left">(-128，127)</td><td style="text-align: left">(0，255)</td><td style="text-align: center">小整数值</td></tr>
+<tr><td style="text-align: left">SMALLINT</td><td style="text-align: left">2 bytes</td><td style="text-align: left">(-32 768，32 767)</td><td style="text-align: left">(0，65 535)</td><td style="text-align: center">大整数值</td></tr>
+<tr><td style="text-align: left">MEDIUMINT</td><td style="text-align: left">3 bytes</td><td style="text-align: left">(-8 388 608，8 388 607)</td><td style="text-align: left">(0，16 777 215)</td><td style="text-align: center">大整数值</td></tr>
+<tr><td style="text-align: left">INT或INTEGER</td><td style="text-align: left">4 bytes</td><td style="text-align: left">(-2 147 483 648，2 147 483 647)</td><td style="text-align: left">(0，4 294 967 295)</td><td style="text-align: center">大整数值</td></tr>
+<tr><td style="text-align: left">BIGINT</td><td style="text-align: left">8 bytes</td><td style="text-align: left">(-9,223,372,036,854,775,808，9 223 372 036 854 775 807)</td><td style="text-align: left">(0，18 446 744 073 709 551 615)</td><td style="text-align: center">极大整数值</td></tr>
+<tr><td style="text-align: left">FLOAT</td><td style="text-align: left">4 bytes</td><td style="text-align: left">(-3.402 823 466 E+38，-1.175 494 351 E-38)，0，(1.175 494 351 E-38，3.402 823 466 351 E+38)</td><td style="text-align: left">0，(1.175 494 351 E-38，3.402 823 466 E+38)</td><td style="text-align: center">单精度 浮点数值</td></tr>
+<tr><td style="text-align: left">DOUBLE</td><td style="text-align: left">8 bytes</td><td style="text-align: left">(-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td><td style="text-align: left">0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td><td style="text-align: center">双精度 浮点数值</td></tr>
+<tr><td style="text-align: left">DECIMAL</td><td style="text-align: left">对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2</td><td style="text-align: left">依赖于M和D的值</td><td style="text-align: left">依赖于M和D的值</td><td style="text-align: center">小数值</td></tr>
+</tbody></table>
+<h4 id="时间和日期类型"><a class="header" href="#时间和日期类型">时间和日期类型</a></h4>
+<table><thead><tr><th style="text-align: left">类型</th><th style="text-align: left">大小 ( bytes)</th><th style="text-align: left">范围</th><th style="text-align: left">格式</th><th style="text-align: left">用途</th></tr></thead><tbody>
+<tr><td style="text-align: left">DATE</td><td style="text-align: left">3</td><td style="text-align: left">1000-01-01/9999-12-31</td><td style="text-align: left">YYYY-MM-DD</td><td style="text-align: left">日期值</td></tr>
+<tr><td style="text-align: left">TIME</td><td style="text-align: left">3</td><td style="text-align: left">'-838:59:59'/'838:59:59'</td><td style="text-align: left">HH:MM:SS</td><td style="text-align: left">时间值或持续时间</td></tr>
+<tr><td style="text-align: left">YEAR</td><td style="text-align: left">1</td><td style="text-align: left">1901/2155</td><td style="text-align: left">YYYY</td><td style="text-align: left">年份值</td></tr>
+<tr><td style="text-align: left"><strong>DATETIME</strong></td><td style="text-align: left">8</td><td style="text-align: left">1000-01-01 00:00:00/9999-12-31 23:59:59</td><td style="text-align: left">YYYY-MM-DD HH:MM:SS</td><td style="text-align: left">混合日期和时间值</td></tr>
+<tr><td style="text-align: left">TIMESTAMP</td><td style="text-align: left">4</td><td style="text-align: left">1970-01-01 00:00:00/2038结束时间是第 <strong>2147483647</strong> 秒，北京时间 <strong>2038-1-19 11:14:07</strong>，格林尼治时间 2038年1月19日 凌晨 03:14:07</td><td style="text-align: left">YYYYMMDD HHMMSS</td><td style="text-align: left">混合日期和时间值，时间戳</td></tr>
+</tbody></table>
+<h4 id="字符串类型"><a class="header" href="#字符串类型">字符串类型</a></h4>
+<table><thead><tr><th style="text-align: left">类型</th><th style="text-align: left">大小</th><th style="text-align: left">用途</th></tr></thead><tbody>
+<tr><td style="text-align: left">CHAR</td><td style="text-align: left">0-255 bytes</td><td style="text-align: left">定长字符串</td></tr>
+<tr><td style="text-align: left">VARCHAR</td><td style="text-align: left">0-65535 bytes</td><td style="text-align: left">变长字符串</td></tr>
+<tr><td style="text-align: left">TINYBLOB</td><td style="text-align: left">0-255 bytes</td><td style="text-align: left">不超过 255 个字符的二进制字符串</td></tr>
+<tr><td style="text-align: left">TINYTEXT</td><td style="text-align: left">0-255 bytes</td><td style="text-align: left">短文本字符串</td></tr>
+<tr><td style="text-align: left">BLOB</td><td style="text-align: left">0-65 535 bytes</td><td style="text-align: left">二进制形式的长文本数据 binary large object</td></tr>
+<tr><td style="text-align: left">TEXT</td><td style="text-align: left">0-65 535 bytes</td><td style="text-align: left">长文本数据</td></tr>
+<tr><td style="text-align: left">MEDIUMBLOB</td><td style="text-align: left">0-16 777 215 bytes</td><td style="text-align: left">二进制形式的中等长度文本数据</td></tr>
+<tr><td style="text-align: left">MEDIUMTEXT</td><td style="text-align: left">0-16 777 215 bytes</td><td style="text-align: left">中等长度文本数据</td></tr>
+<tr><td style="text-align: left">LONGBLOB</td><td style="text-align: left">0-4 294 967 295 bytes</td><td style="text-align: left">二进制形式的极大文本数据</td></tr>
+<tr><td style="text-align: left">LONGTEXT</td><td style="text-align: left">0-4 294 967 295 bytes</td><td style="text-align: left">极大文本数据</td></tr>
+</tbody></table>
+<h3 id="sql-查询-demos"><a class="header" href="#sql-查询-demos">SQL 查询 demos</a></h3>
+<pre><code class="language-sql">-- 查询学生的姓名和出生年份
+select name, 2018 - age from student_table;
+
+-- 改变列名, 改为小写 lower()
+select lower(name) studentname from student_table;
+
+-- between and 
+select name from student_table where age between 18 and 23;
+
+-- 匹配任意 长度 字符 和 任意 单个 字符
+select name from student_table where name like &quot;王%&quot;;
+select name from student_table where name like &quot;万__&quot;； -- 查询三个字的万同学
+
+-- 需要转义的字符
+%, _
+select name from student_table where name = &quot;王\_&quot;; -- 查是否有人叫 王_
+
+-- is null
+select name from student_table where grade is null;
+
+-- 对查询结果两个字段进行排序，前者升序，后者降序
+select * from student_table order by dept, age desc; -- 按系名升序，age 降序
+
+-- 聚集函数
+count 统计元组个数
+sum(列名) 计算列值总和
+avg(列名) 计算平均值
+max/min(列名) 找到最值
+
+-- 求各个课程号及对应的选课人数 group by
+select Cno, count(Sno) from SC group by Cno;
+
+-- group by having demo: 查询选修了三门以上课程的学生学号
+select Sno from SC group by Sno having count(*) &gt; 3; -- having 仅作用于group by 生成的组
+
+-- group by 查询举例
+    select 
+     product_line, 
+     deploy_plat,
+     source, 
+     module, 
+     count(*)
+    from 
+     run_case_deploy
+    where 
+     source != &quot;sample&quot;
+     and idc != &quot;sample&quot;
+     and idc != &quot;se-offline&quot;
+     and idc != &quot;ipad_page&quot;
+     and idc != &quot;debug&quot;
+     and start_time &gt;= '2018-08-13 00:00:00'
+     and end_time &lt;= '2018-08-14 00:00:00'
+     and deploy_plat != &quot;dfp&quot;
+    group BY
+     product_line, 
+     deploy_plat,
+     source, 
+     module
+    ;
+
+-- 自身连接查询
+select first.Cno, second.Cpno from Course first, Course second where first.Cpno = second.Cno;
+
+-- 左外连接
+select student, sno, sname, sex from student_table left out join sc_table on (student_table.sno = sc_table.sno);
+
+-- 不相关子查询（不相关嵌套查询）
+查询与 万朔 同系的学生
+select id from student_table where department in (select department from student_table where name ='万朔');
+
+-- 相关嵌套查询
+找出每个学生超过他选修课程平均成绩的课程号
+select student_id, course_id from score_table table1 where grade &gt;= (select avg(grade) from score_table table2 where table1.student_id = table2.student_id);
+
+-- any, all
+查询其他系中，比计算机科学系所有学生年龄都小的学生姓名和年龄。
+select name, age from student_table where age &lt; all (select age from student_table where department = 'cs') and department != 'cs';
+
+-- exists 存在量词
+查询所有选修了 1 号 课程的学生姓名。
+select name from student_table where exists (select * from xuanxiu_table where name = student_table.name and xuanxiu_course = '1')
+存在量词的嵌套查询中 一定是 select *，如果内层查询结果非空，那么外层的 where 子句返回真值。
+exists 一定是相关子查询。
+
+    select 
+     DISTINCT deploy_plat, module 
+    from 
+     run_case_deploycoveragedetail detail_1 
+    where 
+     exists (
+      select 
+       * 
+      from 
+       run_case_deploycoveragedetail detail_2 
+      where 
+       detail_1.module = detail_2.module and 
+       is_coverage = &quot;Y&quot; and
+       idc = &quot;&quot;
+     ) and 
+     idc = &quot;fj&quot; and 
+     is_coverage = &quot;N&quot;;
+
+-- 多个查询结果的并集和差集 union， Intersect
+select name from student_table where sex = '男' and age &gt; 18
+union / intersect
+select name from student_table where sex = '女' and age &gt; 18;
+# 适用于将多表查询的结果整合
+</code></pre>
+<h2 id="show-命令"><a class="header" href="#show-命令">show 命令</a></h2>
+<pre><code class="language-mysql">-- 显示 MySQL 的当前状态
+show status;
+
+-- 显示某张表的所有字段
+show columns from table;
+
+-- 显示授予某个用户的权限
+show grants user_name;
+show grants; -- 所有用户
+
+-- 查看错误和警报
+show errors;
+show warnings;
+</code></pre>
+<h2 id="连接-join"><a class="header" href="#连接-join">连接 join</a></h2>
+<p>连接 涉及到了 多表操作，也可以是 pandas 的多个 DataFrame 的操作。 连接 是从两个关系的 <strong>笛卡尔积</strong> 中选取 <strong>属性间满足一定条件</strong> 的元组。</p>
+<p>其中 A 和 B 分别 为 R 和 S 上度数相等并且可比的属性组。连接运算从 R 和 S 的笛卡尔积中选择 R关系 在 A属性组 上的值 与 S关系 在 B属性组 上满足比较关系 theta 的元组。</p>
+<ul>
+<li>笛卡尔积</li>
+<li>各种连接 等值连接 和 自然连接</li>
+<li>外连接不同于等值连接，等值连接去除产生 NAN 的元组，外连接会保留</li>
+<li>外连接一共有两种：
+<ol>
+<li>外连接</li>
+<li>左右外连接</li>
+</ol>
+</li>
+</ul>
+<p>语法：</p>
+<pre><code class="language-sql">where table_A left join table_B on table_A.column = table_B.column 
+</code></pre>
+<p><a href="https://dataschool.com/how-to-teach-people-sql/sql-join-types-explained-visually/">join 的图释</a></p>
+<h3 id="内连接-inner-join"><a class="header" href="#内连接-inner-join">内连接 (inner join)</a></h3>
+<p><strong>内连接就是求交集。</strong></p>
+<p><img src="assets%5C1567998218103.png" alt="内连接" /></p>
+<h3 id="外连接-outer--left--right-join"><a class="header" href="#外连接-outer--left--right-join">外连接 outer / left / right join</a></h3>
+<p>Outer join: <strong>外连接是求并集。</strong></p>
+<img align="left " src="assets/image-20210814095906436.png" alt="image-20210814095906436" style="zoom:80%;" />
+<p>left / right join 通常会产生 NULL 值</p>
+<p><img src="assets%5C1567998297852.png" alt="左外链接" /></p>
+<p><img src="assets%5C1567998320178.png" alt="右外连接" /></p>
+<pre><code class="language-sql">select 
+    P.FirstName, P.LastName, A.City, A.State
+from 
+    Person as P left join 
+    Address as A
+on
+    P.PersonID = A.PersonID
+;
+</code></pre>
+<h3 id="外键"><a class="header" href="#外键">外键</a></h3>
+<h4 id="定义"><a class="header" href="#定义">定义</a></h4>
+<p>A foreign key relationship involves a parent table that holds the initial column values, and a child table with column values that reference the parent column values. A foreign key constraint is defined on the child table.</p>
+<p>The essential syntax for a defining a foreign key constraint in a <a href="https://dev.mysql.com/doc/refman/5.6/en/create-table.html"><code>CREATE TABLE</code></a> or <a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html"><code>ALTER TABLE</code></a> statement includes the following:</p>
+<pre><code class="language-sql">[CONSTRAINT [symbol]] FOREIGN KEY
+    [index_name] (col_name, ...)
+    REFERENCES tbl_name (col_name,...)
+    [ON DELETE reference_option]
+    [ON UPDATE reference_option]
+
+reference_option:
+    RESTRICT | CASCADE | SET NULL | NO ACTION | SET DEFAULT
+</code></pre>
+<p>Demo: </p>
+<pre><code class="language-sql">create table test_table(
+    id int(11) primary key,
+    name varchar(8) unique,
+    fid int(11),
+    foreign key (fid) references test_table(id) on update cascade on delete restrict 
+    -- 持有一个 fid 外键，该外键指向本表的 id，父更新后，能够级联更新子，但是不能删除父
+);
+</code></pre>
+<h4 id="referential-actions"><a class="header" href="#referential-actions">Referential Actions</a></h4>
+<p>When an <a href="https://dev.mysql.com/doc/refman/5.6/en/update.html"><code>UPDATE</code></a> or <a href="https://dev.mysql.com/doc/refman/5.6/en/delete.html"><code>DELETE</code></a> operation affects a key value in the parent table that has matching rows in the child table, the result depends on the <em>referential action</em> specified by <code>ON UPDATE</code> and <code>ON DELETE</code> subclauses of the <code>FOREIGN KEY</code> clause. Referential actions include:</p>
+<ul>
+<li>
+<p><code>CASCADE</code>: Delete or update the row from the parent table and automatically delete or update the matching rows in the child table. Both <code>ON DELETE CASCADE</code> and <code>ON UPDATE CASCADE</code> are supported. Between two tables, do not define several <code>ON UPDATE CASCADE</code> clauses that act on the same column in the parent table or in the child table.</p>
+<p>Note：Cascaded foreign key actions do not activate triggers.</p>
+</li>
+<li>
+<p><code>SET NULL</code>: Delete or update the row from the parent table and set the foreign key column or columns in the child table to <code>NULL</code>. Both <code>ON DELETE SET NULL</code> and <code>ON UPDATE SET NULL</code> clauses are supported.</p>
+<p>If you specify a <code>SET NULL</code> action, <em>make sure that you have not declared the columns in the child table as <code>NOT NULL</code></em>.</p>
+</li>
+<li>
+<p><code>RESTRICT</code>: Rejects the delete or update operation for the parent table. Specifying <code>RESTRICT</code> (or <code>NO ACTION</code>) is the same as omitting the <code>ON DELETE</code> or <code>ON UPDATE</code> clause.</p>
+</li>
+<li>
+<p><code>NO ACTION</code>: A keyword from standard SQL. In MySQL, equivalent to <code>RESTRICT</code>. The MySQL Server rejects the delete or update operation for the parent table if there is a related foreign key value in the referenced table. Some database systems have deferred checks, and <code>NO ACTION</code> is a deferred check. In MySQL, foreign key constraints are checked immediately, so <code>NO ACTION</code> is the same as <code>RESTRICT</code>.</p>
+</li>
+<li>
+<p><code>SET DEFAULT</code>: This action is recognized by the MySQL parser, but both <a href="https://dev.mysql.com/doc/refman/5.6/en/innodb-storage-engine.html"><code>InnoDB</code></a> and <a href="https://dev.mysql.com/doc/refman/5.6/en/mysql-cluster.html"><code>NDB</code></a> reject table definitions containing <code>ON DELETE SET DEFAULT</code> or <code>ON UPDATE SET DEFAULT</code> clauses.</p>
+</li>
+</ul>
+<p>For storage engines that support foreign keys, MySQL rejects any <a href="https://dev.mysql.com/doc/refman/5.6/en/insert.html"><code>INSERT</code></a> or <a href="https://dev.mysql.com/doc/refman/5.6/en/update.html"><code>UPDATE</code></a> operation that attempts to create a foreign key value in a child table if there is no matching candidate key value in the parent table.</p>
+<p>For an <code>ON DELETE</code> or <code>ON UPDATE</code> that is not specified, the default action is always <code>RESTRICT</code>.</p>
+<h2 id="视图-view"><a class="header" href="#视图-view">视图 View</a></h2>
+<h3 id="introduction"><a class="header" href="#introduction">Introduction</a></h3>
+<p>视图 View 对于用户来说，<strong>和正常的表没有区别</strong>，视图的数据本质上是对数据库中表数据的 select。</p>
+<p>新建一个视图，对于用户来说，其等价于新建了一张表，用户可以对这张表进行增删改查，其增删改查的操作最后都会映射到其关联的表中。这张视图表的生命周期和其他正常的表一样，即使重启数据库，视图仍然存在。</p>
+<p>如果我们修改了某些表，那么依赖这些表的视图也会相应的进行更新。</p>
+<p>视图由于依赖其他表，其性能上可能不如直接查询其他表速度来的快。</p>
+<h3 id="视图的作用"><a class="header" href="#视图的作用">视图的作用</a></h3>
+<ul>
+<li>整合多表数据：对多个表的数据进行组合，新建成一张视图，方便进行二次查询</li>
+<li>截取单表数据：只对某张表的某些字段进行操作</li>
+<li>数据保护：可以针对想要公开的数据，生成一张视图，并提供给用户进行操作</li>
+</ul>
+<h3 id="视图增删改查"><a class="header" href="#视图增删改查">视图增删改查</a></h3>
+<pre><code class="language-mysql">create view view_test as
+select * from -- 标准的 sql 查询语言
+
+show create view view_name; -- 查看建立视图的 命令
+
+drop view view_name; -- 删除视图
+
+-- 更新视图，先 drop，再 create
+</code></pre>
+<h2 id="报错"><a class="header" href="#报错">报错</a></h2>
+<ul>
+<li>
+<p>Data truncated for column 'date' at row 1</p>
+<p>有时候设置了 键 的约束，但是插入的数据越过了这个约束，就会报错，例如设置了 varchar(16)，但是插入的字符串长度为 20 ，那么就会报错。</p>
+</li>
+</ul>
+<h2 id="数据库-sql-差异性"><a class="header" href="#数据库-sql-差异性">数据库 sql 差异性</a></h2>
+<ul>
+<li>
+<p>Oracle sql 语句结尾不能加 <code>;</code></p>
+</li>
+<li>
+<p>单引号和双引号的区别</p>
+<p>在 sql 标准中，单引号表示字符串，双引号表示 identifiers，例如表名或者列名</p>
+<pre><code class="language-sql">delete from 
+  table_a 
+where 
+  id in (
+    select 
+      id 
+    from 
+      (select * from table_a) as table_a_copy 
+      left join 
+	  (select *, 'flag' as &quot;flag&quot; from table_b) as table_b_copy 
+	  on 
+	  table_a_copy.id = table_b_copy.cc 
+    where 
+      table_b_copy.flag is NULL
+  );
+</code></pre>
+</li>
+<li>
+<p>Oracle 对 as 的兼容性不太好，不要用 as 了，as 类似于语法糖，不用也 ok 的</p>
+<pre><code class="language-sql">select *, 'flag' flag from table_b
+</code></pre>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../computer-science-notebook/database/zen-of-db.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../computer-science-notebook/database/mysql-102.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../computer-science-notebook/database/zen-of-db.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../computer-science-notebook/database/mysql-102.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

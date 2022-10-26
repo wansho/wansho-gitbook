@@ -1,0 +1,664 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>chapter7-function-decorators-and-closures - wanshuo-gitbook</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Table of contents</li><li class="chapter-item expanded "><a href="../../../reading/modern-os/index.html"><strong aria-hidden="true">1.</strong> 现代操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading/modern-os/chapter-1-introduction.html"><strong aria-hidden="true">1.1.</strong> chapter1-introduction</a></li><li class="chapter-item expanded "><a href="../../../reading/modern-os/chapter-2-processes-and-threads.html"><strong aria-hidden="true">1.2.</strong> chapter2-processes-and-threads</a></li><li class="chapter-item expanded "><a href="../../../reading/modern-os/chapter-7-virtualization-and-cloud.html"><strong aria-hidden="true">1.3.</strong> chapter7-virtualization-and-cloud</a></li><li class="chapter-item expanded "><a href="../../../reading/modern-os/questions.html"><strong aria-hidden="true">1.4.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/index.html"><strong aria-hidden="true">2.</strong> 流畅的 Python</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading/fluent-python/chapters/index.html"><strong aria-hidden="true">2.1.</strong> chapters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading/fluent-python/chapters/chapter1.the-python-data-model.html"><strong aria-hidden="true">2.1.1.</strong> chapter1-the-python-data-model</a></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/chapters/chapter2.an-array-of-sequences.html"><strong aria-hidden="true">2.1.2.</strong> chapter2-an-array-of-sequences</a></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/chapters/chapter3.dictionaries-and-sets.html"><strong aria-hidden="true">2.1.3.</strong> chapter3-dictionaries-and-sets</a></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/chapters/chapter4.text-versus-bytes.html"><strong aria-hidden="true">2.1.4.</strong> chapter4-text-versus-bytes</a></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/chapters/chapter5.first-class-functions.html"><strong aria-hidden="true">2.1.5.</strong> chapter5-first-class-functions</a></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/chapters/chapter6-design-patterns-with-first-class-functions.html"><strong aria-hidden="true">2.1.6.</strong> chapter6-design-patterns-with-functions</a></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/chapters/chapter7-function-decorators-and-closures.html" class="active"><strong aria-hidden="true">2.1.7.</strong> chapter7-function-decorators-and-closures</a></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/chapters/chapter8-object-reference-mutability-recycling.html"><strong aria-hidden="true">2.1.8.</strong> chapter8-object-reference-mutability-and-recycling</a></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/chapters/chapter9-a-pythonic-object.html"><strong aria-hidden="true">2.1.9.</strong> chapter9-a-pythonic-object</a></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/chapters/chapter10-sequence-hacking-hashing-slicing.html"><strong aria-hidden="true">2.1.10.</strong> chapter10-sequencec-hacking-hashing-and-slicing</a></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/chapters/chapter11-interfaces-from-protocols-to-abcs.html"><strong aria-hidden="true">2.1.11.</strong> chapter11-interfaces-from-protocols-to-abcs</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/summary/index.html"><strong aria-hidden="true">2.2.</strong> summary</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading/fluent-python/summary/questions.html"><strong aria-hidden="true">2.2.1.</strong> questions</a></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/summary/python-code-optimization.html"><strong aria-hidden="true">2.2.2.</strong> python-code-optimization</a></li><li class="chapter-item expanded "><a href="../../../reading/fluent-python/summary/python-30-seconds.html"><strong aria-hidden="true">2.2.3.</strong> python-30-seconds</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../reading/computer-networking/index.html"><strong aria-hidden="true">3.</strong> 计算机网络-自顶向下</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading/computer-networking/chapter1-computer-networks-and-the-internet.html"><strong aria-hidden="true">3.1.</strong> chapter1-computer-networks-and-the-internet</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading/data-structures-and-algorithm-analysis-in-c/index.html"><strong aria-hidden="true">4.</strong> 数据结构与算法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading/data-structures-and-algorithm-analysis-in-c/chapters/index.html"><strong aria-hidden="true">4.1.</strong> chapters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-1-introduction.html"><strong aria-hidden="true">4.1.1.</strong> chapter1-introduction</a></li><li class="chapter-item expanded "><a href="../../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-2-algorithm-analysis.html"><strong aria-hidden="true">4.1.2.</strong> chapter2-algorithm-analysis</a></li><li class="chapter-item expanded "><a href="../../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-3-list-stack-queue.html"><strong aria-hidden="true">4.1.3.</strong> chapter3-list-stack-queue</a></li><li class="chapter-item expanded "><a href="../../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-4-tree.html"><strong aria-hidden="true">4.1.4.</strong> chapter4-tree</a></li><li class="chapter-item expanded "><a href="../../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-6-heap.html"><strong aria-hidden="true">4.1.5.</strong> chapter6-heap</a></li><li class="chapter-item expanded "><a href="../../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-7-sorting.html"><strong aria-hidden="true">4.1.6.</strong> chapter7-sorting</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading/data-structures-and-algorithm-analysis-in-c/summary/index.html"><strong aria-hidden="true">4.2.</strong> summary</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading/data-structures-and-algorithm-analysis-in-c/summary/questions.html"><strong aria-hidden="true">4.2.1.</strong> questions</a></li><li class="chapter-item expanded "><a href="../../../reading/data-structures-and-algorithm-analysis-in-c/summary/classic-problems.html"><strong aria-hidden="true">4.2.2.</strong> 经典问题</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../reading/books/index.html"><strong aria-hidden="true">5.</strong> 其他书籍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading/books/bookshelf.html"><strong aria-hidden="true">5.1.</strong> 书籍列表</a></li><li class="chapter-item expanded "><a href="../../../reading/books/zen-and-the-art.html"><strong aria-hidden="true">5.2.</strong> 禅与摩托车维修艺术</a></li><li class="chapter-item expanded "><a href="../../../reading/books/the-road-less-traveled.html"><strong aria-hidden="true">5.3.</strong> 少有人走的路</a></li><li class="chapter-item expanded "><a href="../../../reading/books/time-as-a-friend.html"><strong aria-hidden="true">5.4.</strong> 李笑来-与时间做朋友</a></li><li class="chapter-item expanded "><a href="../../../reading/books/reborn.html"><strong aria-hidden="true">5.5.</strong> 李笑来-Reborn</a></li><li class="chapter-item expanded "><a href="../../../reading/books/shediao-yingxiongzhuan.html"><strong aria-hidden="true">5.6.</strong> 射雕英雄传</a></li><li class="chapter-item expanded "><a href="../../../reading/books/liangjian.html"><strong aria-hidden="true">5.7.</strong> 亮剑</a></li><li class="chapter-item expanded "><a href="../../../reading/books/wan-li-shi-wu-nian.html"><strong aria-hidden="true">5.8.</strong> 万历十五年</a></li><li class="chapter-item expanded "><a href="../../../reading/books/zi-bei-yu-chao-yue.html"><strong aria-hidden="true">5.9.</strong> 自卑与超越</a></li><li class="chapter-item expanded "><a href="../../../reading/books/ming-li-xue.html"><strong aria-hidden="true">5.10.</strong> 王德峰-命理学</a></li><li class="chapter-item expanded "><a href="../../../reading/books/a-brief-history-of-humankind.html"><strong aria-hidden="true">5.11.</strong> 人类简史</a></li><li class="chapter-item expanded "><a href="../../../reading/books/mao-xuan.html"><strong aria-hidden="true">5.12.</strong> 毛选</a></li><li class="chapter-item expanded "><a href="../../../reading/books/tian-dao.html"><strong aria-hidden="true">5.13.</strong> 遥远的救世主</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/algorithms/index.html"><strong aria-hidden="true">6.</strong> 算法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/algorithms/arraylist-vs-linklist.html"><strong aria-hidden="true">6.1.</strong> arraylist-vs-linklist</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/algorithms/information-entropy.html"><strong aria-hidden="true">6.2.</strong> information-entropy</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/algorithms/summary.html"><strong aria-hidden="true">6.3.</strong> summary</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/database/index.html"><strong aria-hidden="true">7.</strong> database</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/database/zen-of-db.html"><strong aria-hidden="true">7.1.</strong> zen-of-db</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/database/mysql-101.html"><strong aria-hidden="true">7.2.</strong> MySQL-101</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/database/mysql-102.html"><strong aria-hidden="true">7.3.</strong> MySQL-102</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/database/mysql-103.html"><strong aria-hidden="true">7.4.</strong> MySQL-103</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/database/elastic-search.html"><strong aria-hidden="true">7.5.</strong> Elasticsearch</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/database/elastic-logstash.html"><strong aria-hidden="true">7.6.</strong> Logstash</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/database/oracle-101.html"><strong aria-hidden="true">7.7.</strong> Oracle-101</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/database/mysql-leetcode.html"><strong aria-hidden="true">7.8.</strong> Mysql-Leetcode</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/database/database-others.html"><strong aria-hidden="true">7.9.</strong> 其他数据库产品</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/database/design-data-intensive-app.html"><strong aria-hidden="true">7.10.</strong> 书籍-设计数据密集型应用</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/database/questions.html"><strong aria-hidden="true">7.11.</strong> Questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/cryptography-web-security/index.html"><strong aria-hidden="true">8.</strong> 密码学与网络安全</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/cryptography-web-security/cryptography.html"><strong aria-hidden="true">8.1.</strong> 密码学</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/cryptography-web-security/ssh.html"><strong aria-hidden="true">8.2.</strong> ssh 教程</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/cryptography-web-security/authentication-authorization.html"><strong aria-hidden="true">8.3.</strong> 认证和授权</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/cryptography-web-security/single-sign-on.html"><strong aria-hidden="true">8.4.</strong> SSO 单点登录</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/cryptography-web-security/oauth.html"><strong aria-hidden="true">8.5.</strong> OAuth</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/cryptography-web-security/jwt.html"><strong aria-hidden="true">8.6.</strong> jwt</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/cryptography-web-security/security-vulnerability.html"><strong aria-hidden="true">8.7.</strong> 安全漏洞</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/network-web/index.html"><strong aria-hidden="true">9.</strong> 计算机网络相关知识</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/network-web/computer-network.html"><strong aria-hidden="true">9.1.</strong> 计算机网络小知识集合</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/network-web/web-service.html"><strong aria-hidden="true">9.2.</strong> web-service</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/network-web/http-protocol.html"><strong aria-hidden="true">9.3.</strong> http 协议</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/network-web/questions.html"><strong aria-hidden="true">9.4.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/programming-language/index.html"><strong aria-hidden="true">10.</strong> 编程语言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/programming-language/go.html"><strong aria-hidden="true">10.1.</strong> go</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/programming-language/kotlin.html"><strong aria-hidden="true">10.2.</strong> kotlin</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/programming-language/rust.html"><strong aria-hidden="true">10.3.</strong> rust</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/programming-language/svg.html"><strong aria-hidden="true">10.4.</strong> svg</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/programming-language/regex.html"><strong aria-hidden="true">10.5.</strong> regex</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/programming-language/windows-bat.html"><strong aria-hidden="true">10.6.</strong> windows-bat</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/programming-language/qt.html"><strong aria-hidden="true">10.7.</strong> QT</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-c/index.html"><strong aria-hidden="true">11.</strong> C++ 开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-c/how-to-learn-c.html"><strong aria-hidden="true">11.1.</strong> C语言学习教程</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-c/think-c.html"><strong aria-hidden="true">11.2.</strong> 书籍：Think-C</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-c/deep-c.html"><strong aria-hidden="true">11.3.</strong> C语言深度剖析</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-c/c++.html"><strong aria-hidden="true">11.4.</strong> C++学习</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/index.html"><strong aria-hidden="true">12.</strong> Python 学习</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/note-for-pandas.html"><strong aria-hidden="true">12.1.</strong> pandas 学习笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/django-version-upgrade.html"><strong aria-hidden="true">12.2.</strong> django 版本升级</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/python-hacker.html"><strong aria-hidden="true">12.3.</strong> 书籍：python-hacker</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/python-craftsman.html"><strong aria-hidden="true">12.4.</strong> 书籍：python 工匠</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/python-packages.html"><strong aria-hidden="true">12.5.</strong> pip 相关知识</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/python-exception.html"><strong aria-hidden="true">12.6.</strong> python 异常处理</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/python-cheetsheet.html"><strong aria-hidden="true">12.7.</strong> python 小知识</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/jupyter-notebook.html"><strong aria-hidden="true">12.8.</strong> jupyter 使用笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/different-methods-in-class.html"><strong aria-hidden="true">12.9.</strong> python 不同的方法</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/pep.html"><strong aria-hidden="true">12.10.</strong> pep: python-enhanced-proposal</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/python-algorithm-data-structure.html"><strong aria-hidden="true">12.11.</strong> python 数据结构与算法</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-python/multiprocessing-and-threading.html"><strong aria-hidden="true">12.12.</strong> 多线程和多进程</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/index.html"><strong aria-hidden="true">13.</strong> Java 学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java.html"><strong aria-hidden="true">13.1.</strong> 毕向东 java se 学习笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java.html"><strong aria-hidden="true">13.2.</strong> java 进阶</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java-collection-map.html"><strong aria-hidden="true">13.3.</strong> Java collection学习笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java-array.html"><strong aria-hidden="true">13.4.</strong> Java array 学习笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/string.html"><strong aria-hidden="true">13.5.</strong> Java string 学习笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/annotation.html"><strong aria-hidden="true">13.6.</strong> Java Annotation 学习笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java-datetime.html"><strong aria-hidden="true">13.7.</strong> java datetime 学习笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java-reflection.html"><strong aria-hidden="true">13.8.</strong> java 反射学习笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java-new-features.html"><strong aria-hidden="true">13.9.</strong> Java 新特性</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java-log.html"><strong aria-hidden="true">13.10.</strong> Java 日志</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java-exception.html"><strong aria-hidden="true">13.11.</strong> Java 异常</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java-vm.html"><strong aria-hidden="true">13.12.</strong> java 虚拟机</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java-junit.html"><strong aria-hidden="true">13.13.</strong> Java JUnit 测试</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/template-engine.html"><strong aria-hidden="true">13.14.</strong> Java 模板引擎</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/design-patterns.html"><strong aria-hidden="true">13.15.</strong> 设计模式学习</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/generics.html"><strong aria-hidden="true">13.16.</strong> 泛型</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/stream.html"><strong aria-hidden="true">13.17.</strong> stream 学习</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/functional-programming.html"><strong aria-hidden="true">13.18.</strong> 函数式编程</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/program-development-in-java.html"><strong aria-hidden="true">13.19.</strong> Java 程序开发原理</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java-bin.html"><strong aria-hidden="true">13.20.</strong> Java 自带命令学习</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/java-dev-tools.html"><strong aria-hidden="true">13.21.</strong> Java 开发工具</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java/big-number.html"><strong aria-hidden="true">13.22.</strong> 大数计算和存储</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/index.html"><strong aria-hidden="true">14.</strong> JavaWeb 学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/database.html"><strong aria-hidden="true">14.1.</strong> 访问数据库笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/java-persistence-api.html"><strong aria-hidden="true">14.2.</strong> JPA 深入学习</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/mybatis.html"><strong aria-hidden="true">14.3.</strong> mybatis 学习</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/bean-pojo-dto.html"><strong aria-hidden="true">14.4.</strong> java-bean 分类</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/maven.html"><strong aria-hidden="true">14.5.</strong> Maven 学习笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/dependencies.html"><strong aria-hidden="true">14.6.</strong> 依赖库整理</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/micro-service.html"><strong aria-hidden="true">14.7.</strong> 微服务架构课</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/architect.html"><strong aria-hidden="true">14.8.</strong> IT老齐架构课笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/restful-api.html"><strong aria-hidden="true">14.9.</strong> restful-api</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/spring.html"><strong aria-hidden="true">14.10.</strong> spring</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/spring-security.html"><strong aria-hidden="true">14.11.</strong> spring-security</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/springboot.html"><strong aria-hidden="true">14.12.</strong> spring-boot</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/springcloud.html"><strong aria-hidden="true">14.13.</strong> spring-cloud</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/reactive.html"><strong aria-hidden="true">14.14.</strong> 响应式 web</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/cache.html"><strong aria-hidden="true">14.15.</strong> 缓存</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/web-api-the-good-parts.html"><strong aria-hidden="true">14.16.</strong> WebAPI 的设计与开发</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/rbac.html"><strong aria-hidden="true">14.17.</strong> RBAC</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/socket.html"><strong aria-hidden="true">14.18.</strong> Socket</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/webservice.html"><strong aria-hidden="true">14.19.</strong> webservice</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/tomcat-servlet.html"><strong aria-hidden="true">14.20.</strong> tomcat-servlet</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/encode-decode.html"><strong aria-hidden="true">14.21.</strong> 编解码</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/note-for-java-web/netty.html"><strong aria-hidden="true">14.22.</strong> Netty</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/index.html"><strong aria-hidden="true">15.</strong> 前端开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/nodejs.html"><strong aria-hidden="true">15.1.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/yarn.html"><strong aria-hidden="true">15.2.</strong> yarn 使用</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/repos.html"><strong aria-hidden="true">15.3.</strong> 前端库总结</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/react-dev.html"><strong aria-hidden="true">15.4.</strong> React 开发笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/chrome-extension.html"><strong aria-hidden="true">15.5.</strong> chrome 插件开发</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/ajax.html"><strong aria-hidden="true">15.6.</strong> ajax</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/jquery.html"><strong aria-hidden="true">15.7.</strong> jquery</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/javascript-101.html"><strong aria-hidden="true">15.8.</strong> javascript-101</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/javascript-102.html"><strong aria-hidden="true">15.9.</strong> javascript-102</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/javascript-ie11-compatible.html"><strong aria-hidden="true">15.10.</strong> javascript兼容IE11</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/immutable-js.html"><strong aria-hidden="true">15.11.</strong> immutable.js</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/npm-libs.html"><strong aria-hidden="true">15.12.</strong> npm库</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/html-css-dom.html"><strong aria-hidden="true">15.13.</strong> html-css-dom 学习</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/front-end/web-assembly.html"><strong aria-hidden="true">15.14.</strong> web-assembly</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/nlp/index.html"><strong aria-hidden="true">16.</strong> NLP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/nlp/nlp-learning.html"><strong aria-hidden="true">16.1.</strong> NLP-Learning</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/nlp/machine-learning.html"><strong aria-hidden="true">16.2.</strong> Machine-Learning</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/linux/index.html"><strong aria-hidden="true">17.</strong> linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/linux/linux-cmds.html"><strong aria-hidden="true">17.1.</strong> linux 命令手册</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/linux/linux-cmd-enhanced.html"><strong aria-hidden="true">17.2.</strong> linux 增强命令</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/linux/linux-mythink.html"><strong aria-hidden="true">17.3.</strong> linux 使用心得</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/linux/linux-devops.html"><strong aria-hidden="true">17.4.</strong> linux-运维</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/linux/linux-init.html"><strong aria-hidden="true">17.5.</strong> linux 初始化</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/linux/vim.html"><strong aria-hidden="true">17.6.</strong> vim</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/linux/shell.html"><strong aria-hidden="true">17.7.</strong> shell</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/linux/script-demos.html"><strong aria-hidden="true">17.8.</strong> shell 脚本 demo</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/linux/linux-distribution-history.html"><strong aria-hidden="true">17.9.</strong> linux 历史和发行版</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/github/index.html"><strong aria-hidden="true">18.</strong> github</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/github/github.html"><strong aria-hidden="true">18.1.</strong> github 使用技巧</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/github/gitbook.html"><strong aria-hidden="true">18.2.</strong> 优雅锋利的 gitbook</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/github/git.html"><strong aria-hidden="true">18.3.</strong> 书籍：git-pro</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/github/github-actions.html"><strong aria-hidden="true">18.4.</strong> github-actions</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/github/markdown.html"><strong aria-hidden="true">18.5.</strong> markdown 语法</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/github/git-hook.html"><strong aria-hidden="true">18.6.</strong> githook</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/index.html"><strong aria-hidden="true">19.</strong> 开发工具与技术栈</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/technology-stack.html"><strong aria-hidden="true">19.1.</strong> 技术栈</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/idea.html"><strong aria-hidden="true">19.2.</strong> IDEA 使用学习笔记</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/idea-debug.html"><strong aria-hidden="true">19.3.</strong> IDEA Debug</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/serverless.html"><strong aria-hidden="true">19.4.</strong> serverless</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/apifox.html"><strong aria-hidden="true">19.5.</strong> apifox</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/blockchain.html"><strong aria-hidden="true">19.6.</strong> 区块链</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/web3.html"><strong aria-hidden="true">19.7.</strong> Web3.0</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/vscode.html"><strong aria-hidden="true">19.8.</strong> VSCode</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/docker.html"><strong aria-hidden="true">19.9.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/cloud-native.html"><strong aria-hidden="true">19.10.</strong> 云原生</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/message-queue.html"><strong aria-hidden="true">19.11.</strong> 消息队列</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/redis.html"><strong aria-hidden="true">19.12.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/selenium.html"><strong aria-hidden="true">19.13.</strong> Selenium</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/nginx.html"><strong aria-hidden="true">19.14.</strong> nginx</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/zookeeper.html"><strong aria-hidden="true">19.15.</strong> zookeeper</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/haproxy.html"><strong aria-hidden="true">19.16.</strong> haproxy-keepalived</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/webhook.html"><strong aria-hidden="true">19.17.</strong> webhook</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/lowcode.html"><strong aria-hidden="true">19.18.</strong> 低代码</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/web-spider.html"><strong aria-hidden="true">19.19.</strong> 网络爬虫</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/make-hexo-theme.html"><strong aria-hidden="true">19.20.</strong> Hexo 主题定制</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/development-tools/swagger.html"><strong aria-hidden="true">19.21.</strong> Swagger</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/software-engineering/index.html"><strong aria-hidden="true">20.</strong> 软件工程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/software-engineering/software-testing.html"><strong aria-hidden="true">20.1.</strong> 软件测试</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/software-engineering/uml.html"><strong aria-hidden="true">20.2.</strong> UML</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/software-engineering/continuous-integration.html"><strong aria-hidden="true">20.3.</strong> 持续集成</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/software-engineering/software-version.html"><strong aria-hidden="true">20.4.</strong> 软件版本命名</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/software-engineering/zentao.html"><strong aria-hidden="true">20.5.</strong> 项目管理-禅道</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/software-engineering/software-engineering.html"><strong aria-hidden="true">20.6.</strong> 软件工程</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/software-engineering/os-installed-software.html"><strong aria-hidden="true">20.7.</strong> 电脑常用软件整理</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/software-engineering/code-summary.html"><strong aria-hidden="true">20.8.</strong> 编程经验总结</a></li></ol></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/technology-lecture/index.html"><strong aria-hidden="true">21.</strong> 技术讲座</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../computer-science-notebook/technology-lecture/cs-keep-learning.html"><strong aria-hidden="true">21.1.</strong> keep-learning</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/technology-lecture/atguigu-os.html"><strong aria-hidden="true">21.2.</strong> 尚硅谷-操作系统</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/technology-lecture/future-of-computation.html"><strong aria-hidden="true">21.3.</strong> 吴翰清-计算的未来</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/technology-lecture/xu-shi-wei-architecture.html"><strong aria-hidden="true">21.4.</strong> 许式伟-架构课</a></li><li class="chapter-item expanded "><a href="../../../computer-science-notebook/technology-lecture/questions.html"><strong aria-hidden="true">21.5.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../../weekly/2022/index.html"><strong aria-hidden="true">22.</strong> 2022</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../weekly/2022/week-27.html"><strong aria-hidden="true">22.1.</strong> week-27</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-28.html"><strong aria-hidden="true">22.2.</strong> week-28</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-29.html"><strong aria-hidden="true">22.3.</strong> week-29</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-30.html"><strong aria-hidden="true">22.4.</strong> week-30</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-31-32.html"><strong aria-hidden="true">22.5.</strong> week-31-32</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-32.html"><strong aria-hidden="true">22.6.</strong> week-32</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-33.html"><strong aria-hidden="true">22.7.</strong> week-33</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-34.html"><strong aria-hidden="true">22.8.</strong> week-34</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-35.html"><strong aria-hidden="true">22.9.</strong> week-35</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-36.html"><strong aria-hidden="true">22.10.</strong> week-36</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-37.html"><strong aria-hidden="true">22.11.</strong> week-37</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-38.html"><strong aria-hidden="true">22.12.</strong> week-38</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-39.html"><strong aria-hidden="true">22.13.</strong> week-39</a></li><li class="chapter-item expanded "><a href="../../../weekly/2022/week-40.html"><strong aria-hidden="true">22.14.</strong> week-40</a></li></ol></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/blog/index.html"><strong aria-hidden="true">23.</strong> blog</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../life-and-thinking/blog/for-a-job.html"><strong aria-hidden="true">23.1.</strong> 关于找工作</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/blog/how-to-study.html"><strong aria-hidden="true">23.2.</strong> 如何学习</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/blog/summary-for-examination-oriented-education.html"><strong aria-hidden="true">23.3.</strong> 应试教育总结思考</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/blog/cyber-spirit-opium.html"><strong aria-hidden="true">23.4.</strong> 网络精神鸦片</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/blog/why-perfect.html"><strong aria-hidden="true">23.5.</strong> 追求完美？</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/blog/about-love.html"><strong aria-hidden="true">23.6.</strong> 我的恋爱观</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/blog/pin-duo-duo.html"><strong aria-hidden="true">23.7.</strong> 细数在拼多多开店遇到的坑</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/blog/summary-of-marketing.html"><strong aria-hidden="true">23.8.</strong> 营销经验总结</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/blog/real-estate.html"><strong aria-hidden="true">23.9.</strong> 买房经验总结</a></li></ol></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/health/index.html"><strong aria-hidden="true">24.</strong> 关于健康</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../life-and-thinking/health/zhong-yi.html"><strong aria-hidden="true">24.1.</strong> 关于中医</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/health/health.html"><strong aria-hidden="true">24.2.</strong> 关于健康</a></li></ol></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/index.html"><strong aria-hidden="true">25.</strong> 求知若渴虚心若愚</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/how-to-keep-learning.html"><strong aria-hidden="true">25.1.</strong> 如何保持学习激情</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/weekly.html"><strong aria-hidden="true">25.2.</strong> 周刊</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/weekly-02.html"><strong aria-hidden="true">25.3.</strong> 周刊-02</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/authentic-expression.html"><strong aria-hidden="true">25.4.</strong> 英语单词和专业词汇</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/knowledge-summary.html"><strong aria-hidden="true">25.5.</strong> 网上冲浪知识总结</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/zhihu.html"><strong aria-hidden="true">25.6.</strong> 知乎摘抄</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/story.html"><strong aria-hidden="true">25.7.</strong> 好的文章</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/principle-of-economics.html"><strong aria-hidden="true">25.8.</strong> 经济学原理学习</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/how-to.html"><strong aria-hidden="true">25.9.</strong> 如何</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/office-tricks.html"><strong aria-hidden="true">25.10.</strong> Office 三件套</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/movies.html"><strong aria-hidden="true">25.11.</strong> 看电影</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/keep-learning/daily-news.html"><strong aria-hidden="true">25.12.</strong> 每日新闻</a></li></ol></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/index.html"><strong aria-hidden="true">26.</strong> 安心立命</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/why.html"><strong aria-hidden="true">26.1.</strong> 为什么要学习</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/difference-between-east-and-west.html"><strong aria-hidden="true">26.2.</strong> 王德峰-中西文化差异</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/yangming.html"><strong aria-hidden="true">26.3.</strong> 王德峰-阳明心学</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/feat-and-practice.html"><strong aria-hidden="true">26.4.</strong> 王德峰-命运与修行</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/truly-maturity.html"><strong aria-hidden="true">26.5.</strong> 关于成熟</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/poetry.html"><strong aria-hidden="true">26.6.</strong> 古诗词摘抄</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/altar-sutra-wdf-perface.html"><strong aria-hidden="true">26.7.</strong> 王德峰讲坛经-序言</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/altar-sutra-wdf-01.html"><strong aria-hidden="true">26.8.</strong> 王德峰讲坛经-行由品</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/altar-sutra-wdf-02.html"><strong aria-hidden="true">26.9.</strong> 王德峰讲坛经-般若品</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/altar-sutra-wdf-03.html"><strong aria-hidden="true">26.10.</strong> 王德峰讲坛经-疑问品</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/altar-sutra-wdf-04.html"><strong aria-hidden="true">26.11.</strong> 王德峰讲坛经-定慧品</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/altar-sutra-wdf-05.html"><strong aria-hidden="true">26.12.</strong> 王德峰讲坛经-坐禅品</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/altar-sutra-wdf-06.html"><strong aria-hidden="true">26.13.</strong> 王德峰讲坛经-忏悔品</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/altar-sutra-wdf-07.html"><strong aria-hidden="true">26.14.</strong> 王德峰讲坛经-机缘品</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/altar-sutra-wdf-08.html"><strong aria-hidden="true">26.15.</strong> 王德峰讲坛经-顿悟品</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/altar-sutra-wdf-09.html"><strong aria-hidden="true">26.16.</strong> 王德峰讲坛经-护法品</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/altar-sutra-wdf-10.html"><strong aria-hidden="true">26.17.</strong> 王德峰讲坛经-付嘱品</a></li><li class="chapter-item expanded "><a href="../../../life-and-thinking/peace/altar-sutra-wdf-finish.html"><strong aria-hidden="true">26.18.</strong> 王德峰讲坛经-结束语</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">wanshuo-gitbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="chapter7-function-decorators-and-closures"><a class="header" href="#chapter7-function-decorators-and-closures">Chapter7. Function Decorators and Closures</a></h1>
+<p>[TOC]</p>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>装饰器和 function 是紧密结合在一起的。</p>
+<p>装饰器是装饰设计模式的 Python 实现。</p>
+<p>装饰器本质上是一个 High-Order Function，其输入是被装饰的 function（<strong>First-Class Object 思想</strong>），输出也是一个 function。装饰器根据返回的 function 可以分成如下两类装饰器：</p>
+<ol>
+<li>返回的 function 为输入的 function：装饰器不影响原 function，只是对原 function 进行一些计算，例如 PySnooper 就是这种类型的装饰器，其只是将 function 内的计算结果打印出来，并不会影响原 function</li>
+<li>返回的 function 是新的 function：装饰器内创建一个新的 function （<strong>闭包</strong>）</li>
+</ol>
+<blockquote>
+<p>A decorator is a callable that takes another function as argument (the decorated function). The decorator may perform some processing with decorated function, and returns it or replaces it with another function or callable object. —— Fluent-Python</p>
+</blockquote>
+<h2 id="demo-and-characteristic"><a class="header" href="#demo-and-characteristic">Demo and Characteristic</a></h2>
+<p><strong>decorator_demo.py</strong></p>
+<pre><code class="language-Python"># -*- coding: utf-8 -*-
+
+def decorator_without_inner(func):
+    print(&quot;print without inner&quot;)
+    return func
+
+
+def decorator_with_inner(func):
+    def inner():
+        print(&quot;print inner&quot;)
+    return inner
+
+
+@decorator_without_inner
+def target1():
+    print(&quot;target1&quot;)
+
+
+@decorator_with_inner # 等价于 decorator_with_inner(target2)
+def target2():
+    print(&quot;target2&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    target1() 
+    &quot;&quot;&quot;
+    print without inner # 先执行装饰器 有点 super 的味道
+    target1  # 再执行本函数内的语句 
+    &quot;&quot;&quot;
+    print(target1) # &lt;function target1 at 0x000001E01B8F9A60&gt;
+    
+    target2()
+    &quot;&quot;&quot;
+    print without inner
+    print inner  # 装饰器返回新的函数 inner(), inner() 取代了 target2()
+    &quot;&quot;&quot;
+    print(target2) # &lt;function decorator_with_inner.&lt;locals&gt;.inner at 0x000001E01B8F9F28&gt;
+
+</code></pre>
+<h3 id="返回的-function-为输入的-function"><a class="header" href="#返回的-function-为输入的-function">返回的 function 为输入的 function</a></h3>
+<p>function 没有改变，那么先执行装饰器，再执行原 function。注意：如果返回的 function 还是输入的 function，那么被装饰的 function 的引用仍然指向原 function。</p>
+<h4 id="策略设计模式的优化"><a class="header" href="#策略设计模式的优化">策略设计模式的优化</a></h4>
+<p>Chapter6 中策略设计模式(function-oriented) 的缺点：</p>
+<ol>
+<li>所有策略必须用统一的后缀，进而获取所有的策略</li>
+</ol>
+<p>用装饰器优化后的策略设计模式的优点：</p>
+<ol>
+<li>策略 function 不需要使用统一的后缀</li>
+<li>装饰器的名称可以清晰地表明该 function 的功能</li>
+</ol>
+<pre><code class="language-python">from collections import namedtuple
+from operator import itemgetter
+
+Customer = namedtuple(&quot;Customer&quot;, &quot;name fidelity&quot;)
+
+
+class LineItem:
+    &quot;&quot;&quot;商品&quot;&quot;&quot;
+    def __init__(self, product, quantity, price):
+        self.product = product
+        self.quantity = quantity
+        self.price = price
+
+    def total(self):
+        return self.price * self.quantity
+
+
+class Order: # the Context
+    &quot;&quot;&quot;订单&quot;&quot;&quot;
+    def __init__(self, customer, cart, promotion=None): # promotion 是可选参数，默认为 None
+        self.customer = customer
+        self.cart = cart
+        self.promotion = promotion
+
+    def total(self):
+        &quot;&quot;&quot;计算商品总额&quot;&quot;&quot;
+        if not hasattr(self, &quot;__total&quot;): # 判断是否有该属性，防止重复计算
+            self.__total = sum(item.total() for item in self.cart)
+        return self.__total
+
+    def due(self):
+        &quot;&quot;&quot;应付额&quot;&quot;&quot;
+        if self.promotion is None:
+            discount = 0
+        else:
+            discount = self.promotion(self)
+        return self.total() - discount
+
+    def __repr__(self):
+        return &quot;&lt;Order tota:{:.2f} due:{:.2f}&gt;&quot;.format(self.total(), self.due())
+
+
+promotions = []
+
+  
+def promotion_strategy(promotion):
+    promotions.append(promotion)
+    return promotion
+
+
+@promotion_strategy
+def fidelity_promotion(order): # concrete strategy
+    &quot;&quot;&quot;5% discount for customers with 1000 or more fidelity points&quot;&quot;&quot;
+    return 0 if order.customer.fidelity &lt; 1000 else order.total() * .05
+
+
+@promotion_strategy
+def bulk_item_promotion(order): # concrate strategy
+    &quot;&quot;&quot;10% discount for each LineItem with 20 or more units&quot;&quot;&quot;
+    discount = 0
+    for item in order.cart:
+        if item.quantity &gt;= 20:
+            discount += item.total() * .1
+    return discount
+
+
+@promotion_strategy
+def large_order_promotion(order): # concrate strategy
+    &quot;&quot;&quot;7% discount for orders with 10 or more distinct items&quot;&quot;&quot;
+    discount = 0
+    distinct_items = {item.product for item in order.cart}
+    if len(distinct_items) &gt;= 10:
+        discount = order.total() * .07
+    return discount
+
+
+def get_best_promotion(order):
+    &quot;&quot;&quot;获取最大的 promotion&quot;&quot;&quot;
+    promotion2discount = [(promotion, promotion(order)) for promotion in promotions]
+    sorted_promotion2discount = sorted(promotion2discount, key=itemgetter(1))
+    return sorted_promotion2discount[-1][0]
+
+
+if __name__ == &quot;__main__&quot;:
+
+    joe = Customer(&quot;John Doe&quot;, 0)
+    ann = Customer(&quot;Ann Smith&quot;, 1100)
+    cart = [
+        LineItem(&quot;banana&quot;, 4, .5),
+        LineItem(&quot;apple&quot;, 40, 1.5),
+        LineItem(&quot;orange&quot;, 5, 5.0),
+    ]
+
+    order1 = Order(ann, cart)
+    order1.promotion = get_best_promotion(order1)
+    print(order1.total())
+    print(order1.due())  # &lt;Order tota:42.00 due:39.90&gt;
+    
+</code></pre>
+<h3 id="返回的-function-为新的-function"><a class="header" href="#返回的-function-为新的-function">返回的 function 为新的 function</a></h3>
+<p>新的 function 会<strong>替换</strong>掉旧的 function，然后只执行新的 function，实际上，此时的被装饰后的 function 的引用已经指向了 新的 function。</p>
+<h3 id="装饰器的两大特征"><a class="header" href="#装饰器的两大特征">装饰器的两大特征</a></h3>
+<ul>
+<li>
+<p>可以替换被装饰的 function</p>
+</li>
+<li>
+<p><strong>在 module 被 import 的时候，就被执行，这一特性可以用于模块加载时候的初始化</strong>（类似于 Java 的静态代码块，随着类的加载而加载）</p>
+<pre><code class="language-python">import decorator_demo
+
+&quot;&quot;&quot;
+print without inner
+&quot;&quot;&quot;
+</code></pre>
+<p>被装饰的 function，在 import 之后就会执行装饰器function（注意并不会执行被装饰function）。</p>
+</li>
+</ul>
+<h3 id="装饰器的实际应用"><a class="header" href="#装饰器的实际应用">装饰器的实际应用</a></h3>
+<ul>
+<li>一个实际应用中的装饰器，通常被定义在与被装饰 function 不同的 module 中</li>
+<li>一个实际应用中的装饰器，通常会定义一个 inner function 用来替代原 function</li>
+</ul>
+<h2 id="python-function变量作用域"><a class="header" href="#python-function变量作用域">Python function变量作用域</a></h2>
+<h3 id="function-local-variable"><a class="header" href="#function-local-variable">function local variable</a></h3>
+<p>Demo:</p>
+<pre><code class="language-Python">b = 6
+def test():
+    a = 9
+    print(a)
+    print(b)
+    b = 8
+    
+test()
+
+&quot;&quot;&quot;
+Traceback (most recent call last):
+9
+  File &quot;&lt;input&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;&lt;input&gt;&quot;, line 4, in test
+UnboundLocalError: local variable 'b' referenced before assignment
+&quot;&quot;&quot;
+
+###########################################################################
+
+a = 6
+
+def test():
+    a = 7
+    print(a)
+
+test()
+print(a)
+
+&quot;&quot;&quot;
+7
+6
+&quot;&quot;&quot;
+
+###########################################################################
+
+a = 6
+
+def test():
+    print(a)
+&quot;&quot;&quot;
+6
+&quot;&quot;&quot;
+</code></pre>
+<p>Python 解释器在编译上面的代码时，其看到变量 b 在 test 中进行了<strong>赋值</strong>，则判断 b 为 test function 中的 local variable，<strong>Python 会将在 function 进行赋值的变量判定为 局部变量。并且这个局部变量，和全局变量虽然名字相似，但却是两个完全不相关的变量，只有当 function 中没有定义局部变量 a 时，function 才会去全局变量中找匹配的变量。</strong></p>
+<p>如何解决上面的报错：在 function 中使用 <strong>global</strong> 来引用全局变量</p>
+<pre><code class="language-Python">b = 6
+
+
+def test():
+    global b
+    a = 9
+    print(a)
+    print(b)
+    b = 8
+
+
+test()
+print(b) # 8
+
+&quot;&quot;&quot;
+9
+6
+8
+&quot;&quot;&quot;
+</code></pre>
+<h3 id="function-local-variable-in-python-and-javascript"><a class="header" href="#function-local-variable-in-python-and-javascript">function local variable in Python and Javascript</a></h3>
+<p>Python 和 Javascript 都不要求对变量的类型进行声明，但是不同的是，<strong>Python 会把 function 中赋值或定义的变量自动判定为局部变量，而 JavaScript 的 function 中如果声明了一个变量，则默认为 global variable，需要加上 <code>var</code> 才能表示为 function 内的局部变量</strong>。</p>
+<h2 id="closures闭包"><a class="header" href="#closures闭包">Closures(闭包)</a></h2>
+<h3 id="闭包的介绍"><a class="header" href="#闭包的介绍">闭包的介绍</a></h3>
+<p>A closure is a <a href="https://en.wikipedia.org/wiki/Record_(computer_science)">record</a> storing a <a href="https://en.wikipedia.org/wiki/Function_(computer_science)">function</a>[<a href="https://en.wikipedia.org/wiki/Closure_(computer_programming)#cite_note-1">a]</a> together with an environment.</p>
+<p>闭包是一个绑定了 free variable 的 function，其可以看成是对 (function + environment/contex) 的封装/绑定。闭包实现了 function 对定义在 function 外的 nonglobal variable 的访问，其拓展了 function 的范围，将 function 外的 free variable 绑定。闭包返回的是封装后的 function。	</p>
+<h3 id="闭包-demo"><a class="header" href="#闭包-demo">闭包 Demo</a></h3>
+<pre><code class="language-python">
+def get_average():
+    nums = [] # environment / binded to avg
+    
+    def avg(num): # function
+        nums.append(num)
+        return sum(nums) / len(nums)
+    return avg
+
+# avg + nums 就是一个闭包
+
+avg = get_average()
+print(avg(10)) # 10
+print(avg(8)) # 9
+print(avg(6)) # 8
+
+# 被绑定到 avg 上的 free variable: nums 可以通过 __closure__ 查看
+print(avg.__closure__) # (&lt;cell at 0x0000029DB8F007F8: list object at 0x0000029DB8DA6248&gt;,)
+print(avg.__closure__[0].cell_contents) # [10, 8, 6]
+</code></pre>
+<h3 id="闭包的应用场景"><a class="header" href="#闭包的应用场景">闭包的应用场景</a></h3>
+<ul>
+<li>
+<p><strong>装饰器返回新的 function</strong></p>
+<p>闭包经常用在装饰器中，用来返回一个新的 function。</p>
+</li>
+<li>
+<p><strong>异步编程</strong></p>
+</li>
+<li>
+<p><strong>函数式编程</strong></p>
+</li>
+</ul>
+<p>我的一点小观察：闭包将 function 和 变量一起打包，这不就是一个内部类吗？？？有属性，有方法</p>
+<h3 id="the-nonlocal-declaration"><a class="header" href="#the-nonlocal-declaration">The nonlocal Declaration</a></h3>
+<p>由函数作用域，我们得知，<strong>变量一旦在函数中被赋值，就会被标记成局部变量，如此就会丧失闭包的特性</strong>，失去对free variable 的绑定。在 function 中，我们通过 <strong>global</strong> 关键字来绑定全局变量，在闭包中，我们使用 <strong>nonlocal</strong> 关键字对在闭包函数中进行赋值的 function 进行绑定。</p>
+<p>Demo:</p>
+<pre><code class="language-Python">def make_average():
+    sum = 0
+    count = 0
+    def avg(num):
+        nonlocal sum, count
+        sum += num
+        count += 1
+        return sum / count
+    return avg
+</code></pre>
+<h2 id="a-simple-decorator"><a class="header" href="#a-simple-decorator">A Simple Decorator</a></h2>
+<p>一个典型的装饰器逻辑是这样的：</p>
+<blockquote>
+<p>it replaces the decorated function with a new function that accepts the same arguments and (usually) returns whatever the decorated function was supposed to return, while also doing some extra processing. </p>
+</blockquote>
+<p><strong>用新的函数覆盖旧函数后，旧函数的引用就会指向新的函数，导致旧函数的属性被隐藏</strong>，例如函数名 <code>__name__</code> 和注释 <code>__doc__</code> 都会变成新的函数。Python 提供了 <code>functools.wraps</code> 装饰器来将被装饰的 function 的属性 copy 到新的 function 上。</p>
+<p>下面我们实现一个标准的装饰器，装饰器的目的是打印函数的执行时间：</p>
+<pre><code class="language-Python">import time
+from functools import wraps
+
+
+def clock(func):
+    @wraps(func) # 解决被装饰函数属性被屏蔽的问题
+    def clocked(*args): # 不确定位置参数有几个，用 *args 来覆盖位置参数
+        start = time.perf_counter()
+        result = func(*args)
+        elapsed = time.perf_counter() - start
+        arg_str = &quot;, &quot;.join([repr(arg) for arg in args]) # 打印参数
+        print(&quot;[%0.8fs] %s(%s) ——&gt; %r&quot; % (elapsed, func.__name__, arg_str, result))
+        return result # 原函数返回什么，这里照常返回什么
+    return clocked
+
+@clock
+def fibonacci(num):
+    if num &lt; 2:
+        return num
+    return fibonacci(num - 1) + fibonacci(num - 2)
+
+# @clock 等价于 clock(fibonacci)
+
+fibonacci(10) # 比较耗时的计算，违反了递归的重复计算准则
+
+&quot;&quot;&quot;
+……
+……
+[0.00004190s] fibonacci(4) ——&gt; 3
+[0.00013850s] fibonacci(6) ——&gt; 8
+[0.00039610s] fibonacci(8) ——&gt; 21
+[0.00363930s] fibonacci(10) ——&gt; 55
+&quot;&quot;&quot;
+
+print(fibonacci.__name__) # fibonacci
+# 因为装饰器 wraps 将被装饰函数的属性 copy 到了新的函数上，所以 fibonacci 函数的引用仍然指向 clocked，但是 clocked 的属性变成了 fibonacci 的属性，所以我们从表面上来看，还是指向了 fibonacci
+</code></pre>
+<h2 id="built-in-decorators"><a class="header" href="#built-in-decorators">built-in Decorators</a></h2>
+<p>介绍几个 Python 标准库自带的装饰器函数</p>
+<h3 id="functoolswraps"><a class="header" href="#functoolswraps">functools.wraps</a></h3>
+<p>已经在上一节介绍，用于 copy 被装饰 function 的属性到新的 function 中。</p>
+<h3 id="functoolslru_cache"><a class="header" href="#functoolslru_cache">functools.lru_cache</a></h3>
+<p>存储 function 的计算结果，减少重复计算，可用于 Fibonacci 的优化。</p>
+<p>lru_cache 是一个<strong>装饰器工厂</strong>，其可以接收参数，然后返回定制后的装饰器。lru_cache 可以传入两个参数：</p>
+<ul>
+<li>maxsize: 表示 cache 的 size，能存储的结果数</li>
+<li>typed: if true, 那么 cache 会区分不同的输入类型，例如区分 1 和 1.0，默认为 false</li>
+</ul>
+<pre><code class="language-Python">from functools import lru_cache
+
+@lru_cache()
+@clock
+def fibonacci(num):
+    if num &lt; 2:
+        return num
+    return fibonacci(num - 1) + fibonacci(num - 2)
+
+fibonacci(10)
+
+&quot;&quot;&quot;
+[0.00000030s] fibonacci(1) ——&gt; 1
+[0.00000020s] fibonacci(0) ——&gt; 0
+[0.00003770s] fibonacci(2) ——&gt; 1
+[0.00004400s] fibonacci(3) ——&gt; 2
+[0.00005280s] fibonacci(4) ——&gt; 3
+[0.00005840s] fibonacci(5) ——&gt; 5
+[0.00006450s] fibonacci(6) ——&gt; 8
+[0.00007010s] fibonacci(7) ——&gt; 13
+[0.00007620s] fibonacci(8) ——&gt; 21
+[0.00008190s] fibonacci(9) ——&gt; 34
+[0.00008800s] fibonacci(10) ——&gt; 55
+&quot;&quot;&quot;
+</code></pre>
+<h3 id="functoolssingledispatch"><a class="header" href="#functoolssingledispatch">functools.singledispatch</a></h3>
+<p><strong>Python 用 装饰器 实现重载</strong>:</p>
+<p><strong>为什么能够用装饰器实现重载？装饰器的本质，就是传入一个函数，然后返回一个函数，而重载，就是对函数的重载，所以两者天然是可以结合的</strong></p>
+<pre><code class="language-Python">from functools import singledispatch
+from collections import abc
+import numbers
+import html
+
+@singledispatch
+def htmlize(obj):
+	content = html.escape(repr(obj))
+	return '&lt;pre&gt;{}&lt;/pre&gt;'.format(content)
+
+@htmlize.register(str)
+def _(text): # 函数名无关紧要，用 _ 表示即可
+    content = html.escape(text).replace('\n', '&lt;br&gt;\n')
+    return '&lt;p&gt;{0}&lt;/p&gt;'.format(content)
+
+@htmlize.register(numbers.Integral)
+def _(n):
+	return '&lt;pre&gt;{0} (0x{0:x})&lt;/pre&gt;'.format(n)
+
+@htmlize.register(tuple)
+@htmlize.register(abc.MutableSequence)
+def _(seq):
+    inner = '&lt;/li&gt;\n&lt;li&gt;'.join(htmlize(item) for item in seq)
+    return '&lt;ul&gt;\n&lt;li&gt;' + inner + '&lt;/li&gt;\n&lt;/ul&gt;'
+</code></pre>
+<p><strong>Python 用 singledispatch 重载和 Java 重载， if/else 的区别</strong>：</p>
+<p>Java 的重载或者 if/else 是由缺陷的，其将更多的注意力放在了一个<strong>代码单元</strong>中，class 或者是 function，singledispatch 的优点是，其可以<strong>支持模块化的扩展</strong>，每一个 module 都可以注册一个专门的 function，其屏蔽了实现细节（不管用类还是用if/else），将更多的注意力放在了重载本身。实际上，Python 对于很多语言特性的实现，都进行了更高层次的逻辑抽取，屏蔽了大量的语法细节，使得开发者能够更专注于业务和问题的解决。</p>
+<h2 id="stacked-decorators"><a class="header" href="#stacked-decorators">Stacked Decorators</a></h2>
+<pre><code class="language-Python">@d1
+@d2
+def func():
+    print(&quot;test&quot;)
+    
+# 等价于 d1(d2(func))
+</code></pre>
+<h2 id="decorator-factory"><a class="header" href="#decorator-factory">Decorator Factory</a></h2>
+<p>带参数 <code>()</code> 的装饰器，都是装饰器工厂</p>
+<p>装饰器工厂，是传入装饰器参数，输入定制的装饰器，Demo:</p>
+<pre><code class="language-Python">import time
+DEFAULT_FMT = '[{elapsed:0.8f}s] {name}({args}) -&gt; {result}'
+def clock(fmt=DEFAULT_FMT):
+	def decorate(func):
+		def clocked(*_args):
+            t0 = time.time()
+            _result = func(*_args)
+            elapsed = time.time() - t0
+            name = func.__name__
+            args = ', '.join(repr(arg) for arg in _args)
+            result = repr(_result)
+            print(fmt.format(**locals()))
+			return _result
+		return clocked
+	return decorate
+
+
+if __name__ == '__main__':
+    @clock() # 先返回一个装饰器：decorate,然后再传入 snooze: decorate(snooze)
+    def snooze(seconds):
+        time.sleep(seconds)
+        for i in range(3):
+        	snooze(.123)
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../reading/fluent-python/chapters/chapter6-design-patterns-with-first-class-functions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../reading/fluent-python/chapters/chapter8-object-reference-mutability-recycling.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../reading/fluent-python/chapters/chapter6-design-patterns-with-first-class-functions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../reading/fluent-python/chapters/chapter8-object-reference-mutability-recycling.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

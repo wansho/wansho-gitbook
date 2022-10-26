@@ -1,0 +1,1091 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Docker - wanshuo-gitbook</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Table of contents</li><li class="chapter-item expanded "><a href="../../reading/modern-os/index.html"><strong aria-hidden="true">1.</strong> 现代操作系统</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/modern-os/chapter-1-introduction.html"><strong aria-hidden="true">1.1.</strong> chapter1-introduction</a></li><li class="chapter-item expanded "><a href="../../reading/modern-os/chapter-2-processes-and-threads.html"><strong aria-hidden="true">1.2.</strong> chapter2-processes-and-threads</a></li><li class="chapter-item expanded "><a href="../../reading/modern-os/chapter-7-virtualization-and-cloud.html"><strong aria-hidden="true">1.3.</strong> chapter7-virtualization-and-cloud</a></li><li class="chapter-item expanded "><a href="../../reading/modern-os/questions.html"><strong aria-hidden="true">1.4.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/index.html"><strong aria-hidden="true">2.</strong> 流畅的 Python</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/index.html"><strong aria-hidden="true">2.1.</strong> chapters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter1.the-python-data-model.html"><strong aria-hidden="true">2.1.1.</strong> chapter1-the-python-data-model</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter2.an-array-of-sequences.html"><strong aria-hidden="true">2.1.2.</strong> chapter2-an-array-of-sequences</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter3.dictionaries-and-sets.html"><strong aria-hidden="true">2.1.3.</strong> chapter3-dictionaries-and-sets</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter4.text-versus-bytes.html"><strong aria-hidden="true">2.1.4.</strong> chapter4-text-versus-bytes</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter5.first-class-functions.html"><strong aria-hidden="true">2.1.5.</strong> chapter5-first-class-functions</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter6-design-patterns-with-first-class-functions.html"><strong aria-hidden="true">2.1.6.</strong> chapter6-design-patterns-with-functions</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter7-function-decorators-and-closures.html"><strong aria-hidden="true">2.1.7.</strong> chapter7-function-decorators-and-closures</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter8-object-reference-mutability-recycling.html"><strong aria-hidden="true">2.1.8.</strong> chapter8-object-reference-mutability-and-recycling</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter9-a-pythonic-object.html"><strong aria-hidden="true">2.1.9.</strong> chapter9-a-pythonic-object</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter10-sequence-hacking-hashing-slicing.html"><strong aria-hidden="true">2.1.10.</strong> chapter10-sequencec-hacking-hashing-and-slicing</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/chapters/chapter11-interfaces-from-protocols-to-abcs.html"><strong aria-hidden="true">2.1.11.</strong> chapter11-interfaces-from-protocols-to-abcs</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/index.html"><strong aria-hidden="true">2.2.</strong> summary</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/questions.html"><strong aria-hidden="true">2.2.1.</strong> questions</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/python-code-optimization.html"><strong aria-hidden="true">2.2.2.</strong> python-code-optimization</a></li><li class="chapter-item expanded "><a href="../../reading/fluent-python/summary/python-30-seconds.html"><strong aria-hidden="true">2.2.3.</strong> python-30-seconds</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reading/computer-networking/index.html"><strong aria-hidden="true">3.</strong> 计算机网络-自顶向下</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/computer-networking/chapter1-computer-networks-and-the-internet.html"><strong aria-hidden="true">3.1.</strong> chapter1-computer-networks-and-the-internet</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/index.html"><strong aria-hidden="true">4.</strong> 数据结构与算法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/index.html"><strong aria-hidden="true">4.1.</strong> chapters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-1-introduction.html"><strong aria-hidden="true">4.1.1.</strong> chapter1-introduction</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-2-algorithm-analysis.html"><strong aria-hidden="true">4.1.2.</strong> chapter2-algorithm-analysis</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-3-list-stack-queue.html"><strong aria-hidden="true">4.1.3.</strong> chapter3-list-stack-queue</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-4-tree.html"><strong aria-hidden="true">4.1.4.</strong> chapter4-tree</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-6-heap.html"><strong aria-hidden="true">4.1.5.</strong> chapter6-heap</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/chapters/chapter-7-sorting.html"><strong aria-hidden="true">4.1.6.</strong> chapter7-sorting</a></li></ol></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/summary/index.html"><strong aria-hidden="true">4.2.</strong> summary</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/summary/questions.html"><strong aria-hidden="true">4.2.1.</strong> questions</a></li><li class="chapter-item expanded "><a href="../../reading/data-structures-and-algorithm-analysis-in-c/summary/classic-problems.html"><strong aria-hidden="true">4.2.2.</strong> 经典问题</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../reading/books/index.html"><strong aria-hidden="true">5.</strong> 其他书籍</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../reading/books/bookshelf.html"><strong aria-hidden="true">5.1.</strong> 书籍列表</a></li><li class="chapter-item expanded "><a href="../../reading/books/zen-and-the-art.html"><strong aria-hidden="true">5.2.</strong> 禅与摩托车维修艺术</a></li><li class="chapter-item expanded "><a href="../../reading/books/the-road-less-traveled.html"><strong aria-hidden="true">5.3.</strong> 少有人走的路</a></li><li class="chapter-item expanded "><a href="../../reading/books/time-as-a-friend.html"><strong aria-hidden="true">5.4.</strong> 李笑来-与时间做朋友</a></li><li class="chapter-item expanded "><a href="../../reading/books/reborn.html"><strong aria-hidden="true">5.5.</strong> 李笑来-Reborn</a></li><li class="chapter-item expanded "><a href="../../reading/books/shediao-yingxiongzhuan.html"><strong aria-hidden="true">5.6.</strong> 射雕英雄传</a></li><li class="chapter-item expanded "><a href="../../reading/books/liangjian.html"><strong aria-hidden="true">5.7.</strong> 亮剑</a></li><li class="chapter-item expanded "><a href="../../reading/books/wan-li-shi-wu-nian.html"><strong aria-hidden="true">5.8.</strong> 万历十五年</a></li><li class="chapter-item expanded "><a href="../../reading/books/zi-bei-yu-chao-yue.html"><strong aria-hidden="true">5.9.</strong> 自卑与超越</a></li><li class="chapter-item expanded "><a href="../../reading/books/ming-li-xue.html"><strong aria-hidden="true">5.10.</strong> 王德峰-命理学</a></li><li class="chapter-item expanded "><a href="../../reading/books/a-brief-history-of-humankind.html"><strong aria-hidden="true">5.11.</strong> 人类简史</a></li><li class="chapter-item expanded "><a href="../../reading/books/mao-xuan.html"><strong aria-hidden="true">5.12.</strong> 毛选</a></li><li class="chapter-item expanded "><a href="../../reading/books/tian-dao.html"><strong aria-hidden="true">5.13.</strong> 遥远的救世主</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/index.html"><strong aria-hidden="true">6.</strong> 算法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/arraylist-vs-linklist.html"><strong aria-hidden="true">6.1.</strong> arraylist-vs-linklist</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/information-entropy.html"><strong aria-hidden="true">6.2.</strong> information-entropy</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/algorithms/summary.html"><strong aria-hidden="true">6.3.</strong> summary</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/index.html"><strong aria-hidden="true">7.</strong> database</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/zen-of-db.html"><strong aria-hidden="true">7.1.</strong> zen-of-db</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-101.html"><strong aria-hidden="true">7.2.</strong> MySQL-101</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-102.html"><strong aria-hidden="true">7.3.</strong> MySQL-102</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-103.html"><strong aria-hidden="true">7.4.</strong> MySQL-103</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/elastic-search.html"><strong aria-hidden="true">7.5.</strong> Elasticsearch</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/elastic-logstash.html"><strong aria-hidden="true">7.6.</strong> Logstash</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/oracle-101.html"><strong aria-hidden="true">7.7.</strong> Oracle-101</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/mysql-leetcode.html"><strong aria-hidden="true">7.8.</strong> Mysql-Leetcode</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/database-others.html"><strong aria-hidden="true">7.9.</strong> 其他数据库产品</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/design-data-intensive-app.html"><strong aria-hidden="true">7.10.</strong> 书籍-设计数据密集型应用</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/database/questions.html"><strong aria-hidden="true">7.11.</strong> Questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/index.html"><strong aria-hidden="true">8.</strong> 密码学与网络安全</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/cryptography.html"><strong aria-hidden="true">8.1.</strong> 密码学</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/ssh.html"><strong aria-hidden="true">8.2.</strong> ssh 教程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/authentication-authorization.html"><strong aria-hidden="true">8.3.</strong> 认证和授权</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/single-sign-on.html"><strong aria-hidden="true">8.4.</strong> SSO 单点登录</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/oauth.html"><strong aria-hidden="true">8.5.</strong> OAuth</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/jwt.html"><strong aria-hidden="true">8.6.</strong> jwt</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/cryptography-web-security/security-vulnerability.html"><strong aria-hidden="true">8.7.</strong> 安全漏洞</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/index.html"><strong aria-hidden="true">9.</strong> 计算机网络相关知识</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/computer-network.html"><strong aria-hidden="true">9.1.</strong> 计算机网络小知识集合</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/web-service.html"><strong aria-hidden="true">9.2.</strong> web-service</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/http-protocol.html"><strong aria-hidden="true">9.3.</strong> http 协议</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/network-web/questions.html"><strong aria-hidden="true">9.4.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/index.html"><strong aria-hidden="true">10.</strong> 编程语言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/go.html"><strong aria-hidden="true">10.1.</strong> go</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/kotlin.html"><strong aria-hidden="true">10.2.</strong> kotlin</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/rust.html"><strong aria-hidden="true">10.3.</strong> rust</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/svg.html"><strong aria-hidden="true">10.4.</strong> svg</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/regex.html"><strong aria-hidden="true">10.5.</strong> regex</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/windows-bat.html"><strong aria-hidden="true">10.6.</strong> windows-bat</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/programming-language/qt.html"><strong aria-hidden="true">10.7.</strong> QT</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/index.html"><strong aria-hidden="true">11.</strong> C++ 开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/how-to-learn-c.html"><strong aria-hidden="true">11.1.</strong> C语言学习教程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/think-c.html"><strong aria-hidden="true">11.2.</strong> 书籍：Think-C</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/deep-c.html"><strong aria-hidden="true">11.3.</strong> C语言深度剖析</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-c/c++.html"><strong aria-hidden="true">11.4.</strong> C++学习</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/index.html"><strong aria-hidden="true">12.</strong> Python 学习</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/note-for-pandas.html"><strong aria-hidden="true">12.1.</strong> pandas 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/django-version-upgrade.html"><strong aria-hidden="true">12.2.</strong> django 版本升级</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-hacker.html"><strong aria-hidden="true">12.3.</strong> 书籍：python-hacker</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-craftsman.html"><strong aria-hidden="true">12.4.</strong> 书籍：python 工匠</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-packages.html"><strong aria-hidden="true">12.5.</strong> pip 相关知识</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-exception.html"><strong aria-hidden="true">12.6.</strong> python 异常处理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-cheetsheet.html"><strong aria-hidden="true">12.7.</strong> python 小知识</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/jupyter-notebook.html"><strong aria-hidden="true">12.8.</strong> jupyter 使用笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/different-methods-in-class.html"><strong aria-hidden="true">12.9.</strong> python 不同的方法</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/pep.html"><strong aria-hidden="true">12.10.</strong> pep: python-enhanced-proposal</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/python-algorithm-data-structure.html"><strong aria-hidden="true">12.11.</strong> python 数据结构与算法</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-python/multiprocessing-and-threading.html"><strong aria-hidden="true">12.12.</strong> 多线程和多进程</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/index.html"><strong aria-hidden="true">13.</strong> Java 学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java.html"><strong aria-hidden="true">13.1.</strong> 毕向东 java se 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java.html"><strong aria-hidden="true">13.2.</strong> java 进阶</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-collection-map.html"><strong aria-hidden="true">13.3.</strong> Java collection学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-array.html"><strong aria-hidden="true">13.4.</strong> Java array 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/string.html"><strong aria-hidden="true">13.5.</strong> Java string 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/annotation.html"><strong aria-hidden="true">13.6.</strong> Java Annotation 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-datetime.html"><strong aria-hidden="true">13.7.</strong> java datetime 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-reflection.html"><strong aria-hidden="true">13.8.</strong> java 反射学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-new-features.html"><strong aria-hidden="true">13.9.</strong> Java 新特性</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-log.html"><strong aria-hidden="true">13.10.</strong> Java 日志</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-exception.html"><strong aria-hidden="true">13.11.</strong> Java 异常</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-vm.html"><strong aria-hidden="true">13.12.</strong> java 虚拟机</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-junit.html"><strong aria-hidden="true">13.13.</strong> Java JUnit 测试</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/template-engine.html"><strong aria-hidden="true">13.14.</strong> Java 模板引擎</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/design-patterns.html"><strong aria-hidden="true">13.15.</strong> 设计模式学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/generics.html"><strong aria-hidden="true">13.16.</strong> 泛型</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/stream.html"><strong aria-hidden="true">13.17.</strong> stream 学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/functional-programming.html"><strong aria-hidden="true">13.18.</strong> 函数式编程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/program-development-in-java.html"><strong aria-hidden="true">13.19.</strong> Java 程序开发原理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-bin.html"><strong aria-hidden="true">13.20.</strong> Java 自带命令学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/java-dev-tools.html"><strong aria-hidden="true">13.21.</strong> Java 开发工具</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java/big-number.html"><strong aria-hidden="true">13.22.</strong> 大数计算和存储</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/index.html"><strong aria-hidden="true">14.</strong> JavaWeb 学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/database.html"><strong aria-hidden="true">14.1.</strong> 访问数据库笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/java-persistence-api.html"><strong aria-hidden="true">14.2.</strong> JPA 深入学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/mybatis.html"><strong aria-hidden="true">14.3.</strong> mybatis 学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/bean-pojo-dto.html"><strong aria-hidden="true">14.4.</strong> java-bean 分类</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/maven.html"><strong aria-hidden="true">14.5.</strong> Maven 学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/dependencies.html"><strong aria-hidden="true">14.6.</strong> 依赖库整理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/micro-service.html"><strong aria-hidden="true">14.7.</strong> 微服务架构课</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/architect.html"><strong aria-hidden="true">14.8.</strong> IT老齐架构课笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/restful-api.html"><strong aria-hidden="true">14.9.</strong> restful-api</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/spring.html"><strong aria-hidden="true">14.10.</strong> spring</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/spring-security.html"><strong aria-hidden="true">14.11.</strong> spring-security</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/springboot.html"><strong aria-hidden="true">14.12.</strong> spring-boot</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/springcloud.html"><strong aria-hidden="true">14.13.</strong> spring-cloud</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/reactive.html"><strong aria-hidden="true">14.14.</strong> 响应式 web</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/cache.html"><strong aria-hidden="true">14.15.</strong> 缓存</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/web-api-the-good-parts.html"><strong aria-hidden="true">14.16.</strong> WebAPI 的设计与开发</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/rbac.html"><strong aria-hidden="true">14.17.</strong> RBAC</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/socket.html"><strong aria-hidden="true">14.18.</strong> Socket</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/webservice.html"><strong aria-hidden="true">14.19.</strong> webservice</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/tomcat-servlet.html"><strong aria-hidden="true">14.20.</strong> tomcat-servlet</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/encode-decode.html"><strong aria-hidden="true">14.21.</strong> 编解码</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/note-for-java-web/netty.html"><strong aria-hidden="true">14.22.</strong> Netty</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/index.html"><strong aria-hidden="true">15.</strong> 前端开发</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/nodejs.html"><strong aria-hidden="true">15.1.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/yarn.html"><strong aria-hidden="true">15.2.</strong> yarn 使用</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/repos.html"><strong aria-hidden="true">15.3.</strong> 前端库总结</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/react-dev.html"><strong aria-hidden="true">15.4.</strong> React 开发笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/chrome-extension.html"><strong aria-hidden="true">15.5.</strong> chrome 插件开发</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/ajax.html"><strong aria-hidden="true">15.6.</strong> ajax</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/jquery.html"><strong aria-hidden="true">15.7.</strong> jquery</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/javascript-101.html"><strong aria-hidden="true">15.8.</strong> javascript-101</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/javascript-102.html"><strong aria-hidden="true">15.9.</strong> javascript-102</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/javascript-ie11-compatible.html"><strong aria-hidden="true">15.10.</strong> javascript兼容IE11</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/immutable-js.html"><strong aria-hidden="true">15.11.</strong> immutable.js</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/npm-libs.html"><strong aria-hidden="true">15.12.</strong> npm库</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/html-css-dom.html"><strong aria-hidden="true">15.13.</strong> html-css-dom 学习</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/front-end/web-assembly.html"><strong aria-hidden="true">15.14.</strong> web-assembly</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/nlp/index.html"><strong aria-hidden="true">16.</strong> NLP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/nlp/nlp-learning.html"><strong aria-hidden="true">16.1.</strong> NLP-Learning</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/nlp/machine-learning.html"><strong aria-hidden="true">16.2.</strong> Machine-Learning</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/index.html"><strong aria-hidden="true">17.</strong> linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-cmds.html"><strong aria-hidden="true">17.1.</strong> linux 命令手册</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-cmd-enhanced.html"><strong aria-hidden="true">17.2.</strong> linux 增强命令</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-mythink.html"><strong aria-hidden="true">17.3.</strong> linux 使用心得</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-devops.html"><strong aria-hidden="true">17.4.</strong> linux-运维</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-init.html"><strong aria-hidden="true">17.5.</strong> linux 初始化</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/vim.html"><strong aria-hidden="true">17.6.</strong> vim</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/shell.html"><strong aria-hidden="true">17.7.</strong> shell</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/script-demos.html"><strong aria-hidden="true">17.8.</strong> shell 脚本 demo</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/linux/linux-distribution-history.html"><strong aria-hidden="true">17.9.</strong> linux 历史和发行版</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/index.html"><strong aria-hidden="true">18.</strong> github</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/github.html"><strong aria-hidden="true">18.1.</strong> github 使用技巧</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/gitbook.html"><strong aria-hidden="true">18.2.</strong> 优雅锋利的 gitbook</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/git.html"><strong aria-hidden="true">18.3.</strong> 书籍：git-pro</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/github-actions.html"><strong aria-hidden="true">18.4.</strong> github-actions</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/markdown.html"><strong aria-hidden="true">18.5.</strong> markdown 语法</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/github/git-hook.html"><strong aria-hidden="true">18.6.</strong> githook</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/index.html"><strong aria-hidden="true">19.</strong> 开发工具与技术栈</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/technology-stack.html"><strong aria-hidden="true">19.1.</strong> 技术栈</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/idea.html"><strong aria-hidden="true">19.2.</strong> IDEA 使用学习笔记</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/idea-debug.html"><strong aria-hidden="true">19.3.</strong> IDEA Debug</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/serverless.html"><strong aria-hidden="true">19.4.</strong> serverless</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/apifox.html"><strong aria-hidden="true">19.5.</strong> apifox</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/blockchain.html"><strong aria-hidden="true">19.6.</strong> 区块链</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/web3.html"><strong aria-hidden="true">19.7.</strong> Web3.0</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/vscode.html"><strong aria-hidden="true">19.8.</strong> VSCode</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/docker.html" class="active"><strong aria-hidden="true">19.9.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/cloud-native.html"><strong aria-hidden="true">19.10.</strong> 云原生</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/message-queue.html"><strong aria-hidden="true">19.11.</strong> 消息队列</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/redis.html"><strong aria-hidden="true">19.12.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/selenium.html"><strong aria-hidden="true">19.13.</strong> Selenium</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/nginx.html"><strong aria-hidden="true">19.14.</strong> nginx</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/zookeeper.html"><strong aria-hidden="true">19.15.</strong> zookeeper</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/haproxy.html"><strong aria-hidden="true">19.16.</strong> haproxy-keepalived</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/webhook.html"><strong aria-hidden="true">19.17.</strong> webhook</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/lowcode.html"><strong aria-hidden="true">19.18.</strong> 低代码</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/web-spider.html"><strong aria-hidden="true">19.19.</strong> 网络爬虫</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/make-hexo-theme.html"><strong aria-hidden="true">19.20.</strong> Hexo 主题定制</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/development-tools/swagger.html"><strong aria-hidden="true">19.21.</strong> Swagger</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/index.html"><strong aria-hidden="true">20.</strong> 软件工程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/software-testing.html"><strong aria-hidden="true">20.1.</strong> 软件测试</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/uml.html"><strong aria-hidden="true">20.2.</strong> UML</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/continuous-integration.html"><strong aria-hidden="true">20.3.</strong> 持续集成</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/software-version.html"><strong aria-hidden="true">20.4.</strong> 软件版本命名</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/zentao.html"><strong aria-hidden="true">20.5.</strong> 项目管理-禅道</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/software-engineering.html"><strong aria-hidden="true">20.6.</strong> 软件工程</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/os-installed-software.html"><strong aria-hidden="true">20.7.</strong> 电脑常用软件整理</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/software-engineering/code-summary.html"><strong aria-hidden="true">20.8.</strong> 编程经验总结</a></li></ol></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/index.html"><strong aria-hidden="true">21.</strong> 技术讲座</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/cs-keep-learning.html"><strong aria-hidden="true">21.1.</strong> keep-learning</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/atguigu-os.html"><strong aria-hidden="true">21.2.</strong> 尚硅谷-操作系统</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/future-of-computation.html"><strong aria-hidden="true">21.3.</strong> 吴翰清-计算的未来</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/xu-shi-wei-architecture.html"><strong aria-hidden="true">21.4.</strong> 许式伟-架构课</a></li><li class="chapter-item expanded "><a href="../../computer-science-notebook/technology-lecture/questions.html"><strong aria-hidden="true">21.5.</strong> questions</a></li></ol></li><li class="chapter-item expanded "><a href="../../weekly/2022/index.html"><strong aria-hidden="true">22.</strong> 2022</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../weekly/2022/week-27.html"><strong aria-hidden="true">22.1.</strong> week-27</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-28.html"><strong aria-hidden="true">22.2.</strong> week-28</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-29.html"><strong aria-hidden="true">22.3.</strong> week-29</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-30.html"><strong aria-hidden="true">22.4.</strong> week-30</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-31-32.html"><strong aria-hidden="true">22.5.</strong> week-31-32</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-32.html"><strong aria-hidden="true">22.6.</strong> week-32</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-33.html"><strong aria-hidden="true">22.7.</strong> week-33</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-34.html"><strong aria-hidden="true">22.8.</strong> week-34</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-35.html"><strong aria-hidden="true">22.9.</strong> week-35</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-36.html"><strong aria-hidden="true">22.10.</strong> week-36</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-37.html"><strong aria-hidden="true">22.11.</strong> week-37</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-38.html"><strong aria-hidden="true">22.12.</strong> week-38</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-39.html"><strong aria-hidden="true">22.13.</strong> week-39</a></li><li class="chapter-item expanded "><a href="../../weekly/2022/week-40.html"><strong aria-hidden="true">22.14.</strong> week-40</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/index.html"><strong aria-hidden="true">23.</strong> blog</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/for-a-job.html"><strong aria-hidden="true">23.1.</strong> 关于找工作</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/how-to-study.html"><strong aria-hidden="true">23.2.</strong> 如何学习</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/summary-for-examination-oriented-education.html"><strong aria-hidden="true">23.3.</strong> 应试教育总结思考</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/cyber-spirit-opium.html"><strong aria-hidden="true">23.4.</strong> 网络精神鸦片</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/why-perfect.html"><strong aria-hidden="true">23.5.</strong> 追求完美？</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/about-love.html"><strong aria-hidden="true">23.6.</strong> 我的恋爱观</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/pin-duo-duo.html"><strong aria-hidden="true">23.7.</strong> 细数在拼多多开店遇到的坑</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/summary-of-marketing.html"><strong aria-hidden="true">23.8.</strong> 营销经验总结</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/blog/real-estate.html"><strong aria-hidden="true">23.9.</strong> 买房经验总结</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/health/index.html"><strong aria-hidden="true">24.</strong> 关于健康</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/health/zhong-yi.html"><strong aria-hidden="true">24.1.</strong> 关于中医</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/health/health.html"><strong aria-hidden="true">24.2.</strong> 关于健康</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/index.html"><strong aria-hidden="true">25.</strong> 求知若渴虚心若愚</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/how-to-keep-learning.html"><strong aria-hidden="true">25.1.</strong> 如何保持学习激情</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/weekly.html"><strong aria-hidden="true">25.2.</strong> 周刊</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/weekly-02.html"><strong aria-hidden="true">25.3.</strong> 周刊-02</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/authentic-expression.html"><strong aria-hidden="true">25.4.</strong> 英语单词和专业词汇</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/knowledge-summary.html"><strong aria-hidden="true">25.5.</strong> 网上冲浪知识总结</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/zhihu.html"><strong aria-hidden="true">25.6.</strong> 知乎摘抄</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/story.html"><strong aria-hidden="true">25.7.</strong> 好的文章</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/principle-of-economics.html"><strong aria-hidden="true">25.8.</strong> 经济学原理学习</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/how-to.html"><strong aria-hidden="true">25.9.</strong> 如何</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/office-tricks.html"><strong aria-hidden="true">25.10.</strong> Office 三件套</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/movies.html"><strong aria-hidden="true">25.11.</strong> 看电影</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/keep-learning/daily-news.html"><strong aria-hidden="true">25.12.</strong> 每日新闻</a></li></ol></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/index.html"><strong aria-hidden="true">26.</strong> 安心立命</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/why.html"><strong aria-hidden="true">26.1.</strong> 为什么要学习</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/difference-between-east-and-west.html"><strong aria-hidden="true">26.2.</strong> 王德峰-中西文化差异</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/yangming.html"><strong aria-hidden="true">26.3.</strong> 王德峰-阳明心学</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/feat-and-practice.html"><strong aria-hidden="true">26.4.</strong> 王德峰-命运与修行</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/truly-maturity.html"><strong aria-hidden="true">26.5.</strong> 关于成熟</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/poetry.html"><strong aria-hidden="true">26.6.</strong> 古诗词摘抄</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-perface.html"><strong aria-hidden="true">26.7.</strong> 王德峰讲坛经-序言</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-01.html"><strong aria-hidden="true">26.8.</strong> 王德峰讲坛经-行由品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-02.html"><strong aria-hidden="true">26.9.</strong> 王德峰讲坛经-般若品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-03.html"><strong aria-hidden="true">26.10.</strong> 王德峰讲坛经-疑问品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-04.html"><strong aria-hidden="true">26.11.</strong> 王德峰讲坛经-定慧品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-05.html"><strong aria-hidden="true">26.12.</strong> 王德峰讲坛经-坐禅品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-06.html"><strong aria-hidden="true">26.13.</strong> 王德峰讲坛经-忏悔品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-07.html"><strong aria-hidden="true">26.14.</strong> 王德峰讲坛经-机缘品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-08.html"><strong aria-hidden="true">26.15.</strong> 王德峰讲坛经-顿悟品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-09.html"><strong aria-hidden="true">26.16.</strong> 王德峰讲坛经-护法品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-10.html"><strong aria-hidden="true">26.17.</strong> 王德峰讲坛经-付嘱品</a></li><li class="chapter-item expanded "><a href="../../life-and-thinking/peace/altar-sutra-wdf-finish.html"><strong aria-hidden="true">26.18.</strong> 王德峰讲坛经-结束语</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">wanshuo-gitbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="docker"><a class="header" href="#docker">Docker</a></h1>
+<p>[TOC]</p>
+<h2 id="docker-我的理解"><a class="header" href="#docker-我的理解">Docker 我的理解</a></h2>
+<h3 id="常用命令"><a class="header" href="#常用命令">常用命令</a></h3>
+<pre><code class="language-shell"># 查看正在运行的 docker 容器
+docker ps
+
+# 删除容器
+docker rm container-name / hash
+
+# 停止容器
+docker stop container-name / hash
+
+# 开启容器
+docker start container-name
+
+# 进入容器 mariadb 执行命令
+docker exec -it mariadb /bin/bash
+</code></pre>
+<h2 id="docker-arm"><a class="header" href="#docker-arm">Docker ARM</a></h2>
+<pre><code class="language-shell"># 拉取 arm 版本的镜像，要加上 --platform 参数，优先使用 arm64 架构的
+docker pull --platform linux/amd64 mysql
+docker pull --platform linux/arm64 redis
+</code></pre>
+<h3 id="docker-是什么"><a class="header" href="#docker-是什么">Docker 是什么</a></h3>
+<ul>
+<li>镜像是静态的，容器是跑起来的镜像，是动态的</li>
+<li>Dockerfile 是创建镜像的配置文件</li>
+<li>DockerCompose 是批量运行容器的配置文件</li>
+</ul>
+<h3 id="docker-使用感悟"><a class="header" href="#docker-使用感悟">Docker 使用感悟</a></h3>
+<ul>
+<li>在安装版本控制软件时，尝试过 gitlab 手动安装和 gogs docker 安装，docker 真的太丝滑了</li>
+<li>每一个程序员，都应该像掌握 git 一样，熟练掌握 docker</li>
+<li>docker 将每一个软件的安装部署启动环节进行封装，相当于用 <code>run start stop</code> 等命令统一了各种软件的安装部署，属实牛批</li>
+<li>任何封装在 Docker 中的服务，都不用安装到系统中了，以往我们如果想要用 mysql，还需要安装 mysql，现在 docker 的镜像屏蔽了安装这个步骤，用 mysql 的时候，只要跑一个 mysql 容器就行了，随用随关</li>
+</ul>
+<h3 id="docker-使用注意事项"><a class="header" href="#docker-使用注意事项">docker 使用注意事项</a></h3>
+<ul>
+<li>container 是从镜像生成的，但是  container 也是一个实体，container 关闭后，仍然是存在的，是持久化的</li>
+</ul>
+<h3 id="demo"><a class="header" href="#demo">demo</a></h3>
+<pre><code class="language-shell">docker run \
+--name mariadb \
+-v /root/mariadb/config:/etc/mysql/conf.d \
+-v /root/mariadb/data:/var/lib/mysql \
+--env MARIADB_USER=his \
+--env MARIADB_PASSWORD=His@9700 \
+--env MARIADB_ROOT_PASSWORD=His@9700 \
+-dp 3307:3306 \
+mariadb:10.3.28
+
+# --name: 容器名称
+# -v xxx:yyy: 把本地 xxx 目录挂载到容器内的 yyy 目录
+# --env: mariadb 配置
+# -d: detached 后端执行
+# -p 3307:3306: 将容器内的 3306 端口映射到宿主机的 3307 端口，可以通过 3307 端口访问容器内的 mariadb
+# mariadb:10.3.28: 从哪一个镜像生成容器，如果本地没有这个镜像，则会从远程仓库拉取
+</code></pre>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. </p>
+<p>Docker provides the ability to package and run an application in a loosely isolated environment called a container. The isolation and security allow you to run many containers simultaneously on a given host. Containers are lightweight and contain everything needed to run the application, so you do not need to rely on what is currently installed on the host. You can easily share containers while you work, and be sure that everyone you share with gets the same container that works in the same way.</p>
+<p>Docker 是一个和 Git 一样提高工程师效率的工具。</p>
+<p><strong>Docker 的机制</strong>：</p>
+<p>Linux 操作系统，分为 Linux 内核，和系统库，每一个 Linux 操作系统，内核基本上都是一样的，只有系统库的区别，而 Docker 则将应用程序和系统库一起打包，这样就屏蔽了不同系统的系统库，直达 Linux 内核。</p>
+<p>Docker如何解决不同系统环境的问题？</p>
+<ul>
+<li>Docker将用户程序与所需要调用的系统(比如Ubuntu)函数库一起打包</li>
+<li>Docker运行到不同操作系统时，直接基于打包的函数库，借助于操作系统的Linux内核来运行</li>
+</ul>
+<img src="assets/image-20210901133209185.png" alt="image-20210901133209185" style="zoom: 67%;" />
+<h3 id="image-and-container"><a class="header" href="#image-and-container">Image and Container</a></h3>
+<p>An <strong>image</strong> is an <strong>executable</strong> package that includes everything needed to run an application: the code, a runtime, libraries, environment variables, and configuration files.</p>
+<p>When running a container, it uses an isolated filesystem. This custom filesystem is provided by a <strong>container image</strong>. Since the image contains the container’s filesystem, it must contain everything needed to run an application - all dependencies, configuration, scripts, binaries, etc. The image also contains other configuration for the container, such as environment variables, a default command to run, and other metadata.</p>
+<p>镜像是一个可以执行的包，包中打包了一个应用所需要的运行环境，运行库，环境变量，代码和配置文件等所有的依赖。这是一个静态的镜像，类似于创建的虚拟机的镜像。</p>
+<p>A <strong>container</strong> is a runtime instance of an image.</p>
+<p>一个镜像被加载运行后，就成了一个容器，容器是动态的，类似于正在运行的虚拟机。</p>
+<p>Simply put, a container is simply another process on your machine that has been isolated from all other processes on the host machine. That isolation leverages <a href="https://medium.com/@saschagrunert/demystifying-containers-part-i-kernel-space-2c53d6979504">kernel namespaces and cgroups</a>, features that have been in Linux for a long time.</p>
+<p>Container 就是一个进程。</p>
+<h3 id="container-vs-virtual-machine"><a class="header" href="#container-vs-virtual-machine">Container vs Virtual machine</a></h3>
+<p><img src="assets/image-20210901133414352.png" alt="image-20210901133414352" /></p>
+<h3 id="dockerfile"><a class="header" href="#dockerfile">Dockerfile</a></h3>
+<p>Docker 镜像的配置 manifest 文件，包括：网络接口和存储设备的映射，要加入镜像的依赖/文件等配置。</p>
+<h3 id="docker-and-kubernetes"><a class="header" href="#docker-and-kubernetes">Docker and Kubernetes</a></h3>
+<p>Kubernetes can automate the whole container deployment process. </p>
+<p>Kubernetes 可以实现 Docker 管理，相当于 Dockers 的中控平台。</p>
+<h3 id="docker-architecture"><a class="header" href="#docker-architecture">Docker architecture</a></h3>
+<p>Docker uses a client-server architecture. The Docker <em>client</em> talks to the Docker <em>daemon</em>, which does the heavy lifting of building, running, and distributing your Docker containers. </p>
+<ul>
+<li>
+<p>The Docker daemon</p>
+<p>The Docker daemon (<code>dockerd</code>) listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes. A daemon can also communicate with other daemons to manage Docker services.</p>
+</li>
+<li>
+<p>The Docker client</p>
+<p>The Docker client (<code>docker</code>) is the primary way that many Docker users interact with Docker. When you use commands such as <code>docker run</code>, the client sends these commands to <code>dockerd</code>, which carries them out. The <code>docker</code> command uses the Docker API. The Docker client can communicate with more than one daemon.</p>
+</li>
+<li>
+<p>Docker registries</p>
+<p>A Docker <em>registry</em> stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default. You can even run your own private registry.</p>
+<p>When you use the <code>docker pull</code> or <code>docker run</code> commands, the required images are pulled from your configured registry. When you use the <code>docker push</code> command, your image is pushed to your configured registry.</p>
+<p>Docker 官方的 Registry: DockerHub，类似于 GitHub，我们可以在上面分享自己的 Docker 镜像。</p>
+</li>
+<li>
+<p>Docker images</p>
+<p>An <em>image</em> is a read-only template with instructions for creating a Docker container. Often, an image is <em>based on</em> another image, with some additional customization. For example, you may build an image which is based on the <code>ubuntu</code> image, but installs the Apache web server and your application, as well as the configuration details needed to make your application run.</p>
+<p>You might create your own images or you might only use those created by others and published in a registry. To build your own image, you create a <em>Dockerfile</em> with a simple syntax for defining the steps needed to create the image and run it. Each instruction in a Dockerfile creates a layer in the image. When you change the Dockerfile and rebuild the image, only those layers which have changed are rebuilt. This is part of what makes images so lightweight, small, and fast, when compared to other virtualization technologies.</p>
+</li>
+</ul>
+<h3 id="the-underlying-technology"><a class="header" href="#the-underlying-technology">The underlying technology</a></h3>
+<p>Docker is written in the <a href="https://golang.org/">Go programming language</a> and takes advantage of several features of the Linux kernel to deliver its functionality. Docker uses a technology called <code>namespaces</code> to provide the isolated workspace called the <em>container</em>. When you run a container, Docker creates a set of <em>namespaces</em> for that container.</p>
+<p>These namespaces provide a layer of isolation. Each aspect of a container runs in a separate namespace and its access is limited to that namespace.</p>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<h3 id="windows"><a class="header" href="#windows">Windows</a></h3>
+<p>Docker Desktop for Windows 只支持 Windows 10 Professional or Enterprise 64-bit，不符合的 Windows 版本，例如 Win10 教育版/家庭版或者Win7 的版本，需要安装 <a href="https://github.com/docker/toolbox/releases">Docker Toolbox</a> 来进行 Docker 的兼容。</p>
+<p>Docker Toolbox 包含以下组件：</p>
+<ul>
+<li>Docker CLI client for running Docker Engine to create images and containers</li>
+<li>Docker Machine so you can run Docker Engine commands from Windows terminals</li>
+<li>Docker Compose for running the <code>docker-compose</code> command</li>
+<li>Kitematic, the Docker GUI</li>
+<li>the Docker QuickStart shell preconfigured for a Docker command-line environment</li>
+<li>Oracle VM VirtualBox</li>
+</ul>
+<p>注意，如果 Git 已经安装过了，那么 Docker 的 CLI 就打不开，因为其依赖于 Git 的 Bash，此时需要修改 Docker CLI 的打开路径，将其默认路径替换成 Git 中 bash.exe 的路径：<code>/Git/bin/bash.exe</code></p>
+<p>如果 WIndows 开启了 Hyper-V，则需要关闭 Hyper-V。</p>
+<h2 id="docker-doc"><a class="header" href="#docker-doc">Docker Doc</a></h2>
+<p><a href="https://docs.docker.com/">Docker Doc</a> 文档学习。</p>
+<p><img src="https://docs.docker.com/engine/images/architecture.svg" alt="Docker Architecture Diagram" /></p>
+<h2 id="docker-镜像"><a class="header" href="#docker-镜像">Docker 镜像</a></h2>
+<h3 id="镜像名称"><a class="header" href="#镜像名称">镜像名称</a></h3>
+<p>首先来看下镜像的名称组成：</p>
+<ul>
+<li>镜名称一般分两部分组成：[repository]:[tag]。</li>
+<li>在没有指定tag时，默认是latest，代表最新版本的镜像</li>
+</ul>
+<p>如图：</p>
+<p><img src="assets/image-20210731155141362.png" alt="image-20210731155141362" /></p>
+<p>这里的mysql就是repository，5.7就是tag，合一起就是镜像名称，代表5.7版本的MySQL镜像。</p>
+<h3 id="镜像命令"><a class="header" href="#镜像命令">镜像命令</a></h3>
+<p>常见的镜像操作命令如图：</p>
+<p><img src="assets/image-20210731155649535.png" alt="image-20210731155649535" /></p>
+<pre><code class="language-shell">docker images
+docker rmi
+docker pull
+docker push
+docker save
+dokcer load
+</code></pre>
+<p>docker save/load</p>
+<pre><code class="language-shell"># -o: output
+docker save -o mariadb-docker-image.tar mariadb:10.3.28
+
+# -i: input
+docker load --input mariadb-docker-image.tar
+</code></pre>
+<h2 id="docker-容器"><a class="header" href="#docker-容器">Docker 容器</a></h2>
+<h3 id="容器相关命令"><a class="header" href="#容器相关命令">容器相关命令</a></h3>
+<p>容器操作的命令如图：</p>
+<p><img src="assets/image-20210731161950495.png" alt="image-20210731161950495" /></p>
+<p>容器保护三个状态：</p>
+<ul>
+<li>运行：进程正常运行</li>
+<li>暂停：进程暂停，CPU不再运行，并不释放内存</li>
+<li>停止：进程终止，回收进程占用的内存、CPU等资源</li>
+</ul>
+<p>其中：</p>
+<ul>
+<li>docker run：创建并运行一个容器，处于运行状态</li>
+<li>docker pause：让一个运行的容器暂停</li>
+<li>docker unpause：让一个容器从暂停状态恢复运行</li>
+<li>docker stop：停止一个运行的容器，文件系统不清理</li>
+<li>docker start：让一个停止的容器再次运行</li>
+<li>docker rm：删除一个容器，而且会把文件系统也干掉</li>
+</ul>
+<h3 id="创建并运行一个容器"><a class="header" href="#创建并运行一个容器">创建并运行一个容器</a></h3>
+<p>创建并运行nginx容器的命令：</p>
+<pre><code class="language-sh">docker run --name containerName -p 80:80 -d nginx
+</code></pre>
+<p>命令解读：</p>
+<ul>
+<li>docker run ：创建并运行一个容器</li>
+<li>--name : 给容器起一个名字，比如叫做mn</li>
+<li>-p ：将宿主机端口与容器端口映射，冒号左侧是宿主机端口，右侧是容器端口</li>
+<li>-d：后台运行容器</li>
+<li>nginx：镜像名称，例如 nginx</li>
+</ul>
+<p>这里的<code>-p</code>参数，是将容器端口映射到宿主机端口。</p>
+<p>默认情况下，容器是隔离环境，我们直接访问宿主机的80端口，肯定访问不到容器中的nginx。</p>
+<p>现在，将容器的80与宿主机的80关联起来，当我们访问宿主机的80端口时，就会被映射到容器的80，这样就能访问到nginx了：</p>
+<p><img src="assets/image-20210731163255863.png" alt="image-20210731163255863" /></p>
+<h3 id="进入容器修改文件"><a class="header" href="#进入容器修改文件">进入容器，修改文件</a></h3>
+<p><strong>需求</strong>：进入Nginx容器，修改HTML文件内容，添加“传智教育欢迎您”</p>
+<p><strong>提示</strong>：进入容器要用到docker exec命令。</p>
+<p><strong>步骤</strong>：</p>
+<p>1）进入容器。进入我们刚刚创建的nginx容器的命令为：</p>
+<pre><code class="language-sh">docker exec -it mn bash
+</code></pre>
+<p>命令解读：</p>
+<ul>
+<li>
+<p>docker exec ：进入容器内部，执行一个命令</p>
+</li>
+<li>
+<p>-it : 给当前进入的容器创建一个标准输入、输出终端，允许我们与容器交互</p>
+</li>
+<li>
+<p>mn ：要进入的容器的名称</p>
+</li>
+<li>
+<p>bash：进入容器后执行的命令，bash是一个linux终端交互命令</p>
+</li>
+</ul>
+<p>2）进入nginx的HTML所在目录 /usr/share/nginx/html</p>
+<p>容器内部会模拟一个独立的Linux文件系统，看起来如同一个linux服务器一样：</p>
+<p><img src="assets/image-20210731164159811.png" alt="image-20210731164159811" /></p>
+<p>nginx的环境、配置、运行文件全部都在这个文件系统中，包括我们要修改的html文件。</p>
+<p>查看DockerHub网站中的nginx页面，可以知道nginx的html目录位置在<code>/usr/share/nginx/html</code></p>
+<p>我们执行命令，进入该目录：</p>
+<pre><code class="language-sh">cd /usr/share/nginx/html
+</code></pre>
+<p>查看目录下文件：</p>
+<p><img src="assets/image-20210731164455818.png" alt="image-20210731164455818" /></p>
+<p>3）修改index.html的内容</p>
+<p>容器内没有vi命令，无法直接修改，我们用下面的命令来修改：</p>
+<pre><code class="language-sh">sed -i -e 's#Welcome to nginx#传智教育欢迎您#g' -e 's#&lt;head&gt;#&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;#g' index.html
+</code></pre>
+<p>在浏览器访问自己的虚拟机地址，例如我的是：http://192.168.150.101，即可看到结果：</p>
+<p><img src="assets/image-20210731164717604.png" alt="image-20210731164717604" /></p>
+<h2 id="docker-数据卷"><a class="header" href="#docker-数据卷">Docker 数据卷</a></h2>
+<p>在之前的nginx案例中，修改nginx的html页面时，需要进入nginx内部。并且因为没有编辑器，修改文件也很麻烦。</p>
+<p>这就是因为容器与数据（容器内文件）耦合带来的后果。</p>
+<p><img src="assets/image-20210731172440275.png" alt="image-20210731172440275" /></p>
+<p>要解决这个问题，必须将数据与容器解耦，这就要用到数据卷了。</p>
+<h3 id="什么是数据卷"><a class="header" href="#什么是数据卷">什么是数据卷</a></h3>
+<p>**数据卷（volume）**是一个虚拟目录，指向宿主机文件系统中的某个目录。</p>
+<p><img src="assets/image-20210731173541846.png" alt="image-20210731173541846" /></p>
+<p>一旦完成数据卷挂载，对容器的一切操作都会作用在数据卷对应的宿主机目录了。</p>
+<p>这样，我们操作宿主机的/var/lib/docker/volumes/html目录，就等于操作容器内的/usr/share/nginx/html目录了</p>
+<h3 id="数据卷操作命令"><a class="header" href="#数据卷操作命令">数据卷操作命令</a></h3>
+<p>数据卷操作的基本语法如下：</p>
+<pre><code class="language-sh">docker volume [COMMAND]
+</code></pre>
+<p>docker volume命令是数据卷操作，根据命令后跟随的command来确定下一步的操作：</p>
+<ul>
+<li>create 创建一个volume</li>
+<li>inspect 显示一个或多个volume的信息</li>
+<li>ls 列出所有的volume</li>
+<li>prune 删除未使用的volume</li>
+<li>rm 删除一个或多个指定的volume</li>
+</ul>
+<h3 id="创建和查看数据卷"><a class="header" href="#创建和查看数据卷">创建和查看数据卷</a></h3>
+<p><strong>需求</strong>：创建一个数据卷，并查看数据卷在宿主机的目录位置</p>
+<p>① 创建数据卷</p>
+<pre><code class="language-sh">docker volume create html
+</code></pre>
+<p>② 查看所有数据</p>
+<pre><code class="language-sh">docker volume ls
+</code></pre>
+<p>结果：</p>
+<p><img src="assets/image-20210731173746910.png" alt="image-20210731173746910" /></p>
+<p>③ 查看数据卷详细信息卷</p>
+<pre><code class="language-sh">docker volume inspect html
+</code></pre>
+<p>结果：</p>
+<p><img src="assets/image-20210731173809877.png" alt="image-20210731173809877" /></p>
+<p>可以看到，我们创建的html这个数据卷关联的宿主机目录为<code>/var/lib/docker/volumes/html/_data</code>目录。</p>
+<p><strong>小结</strong>：</p>
+<p>数据卷的作用：</p>
+<ul>
+<li>将容器与数据分离，解耦合，方便操作容器内数据，保证数据安全</li>
+</ul>
+<p>数据卷操作：</p>
+<ul>
+<li>docker volume create：创建数据卷</li>
+<li>docker volume ls：查看所有数据卷</li>
+<li>docker volume inspect：查看数据卷详细信息，包括关联的宿主机目录位置</li>
+<li>docker volume rm：删除指定数据卷</li>
+<li>docker volume prune：删除所有未使用的数据卷</li>
+</ul>
+<h3 id="挂载数据卷"><a class="header" href="#挂载数据卷">挂载数据卷</a></h3>
+<p>我们在创建容器时，可以通过 -v 参数来挂载一个数据卷到某个容器内目录，命令格式如下：</p>
+<pre><code class="language-sh">docker run \
+  --name mn \
+  -v html:/root/html \
+  -p 8080:80
+  nginx \
+</code></pre>
+<p>这里的-v就是挂载数据卷的命令：</p>
+<ul>
+<li><code>-v html:/root/htm</code> ：把html数据卷挂载到容器内的/root/html这个目录中</li>
+</ul>
+<h3 id="案例-给nginx挂载数据卷"><a class="header" href="#案例-给nginx挂载数据卷">案例-给nginx挂载数据卷</a></h3>
+<p><strong>需求</strong>：创建一个nginx容器，修改容器内的html目录内的index.html内容</p>
+<p><strong>分析</strong>：上个案例中，我们进入nginx容器内部，已经知道nginx的html目录所在位置/usr/share/nginx/html ，我们需要把这个目录挂载到html这个数据卷上，方便操作其中的内容。</p>
+<p><strong>提示</strong>：运行容器时使用 -v 参数挂载数据卷</p>
+<p>步骤：</p>
+<p>① 创建容器并挂载数据卷到容器内的HTML目录</p>
+<pre><code class="language-sh">docker run --name mn -v html:/usr/share/nginx/html -p 80:80 -d nginx
+</code></pre>
+<p>② 进入html数据卷所在位置，并修改HTML内容</p>
+<pre><code class="language-sh"># 查看html数据卷的位置
+docker volume inspect html
+# 进入该目录
+cd /var/lib/docker/volumes/html/_data
+# 修改文件
+vi index.html
+</code></pre>
+<h3 id="案例-给mysql挂载本地目录"><a class="header" href="#案例-给mysql挂载本地目录">案例-给MySQL挂载本地目录</a></h3>
+<p>容器不仅仅可以挂载数据卷，也可以直接挂载到宿主机目录上。关联关系如下：</p>
+<ul>
+<li>带数据卷模式：宿主机目录 --&gt; 数据卷 ---&gt; 容器内目录</li>
+<li>直接挂载模式：宿主机目录 ---&gt; 容器内目录</li>
+</ul>
+<p>如图：</p>
+<p><img src="assets/image-20210731175155453.png" alt="image-20210731175155453" /></p>
+<p><strong>语法</strong>：</p>
+<p>目录挂载与数据卷挂载的语法是类似的：</p>
+<ul>
+<li>-v [宿主机目录]:[容器内目录]</li>
+<li>-v [宿主机文件]:[容器内文件]</li>
+</ul>
+<p><strong>需求</strong>：创建并运行一个MySQL容器，将宿主机目录直接挂载到容器</p>
+<p>实现思路如下：</p>
+<p>1）在将课前资料中的 mysql.tar 文件上传到虚拟机，通过load命令加载为镜像</p>
+<p>2）创建目录/tmp/mysql/data</p>
+<p>3）创建目录/tmp/mysql/conf，将课前资料提供的hmy.cnf文件上传到/tmp/mysql/conf</p>
+<p>4）去DockerHub查阅资料，创建并运行MySQL容器，要求：</p>
+<p>① 挂载/tmp/mysql/data到mysql容器内数据存储目录</p>
+<p>② 挂载/tmp/mysql/conf/hmy.cnf到mysql容器的配置文件</p>
+<p>③ 设置MySQL密码</p>
+<h3 id="小结"><a class="header" href="#小结">小结</a></h3>
+<p>docker run的命令中通过 -v 参数挂载文件或目录到容器中：</p>
+<ul>
+<li>-v volume名称:容器内目录</li>
+<li>-v 宿主机文件:容器内文件</li>
+<li>-v 宿主机目录:容器内目录</li>
+</ul>
+<p>数据卷挂载与目录直接挂载的</p>
+<ul>
+<li>数据卷挂载耦合度低，由docker来管理目录，但是目录较深，不好找</li>
+<li>目录挂载耦合度高，需要我们自己管理目录，不过目录容易寻找查看</li>
+</ul>
+<h2 id="dockerfile-自定义镜像"><a class="header" href="#dockerfile-自定义镜像">Dockerfile 自定义镜像</a></h2>
+<p>dockerfile 是创建镜像的配置文件。</p>
+<h3 id="镜像结构"><a class="header" href="#镜像结构">镜像结构</a></h3>
+<p>镜像是将应用程序及其需要的系统函数库、环境、配置、依赖打包而成。</p>
+<p>我们以MySQL为例，来看看镜像的组成结构：</p>
+<p><img src="assets/image-20210731175806273.png" alt="image-20210731175806273" /></p>
+<p>简单来说，镜像就是在系统函数库、运行环境基础上，添加应用程序文件、配置文件、依赖文件等组合，然后编写好启动脚本打包在一起形成的文件。我们要构建镜像，其实就是实现上述打包的过程。</p>
+<h3 id="dockerfile-语法"><a class="header" href="#dockerfile-语法">Dockerfile 语法</a></h3>
+<p>构建自定义的镜像时，并不需要一个个文件去拷贝，打包。</p>
+<p>我们只需要告诉 Docker，我们的镜像的组成，需要哪些BaseImage、需要拷贝什么文件、需要安装什么依赖、启动脚本是什么，将来Docker会帮助我们构建镜像。而描述上述信息的文件就是Dockerfile文件。</p>
+<p><strong>Dockerfile</strong>就是一个文本文件，其中包含一个个的<strong>指令(Instruction)</strong>，用指令来说明要执行什么操作来构建镜像。每一个指令都会形成一层 Layer。</p>
+<p><img src="assets/image-20210731180321133.png" alt="image-20210731180321133" /></p>
+<p>更新详细语法说明，请参考官网文档： https://docs.docker.com/engine/reference/builder</p>
+<h3 id="构建-java-项目"><a class="header" href="#构建-java-项目">构建 Java 项目</a></h3>
+<h4 id="基于-ubuntu-构建-java-项目"><a class="header" href="#基于-ubuntu-构建-java-项目">基于 Ubuntu 构建 Java 项目</a></h4>
+<p>需求：基于 Ubuntu 镜像构建一个新镜像，运行一个 java 项目</p>
+<ul>
+<li>
+<p>步骤1：新建一个空文件夹docker-demo</p>
+<p><img src="assets/image-20210801101207444.png" alt="image-20210801101207444" /></p>
+</li>
+<li>
+<p>步骤2：拷贝课前资料中的docker-demo.jar文件到docker-demo这个目录</p>
+<p><img src="assets/image-20210801101314816.png" alt="image-20210801101314816" /></p>
+</li>
+<li>
+<p>步骤3：拷贝课前资料中的jdk8.tar.gz文件到docker-demo这个目录</p>
+<p><img src="assets/image-20210801101410200.png" alt="image-20210801101410200" /></p>
+</li>
+<li>
+<p>步骤4：拷贝课前资料提供的Dockerfile到docker-demo这个目录</p>
+<p><img src="assets/image-20210801101455590.png" alt="image-20210801101455590" /></p>
+<p>其中的内容如下：</p>
+<pre><code class="language-dockerfile"># 指定基础镜像
+FROM ubuntu:16.04
+# 配置环境变量，JDK的安装目录
+ENV JAVA_DIR=/usr/local
+
+# 拷贝jdk和java项目的包
+COPY ./jdk8.tar.gz $JAVA_DIR/
+COPY ./docker-demo.jar /tmp/app.jar
+
+# 安装JDK
+RUN cd $JAVA_DIR \
+ &amp;&amp; tar -xf ./jdk8.tar.gz \
+ &amp;&amp; mv ./jdk1.8.0_144 ./java8
+
+# 配置环境变量
+ENV JAVA_HOME=$JAVA_DIR/java8
+ENV PATH=$PATH:$JAVA_HOME/bin
+
+# 暴露端口
+EXPOSE 8090
+# 入口，java项目的启动命令
+ENTRYPOINT java -jar /tmp/app.jar
+</code></pre>
+</li>
+<li>
+<p>步骤5：进入 docker-demo</p>
+<p>将准备好的 docker-demo 上传到虚拟机任意目录，然后进入docker-demo目录下</p>
+</li>
+<li>
+<p>步骤6：运行命令：</p>
+<pre><code class="language-sh">docker build -t javaweb:1.0 .
+</code></pre>
+</li>
+</ul>
+<p>最后访问 http://192.168.150.101:8090/hello/count，其中的ip改成你的虚拟机ip</p>
+<h4 id="基于-java8-构建-java-项目"><a class="header" href="#基于-java8-构建-java-项目">基于 java8 构建 Java 项目</a></h4>
+<p>虽然我们可以基于 Ubuntu 基础镜像，添加任意自己需要的安装包，构建镜像，但是却比较麻烦。所以大多数情况下，我们都可以在一些安装了部分软件的基础镜像上做改造。</p>
+<p>例如，构建 java 项目的镜像，可以在已经准备了 JDK 的基础镜像基础上构建。</p>
+<p>需求：基于 java:8-alpine 镜像，将一个 Java 项目构建为镜像</p>
+<p>实现思路如下：</p>
+<ul>
+<li>
+<p>① 新建一个空的目录，然后在目录中新建一个文件，命名为Dockerfile</p>
+</li>
+<li>
+<p>② 拷贝课前资料提供的docker-demo.jar到这个目录中</p>
+</li>
+<li>
+<p>③ 编写Dockerfile文件：</p>
+<ul>
+<li>
+<p>a ）基于java:8-alpine作为基础镜像</p>
+</li>
+<li>
+<p>b ）将app.jar拷贝到镜像中</p>
+</li>
+<li>
+<p>c ）暴露端口</p>
+</li>
+<li>
+<p>d ）编写入口ENTRYPOINT</p>
+<p>内容如下：</p>
+<pre><code class="language-dockerfile">FROM java:8-alpine
+COPY ./app.jar /tmp/app.jar
+EXPOSE 8090
+ENTRYPOINT java -jar /tmp/app.jar
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>④ 使用 docker build 命令构建镜像</p>
+</li>
+<li>
+<p>⑤ 使用 docker run 创建容器并运行</p>
+</li>
+</ul>
+<p>总结：</p>
+<ol>
+<li>
+<p>Dockerfile的本质是一个文件，通过指令描述镜像的构建过程</p>
+</li>
+<li>
+<p>Dockerfile的第一行必须是FROM，从一个基础镜像来构建</p>
+</li>
+<li>
+<p>基础镜像可以是基本操作系统，如Ubuntu。也可以是其他人制作好的镜像，例如：java:8-alpine</p>
+</li>
+</ol>
+<h2 id="dockercompose"><a class="header" href="#dockercompose">DockerCompose</a></h2>
+<p>DockerCompose 是容器的批量运行脚本。</p>
+<p>Docker Compose可以基于 Compose 文件帮我们快速的部署分布式应用，而无需手动一个个创建和运行容器！</p>
+<p><img src="assets/image-20210731180921742.png" alt="image-20210731180921742" /></p>
+<h3 id="了解-dockercompose"><a class="header" href="#了解-dockercompose">了解 DockerCompose</a></h3>
+<p>Compose文件是一个文本文件，通过指令定义集群中的每个容器如何运行。格式如下：</p>
+<pre><code class="language-json">version: &quot;3.8&quot;
+ services:
+  mysql:
+    image: mysql:5.7.25
+    environment:
+     MYSQL_ROOT_PASSWORD: 123 
+    volumes:
+     - &quot;/tmp/mysql/data:/var/lib/mysql&quot;
+     - &quot;/tmp/mysql/conf/hmy.cnf:/etc/mysql/conf.d/hmy.cnf&quot;
+  web:
+    build: .
+    ports:
+     - &quot;8090:8090&quot;
+
+</code></pre>
+<p>上面的Compose文件就描述一个项目，其中包含两个容器：</p>
+<ul>
+<li>mysql：一个基于<code>mysql:5.7.25</code>镜像构建的容器，并且挂载了两个目录</li>
+<li>web：一个基于 <code>docker build</code> 临时构建的镜像容器，映射端口时8090</li>
+</ul>
+<p>DockerCompose 的详细语法参考官网：https://docs.docker.com/compose/compose-file/</p>
+<p>其实 DockerCompose 文件可以看做是将多个 docker run 命令写到一个文件，只是语法稍有差异。</p>
+<h3 id="部署微服务集群"><a class="header" href="#部署微服务集群">部署微服务集群</a></h3>
+<p><strong>需求</strong>：将之前学习的cloud-demo微服务集群利用DockerCompose部署</p>
+<p><strong>实现思路</strong>：</p>
+<p>① 查看课前资料提供的cloud-demo文件夹，里面已经编写好了docker-compose文件</p>
+<p>② 修改自己的cloud-demo项目，将数据库、nacos地址都命名为docker-compose中的服务名</p>
+<p>③ 使用maven打包工具，将项目中的每个微服务都打包为app.jar</p>
+<p>④ 将打包好的app.jar拷贝到cloud-demo中的每一个对应的子目录中</p>
+<p>⑤ 将cloud-demo上传至虚拟机，利用 docker-compose up -d 来部署</p>
+<h4 id="compose文件"><a class="header" href="#compose文件">compose文件</a></h4>
+<p>查看课前资料提供的cloud-demo文件夹，里面已经编写好了 docker-compose 文件，而且每个微服务都准备了一个独立的目录：</p>
+<p><img src="assets/image-20210731181341330.png" alt="image-20210731181341330" /></p>
+<p>内容如下：</p>
+<pre><code class="language-yaml">version: &quot;3.2&quot;
+
+services:
+  nacos:
+    image: nacos/nacos-server
+    environment:
+      MODE: standalone
+    ports:
+      - &quot;8848:8848&quot;
+  mysql:
+    image: mysql:5.7.25
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    volumes:
+      - &quot;$PWD/mysql/data:/var/lib/mysql&quot;
+      - &quot;$PWD/mysql/conf:/etc/mysql/conf.d/&quot;
+  userservice:
+    build: ./user-service
+  orderservice:
+    build: ./order-service
+  gateway:
+    build: ./gateway
+    ports:
+      - &quot;10010:10010&quot;
+</code></pre>
+<p>可以看到，其中包含5个service服务：</p>
+<ul>
+<li><code>nacos</code>：作为注册中心和配置中心
+<ul>
+<li><code>image: nacos/nacos-server</code>： 基于nacos/nacos-server镜像构建</li>
+<li><code>environment</code>：环境变量
+<ul>
+<li><code>MODE: standalone</code>：单点模式启动</li>
+</ul>
+</li>
+<li><code>ports</code>：端口映射，这里暴露了8848端口</li>
+</ul>
+</li>
+<li><code>mysql</code>：数据库
+<ul>
+<li><code>image: mysql:5.7.25</code>：镜像版本是mysql:5.7.25</li>
+<li><code>environment</code>：环境变量
+<ul>
+<li><code>MYSQL_ROOT_PASSWORD: 123</code>：设置数据库root账户的密码为123</li>
+</ul>
+</li>
+<li><code>volumes</code>：数据卷挂载，这里挂载了mysql的data、conf目录，其中有我提前准备好的数据</li>
+</ul>
+</li>
+<li><code>userservice</code>、<code>orderservice</code>、<code>gateway</code>：都是基于Dockerfile临时构建的</li>
+</ul>
+<p>查看mysql目录，可以看到其中已经准备好了cloud_order、cloud_user表：</p>
+<p><img src="assets/image-20210801095205034.png" alt="image-20210801095205034" /></p>
+<p>查看微服务目录，可以看到都包含Dockerfile文件：</p>
+<p><img src="assets/image-20210801095320586.png" alt="image-20210801095320586" /></p>
+<p>内容如下：</p>
+<pre><code class="language-dockerfile">FROM java:8-alpine
+COPY ./app.jar /tmp/app.jar
+ENTRYPOINT java -jar /tmp/app.jar
+</code></pre>
+<h4 id="修改微服务配置"><a class="header" href="#修改微服务配置">修改微服务配置</a></h4>
+<p>因为微服务将来要部署为docker容器，而容器之间互联不是通过IP地址，而是通过容器名。这里我们将order-service、user-service、gateway服务的mysql、nacos地址都修改为基于容器名的访问。</p>
+<p>如下所示：</p>
+<pre><code class="language-yaml">spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/cloud_order?useSSL=false
+    username: root
+    password: 123
+    driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: orderservice
+  cloud:
+    nacos:
+      server-addr: nacos:8848 # nacos服务地址
+</code></pre>
+<h4 id="打包"><a class="header" href="#打包">打包</a></h4>
+<p>接下来需要将我们的每个微服务都打包。因为之前查看到Dockerfile中的jar包名称都是app.jar，因此我们的每个微服务都需要用这个名称。</p>
+<p>可以通过修改pom.xml中的打包名称来实现，每个微服务都需要修改：</p>
+<pre><code class="language-xml">&lt;build&gt;
+  &lt;!-- 服务打包的最终名称 --&gt;
+  &lt;finalName&gt;app&lt;/finalName&gt;
+  &lt;plugins&gt;
+    &lt;plugin&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+    &lt;/plugin&gt;
+  &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+<p>打包后：</p>
+<p><img src="assets/image-20210801095951030.png" alt="image-20210801095951030" /></p>
+<h4 id="拷贝jar包到部署目录"><a class="header" href="#拷贝jar包到部署目录">拷贝jar包到部署目录</a></h4>
+<p>编译打包好的app.jar文件，需要放到Dockerfile的同级目录中。注意：每个微服务的app.jar放到与服务名称对应的目录，别搞错了。</p>
+<p>user-service：</p>
+<p><img src="assets/image-20210801100201253.png" alt="image-20210801100201253" /></p>
+<p>order-service：</p>
+<p><img src="assets/image-20210801100231495.png" alt="image-20210801100231495" /></p>
+<p>gateway：</p>
+<p><img src="assets/image-20210801100308102.png" alt="image-20210801100308102" /></p>
+<h4 id="部署"><a class="header" href="#部署">部署</a></h4>
+<p>最后，我们需要将文件整个cloud-demo文件夹上传到虚拟机中，理由DockerCompose部署。</p>
+<p>上传到任意目录：</p>
+<p><img src="assets/image-20210801100955653.png" alt="image-20210801100955653" /></p>
+<p>部署：</p>
+<p>进入cloud-demo目录，然后运行下面的命令：</p>
+<pre><code class="language-sh">docker-compose up -d
+</code></pre>
+<h2 id="docker-镜像仓库"><a class="header" href="#docker-镜像仓库">Docker 镜像仓库</a></h2>
+<p>Docker Registry。</p>
+<p>公共仓库：DockerHub，网易云镜像仓库，阿里云镜像仓库</p>
+<p>私有仓库：私有 Docker Registry</p>
+<h3 id="简化版镜像仓库"><a class="header" href="#简化版镜像仓库">简化版镜像仓库</a></h3>
+<p>Docker官方的Docker Registry是一个基础版本的Docker镜像仓库，具备仓库管理的完整功能，但是没有图形化界面。</p>
+<p>搭建方式比较简单，命令如下：</p>
+<pre><code class="language-sh">docker run -d \
+    --restart=always \
+    --name registry	\
+    -p 5000:5000 \
+    -v registry-data:/var/lib/registry \
+    registry
+</code></pre>
+<p>命令中挂载了一个数据卷registry-data到容器内的/var/lib/registry 目录，这是私有镜像库存放数据的目录。</p>
+<p>访问http://YourIp:5000/v2/_catalog 可以查看当前私有镜像服务中包含的镜像</p>
+<h3 id="带有图形化界面版本"><a class="header" href="#带有图形化界面版本">带有图形化界面版本</a></h3>
+<p>使用DockerCompose部署带有图象界面的DockerRegistry，命令如下：</p>
+<pre><code class="language-yaml">version: '3.0'
+services:
+  registry:
+    image: registry
+    volumes:
+      - ./registry-data:/var/lib/registry
+  ui:
+    image: joxit/docker-registry-ui:static
+    ports:
+      - 8080:80
+    environment:
+      - REGISTRY_TITLE=传智教育私有仓库
+      - REGISTRY_URL=http://registry:5000
+    depends_on:
+      - registry
+</code></pre>
+<h3 id="配置-docker-信任地址"><a class="header" href="#配置-docker-信任地址">配置 Docker 信任地址</a></h3>
+<p>我们的私服采用的是http协议，默认不被Docker信任，所以需要做一个配置：</p>
+<pre><code class="language-sh"># 打开要修改的文件
+vi /etc/docker/daemon.json
+# 添加内容：
+&quot;insecure-registries&quot;:[&quot;http://192.168.150.101:8080&quot;]
+# 重加载
+systemctl daemon-reload
+# 重启docker
+systemctl restart docker
+</code></pre>
+<h3 id="推送拉取镜像"><a class="header" href="#推送拉取镜像">推送、拉取镜像</a></h3>
+<p>推送镜像到私有镜像服务必须先tag，步骤如下：</p>
+<p>① 重新tag本地镜像，名称前缀为私有仓库的地址：192.168.150.101:8080/</p>
+<pre><code class="language-sh">docker tag nginx:latest 192.168.150.101:8080/nginx:1.0 
+</code></pre>
+<p>② 推送镜像</p>
+<pre><code class="language-sh">docker push 192.168.150.101:8080/nginx:1.0 
+</code></pre>
+<p>③ 拉取镜像</p>
+<pre><code class="language-sh">docker pull 192.168.150.101:8080/nginx:1.0 
+</code></pre>
+<h2 id="-------------------------------------------"><a class="header" href="#-------------------------------------------">-------------------------------------------</a></h2>
+<h2 id="cli"><a class="header" href="#cli">CLI</a></h2>
+<h3 id="docker-ps-查看当前正在运行的容器"><a class="header" href="#docker-ps-查看当前正在运行的容器">docker ps 查看当前正在运行的容器</a></h3>
+<h3 id="docker-version-查看版本"><a class="header" href="#docker-version-查看版本">docker version 查看版本</a></h3>
+<pre><code class="language-shell">docker --version
+</code></pre>
+<h3 id="docker-image"><a class="header" href="#docker-image">docker image</a></h3>
+<p>Docker 镜像的命名规范：</p>
+<pre><code class="language-shell"># ls all images in local
+docker image ls
+</code></pre>
+<h3 id="docker-container"><a class="header" href="#docker-container">docker container</a></h3>
+<pre><code class="language-shell"># ls all container in local
+docker container ls # running
+docker container ls --all # all
+docker container ls -aq # all in quiet mode
+</code></pre>
+<h3 id="docker-run"><a class="header" href="#docker-run">docker run</a></h3>
+<pre><code class="language-shell">docker run -d -p 80:80 docker/getting-started
+</code></pre>
+<p>You'll notice a few flags being used. Here's some more info on them:</p>
+<ul>
+<li><code>-d</code> - run the container in detached mode (in the background)</li>
+<li><code>-p 8000:80</code> - map port 8000 of the host to port 80 in the container</li>
+<li><code>docker/getting-started</code> - the image to use</li>
+</ul>
+<p>注意，docker run 以后就创建了一个 container（实体），在 container 关闭后，container 还是存在的，要 rm 掉原来的 container 然后重新编译。</p>
+<p>如果本地没有这个 docker 镜像，就会从远程仓库里面找。</p>
+<h3 id="docker-build"><a class="header" href="#docker-build">docker build</a></h3>
+<p>This command used the Dockerfile to build a new container image. </p>
+<pre><code class="language-shell">docker build -t getting-started .
+</code></pre>
+<p>This command used the Dockerfile to build a new container image. You might have noticed that a lot of “layers” were downloaded. This is because we instructed the builder that we wanted to start from the <code>node:12-alpine</code> image. But, since we didn’t have that on our machine, that image needed to be downloaded.</p>
+<p>After the image was downloaded, we copied in our application and used <code>yarn</code> to install our application’s dependencies. The <code>CMD</code> directive specifies the default command to run when starting a container from this image.</p>
+<p>Finally, the <code>-t</code> flag tags our image. Think of this simply as a human-readable name for the final image. Since we named the image <code>getting-started</code>, we can refer to that image when we run a container.</p>
+<p>The <code>.</code> at the end of the <code>docker build</code> command tells that Docker should look for the <code>Dockerfile</code> in the current directory.</p>
+<h3 id="update"><a class="header" href="#update">Update</a></h3>
+<p>代码变更后，更新 Docker 的流程。</p>
+<h4 id="docker-build-1"><a class="header" href="#docker-build-1">docker build</a></h4>
+<p>先重新编译</p>
+<pre><code class="language-shell">docker build -t getting-started .
+</code></pre>
+<h4 id="docker-ps"><a class="header" href="#docker-ps">docker ps</a></h4>
+<p>Get the ID of the container by using the <code>docker ps</code> command.</p>
+<pre><code class="language-shell"> docker ps
+</code></pre>
+<h4 id="docker-stop"><a class="header" href="#docker-stop">docker stop</a></h4>
+<p>Use the <code>docker stop</code> command to stop the container.</p>
+<pre><code class="language-shell"> # Swap out &lt;the-container-id&gt; with the ID from docker ps
+ docker stop &lt;the-container-id&gt;
+</code></pre>
+<h4 id="docker-rm"><a class="header" href="#docker-rm">docker rm</a></h4>
+<p>Once the container has stopped, you can remove it by using the <code>docker rm</code> command.</p>
+<pre><code class="language-shell"> docker rm &lt;the-container-id&gt;
+</code></pre>
+<p>You can stop and remove a container in a single command by adding the “force” flag to the <code>docker rm</code> command. For example: <code>docker rm -f &lt;the-container-id&gt;</code></p>
+<h3 id="docker-login"><a class="header" href="#docker-login">docker login</a></h3>
+<p>登录 DockerHub：</p>
+<pre><code class="language-shell">docker login -u username
+</code></pre>
+<h3 id="docker-tag"><a class="header" href="#docker-tag">docker tag</a></h3>
+<p>Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</p>
+<pre><code class="language-shell"># docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+docker tag getting-started wansho/getting-started
+</code></pre>
+<h3 id="docker-push"><a class="header" href="#docker-push">docker push</a></h3>
+<p>把本地的 docker 镜像 push 到远程仓库。默认推送到 dockerhub。</p>
+<pre><code class="language-shell"> docker push YOUR-USER-NAME/getting-started
+</code></pre>
+<h3 id="docker-pull"><a class="header" href="#docker-pull">docker pull</a></h3>
+<p>从远程仓库拉取 docker image</p>
+<pre><code class="language-shell">docker pull wansho/getting-started:latest
+</code></pre>
+<h2 id="docker-数据持久化"><a class="header" href="#docker-数据持久化">Docker 数据持久化</a></h2>
+<p>While containers can create, update, and delete files, those changes are lost when the container is removed and all changes are isolated to that container. With volumes, we can change all of this.</p>
+<p><a href="https://docs.docker.com/storage/volumes/">Volumes</a> provide the ability to connect specific filesystem paths of the container back to the host machine. If a directory in the container is mounted, changes in that directory are also seen on the host machine. If we mount that same directory across container restarts, we’d see the same files.</p>
+<p>There are two main types of volumes. We will eventually use both, but we will start with <strong>named volumes</strong>.</p>
+<h3 id="1-named-volumes"><a class="header" href="#1-named-volumes">1. named volumes</a></h3>
+<h4 id="docker-volume-create"><a class="header" href="#docker-volume-create">docker volume create</a></h4>
+<pre><code class="language-shell">docker volume create todo-db # 创建一个 named volumes
+# 把 todo-db 作为镜像 getting-started 的 volume，并挂载 todo-db 到 /etc/todos 上(实际上并没有真正挂在到 /etc/todos 下面)
+docker -dp 3000:3000 -v todo-db:/etc/todos getting-started 
+
+# 查看 docker 实际把我们的数据存储到哪里了
+docker volume inspect todo-db
+</code></pre>
+<pre><code class="language-json">[
+    {
+        &quot;CreatedAt&quot;: &quot;2021-04-25T20:11:13+08:00&quot;,
+        &quot;Driver&quot;: &quot;local&quot;,
+        &quot;Labels&quot;: null,
+        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/todo-db/_data&quot;,
+        &quot;Name&quot;: &quot;todo-db&quot;,
+        &quot;Options&quot;: null,
+        &quot;Scope&quot;: &quot;local&quot;
+    }
+]
+</code></pre>
+<h3 id="2-bind-mounts"><a class="header" href="#2-bind-mounts">2. bind mounts</a></h3>
+<p>With <strong>bind mounts</strong>, we control the exact mountpoint on the host. We can use this to persist data, but it’s often used to provide additional data into containers. When working on an application, we can use a bind mount to mount our source code into the container to let it see code changes, respond, and let us see the changes right away.</p>
+<h2 id="multi-container-apps"><a class="header" href="#multi-container-apps">Multi container apps</a></h2>
+<p>Up to this point, we have been working with single container apps. But, we now want to add MySQL to the application stack. The following question often arises - “Where will MySQL run? Install it in the same container or run it separately?” In general, <strong>each container should do one thing and do it well.</strong> A few reasons:</p>
+<ul>
+<li>There’s a good chance you’d have to scale APIs and front-ends differently than databases</li>
+<li>Separate containers let you version and update versions in isolation</li>
+<li>While you may use a container for the database locally, you may want to use a managed service for the database in production. You don’t want to ship your database engine with your app then.</li>
+<li>Running multiple processes will require a process manager (the container only starts one process), which adds complexity to container startup/shutdown</li>
+</ul>
+<h3 id="docker-network"><a class="header" href="#docker-network">docker network</a></h3>
+<p>If two containers are on the same network, they can talk to each other. If they aren’t, they can’t.</p>
+<pre><code class="language-shell"># Create the network.
+docker network create todo-app
+
+# Start a MySQL container and attach it to the network. 
+# You’ll notice we’re using a volume named todo-mysql-data here and mounting it at /var/lib/mysql, which is where MySQL stores its data. However, we never ran a docker volume create command. Docker recognizes we want to use a named volume and creates one automatically for us.
+sudo docker run -d \
+     --network todo-app --network-alias mysql \
+     -v todo-mysql-data:/var/lib/mysql \
+     -e MYSQL_ROOT_PASSWORD=secret \
+     -e MYSQL_DATABASE=todos \
+     mysql:5.7
+     
+# To confirm we have the database up and running, connect to the database and verify it connects.
+docker exec -it &lt;mysql-container-id&gt; mysql -u root -p
+</code></pre>
+<p>Our app only simply needs to connect to a host named <code>mysql</code> and it’ll talk to the database! It doesn’t get much simpler than that!</p>
+<p>重启 getting-started 容器：</p>
+<pre><code class="language-shell">#  # -w working dir; -v volume
+sudo docker run -dp 3000:3000 \
+   -w /app -v &quot;$(pwd):/app&quot; \
+   --network todo-app \
+   -e MYSQL_HOST=mysql \
+   -e MYSQL_USER=root \
+   -e MYSQL_PASSWORD=secret \
+   -e MYSQL_DB=todos \
+   node:12-alpine \
+   sh -c &quot;yarn install &amp;&amp; yarn run dev&quot;
+</code></pre>
+<h3 id="docker-logs"><a class="header" href="#docker-logs">docker logs</a></h3>
+<pre><code>docker logs container-id
+</code></pre>
+<pre><code> # Previous log messages omitted
+ $ nodemon src/index.js
+ [nodemon] 1.19.2
+ [nodemon] to restart at any time, enter `rs`
+ [nodemon] watching dir(s): *.*
+ [nodemon] starting `node src/index.js`
+ Connected to mysql db at host mysql
+ Listening on port 3000
+</code></pre>
+<h3 id="docker-exec"><a class="header" href="#docker-exec">docker exec</a></h3>
+<p>进入容器执行命令</p>
+<pre><code class="language-shell"># 在容器中连接 mysql
+docker exec -it &lt;mysql-container-id&gt; mysql -u root -p
+</code></pre>
+<h2 id="docker-compose"><a class="header" href="#docker-compose">Docker Compose</a></h2>
+<p>Docker compose 的作用是对 docker run 进行配置封装。ubuntu 安装 docker-compose 的命令：<code>sudo apt-get install docker-compose </code></p>
+<p>docker-compose 的优点：</p>
+<ul>
+<li>自动创建 network</li>
+<li>对 docker run 进行封装，进而可以进行版本控制</li>
+</ul>
+<p><code>docker-compose.yml</code>:</p>
+<pre><code class="language-yml">version: &quot;2.0&quot;
+
+services:
+  app:
+    image: node:12-alpine
+    command: sh -c &quot;yarn install &amp;&amp; yarn run dev&quot;
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - todo-mysql-data:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
+
+volumes:
+  todo-mysql-data:
+</code></pre>
+<pre><code class="language-shell"># 在 docker-compose.yml 所在文件夹下，执行该命令，就可以调起两个容器
+docker-compose up -d 
+</code></pre>
+<pre><code class="language-shell"># 运行日志
+ Creating network &quot;app_default&quot; with the default driver
+ Creating volume &quot;app_todo-mysql-data&quot; with default driver
+ Creating app_app_1   ... done
+ Creating app_mysql_1 ... done
+</code></pre>
+<p>You’ll notice that the volume was created as well as a network! By default, Docker Compose automatically creates a network specifically for the application stack (which is why we didn’t define one in the compose file).</p>
+<p>查看实时的运行日志：</p>
+<pre><code class="language-shell">docker-compose logs -f # 所有的日志
+docker-compose logs -f app # 单个容器的日志
+</code></pre>
+<p>When the app is starting up, it actually sits and waits for MySQL to be up and ready before trying to connect to it. Docker doesn’t have any built-in support to wait for another container to be fully up, running, and ready before starting another container. For Node-based projects, you can use the <a href="https://github.com/dwmkerr/wait-port">wait-port</a> dependency. Similar projects exist for other languages/frameworks.</p>
+<p>关闭 compose</p>
+<pre><code class="language-shell">docker-compose down
+</code></pre>
+<p>Removing Volumes</p>
+<p>By default, named volumes in your compose file are NOT removed when running <code>docker-compose down</code>. If you want to remove the volumes, you will need to add the <code>--volumes</code> flag. The Docker Dashboard does <em>not</em> remove volumes when you delete the app stack.</p>
+<h2 id="------------------------------------------------------"><a class="header" href="#------------------------------------------------------">------------------------------------------------------</a></h2>
+<h2 id="青云-kubesphere"><a class="header" href="#青云-kubesphere">青云 KubeSphere</a></h2>
+<p>对 K8s 进行封装，做可视化配置。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../computer-science-notebook/development-tools/vscode.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../computer-science-notebook/development-tools/cloud-native.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../computer-science-notebook/development-tools/vscode.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../computer-science-notebook/development-tools/cloud-native.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

@@ -1,0 +1,9 @@
+[book]
+authors = ["wanshuo"]
+language = "en"
+multilingual = false
+src = "src"
+title = "wanshuo-gitbook"
+
+[output.html]
+input-404 = "SUMMARY.md"
