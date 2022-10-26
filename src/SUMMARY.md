@@ -258,6 +258,8 @@
   * [week-38](weekly/2022/week-38.md)
   * [week-39](weekly/2022/week-39.md)
   * [week-40](weekly/2022/week-40.md)
+  * [week-41](weekly/2022/week-41.md)
+  * [week-43](weekly/2022/week-43.md)
 
 
 
