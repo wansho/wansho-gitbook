@@ -1149,14 +1149,20 @@ halt # 关机
 
 ### sudo
 
+visudo 修改的是 /etc/sudoers 文件
+
 ```
 既然切换到 root 用户需要 root 密码，那么 root 用户的密码难免被各个用户知道，为了防止 root 密码外漏，给出了 sudo 方法。并不是所有的用户都可以执行 sudo 命令，必须经过 root 用户的配置。配置完后，被配置的用户就可以使用 sudo 命令短暂的用 root 的身份执行命令，而且 sudo 后输入的密码是 用户自己的密码，这样就防止了 root 用户密码的泄漏。
 
 在 root 下配置 sudo 命令的教程：
 visudo
     在文件最后一样加入：
-    work ALL=(ALL) ALL # 其中 work 是赋予 sudo 权限的普通用户，后面模式固定
+    work ALL=(ALL) ALL # 其中 work 是赋予 sudo 权限的普通用户，后面模式固定，以 work 用户自己的密码来执行 sudo
     work ALL=(ALL:ALL) NOPASSWD:ALL # 该命令是赋予 work 用户 root 的权利，不需要密码
+    
+
+# 用 work 用户执行命令，如果执行的是 Java，那么需要在 /etc/sudoers 中配置一下 path 变量
+sudo -u work java -jar auto.jar
 ```
 
 ### su 命令

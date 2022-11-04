@@ -239,7 +239,7 @@ Maven定义了几种依赖关系 ，分别是`compile`、`test`、`runtime`和`p
 <dependency>
   <groupId>com.h2database</groupId>
   <artifactId>h2</artifactId>
-  <scope>runtime</scope>
+  <scope>provided</scope>
   <version>1.4.193</version>
 </dependency>
 ```
