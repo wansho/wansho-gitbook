@@ -49,6 +49,33 @@ postgresql 保留字段：user, status
 
 
 
+postgresql 除了定义了数据库这个概念以外，还定义了模式这个概念。模式比数据库更小，模式是表的集合，一个模式可以包含视图、索引、数据类型、函数和操作符等。一个数据库可以包含多个模式。引入模式，可以使得多个用户使用一个数据库，并且不会相互干扰。
+
+
+
+postgresql 中的角色，可以当成用户。
+
+
+
+一个典型的 postgresql 数据库连接：
+
+```yaml
+# 这里的 database 就是最顶层的 database
+url: jdbc:postgresql://xxx.xxx.xxx.xxx:5432/database?useUnicode=true&characterEncoding=UTF-8
+# 用户名就是角色名，通常我们在创建模式的时候，会指定模式的所有者，这样用户就会和模式绑定，而且，通常用户名和模式名是一样的
+username: username
+password: password
+driver-class-name: org.postgresql.Driver
+```
+
+
+
+public schema
+
+When a new database is created, PostgreSQL by default creates a schema named `public` and grants access on this schema to a backend role named `public`. All new users and roles are by default granted this `public` role, and therefore can create objects in the `public` schema.
+
+
+
 ## 内存数据库
 
 ### redis
