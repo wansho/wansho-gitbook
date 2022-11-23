@@ -42,6 +42,8 @@ Oracle 不支持 id 自增的配置：auto_increment
 
 以后写 SQL，尽量写兼容 Oracle 和 MySQL 的 SQL。
 
+
+
 ## 数据库 sql 差异性
 
 * Oracle sql 语句结尾不能加 `;`
@@ -75,3 +77,9 @@ Oracle 不支持 id 自增的配置：auto_increment
   ```
 
   
+
+## Oracle 保留字
+
+
+
+SIZE，TYPE，
