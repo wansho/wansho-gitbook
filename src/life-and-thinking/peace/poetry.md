@@ -4,7 +4,7 @@
 
 
 
-<img align="left" src="assets/image-20211124195350087.png" alt="image-20211124195350087" style="zoom: 45%;" />
+<img align="left" src="assets/image-20211124195350087.png" alt="image-20211124195350087"  />
 
 ------
 
@@ -1207,6 +1207,8 @@
 
 
 #### 西江月·世事短如春梦
+
+[朱敦儒](https://so.gushiwen.cn/authorv_d82bfa645313.aspx)
 
 世事短如春梦，人情薄似秋云。不须计较苦劳心。万事原来有命。
 
