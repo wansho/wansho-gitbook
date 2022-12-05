@@ -446,6 +446,8 @@ unzip
 which cat
 which ls
 which -a ls # 查找所有的 ls 命令所在地址，可能 ls 不止一个
+
+# which 联想记忆，which 类似枚举，就是从 path 中枚举一条条路径
 ```
 
 **find**
