@@ -66,7 +66,7 @@ src/
 		constant.js // 配置常量
 		store.js // redux 管理员
 	App.css 
-	App.jsx // 所有组件的外壳组件 
+	App.jsx // 所有组件的外壳组件
 	index.js	// 入口文件
 ```
 
@@ -96,7 +96,9 @@ npm start
 
 安装 antd
 
-
+```shell
+npm install --save  antd@4.24.5
+```
 
 
 
