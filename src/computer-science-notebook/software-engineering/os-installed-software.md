@@ -55,7 +55,7 @@
 | 输入法            | Windows 自带 | 手心输入法 / 自带输入法 |      |
 | pdf 阅读器        | 福昕阅读器   | pdf export / 福昕阅读器 |      |
 | 截图工具 Snipaste |              |                         |      |
-| 下载器            | IDM          | Motrix                  |      |
+| 下载器            | IDM          | NetDownloadManager      |      |
 | 视频下载器        | IDM          | Downie 4                |      |
 | 百度网盘          |              |                         |      |
 | 微信 / QQ / 钉钉  |              |                         |      |
@@ -94,20 +94,6 @@
 ## macOS
 
 https://github.com/jaywcjlove/awesome-mac
-
-
-
-### todo
-
-深入学习
-
-- [ ] Alfred
-
-  增加浏览器历史记录搜索
-
-- [ ] Shuttle
-
-- [ ] iTerm 
 
 
 
@@ -201,14 +187,6 @@ dd xxx
 
 
 
-
-
-### 软件资源
-
-https://macwk.com/
-
-
-
 ### Docker
 
 docker 适合安装服务和中间件
@@ -233,6 +211,7 @@ docker 适合安装服务和中间件
 | Moom                                                     | 屏幕分屏                                                     | 60 块钱 |
 | mouse catch                                              | 多个屏幕间快速移动鼠标                                       |         |
 | [Scroll Reverser](https://pilotmoon.com/scrollreverser/) | 插上鼠标后，滚轮自然切换                                     |         |
+| Raycase                                                  | 新一代 Alfred                                                |         |
 
 
 
