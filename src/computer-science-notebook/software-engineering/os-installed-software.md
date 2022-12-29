@@ -211,7 +211,7 @@ docker 适合安装服务和中间件
 | Moom                                                     | 屏幕分屏                                                     | 60 块钱 |
 | mouse catch                                              | 多个屏幕间快速移动鼠标                                       |         |
 | [Scroll Reverser](https://pilotmoon.com/scrollreverser/) | 插上鼠标后，滚轮自然切换                                     |         |
-| Raycase                                                  | 新一代 Alfred                                                |         |
+| Raycast                                                  | 新一代 Alfred                                                |         |
 
 
 
