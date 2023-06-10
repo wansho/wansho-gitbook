@@ -100,6 +100,14 @@ npm start
 npm install --save  antd@4.24.5
 ```
 
+引入 antd css（在 App.css 中引入）
+
+```css
+@import '~antd/dist/antd.css';
+```
+
+
+
 
 
 ## react 基础
