@@ -375,7 +375,9 @@ Demo:
 
 ### 仓库
 
-<img align="left" src="assets/image-20210609202112181.png" alt="image-20210609202112181" style="zoom: 67%;" />
+
+
+![image-20210609202112181](assets/image-20210609202112181.png)
 
 * 本地仓库：
 
