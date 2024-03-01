@@ -30,6 +30,7 @@ docker exec -it mariadb /bin/bash
 ```shell
 # 拉取 arm 版本的镜像，要加上 --platform 参数，优先使用 arm64 架构的
 docker pull --platform linux/amd64 mysql
+
 docker pull --platform linux/arm64 redis
 ```
 
